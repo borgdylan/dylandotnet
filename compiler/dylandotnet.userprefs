@@ -1,17 +1,34 @@
 ﻿<Properties StartupItem="dnc/dnc.dylproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="resproc/Program.dyl">
+  <MonoDevelop.Ide.Workbench ActiveDocument="dnu/parseu.dyl">
     <Files>
-      <File FileName="template/template.dyl" Line="26" Column="1" />
+      <File FileName="template/template.dyl" Line="509" Column="34" />
       <File FileName="dnu/InterpolateResult.dyl" Line="1" Column="1" />
       <File FileName="dnu/parseu.dyl" Line="1" Column="1" />
       <File FileName="dnu/MemoryFS.dyl" Line="1" Column="1" />
       <File FileName="dnr/importer.dyl" Line="1" Column="1" />
       <File FileName="tokenizer.CodeGen/stmtreader.dyl" Line="1" Column="1" />
-      <File FileName="dnc/Program.dyl" Line="40" Column="57" />
+      <File FileName="dnc/Program.dyl" Line="1" Column="1" />
       <File FileName="tokenizer.CodeGen/codegenerator.dyl" Line="1" Column="1" />
       <File FileName="tokenizer.CodeGen/symtable.dyl" Line="1" Column="1" />
-      <File FileName="resproc/Program.dyl" Line="327" Column="70" />
+      <File FileName="resproc/Program.dyl" Line="315" Column="64" />
+      <File FileName="tokenizer.AST/ident.dyl" Line="1" Column="1" />
+      <File FileName="tokenizer.AST/metstmt.dyl" Line="1" Column="1" />
+      <File FileName="tokenizer.AST/methodnametok.dyl" Line="1" Column="1" />
+      <File FileName="tokenizer.AST/methods.dyl" Line="1" Column="1" />
+      <File FileName="tokenizer.CodeGen/eval.dyl" Line="1" Column="1" />
+      <File FileName="test/Program.dyl" Line="1" Column="1" />
+      <File FileName="dnu/Messages.dylres" Line="1" Column="1" />
+      <File FileName="tokenizer.CodeGen/milambdas.dyl" Line="1" Column="1" />
+      <File FileName="tokenizer.CodeGen/cilambdas.dyl" Line="1" Column="1" />
+      <File FileName="tokenizer.CodeGen/typeitem.dyl" Line="1" Column="1" />
+      <File FileName="tokenizer.CodeGen/tryitem.dyl" Line="1" Column="1" />
+      <File FileName="dnr/ilemitter.dyl" Line="1" Column="1" />
+      <File FileName="tokenizer.AST/refasmstmt.dyl" Line="1" Column="1" />
+      <File FileName="tokenizer.Parser/stmtoptimizer.dyl" Line="1" Column="1" />
+      <File FileName="tokenizer.AST/otherkeywords.dyl" Line="1" Column="1" />
+      <File FileName="tokenizer.Parser/tokenoptimizer.dyl" Line="1" Column="1" />
+      <File FileName="dnc/dnc.dyl" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

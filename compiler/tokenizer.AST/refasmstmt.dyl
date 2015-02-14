@@ -9,7 +9,7 @@
 class public RefasmStmt extends Stmt
 
 	field public Token AsmPath
-	field public boolean EmbedIfUsed
+	//field public boolean EmbedIfUsed
 
 	method public void RefasmStmt()
 		mybase::ctor()
@@ -21,7 +21,8 @@ class public RefasmStmt extends Stmt
 		if temp notlike c"^\q(.)*\q$" then
 			temp = c"\q" + temp + c"\q"
 		end if
-		return #ternary {EmbedIfUsed ? "#refembedasm ", "#refasm "} + temp
+		//return #ternary {EmbedIfUsed ? "#refembedasm ", "#refasm "} + temp
+		return "#refasm " + temp
 	end method
 
 	method public override boolean ValidateContext(var ctx as ContextType)

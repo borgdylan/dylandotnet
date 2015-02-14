@@ -18,7 +18,7 @@ import System.Collections.Generic
 import SCGIE = System.Collections.Generic.IEnumerable
 import SCG = System.Collections.Generic
 import System.Threading
-//import System.Threading.Tasks
+import System.Threading.Tasks
 import System.Runtime.InteropServices
 //import System.Runtime.CompilerServices
 //import template
@@ -499,12 +499,12 @@ class public static Program
 	end method
 
 	method public static void gentest()
-		var quot as string = Convert::ToString($char$34)
+		//var quot as string = Convert::ToString($char$34)
 		var sw as StringWriter = new StringWriter()
 		sw::WriteLine("<root>")
-		sw::WriteLine("    <a id=" + quot + "1" + quot + ">Hello</a>")
-		sw::WriteLine("    <a id=" + quot + "2" + quot + ">World</a>")
-		sw::WriteLine("    <a id=" + quot + "3" + quot + ">!!</a>")
+		sw::WriteLine(c"    <a id=\q1\q>Hello</a>")
+		sw::WriteLine(c"    <a id=\q2\q>World</a>")
+		sw::WriteLine(c"    <a id=\q3\q>!!</a>")
 		sw::WriteLine("</root>")
 		var xel as XElement = XElement::Parse(sw::ToString())
 		Console::WriteLine(xel::ToString())

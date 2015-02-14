@@ -82,24 +82,24 @@ class public CodeGenerator
 //		end for
 //	end method
 	
- 	//hash set is used to keep track of visited assemblies to avoid cycles in the dep graph
-	method private void MarkUsed(var lst as IEnumerable<of string>, var hset as C5.HashSet<of string>)
-		foreach a in lst
-			if !hset::Contains(a)
-				if Importer::Asms::Contains(a) then
-					var ar = Importer::Asms::get_Item(a)
-					ar::Used = true
-					hset::Add(a)
-
-					var lst2 = new C5.LinkedList<of string>()
-					foreach dep in ar::Asm::GetReferencedAssemblies()
-						lst2::Add("memory:" + dep::get_Name() + ".dll")
-					end for
-					MarkUsed(lst2, hset)
-				end if
-			end if
-		end for
-	end method
+// 	hash set is used to keep track of visited assemblies to avoid cycles in the dep graph
+//	method private void MarkUsed(var lst as IEnumerable<of string>, var hset as C5.HashSet<of string>)
+//		foreach a in lst
+//			if !hset::Contains(a)
+//				if Importer::Asms::Contains(a) then
+//					var ar = Importer::Asms::get_Item(a)
+//					ar::Used = true
+//					hset::Add(a)
+//
+//					var lst2 = new C5.LinkedList<of string>()
+//					foreach dep in ar::Asm::GetReferencedAssemblies()
+//						lst2::Add("memory:" + dep::get_Name() + ".dll")
+//					end for
+//					MarkUsed(lst2, hset)
+//				end if
+//			end if
+//		end for
+//	end method
 
 	method assembly Tuple<of boolean, boolean> Process(var c as IStmtContainer, var spth as string, var rtflag as boolean, var awflag as boolean)
 		var eval as Evaluator = new Evaluator()
@@ -246,26 +246,26 @@ class public CodeGenerator
 		if ILEmitter::SrcFiles::get_Count() == 0 then
 			StreamUtils::Write("Embedding Resources in Assembly (if any)")
 
-			var lst = new C5.LinkedList<of string>()
-			foreach r in SymTable::ResLst
-				if r::get_Item3() then
-					if Importer::Asms::Contains(r::get_Item1()) then
-						if Importer::Asms::get_Item(r::get_Item1())::Used then
-							lst::Add(r::get_Item1())
-						end if
-					end if
-				end if
-			end for
-			MarkUsed(lst, new C5.HashSet<of string>())
+			//var lst = new C5.LinkedList<of string>()
+			//foreach r in SymTable::ResLst
+			//	if r::get_Item3() then
+			//		if Importer::Asms::Contains(r::get_Item1()) then
+			//			if Importer::Asms::get_Item(r::get_Item1())::Used then
+			//				lst::Add(r::get_Item1())
+			//			end if
+			//		end if
+			//	end if
+			//end for
+			//MarkUsed(lst, new C5.HashSet<of string>())
 
 			foreach r in SymTable::ResLst
-				if r::get_Item3() then
-					if Importer::Asms::Contains(r::get_Item1()) then
-						if !Importer::Asms::get_Item(r::get_Item1())::Used then
-							continue
-						end if
-					end if
-				end if
+				//if r::get_Item3() then
+				//	if Importer::Asms::Contains(r::get_Item1()) then
+				//		if !Importer::Asms::get_Item(r::get_Item1())::Used then
+				//			continue
+				//		end if
+				//	end if
+				//end if
 
 				if r::get_Item1() like "^memory:(.)*$" then
 					var pth = r::get_Item1()::Substring(7)
@@ -278,9 +278,9 @@ class public CodeGenerator
 					var fs = MemoryFS::GetFile(pth)
 					var path = #ternary {r::get_Item2() == string::Empty ? Path::GetFileName(pth), r::get_Item2() }
 
-					if r::get_Item4() then
-						path = "AssemblyNeutral/" + path
-					end if
+					//if r::get_Item4() then
+					//	path = "AssemblyNeutral/" + path
+					//end if
 
 					fs::Seek(0l, SeekOrigin::Begin)
 					AsmFactory::MdlB::DefineManifestResource(path, fs, ResourceAttributes::Public)
@@ -289,9 +289,9 @@ class public CodeGenerator
 					var fs = new FileStream(r::get_Item1(), FileMode::Open)
 					var path = #ternary { r::get_Item2() == string::Empty ? Path::GetFileName(r::get_Item1()), r::get_Item2() }
 
-					if r::get_Item4() then
-						path = "AssemblyNeutral/" + path
-					end if
+					//if r::get_Item4() then
+					//	path = "AssemblyNeutral/" + path
+					//end if
 
 					AsmFactory::MdlB::DefineManifestResource(path, fs, ResourceAttributes::Public)
 					fs::Close()

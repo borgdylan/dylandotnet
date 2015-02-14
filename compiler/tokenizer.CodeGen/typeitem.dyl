@@ -10,7 +10,7 @@ class public partial TypeItem
 
 	field public string Name
 	field public boolean IsStatic
-	field public boolean IsANI
+	//field public boolean IsANI
 	field public IKVM.Reflection.Type InhTyp
 	field public IKVM.Reflection.Type BakedTyp
 	field public C5.IList<of IKVM.Reflection.Type> Interfaces

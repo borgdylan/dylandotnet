@@ -102,13 +102,15 @@ class public StmtOptimizer
 	end method
 
 	method private Stmt checkRefasm(var stm as Stmt, var b as boolean&)
-		b = (stm::Tokens::get_Item(0) is RefasmTok) orelse (stm::Tokens::get_Item(0) is RefembedasmTok)
+		b = (stm::Tokens::get_Item(0) is RefasmTok)
+		// orelse (stm::Tokens::get_Item(0) is RefembedasmTok)
 		if b then
 			if stm::Tokens::get_Count() > 2 then
 				StreamUtils::WriteWarnLine(stm::Line, PFlags::CurPath, "Unexpected tokens at end of statement!")	
 			end if
 
-			return new RefasmStmt() {Line = stm::Line, AsmPath = stm::Tokens::get_Item(1), EmbedIfUsed = stm::Tokens::get_Item(0) is RefembedasmTok}
+			return new RefasmStmt() {Line = stm::Line, AsmPath = stm::Tokens::get_Item(1)}
+			//, EmbedIfUsed = stm::Tokens::get_Item(0) is RefembedasmTok}
 		end if
 		return null
 	end method
