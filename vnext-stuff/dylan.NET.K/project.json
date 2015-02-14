@@ -1,5 +1,5 @@
 ﻿{	
-	"version": "1.0.9",
+	"version": "1.1.0",
 	"authors": ["borgdylan"],
 	"description": "dylan.NET support for ASP.NET vNext (Project K)",
 	"license": "http://www.gnu.org/copyleft/lesser.html",
@@ -16,7 +16,7 @@
         "aspnet50" : { 
             "dependencies": {
             	"Microsoft.Framework.Runtime": "1.0.0-*",
-       			 "dylan.NET" : "11.5.4.3"
+       			 "dylan.NET" : "11.5.5.1"
             }
         }
     }

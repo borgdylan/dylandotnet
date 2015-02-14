@@ -42,37 +42,7 @@ namespace dylan.NET.K
         	}
         }
     }
-	
-	public class DNEmbeddedReference : IMetadataEmbeddedReference
-    {
-
-    	private string _name;
-    	private byte[] _contents;
-
-    	public DNEmbeddedReference(string name, Stream content) {
-    		_name = name;
-    		MemoryStream ms = (MemoryStream)content;
-    		_contents = ms.ToArray();
-    	}
-
-    	public virtual string Name
-        {
-            get
-            {
-                return _name;
-            }
-        }
-
-        public virtual byte[] Contents
-        {
-            get
-            {
-                return _contents;
-            }
-        }
-
-    }
-	
+    
 	public class DNCompilation
     {
         private string assemblyName;
@@ -84,7 +54,6 @@ namespace dylan.NET.K
 		private Project Project;
         private IEnumerable<IMetadataReference> MetadataReferences;
         private IEnumerable<ISourceReference> SourceReferences;
-		private IList<IMetadataReference> OutgoingRefs;
 		private bool success;
 		private bool warnErrors;
 		public static object lockobj;
@@ -93,7 +62,7 @@ namespace dylan.NET.K
 			lockobj = new object();
 		}
 		
-        public DNCompilation(string name, Project project, IEnumerable<IMetadataReference> metadataReferences, IEnumerable<ISourceReference> sourceReferences, IList<IMetadataReference> outgoingRefs, FrameworkName targetFramework)
+        public DNCompilation(string name, Project project, IEnumerable<IMetadataReference> metadataReferences, IEnumerable<ISourceReference> sourceReferences, FrameworkName targetFramework)
         {
             Project = project;
             MetadataReferences = metadataReferences;
@@ -102,7 +71,6 @@ namespace dylan.NET.K
             effectiveTargetFramework = targetFramework;
             warnings = new List<string>();
             errors = new List<string>();
-            OutgoingRefs = outgoingRefs;
             success = true;
 
             if (project.GetCompilerOptions().WarningsAsErrors.HasValue) {
@@ -149,33 +117,19 @@ namespace dylan.NET.K
 	        	        	sw.WriteLine("\"");
 	        	        }
 	        	        else {
-	        	        	//dlls holding an ANI
-	        	      	  	var rawRef = reference as IMetadataEmbeddedReference;
-	        	     	  	if (rawRef != null) {
-	        	     	  		//put into in memory filesystem
-	        	     	  		//if (rawRef.Contents.Length > 0) {
-		        	     	  		lst.Add(Tuple.Create<string, Stream>($"{rawRef.Name}.dll", new MemoryStream(rawRef.Contents)));
-	    	    	        		
-	    	    	        		sw.Write("#refembedasm \"memory:");
-			        	        	sw.Write(rawRef.Name);
-			        	        	sw.WriteLine(".dll\"");
-			        	        //}
-	        	       		}
-	        	       	 	else {
-	        	       	 		//in memory dlls coming from compiled projects
-	        	       	 		var rosRef = reference as IMetadataProjectReference;
-	        	       	 		if (rosRef != null) {
-	        	       	 			var ms = new MemoryStream();
-	        	       	 			rosRef.EmitReferenceAssembly(ms);
-	        	       	 			if (ms.Length > 0) {
-				                   	 	ms.Seek(0, SeekOrigin.Begin);
-				                   	 	//put into in memory filesystem
-	        	       	 				lst.Add(Tuple.Create<string, Stream>($"{rosRef.Name}.dll", ms));
-	        	        				sw.Write("#refasm \"memory:");
-	        	        				sw.Write(rosRef.Name);
-	        	        				sw.WriteLine(".dll\"");
-	        	        			}
-	        	       	 		}
+	        	        	//in memory dlls coming from compiled projects
+	        	       	 	var rosRef = reference as IMetadataProjectReference;
+	        	       	 	if (rosRef != null) {
+	        	       	 		var ms = new MemoryStream();
+	        	       	 		rosRef.EmitReferenceAssembly(ms);
+	        	       	 		if (ms.Length > 0) {
+				               	 	ms.Seek(0, SeekOrigin.Begin);
+				               	 	//put into in memory filesystem
+	        	       	 			lst.Add(Tuple.Create<string, Stream>($"{rosRef.Name}.dll", ms));
+	        	        			sw.Write("#refasm \"memory:");
+	        	        			sw.Write(rosRef.Name);
+	        	        			sw.WriteLine(".dll\"");
+	        	        		}
 	        	       		}
 	        	       	}
 	        	    }
@@ -310,10 +264,6 @@ namespace dylan.NET.K
 				}
 				
 				var asm = MemoryFS.GetFile(assemblyName + ".dll");
-
-				foreach (string ani in MemoryFS.GetANIs()) {
-					OutgoingRefs.Add(new DNEmbeddedReference(Path.GetFileNameWithoutExtension(ani), MemoryFS.GetFile(ani)));
-				}
 				
 				//clean stuff up
 				MemoryFS.Clear();
@@ -508,7 +458,7 @@ namespace dylan.NET.K
         }
 
         //IEnumerable<IMetadataReference> incomingRefs, IEnumerable<ISourceReference> sources
-        public virtual IMetadataProjectReference GetProjectReference(Project project, ILibraryKey target, Func<ILibraryExport> getExport, IList<IMetadataReference> outgoingRefs)
+        public virtual IMetadataProjectReference GetProjectReference(Project project, ILibraryKey target, Func<ILibraryExport> getExport)
         {
         	string assemblyName = target.Name;
 
@@ -519,7 +469,7 @@ namespace dylan.NET.K
 			else {
 				try {
 					ILibraryExport incomingRefs = getExport.Invoke();
-					comp = new DNCompilation(assemblyName, project, incomingRefs.MetadataReferences, incomingRefs.SourceReferences, outgoingRefs, target.TargetFramework);
+					comp = new DNCompilation(assemblyName, project, incomingRefs.MetadataReferences, incomingRefs.SourceReferences, target.TargetFramework);
 				}
 				catch (ErrorException e) {
 					comp = null;
