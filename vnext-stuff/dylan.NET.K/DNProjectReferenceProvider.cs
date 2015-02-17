@@ -183,7 +183,7 @@ namespace dylan.NET.K
 	        	    }
 
 					//write out resource embeds
-	        	    foreach (string r in Project.ResourceFiles) {
+	        	    foreach (string r in Project.Files.ResourceFiles) {
 		            	sw.Write("#embed \"");
 	        	        sw.Write(r);
 	        	        sw.WriteLine("\"");
