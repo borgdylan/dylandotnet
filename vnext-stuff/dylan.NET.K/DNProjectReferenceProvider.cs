@@ -49,8 +49,8 @@ namespace dylan.NET.K
         private FrameworkName effectiveTargetFramework;
         private Tuple<Stream, Stream> streams;
         internal IDiagnosticResult result;
-		private List<string> warnings;
-		private List<string> errors;
+        internal ICompilationMessage finalError;
+		private List<ICompilationMessage> messages;
 		private Project Project;
         private IEnumerable<IMetadataReference> MetadataReferences;
         private IEnumerable<ISourceReference> SourceReferences;
@@ -69,8 +69,7 @@ namespace dylan.NET.K
             SourceReferences = sourceReferences;
             assemblyName = name;
             effectiveTargetFramework = targetFramework;
-            warnings = new List<string>();
-            errors = new List<string>();
+            messages = new List<ICompilationMessage>();
             success = true;
 
             if (project.GetCompilerOptions().WarningsAsErrors.HasValue) {
@@ -80,7 +79,10 @@ namespace dylan.NET.K
 
 		private void ErrorH(CompilerMsg cm) {
 			//Console.WriteLine("ERROR: {0} inside project {1} at line {2} in file: {3}", cm.Msg, assemblyName, cm.Line.ToString(), cm.File);
-			errors.Add($"ERROR: {cm.Msg} inside project {assemblyName}({effectiveTargetFramework.FullName}) at line {cm.Line} in file: {cm.File}");
+			var formatted = $"ERROR: {cm.Msg} inside project {assemblyName}({effectiveTargetFramework.FullName}) at line {cm.Line} in file: {cm.File}";
+			var msg = new CompilationMessage() {Message = cm.Msg, StartLine = cm.Line, EndLine = cm.Line, StartColumn = 1, SourceFilePath = cm.File, FormattedMessage = formatted, Severity = CompilationMessageSeverity.Error};
+			messages.Add(msg);
+			finalError = msg;
 			success = false;
 		}
 
@@ -90,8 +92,9 @@ namespace dylan.NET.K
 				ErrorH(cm);
 				return;
 			}
-
-			warnings.Add($"WARNING: {cm.Msg} inside project {assemblyName}({effectiveTargetFramework.FullName}) at line {cm.Line} in file: {cm.File}");
+			
+			var formatted = $"WARNING: {cm.Msg} inside project {assemblyName}({effectiveTargetFramework.FullName}) at line {cm.Line} in file: {cm.File}";
+			messages.Add(new CompilationMessage() {Message = cm.Msg, StartLine = cm.Line, EndLine = cm.Line, StartColumn = 1, SourceFilePath = cm.File, FormattedMessage = formatted, Severity = CompilationMessageSeverity.Warning});
 		}
 
 		internal Tuple<Stream, Stream> CompileInMemory() {
@@ -247,7 +250,8 @@ namespace dylan.NET.K
 						srcFile = "project.dyl";
 					}
 					else {
-						warnings.Add($"WARNING: The file '{assemblyName}.dyl' or 'project.dyl' was not found, compiling 'msbuild.dyl' into an assembly instead! inside project {assemblyName}({effectiveTargetFramework.FullName})");
+						var formatted = $"WARNING: The file '{assemblyName}.dyl' or 'project.dyl' was not found, compiling 'msbuild.dyl' into an assembly instead! inside project {assemblyName}({effectiveTargetFramework.FullName})";
+						messages.Add(new CompilationMessage() {Message = $"The file '{assemblyName}.dyl' or 'project.dyl' was not found, compiling 'msbuild.dyl' into an assembly instead!", SourceFilePath = string.Empty, FormattedMessage = formatted, Severity = CompilationMessageSeverity.Warning});
 					}
 					
 					StreamUtils.UseConsole = false;
@@ -291,11 +295,30 @@ namespace dylan.NET.K
 					streams = Tuple.Create<Stream, Stream>(null, null);
 				}
 
-				result = new DiagnosticResult(success, warnings, errors);
+				result = new DiagnosticResult(success, messages);
 			}
 
 			return streams;
 		}
+    }
+	
+	public class DNCompilationException : Exception, ICompilationException
+    {
+    	private IEnumerable<ICompilationMessage> _messages;
+    	private ICompilationMessage _finalError;
+    
+        public DNCompilationException(ICompilationMessage finalError, IEnumerable<ICompilationMessage> messages) :base(finalError.FormattedMessage)
+        {
+        	_finalError = finalError;
+        	_messages = messages;
+        } 
+        
+        public virtual IEnumerable<ICompilationFailure> CompilationFailures
+        {
+        	get {
+        		return new ICompilationFailure[] {new CompilationFailure() {CompiledContent = string.Empty, SourceFileContent = string.Empty, SourceFilePath = _finalError.SourceFilePath, Messages = _messages } };
+        	}
+        }
     }
 	
 	public class DNProjectReference : IMetadataProjectReference, IDisposable
@@ -307,6 +330,7 @@ namespace dylan.NET.K
     	private Project _project;
     	private bool _compiled;
     	private DNCompilation _comp;
+		private ICompilationMessage _finalError;
 
         public DNProjectReference(Project project, string name, DNCompilation compilation)
         {
@@ -325,6 +349,7 @@ namespace dylan.NET.K
      			}
      			   		
         		_result = _comp.result;
+        		_finalError = _comp.finalError;
         		_assembly = cim.Item1;
         		_symbols = cim.Item2;
         		_compiled = true;
@@ -381,7 +406,7 @@ namespace dylan.NET.K
         	Assembly asm = null;
 
         	if (!_result.Success) {
-				throw new CompilationException(_result.Errors.ToList());
+				throw new DNCompilationException(_finalError, _result.Diagnostics);
 			}
 
             if (_assembly != null) {
