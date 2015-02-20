@@ -21,6 +21,7 @@ class public ExprOptimizer
 	
 	method public prototype Expr Optimize(var exp as Expr)
 	method public prototype Expr procType(var stm as Expr, var i as integer)
+	method public prototype TypeTok procType2(var stm as Expr, var i as integer)
 
 	method public TypeTok procTypeCore(var stm as Expr, var i as integer)
 		var isgeneric as boolean = false
@@ -38,10 +39,8 @@ class public ExprOptimizer
 			end if
 			
 			var gtt as GenericTypeTok = new GenericTypeTok(gttarg::Value)
-			i++
-			stm::RemToken(i)
-			stm::RemToken(i)
-			i--
+			stm::RemToken(++i)
+			stm::RemToken(++i)
 
 			var ep2 as Expr = new Expr() {Line = stm::Line}
 			var lvl as integer = 1
@@ -62,7 +61,7 @@ class public ExprOptimizer
 					stm::RemToken(i)
 					len--
 					if lvl <= 1 then
-						gtt::AddParam($TypeTok$procType(ep2, 0)::Tokens::get_Item(0))
+						gtt::AddParam(procType2(ep2, 0))
 						ep2 = new Expr() {Line = stm::Line}
 					end if
 					i--
@@ -74,7 +73,7 @@ class public ExprOptimizer
 					stm::RemToken(i)
 					len--
 					if lvl == 0 then
-						gtt::AddParam($TypeTok$procType(ep2, 0)::Tokens::get_Item(0))
+						gtt::AddParam(procType2(ep2, 0))
 						break
 					end if
 					i--
@@ -144,6 +143,35 @@ class public ExprOptimizer
 		return stm
 	end method
 
+	method public TypeTok procType2(var stm as Expr, var i as integer)
+		var tt as TypeTok = procTypeCore(stm, i)
+		var c as integer = 0
+
+		do until c = 3
+			c++
+			if i < --stm::Tokens::get_Count() then
+				i++
+				if stm::Tokens::get_Item(i) is QuestionMark then
+					stm::RemToken(i)
+					i--
+					tt = new GenericTypeTok("System.Nullable") { AddParam(tt) }
+				elseif stm::Tokens::get_Item(i) is LRSParen then
+					tt::IsArray = true
+					stm::RemToken(i)
+					i--
+				elseif stm::Tokens::get_Item(i) is Ampersand then
+					tt::IsByRef = true
+					stm::RemToken(i)
+					i--
+				else
+					break
+				end if
+			end if
+		end do
+
+		return tt
+	end method
+
 	method public Expr procMtdName(var stm as Expr, var i as integer)
 
 		var isgeneric as boolean = false
@@ -157,10 +185,8 @@ class public ExprOptimizer
 		if isgeneric then
 
 			var gtt as GenericMethodNameTok = new GenericMethodNameTok($Ident$stm::Tokens::get_Item(i))
-			i++
-			stm::RemToken(i)
-			stm::RemToken(i)
-			i--
+			stm::RemToken(++i)
+			stm::RemToken(++i)
 
 			var ep2 as Expr = new Expr() {Line = stm::Line}
 			var lvl as integer = 1
@@ -181,7 +207,7 @@ class public ExprOptimizer
 					stm::RemToken(i)
 					len--
 					if lvl <= 1 then
-						gtt::AddParam($TypeTok$procType(ep2, 0)::Tokens::get_Item(0))
+						gtt::AddParam(procType2(ep2, 0))
 						ep2 = new Expr() {Line = stm::Line}
 					end if
 					i--
@@ -193,7 +219,7 @@ class public ExprOptimizer
 					stm::RemToken(i)
 					len--
 					if lvl = 0 then
-						gtt::AddParam($TypeTok$procType(ep2, 0)::Tokens::get_Item(0))
+						gtt::AddParam(procType2(ep2, 0))
 						break
 					end if
 					i--
@@ -216,6 +242,43 @@ class public ExprOptimizer
 		end if
 
 		stm::Tokens::set_Item(j,tt)
+
+		return stm
+	end method
+
+	method public Expr procMtdNameDecl(var stm as Expr, var i as integer)
+		procMtdName(stm, i)
+		var mn1 = $MethodNameTok$stm::Tokens::get_Item(i)
+
+		if (i < --stm::Tokens::get_Count()) andalso (stm::Tokens::get_Item(++i) is ExplImplAccessToken) then
+			//in this case mn1 was the explicit interface name
+			//get the actual method name
+			i++
+			stm::Tokens::set_Item(i, new Ident(#expr($ExplImplAccessToken$stm::Tokens::get_Item(i))::get_ActualValue()) {Line = mn1::Line} )
+			procMtdName(stm, i)
+			var mn2 = $MethodNameTok$stm::Tokens::get_Item(i)
+			stm::RemToken(i)
+			i--
+			//convert mn1 to a type token and put in mn2
+			var tt as TypeTok
+			var gmn = mn1 as GenericMethodNameTok
+			if gmn isnot null then
+				tt = new GenericTypeTok() {Params = gmn::Params}
+			else
+				tt = new TypeTok()
+			end if
+			tt::Line = mn1::Line
+			tt::Value = mn1::Value
+			mn2::ExplType = tt
+			stm::Tokens::set_Item(i, mn2)
+		else
+			//check mn1 for explicit interface name within the value
+			var mtssnamarr = ParseUtils::StringParserL(mn1::Value, '.')
+			if mtssnamarr::get_Count() > 1 then
+				mn1::Value = mtssnamarr::get_Last()
+				mn1::ExplType = new TypeTok(string::Join(".", mtssnamarr::View(0,--mtssnamarr::get_Count())::ToArray()))
+			end if
+		end if
 
 		return stm
 	end method
@@ -261,13 +324,13 @@ class public ExprOptimizer
 			elseif !#expr(stm::Tokens::get_Item(bs + 2) is AsTok) then
 				StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, string::Format("Expected an 'as' instead of '{0}'!", stm::Tokens::get_Item(bs + 2)::Value))
 			end if
-			stm = procType(stm,bs + 3)
+			var vtt = procType2(stm,bs + 3)
 
 			if stm::Tokens::get_Count() > (bs + 4) then
 				StreamUtils::WriteWarnLine(stm::Line, PFlags::CurPath, "Unexpected token at end of parameter declaration!")	
 			end if
 
-			return new VarExpr() {Tokens = stm::Tokens, Line = stm::Line, VarName = $Ident$stm::Tokens::get_Item(++bs), VarTyp = $TypeTok$stm::Tokens::get_Item(bs + 3), Attr = bst}
+			return new VarExpr() {Tokens = stm::Tokens, Line = stm::Line, VarName = $Ident$stm::Tokens::get_Item(++bs), VarTyp = vtt, Attr = bst}
 		end if
 		
 		return null
@@ -942,7 +1005,7 @@ class public ExprOptimizer
 		var j as integer = -1
 		var mcbool as boolean = false
 		var mctok as Token = null
-		var newavtok as Token = null
+		//var newavtok as Token = null
 		var mcident as Ident = null
 		var mcmetcall as MethodCallTok = null
 		var mcmetname as MethodNameTok = null
@@ -974,8 +1037,7 @@ class public ExprOptimizer
 				PFlags::ConvFlag = true
 				PFlags::OrdOp = #expr("conv " + PFlags::OrdOp)::Trim()
 				exp::RemToken(i)
-				exp = procType(exp,i)
-				PFlags::ConvTyp = $TypeTok$exp::Tokens::get_Item(i)
+				PFlags::ConvTyp = procType2(exp,i)
 				exp::RemToken(i)
 
 				if !#expr(i < exp::Tokens::get_Count()) then
@@ -1110,14 +1172,14 @@ class public ExprOptimizer
 				end if
 			elseif tok is GettypeTok then
 				exp::RemToken(i)
-				exp = procType(exp,i)
+				var n = procType2(exp,i)
 				len = --exp::Tokens::get_Count() 
-				exp::Tokens::set_Item(i,new GettypeCallTok() {Name = $TypeTok$exp::Tokens::get_Item(i)})
+				exp::Tokens::set_Item(i,new GettypeCallTok() {Name = n})
 			elseif tok is DefaultTok then
 				exp::RemToken(i)
-				exp = procType(exp,i)
+				var n = procType2(exp,i)
 				len = --exp::Tokens::get_Count() 
-				exp::Tokens::set_Item(i,new DefaultCallTok() {Name = $TypeTok$exp::Tokens::get_Item(i)})
+				exp::Tokens::set_Item(i,new DefaultCallTok() {Name = n})
 			elseif (tok is IsOp) orelse (tok is IsNotOp) then
 				i++
 				if exp::Tokens::get_Item(i) isnot NullLiteral then
@@ -1158,14 +1220,14 @@ class public ExprOptimizer
 				else
 					StreamUtils::WriteErrorLine(exp::Line, PFlags::CurPath, "Expected a '(' after a '#expr'!")
 				end if
-			elseif tok is NewarrTok then
-				exp::RemToken(i)
-				len--
-				tok = exp::Tokens::get_Item(i)
-				exp::RemToken(i)
-				len--
-				newavtok = exp::Tokens::get_Item(i)
-				exp::Tokens::set_Item(i, new NewarrCallTok() {ArrayType = #ternary {tok is TypeTok ? $TypeTok$tok , new TypeTok() {Line = tok::Line, Value = tok::Value}}, ArrayLen = new Expr() {Line = exp::Line, AddToken(newavtok)}})
+//			elseif tok is NewarrTok then
+//				exp::RemToken(i)
+//				len--
+//				tok = exp::Tokens::get_Item(i)
+//				exp::RemToken(i)
+//				len--
+//				newavtok = exp::Tokens::get_Item(i)
+//				exp::Tokens::set_Item(i, new NewarrCallTok() {ArrayType = #ternary {tok is TypeTok ? $TypeTok$tok , new TypeTok() {Line = tok::Line, Value = tok::Value}}, ArrayLen = new Expr() {Line = exp::Line, AddToken(newavtok)}})
 			elseif tok is LParen then
 				if PFlags::IdentFlag then
 					PFlags::IdentFlag = false

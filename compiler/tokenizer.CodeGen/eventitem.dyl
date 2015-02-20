@@ -12,6 +12,7 @@ class public EventItem
 	field public IKVM.Reflection.Type EventTyp
 	field public EventBuilder EventBldr
 	field public string ExplImplType
+	field public TypeTok ExplType
 	field public IEnumerable<of Attributes.Attribute> Attrs
 
 	method public void EventItem()

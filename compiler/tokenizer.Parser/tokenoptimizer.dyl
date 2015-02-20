@@ -218,8 +218,8 @@ class public TokenOptimizer
 			return new ThenTok() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value == "new" then
 			return new NewTok() {Line = tok::Line, Value = tok::Value}
-		elseif tok::Value == "newarr" then
-			return new NewarrTok() {Line = tok::Line, Value = tok::Value}
+//		elseif tok::Value == "newarr" then
+//			return new NewarrTok() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value == "me" then
 			return new MeTok() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value == "namespace" then
@@ -506,6 +506,8 @@ class public TokenOptimizer
 			return new IntLiteral($integer$tok::Value) {Line = tok::Line}
 		elseif tok::Value like "^\\((([a-zA-Z])+(.)*)|(_(.)+))$" then
 			return new NestedAccessToken(tok::Value) {Line = tok::Line}
+		elseif tok::Value like "^\.((([a-zA-Z])+(.)*)|(_(.)+))$" then
+			return new ExplImplAccessToken(tok::Value) {Line = tok::Line}
 		elseif tok::Value like "^(::)?((([a-zA-Z])+(.)*)|(_(.)+))$" then
 			return new Ident(tok::Value) {Line = tok::Line}
 		else

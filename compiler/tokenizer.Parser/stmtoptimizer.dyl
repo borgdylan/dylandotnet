@@ -1236,12 +1236,15 @@ class public StmtOptimizer
 					break
 				end if
 			end do
-			
+
+			var tempexp = new Expr() {Line = stm::Line, Tokens = stm::Tokens}
 			i++
-			stm::Tokens = eop::procType(new Expr() {Line = stm::Line, Tokens = stm::Tokens}, i)::Tokens
-			prss::PropertyTyp = $TypeTok$stm::Tokens::get_Item(i)
+			prss::PropertyTyp = eop::procType2(tempexp, i)
 			i++
-			prss::PropertyName = $Ident$stm::Tokens::get_Item(i)
+			eop::procMtdNameDecl(tempexp, i)
+			var mn1 = $MethodNameTok$tempexp::Tokens::get_Item(i)
+			prss::PropertyName = new Ident() {Line = mn1::Line, Value = mn1::Value, ExplType = mn1::ExplType}
+			stm::Tokens = tempexp::Tokens
 
 			//process parameters for indexers
 			len = --stm::Tokens::get_Count()
@@ -1354,12 +1357,16 @@ class public StmtOptimizer
 					break
 				end if
 			end do
-			
+
+			var tempexp = new Expr() {Line = stm::Line, Tokens = stm::Tokens}
 			i++
-			stm::Tokens = eop::procType(new Expr() {Line = stm::Line, Tokens = stm::Tokens}, i)::Tokens
-			evss::EventTyp = $TypeTok$stm::Tokens::get_Item(i)
+			evss::EventTyp = eop::procType2(tempexp, i)
 			i++
-			evss::EventName = $Ident$stm::Tokens::get_Item(i)
+			eop::procMtdNameDecl(tempexp, i)
+			var mn1 = $MethodNameTok$tempexp::Tokens::get_Item(i)
+			evss::EventName = new Ident() {Line = mn1::Line, Value = mn1::Value, ExplType = mn1::ExplType}
+			stm::Tokens = tempexp::Tokens
+
 			return evss
 		end if
 		
@@ -1392,16 +1399,19 @@ class public StmtOptimizer
 				end if
 			end do
 			
-			//get return type and name
+			//get return type
 			i++
 			
 			stm::Tokens = eop::procType(new Expr() {Line = stm::Line, Tokens = stm::Tokens}, i)::Tokens
 			mtss::RetTyp = $TypeTok$stm::Tokens::get_Item(i)
-			
+
+			//recompute length
 			len = --stm::Tokens::get_Count() 
+
+			//get method name
 			i++
 			
-			stm::Tokens = eop::procMtdName(new Expr() {Line = stm::Line, Tokens = stm::Tokens}, i)::Tokens
+			stm::Tokens = eop::procMtdNameDecl(new Expr() {Line = stm::Line, Tokens = stm::Tokens}, i)::Tokens
 			mtss::MethodName = $MethodNameTok$stm::Tokens::get_Item(i)
 			
 			i++

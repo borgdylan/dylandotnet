@@ -559,7 +559,7 @@ class public StmtReader
 		var mtssnamstr as string = mtss::MethodName::Value
 		var typ as IKVM.Reflection.Type = null
 		
-		var mtssnamarr as C5.IList<of string>
+		//var mtssnamarr as C5.IList<of string>
 		var overldnam as string = String::Empty
 		var overldmtd as MethodInfo = null
 		var mipt as MethodItem = null
@@ -593,10 +593,10 @@ class public StmtReader
 			end if
 			AsmFactory::InCtorFlg = true
 		else
-			mtssnamarr = ParseUtils::StringParserL(mtssnamstr, '.')
-			if mtssnamarr::get_Count() > 1 then
-				overldnam = mtssnamarr::get_Last()
-				typ = Helpers::CommitEvalTTok(new TypeTok(string::Join(".", mtssnamarr::View(0,--mtssnamarr::get_Count())::ToArray())))
+			//mtssnamarr = ParseUtils::StringParserL(mtssnamstr, '.')
+			if mtss::MethodName::ExplType isnot null then
+				overldnam = mtssnamstr
+				typ = Helpers::CommitEvalTTok(mtss::MethodName::ExplType)
 				mtssnamstr = string::Format("{0}.{1}", typ::ToString(), overldnam)
 			end if
 			
@@ -621,6 +621,9 @@ class public StmtReader
 
 				if ILEmitter::InterfaceFlg then
 					mtss::AddAttr(new AbstractAttr())
+				end if
+				if mtss::MethodName::ExplType isnot null then
+					mtss::AddAttr(new FinalAttr())
 				end if
 
 				var ma = Helpers::ProcessMethodAttrs(mtss::Attrs)
@@ -701,8 +704,6 @@ class public StmtReader
 					AsmFactory::CurnMetB::SetParameters(paramstyps)
 
 					//overridability check
-
-
 				end if
 			end if
 			
@@ -728,8 +729,8 @@ class public StmtReader
 					AsmFactory::InitMtd()
 				end if
 
-				if mtssnamarr::get_Count() > 1 then
-					overldmtd = Helpers::GetExtMet(typ, new MethodNameTok(overldnam), paramstyps)
+				if mtss::MethodName::ExplType isnot null then
+					overldmtd = Helpers::GetExtMet(typ, mtss::MethodName, paramstyps)
 					AsmFactory::CurnTypB::DefineMethodOverride(AsmFactory::CurnMetB, overldmtd)
 				end if
 			end if
@@ -837,6 +838,7 @@ class public StmtReader
 	method public void ReadEvent(var evss as EventStmt, var fpath as string)
 		var etyp as IKVM.Reflection.Type = Helpers::CommitEvalTTok(evss::EventTyp)
 		var eit = string::Empty
+		var eit2 as TypeTok = null
 		var typ as IKVM.Reflection.Type = null
 		
 		if etyp is null then
@@ -844,19 +846,20 @@ class public StmtReader
 		end if
 		
 		var evssnamstr as string = evss::EventName::Value
-		var evssnamarr as C5.IList<of string> = ParseUtils::StringParserL(evssnamstr, '.')
+		//var evssnamarr as C5.IList<of string> = ParseUtils::StringParserL(evssnamstr, '.')
 		var evoverldnam as string = string::Empty
 		var evnam = evssnamstr
-		if evssnamarr::get_Count() > 1 then
-			evoverldnam = evssnamarr::get_Last()
+		if evss::EventName::ExplType isnot null then
+			evoverldnam = evss::EventName::Value
 			evnam = evoverldnam
-			typ = Helpers::CommitEvalTTok(new TypeTok(string::Join(".", evssnamarr::View(0,--evssnamarr::get_Count())::ToArray())))
+			typ = Helpers::CommitEvalTTok(evss::EventName::ExplType)
 			eit = typ::ToString()
-			evssnamstr = typ::ToString() + "." + evoverldnam
+			eit2 = evss::EventName::ExplType
+			evssnamstr = i"{typ::ToString()}.{evoverldnam}"
 		end if
 		
 		AsmFactory::CurnEventB = AsmFactory::CurnTypB::DefineEvent(evssnamstr,EventAttributes::None, etyp)
-		SymTable::CurnEvent = new EventItem(evnam, etyp, AsmFactory::CurnEventB, evss::Attrs, eit)
+		SymTable::CurnEvent = new EventItem(evnam, etyp, AsmFactory::CurnEventB, evss::Attrs, eit) {ExplType = eit2}
 		AsmFactory::CurnEventType = etyp
 		
 		Helpers::ApplyEventAttrs()
@@ -881,8 +884,7 @@ class public StmtReader
 			StreamUtils::WriteLine(evas::Adder::Value)
 		else
 			var cevent = SymTable::CurnEvent
-			var metname = #ternary{cevent::ExplImplType::get_Length() > 0 ? cevent::ExplImplType + ".add_", "add_"}  + cevent::Name
-			var mets = new MethodStmt() {MethodName = new MethodNameTok(new Ident(metname)), RetTyp = new VoidTok(), Line = evas::Line,  _
+			var mets = new MethodStmt() {MethodName = new MethodNameTok(new Ident("add_" + cevent::Name)) {ExplType = cevent::ExplType}, RetTyp = new VoidTok(), Line = evas::Line,  _
 				 Attrs = new C5.LinkedList<of Attributes.Attribute>() {AddAll(cevent::Attrs), Add(new SpecialNameAttr())}}
 			mets::AddParam(new VarExpr() {VarName = new Ident("value"), VarTyp = new TypeTok(cevent::EventTyp)})
 			Read(mets,fpath)
@@ -907,8 +909,7 @@ class public StmtReader
 			StreamUtils::WriteLine(evas::Remover::Value)
 		else
 			var cevent = SymTable::CurnEvent
-			var metname = #ternary{cevent::ExplImplType::get_Length() > 0 ? cevent::ExplImplType + ".remove_", "remove_"}  + cevent::Name
-			var mets = new MethodStmt() {MethodName = new MethodNameTok(new Ident(metname)), RetTyp = new VoidTok(), Line = evas::Line,  _
+			var mets = new MethodStmt() {MethodName = new MethodNameTok(new Ident("remove_" + cevent::Name)) {ExplType = cevent::ExplType}, RetTyp = new VoidTok(), Line = evas::Line,  _
 				 Attrs = new C5.LinkedList<of Attributes.Attribute>() {AddAll(cevent::Attrs), Add(new SpecialNameAttr())}}
 			mets::AddParam(new VarExpr() {VarName = new Ident("value"), VarTyp = new TypeTok(cevent::EventTyp)})
 			Read(mets,fpath)
@@ -1061,8 +1062,7 @@ class public StmtReader
 					, Add(prgs::Visibility), Add(new SpecialNameAttr())}
 			end if
 
-			var metname = #ternary{cprop::ExplImplType::get_Length() > 0 ? cprop::ExplImplType + ".get_", "get_"}  + cprop::Name
-			Read(new MethodStmt() {MethodName = new MethodNameTok(new Ident(metname)), RetTyp = new TypeTok(cprop::PropertyTyp), Line = prgs::Line, Params = cprop::Params, _
+			Read(new MethodStmt() {MethodName = new MethodNameTok(new Ident("get_" + cprop::Name)) {ExplType = cprop::ExplType}, RetTyp = new TypeTok(cprop::PropertyTyp), Line = prgs::Line, Params = cprop::Params, _
 				 Attrs = attrs}, fpath)
 			cprop::PropertyBldr::SetGetMethod(AsmFactory::CurnMetB)
 		end if
@@ -1095,8 +1095,7 @@ class public StmtReader
 					, Add(prss::Visibility), Add(new SpecialNameAttr())}
 			end if
 
-			var metname = #ternary{cprop::ExplImplType::get_Length() > 0 ? cprop::ExplImplType + ".set_", "set_"}  + cprop::Name
-			var mets = new MethodStmt() {MethodName = new MethodNameTok(new Ident(metname)), RetTyp = new VoidTok(), Line = prss::Line, Params = cprop::Params,  _
+			var mets = new MethodStmt() {MethodName = new MethodNameTok(new Ident("set_" + cprop::Name)) {ExplType = cprop::ExplType}, RetTyp = new VoidTok(), Line = prss::Line, Params = cprop::Params,  _
 				 Attrs = attrs}
 			mets::AddParam(new VarExpr() {VarName = new Ident("value"), VarTyp = new TypeTok(cprop::PropertyTyp)})
 			Read(mets,fpath)
@@ -1106,8 +1105,13 @@ class public StmtReader
 	end method
 	
 	method public void ReadProperty(var prss as PropertyStmt, var fpath as string)
+		if prss::PropertyName::Value == "IEnumerator" then
+			prss = prss
+		end if
+
 		var ptyp as IKVM.Reflection.Type = Helpers::CommitEvalTTok(prss::PropertyTyp)
 		var eit = string::Empty
+		var eit2 as TypeTok = null
 		var typ as IKVM.Reflection.Type = null
 		
 		if ptyp is null then
@@ -1117,15 +1121,16 @@ class public StmtReader
 		var paramstyps as IKVM.Reflection.Type[] = #ternary {prss::Params::get_Count() == 0 ? IKVM.Reflection.Type::EmptyTypes , Helpers::ProcessParams(prss::Params)}
 
 		var prssnamstr as string = prss::PropertyName::Value
-		var prssnamarr as C5.IList<of string> = ParseUtils::StringParserL(prssnamstr, '.')
+		//var prssnamarr as C5.IList<of string> = ParseUtils::StringParserL(prssnamstr, '.')
 		var propoverldnam as string = string::Empty
 		var propnam = prssnamstr
-		if prssnamarr::get_Count() > 1 then
-			propoverldnam = prssnamarr::get_Last()
+		if prss::PropertyName::ExplType isnot null then
+			propoverldnam = prss::PropertyName::Value
 			propnam = propoverldnam
-			typ = Helpers::CommitEvalTTok(new TypeTok(string::Join(".", prssnamarr::View(0,--prssnamarr::get_Count())::ToArray())))
+			typ = Helpers::CommitEvalTTok(prss::PropertyName::ExplType)
+			eit2 = prss::PropertyName::ExplType
 			eit = typ::ToString()
-			prssnamstr = typ::ToString() + "." + propoverldnam
+			prssnamstr = i"{typ::ToString()}.{propoverldnam}"
 		end if
 
 		StreamUtils::Write("	Adding Property: ")
@@ -1145,7 +1150,7 @@ class public StmtReader
 		var pattrs = new C5.ArrayList<of Attributes.Attribute>() {AddAll(prss::Attrs)}
 
 		AsmFactory::CurnPropB = AsmFactory::CurnTypB::DefineProperty(prssnamstr, PropertyAttributes::None, ptyp, paramstyps)
-		SymTable::CurnProp = new PropertyItem(propnam, ptyp, AsmFactory::CurnPropB, pattrs, eit) {ParamTyps = paramstyps, Params = prss::Params}
+		SymTable::CurnProp = new PropertyItem(propnam, ptyp, AsmFactory::CurnPropB, pattrs, eit) {ParamTyps = paramstyps, Params = prss::Params, ExplType = eit2}
 		
 		Helpers::ApplyPropAttrs()
 

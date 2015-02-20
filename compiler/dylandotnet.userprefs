@@ -1,17 +1,17 @@
 ﻿<Properties StartupItem="dnc/dnc.dylproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="dnu/parseu.dyl">
+  <MonoDevelop.Ide.Workbench ActiveDocument="resproc/Program.dyl">
     <Files>
-      <File FileName="template/template.dyl" Line="509" Column="34" />
+      <File FileName="template/template.dyl" Line="25" Column="1" />
       <File FileName="dnu/InterpolateResult.dyl" Line="1" Column="1" />
       <File FileName="dnu/parseu.dyl" Line="1" Column="1" />
       <File FileName="dnu/MemoryFS.dyl" Line="1" Column="1" />
       <File FileName="dnr/importer.dyl" Line="1" Column="1" />
       <File FileName="tokenizer.CodeGen/stmtreader.dyl" Line="1" Column="1" />
-      <File FileName="dnc/Program.dyl" Line="1" Column="1" />
+      <File FileName="dnc/Program.dyl" Line="40" Column="55" />
       <File FileName="tokenizer.CodeGen/codegenerator.dyl" Line="1" Column="1" />
       <File FileName="tokenizer.CodeGen/symtable.dyl" Line="1" Column="1" />
-      <File FileName="resproc/Program.dyl" Line="315" Column="64" />
+      <File FileName="resproc/Program.dyl" Line="327" Column="70" />
       <File FileName="tokenizer.AST/ident.dyl" Line="1" Column="1" />
       <File FileName="tokenizer.AST/metstmt.dyl" Line="1" Column="1" />
       <File FileName="tokenizer.AST/methodnametok.dyl" Line="1" Column="1" />
@@ -29,10 +29,18 @@
       <File FileName="tokenizer.AST/otherkeywords.dyl" Line="1" Column="1" />
       <File FileName="tokenizer.Parser/tokenoptimizer.dyl" Line="1" Column="1" />
       <File FileName="dnc/dnc.dyl" Line="1" Column="1" />
+      <File FileName="tokenizer.Parser/exproptimizer.dyl" Line="1" Column="1" />
+      <File FileName="tokenizer.AST/token.dyl" Line="1" Column="1" />
+      <File FileName="tokenizer.AST/typetoks.dyl" Line="1" Column="1" />
+      <File FileName="tokenizer.CodeGen/propertyitem.dyl" Line="1" Column="1" />
+      <File FileName="tokenizer.CodeGen/eventitem.dyl" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/var/www/Code/dylannet/dylandotnet/compiler/tokenizer.CodeGen/stmtreader.dyl" line="1128" column="1" />
+      <Breakpoint file="/var/www/Code/dylannet/dylandotnet/compiler/tokenizer.CodeGen/stmtreader.dyl" line="1109" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <AuthorInfo Name="Dylan Borg" Email="borgdylan@hotmail.com" Copyright="Copyright (C) 2014 Dylan Borg" Company="" Trademark="" />

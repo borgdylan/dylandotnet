@@ -12,6 +12,7 @@ class public PropertyItem
 	field public IKVM.Reflection.Type PropertyTyp
 	field public PropertyBuilder PropertyBldr
 	field public string ExplImplType
+	field public TypeTok ExplType
 	field public IEnumerable<of Attributes.Attribute> Attrs
 	field public IKVM.Reflection.Type[] ParamTyps
 	field public C5.LinkedList<of Expr> Params

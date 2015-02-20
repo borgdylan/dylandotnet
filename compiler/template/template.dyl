@@ -51,26 +51,38 @@ class public interface IHello3
 	method public void Hello()
 end class
 
-interface public HelloInterf
-	method public void Hello()
+interface public IEvent<of T>
+	event public T MyEvent
+		add
+		remove
+	end event
 end interface
 
-class public HelloClass implements IHello, IHello2, IHello3
+class public HelloClass implements IHello, IHello2, IHello3, IEvent<of integer>
 	
 	property public autogen integer MyInt
 	property public initonly autogen integer MyInt2
 	
-	method public final void IHello.Hello()
+	method public virtual void IHello.Hello()
 		Console::WriteLine("I Implement Hello")
 	end method
 
-	method public final void IHello3.Hello()
+	method public virtual void IHello3.Hello()
 		Console::WriteLine("I Implement Hello3")
 	end method
 
-	method public final void Hello2()
+	method public virtual void Hello2()
 		Console::WriteLine("I Implement Hello2")
 	end method
+
+	event public virtual integer IEvent<of integer>.MyEvent
+		add
+			throw new NotImplementedException()
+		end add
+		remove
+			throw new NotImplementedException()
+		end remove
+	end event
 
 end class
 
@@ -173,7 +185,7 @@ class public OTTEnumerator implements IEnumerator<of integer>, IEnumerator, IDis
 		_Current = 0
 	end method
 	
-	method public virtual final boolean MoveNext()
+	method public virtual boolean MoveNext()
 		if _Current < 10 then
 			_Current++
 			return true
@@ -182,20 +194,20 @@ class public OTTEnumerator implements IEnumerator<of integer>, IEnumerator, IDis
 		end if
 	end method
 	
-	method public virtual final void Reset()
+	method public virtual void Reset()
 		_Current = 0
 	end method
 	
-	method public virtual final void Dispose()
+	method public virtual void Dispose()
 	end method
 	
-	property public virtual final integer Current
+	property public virtual integer IEnumerator<of integer>.Current
 		get
 			return _Current
 		end get
 	end property
 	
-	property public virtual final object IEnumerator.Current
+	property public virtual object IEnumerator.Current
 		get
 			return $object$_Current
 		end get
@@ -206,11 +218,11 @@ end class
 //[class: Obsolete("This class is only fakely obsolete")]
 class public OTT implements IEnumerable<of integer>, IEnumerable
 
-	method public virtual final IEnumerator<of integer> GetEnumerator()
+	method public virtual IEnumerator<of integer> IEnumerable<of integer>.GetEnumerator()
 		return new OTTEnumerator()
 	end method
 
-	method public virtual final IEnumerator IEnumerable.GetEnumerator()
+	method public virtual IEnumerator IEnumerable.GetEnumerator()
 		return new OTTEnumerator()
 	end method
 	

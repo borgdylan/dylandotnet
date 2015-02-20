@@ -32,6 +32,7 @@ class public MethodNameTok extends Ident implements IMayHaveConstraints
 		_TTok = idt::get_TTok()
 		_OrdOp = idt::get_OrdOp()
 		Line = idt::Line
+		ExplType = idt::ExplType
 	end method
 	
 	method public static specialname MethodNameTok op_Implicit(var idt as Ident)

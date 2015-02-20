@@ -8,7 +8,7 @@
     <RootNamespace>dylan.NET.Compiler</RootNamespace>
     <UsePartialTypes>false</UsePartialTypes>
     <AssemblyName>dnc</AssemblyName>
-    <ReleaseVersion>11.5.5.1</ReleaseVersion>
+    <ReleaseVersion>11.5.6.1</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -16,7 +16,7 @@
     <ErrorReport>prompt</ErrorReport>
     <DefineConstants>DEBUG</DefineConstants>
     <!--<Commandlineparameters>-cd /var/www/Code/dylannet/dylandotnet/compiler/template/ template.dyl</Commandlineparameters>-->
-    <Commandlineparameters>-cd /var/www/Code/dylannet/vnext/dylan.NET.Tasks dylan.NET.Tasks.dyl</Commandlineparameters>
+    <Commandlineparameters>-cd /var/www/Code/dylannet/dylandotnet/compiler/template template.dyl</Commandlineparameters>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>false</DebugSymbols>
