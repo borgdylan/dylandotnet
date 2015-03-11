@@ -15,6 +15,7 @@ using System.Reflection;
 using System.Runtime.Versioning;
 using System.Text;
 using Microsoft.Framework.Runtime;
+using Microsoft.Framework.Runtime.Helpers;
 using NuGet;
 using dylan.NET.Compiler;
 using dylan.NET.Utils;
@@ -47,6 +48,7 @@ namespace dylan.NET.K
     {
         private string assemblyName;
         private FrameworkName effectiveTargetFramework;
+        private string config;
         private Tuple<Stream, Stream> streams;
         internal IDiagnosticResult result;
         internal ICompilationMessage finalError;
@@ -57,23 +59,26 @@ namespace dylan.NET.K
 		private bool success;
 		private bool warnErrors;
 		public static object lockobj;
+		private CompilerOptions compileOpts;
 
 		static DNCompilation() {
 			lockobj = new object();
 		}
 		
-        public DNCompilation(string name, Project project, IEnumerable<IMetadataReference> metadataReferences, IEnumerable<ISourceReference> sourceReferences, FrameworkName targetFramework)
+        public DNCompilation(string name, Project project, IEnumerable<IMetadataReference> metadataReferences, IEnumerable<ISourceReference> sourceReferences, FrameworkName targetFramework, string configuration)
         {
             Project = project;
             MetadataReferences = metadataReferences;
             SourceReferences = sourceReferences;
             assemblyName = name;
             effectiveTargetFramework = targetFramework;
+            config = configuration;
             messages = new List<ICompilationMessage>();
             success = true;
+            compileOpts = CompilerOptions.Combine( new CompilerOptions[] {project.GetCompilerOptions(), project.GetCompilerOptions(targetFramework), project.GetCompilerOptions(configuration)});
 
-            if (project.GetCompilerOptions().WarningsAsErrors.HasValue) {
-	            warnErrors = (bool)project.GetCompilerOptions().WarningsAsErrors;
+            if (compileOpts.WarningsAsErrors.HasValue) {
+	            warnErrors = (bool)compileOpts.WarningsAsErrors;
 	        }
         }
 
@@ -104,8 +109,8 @@ namespace dylan.NET.K
 				
 				//get value for debug switch
 				bool debugOpt = true;
-				if (Project.GetCompilerOptions().Optimize.HasValue) {
-					debugOpt = !((bool)Project.GetCompilerOptions().Optimize);
+				if (compileOpts.Optimize.HasValue) {
+					debugOpt = !((bool)compileOpts.Optimize);
 				}
 
 				using (StreamWriter sw = new StreamWriter(Path.Combine(Project.ProjectDirectory, "msbuild.dyl"))) {
@@ -138,52 +143,12 @@ namespace dylan.NET.K
 	        	    }
 	        	    
 	        	   //write out all defines
-					if (Project.GetCompilerOptions() != null && Project.GetCompilerOptions().Defines != null) {
-		        	   	 foreach (string r in Project.GetCompilerOptions().Defines) {
+					if (compileOpts != null && compileOpts.Defines != null) {
+		        	   	 foreach (string r in compileOpts.Defines) {
 			            	sw.Write("#define ");
 		        	    	sw.WriteLine(r);
 			            }
 					}
-					
-					//encode target framework define
-	        	    var fxId = string.Empty;
-	        	    var fxVer = effectiveTargetFramework.Version;
-
-	        	    if (effectiveTargetFramework.Identifier == ".NETFramework") {
-		        	    fxId = "NET";
-		        	}
-		        	else if (effectiveTargetFramework.Identifier == "Asp.Net") {
-		        	    fxId = "ASPNET";
-		        	}
-		        	else if (effectiveTargetFramework.Identifier == "Asp.NetCore") {
-		        	    fxId = "ASPNETCORE";
-		        	}
-		        	else if (effectiveTargetFramework.Identifier == ".NETPortable") {
-		        	    fxId = "PORTABLE";
-		        	}
-		        	else if (effectiveTargetFramework.Identifier == ".NETCore") {
-		        	    fxId = "NETCORE";
-		        	}
-		        	else if (effectiveTargetFramework.Identifier == "WindowsPhone") {
-		        	    fxId = "WP";
-		        	}
-		        	else if (effectiveTargetFramework.Identifier == "MonoTouch") {
-		        	    fxId = "IOS";
-		        	}
-		        	else if (effectiveTargetFramework.Identifier == "MonoAndroid") {
-		        	    fxId = "ANDROID";
-		        	}
-		        	else if (effectiveTargetFramework.Identifier == "Silverlight") {
-		        	    fxId = "SL";
-		        	}
-		        	else {
-		        		fxId = effectiveTargetFramework.Identifier;
-		        	}
-
-	        	    sw.WriteLine("#define {0}{1}{2}", new object[] {fxId, fxVer.Major.ToString(), fxVer.Minor.ToString()});
-	        	    if (fxVer.Build > 0) {
-	        	    	sw.WriteLine("#define {0}{1}{2}{3}", new object[] {fxId, fxVer.Major.ToString(), fxVer.Minor.ToString(), fxVer.Build.ToString()});
-	        	    }
 
 					//write out resource embeds
 	        	    foreach (string r in Project.Files.ResourceFiles) {
@@ -482,7 +447,6 @@ namespace dylan.NET.K
             compilations = new Dictionary<string, DNCompilation>();
         }
 
-        //IEnumerable<IMetadataReference> incomingRefs, IEnumerable<ISourceReference> sources
         public virtual IMetadataProjectReference GetProjectReference(Project project, ILibraryKey target, Func<ILibraryExport> getExport)
         {
         	string assemblyName = target.Name;
@@ -494,7 +458,7 @@ namespace dylan.NET.K
 			else {
 				try {
 					ILibraryExport incomingRefs = getExport.Invoke();
-					comp = new DNCompilation(assemblyName, project, incomingRefs.MetadataReferences, incomingRefs.SourceReferences, target.TargetFramework);
+					comp = new DNCompilation(assemblyName, project, incomingRefs.MetadataReferences, incomingRefs.SourceReferences, target.TargetFramework, target.Configuration);
 				}
 				catch (ErrorException e) {
 					comp = null;
