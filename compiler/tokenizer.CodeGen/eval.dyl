@@ -720,6 +720,24 @@ class public beforefieldinit Evaluator
 						StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Method '{0}' in the class '{1}' is obsolete: {2}.", mcmetinf::get_Name(), mcmetinf::get_DeclaringType()::ToString(), oa::get_Message()))
 					end if
 				end if
+			else
+				//conditional call support
+				if mctok::CondFlg then
+					if mcisstatic andalso Loader::CachedLoadClass("System.Void")::Equals(mcmetinf::get_ReturnType()) then
+						var condattrs = Helpers::GetConditional(mcmetinf)
+						if condattrs isnot null then
+							mctok::CondAvailable = true
+							var acc = false
+							foreach condattr in condattrs
+								acc = acc orelse SymTable::EvalDef(condattr::get_ConditionString())
+								if acc then
+									break
+								end if
+							end for
+							mctok::CondFlgValue = acc
+						end if
+					end if
+				end if
 			end if
 			Helpers::BaseFlg = false
 			if !mctok::PopFlg then

@@ -41,7 +41,24 @@ class public StmtReader
 		//if typ::get_Name() == "AssemblyNeutralAttribute" then
 		//	ILEmitter::ANIFlg = true
 		//end if
-		
+
+		//return null if attribute is conditional with condition that is not satisfiable
+		var condattrs = Helpers::GetConditional(typ)
+		if condattrs isnot null then
+			//conditional attrs are available for this attribute
+			var acc = false
+			foreach condattr in condattrs
+				acc = acc orelse SymTable::EvalDef(condattr::get_ConditionString())
+				if acc then
+					break
+				end if
+			end for
+			//abort placement if not satsifed
+			if !acc then
+				return null
+			end if
+		end if 
+
 		var tarr as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[stm::Ctor::Params::get_Count()]
 		var oarr as object[] = new object[stm::Ctor::Params::get_Count()]
 		
@@ -176,6 +193,7 @@ class public StmtReader
 				AsmFactory::CurnTypName2 = AsmFactory::CurnTypName
 				AsmFactory::CurnTypName = clss::ClassName::Value
 				SymTable::CurnTypItem2 = SymTable::CurnTypItem
+				AsmFactory::CurnInhTyp2 = AsmFactory::CurnInhTyp
 
 				StreamUtils::WriteLine(string::Format("Adding Nested Class: {0}", clss::ClassName::Value))
 				AsmFactory::CurnTypB = AsmFactory::CurnTypB2::DefineNestedType(clss::ClassName::Value +  _
@@ -404,6 +422,7 @@ class public StmtReader
 			AsmFactory::CurnTypB2 = AsmFactory::CurnTypB
 			AsmFactory::CurnTypName2 = AsmFactory::CurnTypName
 			SymTable::CurnTypItem2 = SymTable::CurnTypItem
+			AsmFactory::CurnInhTyp2 = AsmFactory::CurnInhTyp
 
 			StreamUtils::Write("Adding Nested Delegate: ")
 			StreamUtils::WriteLine(dels::DelegateName::Value)
@@ -535,6 +554,7 @@ class public StmtReader
 			AsmFactory::CurnTypB = AsmFactory::CurnTypB2
 			AsmFactory::CurnTypName = AsmFactory::CurnTypName2
 			SymTable::CurnTypItem = SymTable::CurnTypItem2
+			AsmFactory::CurnInhTyp = AsmFactory::CurnInhTyp2
 			AsmFactory::isNested = false
 		else
 			AsmFactory::inClass = false
@@ -1410,6 +1430,7 @@ class public StmtReader
 				AsmFactory::CurnTypName = AsmFactory::CurnTypName2
 				SymTable::CurnTypItem = SymTable::CurnTypItem2
 				SymTable::TypGenParams = SymTable::TypGenParams2
+				AsmFactory::CurnInhTyp = AsmFactory::CurnInhTyp2
 
 				AsmFactory::isNested = false
 			else
@@ -1591,10 +1612,26 @@ class public StmtReader
 		elseif stm is MethodCallStmt then
 			var mcstmt as MethodCallStmt = $MethodCallStmt$stm
 			if Helpers::SetPopFlg(mcstmt::MethodToken) isnot null then
+				//an hc == true also means the token is a method call
+				var hc as boolean = Helpers::SetCondFlg(mcstmt::MethodToken)
+
 				var eval2 = new Evaluator()
 				var asttok as Token = eval2::ConvToAST(eval2::ConvToRPN(new Expr() {AddToken(mcstmt::MethodToken)}))
 				eval2::ASTEmit(asttok, false)
-				eval2::ASTEmit(asttok, true)
+
+				//use conditional compile flags on method call tok to see whetehr to emit or not
+				if hc then
+					var mctok = $MethodCallTok$mcstmt::MethodToken
+					if mctok::CondAvailable then
+						if mctok::CondFlgValue then
+							eval2::ASTEmit(asttok, true)
+						end if
+					else
+						eval2::ASTEmit(asttok, true)
+					end if
+				else
+					eval2::ASTEmit(asttok, true)
+				end if
 			else
 				StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "No variable/field loads are allowed without a destination being specified")
 			end if

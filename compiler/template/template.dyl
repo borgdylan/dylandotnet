@@ -20,6 +20,7 @@ import SCG = System.Collections.Generic
 import System.Threading
 import System.Threading.Tasks
 import System.Runtime.InteropServices
+import System.Diagnostics
 //import System.Runtime.CompilerServices
 //import template
 
@@ -917,6 +918,8 @@ class public static Program
 			Console::WriteLine(sobj isnot null)
 		end if
 
+		Debug::WriteLine("DEBUG is on")
+		Trace::WriteLine("TRACE is on")
 	end method
 
 	[method: My(new integer[] {1, 2})]

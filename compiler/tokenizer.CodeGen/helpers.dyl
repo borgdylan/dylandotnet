@@ -49,6 +49,25 @@ class public static Helpers
 	end method
 
 	[method: ComVisible(false)]
+	method public static IEnumerable<of ConditionalAttribute> GetConditional(var m as MemberInfo)
+		try
+			var lcad = m::__GetCustomAttributes(Loader::CachedLoadClass("System.Diagnostics.ConditionalAttribute"), false)
+			if lcad::get_Count() == 0 then
+				return null
+			else
+				var lst = new C5.LinkedList<of ConditionalAttribute>()
+				foreach cad in lcad
+					var params = cad::get_ConstructorArguments()
+					lst::Add(new ConditionalAttribute($string$params::get_Item(0)::get_Value()))
+				end for
+				return lst
+			end if
+		catch ex as Exception
+		end try
+		return null
+	end method
+
+	[method: ComVisible(false)]
 	method public static TypeAttributes ProcessClassAttrs(var attrs as IEnumerable<of Attributes.Attribute>)
 		
 		var ta as TypeAttributes
@@ -1634,6 +1653,16 @@ class public static Helpers
 			return null
 		end if
 
+	end method
+
+	[method: ComVisible(false)]
+	method public static boolean SetCondFlg(var t as Token)
+		var t3 as MethodCallTok = t as MethodCallTok
+		if t3 isnot null then
+			t3::CondFlg = true
+			return true
+		end if 
+		return false
 	end method
 
 	[method: ComVisible(false)]

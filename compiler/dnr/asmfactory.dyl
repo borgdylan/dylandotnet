@@ -43,6 +43,7 @@ class public static AsmFactory
 	field public static IKVM.Reflection.Emit.EventBuilder CurnEventB
 	field public static IKVM.Reflection.Emit.ILGenerator CurnILGen
 	field public static IKVM.Reflection.Type CurnInhTyp
+	field public static IKVM.Reflection.Type CurnInhTyp2
 	field public static IKVM.Reflection.Emit.TypeBuilder CurnTypB
 	field public static IKVM.Reflection.Emit.TypeBuilder CurnTypB2
 	//field public static IKVM.Reflection.Emit.TypeBuilder[] CurnTypList

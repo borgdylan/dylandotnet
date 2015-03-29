@@ -11,6 +11,9 @@ class public MethodCallTok extends ValueToken
 	field public MethodNameTok Name
 	field public C5.ArrayList<of Expr> Params
 	field public boolean PopFlg
+	field public boolean CondFlg
+	field public boolean CondAvailable
+	field public boolean CondFlgValue
 	field public IKVM.Reflection.Type[] TypArr
 
 	method public void MethodCallTok(var value as string)

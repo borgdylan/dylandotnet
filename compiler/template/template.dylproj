@@ -8,14 +8,14 @@
     <RootNamespace>template</RootNamespace>
     <UsePartialTypes>false</UsePartialTypes>
     <AssemblyName>template</AssemblyName>
-    <ReleaseVersion>11.5.6.1</ReleaseVersion>
+    <ReleaseVersion>11.5.6.4</ReleaseVersion>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\Debug</OutputPath>
     <ErrorReport>prompt</ErrorReport>
-    <DefineConstants>DEBUG</DefineConstants>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>mysn.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
@@ -24,6 +24,7 @@
     <OutputPath>bin\Release</OutputPath>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>mysn.snk</AssemblyOriginatorKeyFile>
+    <DefineConstants>TRACE</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Testing|AnyCPU' ">
     <DebugSymbols>false</DebugSymbols>
