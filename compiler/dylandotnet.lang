@@ -90,6 +90,7 @@
 		<keyword>andalso</keyword>
 		<keyword>nand</keyword>	
 		<keyword>is</keyword>
+		<keyword>isnot</keyword>
 		<keyword>notlike</keyword>
 		<keyword>like</keyword>
 		<keyword>new</keyword>

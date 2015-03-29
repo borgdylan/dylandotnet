@@ -5,9 +5,10 @@
 	
 	<!-- Template Header -->
 	<TemplateConfiguration>
-		<_Name>Shared Assets Project</_Name>
-		<_Category>dylan.NET</_Category>
+		<_Name>Shared Project</_Name>
+		<Category>other/net/general</Category>
 		<Icon>md-project-shared-assets</Icon>
+		<Image id="md-shared-project" />
 		<_Description>Creates an empty shared assets project</_Description>
 		<DefaultFilename>Shared</DefaultFilename>
 		<LanguageName>dylan.NET</LanguageName>

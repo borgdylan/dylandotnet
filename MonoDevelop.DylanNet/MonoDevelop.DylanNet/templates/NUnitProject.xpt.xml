@@ -1,14 +1,16 @@
 <?xml version="1.0"?>
-<Template originator   = "Lluis Sanchez">
+<Template originator="Lluis Sanchez">
 	
 	<!-- Template Header -->
 	<TemplateConfiguration>
-		<_Name>NUnit Project</_Name>
-		<_Category>dylan.NET/NUnit</_Category>
-		<Icon>md-project|res:project-nunit-overlay-light-32.png</Icon>
+		<_Name>NUnit Library Project</_Name>
+		<Category>other/net/general</Category>
+		<Icon>md-project</Icon>
+		<Image id="md-nunit-library-project" />
 		<_Description>Creates an NUnit library</_Description>
 		<LanguageName>dylan.NET</LanguageName>
 		<DefaultFilename>NUnitProject</DefaultFilename>
+		<GroupId>md-nunit-library</GroupId>-
 	</TemplateConfiguration>
 	
 	<!-- Actions -->
@@ -16,13 +18,13 @@
 	</Actions>
 	
 	<!-- Template Content -->
-	<Combine name = "${ProjectName}" directory = "." type = "MonoDevelop.NUnit.NUnitAssemblyGroupProject">
+	<Combine name = "${ProjectName}" directory = ".">
 		<Options>
 			<StartupProject>${ProjectName}</StartupProject>
 		</Options>
 		
 		<Project name = "${ProjectName}" directory = ".">
-			<Options Target = "Library" />
+			<Options Target = "Library" TargetFrameworkVersion = "4.0" />
 			
 			<References>
 				<Reference type="Package" refto="System" />
@@ -30,9 +32,12 @@
 				<Reference type="Package" refto="System.Core" />
 				<Reference type="Package" refto="System.Xml.Linq" />
 				<Reference type="Package" refto="System.Xml" />
-				<Reference type="Package" refto="nunit.framework" SpecificVersion = "false" LocalCopy = "false" />
 			</References>
-		
+
+			<Packages>
+				<Package ID="NUnit" Version="2.6.3" />
+			</Packages>
+
 			<Files>
 				<File name="TestClass.dyl" AddStandardHeader="True"><![CDATA[namespace ${Namespace}
 

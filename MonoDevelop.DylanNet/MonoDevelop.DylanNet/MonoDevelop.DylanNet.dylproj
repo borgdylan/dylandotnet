@@ -7,7 +7,7 @@
     <OutputType>Library</OutputType>
     <UsePartialTypes>false</UsePartialTypes>
     <AssemblyName>MonoDevelop.DylanNet</AssemblyName>
-    <ReleaseVersion>2.6.2.0</ReleaseVersion>
+    <ReleaseVersion>2.8.1.0</ReleaseVersion>
     <SynchReleaseVersion>false</SynchReleaseVersion>
     <RootNamespace>MonoDevelop.DylanNet</RootNamespace>
   </PropertyGroup>

@@ -6,8 +6,9 @@
 	<!-- Template Header -->
 	<TemplateConfiguration>
 		<_Name>Portable Library</_Name>
-		<_Category>dylan.NET</_Category>
+		<Category>other/net/general</Category>
 		<Icon>md-project-library</Icon>
+		<Image id="md-pcl-project" />
 		<LanguageName>dylan.NET</LanguageName>
 		<_Description>Creates a dylan.NET library that can be used in Windows, Silverlight, Windows Phone, MonoTouch and Mono for Android.</_Description>
 		<DefaultFilename>PortableLibrary</DefaultFilename>

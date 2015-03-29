@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0"?>
-<Template originator="Piotr Dowgiallo"
-          created="2012/05/16"
-          lastModified="2012/05/16">
+<Template originator="Michael Hutchinson"
+          created="2009/02/17"
+          lastModified="2012/05/17">
 
 	<!-- Template Header -->
 	<TemplateConfiguration>
 		<_Name>Empty ASP.NET MVC 3 Project</_Name>
-		<_Category>dylan.NET/ASP.NET</_Category>
+		<Category>other/aspnet/general</Category>
 		<Icon>md-project-web</Icon>
 		<LanguageName>dylan.NET</LanguageName>
 		<_Description>Creates an empty ASP.NET MVC 3 Web Project.</_Description>

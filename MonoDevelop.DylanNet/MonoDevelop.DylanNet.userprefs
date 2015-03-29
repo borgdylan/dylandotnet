@@ -1,15 +1,10 @@
 ﻿<Properties StartupItem="MonoDevelop.DylanNet/MonoDevelop.DylanNet.dylproj">
   <AuthorInfo Name="Dylan Borg" Email="" Copyright="Copyright (C) 2013 Dylan Borg" Company="" Trademark="" />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="MonoDevelop.DylanNet/DocumentParser.dyl">
+  <MonoDevelop.Ide.Workbench ActiveDocument="MonoDevelop.DylanNet/templates/NUnitProject.xpt.xml">
     <Files>
-      <File FileName="MonoDevelop.DylanNet/DocumentParser.dyl" Line="43" Column="32" />
-      <File FileName="Test/ITestInterface.dyl" Line="1" Column="1" />
-      <File FileName="MonoDevelop.DylanNet/DNLanguageBinding.dyl" Line="1" Column="1" />
-      <File FileName="MonoDevelop.DylanNet/PathedDocumentExtension.dyl" Line="1" Column="1" />
-      <File FileName="MonoDevelop.DylanNet/SurroundHIfHElseHandler.dyl" Line="1" Column="1" />
-      <File FileName="MonoDevelop.DylanNet/SurroundForeachHandler.dyl" Line="1" Column="1" />
-      <File FileName="PCL/packages.config" Line="1" Column="1" />
+      <File FileName="MonoDevelop.DylanNet/templates/NUnitProject.xpt.xml" Line="23" Column="51" />
+      <File FileName="MonoDevelop.DylanNet/MonoDevelop.DylanNet.addin.xml" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
