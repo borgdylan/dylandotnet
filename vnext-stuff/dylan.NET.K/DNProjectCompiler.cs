@@ -16,6 +16,7 @@ using System.Runtime.Versioning;
 using System.Text;
 using Microsoft.Framework.Runtime;
 using Microsoft.Framework.Runtime.Helpers;
+using Microsoft.Framework.Runtime.Compilation;
 using NuGet;
 using dylan.NET.Compiler;
 using dylan.NET.Utils;
@@ -44,6 +45,33 @@ namespace dylan.NET.K
         }
     }
     
+    public class DNDiagnosticResult : IDiagnosticResult
+    {
+    	private bool _success;
+    	private IEnumerable<ICompilationMessage> _messages;
+    
+    	public DNDiagnosticResult(bool success, IEnumerable<ICompilationMessage> messages) {
+    		_success = success;
+    		_messages = messages;
+    	}
+    
+        public bool Success
+        {
+        	get
+        	{
+        		return _success;
+        	}
+        }
+
+        public IEnumerable<ICompilationMessage> Diagnostics
+        {
+        	get
+        	{
+        		return _messages;
+        	}
+        }
+    }
+    
 	public class DNCompilation
     {
         private string assemblyName;
@@ -53,19 +81,19 @@ namespace dylan.NET.K
         internal IDiagnosticResult result;
         internal ICompilationMessage finalError;
 		private List<ICompilationMessage> messages;
-		private Project Project;
+		private ICompilationProject Project;
         private IEnumerable<IMetadataReference> MetadataReferences;
         private IEnumerable<ISourceReference> SourceReferences;
 		private bool success;
 		private bool warnErrors;
 		public static object lockobj;
-		private CompilerOptions compileOpts;
+		private ICompilerOptions compileOpts;
 
 		static DNCompilation() {
 			lockobj = new object();
 		}
 		
-        public DNCompilation(string name, Project project, IEnumerable<IMetadataReference> metadataReferences, IEnumerable<ISourceReference> sourceReferences, FrameworkName targetFramework, string configuration)
+        public DNCompilation(string name, ICompilationProject project, IEnumerable<IMetadataReference> metadataReferences, IEnumerable<ISourceReference> sourceReferences, FrameworkName targetFramework, string configuration)
         {
             Project = project;
             MetadataReferences = metadataReferences;
@@ -75,7 +103,7 @@ namespace dylan.NET.K
             config = configuration;
             messages = new List<ICompilationMessage>();
             success = true;
-            compileOpts = CompilerOptions.Combine( new CompilerOptions[] {project.GetCompilerOptions(), project.GetCompilerOptions(targetFramework), project.GetCompilerOptions(configuration)});
+            compileOpts = project.GetCompilerOptions(targetFramework, configuration);
 
             if (compileOpts.WarningsAsErrors.HasValue) {
 	            warnErrors = (bool)compileOpts.WarningsAsErrors;
@@ -101,7 +129,35 @@ namespace dylan.NET.K
 			var formatted = $"WARNING: {cm.Msg} inside project {assemblyName}({effectiveTargetFramework.FullName}) at line {cm.Line} in file: {cm.File}";
 			messages.Add(new CompilationMessage() {Message = cm.Msg, StartLine = cm.Line, EndLine = cm.Line, StartColumn = 1, SourceFilePath = cm.File, FormattedMessage = formatted, Severity = CompilationMessageSeverity.Warning});
 		}
-
+		
+		private static Version ParseVersion(string version)
+        {
+        	//adapted from roslyn project compiler
+        	//but in away it ensures that dylan.NET gets
+        	//a version with all four integers
+            var dashIdx = version.IndexOf('-');
+            if (dashIdx >= 0)
+            {
+               version = version.Substring(0, dashIdx);
+            }
+            
+            string[] parsed = version.Split(new char[] {'.'});
+            string[] dest = new string[4];
+            int i = 0;
+            while (i < parsed.Length && i < 4)
+            {
+            	dest[i] = parsed[i];
+            	i++;
+            }
+            while (i < 4)
+            {
+            	dest[i] = "0";
+            	i++;
+            }
+            
+            return new Version(string.Join(".", dest));
+        }
+		
 		internal Tuple<Stream, Stream> CompileInMemory() {
 			if (streams == null) {
 				
@@ -180,7 +236,7 @@ namespace dylan.NET.K
 	        	    sw.WriteLine(" dll");
 					
 					//finalise assembly definition by issuing the version directive
-	        	    Version ver = Project.Version.Version;
+	        	    Version ver = ParseVersion(Project.Version);
 	        	    sw.WriteLine($"ver {ver.Major}.{ver.Minor}.{ver.Build}.{ver.Revision}");
 	        	    
 	        	    //include any 'shared.dyl' export files from referenced projects
@@ -260,7 +316,7 @@ namespace dylan.NET.K
 					streams = Tuple.Create<Stream, Stream>(null, null);
 				}
 
-				result = new DiagnosticResult(success, messages);
+				result = new DNDiagnosticResult(success, messages);
 			}
 
 			return streams;
@@ -292,12 +348,12 @@ namespace dylan.NET.K
     	private Stream _symbols;
     	private IDiagnosticResult _result;
     	private string _name;
-    	private Project _project;
+    	private ICompilationProject _project;
     	private bool _compiled;
     	private DNCompilation _comp;
 		private ICompilationMessage _finalError;
 
-        public DNProjectReference(Project project, string name, DNCompilation compilation)
+        public DNProjectReference(ICompilationProject project, string name, DNCompilation compilation)
         {
         	_name = name;
             _project = project;
@@ -438,16 +494,16 @@ namespace dylan.NET.K
         }
     }
 
-    public class DNProjectReferenceProvider : IProjectReferenceProvider
+    public class DNProjectCompiler : IProjectCompiler
     {
         private Dictionary<string, DNCompilation> compilations;
 
-        public DNProjectReferenceProvider()
+        public DNProjectCompiler()
         {
             compilations = new Dictionary<string, DNCompilation>();
         }
 
-        public virtual IMetadataProjectReference GetProjectReference(Project project, ILibraryKey target, Func<ILibraryExport> getExport)
+        public virtual IMetadataProjectReference CompileProject(ICompilationProject project, ILibraryKey target, Func<ILibraryExport> getExport, Func<IList<ResourceDescriptor>> getResources)
         {
         	string assemblyName = target.Name;
 
