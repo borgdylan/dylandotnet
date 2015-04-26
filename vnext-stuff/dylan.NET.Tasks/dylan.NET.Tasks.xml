@@ -3,6 +3,14 @@
         <name>dylan.NET.Tasks</name>
     </assembly>
     <members>
+        <member name="T:System.Threading.Tasks.AsyncVoid">
+            <summary>A struct with zero size that is used when no result is desired.</summary>
+            <remarks />
+        </member>
+        <member name="C:System.Threading.Tasks.AsyncVoid">
+            <summary>Initializes a new AsyncVoid.</summary>
+            <remarks>This constructor does nothing and hence it is more efficient to get the default value for this struct using your programming language's syntax than calling this constructor.</remarks>
+        </member>
         <member name="T:System.Threading.Tasks.ConfiguredTaskAwaitableWrapper">
             <summary>An IAwaitable implementation that wraps a ConfiguredTaskAwaitable.</summary>
             <remarks />
@@ -90,18 +98,9 @@
             <summary>Creates a new DisposerTaskClosure around the given resource.</summary>
             <remarks>This constructor is protected i.e. you must inherit this class to use its features.</remarks>
         </member>
-        <member name="F:System.Threading.Tasks.DisposerTaskClosure`1._Resource">
-            <summary>Holds the disposable resource managed by this closure.</summary>
-            <remarks>This field is protected. To access the resource from outside your closure, please use the Resource property.</remarks>
-        </member>
-        <member name="M:System.Threading.Tasks.DisposerTaskClosure`1.Finally">
-            <summary>Overrides the Finally method in the base TaskClosure to dispose of the resource managed by this closure.</summary>
-            <remarks>You may further override this method to add extra behaviour.</remarks>
-        </member>
-        <member name="P:System.Threading.Tasks.DisposerTaskClosure`1.Resource">
-            <summary>Holds the disposable resource managed by this closure.</summary>
-            <value>The disposable resource managed by this closure.</value>
-            <remarks>For faster access to the resource within the closure itself you may use the _Resource field.</remarks>
+        <member name="M:System.Threading.Tasks.DisposerTaskClosure`1.Return">
+            <summary>Concludes the asynchronous activity successfully.</summary>
+            <remarks>This method also handles cleanup of resources.</remarks>
         </member>
         <member name="T:System.Threading.Tasks.DisposerTaskClosure`2">
             <typeparam name="T">The return type for the asynchronous activity.</typeparam>
@@ -174,6 +173,91 @@
             <value>True if the completion handler can be run immediately, else false.</value>
             <remarks>This library runs the completion handler immediately if this is true else subscribes the handler using OnCompleted.</remarks>
         </member>
+        <member name="T:System.Threading.Tasks.ReflectAwaiterWrapper">
+            <summary>An IAwaiter implementation that wraps an ordinary object.</summary>
+            <remarks>This implementation makes use of reflection and is not available for PCLs. It is recommended to make use of strongly typed wrappers instead due to the penalties associated with reflection. If an IAwaiter implementation is passed in, no reflection will be used in preference to calling the methods on the IAwaiter directly.</remarks>
+        </member>
+        <member name="C:System.Threading.Tasks.ReflectAwaiterWrapper(System.Object)">
+            <param name="awaiter">The object to wrap.</param>
+            <summary>Constructs a new object wrapper.</summary>
+            <remarks>No validation regarding whether the object's type implements the required functions is made at this point. That is done lazily when an actual function call is made.</remarks>
+        </member>
+        <member name="M:System.Threading.Tasks.ReflectAwaiterWrapper.GetResult">
+            <summary>Concludes the await, throwing any exceptions thrown by the awaitable in the process.</summary>
+            <remarks>Calls the underlying GetResult by using reflection. If the given awaiter is an IAwaiter, its GetResult code is called directly to bypass the reflection penalty.</remarks>
+            <exception cref="System.ArgumentException">Thrown if the given awaiter does not have the GetResult method.</exception>
+        </member>
+        <member name="P:System.Threading.Tasks.ReflectAwaiterWrapper.IsCompleted">
+            <summary>Gets the completion state of the awaitable being awaited.</summary>
+            <value>True if the completion handler can be run immediately, else false.</value>
+            <remarks>Gets the underlying IsCompleted value by using reflection. If the given awaiter is an IAwaiter, its IsCompleted property value is retrieved directly to avoid the penalties of reflection.</remarks>
+            <exception cref="System.ArgumentException">Thrown if the given awaiter does not have the IsCompleted property.</exception>
+        </member>
+        <member name="M:System.Threading.Tasks.ReflectAwaiterWrapper.OnCompleted(System.Action)">
+            <param name="continuation">The function to execute as the continuation.</param>
+            <summary>Registers the given function to run when the task resolves to a value/fails.</summary>
+            <remarks>Calls the underlying OnCompleted using reflection. If the given awaiter implements INotifyCompletion, its OnCompleted method is used instead to avoid using reflection. Note that all IAwaiter implementations also implement INotifyCompletion.</remarks>
+            <exception cref="System.ArgumentException">Thrown if the given awaiter does not have the OnCompleted method.</exception>
+        </member>
+        <member name="T:System.Threading.Tasks.ReflectAwaiterWrapper`1">
+            <typeparam name="TResult">The type of result returned by the awaitable being awaited.</typeparam>
+            <summary>An IAwaiter&lt;TResult&gt; implementation that wraps an ordinary object.</summary>
+            <remarks>This implementation makes use of reflection and is not available for PCLs. It is recommended to make use of strongly typed wrappers instead due to the penalties associated with reflection. If an IAwaiter&lt;TResult&gt; implementation is passed in, no reflection will be used in preference to calling the methods on the IAwaiter&lt;TResult&gt; directly.</remarks>
+        </member>
+        <member name="C:System.Threading.Tasks.ReflectAwaiterWrapper`1(`0System`0.`0Object`0)">
+            <param name="awaiter">The object to wrap.</param>
+            <summary>Constructs a new object wrapper.</summary>
+            <remarks>No validation regarding whether the object's type implements the required functions is made at this point. That is done lazily when an actual function call is made.</remarks>
+        </member>
+        <member name="M:System.Threading.Tasks.ReflectAwaiterWrapper`1.GetResult">
+            <summary>Concludes the await, throwing any exceptions thrown by the awaitable in the process.</summary>
+            <returns>The result returned by the task.</returns>
+            <remarks>Calls the underlying GetResult by using reflection. If the given awaiter is an IAwaiter&lt;TResult&gt;, its GetResult code is called directly to bypass the reflection penalty.</remarks>
+            <exception cref="System.ArgumentException">Thrown if the given awaiter does not have the GetResult method.</exception>
+        </member>
+        <member name="P:System.Threading.Tasks.ReflectAwaiterWrapper`1.IsCompleted">
+            <summary>Gets the completion state of the awaitable being awaited.</summary>
+            <value>True if the completion handler can be run immediately, else false.</value>
+            <remarks>Gets the underlying IsCompleted value by using reflection. If the given awaiter is an IAwaiter&lt;TResult&gt;, its IsCompleted property value is retrieved directly to avoid the penalties of reflection.</remarks>
+            <exception cref="System.ArgumentException">Thrown if the given awaiter does not have the IsCompleted property.</exception>
+        </member>
+        <member name="M:System.Threading.Tasks.ReflectAwaiterWrapper`1.OnCompleted(`0System`0.`0Action`0)">
+            <param name="continuation">The function to execute as the continuation.</param>
+            <summary>Registers the given function to run when the task resolves to a value/fails.</summary>
+            <remarks>Calls the underlying OnCompleted using reflection. If the given awaiter implements INotifyCompletion, its OnCompleted method is used instead to avoid using reflection. Note that all IAwaiter&lt;TResult&gt; implementations also implement INotifyCompletion.</remarks>
+            <exception cref="System.ArgumentException">Thrown if the given awaiter does not have the OnCompleted method.</exception>
+        </member>
+        <member name="T:System.Threading.Tasks.ReflectWrapper">
+            <summary>An IAwaitable implementation that wraps an object.</summary>
+            <remarks>This implementation makes use of reflection and is not available for PCLs. It is recommended to make use of strongly typed wrappers instead due to the penalties associated with reflection. If an IAwaitable implementation is passed in, no reflection will be used in preference to calling the methods on the IAwaitable directly.</remarks>
+        </member>
+        <member name="C:System.Threading.Tasks.ReflectWrapper(System.Object)">
+            <param name="awaitable">The object to wrap.</param>
+            <summary>Constructs a new object wrapper.</summary>
+            <remarks>No validation regarding whether the object's type implements the required functions is made at this point. That is done lazily when an actual function call is made.</remarks>
+        </member>
+        <member name="M:System.Threading.Tasks.ReflectWrapper.GetAwaiter">
+            <summary>Gets the IAwaiter used to await this object.</summary>
+            <returns>The IAwaiter used to await this object.</returns>
+            <remarks>Calls the underlying GetAwaiter by using reflection. If the given awaitable is an IAwaitable, its GetAwaiter code is called directly to bypass the reflection penalty.</remarks>
+            <exception cref="System.ArgumentException">Thrown if the given awaitable does not have the GetAwaiter method.</exception>
+        </member>
+        <member name="T:System.Threading.Tasks.ReflectWrapper`1">
+            <typeparam name="TResult">The type of result returned by this awaitable.</typeparam>
+            <summary>An IAwaitable&lt;TResult&gt; implementation that wraps an object.</summary>
+            <remarks>This implementation makes use of reflection and is not available for PCLs. It is recommended to make use of strongly typed wrappers instead due to the penalties associated with reflection. If an IAwaitable&lt;TResult&gt; implementation is passed in, no reflection will be used in preference to calling the methods on the IAwaitable&lt;TResult&gt; directly.</remarks>
+        </member>
+        <member name="C:System.Threading.Tasks.ReflectWrapper`1(`0System`0.`0Object`0)">
+            <param name="awaitable">The object to wrap.</param>
+            <summary>Constructs a new object wrapper.</summary>
+            <remarks>No validation regarding whether the object's type implements the required functions is made at this point. That is done lazily when an actual function call is made.</remarks>
+        </member>
+        <member name="M:System.Threading.Tasks.ReflectWrapper`1.GetAwaiter">
+            <summary>Gets the IAwaiter&lt;TResult&gt; used to await this object.</summary>
+            <returns>The IAwaiter&lt;TResult&gt; used to await this object.</returns>
+            <remarks>Calls the underlying GetAwaiter by using reflection. If the given awaitable is an IAwaitable&lt;TResult&gt;, its GetAwaiter code is called directly to bypass the reflection penalty.</remarks>
+            <exception cref="System.ArgumentException">Thrown if the given awaitable does not have the GetAwaiter method.</exception>
+        </member>
         <member name="T:System.Threading.Tasks.TaskAwaiterWrapper">
             <summary>An IAwaiter implementation that wraps a TaskAwaiter.</summary>
             <remarks />
@@ -230,180 +314,9 @@
             <summary>Creates a new TaskClosure.</summary>
             <remarks />
         </member>
-        <member name="M:System.Threading.Tasks.TaskClosure.Await(System.Runtime.CompilerServices.ConfiguredTaskAwaitable,System.Action)">
-            <param name="cta">The configured task to await.</param>
-            <param name="f">The function to execute if the configured task completed successfully.</param>
-            <summary>Runs the given function if the awaited configured task completes successfully else propagates the exception.</summary>
-            <returns>The Task related to the TaskCompletionSource encapsulated by the closure.</returns>
-            <remarks>Overriding the Catch method allows the addition of code that should execute when exceptions happen.</remarks>
-        </member>
-        <member name="M:System.Threading.Tasks.TaskClosure.Await(System.Runtime.CompilerServices.YieldAwaitable,System.Action)">
-            <param name="ya">The yield to await.</param>
-            <param name="f">The function to execute if the yield completed successfully.</param>
-            <summary>Runs the given function if the awaited yield completes successfully else propagates the exception.</summary>
-            <returns>The Task related to the TaskCompletionSource encapsulated by the closure.</returns>
-            <remarks>Overriding the Catch method allows the addition of code that should execute when exceptions happen.</remarks>
-        </member>
-        <member name="M:System.Threading.Tasks.TaskClosure.Await(System.Threading.Tasks.IAwaitable,System.Action)">
-            <param name="a">The awaitable to await.</param>
-            <param name="f">The function to execute if the await completed successfully.</param>
-            <summary>Runs the given function if the await completes successfully else propagates the exception.</summary>
-            <returns>The Task related to the TaskCompletionSource encapsulated by the closure.</returns>
-            <remarks>Overriding the Catch method allows the addition of code that should execute when exceptions happen.</remarks>
-        </member>
-        <member name="M:System.Threading.Tasks.TaskClosure.Await(System.Threading.Tasks.IAwaiter,System.Action)">
-            <param name="a">The awaiter to await with.</param>
-            <param name="f">The function to execute if the await completed successfully.</param>
-            <summary>Runs the given function if the await completes successfully else propagates the exception.</summary>
-            <returns>The Task related to the TaskCompletionSource encapsulated by the closure.</returns>
-            <remarks>Overriding the Catch method allows the addition of code that should execute when exceptions happen.</remarks>
-        </member>
-        <member name="M:System.Threading.Tasks.TaskClosure.Await(System.Threading.Tasks.Task,System.Action)">
-            <param name="t">The task to await.</param>
-            <param name="f">The function to execute if the task completed successfully.</param>
-            <summary>Runs the given function if the awaited task completes successfully else propagates the exception.</summary>
-            <returns>The Task related to the TaskCompletionSource encapsulated by the closure.</returns>
-            <remarks>Overriding the Catch method allows the addition of code that should execute when exceptions happen.</remarks>
-        </member>
-        <member name="M:System.Threading.Tasks.TaskClosure.Await``1(System.Runtime.CompilerServices.ConfiguredTaskAwaitable,System.Action,System.Action{``0})">
-            <typeparam name="TException">The type of exception that the handler will handle.</typeparam>
-            <param name="cta">The configured task to await.</param>
-            <param name="f">The function to execute if the configured task completed successfully.</param>
-            <param name="c">The function to use as a handler for exceptions.</param>
-            <summary>Runs the given function if the awaited configured task completes successfully else runs the given exception handler.</summary>
-            <returns>The Task related to the TaskCompletionSource encapsulated by the closure.</returns>
-            <remarks>Overriding the Catch method allows the addition of code that should execute when exceptions that are not handled by the given handler happen.</remarks>
-        </member>
-        <member name="M:System.Threading.Tasks.TaskClosure.Await``1(System.Runtime.CompilerServices.YieldAwaitable,System.Action,System.Action{``0})">
-            <typeparam name="TException">The type of exception that the handler will handle.</typeparam>
-            <param name="ya">The yield to await.</param>
-            <param name="f">The function to execute if the yield completed successfully.</param>
-            <param name="c">The function to use as a handler for exceptions.</param>
-            <summary>Runs the given function if the awaited yield completes successfully else runs the given exception handler.</summary>
-            <returns>The Task related to the TaskCompletionSource encapsulated by the closure.</returns>
-            <remarks>Overriding the Catch method allows the addition of code that should execute when exceptions that are not handled by the given handler happen.</remarks>
-        </member>
-        <member name="M:System.Threading.Tasks.TaskClosure.Await``1(System.Threading.Tasks.IAwaitable,System.Action,System.Action{``0})">
-            <typeparam name="TException">The type of exception that the handler will handle.</typeparam>
-            <param name="a">The awaitable to await.</param>
-            <param name="f">The function to execute if the await completed successfully.</param>
-            <param name="c">The function to use as a handler for exceptions.</param>
-            <summary>Runs the given function if the await completes successfully else runs the given exception handler.</summary>
-            <returns>The Task related to the TaskCompletionSource encapsulated by the closure.</returns>
-            <remarks>Overriding the Catch method allows the addition of code that should execute when exceptions that are not handled by the given handler happen.</remarks>
-        </member>
-        <member name="M:System.Threading.Tasks.TaskClosure.Await``1(System.Threading.Tasks.IAwaiter,System.Action,System.Action{``0})">
-            <typeparam name="TException">The type of exception that the handler will handle.</typeparam>
-            <param name="a">The awaiter to await with.</param>
-            <param name="f">The function to execute if the await completed successfully.</param>
-            <param name="c">The function to use as a handler for exceptions.</param>
-            <summary>Runs the given function if the await completes successfully else runs the given exception handler.</summary>
-            <returns>The Task related to the TaskCompletionSource encapsulated by the closure.</returns>
-            <remarks>Overriding the Catch method allows the addition of code that should execute when exceptions that are not handled by the given handler happen.</remarks>
-        </member>
-        <member name="M:System.Threading.Tasks.TaskClosure.Await``1(System.Threading.Tasks.Task,System.Action,System.Action{``0})">
-            <typeparam name="TException">The type of exception that the handler will handle.</typeparam>
-            <param name="t">The task to await.</param>
-            <param name="f">The function to execute if the task completed successfully.</param>
-            <param name="c">The function to use as a handler for exceptions.</param>
-            <summary>Runs the given function if the awaited task completes successfully else runs the given exception handler.</summary>
-            <returns>The Task related to the TaskCompletionSource encapsulated by the closure.</returns>
-            <remarks>Overriding the Catch method allows the addition of code that should execute when exceptions that are not handled by the given handler happen.</remarks>
-        </member>
-        <member name="M:System.Threading.Tasks.TaskClosure.Await``1(System.Runtime.CompilerServices.ConfiguredTaskAwaitable{``0},System.Action{``0})">
-            <typeparam name="U">The return type of the awaited configured task.</typeparam>
-            <param name="cta">The configured task to await.</param>
-            <param name="f">The function to execute if the configured task completed successfully.</param>
-            <summary>Runs the given function if the awaited configured task completes successfully else propagates the exception.</summary>
-            <returns>The Task related to the TaskCompletionSource encapsulated by the closure.</returns>
-            <remarks>Overriding the Catch method allows the addition of code that should execute when exceptions happen.</remarks>
-        </member>
-        <member name="M:System.Threading.Tasks.TaskClosure.Await``1(System.Threading.Tasks.IAwaitable{``0},System.Action{``0})">
-            <typeparam name="U">The return type of the awaitable.</typeparam>
-            <param name="a">The awaitable to await.</param>
-            <param name="f">The function to execute if the await completed successfully.</param>
-            <summary>Runs the given function if the await completes successfully else propagates the exception.</summary>
-            <returns>The Task related to the TaskCompletionSource encapsulated by the closure.</returns>
-            <remarks>Overriding the Catch method allows the addition of code that should execute when exceptions happen.</remarks>
-        </member>
-        <member name="M:System.Threading.Tasks.TaskClosure.Await``1(System.Threading.Tasks.IAwaiter{``0},System.Action{``0})">
-            <typeparam name="U">The return type of the awaiter.</typeparam>
-            <param name="a">The awaiter to await with.</param>
-            <param name="f">The function to execute if the await completed successfully.</param>
-            <summary>Runs the given function if the await completes successfully else propagates the exception.</summary>
-            <returns>The Task related to the TaskCompletionSource encapsulated by the closure.</returns>
-            <remarks>Overriding the Catch method allows the addition of code that should execute when exceptions happen.</remarks>
-        </member>
-        <member name="M:System.Threading.Tasks.TaskClosure.Await``1(System.Threading.Tasks.Task{``0},System.Action{``0})">
-            <typeparam name="U">The return type of the awaited task.</typeparam>
-            <param name="t">The task to await.</param>
-            <param name="f">The function to execute if the task completed successfully.</param>
-            <summary>Runs the given function if the awaited task completes successfully else propagates the exception.</summary>
-            <returns>The Task related to the TaskCompletionSource encapsulated by the closure.</returns>
-            <remarks>Overriding the Catch method allows the addition of code that should execute when exceptions happen.</remarks>
-        </member>
-        <member name="M:System.Threading.Tasks.TaskClosure.Await``2(System.Runtime.CompilerServices.ConfiguredTaskAwaitable{``0},System.Action{``0},System.Action{``1})">
-            <typeparam name="U">The return type of the awaited configured task.</typeparam>
-            <typeparam name="TException">The type of exception that the handler will handle.</typeparam>
-            <param name="cta">The configured task to await.</param>
-            <param name="f">The function to execute if the configured task completed successfully.</param>
-            <param name="c">The function to use as a handler for exceptions.</param>
-            <summary>Runs the given function if the awaited configured task completes successfully else runs the given exception handler.</summary>
-            <returns>The Task related to the TaskCompletionSource encapsulated by the closure.</returns>
-            <remarks>Overriding the Catch method allows the addition of code that should execute when exceptions that are not handled by the given handler happen.</remarks>
-        </member>
-        <member name="M:System.Threading.Tasks.TaskClosure.Await``2(System.Threading.Tasks.IAwaitable{``0},System.Action{``0},System.Action{``1})">
-            <typeparam name="U">The return type of the awaitable.</typeparam>
-            <typeparam name="TException">The type of exception that the handler will handle.</typeparam>
-            <param name="a">The awaitable to await.</param>
-            <param name="f">The function to execute if the await completed successfully.</param>
-            <param name="c">The function to use as a handler for exceptions.</param>
-            <summary>Runs the given function if the await completes successfully else runs the given exception handler.</summary>
-            <returns>The Task related to the TaskCompletionSource encapsulated by the closure.</returns>
-            <remarks>Overriding the Catch method allows the addition of code that should execute when exceptions that are not handled by the given handler happen.</remarks>
-        </member>
-        <member name="M:System.Threading.Tasks.TaskClosure.Await``2(System.Threading.Tasks.IAwaiter{``0},System.Action{``0},System.Action{``1})">
-            <typeparam name="U">The return type of the awaiter.</typeparam>
-            <typeparam name="TException">The type of exception that the handler will handle.</typeparam>
-            <param name="a">The awaiter to await with.</param>
-            <param name="f">The function to execute if the await completed successfully.</param>
-            <param name="c">The function to use as a handler for exceptions.</param>
-            <summary>Runs the given function if the await completes successfully else runs the given exception handler.</summary>
-            <returns>The Task related to the TaskCompletionSource encapsulated by the closure.</returns>
-            <remarks>Overriding the Catch method allows the addition of code that should execute when exceptions that are not handled by the given handler happen.</remarks>
-        </member>
-        <member name="M:System.Threading.Tasks.TaskClosure.Await``2(System.Threading.Tasks.Task{``0},System.Action{``0},System.Action{``1})">
-            <typeparam name="U">The return type of the awaited task.</typeparam>
-            <typeparam name="TException">The type of exception that the handler will handle.</typeparam>
-            <param name="t">The task to await.</param>
-            <param name="f">The function to execute if the task completed successfully.</param>
-            <param name="c">The function to use as a handler for exceptions.</param>
-            <summary>Runs the given function if the awaited task completes successfully else runs the given exception handler.</summary>
-            <returns>The Task related to the TaskCompletionSource encapsulated by the closure.</returns>
-            <remarks>Overriding the Catch method allows the addition of code that should execute when exceptions that are not handled by the given handler happen.</remarks>
-        </member>
-        <member name="P:System.Threading.Tasks.TaskClosure.Canceller">
-            <summary>The cancellation token used to cancel an asynchronous method at await points.</summary>
-            <value>The cancellation token set by the user or CancellationToken.None if no token was set.</value>
-            <remarks>The token can be changed in between awaits. This property is read before each await happens.</remarks>
-        </member>
-        <member name="M:System.Threading.Tasks.TaskClosure.Catch(System.Exception)">
-            <param name="e">The exception that happened while executing an awaited task.</param>
-            <summary>Handles exceptions in awaited tasks by propagating them into the encapsulated TaskCompletionSource.</summary>
-            <remarks>To add code to what is already executed, override this method and add the new code along with an invocation of the version in this base class.</remarks>
-        </member>
-        <member name="M:System.Threading.Tasks.TaskClosure.Finally">
-            <summary>The method called by Return and Catch in order to clean any resources held by the closure.</summary>
-            <remarks>Override this method to dispose of an resources or to execute code after the asynchronous activity terminates successfully or due to an exception.</remarks>
-        </member>
         <member name="M:System.Threading.Tasks.TaskClosure.Return">
             <summary>Concludes the asynchronous activity successfully.</summary>
             <remarks>This method also handles cleanup of resources.</remarks>
-        </member>
-        <member name="P:System.Threading.Tasks.TaskClosure.Task">
-            <summary>The Task exposed by the TaskCompletionSource encapsulated by this closure.</summary>
-            <value>The Task associated to the encapsulated TaskCompletionSource.</value>
-            <remarks>The Task instance is also returned by all overloads of the Await method available in this class.</remarks>
         </member>
         <member name="T:System.Threading.Tasks.TaskClosure`1">
             <typeparam name="T">The return type for the asynchronous activity.</typeparam>

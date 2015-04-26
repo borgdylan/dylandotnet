@@ -46,8 +46,8 @@ class private AwaitClosure<of T, U>
 	#if PORTABLESHIM then
 		method assembly U DoLogic(var t as Task<of T>)
 			if t::get_IsCanceled() then
-				if _cat == null then
-					if _fin != null then
+				if _cat is null then
+					if _fin isnot null then
 						_fin::Invoke()
 					end if
 
@@ -57,7 +57,7 @@ class private AwaitClosure<of T, U>
 					try
 						r = _cat::Invoke(new OperationCanceledException())
 					finally
-						if _fin != null then
+						if _fin isnot null then
 							_fin::Invoke()
 						end if
 					end try
@@ -65,8 +65,8 @@ class private AwaitClosure<of T, U>
 					return r
 				end if
 			elseif t::get_IsFaulted() then
-				if _cat == null then
-					if _fin != null then
+				if _cat is null then
+					if _fin isnot null then
 						_fin::Invoke()
 					end if
 
@@ -76,7 +76,7 @@ class private AwaitClosure<of T, U>
 					try
 						r = _cat::Invoke(t::get_Exception())
 					finally
-						if _fin != null then
+						if _fin isnot null then
 							_fin::Invoke()
 						end if
 					end try
@@ -90,13 +90,13 @@ class private AwaitClosure<of T, U>
 				_token::ThrowIfCancellationRequested()
 				res = _f::Invoke(t::get_Result())
 			catch
-				if _cat == null then
+				if _cat is null then
 					throw ex
 				else
 					res = _cat::Invoke(ex)
 				end if
 			finally
-				if _fin != null then
+				if _fin isnot null then
 					_fin::Invoke()
 				end if
 			end try
@@ -114,7 +114,7 @@ class private AwaitClosure<of T, U>
 			try
 				res = _f::Invoke(result)
 			catch
-				if _cat == null then
+				if _cat is null then
 					SetHelper::TrySetException<of U>(_tcs, ex)
 					return
 				else
@@ -126,15 +126,15 @@ class private AwaitClosure<of T, U>
 					end try
 				end if
 			finally
-				if _fin != null then
+				if _fin isnot null then
 					_fin::Invoke()
 				end if
 			end try
 			
 			_tcs::TrySetResult(res)
 		catch
-			if _cat == null then
-				if _fin != null then
+			if _cat is null then
+				if _fin isnot null then
 					_fin::Invoke()
 				end if
 				
@@ -150,7 +150,7 @@ class private AwaitClosure<of T, U>
 						return
 					end try
 				finally
-					if _fin != null then
+					if _fin isnot null then
 						_fin::Invoke()
 					end if
 				end try
@@ -202,8 +202,8 @@ class private AwaitClosure<of U>
 	#if PORTABLESHIM then
 		method assembly U DoLogic(var t as Task)
 			if t::get_IsCanceled() then
-				if _cat == null then
-					if _fin != null then
+				if _cat is null then
+					if _fin isnot null then
 						_fin::Invoke()
 					end if
 
@@ -213,7 +213,7 @@ class private AwaitClosure<of U>
 					try
 						r = _cat::Invoke(new OperationCanceledException())
 					finally
-						if _fin != null then
+						if _fin isnot null then
 							_fin::Invoke()
 						end if
 					end try
@@ -221,8 +221,8 @@ class private AwaitClosure<of U>
 					return r
 				end if
 			elseif t::get_IsFaulted() then
-				if _cat == null then
-					if _fin != null then
+				if _cat is null then
+					if _fin isnot null then
 						_fin::Invoke()
 					end if
 
@@ -232,7 +232,7 @@ class private AwaitClosure<of U>
 					try
 						r = _cat::Invoke(t::get_Exception())
 					finally
-						if _fin != null then
+						if _fin isnot null then
 							_fin::Invoke()
 						end if
 					end try
@@ -246,13 +246,13 @@ class private AwaitClosure<of U>
 				_token::ThrowIfCancellationRequested()
 				res = _f::Invoke()
 			catch
-				if _cat == null then
+				if _cat is null then
 					throw ex
 				else
 					res = _cat::Invoke(ex)
 				end if
 			finally
-				if _fin != null then
+				if _fin isnot null then
 					_fin::Invoke()
 				end if
 			end try
@@ -270,7 +270,7 @@ class private AwaitClosure<of U>
 			try
 				res = _f::Invoke()
 			catch
-				if _cat == null then
+				if _cat is null then
 					SetHelper::TrySetException<of U>(_tcs, ex)
 					return
 				else
@@ -282,15 +282,15 @@ class private AwaitClosure<of U>
 					end try
 				end if
 			finally
-				if _fin != null then
+				if _fin isnot null then
 					_fin::Invoke()
 				end if
 			end try
 			
 			_tcs::TrySetResult(res)
 		catch
-			if _cat == null then
-				if _fin != null then
+			if _cat is null then
+				if _fin isnot null then
 					_fin::Invoke()
 				end if
 				
@@ -306,7 +306,7 @@ class private AwaitClosure<of U>
 						return
 					end try
 				finally
-					if _fin != null then
+					if _fin isnot null then
 						_fin::Invoke()
 					end if
 				end try
@@ -358,8 +358,8 @@ class private AwaitClosure2<of T>
 	#if PORTABLESHIM then
 		method assembly void DoLogic(var t as Task<of T>)
 			if t::get_IsCanceled() then
-				if _cat == null then
-					if _fin != null then
+				if _cat is null then
+					if _fin isnot null then
 						_fin::Invoke()
 					end if
 
@@ -368,7 +368,7 @@ class private AwaitClosure2<of T>
 					try
 						_cat::Invoke(new OperationCanceledException())
 					finally
-						if _fin != null then
+						if _fin isnot null then
 							_fin::Invoke()
 						end if
 					end try
@@ -376,8 +376,8 @@ class private AwaitClosure2<of T>
 					return
 				end if
 			elseif t::get_IsFaulted() then
-				if _cat == null then
-					if _fin != null then
+				if _cat is null then
+					if _fin isnot null then
 						_fin::Invoke()
 					end if
 
@@ -386,7 +386,7 @@ class private AwaitClosure2<of T>
 					try
 						_cat::Invoke(t::get_Exception())
 					finally
-						if _fin != null then
+						if _fin isnot null then
 							_fin::Invoke()
 						end if
 					end try
@@ -399,13 +399,13 @@ class private AwaitClosure2<of T>
 				_token::ThrowIfCancellationRequested()
 				_f::Invoke(t::get_Result())
 			catch
-				if _cat == null then
+				if _cat is null then
 					throw ex
 				else
 					_cat::Invoke(ex)
 				end if
 			finally
-				if _fin != null then
+				if _fin isnot null then
 					_fin::Invoke()
 				end if
 			end try
@@ -420,7 +420,7 @@ class private AwaitClosure2<of T>
 			try
 				_f::Invoke(result)
 			catch
-				if _cat == null then
+				if _cat is null then
 					SetHelper::TrySetException<of AsyncVoid>(_tcs, ex)
 					return
 				else
@@ -432,15 +432,15 @@ class private AwaitClosure2<of T>
 					end try
 				end if
 			finally
-				if _fin != null then
+				if _fin isnot null then
 					_fin::Invoke()
 				end if
 			end try
 			
 			_tcs::TrySetResult(default AsyncVoid)
 		catch
-			if _cat == null then
-				if _fin != null then
+			if _cat is null then
+				if _fin isnot null then
 					_fin::Invoke()
 				end if
 				
@@ -455,7 +455,7 @@ class private AwaitClosure2<of T>
 						return
 					end try
 				finally
-					if _fin != null then
+					if _fin isnot null then
 						_fin::Invoke()
 					end if
 				end try
@@ -507,8 +507,8 @@ class private AwaitClosure2
 	#if PORTABLESHIM then
 		method assembly void DoLogic(var t as Task)
 			if t::get_IsCanceled() then
-				if _cat == null then
-					if _fin != null then
+				if _cat is null then
+					if _fin isnot null then
 						_fin::Invoke()
 					end if
 
@@ -517,7 +517,7 @@ class private AwaitClosure2
 					try
 						_cat::Invoke(new OperationCanceledException())
 					finally
-						if _fin != null then
+						if _fin isnot null then
 							_fin::Invoke()
 						end if
 					end try
@@ -525,8 +525,8 @@ class private AwaitClosure2
 					return
 				end if
 			elseif t::get_IsFaulted() then
-				if _cat == null then
-					if _fin != null then
+				if _cat is null then
+					if _fin isnot null then
 						_fin::Invoke()
 					end if
 
@@ -535,7 +535,7 @@ class private AwaitClosure2
 					try
 						_cat::Invoke(t::get_Exception())
 					finally
-						if _fin != null then
+						if _fin isnot null then
 							_fin::Invoke()
 						end if
 					end try
@@ -548,13 +548,13 @@ class private AwaitClosure2
 				_token::ThrowIfCancellationRequested()
 				_f::Invoke()
 			catch
-				if _cat == null then
+				if _cat is null then
 					throw ex
 				else
 					_cat::Invoke(ex)
 				end if
 			finally
-				if _fin != null then
+				if _fin isnot null then
 					_fin::Invoke()
 				end if
 			end try
@@ -569,7 +569,7 @@ class private AwaitClosure2
 			try
 				_f::Invoke()
 			catch
-				if _cat == null then
+				if _cat is null then
 					SetHelper::TrySetException<of AsyncVoid>(_tcs, ex)
 					return
 				else
@@ -581,15 +581,15 @@ class private AwaitClosure2
 					end try
 				end if
 			finally
-				if _fin != null then
+				if _fin isnot null then
 					_fin::Invoke()
 				end if
 			end try
 			
 			_tcs::TrySetResult(default AsyncVoid)
 		catch
-			if _cat == null then
-				if _fin != null then
+			if _cat is null then
+				if _fin isnot null then
 					_fin::Invoke()
 				end if
 				
@@ -604,7 +604,7 @@ class private AwaitClosure2
 						return
 					end try
 				finally
-					if _fin != null then
+					if _fin isnot null then
 						_fin::Invoke()
 					end if
 				end try

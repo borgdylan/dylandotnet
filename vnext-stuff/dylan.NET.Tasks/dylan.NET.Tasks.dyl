@@ -19,7 +19,9 @@ import System.Threading
 	import Microsoft.Runtime.CompilerServices
 end #if
 
-import System.Runtime.CompilerServices
+#if !PORTABLESHIM then
+	import System.Runtime.CompilerServices
+end #if
 
 namespace System.Threading.Tasks
 	#include "AsyncVoid.dyl"
@@ -32,6 +34,11 @@ namespace System.Threading.Tasks
 		#include "TaskWrapper1.dyl"
 		#include "ConfiguredTaskAwaitableWrapper.dyl"
 		#include "ConfiguredTaskAwaitableWrapper1.dyl"
+	end #if
+	
+	#if !PORTABLE andalso !NET40 andalso !DNXCORE50 then
+		#include "ReflectWrapper.dyl"
+		#include "ReflectWrapper1.dyl"
 	end #if
 	
 	#include "SetHelper.dyl"

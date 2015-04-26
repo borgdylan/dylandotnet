@@ -6,23 +6,14 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple
 //Place, Suite 330, Boston, MA 02111-1307 USA
 
-class public DisposerTaskClosure<of TDisposable> extends TaskClosure where TDisposable as {IDisposable, class}
-
-	field family TDisposable _Resource
-
-	property public TDisposable Resource
-		get
-			return _Resource
-		end get
-	end property
+class public DisposerTaskClosure<of TDisposable> extends DisposerTaskClosure<of AsyncVoid, TDisposable> where TDisposable as {IDisposable, class}
 
 	method public void DisposerTaskClosure(var res as TDisposable)
-		mybase::ctor()
-		_Resource = res
+		mybase::ctor(res)
 	end method
-
-	method family override void Finally()
-		_Resource::Dispose()
+	
+	method public void Return()
+		Return(default AsyncVoid)
 	end method
-
+		
 end class

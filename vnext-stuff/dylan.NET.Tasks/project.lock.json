@@ -1,0 +1,1397 @@
+{
+  "locked": false,
+  "version": -9998,
+  "projectFileDependencyGroups": {
+    "": [],
+    "DNX,Version=v4.5.1": [
+      "dylan.NET.K "
+    ],
+    ".NETFramework,Version=v4.5": [],
+    ".NETFramework,Version=v4.0": [
+      "Microsoft.Bcl.Async >= 1.0.168"
+    ],
+    "DNXCore,Version=v5.0": [
+      "System.Runtime >= 4.0.20-*",
+      "System.Text.RegularExpressions >= 4.0.10-*",
+      "System.Threading.Tasks >= 4.0.10-*"
+    ],
+    ".NETPortable,Version=v4.5,Profile=Profile78": [
+      "framework/System.Runtime >= 4.0.0.0",
+      "framework/System.Text.RegularExpressions >= 4.0.0.0",
+      "framework/System.Threading.Tasks >= 4.0.0.0"
+    ],
+    ".NETPortable,Version=v4.5,Profile=Profile259": [
+      "framework/System.Runtime >= 4.0.0.0",
+      "framework/System.Text.RegularExpressions >= 4.0.0.0",
+      "framework/System.Threading.Tasks >= 4.0.0.0"
+    ],
+    ".NETPortable,Version=v4.0,Profile=Profile344": [
+      "framework/mscorlib >= 2.0.5.0"
+    ],
+    ".NETPortable,Version=v4.0,Profile=Profile328": [
+      "framework/mscorlib >= 2.0.5.0"
+    ]
+  },
+  "libraries": {
+    "dylan.NET/11.5.6.6": {
+      "serviceable": false,
+      "sha": "9F+Iz+TByMe98UYpkt4Fu7NT6jD1V39G5WSDXGCYEgl/AWvCqD4fkruGBfNyjzdaXMrgT70mHgcxkgDAmiSJPg==",
+      "frameworks": {
+        "DNX,Version=v4.5.1": {
+          "dependencies": {},
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [
+            "lib/net40/C5.dll",
+            "lib/net40/IKVM.Reflection.dll",
+            "lib/net40/Mono.CompilerServices.SymbolWriter.dll",
+            "lib/net40/System.Interactive.dll",
+            "lib/net40/dnc.dll",
+            "lib/net40/dnr.dll",
+            "lib/net40/dnu.dll",
+            "lib/net40/tokenizer.AST.dll",
+            "lib/net40/tokenizer.CodeGen.dll",
+            "lib/net40/tokenizer.Lexer.dll",
+            "lib/net40/tokenizer.Parser.dll"
+          ],
+          "compileAssemblies": [
+            "lib/net40/C5.dll",
+            "lib/net40/IKVM.Reflection.dll",
+            "lib/net40/Mono.CompilerServices.SymbolWriter.dll",
+            "lib/net40/System.Interactive.dll",
+            "lib/net40/dnc.dll",
+            "lib/net40/dnr.dll",
+            "lib/net40/dnu.dll",
+            "lib/net40/tokenizer.AST.dll",
+            "lib/net40/tokenizer.CodeGen.dll",
+            "lib/net40/tokenizer.Lexer.dll",
+            "lib/net40/tokenizer.Parser.dll"
+          ]
+        },
+        ".NETFramework,Version=v4.5": {
+          "dependencies": {},
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [
+            "lib/net40/C5.dll",
+            "lib/net40/IKVM.Reflection.dll",
+            "lib/net40/Mono.CompilerServices.SymbolWriter.dll",
+            "lib/net40/System.Interactive.dll",
+            "lib/net40/dnc.dll",
+            "lib/net40/dnr.dll",
+            "lib/net40/dnu.dll",
+            "lib/net40/tokenizer.AST.dll",
+            "lib/net40/tokenizer.CodeGen.dll",
+            "lib/net40/tokenizer.Lexer.dll",
+            "lib/net40/tokenizer.Parser.dll"
+          ],
+          "compileAssemblies": [
+            "lib/net40/C5.dll",
+            "lib/net40/IKVM.Reflection.dll",
+            "lib/net40/Mono.CompilerServices.SymbolWriter.dll",
+            "lib/net40/System.Interactive.dll",
+            "lib/net40/dnc.dll",
+            "lib/net40/dnr.dll",
+            "lib/net40/dnu.dll",
+            "lib/net40/tokenizer.AST.dll",
+            "lib/net40/tokenizer.CodeGen.dll",
+            "lib/net40/tokenizer.Lexer.dll",
+            "lib/net40/tokenizer.Parser.dll"
+          ]
+        },
+        ".NETFramework,Version=v4.0": {
+          "dependencies": {},
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [
+            "lib/net40/C5.dll",
+            "lib/net40/IKVM.Reflection.dll",
+            "lib/net40/Mono.CompilerServices.SymbolWriter.dll",
+            "lib/net40/System.Interactive.dll",
+            "lib/net40/dnc.dll",
+            "lib/net40/dnr.dll",
+            "lib/net40/dnu.dll",
+            "lib/net40/tokenizer.AST.dll",
+            "lib/net40/tokenizer.CodeGen.dll",
+            "lib/net40/tokenizer.Lexer.dll",
+            "lib/net40/tokenizer.Parser.dll"
+          ],
+          "compileAssemblies": [
+            "lib/net40/C5.dll",
+            "lib/net40/IKVM.Reflection.dll",
+            "lib/net40/Mono.CompilerServices.SymbolWriter.dll",
+            "lib/net40/System.Interactive.dll",
+            "lib/net40/dnc.dll",
+            "lib/net40/dnr.dll",
+            "lib/net40/dnu.dll",
+            "lib/net40/tokenizer.AST.dll",
+            "lib/net40/tokenizer.CodeGen.dll",
+            "lib/net40/tokenizer.Lexer.dll",
+            "lib/net40/tokenizer.Parser.dll"
+          ]
+        },
+        "DNXCore,Version=v5.0": {
+          "dependencies": {},
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        },
+        ".NETPortable,Version=v4.5,Profile=Profile78": {
+          "dependencies": {},
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        },
+        ".NETPortable,Version=v4.5,Profile=Profile259": {
+          "dependencies": {},
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        },
+        ".NETPortable,Version=v4.0,Profile=Profile344": {
+          "dependencies": {},
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        },
+        ".NETPortable,Version=v4.0,Profile=Profile328": {
+          "dependencies": {},
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        }
+      },
+      "files": [
+        "dylan.NET.11.5.6.6.nupkg",
+        "dylan.NET.11.5.6.6.nupkg.sha512",
+        "dylan.NET.nuspec",
+        "lib/net40/C5.dll",
+        "lib/net40/IKVM.Reflection.dll",
+        "lib/net40/Mono.CompilerServices.SymbolWriter.dll",
+        "lib/net40/System.Interactive.dll",
+        "lib/net40/dnc.dll",
+        "lib/net40/dnr.dll",
+        "lib/net40/dnu.dll",
+        "lib/net40/tokenizer.AST.dll",
+        "lib/net40/tokenizer.CodeGen.dll",
+        "lib/net40/tokenizer.Lexer.dll",
+        "lib/net40/tokenizer.Parser.dll",
+        "tools/C5.dll",
+        "tools/Extra.Tasks.dll",
+        "tools/Extra.tasks",
+        "tools/IKVM.Reflection.dll",
+        "tools/INSTALL",
+        "tools/Mono.CompilerServices.SymbolWriter.dll",
+        "tools/System.Interactive.dll",
+        "tools/dnc.exe",
+        "tools/dnr.dll",
+        "tools/dnu.dll",
+        "tools/dylan.NET.Portable.targets",
+        "tools/dylan.NET.targets",
+        "tools/resproc.exe",
+        "tools/tokenizer.AST.dll",
+        "tools/tokenizer.CodeGen.dll",
+        "tools/tokenizer.Lexer.dll",
+        "tools/tokenizer.Parser.dll"
+      ]
+    },
+    "Microsoft.Bcl/1.1.8": {
+      "serviceable": false,
+      "sha": "gM+PUzd8ONxJpcPJeNppCJPklDhDuPUMVQkxvK4fe0rd9WyqBNPh4+UFx3Uv8zuG4C1Gapu1c25sfotE7TQtig==",
+      "frameworks": {
+        "DNX,Version=v4.5.1": {
+          "dependencies": {
+            "Microsoft.Bcl.Build": "1.0.14"
+          },
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        },
+        ".NETFramework,Version=v4.5": {
+          "dependencies": {
+            "Microsoft.Bcl.Build": "1.0.14"
+          },
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        },
+        ".NETFramework,Version=v4.0": {
+          "dependencies": {
+            "Microsoft.Bcl.Build": "1.0.14"
+          },
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [
+            "lib/net40/System.IO.dll",
+            "lib/net40/System.Runtime.dll",
+            "lib/net40/System.Threading.Tasks.dll"
+          ],
+          "compileAssemblies": [
+            "lib/net40/System.IO.dll",
+            "lib/net40/System.Runtime.dll",
+            "lib/net40/System.Threading.Tasks.dll"
+          ]
+        },
+        "DNXCore,Version=v5.0": {
+          "dependencies": {
+            "Microsoft.Bcl.Build": "1.0.14"
+          },
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        },
+        ".NETPortable,Version=v4.5,Profile=Profile78": {
+          "dependencies": {
+            "Microsoft.Bcl.Build": "1.0.14"
+          },
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        },
+        ".NETPortable,Version=v4.5,Profile=Profile259": {
+          "dependencies": {
+            "Microsoft.Bcl.Build": "1.0.14"
+          },
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        },
+        ".NETPortable,Version=v4.0,Profile=Profile344": {
+          "dependencies": {
+            "Microsoft.Bcl.Build": "1.0.14"
+          },
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        },
+        ".NETPortable,Version=v4.0,Profile=Profile328": {
+          "dependencies": {
+            "Microsoft.Bcl.Build": "1.0.14"
+          },
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        }
+      },
+      "files": [
+        "License-Stable.rtf",
+        "Microsoft.Bcl.1.1.8.nupkg",
+        "Microsoft.Bcl.1.1.8.nupkg.sha512",
+        "Microsoft.Bcl.nuspec",
+        "content/net45/_._",
+        "content/portable-net45+win8+wp8+wpa81/_._",
+        "content/portable-net45+win8+wpa81/_._",
+        "content/portable-net451+win81/_._",
+        "content/portable-net451+win81+wpa81/_._",
+        "content/portable-win81+wp81+wpa81/_._",
+        "content/sl4/_._",
+        "content/sl5/_._",
+        "content/win8/_._",
+        "content/wp8/_._",
+        "content/wpa81/_._",
+        "lib/net40/System.IO.dll",
+        "lib/net40/System.IO.xml",
+        "lib/net40/System.Runtime.dll",
+        "lib/net40/System.Runtime.xml",
+        "lib/net40/System.Threading.Tasks.dll",
+        "lib/net40/System.Threading.Tasks.xml",
+        "lib/net40/ensureRedirect.xml",
+        "lib/net45/_._",
+        "lib/portable-net40+sl4+win8/System.IO.dll",
+        "lib/portable-net40+sl4+win8/System.IO.xml",
+        "lib/portable-net40+sl4+win8/System.Runtime.dll",
+        "lib/portable-net40+sl4+win8/System.Runtime.xml",
+        "lib/portable-net40+sl4+win8/System.Threading.Tasks.dll",
+        "lib/portable-net40+sl4+win8/System.Threading.Tasks.xml",
+        "lib/portable-net40+sl4+win8/ensureRedirect.xml",
+        "lib/portable-net40+sl4+win8+wp71+wpa81/System.IO.dll",
+        "lib/portable-net40+sl4+win8+wp71+wpa81/System.IO.xml",
+        "lib/portable-net40+sl4+win8+wp71+wpa81/System.Runtime.dll",
+        "lib/portable-net40+sl4+win8+wp71+wpa81/System.Runtime.xml",
+        "lib/portable-net40+sl4+win8+wp71+wpa81/System.Threading.Tasks.dll",
+        "lib/portable-net40+sl4+win8+wp71+wpa81/System.Threading.Tasks.xml",
+        "lib/portable-net40+sl4+win8+wp71+wpa81/ensureRedirect.xml",
+        "lib/portable-net40+sl4+win8+wp8+wpa81/System.IO.dll",
+        "lib/portable-net40+sl4+win8+wp8+wpa81/System.IO.xml",
+        "lib/portable-net40+sl4+win8+wp8+wpa81/System.Runtime.dll",
+        "lib/portable-net40+sl4+win8+wp8+wpa81/System.Runtime.xml",
+        "lib/portable-net40+sl4+win8+wp8+wpa81/System.Threading.Tasks.dll",
+        "lib/portable-net40+sl4+win8+wp8+wpa81/System.Threading.Tasks.xml",
+        "lib/portable-net40+sl4+win8+wp8+wpa81/ensureRedirect.xml",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/System.IO.dll",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/System.IO.xml",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/System.Runtime.dll",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/System.Runtime.xml",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/System.Threading.Tasks.dll",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/System.Threading.Tasks.xml",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/ensureRedirect.xml",
+        "lib/portable-net40+win8/System.IO.dll",
+        "lib/portable-net40+win8/System.IO.xml",
+        "lib/portable-net40+win8/System.Runtime.dll",
+        "lib/portable-net40+win8/System.Runtime.xml",
+        "lib/portable-net40+win8/System.Threading.Tasks.dll",
+        "lib/portable-net40+win8/System.Threading.Tasks.xml",
+        "lib/portable-net40+win8/ensureRedirect.xml",
+        "lib/portable-net40+win8+wp8+wpa81/System.IO.dll",
+        "lib/portable-net40+win8+wp8+wpa81/System.IO.xml",
+        "lib/portable-net40+win8+wp8+wpa81/System.Runtime.dll",
+        "lib/portable-net40+win8+wp8+wpa81/System.Runtime.xml",
+        "lib/portable-net40+win8+wp8+wpa81/System.Threading.Tasks.dll",
+        "lib/portable-net40+win8+wp8+wpa81/System.Threading.Tasks.xml",
+        "lib/portable-net40+win8+wp8+wpa81/ensureRedirect.xml",
+        "lib/portable-net45+win8+wp8+wpa81/_._",
+        "lib/portable-net45+win8+wpa81/_._",
+        "lib/portable-net451+win81/_._",
+        "lib/portable-net451+win81+wpa81/_._",
+        "lib/portable-win81+wp81+wpa81/_._",
+        "lib/sl4/System.IO.dll",
+        "lib/sl4/System.IO.xml",
+        "lib/sl4/System.Runtime.dll",
+        "lib/sl4/System.Runtime.xml",
+        "lib/sl4/System.Threading.Tasks.dll",
+        "lib/sl4/System.Threading.Tasks.xml",
+        "lib/sl4-windowsphone71/System.IO.dll",
+        "lib/sl4-windowsphone71/System.IO.xml",
+        "lib/sl4-windowsphone71/System.Runtime.dll",
+        "lib/sl4-windowsphone71/System.Runtime.xml",
+        "lib/sl4-windowsphone71/System.Threading.Tasks.dll",
+        "lib/sl4-windowsphone71/System.Threading.Tasks.xml",
+        "lib/sl4-windowsphone71/ensureRedirect.xml",
+        "lib/sl5/System.IO.dll",
+        "lib/sl5/System.IO.xml",
+        "lib/sl5/System.Runtime.dll",
+        "lib/sl5/System.Runtime.xml",
+        "lib/sl5/System.Threading.Tasks.dll",
+        "lib/sl5/System.Threading.Tasks.xml",
+        "lib/win8/_._",
+        "lib/wp8/_._",
+        "lib/wpa81/_._"
+      ]
+    },
+    "Microsoft.Bcl.Async/1.0.168": {
+      "serviceable": false,
+      "sha": "tUNC02eBwDKpGre0BcNIvblLv1q0Q3DnS/vtkRHj2FE1sXwt386HAudztyl5C0U88hllrqHDvtlz8bK0Y8cHDA==",
+      "frameworks": {
+        "DNX,Version=v4.5.1": {
+          "dependencies": {
+            "Microsoft.Bcl": "1.1.8"
+          },
+          "frameworkAssemblies": [
+            "System.Net"
+          ],
+          "runtimeAssemblies": [
+            "lib/net40/Microsoft.Threading.Tasks.Extensions.Desktop.dll",
+            "lib/net40/Microsoft.Threading.Tasks.Extensions.dll",
+            "lib/net40/Microsoft.Threading.Tasks.dll"
+          ],
+          "compileAssemblies": [
+            "lib/net40/Microsoft.Threading.Tasks.Extensions.Desktop.dll",
+            "lib/net40/Microsoft.Threading.Tasks.Extensions.dll",
+            "lib/net40/Microsoft.Threading.Tasks.dll"
+          ]
+        },
+        ".NETFramework,Version=v4.5": {
+          "dependencies": {
+            "Microsoft.Bcl": "1.1.8"
+          },
+          "frameworkAssemblies": [
+            "System.Net"
+          ],
+          "runtimeAssemblies": [
+            "lib/net40/Microsoft.Threading.Tasks.Extensions.Desktop.dll",
+            "lib/net40/Microsoft.Threading.Tasks.Extensions.dll",
+            "lib/net40/Microsoft.Threading.Tasks.dll"
+          ],
+          "compileAssemblies": [
+            "lib/net40/Microsoft.Threading.Tasks.Extensions.Desktop.dll",
+            "lib/net40/Microsoft.Threading.Tasks.Extensions.dll",
+            "lib/net40/Microsoft.Threading.Tasks.dll"
+          ]
+        },
+        ".NETFramework,Version=v4.0": {
+          "dependencies": {
+            "Microsoft.Bcl": "1.1.8"
+          },
+          "frameworkAssemblies": [
+            "System.Net"
+          ],
+          "runtimeAssemblies": [
+            "lib/net40/Microsoft.Threading.Tasks.Extensions.Desktop.dll",
+            "lib/net40/Microsoft.Threading.Tasks.Extensions.dll",
+            "lib/net40/Microsoft.Threading.Tasks.dll"
+          ],
+          "compileAssemblies": [
+            "lib/net40/Microsoft.Threading.Tasks.Extensions.Desktop.dll",
+            "lib/net40/Microsoft.Threading.Tasks.Extensions.dll",
+            "lib/net40/Microsoft.Threading.Tasks.dll"
+          ]
+        },
+        "DNXCore,Version=v5.0": {
+          "dependencies": {
+            "Microsoft.Bcl": "1.1.8"
+          },
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [
+            "lib/portable-net45+win8+wp8+wpa81/Microsoft.Threading.Tasks.Extensions.dll",
+            "lib/portable-net45+win8+wp8+wpa81/Microsoft.Threading.Tasks.dll"
+          ],
+          "compileAssemblies": [
+            "lib/portable-net45+win8+wp8+wpa81/Microsoft.Threading.Tasks.Extensions.dll",
+            "lib/portable-net45+win8+wp8+wpa81/Microsoft.Threading.Tasks.dll"
+          ]
+        },
+        ".NETPortable,Version=v4.5,Profile=Profile78": {
+          "dependencies": {
+            "Microsoft.Bcl": "1.1.8"
+          },
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        },
+        ".NETPortable,Version=v4.5,Profile=Profile259": {
+          "dependencies": {
+            "Microsoft.Bcl": "1.1.8"
+          },
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        },
+        ".NETPortable,Version=v4.0,Profile=Profile344": {
+          "dependencies": {
+            "Microsoft.Bcl": "1.1.8"
+          },
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        },
+        ".NETPortable,Version=v4.0,Profile=Profile328": {
+          "dependencies": {
+            "Microsoft.Bcl": "1.1.8"
+          },
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        }
+      },
+      "files": [
+        "License-Stable.rtf",
+        "Microsoft.Bcl.Async.1.0.168.nupkg",
+        "Microsoft.Bcl.Async.1.0.168.nupkg.sha512",
+        "Microsoft.Bcl.Async.nuspec",
+        "lib/net40/Microsoft.Threading.Tasks.Extensions.Desktop.dll",
+        "lib/net40/Microsoft.Threading.Tasks.Extensions.Desktop.xml",
+        "lib/net40/Microsoft.Threading.Tasks.Extensions.dll",
+        "lib/net40/Microsoft.Threading.Tasks.Extensions.xml",
+        "lib/net40/Microsoft.Threading.Tasks.dll",
+        "lib/net40/Microsoft.Threading.Tasks.xml",
+        "lib/portable-net40+sl4+win8+wp71+wpa81/Microsoft.Threading.Tasks.Extensions.dll",
+        "lib/portable-net40+sl4+win8+wp71+wpa81/Microsoft.Threading.Tasks.Extensions.xml",
+        "lib/portable-net40+sl4+win8+wp71+wpa81/Microsoft.Threading.Tasks.dll",
+        "lib/portable-net40+sl4+win8+wp71+wpa81/Microsoft.Threading.Tasks.xml",
+        "lib/portable-net45+win8+wp8+wpa81/Microsoft.Threading.Tasks.Extensions.dll",
+        "lib/portable-net45+win8+wp8+wpa81/Microsoft.Threading.Tasks.Extensions.xml",
+        "lib/portable-net45+win8+wp8+wpa81/Microsoft.Threading.Tasks.dll",
+        "lib/portable-net45+win8+wp8+wpa81/Microsoft.Threading.Tasks.xml",
+        "lib/portable-net45+win8+wpa81/Microsoft.Threading.Tasks.Extensions.dll",
+        "lib/portable-net45+win8+wpa81/Microsoft.Threading.Tasks.Extensions.xml",
+        "lib/portable-net45+win8+wpa81/Microsoft.Threading.Tasks.dll",
+        "lib/portable-net45+win8+wpa81/Microsoft.Threading.Tasks.xml",
+        "lib/sl4/Microsoft.Threading.Tasks.Extensions.Silverlight.dll",
+        "lib/sl4/Microsoft.Threading.Tasks.Extensions.Silverlight.xml",
+        "lib/sl4/Microsoft.Threading.Tasks.Extensions.dll",
+        "lib/sl4/Microsoft.Threading.Tasks.Extensions.xml",
+        "lib/sl4/Microsoft.Threading.Tasks.dll",
+        "lib/sl4/Microsoft.Threading.Tasks.xml",
+        "lib/sl4-windowsphone71/Microsoft.Threading.Tasks.Extensions.Phone.dll",
+        "lib/sl4-windowsphone71/Microsoft.Threading.Tasks.Extensions.Phone.xml",
+        "lib/sl4-windowsphone71/Microsoft.Threading.Tasks.Extensions.dll",
+        "lib/sl4-windowsphone71/Microsoft.Threading.Tasks.Extensions.xml",
+        "lib/sl4-windowsphone71/Microsoft.Threading.Tasks.dll",
+        "lib/sl4-windowsphone71/Microsoft.Threading.Tasks.xml",
+        "lib/win8/Microsoft.Threading.Tasks.Extensions.dll",
+        "lib/win8/Microsoft.Threading.Tasks.Extensions.xml",
+        "lib/win8/Microsoft.Threading.Tasks.dll",
+        "lib/win8/Microsoft.Threading.Tasks.xml",
+        "lib/wp8/Microsoft.Threading.Tasks.Extensions.Phone.dll",
+        "lib/wp8/Microsoft.Threading.Tasks.Extensions.Phone.xml",
+        "lib/wp8/Microsoft.Threading.Tasks.Extensions.dll",
+        "lib/wp8/Microsoft.Threading.Tasks.Extensions.xml",
+        "lib/wp8/Microsoft.Threading.Tasks.dll",
+        "lib/wp8/Microsoft.Threading.Tasks.xml",
+        "lib/wpa81/Microsoft.Threading.Tasks.Extensions.dll",
+        "lib/wpa81/Microsoft.Threading.Tasks.Extensions.xml",
+        "lib/wpa81/Microsoft.Threading.Tasks.dll",
+        "lib/wpa81/Microsoft.Threading.Tasks.xml"
+      ]
+    },
+    "Microsoft.Bcl.Build/1.0.14": {
+      "serviceable": false,
+      "sha": "cDLKSvNvRa519hplsbSoYqO69TjdDIhfjtKUM0g20/nVROoWsGav9KCI9HtnGjLmdV1+TcUUDhbotcllibjPEA==",
+      "frameworks": {
+        "DNX,Version=v4.5.1": {
+          "dependencies": {},
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        },
+        ".NETFramework,Version=v4.5": {
+          "dependencies": {},
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        },
+        ".NETFramework,Version=v4.0": {
+          "dependencies": {},
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        },
+        "DNXCore,Version=v5.0": {
+          "dependencies": {},
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        },
+        ".NETPortable,Version=v4.5,Profile=Profile78": {
+          "dependencies": {},
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        },
+        ".NETPortable,Version=v4.5,Profile=Profile259": {
+          "dependencies": {},
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        },
+        ".NETPortable,Version=v4.0,Profile=Profile344": {
+          "dependencies": {},
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        },
+        ".NETPortable,Version=v4.0,Profile=Profile328": {
+          "dependencies": {},
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        }
+      },
+      "files": [
+        "License-Stable.rtf",
+        "Microsoft.Bcl.Build.1.0.14.nupkg",
+        "Microsoft.Bcl.Build.1.0.14.nupkg.sha512",
+        "Microsoft.Bcl.Build.nuspec",
+        "content/net40/_._",
+        "content/netcore45/_._",
+        "content/portable-net40+win8+sl4+wp71+wpa81/_._",
+        "content/sl4/_._",
+        "content/sl4-windowsphone71/_._",
+        "tools/Install.ps1",
+        "tools/Microsoft.Bcl.Build.Tasks.dll",
+        "tools/Microsoft.Bcl.Build.targets",
+        "tools/Uninstall.ps1"
+      ]
+    },
+    "Microsoft.Framework.Runtime/1.0.0-beta5-11611": {
+      "serviceable": true,
+      "sha": "8oNLU+MN72N99/bX3pfAN+BrR6mYKXv/u9u/jV6doEDjBPPcr1D1rYlbi5Lxx6m1vDxyEogryWVRgJshYhLbcg==",
+      "frameworks": {
+        "DNX,Version=v4.5.1": {
+          "dependencies": {
+            "Microsoft.Framework.Runtime.Loader": "1.0.0-beta5-11611",
+            "Microsoft.Framework.Runtime.Caching": "1.0.0-beta5-11611",
+            "Microsoft.Framework.Runtime.Interfaces": "1.0.0-beta5-11611",
+            "Newtonsoft.Json": "6.0.6"
+          },
+          "frameworkAssemblies": [
+            "System.Collections",
+            "System.Text.Encoding",
+            "System.Threading.Tasks",
+            "System.IO",
+            "System.IO.Compression",
+            "System.IO.Compression.FileSystem",
+            "System.Runtime",
+            "System.Xml",
+            "System.Xml.Linq",
+            "mscorlib",
+            "System",
+            "System.Core",
+            "Microsoft.CSharp"
+          ],
+          "runtimeAssemblies": [
+            "lib/dnx451/Microsoft.Framework.Runtime.dll"
+          ],
+          "compileAssemblies": [
+            "lib/dnx451/Microsoft.Framework.Runtime.dll"
+          ]
+        },
+        ".NETFramework,Version=v4.5": {
+          "dependencies": {},
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        },
+        ".NETFramework,Version=v4.0": {
+          "dependencies": {},
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        },
+        "DNXCore,Version=v5.0": {
+          "dependencies": {
+            "Microsoft.Framework.Runtime.Loader": "1.0.0-beta5-11611",
+            "Microsoft.Framework.Runtime.Caching": "1.0.0-beta5-11611",
+            "Microsoft.Framework.Runtime.Interfaces": "1.0.0-beta5-11611",
+            "Newtonsoft.Json": "6.0.6",
+            "System.Collections.Concurrent": "4.0.10-beta-22823",
+            "System.Diagnostics.Tools": "4.0.0-beta-22823",
+            "System.Dynamic.Runtime": "4.0.10-beta-22823",
+            "System.Globalization": "4.0.10-beta-22823",
+            "System.IO.Compression": "4.0.0-beta-22823",
+            "System.IO.FileSystem.Watcher": "4.0.0-beta-22823",
+            "System.Linq": "4.0.0-beta-22823",
+            "System.Reflection.Extensions": "4.0.0-beta-22823",
+            "System.Resources.ResourceManager": "4.0.0-beta-22823",
+            "System.Resources.ReaderWriter": "4.0.0-beta-22823",
+            "System.Text.Encoding": "4.0.10-beta-22823",
+            "System.Text.RegularExpressions": "4.0.10-beta-22823",
+            "System.Threading.Timer": "4.0.0-beta-22823",
+            "System.Threading.Tasks": "4.0.10-beta-22823",
+            "System.Threading.Thread": "4.0.0-beta-22823",
+            "System.Threading.ThreadPool": "4.0.10-beta-22823",
+            "System.Xml.ReaderWriter": "4.0.10-beta-22823",
+            "System.Xml.XDocument": "4.0.10-beta-22823",
+            "System.Xml.XmlSerializer": "4.0.10-beta-22823"
+          },
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [
+            "lib/dnxcore50/Microsoft.Framework.Runtime.dll"
+          ],
+          "compileAssemblies": [
+            "lib/dnxcore50/Microsoft.Framework.Runtime.dll"
+          ]
+        },
+        ".NETPortable,Version=v4.5,Profile=Profile78": {
+          "dependencies": {},
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        },
+        ".NETPortable,Version=v4.5,Profile=Profile259": {
+          "dependencies": {},
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        },
+        ".NETPortable,Version=v4.0,Profile=Profile344": {
+          "dependencies": {},
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        },
+        ".NETPortable,Version=v4.0,Profile=Profile328": {
+          "dependencies": {},
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        }
+      },
+      "files": [
+        "Microsoft.Framework.Runtime.1.0.0-beta5-11611.nupkg",
+        "Microsoft.Framework.Runtime.1.0.0-beta5-11611.nupkg.sha512",
+        "Microsoft.Framework.Runtime.nuspec",
+        "lib/dnx451/Microsoft.Framework.Runtime.dll",
+        "lib/dnx451/Microsoft.Framework.Runtime.xml",
+        "lib/dnxcore50/Microsoft.Framework.Runtime.dll",
+        "lib/dnxcore50/Microsoft.Framework.Runtime.xml"
+      ]
+    },
+    "Microsoft.Framework.Runtime.Caching/1.0.0-beta5-11611": {
+      "serviceable": false,
+      "sha": "xZLhpLZB7T2+m9Jg8f5wjr9Ks32DdaBCex75YnHtT6c6ln1aEev7jfafXyk/tR4JkTca2TEwe1DrWb79GzWgog==",
+      "frameworks": {
+        "DNX,Version=v4.5.1": {
+          "dependencies": {
+            "Microsoft.Framework.Runtime.Interfaces": "1.0.0-beta5-11611"
+          },
+          "frameworkAssemblies": [
+            "mscorlib",
+            "System",
+            "System.Core",
+            "Microsoft.CSharp"
+          ],
+          "runtimeAssemblies": [
+            "lib/dnx451/Microsoft.Framework.Runtime.Caching.dll"
+          ],
+          "compileAssemblies": [
+            "lib/dnx451/Microsoft.Framework.Runtime.Caching.dll"
+          ]
+        },
+        ".NETFramework,Version=v4.5": {
+          "dependencies": {},
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        },
+        ".NETFramework,Version=v4.0": {
+          "dependencies": {},
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        },
+        "DNXCore,Version=v5.0": {
+          "dependencies": {
+            "Microsoft.Framework.Runtime.Interfaces": "1.0.0-beta5-11611",
+            "System.Runtime": "4.0.20-beta-22823",
+            "System.IO.FileSystem": "4.0.0-beta-22823",
+            "System.Linq": "4.0.0-beta-22823",
+            "System.Collections.Concurrent": "4.0.10-beta-22823"
+          },
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [
+            "lib/dnxcore50/Microsoft.Framework.Runtime.Caching.dll"
+          ],
+          "compileAssemblies": [
+            "lib/dnxcore50/Microsoft.Framework.Runtime.Caching.dll"
+          ]
+        },
+        ".NETPortable,Version=v4.5,Profile=Profile78": {
+          "dependencies": {},
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        },
+        ".NETPortable,Version=v4.5,Profile=Profile259": {
+          "dependencies": {},
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        },
+        ".NETPortable,Version=v4.0,Profile=Profile344": {
+          "dependencies": {},
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        },
+        ".NETPortable,Version=v4.0,Profile=Profile328": {
+          "dependencies": {},
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        }
+      },
+      "files": [
+        "Microsoft.Framework.Runtime.Caching.1.0.0-beta5-11611.nupkg",
+        "Microsoft.Framework.Runtime.Caching.1.0.0-beta5-11611.nupkg.sha512",
+        "Microsoft.Framework.Runtime.Caching.nuspec",
+        "lib/dnx451/Microsoft.Framework.Runtime.Caching.dll",
+        "lib/dnx451/Microsoft.Framework.Runtime.Caching.xml",
+        "lib/dnxcore50/Microsoft.Framework.Runtime.Caching.dll",
+        "lib/dnxcore50/Microsoft.Framework.Runtime.Caching.xml"
+      ]
+    },
+    "Microsoft.Framework.Runtime.Compilation.DesignTime/1.0.0-beta5-11611": {
+      "serviceable": false,
+      "sha": "lzqivNIl/eRmUm291g2HlhYptjgp3o8wcf1luUFwWleUNAm9kFfBkIA0ta65l3AMLdYKWxGVaeHgqQ+UP/IUfw==",
+      "frameworks": {
+        "DNX,Version=v4.5.1": {
+          "dependencies": {
+            "Newtonsoft.Json": "6.0.6",
+            "Microsoft.Framework.Runtime.Interfaces": "1.0.0-beta5-11611"
+          },
+          "frameworkAssemblies": [
+            "mscorlib",
+            "System",
+            "System.Core",
+            "Microsoft.CSharp"
+          ],
+          "runtimeAssemblies": [
+            "lib/dnx451/Microsoft.Framework.Runtime.Compilation.DesignTime.dll"
+          ],
+          "compileAssemblies": [
+            "lib/dnx451/Microsoft.Framework.Runtime.Compilation.DesignTime.dll"
+          ]
+        },
+        ".NETFramework,Version=v4.5": {
+          "dependencies": {},
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        },
+        ".NETFramework,Version=v4.0": {
+          "dependencies": {},
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        },
+        "DNXCore,Version=v5.0": {
+          "dependencies": {
+            "Newtonsoft.Json": "6.0.6",
+            "Microsoft.Framework.Runtime.Interfaces": "1.0.0-beta5-11611",
+            "System.Net.Sockets": "4.0.0-beta-22823",
+            "System.Dynamic.Runtime": "4.0.10-beta-22823",
+            "System.IO.FileSystem": "4.0.0-beta-22823",
+            "System.Collections.Concurrent": "4.0.10-beta-22823",
+            "System.Threading.Thread": "4.0.0-beta-22823"
+          },
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [
+            "lib/dnxcore50/Microsoft.Framework.Runtime.Compilation.DesignTime.dll"
+          ],
+          "compileAssemblies": [
+            "lib/dnxcore50/Microsoft.Framework.Runtime.Compilation.DesignTime.dll"
+          ]
+        },
+        ".NETPortable,Version=v4.5,Profile=Profile78": {
+          "dependencies": {},
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        },
+        ".NETPortable,Version=v4.5,Profile=Profile259": {
+          "dependencies": {},
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        },
+        ".NETPortable,Version=v4.0,Profile=Profile344": {
+          "dependencies": {},
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        },
+        ".NETPortable,Version=v4.0,Profile=Profile328": {
+          "dependencies": {},
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        }
+      },
+      "files": [
+        "Microsoft.Framework.Runtime.Compilation.DesignTime.1.0.0-beta5-11611.nupkg",
+        "Microsoft.Framework.Runtime.Compilation.DesignTime.1.0.0-beta5-11611.nupkg.sha512",
+        "Microsoft.Framework.Runtime.Compilation.DesignTime.nuspec",
+        "lib/dnx451/Microsoft.Framework.Runtime.Compilation.DesignTime.dll",
+        "lib/dnx451/Microsoft.Framework.Runtime.Compilation.DesignTime.xml",
+        "lib/dnxcore50/Microsoft.Framework.Runtime.Compilation.DesignTime.dll",
+        "lib/dnxcore50/Microsoft.Framework.Runtime.Compilation.DesignTime.xml"
+      ]
+    },
+    "Microsoft.Framework.Runtime.Interfaces/1.0.0-beta5-11611": {
+      "serviceable": true,
+      "sha": "UWkCKmqV9DUTHO/ktYL3pJVKin+i1F4JQL7kNxYuoeMZwNcoBGn6I4G6LLal2Oqi6/MEl+6IpG6hRPqLeGMIEw==",
+      "frameworks": {
+        "DNX,Version=v4.5.1": {
+          "dependencies": {},
+          "frameworkAssemblies": [
+            "mscorlib",
+            "System",
+            "System.Core",
+            "Microsoft.CSharp"
+          ],
+          "runtimeAssemblies": [
+            "lib/dnx451/Microsoft.Framework.Runtime.Interfaces.dll"
+          ],
+          "compileAssemblies": [
+            "lib/dnx451/Microsoft.Framework.Runtime.Interfaces.dll"
+          ]
+        },
+        ".NETFramework,Version=v4.5": {
+          "dependencies": {},
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        },
+        ".NETFramework,Version=v4.0": {
+          "dependencies": {},
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        },
+        "DNXCore,Version=v5.0": {
+          "dependencies": {
+            "System.IO": "4.0.10-beta-22823",
+            "System.Reflection": "4.0.10-beta-22823",
+            "System.Runtime": "4.0.20-beta-22823",
+            "System.Runtime.Extensions": "4.0.10-beta-22823",
+            "System.Threading.Tasks": "4.0.10-beta-22823",
+            "System.ComponentModel": "4.0.0-beta-22823"
+          },
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [
+            "lib/dnxcore50/Microsoft.Framework.Runtime.Interfaces.dll"
+          ],
+          "compileAssemblies": [
+            "lib/dnxcore50/Microsoft.Framework.Runtime.Interfaces.dll"
+          ]
+        },
+        ".NETPortable,Version=v4.5,Profile=Profile78": {
+          "dependencies": {},
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        },
+        ".NETPortable,Version=v4.5,Profile=Profile259": {
+          "dependencies": {},
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        },
+        ".NETPortable,Version=v4.0,Profile=Profile344": {
+          "dependencies": {},
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        },
+        ".NETPortable,Version=v4.0,Profile=Profile328": {
+          "dependencies": {},
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        }
+      },
+      "files": [
+        "Microsoft.Framework.Runtime.Interfaces.1.0.0-beta5-11611.nupkg",
+        "Microsoft.Framework.Runtime.Interfaces.1.0.0-beta5-11611.nupkg.sha512",
+        "Microsoft.Framework.Runtime.Interfaces.nuspec",
+        "lib/dnx451/Microsoft.Framework.Runtime.Interfaces.dll",
+        "lib/dnx451/Microsoft.Framework.Runtime.Interfaces.xml",
+        "lib/dnxcore50/Microsoft.Framework.Runtime.Interfaces.dll",
+        "lib/dnxcore50/Microsoft.Framework.Runtime.Interfaces.xml"
+      ]
+    },
+    "Microsoft.Framework.Runtime.Loader/1.0.0-beta5-11611": {
+      "serviceable": true,
+      "sha": "V3/hCWGuAIBOliHTKEXFqW2ibByfbHf7eW7oTlyDzqhbOCU6TWbn1sykDKpPoTuwYZzoQwsTJWYx4uhpCVfisw==",
+      "frameworks": {
+        "DNX,Version=v4.5.1": {
+          "dependencies": {
+            "Microsoft.Framework.Runtime.Interfaces": "1.0.0-beta5-11611"
+          },
+          "frameworkAssemblies": [
+            "mscorlib",
+            "System",
+            "System.Core",
+            "Microsoft.CSharp"
+          ],
+          "runtimeAssemblies": [
+            "lib/dnx451/Microsoft.Framework.Runtime.Loader.dll"
+          ],
+          "compileAssemblies": [
+            "lib/dnx451/Microsoft.Framework.Runtime.Loader.dll"
+          ]
+        },
+        ".NETFramework,Version=v4.5": {
+          "dependencies": {},
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        },
+        ".NETFramework,Version=v4.0": {
+          "dependencies": {},
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        },
+        "DNXCore,Version=v5.0": {
+          "dependencies": {
+            "Microsoft.Framework.Runtime.Interfaces": "1.0.0-beta5-11611",
+            "System.Collections": "4.0.10-beta-22823",
+            "System.Collections.Concurrent": "4.0.10-beta-22823",
+            "System.Runtime.Loader": "4.0.0-beta-22823",
+            "System.IO.FileSystem": "4.0.0-beta-22823",
+            "System.AppContext": "4.0.0-beta-22823",
+            "System.Threading": "4.0.10-beta-22823"
+          },
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [
+            "lib/dnxcore50/Microsoft.Framework.Runtime.Loader.dll"
+          ],
+          "compileAssemblies": [
+            "lib/dnxcore50/Microsoft.Framework.Runtime.Loader.dll"
+          ]
+        },
+        ".NETPortable,Version=v4.5,Profile=Profile78": {
+          "dependencies": {},
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        },
+        ".NETPortable,Version=v4.5,Profile=Profile259": {
+          "dependencies": {},
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        },
+        ".NETPortable,Version=v4.0,Profile=Profile344": {
+          "dependencies": {},
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        },
+        ".NETPortable,Version=v4.0,Profile=Profile328": {
+          "dependencies": {},
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        }
+      },
+      "files": [
+        "Microsoft.Framework.Runtime.Loader.1.0.0-beta5-11611.nupkg",
+        "Microsoft.Framework.Runtime.Loader.1.0.0-beta5-11611.nupkg.sha512",
+        "Microsoft.Framework.Runtime.Loader.nuspec",
+        "lib/dnx451/Microsoft.Framework.Runtime.Loader.dll",
+        "lib/dnx451/Microsoft.Framework.Runtime.Loader.xml",
+        "lib/dnxcore50/Microsoft.Framework.Runtime.Loader.dll",
+        "lib/dnxcore50/Microsoft.Framework.Runtime.Loader.xml"
+      ]
+    },
+    "Newtonsoft.Json/6.0.6": {
+      "serviceable": false,
+      "sha": "w26uZNyCG5VeoKiEOJ4+9/o8koSofLKwHl7WLreIcp0U6r57L7WiRXmjp8MTKFw6dYNZ9AE0lw69WYbIhUsU9Q==",
+      "frameworks": {
+        "DNX,Version=v4.5.1": {
+          "dependencies": {},
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [
+            "lib/net45/Newtonsoft.Json.dll"
+          ],
+          "compileAssemblies": [
+            "lib/net45/Newtonsoft.Json.dll"
+          ]
+        },
+        ".NETFramework,Version=v4.5": {
+          "dependencies": {},
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [
+            "lib/net45/Newtonsoft.Json.dll"
+          ],
+          "compileAssemblies": [
+            "lib/net45/Newtonsoft.Json.dll"
+          ]
+        },
+        ".NETFramework,Version=v4.0": {
+          "dependencies": {},
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [
+            "lib/net40/Newtonsoft.Json.dll"
+          ],
+          "compileAssemblies": [
+            "lib/net40/Newtonsoft.Json.dll"
+          ]
+        },
+        "DNXCore,Version=v5.0": {
+          "dependencies": {},
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [
+            "lib/portable-net45+wp80+win8+wpa81+aspnetcore50/Newtonsoft.Json.dll"
+          ],
+          "compileAssemblies": [
+            "lib/portable-net45+wp80+win8+wpa81+aspnetcore50/Newtonsoft.Json.dll"
+          ]
+        },
+        ".NETPortable,Version=v4.5,Profile=Profile78": {
+          "dependencies": {},
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        },
+        ".NETPortable,Version=v4.5,Profile=Profile259": {
+          "dependencies": {},
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        },
+        ".NETPortable,Version=v4.0,Profile=Profile344": {
+          "dependencies": {},
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        },
+        ".NETPortable,Version=v4.0,Profile=Profile328": {
+          "dependencies": {},
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        }
+      },
+      "files": [
+        "Newtonsoft.Json.6.0.6.nupkg",
+        "Newtonsoft.Json.6.0.6.nupkg.sha512",
+        "Newtonsoft.Json.nuspec",
+        "lib/net20/Newtonsoft.Json.dll",
+        "lib/net20/Newtonsoft.Json.xml",
+        "lib/net35/Newtonsoft.Json.dll",
+        "lib/net35/Newtonsoft.Json.xml",
+        "lib/net40/Newtonsoft.Json.dll",
+        "lib/net40/Newtonsoft.Json.xml",
+        "lib/net45/Newtonsoft.Json.dll",
+        "lib/net45/Newtonsoft.Json.xml",
+        "lib/netcore45/Newtonsoft.Json.dll",
+        "lib/netcore45/Newtonsoft.Json.xml",
+        "lib/portable-net40+sl5+wp80+win8+wpa81/Newtonsoft.Json.dll",
+        "lib/portable-net40+sl5+wp80+win8+wpa81/Newtonsoft.Json.xml",
+        "lib/portable-net45+wp80+win8+wpa81+aspnetcore50/Newtonsoft.Json.dll",
+        "lib/portable-net45+wp80+win8+wpa81+aspnetcore50/Newtonsoft.Json.xml",
+        "tools/install.ps1"
+      ]
+    },
+    "System.Runtime/4.0.20-beta-22823": {
+      "serviceable": false,
+      "sha": "y82NX3nrEKgZlG43nywpQA0r8nP0QBpgV0uxkOkwQq+BQY3v38PeOJkPapDw3RYL10v4atKNgjfGsyvqw4f0Jw==",
+      "frameworks": {
+        "DNX,Version=v4.5.1": {
+          "dependencies": {},
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [
+            "lib/net45/System.Runtime.dll"
+          ],
+          "compileAssemblies": [
+            "lib/net45/System.Runtime.dll"
+          ]
+        },
+        ".NETFramework,Version=v4.5": {
+          "dependencies": {},
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [
+            "lib/net45/System.Runtime.dll"
+          ],
+          "compileAssemblies": [
+            "lib/net45/System.Runtime.dll"
+          ]
+        },
+        ".NETFramework,Version=v4.0": {
+          "dependencies": {},
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        },
+        "DNXCore,Version=v5.0": {
+          "dependencies": {},
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [
+            "lib/aspnetcore50/System.Runtime.dll"
+          ],
+          "compileAssemblies": [
+            "lib/contract/System.Runtime.dll"
+          ]
+        },
+        ".NETPortable,Version=v4.5,Profile=Profile78": {
+          "dependencies": {},
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        },
+        ".NETPortable,Version=v4.5,Profile=Profile259": {
+          "dependencies": {},
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        },
+        ".NETPortable,Version=v4.0,Profile=Profile344": {
+          "dependencies": {},
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        },
+        ".NETPortable,Version=v4.0,Profile=Profile328": {
+          "dependencies": {},
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        }
+      },
+      "files": [
+        "License.rtf",
+        "System.Runtime.4.0.20-beta-22823.nupkg",
+        "System.Runtime.4.0.20-beta-22823.nupkg.sha512",
+        "System.Runtime.nuspec",
+        "lib/aspnetcore50/System.Runtime.dll",
+        "lib/contract/System.Runtime.dll",
+        "lib/net45/System.Runtime.dll",
+        "lib/portable-wpa81+wp80+win80+net45+aspnetcore50/System.Runtime.dll"
+      ]
+    },
+    "System.Text.RegularExpressions/4.0.10-beta-22823": {
+      "serviceable": false,
+      "sha": "D7mn1cNDzgDVO7eZZxFbCnxAsleHr+pdK9K2kRIl7967RhEIA8YTCxNRdLkxRrfiq1+/+vybAs3ioFsZfX1ZEw==",
+      "frameworks": {
+        "DNX,Version=v4.5.1": {
+          "dependencies": {
+            "System.Runtime": "4.0.0-beta-22823"
+          },
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [
+            "lib/net45/System.Text.RegularExpressions.dll"
+          ],
+          "compileAssemblies": [
+            "lib/net45/System.Text.RegularExpressions.dll"
+          ]
+        },
+        ".NETFramework,Version=v4.5": {
+          "dependencies": {
+            "System.Runtime": "4.0.0-beta-22823"
+          },
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [
+            "lib/net45/System.Text.RegularExpressions.dll"
+          ],
+          "compileAssemblies": [
+            "lib/net45/System.Text.RegularExpressions.dll"
+          ]
+        },
+        ".NETFramework,Version=v4.0": {
+          "dependencies": {
+            "System.Runtime": "4.0.0-beta-22823"
+          },
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        },
+        "DNXCore,Version=v5.0": {
+          "dependencies": {
+            "System.Runtime": "4.0.0-beta-22823"
+          },
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [
+            "lib/aspnetcore50/System.Text.RegularExpressions.dll"
+          ],
+          "compileAssemblies": [
+            "lib/contract/System.Text.RegularExpressions.dll"
+          ]
+        },
+        ".NETPortable,Version=v4.5,Profile=Profile78": {
+          "dependencies": {
+            "System.Runtime": "4.0.0-beta-22823"
+          },
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        },
+        ".NETPortable,Version=v4.5,Profile=Profile259": {
+          "dependencies": {
+            "System.Runtime": "4.0.0-beta-22823"
+          },
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        },
+        ".NETPortable,Version=v4.0,Profile=Profile344": {
+          "dependencies": {
+            "System.Runtime": "4.0.0-beta-22823"
+          },
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        },
+        ".NETPortable,Version=v4.0,Profile=Profile328": {
+          "dependencies": {
+            "System.Runtime": "4.0.0-beta-22823"
+          },
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        }
+      },
+      "files": [
+        "License.rtf",
+        "System.Text.RegularExpressions.4.0.10-beta-22823.nupkg",
+        "System.Text.RegularExpressions.4.0.10-beta-22823.nupkg.sha512",
+        "System.Text.RegularExpressions.nuspec",
+        "lib/aspnetcore50/System.Text.RegularExpressions.dll",
+        "lib/contract/System.Text.RegularExpressions.dll",
+        "lib/net45/System.Text.RegularExpressions.dll",
+        "lib/portable-wpa81+wp80+win80+net45+aspnetcore50/System.Text.RegularExpressions.dll"
+      ]
+    },
+    "System.Threading.Tasks/4.0.10-beta-22823": {
+      "serviceable": false,
+      "sha": "SJ2FycEI6QresKme7Y/rLo32PnBaBrEajuKq5OLlG8gql+/woXAV31IlwNeVJ3GGXDGeNatA4HqJGY9m9QH/1g==",
+      "frameworks": {
+        "DNX,Version=v4.5.1": {
+          "dependencies": {
+            "System.Runtime": "4.0.0-beta-22823"
+          },
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [
+            "lib/net45/System.Threading.Tasks.dll"
+          ],
+          "compileAssemblies": [
+            "lib/net45/System.Threading.Tasks.dll"
+          ]
+        },
+        ".NETFramework,Version=v4.5": {
+          "dependencies": {
+            "System.Runtime": "4.0.0-beta-22823"
+          },
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [
+            "lib/net45/System.Threading.Tasks.dll"
+          ],
+          "compileAssemblies": [
+            "lib/net45/System.Threading.Tasks.dll"
+          ]
+        },
+        ".NETFramework,Version=v4.0": {
+          "dependencies": {
+            "System.Runtime": "4.0.0-beta-22823"
+          },
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        },
+        "DNXCore,Version=v5.0": {
+          "dependencies": {
+            "System.Runtime": "4.0.0-beta-22823"
+          },
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [
+            "lib/aspnetcore50/System.Threading.Tasks.dll"
+          ],
+          "compileAssemblies": [
+            "lib/contract/System.Threading.Tasks.dll"
+          ]
+        },
+        ".NETPortable,Version=v4.5,Profile=Profile78": {
+          "dependencies": {
+            "System.Runtime": "4.0.0-beta-22823"
+          },
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        },
+        ".NETPortable,Version=v4.5,Profile=Profile259": {
+          "dependencies": {
+            "System.Runtime": "4.0.0-beta-22823"
+          },
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        },
+        ".NETPortable,Version=v4.0,Profile=Profile344": {
+          "dependencies": {
+            "System.Runtime": "4.0.0-beta-22823"
+          },
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        },
+        ".NETPortable,Version=v4.0,Profile=Profile328": {
+          "dependencies": {
+            "System.Runtime": "4.0.0-beta-22823"
+          },
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [],
+          "compileAssemblies": []
+        }
+      },
+      "files": [
+        "License.rtf",
+        "System.Threading.Tasks.4.0.10-beta-22823.nupkg",
+        "System.Threading.Tasks.4.0.10-beta-22823.nupkg.sha512",
+        "System.Threading.Tasks.nuspec",
+        "lib/aspnetcore50/System.Threading.Tasks.dll",
+        "lib/contract/System.Threading.Tasks.dll",
+        "lib/net45/System.Threading.Tasks.dll",
+        "lib/portable-wpa81+wp80+win80+net45+aspnetcore50/System.Threading.Tasks.dll"
+      ]
+    }
+  }
+}

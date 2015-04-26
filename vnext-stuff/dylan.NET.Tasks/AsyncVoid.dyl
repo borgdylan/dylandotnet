@@ -10,7 +10,7 @@
 	//The code in this region was ported from code in ASP.NET WebStack which is under the Apache License
 	//Original code was: Copyright (c) Microsoft Open Technologies, Inc. All rights reserved. See COPYING.TaskHelpers.Sources
 	
-	struct private AsyncVoid
+	struct public AsyncVoid
     end struct
 	
 end #region

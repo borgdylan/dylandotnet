@@ -1,39 +1,33 @@
 {
-	"version": "1.2.0.0",
+	"version": "1.3.0.0",
 	"authors": ["borgdylan"],
 	"description": "Task helper library for dylan.NET (await support for Task, Task<T>, YieldAwaitable, ConfiguredTaskAwaitable, ConfiguredTaskAwaitable<T> + new IAwaiter(<T>)/IAwaitable(<T>) abstractions)",
 	"license": "http://www.gnu.org/copyleft/lesser.html",
-	"projectUrl": "http://launchpad.net/dylandotnet",
-	"tags": [".NET4.0" ,".NET4.5", "ASP.NET5.0", "ASP.NETCORE5.0", "Mono", "PCL"],
-	"code" : "*.dyl;*/*.dyl",
-	"resources" : "*.resources",
+	"projectUrl": "https://github.com/borgdylan/dylandotnet",
+	"tags": [".NET4.0" ,".NET4.5", "DNX4.5.1", "DNXCORE5.0", "Mono", "PCL"],
+	"compile" : "*.dyl;*/*.dyl",
+	"resource" : "*.resources",
 	"exclude": "msbuild.dyl",
-	"language": {
+	"compiler": {
         "name": "dylan.NET",
-        "assembly": "dylan.NET.K",
-        "projectReferenceProviderType": "dylan.NET.K.DNProjectReferenceProvider"
+        "compilerAssembly": "dylan.NET.K",
+        "compilerType": "dylan.NET.K.DNProjectCompiler"
     },
   "dependencies": {
     },
   "compilationOptions": {
-     "define": [],
-     "optimize": "true"
+     "define": []
   },
   "commands": {
   },
   "frameworks": {
-    "net451": {
+    "dnx451": {
       "dependencies": {
-        "dylan.NET.K" : {"type": "build"}
-      }
+      	"dylan.NET.K" : {"type": "build"}
+     }
     },
     "net45": {
       "dependencies": {
-     }
-    },
-    "aspnet50": {
-      "dependencies": {
-      	"dylan.NET.K" : {"type": "build"}
      }
     },
     "net40": {
@@ -41,7 +35,7 @@
       	"Microsoft.Bcl.Async": "1.0.168"
       }
     },
-    "aspnetcore50": {
+    "dnxcore50": {
     	"dependencies": {
     		"System.Runtime": "4.0.20-*",
     		"System.Text.RegularExpressions": "4.0.10-*",
@@ -49,31 +43,40 @@
     	}
     },
     ".NETPortable,Version=v4.5,Profile=Profile78": {
-    	"bin": {
-			"assembly": "bin/PCL/Profile78/dylan.NET.Tasks.dll"
-		}
+    	"frameworkAssemblies": {
+    		"System.Runtime": "4.0.0.0",
+    		"System.Text.RegularExpressions": "4.0.0.0",
+    		"System.Threading.Tasks": "4.0.0.0"
+    	},
+    	"compilationOptions": {
+    		"define": ["PORTABLE"]
+  		}
     },
     ".NETPortable,Version=v4.5,Profile=Profile259": {
-    	"bin": {
-			"assembly": "bin/PCL/Profile259/dylan.NET.Tasks.dll"
-		}
+    	"frameworkAssemblies": {
+    		"System.Runtime": "4.0.0.0",
+    		"System.Text.RegularExpressions": "4.0.0.0",
+    		"System.Threading.Tasks": "4.0.0.0"
+    	},
+    	"compilationOptions": {
+    		"define": ["PORTABLE"]
+  		}
     },
     ".NETPortable,Version=v4.0,Profile=Profile344": {
-    	"bin": {
-			"assembly": "bin/PCL/Profile344/dylan.NET.Tasks.dll"
-		}
+    	"frameworkAssemblies": {
+    		"mscorlib": "2.0.5.0"
+    	},
+    	"compilationOptions": {
+    		"define": ["PORTABLE", "PORTABLESHIM"]
+  		}
     },
     ".NETPortable,Version=v4.0,Profile=Profile328": {
-    	"bin": {
-			"assembly": "bin/PCL/Profile328/dylan.NET.Tasks.dll"
-		}
+    	"frameworkAssemblies": {
+    		"mscorlib": "2.0.5.0"
+    	},
+    	"compilationOptions": {
+    		"define": ["PORTABLE", "PORTABLESHIM"]
+  		}
     }
-  },
-  "scripts": {
-  	"prebuild": ["xbuild /p:ReleaseVersion=%project:Version% dylan.NET.Tasks.Profile78.dylproj", "rm -r obj",
-  				"xbuild /p:ReleaseVersion=%project:Version% dylan.NET.Tasks.Profile344.dylproj", "rm -r obj",
-  				"xbuild /p:ReleaseVersion=%project:Version% dylan.NET.Tasks.Profile328.dylproj", "rm -r obj",
-  				"xbuild /p:ReleaseVersion=%project:Version% dylan.NET.Tasks.Profile259.dylproj", "rm -r obj"],
-  	"postbuild": "rm -r bin/PCL"
   }
 }
