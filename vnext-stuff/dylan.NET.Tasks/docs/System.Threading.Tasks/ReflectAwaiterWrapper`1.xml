@@ -1,0 +1,105 @@
+<Type Name="ReflectAwaiterWrapper&lt;TResult&gt;" FullName="System.Threading.Tasks.ReflectAwaiterWrapper&lt;TResult&gt;">
+  <TypeSignature Language="C#" Value="public class ReflectAwaiterWrapper&lt;TResult&gt; : System.Runtime.CompilerServices.INotifyCompletion, System.Threading.Tasks.IAwaiter&lt;TResult&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi ReflectAwaiterWrapper`1&lt;TResult&gt; extends System.Object implements class System.Runtime.CompilerServices.INotifyCompletion, class System.Threading.Tasks.IAwaiter`1&lt;!TResult&gt;" />
+  <AssemblyInfo>
+    <AssemblyName>dylan.NET.Tasks</AssemblyName>
+    <AssemblyVersion>1.2.1.0</AssemblyVersion>
+    <AssemblyVersion>1.3.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <TypeParameters>
+    <TypeParameter Name="TResult" />
+  </TypeParameters>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>System.Runtime.CompilerServices.INotifyCompletion</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>System.Threading.Tasks.IAwaiter&lt;TResult&gt;</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <typeparam name="TResult">The type of result returned by the awaitable being awaited.</typeparam>
+    <summary>An IAwaiter&lt;TResult&gt; implementation that wraps an ordinary object.</summary>
+    <remarks>This implementation makes use of reflection and is not available for PCLs. It is recommended to make use of strongly typed wrappers instead due to the penalties associated with reflection. If an IAwaiter&lt;TResult&gt; implementation is passed in, no reflection will be used in preference to calling the methods on the IAwaiter&lt;TResult&gt; directly.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public ReflectAwaiterWrapper (object awaiter);" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor(object awaiter) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.2.1.0</AssemblyVersion>
+        <AssemblyVersion>1.3.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="awaiter" Type="System.Object" />
+      </Parameters>
+      <Docs>
+        <param name="awaiter">The object to wrap.</param>
+        <summary>Constructs a new object wrapper.</summary>
+        <remarks>No validation regarding whether the object's type implements the required functions is made at this point. That is done lazily when an actual function call is made.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetResult">
+      <MemberSignature Language="C#" Value="public virtual TResult GetResult ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance !TResult GetResult() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.2.1.0</AssemblyVersion>
+        <AssemblyVersion>1.3.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>TResult</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Concludes the await, throwing any exceptions thrown by the awaitable in the process.</summary>
+        <returns>The result returned by the task.</returns>
+        <remarks>Calls the underlying GetResult by using reflection. If the given awaiter is an IAwaiter&lt;TResult&gt;, its GetResult code is called directly to bypass the reflection penalty.</remarks>
+        <exception cref="System.ArgumentException">Thrown if the given awaiter does not have the GetResult method.</exception>
+      </Docs>
+    </Member>
+    <Member MemberName="IsCompleted">
+      <MemberSignature Language="C#" Value="public virtual bool IsCompleted { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsCompleted" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.2.1.0</AssemblyVersion>
+        <AssemblyVersion>1.3.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Gets the completion state of the awaitable being awaited.</summary>
+        <value>True if the completion handler can be run immediately, else false.</value>
+        <remarks>Gets the underlying IsCompleted value by using reflection. If the given awaiter is an IAwaiter&lt;TResult&gt;, its IsCompleted property value is retrieved directly to avoid the penalties of reflection.</remarks>
+        <exception cref="System.ArgumentException">Thrown if the given awaiter does not have the IsCompleted property.</exception>
+      </Docs>
+    </Member>
+    <Member MemberName="OnCompleted">
+      <MemberSignature Language="C#" Value="public virtual void OnCompleted (Action continuation);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void OnCompleted(class System.Action continuation) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.2.1.0</AssemblyVersion>
+        <AssemblyVersion>1.3.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="continuation" Type="System.Action" />
+      </Parameters>
+      <Docs>
+        <param name="continuation">The function to execute as the continuation.</param>
+        <summary>Registers the given function to run when the task resolves to a value/fails.</summary>
+        <remarks>Calls the underlying OnCompleted using reflection. If the given awaiter implements INotifyCompletion, its OnCompleted method is used instead to avoid using reflection. Note that all IAwaiter&lt;TResult&gt; implementations also implement INotifyCompletion.</remarks>
+        <exception cref="System.ArgumentException">Thrown if the given awaiter does not have the OnCompleted method.</exception>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

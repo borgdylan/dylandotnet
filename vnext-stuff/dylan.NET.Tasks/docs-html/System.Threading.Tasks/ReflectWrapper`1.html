@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>System.Threading.Tasks.ConfiguredTaskAwaitableWrapper</title>
+    <title>System.Threading.Tasks.ReflectWrapper&lt;TResult&gt;</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <style>
       a { text-decoration: none }
@@ -190,34 +190,42 @@
       <a href="../index.html">dylan.NET.Tasks</a> : <a href="index.html">System.Threading.Tasks Namespace</a></div>
     <div class="SideBar">
       <p>
-        <a href="#T:System.Threading.Tasks.ConfiguredTaskAwaitableWrapper">Overview</a>
+        <a href="#T:System.Threading.Tasks.ReflectWrapper`1">Overview</a>
       </p>
       <p>
-        <a href="#T:System.Threading.Tasks.ConfiguredTaskAwaitableWrapper:Signature">Signature</a>
+        <a href="#T:System.Threading.Tasks.ReflectWrapper`1:Signature">Signature</a>
       </p>
       <p>
-        <a href="#T:System.Threading.Tasks.ConfiguredTaskAwaitableWrapper:Docs">Remarks</a>
+        <a href="#T:System.Threading.Tasks.ReflectWrapper`1:Docs">Remarks</a>
       </p>
       <p>
         <a href="#Members">Members</a>
       </p>
       <p>
-        <a href="#T:System.Threading.Tasks.ConfiguredTaskAwaitableWrapper:Members">Member Details</a>
+        <a href="#T:System.Threading.Tasks.ReflectWrapper`1:Members">Member Details</a>
       </p>
     </div>
-    <h1 class="PageTitle" id="T:System.Threading.Tasks.ConfiguredTaskAwaitableWrapper">ConfiguredTaskAwaitableWrapper  Class</h1>
-    <p class="Summary" id="T:System.Threading.Tasks.ConfiguredTaskAwaitableWrapper:Summary">An IAwaitable implementation that wraps a ConfiguredTaskAwaitable.</p>
+    <h1 class="PageTitle" id="T:System.Threading.Tasks.ReflectWrapper`1">ReflectWrapper&lt;TResult&gt; Generic Class</h1>
+    <p class="Summary" id="T:System.Threading.Tasks.ReflectWrapper`1:Summary">An IAwaitable&lt;TResult&gt; implementation that wraps an object.</p>
     <div>
       <h2>Syntax</h2>
-      <div class="Signature" id="T:System.Threading.Tasks.ConfiguredTaskAwaitableWrapper:Signature">public class  <b>ConfiguredTaskAwaitableWrapper</b> : <a href="../System.Threading.Tasks/IAwaitable.html">IAwaitable</a></div>
+      <div class="Signature" id="T:System.Threading.Tasks.ReflectWrapper`1:Signature">public class  <b>ReflectWrapper&lt;TResult&gt;</b> : <a href="../System.Threading.Tasks/IAwaitable`1.html">IAwaitable&lt;TResult&gt;</a></div>
     </div>
-    <div class="Remarks" id="T:System.Threading.Tasks.ConfiguredTaskAwaitableWrapper:Docs">
+    <div class="Remarks" id="T:System.Threading.Tasks.ReflectWrapper`1:Docs">
+      <h4 class="Subsection">Type Parameters</h4>
+      <blockquote class="SubsectionBox" id="T:System.Threading.Tasks.ReflectWrapper`1:Docs:Type Parameters">
+        <dl>
+          <dt>
+            <i>TResult</i>
+          </dt>
+          <dd>The type of result returned by this awaitable.</dd>
+        </dl>
+      </blockquote>
       <h2 class="Section">Remarks</h2>
-      <div class="SectionBox" id="T:System.Threading.Tasks.ConfiguredTaskAwaitableWrapper:Docs:Remarks">
-      </div>
+      <div class="SectionBox" id="T:System.Threading.Tasks.ReflectWrapper`1:Docs:Remarks">This implementation makes use of reflection and is not available for PCLs. It is recommended to make use of strongly typed wrappers instead due to the penalties associated with reflection. If an IAwaitable&lt;TResult&gt; implementation is passed in, no reflection will be used in preference to calling the methods on the IAwaitable&lt;TResult&gt; directly.</div>
       <h2 class="Section">Requirements</h2>
-      <div class="SectionBox" id="T:System.Threading.Tasks.ConfiguredTaskAwaitableWrapper:Docs:Version Information">
-        <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.2.0.0, 1.2.1.0, 1.3.0.0</div>
+      <div class="SectionBox" id="T:System.Threading.Tasks.ReflectWrapper`1:Docs:Version Information">
+        <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.2.1.0, 1.3.0.0</div>
       <h2 class="Section" id="Members">Members</h2>
       <div class="SectionBox" id="_Members">
         <p>
@@ -236,10 +244,10 @@
                 <td>
                   <div>
                     <b>
-                      <a href="#C:System.Threading.Tasks.ConfiguredTaskAwaitableWrapper(System.Runtime.CompilerServices.ConfiguredTaskAwaitable)">ConfiguredTaskAwaitableWrapper</a>
-                    </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Runtime.CompilerServices.ConfiguredTaskAwaitable">System.Runtime.CompilerServices.ConfiguredTaskAwaitable</a>)</div>
+                      <a href="#C:System.Threading.Tasks.ReflectWrapper`1(System.Object)">ReflectWrapper</a>
+                    </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Object">object</a>)</div>
                 </td>
-                <td>Constructs a new ConfiguredTaskAwaitable wrapper.</td>
+                <td>Constructs a new object wrapper.</td>
               </tr>
             </table>
           </div>
@@ -255,52 +263,65 @@
                 </td>
                 <td colspan="2">
                   <b>
-                    <a href="#M:System.Threading.Tasks.ConfiguredTaskAwaitableWrapper.GetAwaiter()">GetAwaiter</a>
-                  </b>()<nobr> : <a href="../System.Threading.Tasks/IAwaiter.html">IAwaiter</a></nobr><blockquote>Gets the IAwaiter used to await this ConfiguredTaskAwaitable.</blockquote></td>
+                    <a href="#M:System.Threading.Tasks.ReflectWrapper`1.GetAwaiter()">GetAwaiter</a>
+                  </b>()<nobr> : <a href="../System.Threading.Tasks/IAwaiter`1.html">IAwaiter&lt;TResult&gt;</a></nobr><blockquote>Gets the IAwaiter&lt;TResult&gt; used to await this object.</blockquote></td>
               </tr>
             </table>
           </div>
         </div>
       </div>
     </div>
-    <div class="Members" id="T:System.Threading.Tasks.ConfiguredTaskAwaitableWrapper:Members">
+    <div class="Members" id="T:System.Threading.Tasks.ReflectWrapper`1:Members">
       <h2 class="Section" id="MemberDetails">Member Details</h2>
       <div class="SectionBox" id="_MemberDetails">
-        <h3 id="C:System.Threading.Tasks.ConfiguredTaskAwaitableWrapper(System.Runtime.CompilerServices.ConfiguredTaskAwaitable)">ConfiguredTaskAwaitableWrapper Constructor</h3>
-        <blockquote id="C:System.Threading.Tasks.ConfiguredTaskAwaitableWrapper(System.Runtime.CompilerServices.ConfiguredTaskAwaitable):member">
-          <div class="msummary">Constructs a new ConfiguredTaskAwaitable wrapper.</div>
+        <h3 id="C:System.Threading.Tasks.ReflectWrapper`1(System.Object)">ReflectWrapper Constructor</h3>
+        <blockquote id="C:System.Threading.Tasks.ReflectWrapper`1(System.Object):member">
+          <div class="msummary">Constructs a new object wrapper.</div>
           <h2>Syntax</h2>
-          <div class="Signature">public  <b>ConfiguredTaskAwaitableWrapper</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Runtime.CompilerServices.ConfiguredTaskAwaitable">System.Runtime.CompilerServices.ConfiguredTaskAwaitable</a> awaitable)</div>
+          <div class="Signature">public  <b>ReflectWrapper</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Object">object</a> awaitable)</div>
           <h4 class="Subsection">Parameters</h4>
-          <blockquote class="SubsectionBox" id="C:System.Threading.Tasks.ConfiguredTaskAwaitableWrapper(System.Runtime.CompilerServices.ConfiguredTaskAwaitable):Parameters">
+          <blockquote class="SubsectionBox" id="C:System.Threading.Tasks.ReflectWrapper`1(System.Object):Parameters">
             <dl>
               <dt>
                 <i>awaitable</i>
               </dt>
-              <dd>The ConfiguredTaskAwaitable to wrap.</dd>
+              <dd>The object to wrap.</dd>
             </dl>
           </blockquote>
           <h2 class="Section">Remarks</h2>
-          <div class="SectionBox" id="C:System.Threading.Tasks.ConfiguredTaskAwaitableWrapper(System.Runtime.CompilerServices.ConfiguredTaskAwaitable):Remarks">
-          </div>
+          <div class="SectionBox" id="C:System.Threading.Tasks.ReflectWrapper`1(System.Object):Remarks">No validation regarding whether the object's type implements the required functions is made at this point. That is done lazily when an actual function call is made.</div>
           <h2 class="Section">Requirements</h2>
-          <div class="SectionBox" id="C:System.Threading.Tasks.ConfiguredTaskAwaitableWrapper(System.Runtime.CompilerServices.ConfiguredTaskAwaitable):Version Information">
-            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.2.0.0, 1.2.1.0, 1.3.0.0</div>
+          <div class="SectionBox" id="C:System.Threading.Tasks.ReflectWrapper`1(System.Object):Version Information">
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.2.1.0, 1.3.0.0</div>
           <hr size="1" />
         </blockquote>
-        <h3 id="M:System.Threading.Tasks.ConfiguredTaskAwaitableWrapper.GetAwaiter()">GetAwaiter Method</h3>
-        <blockquote id="M:System.Threading.Tasks.ConfiguredTaskAwaitableWrapper.GetAwaiter():member">
-          <div class="msummary">Gets the IAwaiter used to await this ConfiguredTaskAwaitable.</div>
+        <h3 id="M:System.Threading.Tasks.ReflectWrapper`1.GetAwaiter()">GetAwaiter Method</h3>
+        <blockquote id="M:System.Threading.Tasks.ReflectWrapper`1.GetAwaiter():member">
+          <div class="msummary">Gets the IAwaiter&lt;TResult&gt; used to await this object.</div>
           <h2>Syntax</h2>
-          <div class="Signature">public virtual <a href="../System.Threading.Tasks/IAwaiter.html">IAwaiter</a> <b>GetAwaiter</b> ()</div>
+          <div class="Signature">public virtual <a href="../System.Threading.Tasks/IAwaiter`1.html">IAwaiter&lt;TResult&gt;</a> <b>GetAwaiter</b> ()</div>
           <h4 class="Subsection">Returns</h4>
-          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.ConfiguredTaskAwaitableWrapper.GetAwaiter():Returns">The IAwaiter used to await this ConfiguredTaskAwaitable.</blockquote>
+          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.ReflectWrapper`1.GetAwaiter():Returns">The IAwaiter&lt;TResult&gt; used to await this object.</blockquote>
+          <h4 class="Subsection">Exceptions</h4>
+          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.ReflectWrapper`1.GetAwaiter():Exceptions">
+            <table class="TypeDocumentation">
+              <tr>
+                <th>Type</th>
+                <th>Reason</th>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.ArgumentException">ArgumentException</a>
+                </td>
+                <td>Thrown if the given awaitable does not have the GetAwaiter method.</td>
+              </tr>
+            </table>
+          </blockquote>
           <h2 class="Section">Remarks</h2>
-          <div class="SectionBox" id="M:System.Threading.Tasks.ConfiguredTaskAwaitableWrapper.GetAwaiter():Remarks">
-          </div>
+          <div class="SectionBox" id="M:System.Threading.Tasks.ReflectWrapper`1.GetAwaiter():Remarks">Calls the underlying GetAwaiter by using reflection. If the given awaitable is an IAwaitable&lt;TResult&gt;, its GetAwaiter code is called directly to bypass the reflection penalty.</div>
           <h2 class="Section">Requirements</h2>
-          <div class="SectionBox" id="M:System.Threading.Tasks.ConfiguredTaskAwaitableWrapper.GetAwaiter():Version Information">
-            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.2.0.0, 1.2.1.0, 1.3.0.0</div>
+          <div class="SectionBox" id="M:System.Threading.Tasks.ReflectWrapper`1.GetAwaiter():Version Information">
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.2.1.0, 1.3.0.0</div>
           <hr size="1" />
         </blockquote>
       </div>

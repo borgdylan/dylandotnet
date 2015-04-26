@@ -19,7 +19,7 @@ class private CatchClosure<of TException> where TException as {Exception}
 	
 	method assembly void Catch(var e as Exception)
 		var ex2 = e as TException
-		if ex2 != null then
+		if ex2 isnot null then
 			try
 				_cat::Invoke(ex2)
 			catch

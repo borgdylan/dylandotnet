@@ -14,9 +14,9 @@
     <ErrorReport>prompt</ErrorReport>
     <ConsolePause>false</ConsolePause>
     <DebugSymbols>false</DebugSymbols>
-    <DefineConstants>PORTABLESHIM</DefineConstants>
+    <DefineConstants>PORTABLESHIM;TRACE</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
   </ItemGroup>
-  <Import Project="\home\dylan\.kpm\packages\dylan.NET\11.5.3.2\tools\dylan.NET.Portable.targets" />
+  <Import Project="\home\dylan\.dnx\packages\dylan.NET\11.5.6.4\tools\dylan.NET.Portable.targets" />
 </Project>
