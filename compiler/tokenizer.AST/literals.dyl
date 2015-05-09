@@ -173,8 +173,7 @@ class public BooleanLiteral extends Literal implements INegatable
 
 end class
 
-
-class public asbtract NumberLiteral extends Literal
+class public abstract NumberLiteral extends Literal
 
 	method family void NumberLiteral()
 		mybase::ctor()
@@ -186,21 +185,34 @@ class public asbtract NumberLiteral extends Literal
 
 end class
 
-class public IntLiteral extends NumberLiteral implements INegatable, INotable
+class public abstract NumberLiteral<of T> extends NumberLiteral where T as {struct}
 
-	field public integer NumVal
+	field public T NumVal
+
+	method family void NumberLiteral()
+		mybase::ctor()
+		NumVal = default T
+	end method
+
+	method family void NumberLiteral(var value as string)
+		mybase::ctor(value)
+		NumVal = default T
+	end method
+
+end class
+
+class public IntLiteral extends NumberLiteral<of integer> implements INegatable, INotable
+
 	field private boolean _DoNeg
 	field private boolean _DoNot
 
 	method public void IntLiteral()
 		mybase::ctor()
-		NumVal = 0i
 		LitTyp = new IntegerTok()
 	end method
 
 	method public void IntLiteral(var value as string)
 		mybase::ctor(value)
-		NumVal = 0i
 		LitTyp = new IntegerTok()
 		var n as integer = 0
 		if integer::TryParse(value,ref n) then
@@ -227,21 +239,18 @@ class public IntLiteral extends NumberLiteral implements INegatable, INotable
 
 end class
 
-class public DoubleLiteral extends NumberLiteral implements INegatable
+class public DoubleLiteral extends NumberLiteral<of double> implements INegatable
 
-	field public double NumVal
 	field private boolean _DoNeg
 
 	method public void DoubleLiteral()
 		mybase::ctor()
-		NumVal = 0d
 		LitTyp = new DoubleTok()
 		//_DoNeg = false
 	end method
 
 	method public void DoubleLiteral(var value as string)
 		mybase::ctor(value)
-		NumVal = 0d
 		LitTyp = new DoubleTok()
 		var n as double = 0d
 		if double::TryParse(value,ref n) then
@@ -263,20 +272,17 @@ class public DoubleLiteral extends NumberLiteral implements INegatable
 
 end class
 
-class public DecimalLiteral extends NumberLiteral implements INegatable
+class public DecimalLiteral extends NumberLiteral<of decimal> implements INegatable
 
-	field public decimal NumVal
 	field private boolean _DoNeg
 
 	method public void DecimalLiteral()
 		mybase::ctor()
-		NumVal = new Decimal(0)
 		LitTyp = new DecimalTok()
 	end method
 
 	method public void DecimalLiteral(var value as string)
 		mybase::ctor(value)
-		NumVal = new Decimal(0)
 		LitTyp = new DecimalTok()
 		var n as decimal = 0m
 		if decimal::TryParse(value,ref n) then
@@ -298,21 +304,18 @@ class public DecimalLiteral extends NumberLiteral implements INegatable
 
 end class
 
-class public SByteLiteral extends NumberLiteral implements INegatable, INotable
+class public SByteLiteral extends NumberLiteral<of sbyte> implements INegatable, INotable
 
-	field public sbyte NumVal
 	field private boolean _DoNeg
 	field private boolean _DoNot
 
 	method public void SByteLiteral()
 		mybase::ctor()
-		NumVal = 0b
 		LitTyp = new SByteTok()
 	end method
 
 	method public void SByteLiteral(var value as string)
 		mybase::ctor(value)
-		NumVal = 0b
 		LitTyp = new SByteTok()
 		var n as sbyte = 0b
 		if sbyte::TryParse(value,ref n) then
@@ -336,21 +339,18 @@ class public SByteLiteral extends NumberLiteral implements INegatable, INotable
 end class
 
 
-class public ShortLiteral extends NumberLiteral implements INegatable, INotable
+class public ShortLiteral extends NumberLiteral<of short> implements INegatable, INotable
 
-	field public short NumVal
 	field private boolean _DoNeg
 	field private boolean _DoNot
 
 	method public void ShortLiteral()
 		mybase::ctor()
-		NumVal = 0s
 		LitTyp = new ShortTok()
 	end method
 
 	method public void ShortLiteral(var value as string)
 		mybase::ctor(value)
-		NumVal = 0s
 		LitTyp = new ShortTok()
 		var n as short = 0s
 		if short::TryParse(value,ref n) then
@@ -382,21 +382,18 @@ class public ShortLiteral extends NumberLiteral implements INegatable, INotable
 
 end class
 
-class public LongLiteral extends NumberLiteral implements INegatable, INotable
+class public LongLiteral extends NumberLiteral<of long> implements INegatable, INotable
 
-	field public long NumVal
 	field private boolean _DoNeg
 	field private boolean _DoNot
 
 	method public void LongLiteral()
 		mybase::ctor()
-		NumVal = 0l
 		LitTyp = new LongTok()
 	end method
 
 	method public void LongLiteral(var value as string)
 		mybase::ctor(value)
-		NumVal = 0l
 		LitTyp = new LongTok()
 		var n as long = 0l
 		if long::TryParse(value,ref n) then
@@ -419,20 +416,17 @@ class public LongLiteral extends NumberLiteral implements INegatable, INotable
 
 end class
 
-class public FloatLiteral extends NumberLiteral implements INegatable
+class public FloatLiteral extends NumberLiteral<of single> implements INegatable
 
-	field public single NumVal
 	field private boolean _DoNeg
 
 	method public void FloatLiteral()
 		mybase::ctor()
-		NumVal = 0f
 		LitTyp = new SingleTok()
 	end method
 
 	method public void FloatLiteral(var value as string)
 		mybase::ctor(value)
-		NumVal = 0f
 		LitTyp = new SingleTok()
 		var n as single = 0f
 		if single::TryParse(value,ref n) then
@@ -454,20 +448,17 @@ class public FloatLiteral extends NumberLiteral implements INegatable
 
 end class
 
-class public UIntLiteral extends NumberLiteral implements INotable
+class public UIntLiteral extends NumberLiteral<of uinteger> implements INotable
 
-	field public uinteger NumVal
 	field private boolean _DoNot
 
 	method public void UIntLiteral()
 		mybase::ctor()
-		NumVal = 0ui
 		LitTyp = new UIntegerTok()
 	end method
 
 	method public void UIntLiteral(var value as string)
 		mybase::ctor(value)
-		NumVal = 0ui
 		LitTyp = new UIntegerTok()
 		var n as uinteger = 0ui
 		if uinteger::TryParse(value,ref n) then
@@ -489,20 +480,17 @@ class public UIntLiteral extends NumberLiteral implements INotable
 
 end class
 
-class public ByteLiteral extends NumberLiteral implements INotable
+class public ByteLiteral extends NumberLiteral<of byte> implements INotable
 
-	field public byte NumVal
 	field private boolean _DoNot
 
 	method public void ByteLiteral()
 		mybase::ctor()
-		NumVal = 0ub
 		LitTyp = new ByteTok()
 	end method
 
 	method public void ByteLiteral(var value as string)
 		mybase::ctor(value)
-		NumVal = 0ub
 		LitTyp = new ByteTok()
 		var n as byte = 0ub
 		if byte::TryParse(value,ref n) then
@@ -524,20 +512,17 @@ class public ByteLiteral extends NumberLiteral implements INotable
 
 end class
 
-class public UShortLiteral extends NumberLiteral implements INotable
+class public UShortLiteral extends NumberLiteral<of ushort> implements INotable
 
-	field public ushort NumVal
 	field private boolean _DoNot
 
 	method public void UShortLiteral()
 		mybase::ctor()
-		NumVal = 0us
 		LitTyp = new UShortTok()
 	end method
 
 	method public void UShortLiteral(var value as string)
 		mybase::ctor(value)
-		NumVal = 0us
 		LitTyp = new UShortTok()
 		var n as ushort = 0us
 		if ushort::TryParse(value,ref n) then
@@ -559,20 +544,17 @@ class public UShortLiteral extends NumberLiteral implements INotable
 
 end class
 
-class public ULongLiteral extends NumberLiteral implements INotable
+class public ULongLiteral extends NumberLiteral<of ulong> implements INotable
 
-	field public UInt64 NumVal
 	field private boolean _DoNot
 
 	method public void ULongLiteral()
 		mybase::ctor()
-		NumVal = 0ul
 		LitTyp = new ULongTok()
 	end method
 
 	method public void ULongLiteral(var value as string)
 		mybase::ctor(value)
-		NumVal = 0ul
 		LitTyp = new ULongTok()
 		var n as ulong = 0ul
 		if ulong::TryParse(value,ref n) then
@@ -595,21 +577,18 @@ class public ULongLiteral extends NumberLiteral implements INotable
 
 end class
 
-class public IntPtrLiteral extends NumberLiteral implements INegatable, INotable
+class public IntPtrLiteral extends NumberLiteral<of IntPtr> implements INegatable, INotable
 
-	field public IntPtr NumVal
 	field private boolean _DoNot
 	field private boolean _DoNeg
 	
 	method public void IntPtrLiteral()
 		mybase::ctor()
-		NumVal = new IntPtr(0)
 		LitTyp = new IntPtrTok()
 	end method
 
 	method public void IntPtrLiteral(var value as string)
 		mybase::ctor(value)
-		NumVal = new IntPtr(0)
 		LitTyp = new IntPtrTok()
 	end method
 

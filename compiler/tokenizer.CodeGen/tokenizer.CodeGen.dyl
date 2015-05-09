@@ -68,8 +68,11 @@ namespace dylan.NET.Tokenizer.CodeGen
 	#include "pinvokeinfo.dyl"
 	#include "constinfo.dyl"
 	#include "symtable.dyl"
-	#include "helpers.dyl"
+	//included as internal, do not make public if inside the compiler dlls
+	#include "DynamicHelpers.dyl"
 	#include "opstack.dyl"
+	#include "eval-pre.dyl"
+	#include "helpers.dyl"
 	#include "eval.dyl"
 	#include "codegenerator.dyl"
 end namespace

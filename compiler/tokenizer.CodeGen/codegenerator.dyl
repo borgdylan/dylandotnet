@@ -246,27 +246,10 @@ class public CodeGenerator
 		if ILEmitter::SrcFiles::get_Count() == 0 then
 			StreamUtils::Write("Embedding Resources in Assembly (if any)")
 
-			//var lst = new C5.LinkedList<of string>()
-			//foreach r in SymTable::ResLst
-			//	if r::get_Item3() then
-			//		if Importer::Asms::Contains(r::get_Item1()) then
-			//			if Importer::Asms::get_Item(r::get_Item1())::Used then
-			//				lst::Add(r::get_Item1())
-			//			end if
-			//		end if
-			//	end if
-			//end for
-			//MarkUsed(lst, new C5.HashSet<of string>())
+			var fileHandles = new C5.LinkedList<of FileStream>()
 
 			foreach r in SymTable::ResLst
-				//if r::get_Item3() then
-				//	if Importer::Asms::Contains(r::get_Item1()) then
-				//		if !Importer::Asms::get_Item(r::get_Item1())::Used then
-				//			continue
-				//		end if
-				//	end if
-				//end if
-
+				
 				if r::get_Item1() like "^memory:(.)*$" then
 					var pth = r::get_Item1()::Substring(7)
 
@@ -278,10 +261,6 @@ class public CodeGenerator
 					var fs = MemoryFS::GetFile(pth)
 					var path = #ternary {r::get_Item2() == string::Empty ? Path::GetFileName(pth), r::get_Item2() }
 
-					//if r::get_Item4() then
-					//	path = "AssemblyNeutral/" + path
-					//end if
-
 					fs::Seek(0l, SeekOrigin::Begin)
 					AsmFactory::MdlB::DefineManifestResource(path, fs, ResourceAttributes::Public)
 					fs::Seek(0l, SeekOrigin::Begin)
@@ -289,12 +268,8 @@ class public CodeGenerator
 					var fs = new FileStream(r::get_Item1(), FileMode::Open)
 					var path = #ternary { r::get_Item2() == string::Empty ? Path::GetFileName(r::get_Item1()), r::get_Item2() }
 
-					//if r::get_Item4() then
-					//	path = "AssemblyNeutral/" + path
-					//end if
-
 					AsmFactory::MdlB::DefineManifestResource(path, fs, ResourceAttributes::Public)
-					fs::Close()
+					fileHandles::Add(fs)
 				end if
 			end for
 
@@ -317,9 +292,10 @@ class public CodeGenerator
 				StreamUtils::WriteLine("...Done.")
 			end if
 
-//			foreach t in SymTable::TypeLst::Types
-//				StreamUtils::WriteLine(t::ToString())
-//			end for
+			foreach fs in fileHandles
+				fs::Close()
+			end for
+
 		end if
 
 		stmts::Stmts::Clear()

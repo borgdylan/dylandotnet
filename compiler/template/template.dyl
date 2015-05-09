@@ -98,7 +98,7 @@ class public Container
 	class public Nested
 
 		field public integer X
-		field public static literal integer C = 11
+		field public literal integer C = 6 + 5
 		property public autogen Container Parent
 
 		method public void Nested(var p as Container)
@@ -131,15 +131,15 @@ class public BaseTest
 	field private BaseTest F1
 	field private template.BaseTest F2
 
+	property public string ClassName => "BaseTest"
+
 	//[method: Obsolete("Test Custom Attribute")]
 	//[method: SecurityPermissionAttribute(SecurityAction::Assert), SkipVerification = true]
 	method public void CallTS1()
 		Console::WriteLine(ToString())
 	end method
 	
-	method public override string ToString()
-		return "Test " + mybase::ToString()
-	end method
+	method public override string ToString() => "Test " + mybase::ToString()
 	
 	method public void CallTS2()
 		Console::WriteLine(ToString())
@@ -450,11 +450,13 @@ class public static Program
 	field private static integer _TestProperty
 	field private static Dictionary<of integer, string> _TestIndexer
 	field private static EventHandler _TestEvent
-	field public static literal integer Const = 11
-	field public static literal integer Const2 = 5
-	field public static literal integer Const3 = 93
-	field public static literal string ConstsIntrodIn = "11.3.1.5"
-	
+	field public literal integer Const = 11
+	field public literal integer Const2 = 5
+	field public literal integer Const3 = 93
+	field public literal string ConstsIntrodIn = "11.3.1.5"
+	field public literal double PI2 = Math::PI * 2d
+	field public literal AttributeTargets ASClassMethod = AttributeTargets::Class or AttributeTargets::Method
+
 	method private static void Program()
 		var xc as integer = ROTest::X
 		_TestProperty = 0

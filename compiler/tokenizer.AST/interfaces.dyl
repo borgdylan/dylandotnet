@@ -39,3 +39,9 @@ interface public IConstrainable implements IMayHaveConstraints
 
 	method public void AddConstraint(var param as string, var ctr as Token)
 end interface
+
+interface public IExprBodyable
+
+	property public autogen Expr ExprBody
+
+end interface

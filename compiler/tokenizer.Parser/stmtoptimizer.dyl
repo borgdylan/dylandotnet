@@ -25,7 +25,10 @@ class public StmtOptimizer
 			return i
 		elseif i < --stm::Tokens::get_Count() then
 			if stm::Tokens::get_Item(i) isnot WhereTok then
-				StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, string::Format("Expected 'where' or nothing at all instead of {0}!", stm::Tokens::get_Item(i)::Value))
+				//TODO: forgive only if a method
+				if stm::Tokens::get_Item(i) isnot GoesToTok then
+					StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, string::Format("Expected 'where' or nothing at all instead of {0}!", stm::Tokens::get_Item(i)::Value))
+				end if
 				return i
 			end if
 		end if
@@ -92,13 +95,38 @@ class public StmtOptimizer
 			if !#expr(i < stm::Tokens::get_Count()) then
 				break
 			elseif stm::Tokens::get_Item(i) isnot Comma then
-				StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, string::Format("Expected a ',' or nothing at all instead of {0}!", stm::Tokens::get_Item(i)::Value))
+				if stm::Tokens::get_Item(i) is GoesToTok then
+					return i
+				else
+					StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, string::Format("Expected a ',' or nothing at all instead of {0}!", stm::Tokens::get_Item(i)::Value))
+				end if
 			end if
 
 		end do
 
 		return i
 
+	end method
+
+	method public integer procExprBody(var stm as Stmt, var mn as IExprBodyable, var i as integer)
+		if i < --stm::Tokens::get_Count() then
+			if stm::Tokens::get_Item(i) isnot GoesToTok then
+				StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, string::Format("Expected '=>' or nothing at all instead of {0}!", stm::Tokens::get_Item(i)::Value))
+			else
+				var len as integer = --stm::Tokens::get_Count() 
+			
+				if i < len then
+					var exp as Expr = new Expr() {Line = stm::Line}
+					do
+						i++
+						exp::AddToken(stm::Tokens::get_Item(i))
+					until i = len
+					mn::set_ExprBody(new ExprOptimizer(PFlags)::Optimize(exp))
+				end if
+			end if
+		end if
+
+		return i
 	end method
 
 	method private Stmt checkRefasm(var stm as Stmt, var b as boolean&)
@@ -1274,6 +1302,7 @@ class public StmtOptimizer
 								end if
 							end if
 							d = false
+							i++
 							break
 						end if
 					
@@ -1333,6 +1362,8 @@ class public StmtOptimizer
 					end do
 				end if
 			end if
+
+			procExprBody(stm, prss, i)
 
 			return prss
 		end if
@@ -1493,7 +1524,8 @@ class public StmtOptimizer
 				end do
 			end if
 
-			procWhere(stm, mtss::MethodName, ++i)
+			i = procWhere(stm, mtss::MethodName, ++i)
+			procExprBody(stm, mtss, i)
 		end if
 		return mtss
 	end method

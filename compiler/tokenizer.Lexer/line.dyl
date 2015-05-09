@@ -132,6 +132,9 @@ class public Line
 						ob = false
 					else
 						ob = true
+						if lc == ">" then
+							scla = false
+						end if
 					end if
 				end if
 			elseif cc == "!" then
@@ -163,10 +166,15 @@ class public Line
 				end if
 			elseif cc = ">" then
 				sca = true
-				if lc != "=" then
+				if lc == "=" andalso PrevChar != "=" then
+					scla = false
+					ob = true
+				else
 					if PrevChar == "<" then
 						ob = false
 					elseif PrevChar == ">" then
+						ob = false
+					elseif PrevChar == "=" then
 						ob = false
 					elseif lc == ">" then
 						sca = true
@@ -175,9 +183,6 @@ class public Line
 					else
 						ob = true
 					end if
-				else
-					scla = false
-					ob = true
 				end if
 			elseif cc == "-" then
 				sca = true

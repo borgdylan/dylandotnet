@@ -41,7 +41,7 @@ class public static SymTable
 	field private static C5.LinkedList<of LabelItem> LblLst
 	field public static boolean StoreFlg
 	
-	method public static void Init()()
+	method public static void Init()
 		TypeLst = new TypeList()
 		VarLst = new C5.LinkedList<of C5.HashDictionary<of string, VarItem> >()
 		TempVTMap = new C5.HashDictionary<of IKVM.Reflection.Type, integer>()

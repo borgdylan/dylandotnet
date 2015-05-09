@@ -24,12 +24,14 @@ class public EndGetStmt extends EndStmt
 	end method
 end class
 
-class public PropertyStmt extends BlockStmt
+class public PropertyStmt extends BlockStmt implements IExprBodyable
 
 	field public C5.LinkedList<of Attributes.Attribute> Attrs
 	field public Ident PropertyName
 	field public TypeTok PropertyTyp
 	field public C5.LinkedList<of Expr> Params
+
+	property public virtual autogen Expr ExprBody
 
 	method public void PropertyStmt()
 		mybase::ctor(ContextType::Property)
@@ -51,6 +53,10 @@ class public PropertyStmt extends BlockStmt
 	end method
 
 	method public override boolean IsOneLiner(var ctx as IStmtContainer)
+		if get_ExprBody() isnot null then
+			return true
+		end if
+
 		foreach a in Attrs
 			if a is AutoGenAttr then
 				return true

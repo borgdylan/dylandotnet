@@ -56,6 +56,8 @@ class public TokenOptimizer
 			return new ShlOp() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value == ">>" then
 			return new ShrOp() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value == "=>" then
+			return new GoesToTok() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value == "=" then
 			PFlags::AsFlag = false
 			if CurlyLvl > 0 then
