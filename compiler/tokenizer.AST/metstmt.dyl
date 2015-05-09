@@ -12,12 +12,14 @@ class public EndMethodStmt extends EndStmt
 	end method
 end class
 
-class public MethodStmt extends BlockStmt
+class public MethodStmt extends BlockStmt implements IExprBodyable
 
 	field public C5.LinkedList<of Attributes.Attribute> Attrs
 	field public MethodNameTok MethodName
 	field public TypeTok RetTyp
 	field public C5.LinkedList<of Expr> Params
+
+	property public virtual autogen Expr ExprBody
 
 	method public void MethodStmt()
 		mybase::ctor(ContextType::Method)
@@ -36,7 +38,7 @@ class public MethodStmt extends BlockStmt
 	end method
 
 	method public override boolean IsOneLiner(var ctx as IStmtContainer)
-		if ctx::get_Context() == ContextType::Interface then
+		if ctx::get_Context() == ContextType::Interface orelse get_ExprBody() isnot null then
 			return true
 		end if
 

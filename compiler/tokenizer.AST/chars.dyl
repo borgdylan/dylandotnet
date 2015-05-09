@@ -144,3 +144,10 @@ class public Colon extends Character
 	end method
 end class
 
+// =>
+class public GoesToTok extends Character
+	method public override string ToString()
+		return "=>"
+	end method
+end class
+

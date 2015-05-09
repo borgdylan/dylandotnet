@@ -40,10 +40,12 @@
     <Reference Include="System.Interactive">
       <HintPath>..\packages\Ix-Main.1.2.3\lib\net40\System.Interactive.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="tokenizer.CodeGen.dyl" />
     <Compile Include="Properties\AssemblyInfo.dyl" />
+    <Compile Include="eval-pre.dyl" />
   </ItemGroup>
   <Import Project="..\4.0\dylan.NET.targets" />
   <ItemGroup>
@@ -78,6 +80,7 @@
     <Compile Include="codegenerator.dyl" />
     <Compile Include="cilambdas.dyl" />
     <Compile Include="assemblyinfo.dyl" />
+    <Compile Include="DynamicHelpers.dyl" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

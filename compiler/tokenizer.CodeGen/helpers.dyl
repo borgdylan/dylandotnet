@@ -1306,8 +1306,8 @@ class public static Helpers
 		if sink::Equals(Loader::CachedLoadClass("System.Object")) then
 			if Loader::CachedLoadClass("System.ValueType")::IsAssignableFrom(source) then
 				ILEmitter::EmitBox(source)
-			elseif (sink::get_BaseType() is null) andalso !sink::Equals(Loader::CachedLoadClass("System.Object")) then
-				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Type '" + source::ToString() + "' 's object/valuetype state could not be determined.")
+			//elseif (sink::get_BaseType() is null) andalso !sink::Equals(Loader::CachedLoadClass("System.Object")) then
+			//	StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Type '" + source::ToString() + "' 's object/valuetype state could not be determined.")
 			elseif source is GenericTypeParameterBuilder then
 				ILEmitter::EmitBox(source)
 			//else
@@ -2239,57 +2239,134 @@ class public static Helpers
 			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The '--' operation is undefined for '" + t::ToString() + "'.")
 		end if
 	end method
-	
+
 	[method: ComVisible(false)]
-	method public static ConstInfo ProcessConstExpr(var exp as Expr)
-		if exp::Tokens::get_Count() > 0 then
-			if exp::Tokens::get_Item(0) is Literal then
-				var lit as Literal = $Literal$exp::Tokens::get_Item(0)
-				return new ConstInfo() {Typ = CommitEvalTTok(lit::LitTyp), Value = LiteralToConst(lit)}
-			elseif exp::Tokens::get_Item(0) is Ident then
-				var idtnamarr as string[] = ParseUtils::StringParser(#expr($Ident$exp::Tokens::get_Item(0))::Value, ':')
-				var typ as IKVM.Reflection.Type = CommitEvalTTok(new TypeTok(idtnamarr[0]))
-				if typ isnot null then
-					if  GetExtFld(typ, idtnamarr[1]) isnot null then
-						if Loader::FldLitFlag then
-							return new ConstInfo() {Typ = Loader::FldLitTyp, Value = Loader::FldLitVal}
-						else	
-							StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Field '{0}' of the class '{1}' is not a constant.", idtnamarr[1], typ::ToString()))
-						end if
-					else
-						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Field '{0}' is not defined/accessible for the class '{1}'.", idtnamarr[1], typ::ToString()))
+	method public prototype static ConstInfo ProcessConstExpr(var exp as Expr)
+
+	[method: ComVisible(false)]
+	method public static ConstInfo ProcessConstValueTok(var tok as Token)
+		if tok is Literal then
+			var lit as Literal = $Literal$tok
+			return new ConstInfo() {Typ = CommitEvalTTok(lit::LitTyp), Value = LiteralToConst(lit)}
+		elseif tok is Ident then
+			var idtnamarr as string[] = ParseUtils::StringParser(tok::Value, ':')
+			var typ as IKVM.Reflection.Type = CommitEvalTTok(new TypeTok(idtnamarr[0]))
+			if typ isnot null then
+				if  GetExtFld(typ, idtnamarr[1]) isnot null then
+					if Loader::FldLitFlag then
+						return new ConstInfo() {Typ = Loader::FldLitTyp, Value = Loader::FldLitVal}
+					else	
+						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Field '{0}' of the class '{1}' is not a constant.", idtnamarr[1], typ::ToString()))
 					end if
 				else
-					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Class '{0}' is not defined.", idtnamarr[0]))
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Field '{0}' is not defined/accessible for the class '{1}'.", idtnamarr[1], typ::ToString()))
 				end if
-			elseif exp::Tokens::get_Item(0) is GettypeCallTok then
-				var val = Helpers::CommitEvalTTok(#expr($GettypeCallTok$exp::Tokens::get_Item(0))::Name)
-				if val isnot null then
-					return new ConstInfo() {Typ = Loader::CachedLoadClass("System.Type"), Value = val}
+			else
+				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Class '{0}' is not defined.", idtnamarr[0]))
+			end if
+		elseif tok is GettypeCallTok then
+			var val = Helpers::CommitEvalTTok(#expr($GettypeCallTok$tok)::Name)
+			if val isnot null then
+				return new ConstInfo() {Typ = Loader::CachedLoadClass("System.Type"), Value = val}
+			else
+				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Class '{0}' is not defined.", #expr($GettypeCallTok$tok)::Name))
+			end if
+		elseif tok is ArrInitCallTok then
+			var aictok as ArrInitCallTok = $ArrInitCallTok$tok
+			var typ2 = CommitEvalTTok(aictok::ArrayType)
+			if typ2 is null then
+				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("The Class '{0}' is not defined.",aictok::ArrayType::ToString()))
+			end if
+
+			var val = Array::CreateInstance(gettype object, aictok::Elements::get_Count())
+			var i = -1
+			foreach elem in aictok::Elements
+				i++
+				var res = ProcessConstExpr(elem)
+
+				NullExprFlg = res::Value is null
+				CheckAssignability(typ2, res::Typ)
+
+				val::SetValue(res::Value, i)
+			end for
+
+			return new ConstInfo() {Typ = typ2::MakeArrayType(), Value = val}
+		end if
+
+		return null
+	end method
+
+	[method: ComVisible(false)]
+	method public static ConstInfo ProcessConstTok(var tok as Token)
+		if tok is Op then
+			//use dlr to compute result
+			var optok = $Op$tok
+
+			var lci = ProcessConstTok(optok::LChild)
+			var rci = ProcessConstTok(optok::RChild)
+
+			var sf = lci::Typ::Equals(rci::Typ) andalso lci::Typ::Equals(Loader::CachedLoadClass("System.String"))
+			//var bf = lci::Typ::Equals(rci::Typ) andalso lci::Typ::Equals(Loader::CachedLoadClass("System.Boolean"))
+
+			var opcf = #ternary{lci::Typ::Equals(rci::Typ) ? lci::Typ::get_IsPrimitive(), false}
+			var typ2 = Loader::CachedLoadClass("System.ValueType")
+			var eqf = !#expr(typ2::IsAssignableFrom(lci::Typ) orelse typ2::IsAssignableFrom(rci::Typ)) orelse opcf
+			eqf = eqf orelse (lci::Typ::Equals(rci::Typ) andalso Loader::CachedLoadClass("System.Enum")::IsAssignableFrom(lci::Typ))
+
+			if tok is AddOp then
+				if opcf orelse sf then
+					return new ConstInfo() {Value = DynamicHelpers::Add<of object>(lci::Value, rci::Value), Typ = lci::Typ}
 				else
-					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Class '{0}' is not defined.", #expr($GettypeCallTok$exp::Tokens::get_Item(0))::Name))
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The '+' operation is undefined for '" + lci::Typ::ToString() + "' and '" + rci::Typ::ToString() + "'.")
 				end if
-			elseif exp::Tokens::get_Item(0) is ArrInitCallTok then
-				var aictok as ArrInitCallTok = $ArrInitCallTok$exp::Tokens::get_Item(0)
-				var typ2 = CommitEvalTTok(aictok::ArrayType)
-				if typ2 is null then
-					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("The Class '{0}' is not defined.",aictok::ArrayType::ToString()))
+			elseif tok is MulOp then
+				if opcf then
+					return new ConstInfo() {Value = DynamicHelpers::Multiply<of object>(lci::Value, rci::Value), Typ = lci::Typ}
+				else
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The '*' operation is undefined for '" + lci::Typ::ToString() + "' and '" + rci::Typ::ToString() + "'.")
 				end if
+			elseif tok is SubOp then
+				if opcf then
+					return new ConstInfo() {Value = DynamicHelpers::Subtract<of object>(lci::Value, rci::Value), Typ = lci::Typ}
+				else
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The '-' operation is undefined for '" + lci::Typ::ToString() + "' and '" + rci::Typ::ToString() + "'.")
+				end if
+			elseif tok is DivOp then
+				if opcf then
+					return new ConstInfo() {Value = DynamicHelpers::Divide<of object>(lci::Value, rci::Value), Typ = lci::Typ}
+				else
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The '/' operation is undefined for '" + lci::Typ::ToString() + "' and '" + rci::Typ::ToString() + "'.")
+				end if
+			elseif tok is OrOp then
+				if eqf then
+					return new ConstInfo() {Value = DynamicHelpers::Or<of object>(lci::Value, rci::Value), Typ = lci::Typ}
+				else
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The 'or' operation is undefined for '" + lci::Typ::ToString() + "' and '" + rci::Typ::ToString() + "'.")
+				end if
+			elseif tok is AndOp then
+				if eqf then
+					return new ConstInfo() {Value = DynamicHelpers::And<of object>(lci::Value, rci::Value), Typ = lci::Typ}
+				else
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The 'and' operation is undefined for '" + lci::Typ::ToString() + "' and '" + rci::Typ::ToString() + "'.")
+				end if
+			else
+				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The '" + optok::ToString() + "' operation is undefined for '" + lci::Typ::ToString() + "' and '" + rci::Typ::ToString() + "'.")
+			end if
 
-				var val = Array::CreateInstance(gettype object, aictok::Elements::get_Count())
-				var i = -1
-				foreach elem in aictok::Elements
-					i++
-					var res = ProcessConstExpr(elem)
+		else
+			return ProcessConstValueTok(tok)
+		end if
 
-					NullExprFlg = res::Value is null
-					CheckAssignability(typ2, res::Typ)
+		return null
+	end method
 
-					val::SetValue(res::Value, i)
-				end for
+	method public static ConstInfo ProcessConstExpr(var exp as Expr)
+		if exp::Tokens::get_Count() > 0 then
+			//to remove when done
+			//return ProcessConstValueTok(exp::Tokens::get_Item(0))
 
-				return new ConstInfo() {Typ = typ2::MakeArrayType(), Value = val}
-			end if			
+			var tree = Evaluator::ConvToAST(Evaluator::ConvToRPN(exp))
+			return ProcessConstTok(tree)
 		else
 			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Unexpected empty constant expression.")
 		end if

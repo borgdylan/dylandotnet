@@ -785,6 +785,16 @@ class public StmtReader
 					StreamUtils::WriteWarn(mtss::Line, fpath, "This method may not return/throw in all code paths!")
 				end if
 			end if
+		elseif mtss::get_ExprBody() isnot null then
+			//expression bodies method
+			if AsmFactory::InMethodFlg then
+				Read(new ReturnStmt() {Line = mtss::Line, RExp = mtss::get_ExprBody() }, fpath)
+				Read(new EndMethodStmt() {Line = mtss::Line}, fpath)
+
+				AsmFactory::InMethodFlg = false
+			else
+				StreamUtils::WriteError(mtss::Line, fpath, "This method is not allowed to have a body!")
+			end if
 		end if
 	end method
 	
@@ -1036,7 +1046,7 @@ class public StmtReader
 		
 		SymTable::AddForLoop(fstm::Iter::Value, fstm::StepExp, fstm::Direction, fstm::Typ)
 		ILEmitter::MarkLbl(SymTable::ReadLoopStartLbl())
-		var et = eval::ConvToAST(eval::ConvToRPN(fstm::EndExp))
+		var et = Evaluator::ConvToAST(Evaluator::ConvToRPN(fstm::EndExp))
 		eval::ASTEmit(et, false)
 		if ttu isnot null then
 			if !ttu::Equals(AsmFactory::Type02) then
@@ -1189,7 +1199,28 @@ class public StmtReader
 				isabstract = true
 			end if
 		end for
-		
+
+		if prss::get_ExprBody() isnot null then
+			if isauto then
+				pattrs::RemoveAt(isautoind)
+				if isrdonly then
+					pattrs::RemoveAt(isrdonlyind)
+				end if
+				isauto = false
+			end if
+
+			if isabstract then
+				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Abstract properties should not return anything!")
+			end if
+
+			//getter
+			ReadPropertyGet(new PropertyGetStmt() {Getter = null, Line = prss::Line}, fpath)
+			Read(new ReturnStmt() {Line = prss::Line, RExp = prss::get_ExprBody() }, fpath)
+			Read(new EndMethodStmt() {Line = prss::Line}, fpath)
+			//end
+			SymTable::CurnProp = null
+		end if
+
 		if isauto then
 			
 			//check that params[l] == 0
@@ -1266,7 +1297,7 @@ class public StmtReader
 				
 				var eval = new Evaluator()
 				var idt = new Ident(fl::Iter) {Line = fl::Line}
-				var et = eval::ConvToAST(eval::ConvToRPN(fl::StepExp))	
+				var et = Evaluator::ConvToAST(Evaluator::ConvToRPN(fl::StepExp))	
 				eval::ASTEmit(et, false)
 				
 				if ttu isnot null then
@@ -1616,7 +1647,7 @@ class public StmtReader
 				var hc as boolean = Helpers::SetCondFlg(mcstmt::MethodToken)
 
 				var eval2 = new Evaluator()
-				var asttok as Token = eval2::ConvToAST(eval2::ConvToRPN(new Expr() {AddToken(mcstmt::MethodToken)}))
+				var asttok as Token = Evaluator::ConvToAST(Evaluator::ConvToRPN(new Expr() {AddToken(mcstmt::MethodToken)}))
 				eval2::ASTEmit(asttok, false)
 
 				//use conditional compile flags on method call tok to see whetehr to emit or not

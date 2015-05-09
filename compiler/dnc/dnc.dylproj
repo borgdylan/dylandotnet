@@ -16,7 +16,7 @@
     <ErrorReport>prompt</ErrorReport>
     <DefineConstants>DEBUG</DefineConstants>
     <!--<Commandlineparameters>-cd /var/www/Code/dylannet/dylandotnet/compiler/template/ template.dyl</Commandlineparameters>-->
-    <Commandlineparameters>-cd /var/www/Code/dylannet/dylandotnet/compiler/template template.dyl</Commandlineparameters>
+    <Commandlineparameters>-cd /var/www/Code/dylannet/dylandotnet/compiler/dnu dnu.dyl</Commandlineparameters>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>false</DebugSymbols>
