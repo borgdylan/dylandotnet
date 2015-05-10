@@ -77,9 +77,6 @@ class public Lexer
 		end using
 	end method
 	
-	method public StmtSet AnalyzeStream(var sm as Stream)
-		return AnalyzeCore(new StreamReader(sm), string::Empty)
-	end method
-
+	method public StmtSet AnalyzeStream(var sm as Stream) => AnalyzeCore(new StreamReader(sm), string::Empty)
 
 end class

@@ -2,16 +2,15 @@
 <package >
   <metadata>
     <id>dylan.NET</id>
-    <version>11.5.6.6</version>
+    <version>11.6.1.1</version>
     <authors>borgdylan</authors>
     <owners>borgdylan</owners>
     <licenseUrl>http://www.gnu.org/copyleft/lesser.html</licenseUrl>
     <projectUrl>https://github.com/borgdylan/dylandotnet</projectUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>A compiler for dylan.NET, a new language targeting the CLR</description>
-    <releaseNotes>dylan.NET v.11.5.6.6 with MSBuild support files, resource compilation support and in-memory assembly I/O.
-    	Please note that dylan.NET 11.5.x.y releases have a breaking change (so change your code accordingly):
-    	The 'hidebysig' and 'newslot' attributes on methods have been deprecated and will be removed in a future release. Do note that when declaring methods on interfaces, the required overridability and abstractness attributes get added automatically. When declaring an abstract method using 'abstract' makes it abstract and overridable by extending classes. Also, to make an overridable method that occurs for the first time in the inheritance hierarchy or to implement a method from an interface use 'virtual'. To override a method that is overridable and declared in the base class use the 'override' keyword. This behaviour is the same as in c#.
+    <releaseNotes>dylan.NET v.11.6.1.1 with MSBuild support files, resource compilation support and in-memory assembly I/O.
+    	dylan.NET 11.6.x.y includes experimental constant expression support (in constant definitions/custom attributes usage) and also add expression bodied methods/properties together with interpolated strings (concepts from C# 6).
     </releaseNotes>
     <copyright>Copyright 2015</copyright>
     <tags>.NET3.5 .NET4.0 .NET4.5 Mono PCL MSBuild</tags>

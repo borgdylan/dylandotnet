@@ -19,9 +19,7 @@ class public Line
 		//InChar = false
 	end method
 
-	method public boolean isDigit(var c as char)
-		return c >= '0' andalso c <= '9'
-	end method
+	method public boolean isDigit(var c as char) => c >= '0' andalso c <= '9'
 	
 	//cc - char to be evaluated
 	//lc - lookahead char

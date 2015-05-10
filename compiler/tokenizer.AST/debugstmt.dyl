@@ -25,12 +25,7 @@ class public DebugStmt extends Stmt
 		end if
 	end method
 	
-	method public override string ToString()
-		return "#debug " + Opt::ToString()
-	end method
-
-	method public override boolean ValidateContext(var ctx as ContextType)
-		return ctx == ContextType::Assembly
-	end method
+	method public override string ToString() => "#debug " + Opt::ToString()
+	method public override boolean ValidateContext(var ctx as ContextType) => ctx == ContextType::Assembly
 
 end class

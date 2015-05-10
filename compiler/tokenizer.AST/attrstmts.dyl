@@ -19,47 +19,34 @@ class public abstract AttrStmt extends Stmt
 end class
 
 class public MethodAttrStmt extends AttrStmt
-	method public override boolean ValidateContext(var ctx as ContextType)
-		return ctx == ContextType::Class orelse ctx == ContextType::Interface orelse _
-			ctx == ContextType::Event orelse ctx == ContextType::Property orelse _
-			ctx == ContextType::AbstractEvent orelse ctx == ContextType::AbstractProperty
-	end method
+	method public override boolean ValidateContext(var ctx as ContextType) => _
+		ctx == ContextType::Class orelse ctx == ContextType::Interface orelse _
+		ctx == ContextType::Event orelse ctx == ContextType::Property orelse _
+		ctx == ContextType::AbstractEvent orelse ctx == ContextType::AbstractProperty
 end class
 
 class public FieldAttrStmt extends AttrStmt
-	method public override boolean ValidateContext(var ctx as ContextType)
-		return ctx == ContextType::Class
-	end method
+	method public override boolean ValidateContext(var ctx as ContextType) => ctx == ContextType::Class
 end class
 
 class public ClassAttrStmt extends AttrStmt
-	method public override boolean ValidateContext(var ctx as ContextType)
-		return ctx == ContextType::Assembly orelse ctx == ContextType::Class
-	end method
+	method public override boolean ValidateContext(var ctx as ContextType) => ctx == ContextType::Assembly orelse ctx == ContextType::Class
 end class
 
 class public AssemblyAttrStmt extends AttrStmt
-	method public override boolean ValidateContext(var ctx as ContextType)
-		return ctx == ContextType::Assembly
-	end method		
+	method public override boolean ValidateContext(var ctx as ContextType) => ctx == ContextType::Assembly
 end class
 
 class public PropertyAttrStmt extends AttrStmt
-	method public override boolean ValidateContext(var ctx as ContextType)
-		return ctx == ContextType::Class orelse ctx == ContextType::Interface
-	end method
+	method public override boolean ValidateContext(var ctx as ContextType) => ctx == ContextType::Class orelse ctx == ContextType::Interface
 end class
 
 class public EventAttrStmt extends AttrStmt
-	method public override boolean ValidateContext(var ctx as ContextType)
-		return ctx == ContextType::Class orelse ctx == ContextType::Interface
-	end method
+	method public override boolean ValidateContext(var ctx as ContextType) => ctx == ContextType::Class orelse ctx == ContextType::Interface
 end class
 
 class public EnumAttrStmt extends AttrStmt
-	method public override boolean ValidateContext(var ctx as ContextType)
-		return ctx == ContextType::Assembly
-	end method
+	method public override boolean ValidateContext(var ctx as ContextType) => ctx == ContextType::Assembly
 end class
 
 class public ParameterAttrStmt extends AttrStmt
@@ -71,8 +58,6 @@ class public ParameterAttrStmt extends AttrStmt
 		Index = 0
 	end method
 
-	method public override boolean ValidateContext(var ctx as ContextType)
-		return ctx == ContextType::Class orelse ctx == ContextType::Interface
-	end method
+	method public override boolean ValidateContext(var ctx as ContextType) => ctx == ContextType::Class orelse ctx == ContextType::Interface
 	
 end class

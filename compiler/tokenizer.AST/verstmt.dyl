@@ -26,12 +26,7 @@ class public VerStmt extends Stmt
 		return "ver " + sw::ToString()
 	end method
 	
-	method public Version ToVersion()
-		return new Version(VersionNos[0]::NumVal, VersionNos[1]::NumVal, VersionNos[2]::NumVal, VersionNos[3]::NumVal)
-	end method
-
-	method public override boolean ValidateContext(var ctx as ContextType)
-		return ctx == ContextType::Assembly
-	end method
+	method public Version ToVersion() => new Version(VersionNos[0]::NumVal, VersionNos[1]::NumVal, VersionNos[2]::NumVal, VersionNos[3]::NumVal)
+	method public override boolean ValidateContext(var ctx as ContextType) => ctx == ContextType::Assembly
 
 end class

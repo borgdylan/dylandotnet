@@ -275,7 +275,7 @@ Global
 		$0.DotNetNamingPolicy = $37
 		$37.DirectoryNamespaceAssociation = None
 		$37.ResourceNamePolicy = MSBuild
-		version = 11.5.6.4
+		version = 11.6.1.6
 		outputpath = 2.0
 	EndGlobalSection
 EndGlobal

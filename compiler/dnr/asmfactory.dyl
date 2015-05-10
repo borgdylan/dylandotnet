@@ -88,9 +88,7 @@ class public static AsmFactory
 	end method
 
 	[method: ComVisible(false)]
-	method public static IKVM.Reflection.Type CreateTyp()
-		return CurnTypB::CreateType()
-	end method
+	method public static IKVM.Reflection.Type CreateTyp() => CurnTypB::CreateType()
 
 	[method: ComVisible(false)]
 	method public static void InitMtd()

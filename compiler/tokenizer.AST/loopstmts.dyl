@@ -18,13 +18,8 @@ class public DoWhileStmt extends BlockStmt
 		Exp = new Expr()
 	end method
 
-	method public override boolean ValidateEnding(var stm as Stmt)
-		return stm is EndDoStmt
-	end method
-
-	method public override boolean ValidateContext(var ctx as ContextType)
-		return ctx == ContextType::Method orelse ctx == ContextType::Loop
-	end method
+	method public override boolean ValidateEnding(var stm as Stmt) => stm is EndDoStmt
+	method public override boolean ValidateContext(var ctx as ContextType) => ctx == ContextType::Method orelse ctx == ContextType::Loop
 
 end class
 
@@ -37,13 +32,8 @@ class public DoUntilStmt extends BlockStmt
 		Exp = new Expr()
 	end method
 
-	method public override boolean ValidateEnding(var stm as Stmt)
-		return stm is EndDoStmt
-	end method
-
-	method public override boolean ValidateContext(var ctx as ContextType)
-		return ctx == ContextType::Method orelse ctx == ContextType::Loop
-	end method
+	method public override boolean ValidateEnding(var stm as Stmt) => stm is EndDoStmt
+	method public override boolean ValidateContext(var ctx as ContextType) => ctx == ContextType::Method orelse ctx == ContextType::Loop
 
 end class
 
@@ -59,13 +49,8 @@ class public ForeachStmt extends BlockStmt
 		Iter = new Ident()
 	end method
 
-	method public override boolean ValidateEnding(var stm as Stmt)
-		return stm is EndDoStmt
-	end method
-
-	method public override boolean ValidateContext(var ctx as ContextType)
-		return ctx == ContextType::Method orelse ctx == ContextType::Loop
-	end method
+	method public override boolean ValidateEnding(var stm as Stmt) => stm is EndDoStmt
+	method public override boolean ValidateContext(var ctx as ContextType) => ctx == ContextType::Method orelse ctx == ContextType::Loop
 
 end class
 
@@ -85,13 +70,8 @@ class public ForStmt extends BlockStmt
 		Direction = true
 	end method
 
-	method public override boolean ValidateEnding(var stm as Stmt)
-		return stm is EndDoStmt
-	end method
-
-	method public override boolean ValidateContext(var ctx as ContextType)
-		return ctx == ContextType::Method orelse ctx == ContextType::Loop
-	end method
+	method public override boolean ValidateEnding(var stm as Stmt) => stm is EndDoStmt
+	method public override boolean ValidateContext(var ctx as ContextType) => ctx == ContextType::Method orelse ctx == ContextType::Loop
 
 end class
 
@@ -123,28 +103,19 @@ class public DoStmt extends BlockStmt
 		mybase::ctor(ContextType::Loop)
 	end method
 
-	method public override boolean ValidateEnding(var stm as Stmt)
-		return stm is UntilStmt orelse stm is WhileStmt
-	end method
-
-	method public override boolean ValidateContext(var ctx as ContextType)
-		return ctx == ContextType::Method orelse ctx == ContextType::Loop
-	end method
+	method public override boolean ValidateEnding(var stm as Stmt) =>  stm is UntilStmt orelse stm is WhileStmt
+	method public override boolean ValidateContext(var ctx as ContextType) => ctx == ContextType::Method orelse ctx == ContextType::Loop
 
 end class
 
 class public BreakStmt extends Stmt
 
-	method public override boolean ValidateContext(var ctx as ContextType)
-		return ctx == ContextType::Loop
-	end method
+	method public override boolean ValidateContext(var ctx as ContextType) => ctx == ContextType::Loop
 
 end class
 
 class public ContinueStmt extends Stmt
 
-	method public override boolean ValidateContext(var ctx as ContextType)
-		return ctx == ContextType::Loop
-	end method
+	method public override boolean ValidateContext(var ctx as ContextType) => ctx == ContextType::Loop
 
 end class

@@ -17,22 +17,16 @@ class public CatchStmt extends BranchStmt
 		ExTyp = new TypeTok()
 	end method
 	
-	method public override string ToString()
-		return "catch " + ExName::Value + " as " + ExTyp::ToString()
-	end method
+	method public override string ToString() => i"catch {ExName::Value} as {ExTyp::ToString()}"
 
 end class
 
 class public FinallyStmt extends BranchStmt
-	method public override string ToString()
-		return "finally"
-	end method
+	method public override string ToString() => "finally"
 end class
 
 class public EndTryStmt extends EndStmt
-	method public override string ToString()
-		return "end try"
-	end method
+	method public override string ToString() => "end try"
 end class
 
 class public TryStmt extends BlockStmt implements IBranchContainer
@@ -65,23 +59,11 @@ class public TryStmt extends BlockStmt implements IBranchContainer
 		end if
 	end method
 
-	property public virtual BranchStmt[] BranchChildren
-		get
-			return Branches::ToArray()
-		end get
-	end property
+	property public virtual BranchStmt[] BranchChildren => Branches::ToArray()
 
-	method public override string ToString()
-		return "try"
-	end method
-
-	method public override boolean ValidateEnding(var stm as Stmt)
-		return stm is EndTryStmt
-	end method
-
-	method public override boolean ValidateContext(var ctx as ContextType)
-		return ctx == ContextType::Method orelse ctx == ContextType::Loop
-	end method
+	method public override string ToString() => "try"
+	method public override boolean ValidateEnding(var stm as Stmt) => stm is EndTryStmt
+	method public override boolean ValidateContext(var ctx as ContextType) => ctx == ContextType::Method orelse ctx == ContextType::Loop
 
 end class
 
@@ -94,8 +76,6 @@ class public ThrowStmt extends Stmt
 		RExp = new Expr()
 	end method
 
-	method public override boolean ValidateContext(var ctx as ContextType)
-		return ctx == ContextType::Method orelse ctx == ContextType::Loop
-	end method
+	method public override boolean ValidateContext(var ctx as ContextType) => ctx == ContextType::Method orelse ctx == ContextType::Loop
 
 end class

@@ -7,21 +7,15 @@
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
 class public EndEventStmt extends EndStmt
-	method public override string ToString()
-		return "end event"
-	end method
+	method public override string ToString() => "end event"
 end class
 
 class public EndAddStmt extends EndStmt
-	method public override string ToString()
-		return "end add"
-	end method
+	method public override string ToString() => "end add"
 end class
 
 class public EndRemoveStmt extends EndStmt
-	method public override string ToString()
-		return "end remove"
-	end method
+	method public override string ToString() => "end remove"
 end class
 
 class public EventStmt extends BlockStmt
@@ -44,13 +38,8 @@ class public EventStmt extends BlockStmt
 		end if
 	end method
 
-	method public override boolean ValidateEnding(var stm as Stmt)
-		return stm is EndEventStmt
-	end method
-
-	method public override boolean ValidateContext(var ctx as ContextType)
-		return ctx == ContextType::Class orelse ctx == ContextType::Interface
-	end method
+	method public override boolean ValidateEnding(var stm as Stmt) => stm is EndEventStmt
+	method public override boolean ValidateContext(var ctx as ContextType) => ctx == ContextType::Class orelse ctx == ContextType::Interface
 
 end class
 
@@ -62,18 +51,12 @@ class public EventAddStmt extends BlockStmt
 		mybase::ctor(ContextType::Method)
 	end method
 
-	method public override boolean IsOneLiner(var ctx as IStmtContainer)
-		return Adder isnot null orelse ctx::get_Context() == ContextType::AbstractEvent orelse _
+	method public override boolean IsOneLiner(var ctx as IStmtContainer) => _
+			Adder isnot null orelse ctx::get_Context() == ContextType::AbstractEvent orelse _
 			ctx::get_Parent()::get_Context() == ContextType::Interface
-	end method
 
-	method public override boolean ValidateEnding(var stm as Stmt)
-		return stm is EndAddStmt
-	end method
-
-	method public override boolean ValidateContext(var ctx as ContextType)
-		return ctx == ContextType::Event orelse ctx == ContextType::AbstractEvent
-	end method
+	method public override boolean ValidateEnding(var stm as Stmt) => stm is EndAddStmt
+	method public override boolean ValidateContext(var ctx as ContextType) => ctx == ContextType::Event orelse ctx == ContextType::AbstractEvent
 
 end class
 
@@ -85,17 +68,11 @@ class public EventRemoveStmt extends BlockStmt
 		mybase::ctor(ContextType::Method)
 	end method
 
-	method public override boolean IsOneLiner(var ctx as IStmtContainer)
-		return Remover isnot null orelse ctx::get_Context() == ContextType::AbstractEvent orelse _
-			ctx::get_Parent()::get_Context() == ContextType::Interface
-	end method
+	method public override boolean IsOneLiner(var ctx as IStmtContainer) => _
+		Remover isnot null orelse ctx::get_Context() == ContextType::AbstractEvent orelse _
+		ctx::get_Parent()::get_Context() == ContextType::Interface
 
-	method public override boolean ValidateEnding(var stm as Stmt)
-		return stm is EndRemoveStmt
-	end method
-
-	method public override boolean ValidateContext(var ctx as ContextType)
-		return ctx == ContextType::Event orelse ctx == ContextType::AbstractEvent
-	end method
+	method public override boolean ValidateEnding(var stm as Stmt) => stm is EndRemoveStmt
+	method public override boolean ValidateContext(var ctx as ContextType) => ctx == ContextType::Event orelse ctx == ContextType::AbstractEvent
 
 end class

@@ -22,12 +22,7 @@ class public OpStack extends C5.LinkedList<of Token>
 		end if
 	end method
 
-	method public Token TopOp()
-		return #ternary { get_Count() == 0 ? $Token$null , get_Last()}
-	end method
-
-	method public integer getLength()
-		return get_Count()
-	end method
+	method public Token TopOp() => #ternary { get_Count() == 0 ? $Token$null , get_Last()}
+	method public integer getLength() => get_Count()
 
 end class

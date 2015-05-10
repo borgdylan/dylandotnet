@@ -33,8 +33,6 @@ class public PropertyItem
 		ctor(string::Empty, $IKVM.Reflection.Type$null, $PropertyBuilder$null, $IEnumerable<of Attributes.Attribute>$null, string::Empty)
 	end method
 
-	method public override string ToString()
-		return Name + " : " + PropertyTyp::ToString()
-	end method
+	method public override string ToString() => i"{Name} : {PropertyTyp::ToString()}"
 
 end class

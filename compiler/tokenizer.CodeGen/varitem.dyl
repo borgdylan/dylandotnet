@@ -44,8 +44,6 @@ class public VarItem
 		StoreLines = new C5.TreeSet<of integer>()
 	end method
 	
-	method public override string ToString()
-		return Name
-	end method
+	method public override string ToString() => Name
 
 end class

@@ -25,8 +25,6 @@ class public FieldItem
 		ctor(string::Empty, $IKVM.Reflection.Type$null, $FieldBuilder$null, null)
 	end method
 
-	method public override string ToString()
-		return Name + " : " + FieldTyp::ToString()
-	end method
+	method public override string ToString() => Name + " : " + FieldTyp::ToString()
 
 end class

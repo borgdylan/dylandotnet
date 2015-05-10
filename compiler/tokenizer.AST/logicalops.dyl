@@ -16,9 +16,7 @@ class public AndOp extends LogicalOp
 		PrecNo = 7
 	end method
 	
-	method public override string ToString()
-		return "and"
-	end method
+	method public override string ToString() => "and"
 
 end class
 
@@ -29,9 +27,7 @@ class public OrOp extends LogicalOp
 		PrecNo = 5
 	end method
 	
-	method public override string ToString()
-		return "or"
-	end method
+	method public override string ToString() => "or"
 
 end class
 
@@ -42,9 +38,7 @@ class public AndAlsoOp extends LogicalOp
 		PrecNo = 4
 	end method
 	
-	method public override string ToString()
-		return "andalso"
-	end method
+	method public override string ToString() => "andalso"
 
 end class
 
@@ -55,9 +49,7 @@ class public OrElseOp extends LogicalOp
 		PrecNo = 3
 	end method
 	
-	method public override string ToString()
-		return "orelse"
-	end method
+	method public override string ToString() => "orelse"
 
 end class
 
@@ -68,9 +60,7 @@ class public NandOp extends LogicalOp
 		PrecNo = 7
 	end method
 	
-	method public override string ToString()
-		return "nand"
-	end method
+	method public override string ToString() => "nand"
 
 end class
 
@@ -81,9 +71,7 @@ class public NorOp extends LogicalOp
 		PrecNo = 5
 	end method
 	
-	method public override string ToString()
-		return "nor"
-	end method
+	method public override string ToString() => "nor"
 
 end class
 
@@ -94,9 +82,7 @@ class public XorOp extends LogicalOp
 		PrecNo = 6
 	end method
 	
-	method public override string ToString()
-		return "xor"
-	end method
+	method public override string ToString() => "xor"
 
 end class
 
@@ -107,9 +93,7 @@ class public XnorOp extends LogicalOp
 		PrecNo = 6
 	end method
 	
-	method public override string ToString()
-		return "xnor"
-	end method
+	method public override string ToString() => "xnor"
 
 end class
 
@@ -120,9 +104,7 @@ class public NotOp extends LogicalOp
 		PrecNo = 13
 	end method
 	
-	method public override string ToString()
-		return "~"
-	end method
+	method public override string ToString() => "~"
 
 end class
 
@@ -133,8 +115,6 @@ class public NegOp extends LogicalOp
 		PrecNo = 13
 	end method
 	
-	method public override string ToString()
-		return "!"
-	end method
+	method public override string ToString() => "!"
 
 end class

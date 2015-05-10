@@ -29,12 +29,7 @@ class public EnumStmt extends BlockStmt
 		Attrs::Add(attrtoadd)
 	end method
 
-	method public override boolean ValidateEnding(var stm as Stmt)
-		return stm is EndEnumStmt
-	end method
-
-	method public override boolean ValidateContext(var ctx as ContextType)
-		return ctx == ContextType::Assembly
-	end method
+	method public override boolean ValidateEnding(var stm as Stmt) => stm is EndEnumStmt
+	method public override boolean ValidateContext(var ctx as ContextType) => ctx == ContextType::Assembly
 
 end class

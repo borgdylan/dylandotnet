@@ -383,52 +383,44 @@ class public static Helpers
 
 
 	[method: ComVisible(false)]
-	method public static boolean CheckUnsigned(var t as IKVM.Reflection.Type)
-		return t::Equals(Loader::CachedLoadClass("System.UInt32")) orelse _
-			t::Equals(Loader::CachedLoadClass("System.UInt64")) orelse _
-			t::Equals(Loader::CachedLoadClass("System.Char")) orelse _
-			t::Equals(Loader::CachedLoadClass("System.Byte")) orelse _
-			t::Equals(Loader::CachedLoadClass("System.UInt16")) orelse _
-			t::Equals(Loader::CachedLoadClass("System.UIntPtr"))
-	end method
+	method public static boolean CheckUnsigned(var t as IKVM.Reflection.Type) => _
+		t::Equals(Loader::CachedLoadClass("System.UInt32")) orelse _
+		t::Equals(Loader::CachedLoadClass("System.UInt64")) orelse _
+		t::Equals(Loader::CachedLoadClass("System.Char")) orelse _
+		t::Equals(Loader::CachedLoadClass("System.Byte")) orelse _
+		t::Equals(Loader::CachedLoadClass("System.UInt16")) orelse _
+		t::Equals(Loader::CachedLoadClass("System.UIntPtr"))
 	
 	[method: ComVisible(false)]
-	method public static boolean CheckSigned(var t as IKVM.Reflection.Type)
-		return t::Equals(Loader::CachedLoadClass("System.SByte")) orelse _
-			t::Equals(Loader::CachedLoadClass("System.Int16")) orelse _
-			t::Equals(Loader::CachedLoadClass("System.Int32")) orelse _
-			t::Equals(Loader::CachedLoadClass("System.Int64")) orelse _
-			t::Equals(Loader::CachedLoadClass("System.IntPtr"))
-	end method
+	method public static boolean CheckSigned(var t as IKVM.Reflection.Type) => _
+		t::Equals(Loader::CachedLoadClass("System.SByte")) orelse _
+		t::Equals(Loader::CachedLoadClass("System.Int16")) orelse _
+		t::Equals(Loader::CachedLoadClass("System.Int32")) orelse _
+		t::Equals(Loader::CachedLoadClass("System.Int64")) orelse _
+		t::Equals(Loader::CachedLoadClass("System.IntPtr"))
 	
 	[method: ComVisible(false)]
-	method public static boolean CheckSHLRLHS(var t as IKVM.Reflection.Type)
-		return t::Equals(Loader::CachedLoadClass("System.Int32")) orelse t::Equals(Loader::CachedLoadClass("System.UInt32")) _
-			orelse t::Equals(Loader::CachedLoadClass("System.Int64")) orelse t::Equals(Loader::CachedLoadClass("System.UInt64")) _
-		 	orelse t::Equals(Loader::CachedLoadClass("System.IntPtr")) orelse t::Equals(Loader::CachedLoadClass("System.UIntPtr"))
-	end method
+	method public static boolean CheckSHLRLHS(var t as IKVM.Reflection.Type) => _
+		t::Equals(Loader::CachedLoadClass("System.Int32")) orelse t::Equals(Loader::CachedLoadClass("System.UInt32")) _
+		orelse t::Equals(Loader::CachedLoadClass("System.Int64")) orelse t::Equals(Loader::CachedLoadClass("System.UInt64")) _
+		orelse t::Equals(Loader::CachedLoadClass("System.IntPtr")) orelse t::Equals(Loader::CachedLoadClass("System.UIntPtr"))
 	
 	[method: ComVisible(false)]
-	method public static boolean CheckSHLRRHS(var t as IKVM.Reflection.Type, var accepti64 as boolean)
-		return t::Equals(Loader::CachedLoadClass("System.Int32")) orelse _
-			(accepti64 andalso t::Equals(Loader::CachedLoadClass("System.Int64"))) _
-			orelse t::Equals(Loader::CachedLoadClass("System.IntPtr"))
-	end method
+	method public static boolean CheckSHLRRHS(var t as IKVM.Reflection.Type, var accepti64 as boolean) => _
+		t::Equals(Loader::CachedLoadClass("System.Int32")) orelse _
+		(accepti64 andalso t::Equals(Loader::CachedLoadClass("System.Int64"))) _
+		orelse t::Equals(Loader::CachedLoadClass("System.IntPtr"))
 	
 	[method: ComVisible(false)]
-	method public static boolean IsPrimitiveIntegralType(var t as IKVM.Reflection.Type)
-		return CheckSigned(t) orelse CheckUnsigned(t)
-	end method
+	method public static boolean IsPrimitiveIntegralType(var t as IKVM.Reflection.Type) => CheckSigned(t) orelse CheckUnsigned(t)
 	
 	[method: ComVisible(false)]
-	method public static boolean IsPrimitiveFPType(var t as IKVM.Reflection.Type)
-		return t::Equals(Loader::CachedLoadClass("System.Double")) orelse t::Equals(Loader::CachedLoadClass("System.Single"))
-	end method
+	method public static boolean IsPrimitiveFPType(var t as IKVM.Reflection.Type) => _
+		t::Equals(Loader::CachedLoadClass("System.Double")) orelse t::Equals(Loader::CachedLoadClass("System.Single"))
 	
 	[method: ComVisible(false)]
-	method public static boolean IsPrimitiveNumericType(var t as IKVM.Reflection.Type)
-		return CheckSigned(t) orelse IsPrimitiveFPType(t) orelse CheckUnsigned(t)
-	end method
+	method public static boolean IsPrimitiveNumericType(var t as IKVM.Reflection.Type) => _
+		CheckSigned(t) orelse IsPrimitiveFPType(t) orelse CheckUnsigned(t)
 	
 	[method: ComVisible(false)]
 	method public static integer GetPrimitiveNumericSize(var t as IKVM.Reflection.Type)

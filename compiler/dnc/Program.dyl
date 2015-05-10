@@ -37,7 +37,7 @@ class public static Program
 	[method: ComVisible(false)]
 	method private static void main(var args as string[])
 		
-		StreamUtils::WriteLine("dylan.NET Compiler v. 11.5.6.4 RC for Microsoft (R) .NET Framework (R) v. 4.0 / 4.5")
+		StreamUtils::WriteLine("dylan.NET Compiler v. 11.6.1.1 RC for Microsoft (R) .NET Framework (R) v. 4.0 / 4.5")
 		StreamUtils::WriteLine("                           and Xamarin Mono v. 2.x.y/v. 3.x.y")
 		StreamUtils::WriteLine("This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.")
 		StreamUtils::WriteLine("Copyright (C) 2014 Dylan Borg")
@@ -123,9 +123,7 @@ class public static Program
 		end method
 	
 		[method: ComVisible(false)]
-		method public static Task InvokeAsync(var args as string[])
-			return Task::get_Factory()::StartNew(new Action<of object>(InvokeAsyncWrapper),args)
-		end method
+		method public static Task InvokeAsync(var args as string[]) => Task::get_Factory()::StartNew(new Action<of object>(InvokeAsyncWrapper),args)
 	
 	end #if
 

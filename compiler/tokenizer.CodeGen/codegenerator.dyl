@@ -184,9 +184,7 @@ class public CodeGenerator
 		return Tuple::Create<of boolean, boolean>(rtflag, awflag)
 	end method
 
-	method assembly Tuple<of boolean, boolean> Process(var c as IStmtContainer, var spth as string)
-		return Process(c, spth, false, false)
-	end method
+	method assembly Tuple<of boolean, boolean> Process(var c as IStmtContainer, var spth as string) => Process(c, spth, false, false)
 
 	method public void EmitMSIL(var stmts as StmtSet, var fpath as string)
 

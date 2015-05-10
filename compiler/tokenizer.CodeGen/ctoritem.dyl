@@ -21,8 +21,6 @@ class public CtorItem
 		ctor(new IKVM.Reflection.Type[0], $ConstructorBuilder$null)
 	end method
 
-	method public override string ToString()
-		return "ctor : " + $string$ParamTyps[l]
-	end method
+	method public override string ToString() => "ctor : " + $string$ParamTyps[l]
 
 end class

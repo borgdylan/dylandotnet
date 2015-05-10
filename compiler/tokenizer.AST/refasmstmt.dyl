@@ -25,9 +25,7 @@ class public RefasmStmt extends Stmt
 		return "#refasm " + temp
 	end method
 
-	method public override boolean ValidateContext(var ctx as ContextType)
-		return ctx == ContextType::Assembly
-	end method
+	method public override boolean ValidateContext(var ctx as ContextType) => ctx == ContextType::Assembly
 
 end class
 
@@ -48,8 +46,6 @@ class public RefstdasmStmt extends Stmt
 		return "#refstdasm " + temp
 	end method
 
-	method public override boolean ValidateContext(var ctx as ContextType)
-		return ctx == ContextType::Assembly
-	end method
+	method public override boolean ValidateContext(var ctx as ContextType) => ctx == ContextType::Assembly
 
 end class

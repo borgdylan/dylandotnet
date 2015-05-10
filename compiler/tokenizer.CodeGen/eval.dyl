@@ -1620,8 +1620,6 @@ class public Evaluator
 		return false
 	end method
 	
-	method public boolean EvaluateHIf(var exp as Expr)
-		return EvaluateHIf(ConvToAST(ConvToRPN(exp)))
-	end method
+	method public boolean EvaluateHIf(var exp as Expr) => EvaluateHIf(ConvToAST(ConvToRPN(exp)))
 
 end class
