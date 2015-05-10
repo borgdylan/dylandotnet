@@ -39,13 +39,8 @@ class private CILambdas
 		return true
 	end method
 
-	method assembly ConstructorInfo Bind(var ci as CtorItem)
-		return $ConstructorInfo$ci::CtorBldr::BindTypeParameters(Auxt)
-	end method
-
-	method assembly boolean DetermineIfCandidate(var ci as ConstructorInfo)
-		return CmpTyps(ci::GetParameters(),Params)
-	end method
+	method assembly ConstructorInfo Bind(var ci as CtorItem) => $ConstructorInfo$ci::CtorBldr::BindTypeParameters(Auxt)
+	method assembly boolean DetermineIfCandidate(var ci as ConstructorInfo) => CmpTyps(ci::GetParameters(),Params)
 
 	method assembly static integer CalcDeriveness(var t as IKVM.Reflection.Type)
 		var d as integer = 1

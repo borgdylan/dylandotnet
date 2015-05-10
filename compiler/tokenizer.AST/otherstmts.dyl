@@ -17,9 +17,7 @@ class public AssignStmt extends Stmt
 		RExp = new Expr()
 	end method
 
-	method public override boolean ValidateContext(var ctx as ContextType)
-		return ctx == ContextType::Method orelse ctx == ContextType::Loop orelse ctx == ContextType::Enum
-	end method
+	method public override boolean ValidateContext(var ctx as ContextType) => ctx == ContextType::Method orelse ctx == ContextType::Loop orelse ctx == ContextType::Enum
 
 end class
 
@@ -31,9 +29,7 @@ class public IncStmt extends Stmt
 		mybase::ctor()
 	end method
 
-	method public override boolean ValidateContext(var ctx as ContextType)
-		return ctx == ContextType::Method orelse ctx == ContextType::Loop
-	end method
+	method public override boolean ValidateContext(var ctx as ContextType) => ctx == ContextType::Method orelse ctx == ContextType::Loop
 
 end class
 
@@ -45,9 +41,7 @@ class public DecStmt extends Stmt
 		mybase::ctor()
 	end method
 
-	method public override boolean ValidateContext(var ctx as ContextType)
-		return ctx == ContextType::Method orelse ctx == ContextType::Loop
-	end method
+	method public override boolean ValidateContext(var ctx as ContextType) => ctx == ContextType::Method orelse ctx == ContextType::Loop
 
 end class
 
@@ -60,9 +54,7 @@ class public ReturnStmt extends Stmt
 		RExp = new Expr()
 	end method
 
-	method public override boolean ValidateContext(var ctx as ContextType)
-		return ctx == ContextType::Method orelse ctx == ContextType::Loop
-	end method
+	method public override boolean ValidateContext(var ctx as ContextType) => ctx == ContextType::Method orelse ctx == ContextType::Loop
 
 end class
 
@@ -75,9 +67,7 @@ class public MethodCallStmt extends Stmt
 		MethodToken = new Token()
 	end method
 
-	method public override boolean ValidateContext(var ctx as ContextType)
-		return ctx == ContextType::Method orelse ctx == ContextType::Loop
-	end method
+	method public override boolean ValidateContext(var ctx as ContextType) => ctx == ContextType::Method orelse ctx == ContextType::Loop
 
 end class
 
@@ -88,11 +78,7 @@ class public EndLockStmt extends EndStmt
 end class
 
 class public CommentStmt extends Stmt
-
-	method public override boolean ValidateContext(var ctx as ContextType)
-		return true
-	end method
-
+	method public override boolean ValidateContext(var ctx as ContextType) => true
 end class
 
 class public ErrorStmt extends Stmt
@@ -112,9 +98,7 @@ class public ErrorStmt extends Stmt
 		return "#error " + temp
 	end method
 
-	method public override boolean ValidateContext(var ctx as ContextType)
-		return true
-	end method
+	method public override boolean ValidateContext(var ctx as ContextType) => true
 
 end class
 
@@ -135,9 +119,7 @@ class public WarningStmt extends Stmt
 		return "#warning " + temp
 	end method
 
-	method public override boolean ValidateContext(var ctx as ContextType)
-		return true
-	end method
+	method public override boolean ValidateContext(var ctx as ContextType) => true
 
 end class
 
@@ -158,9 +140,7 @@ class public SignStmt extends Stmt
 		return "#sign " + temp
 	end method
 
-	method public override boolean ValidateContext(var ctx as ContextType)
-		return ctx == ContextType::Assembly
-	end method
+	method public override boolean ValidateContext(var ctx as ContextType) => ctx == ContextType::Assembly
 
 end class
 
@@ -189,9 +169,7 @@ class public EmbedStmt extends Stmt
 		return #ternary{temp2::get_Length() == 0 ? "#embed " + temp, "#embed " + temp2 + " = " + temp}
 	end method
 
-	method public override boolean ValidateContext(var ctx as ContextType)
-		return ctx == ContextType::Assembly
-	end method
+	method public override boolean ValidateContext(var ctx as ContextType) => ctx == ContextType::Assembly
 
 end class
 
@@ -204,13 +182,8 @@ class public LockStmt extends BlockStmt
 		Lockee = new Expr()
 	end method
 
-	method public override boolean ValidateEnding(var stm as Stmt)
-		return stm is EndLockStmt
-	end method
-
-	method public override boolean ValidateContext(var ctx as ContextType)
-		return ctx == ContextType::Method orelse ctx == ContextType::Loop
-	end method
+	method public override boolean ValidateEnding(var stm as Stmt) => stm is EndLockStmt
+	method public override boolean ValidateContext(var ctx as ContextType) => ctx == ContextType::Method orelse ctx == ContextType::Loop
 
 end class
 
@@ -223,12 +196,7 @@ class public TryLockStmt extends BlockStmt
 		Lockee = new Expr()
 	end method
 
-	method public override boolean ValidateEnding(var stm as Stmt)
-		return stm is EndLockStmt
-	end method
-
-	method public override boolean ValidateContext(var ctx as ContextType)
-		return ctx == ContextType::Method orelse ctx == ContextType::Loop
-	end method
+	method public override boolean ValidateEnding(var stm as Stmt) => stm is EndLockStmt
+	method public override boolean ValidateContext(var ctx as ContextType) => ctx == ContextType::Method orelse ctx == ContextType::Loop
 
 end class

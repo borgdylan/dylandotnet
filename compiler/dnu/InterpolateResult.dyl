@@ -16,16 +16,7 @@ class public InterpolateResult
 		_exprs = Enumerable::ToArray<of string>(exprs)
 	end method
 	
-	property public string Format
-		get
-			return _format
-		end get
-	end property
-	
-	property public string[] Expressions
-		get
-			return _exprs
-		end get
-	end property
+	property public string Format => _format
+	property public string[] Expressions => _exprs
 	
 end class

@@ -15,102 +15,54 @@
 //end class
 
 class public NewTok extends Token
-
-	method public override string ToString()
-		return "new"
-	end method
-
+	method public override string ToString() => "new"
 end class
 
 class public GettypeTok extends Token
-
-	method public override string ToString()
-		return "gettype"
-	end method
-
+	method public override string ToString() => "gettype"
 end class
 
 class public DefaultTok extends Token
-
-	method public override string ToString()
-		return "default"
-	end method
-
+	method public override string ToString() => "default"
 end class
 
 class public WhereTok extends NonExprToken
-
-	method public override string ToString()
-		return "where"
-	end method
-
+	method public override string ToString() => "where"
 end class
 
 class public RefTok extends Token
-
-	method public override string ToString()
-		return "ref"
-	end method
-
+	method public override string ToString() => "ref"
 end class
 
 class public ValInRefTok extends Token
-
-	method public override string ToString()
-		return "valinref"
-	end method
-
+	method public override string ToString() => "valinref"
 end class
 
 class public abstract SwitchTok extends NonExprToken
 end class
 
 class public OnTok extends SwitchTok
-
-	method public override string ToString()
-		return "on"
-	end method
-
+	method public override string ToString() => "on"
 end class
 
 class public OfTok extends Token
-
-	method public override string ToString()
-		return "of"
-	end method
-
+	method public override string ToString() => "of"
 end class
 
 class public OffTok extends SwitchTok
-
-	method public override string ToString()
-		return "off"
-	end method
-
+	method public override string ToString() => "off"
 end class
 
 class public ScopeTok extends NonExprToken
-
-	method public override string ToString()
-		return "#scope"
-	end method
-
+	method public override string ToString() => "#scope"
 end class
 
 class public DebugTok extends NonExprToken
-
-	method public override string ToString()
-		return "#debug"
-	end method
-
+	method public override string ToString() => "#debug"
 end class
 
 class public RefasmTok extends NonExprToken
-
-	method public override string ToString()
-		return "#refasm"
-	end method
-
+	method public override string ToString() => "#refasm"
 end class
 
 //class public RefembedasmTok extends NonExprToken
@@ -122,310 +74,158 @@ end class
 //end class
 
 class public EmbedTok extends NonExprToken
-
-	method public override string ToString()
-		return "#embed"
-	end method
-
+	method public override string ToString() => "#embed"
 end class
 
 class public RefstdasmTok extends NonExprToken
-
-	method public override string ToString()
-		return "#refstdasm"
-	end method
-
+	method public override string ToString() => "#refstdasm"
 end class
 
 class public ImportTok extends NonExprToken
-
-	method public override string ToString()
-		return "import"
-	end method
-
+	method public override string ToString() => "import"
 end class
 
 class public LocimportTok extends NonExprToken
-
-	method public override string ToString()
-		return "locimport"
-	end method
-
+	method public override string ToString() => "locimport"
 end class
 
 class public AssemblyTok extends NonExprToken
-
-	method public override string ToString()
-		return "assembly"
-	end method
-
+	method public override string ToString() => "assembly"
 end class
 
 class public AssemblyCTok extends NonExprToken
-
-	method public override string ToString()
-		return "assembly:"
-	end method
-
+	method public override string ToString() => "assembly:"
 end class
 
 class public ExeTok extends NonExprToken
-
-	method public override string ToString()
-		return "exe"
-	end method
-
+	method public override string ToString() => "exe"
 end class
 
 class public DllTok extends NonExprToken
-
-	method public override string ToString()
-		return "dll"
-	end method
-
+	method public override string ToString() => "dll"
 end class
 
 class public WinexeTok extends NonExprToken
-
-	method public override string ToString()
-		return "winexe"
-	end method
-
+	method public override string ToString() => "winexe"
 end class
 
 class public VerTok extends NonExprToken
-
-	method public override string ToString()
-		return "ver"
-	end method
-
+	method public override string ToString() => "ver"
 end class
 
 class public IncludeTok extends NonExprToken
-
-	method public override string ToString()
-		return "#include"
-	end method
-
+	method public override string ToString() => "#include"
 end class
 
 class public SignTok extends NonExprToken
-
-	method public override string ToString()
-		return "#sign"
-	end method
-
+	method public override string ToString() => "#sign"
 end class
 
 
 class public NamespaceTok extends NonExprToken
-
-	method public override string ToString()
-		return "namespace"
-	end method
-
+	method public override string ToString() => "namespace"
 end class
 
 class public ClassTok extends NonExprToken
-
-	method public override string ToString()
-		return "class"
-	end method
-
+	method public override string ToString() => "class"
 end class
 
 class public ClassCTok extends NonExprToken
-
-	method public override string ToString()
-		return "class:"
-	end method
-
+	method public override string ToString() => "class:"
 end class
 
 class public StructTok extends NonExprToken
-
-	method public override string ToString()
-		return "struct"
-	end method
-
+	method public override string ToString() => "struct"
 end class
 
 class public InterfaceTok extends NonExprToken
-
-	method public override string ToString()
-		return "interface"
-	end method
-
+	method public override string ToString() => "interface"
 end class
 
 class public ExtendsTok extends NonExprToken
-
-	method public override string ToString()
-		return "extends"
-	end method
-
+	method public override string ToString() => "extends"
 end class
 
 class public ImplementsTok extends NonExprToken
-
-	method public override string ToString()
-		return "implements"
-	end method
-
+	method public override string ToString() => "implements"
 end class
 
 class public EnumTok extends NonExprToken
-
-	method public override string ToString()
-		return "enum"
-	end method
-
+	method public override string ToString() => "enum"
 end class
 
 class public EnumCTok extends NonExprToken
-
-	method public override string ToString()
-		return "enum:"
-	end method
-
+	method public override string ToString() => "enum:"
 end class
 
 class public FieldTok extends NonExprToken
-
-	method public override string ToString()
-		return "field"
-	end method
-
+	method public override string ToString() => "field"
 end class
 
 class public FieldCTok extends NonExprToken
-
-	method public override string ToString()
-		return "field:"
-	end method
-
+	method public override string ToString() => "field:"
 end class
 
 class public DelegateTok extends NonExprToken
-
-	method public override string ToString()
-		return "delegate"
-	end method
-
+	method public override string ToString() => "delegate"
 end class
 
 class public PropertyTok extends NonExprToken
-
-	method public override string ToString()
-		return "property"
-	end method
-
+	method public override string ToString() => "property"
 end class
 
 class public PropertyCTok extends NonExprToken
-
-	method public override string ToString()
-		return "property:"
-	end method
-
+	method public override string ToString() => "property:"
 end class
 
 class public EventTok extends NonExprToken
-
-	method public override string ToString()
-		return "event"
-	end method
-
+	method public override string ToString() => "event"
 end class
 
 class public EventCTok extends NonExprToken
-
-	method public override string ToString()
-		return "event:"
-	end method
-
+	method public override string ToString() => "event:"
 end class
 
 
 class public GetTok extends NonExprToken
-
-	method public override string ToString()
-		return "get"
-	end method
-
+	method public override string ToString() => "get"
 end class
 
 class public SetTok extends NonExprToken
-
-	method public override string ToString()
-		return "set"
-	end method
-
+	method public override string ToString() => "set"
 end class
 
 class public AddTok extends NonExprToken
-
-	method public override string ToString()
-		return "add"
-	end method
-
+	method public override string ToString() => "add"
 end class
 
 class public RemoveTok extends NonExprToken
-
-	method public override string ToString()
-		return "remove"
-	end method
-
+	method public override string ToString() => "remove"
 end class
 
 
 class public MethodTok extends NonExprToken
-
-	method public override string ToString()
-		return "method"
-	end method
-
+	method public override string ToString() => "method"
 end class
 
 class public MethodCTok extends NonExprToken
-
-	method public override string ToString()
-		return "method:"
-	end method
-
+	method public override string ToString() => "method:"
 end class
 
 class public TryTok extends NonExprToken
-
-	method public override string ToString()
-		return "try"
-	end method
-
+	method public override string ToString() => "try"
 end class
 
 class public CatchTok extends NonExprToken
-
-	method public override string ToString()
-		return "catch"
-	end method
-
+	method public override string ToString() => "catch"
 end class
 
 class public AsTok extends NonExprToken
-
-	method public override string ToString()
-		return "as"
-	end method
-
+	method public override string ToString() => "as"
 end class
 
 class public FinallyTok extends NonExprToken
-
-	method public override string ToString()
-		return "finally"
-	end method
-
+	method public override string ToString() => "finally"
 end class
 
 //class public LabelTok extends NonExprToken
@@ -453,284 +253,144 @@ end class
 //end class
 
 class public IfTok extends NonExprToken
-
-	method public override string ToString()
-		return "if"
-	end method
-
+	method public override string ToString() => "if"
 end class
 
 class public HIfTok extends NonExprToken
-
-	method public override string ToString()
-		return "#if"
-	end method
-
+	method public override string ToString() => "#if"
 end class
 
 class public ElseIfTok extends NonExprToken
-
-	method public override string ToString()
-		return "elseif"
-	end method
-
+	method public override string ToString() => "elseif"
 end class
 
 class public HElseIfTok extends NonExprToken
-
-	method public override string ToString()
-		return "#elseif"
-	end method
-
+	method public override string ToString() => "#elseif"
 end class
 
 
 class public ThenTok extends NonExprToken
-
-	method public override string ToString()
-		return "then"
-	end method
-
+	method public override string ToString() => "then"
 end class
 
 class public DoTok extends NonExprToken
-
-	method public override string ToString()
-		return "do"
-	end method
-
+	method public override string ToString() => "do"
 end class
 
 class public ForTok extends NonExprToken
-
-	method public override string ToString()
-		return "for"
-	end method
-
+	method public override string ToString() => "for"
 end class
 
 class public UptoTok extends NonExprToken
-
-	method public override string ToString()
-		return "upto"
-	end method
-
+	method public override string ToString() => "upto"
 end class
 
 class public DowntoTok extends NonExprToken
-
-	method public override string ToString()
-		return "downto"
-	end method
-
+	method public override string ToString() => "downto"
 end class
 
 class public StepTok extends NonExprToken
-
-	method public override string ToString()
-		return "step"
-	end method
-
+	method public override string ToString() => "step"
 end class
 
 class public ForeachTok extends NonExprToken
-
-	method public override string ToString()
-		return "foreach"
-	end method
-
+	method public override string ToString() => "foreach"
 end class
 
 class public BreakTok extends NonExprToken
-
-	method public override string ToString()
-		return "break"
-	end method
-
+	method public override string ToString() => "break"
 end class
 
 class public ContinueTok extends NonExprToken
-
-	method public override string ToString()
-		return "continue"
-	end method
-
+	method public override string ToString() => "continue"
 end class
 
 class public WhileTok extends NonExprToken
-
-	method public override string ToString()
-		return "while"
-	end method
-
+	method public override string ToString() => "while"
 end class
 
 class public UntilTok extends NonExprToken
-
-	method public override string ToString()
-		return "until"
-	end method
-
+	method public override string ToString() => "until"
 end class
 
 class public LiteralTok extends NonExprToken
-
-	method public override string ToString()
-		return "literal"
-	end method
-
+	method public override string ToString() => "literal"
 end class
 
 class public VarTok extends NonExprToken
-
-	method public override string ToString()
-		return "var"
-	end method
-	
+	method public override string ToString() => "var"
 end class
 
 class public UsingTok extends NonExprToken
-
-	method public override string ToString()
-		return "using"
-	end method
-	
+	method public override string ToString() => "using"
 end class
 
 class public ElseTok extends NonExprToken
-
-	method public override string ToString()
-		return "else"
-	end method
-
+	method public override string ToString() => "else"
 end class
 
 class public HElseTok extends NonExprToken
-
-	method public override string ToString()
-		return "#else"
-	end method
-
+	method public override string ToString() => "#else"
 end class
 
 class public TernaryTok extends Token
-
-	method public override string ToString()
-		return "#ternary"
-	end method
-
+	method public override string ToString() => "#ternary"
 end class
 
 class public HDefineTok extends NonExprToken
-
-	method public override string ToString()
-		return "#define"
-	end method
-
+	method public override string ToString() => "#define"
 end class
 
 class public HUndefTok extends NonExprToken
-
-	method public override string ToString()
-		return "#undef"
-	end method
-
+	method public override string ToString() => "#undef"
 end class
 
 class public ErrorTok extends NonExprToken
-
-	method public override string ToString()
-		return "#error"
-	end method
-
+	method public override string ToString() => "#error"
 end class
 
 class public WarningTok extends NonExprToken
-
-	method public override string ToString()
-		return "#warning"
-	end method
-
+	method public override string ToString() => "#warning"
 end class
 
 class public ReturnTok extends NonExprToken
-
-	method public override string ToString()
-		return "return"
-	end method
-
+	method public override string ToString() => "return"
 end class
 
 class public ThrowTok extends NonExprToken
-
-	method public override string ToString()
-		return "throw"
-	end method
-	
+	method public override string ToString() => "throw"
 end class
 
 class public EndTok extends NonExprToken
-	
-	method public override string ToString()
-		return "end"
-	end method
-
+	method public override string ToString() => "end"
 end class
 
 class public InTok extends NonExprToken
-
-	method public override string ToString()
-		return "in"
-	end method
-
+	method public override string ToString() => "in"
 end class
 
 class public OutTok extends NonExprToken
-
-	method public override string ToString()
-		return "out"
-	end method
-
+	method public override string ToString() => "out"
 end class
 
 class public InOutTok extends NonExprToken
-
-	method public override string ToString()
-		return "inout"
-	end method
-
+	method public override string ToString() => "inout"
 end class
 
 class public LockTok extends NonExprToken
-
-	method public override string ToString()
-		return "lock"
-	end method
-
+	method public override string ToString() => "lock"
 end class
 
 class public TryLockTok extends NonExprToken
-
-	method public override string ToString()
-		return "trylock"
-	end method
-
+	method public override string ToString() => "trylock"
 end class
 
 class public ExprTok extends Token
-
-	method public override string ToString()
-		return "#expr"
-	end method
-
+	method public override string ToString() => "#expr"
 end class
 
 class public RegionTok extends NonExprToken
-
-	method public override string ToString()
-		return "#region"
-	end method
-
+	method public override string ToString() => "#region"
 end class
 
 class public MeTok extends ValueToken implements IUnaryOperatable, IConvable
@@ -753,9 +413,7 @@ class public MeTok extends ValueToken implements IUnaryOperatable, IConvable
 		_OrdOp = string::Empty
 	end method
 	
-	method public override string ToString()
-		return #ternary{_Conv ? "$" + _TTok::ToString() + "$me", "me"}
-	end method
+	method public override string ToString() => #ternary{_Conv ? "$" + _TTok::ToString() + "$me", "me"}
 	
 	property public virtual string OrdOp
 		get
@@ -787,9 +445,5 @@ class public MeTok extends ValueToken implements IUnaryOperatable, IConvable
 end class
 
 class public ParameterCTok extends NonExprToken
-
-	method public override string ToString()
-		return Value
-	end method
-
+	method public override string ToString() => Value
 end class

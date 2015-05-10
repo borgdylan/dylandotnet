@@ -26,9 +26,7 @@ class public AssignOp extends Op
 		PrecNo = 1
 	end method
 	
-	method public override string ToString()
-		return "="
-	end method
+	method public override string ToString() => "="
 
 end class
 
@@ -40,9 +38,7 @@ class public AssignOp2 extends Op
 		PrecNo = 1
 	end method
 	
-	method public override string ToString()
-		return "="
-	end method
+	method public override string ToString() => "="
 
 end class
 
@@ -54,9 +50,7 @@ class public AsOp extends Op
 		PrecNo = 8
 	end method
 	
-	method public override string ToString()
-		return "as"
-	end method
+	method public override string ToString() => "as"
 
 end class
 
@@ -68,8 +62,6 @@ class public CoalesceOp extends Op
 		PrecNo = 8
 	end method
 	
-	method public override string ToString()
-		return "??"
-	end method
+	method public override string ToString() => "??"
 
 end class

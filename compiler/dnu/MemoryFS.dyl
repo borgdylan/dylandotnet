@@ -30,9 +30,7 @@ namespace dylan.NET.Utils
 			return false
 		end method
 
-		method public static boolean HasFile(var path as string)
-			return fs::Contains(path)
-		end method
+		method public static boolean HasFile(var path as string) => fs::Contains(path)
 
 		method public static Stream GetFile(var path as string)
 			if fs::Contains(path) then
@@ -50,9 +48,7 @@ namespace dylan.NET.Utils
 //			return anis
 //		end method
 
-		method public static IEnumerable<of string> GetFiles()
-			return fs::get_Keys()
-		end method
+		method public static IEnumerable<of string> GetFiles() => fs::get_Keys()
 
 	end class
 	

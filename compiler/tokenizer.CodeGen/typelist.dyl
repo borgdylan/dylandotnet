@@ -117,10 +117,8 @@ class public TypeList
 		end if
 	end method
 	
-	method assembly ConstructorInfo GetDefaultCtor(var t as IKVM.Reflection.Type)
-		var ti as TypeItem = GetTypeItem(t)
-		return #ternary {ti is null ? Loader::LoadCtor(t, IKVM.Reflection.Type::EmptyTypes), GetCtor(t, IKVM.Reflection.Type::EmptyTypes, t)}
-	end method
+	method assembly ConstructorInfo GetDefaultCtor(var t as IKVM.Reflection.Type) => _
+		#ternary {GetTypeItem(t) is null ? Loader::LoadCtor(t, IKVM.Reflection.Type::EmptyTypes), GetCtor(t, IKVM.Reflection.Type::EmptyTypes, t)}
 	
 	method public void EnsureDefaultCtor(var t as IKVM.Reflection.Type)
 		if !#expr(ILEmitter::InterfaceFlg orelse ILEmitter::StaticCFlg) then

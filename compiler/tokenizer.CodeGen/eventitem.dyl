@@ -31,8 +31,6 @@ class public EventItem
 		ExplImplType = expl
 	end method
 
-	method public override string ToString()
-		return Name + " : " + EventTyp::ToString()
-	end method
+	method public override string ToString() => Name + " : " + EventTyp::ToString()
 
 end class

@@ -25,9 +25,7 @@ namespace Extra.Tasks
 			get_Log()::LogWarning(string::Empty, string::Empty, string::Empty, cm::get_File(), cm::get_Line(), 0, cm::get_Line(), 0, cm::get_Msg(), new object[0])
 		end method
 
-		method private string Extract(var i as ITaskItem)
-			return i::get_ItemSpec()
-		end method
+		method private string Extract(var i as ITaskItem) => i::get_ItemSpec()
 
 		method private boolean ExtractED(var i as ITaskItem)
 			var b as boolean = false
@@ -38,9 +36,7 @@ namespace Extra.Tasks
 			end if
 		end method
 
-		method private ITaskItem Pack(var i as string)
-			return new TaskItem(i)
-		end method
+		method private ITaskItem Pack(var i as string) => new TaskItem(i)
 
 		method public override boolean Execute()
 			try

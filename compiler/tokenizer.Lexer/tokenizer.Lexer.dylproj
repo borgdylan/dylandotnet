@@ -9,7 +9,7 @@
     <UsePartialTypes>false</UsePartialTypes>
     <AssemblyName>tokenizer.Lexer</AssemblyName>
     <UseMSBuildEngine>True</UseMSBuildEngine>
-    <ReleaseVersion>11.5.6.4</ReleaseVersion>
+    <ReleaseVersion>11.6.1.6</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>

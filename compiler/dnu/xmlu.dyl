@@ -9,19 +9,13 @@
 class public static XmlUtils
 	
 	[method: ComVisible(false)]
-	method public static XName MakeName(var name as string)
-		return XName::Get(name, string::Empty)
-	end method
+	method public static XName MakeName(var name as string) => XName::Get(name, string::Empty)
 	
 	[method: ComVisible(false)]
-	method public static XElement MakeNode(var name as string)
-		return new XElement(XName::Get(name, string::Empty))
-	end method
+	method public static XElement MakeNode(var name as string) => new XElement(XName::Get(name, string::Empty))
 	
 	[method: ComVisible(false)]
-	method public static XAttribute MakeAttr(var name as string, var value as string)
-		return new XAttribute(XName::Get(name, string::Empty), value)
-	end method
+	method public static XAttribute MakeAttr(var name as string, var value as string) => new XAttribute(XName::Get(name, string::Empty), value)
 
 	[method: ComVisible(false)]
 	method public static XContainer AddAttr(var el as XContainer, var attr as XAttribute)
@@ -62,18 +56,12 @@ class public static XmlUtils
 	end method
 
 	[method: ComVisible(false)]
-	method public static string GetVal(var el as XElement)
-		return el::get_Value()
-	end method
+	method public static string GetVal(var el as XElement) => el::get_Value()
 
 	[method: ComVisible(false)]
-	method public static XElement XPathSelectEl(var el as XNode, var XPathQuery as string)
-		return XPath.Extensions::XPathSelectElement(el, XPathQuery)
-	end method
+	method public static XElement XPathSelectEl(var el as XNode, var XPathQuery as string) => XPath.Extensions::XPathSelectElement(el, XPathQuery)
 
 	[method: ComVisible(false)]
-	method public static IEnumerable<of XElement> XPathSelectEls(var el as XNode, var XPathQuery as string)
-		return XPath.Extensions::XPathSelectElements(el, XPathQuery)
-	end method
+	method public static IEnumerable<of XElement> XPathSelectEls(var el as XNode, var XPathQuery as string) => XPath.Extensions::XPathSelectElements(el, XPathQuery)
 
 end class

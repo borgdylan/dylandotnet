@@ -17,9 +17,7 @@ class public AddOp extends AritOp
 		PrecNo = 11
 	end method
 	
-	method public override string ToString()
-		return "+"
-	end method
+	method public override string ToString() => "+"
 
 end class
 
@@ -31,9 +29,7 @@ class public MulOp extends AritOp
 		PrecNo = 12
 	end method
 
-	method public override string ToString()
-		return "*"
-	end method
+	method public override string ToString() => "*"
 
 end class
 
@@ -45,9 +41,7 @@ class public SubOp extends AritOp
 		PrecNo = 11
 	end method
 	
-	method public override string ToString()
-		return "-"
-	end method
+	method public override string ToString() => "-"
 
 end class
 
@@ -60,9 +54,7 @@ class public DivOp extends AritOp
 		PrecNo = 12
 	end method
 	
-	method public override string ToString()
-		return "/"
-	end method
+	method public override string ToString() => "/"
 
 end class
 
@@ -74,9 +66,7 @@ class public ModOp extends AritOp
 		PrecNo = 12
 	end method
 	
-	method public override string ToString()
-		return "%"
-	end method
+	method public override string ToString() => "%"
 
 end class
 
@@ -88,9 +78,7 @@ class public IncOp extends AritOp
 		PrecNo = 13
 	end method
 	
-	method public override string ToString()
-		return "++"
-	end method
+	method public override string ToString() => "++"
 
 end class
 
@@ -102,9 +90,7 @@ class public DecOp extends AritOp
 		PrecNo = 13
 	end method
 	
-	method public override string ToString()
-		return "--"
-	end method
+	method public override string ToString() => "--"
 
 end class
 
@@ -116,9 +102,7 @@ class public ShlOp extends AritOp
 		PrecNo = 10
 	end method
 	
-	method public override string ToString()
-		return "<<"
-	end method
+	method public override string ToString() => "<<"
 
 end class
 
@@ -130,8 +114,6 @@ class public ShrOp extends AritOp
 		PrecNo = 10
 	end method
 	
-	method public override string ToString()
-		return ">>"
-	end method
+	method public override string ToString() => ">>"
 
 end class

@@ -29,12 +29,7 @@ class public NSStmt extends BlockStmt
 		return "namespace " + temp
 	end method
 
-	method public override boolean ValidateEnding(var stm as Stmt)
-		return stm is EndNSStmt
-	end method
-
-	method public override boolean ValidateContext(var ctx as ContextType)
-		return ctx == ContextType::Assembly
-	end method
+	method public override boolean ValidateEnding(var stm as Stmt) => stm is EndNSStmt
+	method public override boolean ValidateContext(var ctx as ContextType) => ctx == ContextType::Assembly
 
 end class

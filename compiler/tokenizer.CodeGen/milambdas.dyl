@@ -38,9 +38,7 @@ class private MILambdas2
 		ParamLen = pl
 	end method
 
-	method assembly MethodInfo Bind(var mi as MethodItem)
-		return $MethodInfo$mi::MethodBldr::BindTypeParameters(Auxt)
-	end method
+	method assembly MethodInfo Bind(var mi as MethodItem) => $MethodInfo$mi::MethodBldr::BindTypeParameters(Auxt)
 
 	method assembly boolean GenericMtdFilter(var mi as MethodItem)
 		if mi::NrGenParams > 0 then
@@ -75,9 +73,8 @@ class private MILambdas2
 		return true
 	end method
 	
-	method assembly IKVM.Reflection.MethodInfo InstGenMtd(var mi as MethodItem)
-		return #expr($MethodInfo$mi::MethodBldr::BindTypeParameters(Auxt))::MakeGenericMethod(Params)
-	end method
+	method assembly IKVM.Reflection.MethodInfo InstGenMtd(var mi as MethodItem) => _
+		#expr($MethodInfo$mi::MethodBldr::BindTypeParameters(Auxt))::MakeGenericMethod(Params)
 
 	method assembly boolean CmpTyps(var arra as ParameterInfo[], var arrb as IKVM.Reflection.Type[])
 		if arra[l] == arrb[l] then
@@ -115,13 +112,10 @@ class private MILambdas2
 		return true
 	end method
 
-	method assembly boolean DetermineIfCandidate(var mi as MethodInfo)
-		return #ternary {mi::get_IsGenericMethod() ? false, CmpTyps(mi::GetParameters(),Params)}
-	end method
+	method assembly boolean DetermineIfCandidate(var mi as MethodInfo) => _
+		#ternary {mi::get_IsGenericMethod() ? false, CmpTyps(mi::GetParameters(),Params)}
 	
-	method assembly boolean DetermineIfCandidate2(var mi as MethodInfo)
-		return CmpTyps(mi::GetParameters(),Params)
-	end method
+	method assembly boolean DetermineIfCandidate2(var mi as MethodInfo) => CmpTyps(mi::GetParameters(),Params)
 	
 	method assembly boolean DetermineIfProtoCandidate(var mi as MethodItem)
 		//(mi::Name == Name) not needed since its implicit in store 

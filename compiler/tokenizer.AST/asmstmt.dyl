@@ -19,12 +19,7 @@ class public AssemblyStmt extends Stmt
 		AsmName = new Ident()
 	end method
 	
-	method public override string ToString()
-		return "assembly " + AsmName::Value + " " + Mode::ToString()
-	end method
-
-	method public override boolean ValidateContext(var ctx as ContextType)
-		return ctx == ContextType::Assembly
-	end method
+	method public override string ToString() => i"assembly {AsmName::Value} {Mode::ToString()}"
+	method public override boolean ValidateContext(var ctx as ContextType) => ctx == ContextType::Assembly
 
 end class

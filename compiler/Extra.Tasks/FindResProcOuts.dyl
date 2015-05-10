@@ -19,13 +19,8 @@ namespace Extra.Tasks
 			mybase::ctor()
 		end method
 			
-		method private string Extract(var i as ITaskItem)
-			return Path::ChangeExtension(i::get_ItemSpec(), ".resx")
-		end method
-
-		method private ITaskItem Pack(var i as string)
-			return new TaskItem(i)
-		end method
+		method private string Extract(var i as ITaskItem) => Path::ChangeExtension(i::get_ItemSpec(), ".resx")
+		method private ITaskItem Pack(var i as string) => new TaskItem(i)
 
 		method public override boolean Execute()
 			try

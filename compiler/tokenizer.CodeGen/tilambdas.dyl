@@ -28,13 +28,10 @@ class private TILambdas
 		TB = #ternary {name::get_IsConstructedGenericType() ? name::GetGenericTypeDefinition(), name}
 	end method
 
-	method assembly boolean DetermineIfCandidate(var ti as TypeItem)
-		return (ti::Name == Name) andalso (ti::NrGenParams == NrGenParams)
-	end method
+	method assembly boolean DetermineIfCandidate(var ti as TypeItem) => (ti::Name == Name) andalso (ti::NrGenParams == NrGenParams)
 
-	method assembly boolean DetermineIfCandidateType(var ti as TypeItem)
-		return #ternary { ti::BakedTyp isnot null ? ti::BakedTyp::Equals(TB), _
-			 #ternary{ ti::IsEnum ? ti::EnumBldr::Equals(TB), ti::TypeBldr::Equals(TB) } }
-	end method
+	method assembly boolean DetermineIfCandidateType(var ti as TypeItem) => _
+		#ternary { ti::BakedTyp isnot null ? ti::BakedTyp::Equals(TB), _
+		#ternary{ ti::IsEnum ? ti::EnumBldr::Equals(TB), ti::TypeBldr::Equals(TB) } }
 
 end class

@@ -35,15 +35,7 @@
 			Branches = new C5.ArrayList<of BranchStmt>()
 		end method
 
-		property public virtual IStmtContainer CurrentContainer
-			get
-				if Branches::get_Count() == 0 then
-					return me
-				else
-					return Branches::get_Last()
-				end if
-			end get
-		end property
+		property public virtual IStmtContainer CurrentContainer => #ternary{ Branches::get_Count() == 0 ?  me, Branches::get_Last() }
 
 		method public virtual boolean AddBranch(var stmttoadd as BranchStmt)
 			if stmttoadd is ElseIfStmt orelse stmttoadd is ElseStmt then
@@ -56,19 +48,10 @@
 			end if
 		end method
 
-		property public virtual BranchStmt[] BranchChildren
-			get
-				return Branches::ToArray()
-			end get
-		end property
+		property public virtual BranchStmt[] BranchChildren => Branches::ToArray()
 
-		method public override boolean ValidateEnding(var stm as Stmt)
-			return stm is EndIfStmt
-		end method
-
-		method public override boolean ValidateContext(var ctx as ContextType)
-			return ctx == ContextType::Method orelse ctx == ContextType::Loop
-		end method
+		method public override boolean ValidateEnding(var stm as Stmt) => stm is EndIfStmt
+		method public override boolean ValidateContext(var ctx as ContextType) => ctx == ContextType::Method orelse ctx == ContextType::Loop
 
 	end class
 
@@ -106,15 +89,7 @@ end #region
 			Branches = new C5.ArrayList<of BranchStmt>()
 		end method
 
-		property public virtual IStmtContainer CurrentContainer
-			get
-				if Branches::get_Count() == 0 then
-					return me
-				else
-					return Branches::get_Last()
-				end if
-			end get
-		end property
+		property public virtual IStmtContainer CurrentContainer => #ternary{ Branches::get_Count() == 0 ? me, Branches::get_Last()}
 
 		method public virtual boolean AddBranch(var stmttoadd as BranchStmt)
 			if stmttoadd is HElseIfStmt orelse stmttoadd is HElseStmt then
@@ -127,19 +102,10 @@ end #region
 			end if
 		end method
 
-		property public virtual BranchStmt[] BranchChildren
-			get
-				return Branches::ToArray()
-			end get
-		end property
+		property public virtual BranchStmt[] BranchChildren => Branches::ToArray()
 
-		method public override boolean ValidateEnding(var stm as Stmt)
-			return stm is EndHIfStmt
-		end method
-
-		method public override boolean ValidateContext(var ctx as ContextType)
-			return true
-		end method
+		method public override boolean ValidateEnding(var stm as Stmt) => stm is EndHIfStmt
+		method public override boolean ValidateContext(var ctx as ContextType) => true
 
 	end class
 
@@ -152,9 +118,7 @@ end #region
 			Symbol = new Ident()
 		end method
 
-		method public override boolean ValidateContext(var ctx as ContextType)
-			return true
-		end method
+		method public override boolean ValidateContext(var ctx as ContextType) => true
 
 	end class
 
@@ -167,9 +131,7 @@ end #region
 			Symbol = new Ident()
 		end method
 
-		method public override boolean ValidateContext(var ctx as ContextType)
-			return true
-		end method
+		method public override boolean ValidateContext(var ctx as ContextType) => true
 
 	end class
 end #region
@@ -186,12 +148,7 @@ class public RegionStmt extends BlockStmt
 		Name = new Token()
 	end method
 
-	method public override boolean ValidateEnding(var stm as Stmt)
-		return stm is EndRegionStmt
-	end method
-
-	method public override boolean ValidateContext(var ctx as ContextType)
-		return true
-	end method
+	method public override boolean ValidateEnding(var stm as Stmt) => stm is EndRegionStmt
+	method public override boolean ValidateContext(var ctx as ContextType) => true
 
 end class

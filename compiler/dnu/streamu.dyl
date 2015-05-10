@@ -91,9 +91,7 @@ class public static StreamUtils
 	end method
 
 	[method: ComVisible(false)]
-	method public static string ReadLine()
-		return #ternary {UseConsole ? Console::ReadLine(), #ternary {InS isnot null ? InS::ReadLine(), string::Empty}}
-	end method
+	method public static string ReadLine() => #ternary {UseConsole ? Console::ReadLine(), #ternary {InS isnot null ? InS::ReadLine(), string::Empty}}
 
 	[method: ComVisible(false)]
 	method public static void WriteLine(var str as string)

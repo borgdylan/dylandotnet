@@ -35,15 +35,9 @@ class public MethodNameTok extends Ident implements IMayHaveConstraints
 		ExplType = idt::ExplType
 	end method
 	
-	method public static specialname MethodNameTok op_Implicit(var idt as Ident)
-		return #ternary{idt is MethodNameTok ? $MethodNameTok$idt, new MethodNameTok(idt)}
-	end method
+	method public static specialname MethodNameTok op_Implicit(var idt as Ident) => #ternary{idt is MethodNameTok ? $MethodNameTok$idt, new MethodNameTok(idt)}
 
-	property public virtual boolean MayHaveConstraints
-		get
-			return false
-		end get
-	end property
+	property public virtual boolean MayHaveConstraints => false
 
 end class
 
@@ -82,9 +76,7 @@ class public GenericMethodNameTok extends MethodNameTok implements IMayHaveConst
 		_Constraints = new C5.HashDictionary<of string, C5.LinkedList<of Token> >()
 	end method
 	
-	method public static specialname GenericMethodNameTok op_Implicit(var idt as Ident)
-		return #ternary {idt is GenericMethodNameTok ? $GenericMethodNameTok$idt, new GenericMethodNameTok(idt)}
-	end method
+	method public static specialname GenericMethodNameTok op_Implicit(var idt as Ident) => #ternary {idt is GenericMethodNameTok ? $GenericMethodNameTok$idt, new GenericMethodNameTok(idt)}
 
 	method public void AddParam(var param as TypeTok)
 		Params::Add(param)
@@ -97,16 +89,7 @@ class public GenericMethodNameTok extends MethodNameTok implements IMayHaveConst
 		_Constraints::get_Item(param)::Add(ctr)
 	end method
 
-	property public virtual boolean MayHaveConstraints
-		get
-			return true
-		end get
-	end property
-
-	property public virtual C5.HashDictionary<of string, C5.LinkedList<of Token> > Constraints
-		get
-			return _Constraints
-		end get
-	end property
+	property public virtual boolean MayHaveConstraints => true
+	property public virtual C5.HashDictionary<of string, C5.LinkedList<of Token> > Constraints => _Constraints
 
 end class

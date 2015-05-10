@@ -32,8 +32,6 @@ class public FieldStmt extends Stmt
 		return "field " + sw::ToString() + FieldTyp::ToString() + " " + FieldName::Value
 	end method
 
-	method public override boolean ValidateContext(var ctx as ContextType)
-		return ctx == ContextType::Class
-	end method
+	method public override boolean ValidateContext(var ctx as ContextType) => ctx == ContextType::Class
 
 end class

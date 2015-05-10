@@ -181,9 +181,7 @@ class public static ParseUtils
 	end method
 
 	[method: ComVisible(false)]
-	method public static string ProcessMSYSPath(var p as string)
-		return ProcessMSYSPath(p, Environment::get_OSVersion()::get_Platform())
-	end method
+	method public static string ProcessMSYSPath(var p as string) => ProcessMSYSPath(p, Environment::get_OSVersion()::get_Platform())
 	
 	[method: ComVisible(false)]
 	method public static boolean IsHexDigit(var c as char)

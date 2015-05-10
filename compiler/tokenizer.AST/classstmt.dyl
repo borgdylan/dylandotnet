@@ -19,9 +19,7 @@ class public EndClassStmt extends EndStmt
 		ctor(new ClassTok() {Line = me::Line})
 	end method
 
-	method public override string ToString()
-		return "end " + EndToken::ToString()
-	end method
+	method public override string ToString() => "end " + EndToken::ToString()
 end class
 
 // class Attrs ClassName extends InhClass implements ImplInterafaces
@@ -60,24 +58,10 @@ class public ClassStmt extends BlockStmt implements IMayHaveConstraints, IConstr
 		_Constraints::get_Item(param)::Add(ctr)
 	end method
 
-	property public virtual boolean MayHaveConstraints
-		get
-			return ClassName is GenericTypeTok
-		end get
-	end property
+	property public virtual boolean MayHaveConstraints => ClassName is GenericTypeTok
+	property public virtual C5.HashDictionary<of string, C5.LinkedList<of Token> > Constraints => _Constraints
 
-	property public virtual C5.HashDictionary<of string, C5.LinkedList<of Token> > Constraints
-		get
-			return _Constraints
-		end get
-	end property
-
-	method public override boolean ValidateEnding(var stm as Stmt)
-		return stm is EndClassStmt
-	end method
-
-	method public override boolean ValidateContext(var ctx as ContextType)
-		return ctx == ContextType::Assembly orelse ctx == ContextType::Class
-	end method
+	method public override boolean ValidateEnding(var stm as Stmt) => stm is EndClassStmt
+	method public override boolean ValidateContext(var ctx as ContextType) => ctx == ContextType::Assembly orelse ctx == ContextType::Class
 
 end class

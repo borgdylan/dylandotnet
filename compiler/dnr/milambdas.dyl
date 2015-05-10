@@ -125,20 +125,10 @@ class private MILambdas
 		return true
 	end method
 
-	method assembly boolean IsSameName(var mi as IKVM.Reflection.MethodInfo)
-		return mi::get_Name() == Name
-	end method
-
-	method assembly boolean IsSameNameAndReturn(var mi as IKVM.Reflection.MethodInfo)
-		return (mi::get_Name() == Name) andalso mi::get_ReturnType()::Equals(ConvTyp)
-	end method
-
-	method assembly IKVM.Reflection.MethodInfo InstGenMtd(var mi as IKVM.Reflection.MethodInfo)
-		return mi::MakeGenericMethod(GenParams)
-	end method
-
-	method assembly static boolean IsSpecial(var mi as IKVM.Reflection.MethodInfo)
-		return mi::get_IsSpecialName()
-	end method
+	method assembly boolean IsSameName(var mi as IKVM.Reflection.MethodInfo) => mi::get_Name() == Name
+	method assembly boolean IsSameNameAndReturn(var mi as IKVM.Reflection.MethodInfo) => _
+		(mi::get_Name() == Name) andalso mi::get_ReturnType()::Equals(ConvTyp)
+	method assembly IKVM.Reflection.MethodInfo InstGenMtd(var mi as IKVM.Reflection.MethodInfo) => mi::MakeGenericMethod(GenParams)
+	method assembly static boolean IsSpecial(var mi as IKVM.Reflection.MethodInfo) => mi::get_IsSpecialName()
 
 end class

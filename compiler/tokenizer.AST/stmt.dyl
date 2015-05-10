@@ -38,9 +38,7 @@ class public Stmt
 		Tokens::RemoveAt(ind)
 	end method
 
-	method public virtual boolean ValidateContext(var ctx as ContextType)
-		return false
-	end method
+	method public virtual boolean ValidateContext(var ctx as ContextType) => false
 
 end class
 
@@ -88,20 +86,10 @@ class public abstract BlockStmt extends Stmt implements IStmtContainer
 
 	property public virtual autogen IStmtContainer Parent
 	property public virtual autogen ContextType Context
+	property public virtual Stmt[] Children => Stmts::ToArray()
 
-	method public virtual boolean IsOneLiner(var ctx as IStmtContainer)
-		return false
-	end method
-	
-	property public virtual Stmt[] Children
-		get
-			return Stmts::ToArray()
-		end get
-	end property
-
-	method public virtual boolean ValidateEnding(var stm as Stmt)
-		return false
-	end method
+	method public virtual boolean IsOneLiner(var ctx as IStmtContainer) => false
+	method public virtual boolean ValidateEnding(var stm as Stmt) => false
 
 end class
 
@@ -158,18 +146,9 @@ class public StmtSet implements IStmtContainer
 		end set
 	end property
 
-	method public virtual boolean IsOneLiner(var ctx as IStmtContainer)
-		return false
-	end method
-
-	property public virtual Stmt[] Children
-		get
-			return Stmts::ToArray()
-		end get
-	end property
-
-	method public virtual boolean ValidateEnding(var stm as Stmt)
-		return false
-	end method
+	property public virtual Stmt[] Children => Stmts::ToArray()
+	
+	method public virtual boolean IsOneLiner(var ctx as IStmtContainer) => false
+	method public virtual boolean ValidateEnding(var stm as Stmt) => false
 
 end class

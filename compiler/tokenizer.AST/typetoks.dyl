@@ -33,13 +33,8 @@ class public TypeTok extends ValueToken implements ICloneable
 		RefTyp = value
 	end method
 	
-	method public virtual TypeTok CloneTT()
-		return new TypeTok(Value) {IsArray = IsArray, IsByRef = IsByRef, RefTyp = RefTyp}
-	end method
-	
-	method public virtual final object Clone()
-		return CloneTT()
-	end method
+	method public virtual TypeTok CloneTT() => new TypeTok(Value) {IsArray = IsArray, IsByRef = IsByRef, RefTyp = RefTyp}
+	method public virtual final object Clone() => CloneTT()
 	
 	method public override string ToString()
 		if IsArray andalso IsByRef then
@@ -81,18 +76,13 @@ class public GenericTypeTok extends TypeTok implements ICloneable
 		ctor(string::Empty)
 	end method
 
-	method private TypeTok CloneFilter(var tt as TypeTok)
-		return tt::CloneTT()
-	end method
+	method private TypeTok CloneFilter(var tt as TypeTok) => tt::CloneTT()
 
-	method public override TypeTok CloneTT()
-		return new GenericTypeTok(Value, Enumerable::Select<of TypeTok, TypeTok>(Params, new Func<of TypeTok, TypeTok>(CloneFilter))) _
-			 {IsArray = IsArray, IsByRef = IsByRef, RefTyp = RefTyp, NestedType = NestedType}
-	end method
+	method public override TypeTok CloneTT() => _
+		new GenericTypeTok(Value, Enumerable::Select<of TypeTok, TypeTok>(Params, new Func<of TypeTok, TypeTok>(CloneFilter))) _
+		{IsArray = IsArray, IsByRef = IsByRef, RefTyp = RefTyp, NestedType = NestedType}
 	
-	method public virtual final object Clone()
-		return CloneTT()
-	end method
+	method public virtual final object Clone() => CloneTT()
 
 	method public void AddParam(var param as TypeTok)
 		Params::Add(param)

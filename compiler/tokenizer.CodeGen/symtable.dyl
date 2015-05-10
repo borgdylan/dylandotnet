@@ -295,49 +295,31 @@ class public static SymTable
 	end method
 	
 	[method: ComVisible(false)]
-	method public static boolean EvalDef(var sym as string)
-		return DefSyms::Find(ref sym)
-	end method
+	method public static boolean EvalDef(var sym as string) => DefSyms::Find(ref sym)
 	
 	[method: ComVisible(false)]
-	method public static Emit.Label ReadIfEndLbl()
-		return IfLst::get_Last()::EndLabel
-	end method
+	method public static Emit.Label ReadIfEndLbl() => IfLst::get_Last()::EndLabel
 
 	[method: ComVisible(false)]
-	method public static Emit.Label ReadIfNxtBlkLbl()
-		return IfLst::get_Last()::NextBlkLabel
-	end method
+	method public static Emit.Label ReadIfNxtBlkLbl() => IfLst::get_Last()::NextBlkLabel
 	
 	[method: ComVisible(false)]
-	method public static LockItem ReadLock()
-		return $LockItem$TryLst::get_Last()
-	end method
+	method public static LockItem ReadLock() => $LockItem$TryLst::get_Last()
 	
 	[method: ComVisible(false)]
-	method public static string ReadUseeLoc()
-		return #expr($UsingItem$TryLst::get_Last())::UseeLoc
-	end method
+	method public static string ReadUseeLoc() => #expr($UsingItem$TryLst::get_Last())::UseeLoc
 
 	[method: ComVisible(false)]
-	method public static Emit.Label ReadLoopEndLbl()
-		return LoopLst::get_Last()::EndLabel
-	end method
+	method public static Emit.Label ReadLoopEndLbl() => LoopLst::get_Last()::EndLabel
 	
 	[method: ComVisible(false)]
-	method public static LoopItem ReadLoop()
-		return LoopLst::get_Last()
-	end method
+	method public static LoopItem ReadLoop() => LoopLst::get_Last()
 
 	[method: ComVisible(false)]
-	method public static Emit.Label ReadLoopStartLbl()
-		return LoopLst::get_Last()::StartLabel
-	end method
+	method public static Emit.Label ReadLoopStartLbl() => LoopLst::get_Last()::StartLabel
 
 	[method: ComVisible(false)]
-	method public static boolean ReadIfElsePass()
-		return IfLst::get_Last()::ElsePass
-	end method
+	method public static boolean ReadIfElsePass() => IfLst::get_Last()::ElsePass
 
 	[method: ComVisible(false)]
 	method public static void SetIfElsePass()
@@ -358,9 +340,7 @@ class public static SymTable
 	end method
 
 	[method: ComVisible(false)]
-	method public static boolean GetInCatch()
-		return #ternary {TryLst::get_Count() > 0 ? TryLst::get_Last()::InCatch, false}
-	end method
+	method public static boolean GetInCatch() => #ternary {TryLst::get_Count() > 0 ? TryLst::get_Last()::InCatch, false}
 
 	[method: ComVisible(false)]
 	method public static void AddLbl(var nam as string)
@@ -416,9 +396,7 @@ class public static SymTable
 	end method
 
 	[method: ComVisible(false)]
-	method public static boolean CheckReturnInTry()
-		return TryLst::get_Count() != 0
-	end method
+	method public static boolean CheckReturnInTry() => TryLst::get_Count() != 0
 	
 	[method: ComVisible(false)]
 	method public static void PushScope()
@@ -463,9 +441,7 @@ class public static SymTable
 	end method
 
 	[method: ComVisible(false)]
-	method public static FieldInfo FindFld(var nam as string)
-		return CurnTypItem::GetField(nam, CurnTypItem::TypeBldr)
-	end method
+	method public static FieldInfo FindFld(var nam as string) => CurnTypItem::GetField(nam, CurnTypItem::TypeBldr)
 
 	[method: ComVisible(false)]
 	method public static boolean CmpTyps(var arra as IKVM.Reflection.Type[], var arrb as IKVM.Reflection.Type[])
@@ -487,23 +463,16 @@ class public static SymTable
 	end method
 
 	[method: ComVisible(false)]
-	method public static MethodInfo FindMet(var nam as string, var paramst as IKVM.Reflection.Type[])
-		return CurnTypItem::GetMethod(nam, paramst, CurnTypItem::TypeBldr)
-	end method
+	method public static MethodInfo FindMet(var nam as string, var paramst as IKVM.Reflection.Type[]) => CurnTypItem::GetMethod(nam, paramst, CurnTypItem::TypeBldr)
 	
 	[method: ComVisible(false)]
-	method public static MethodInfo FindGenMet(var nam as string, var genparams as IKVM.Reflection.Type[], var paramst as IKVM.Reflection.Type[])
-		return CurnTypItem::GetGenericMethod(nam, genparams, paramst, CurnTypItem::TypeBldr)
-	end method
+	method public static MethodInfo FindGenMet(var nam as string, var genparams as IKVM.Reflection.Type[], var paramst as IKVM.Reflection.Type[]) => _
+		CurnTypItem::GetGenericMethod(nam, genparams, paramst, CurnTypItem::TypeBldr)
 	
 	[method: ComVisible(false)]
-	method public static MethodItem FindProtoMet(var nam as string, var paramst as IKVM.Reflection.Type[])
-		return CurnTypItem::GetProtoMethod(nam,paramst)
-	end method
+	method public static MethodItem FindProtoMet(var nam as string, var paramst as IKVM.Reflection.Type[]) => CurnTypItem::GetProtoMethod(nam,paramst)
 
 	[method: ComVisible(false)]
-	method public static ConstructorInfo FindCtor(var paramst as IKVM.Reflection.Type[])
-		return CurnTypItem::GetCtor(paramst, CurnTypItem::TypeBldr)
-	end method
+	method public static ConstructorInfo FindCtor(var paramst as IKVM.Reflection.Type[]) => CurnTypItem::GetCtor(paramst, CurnTypItem::TypeBldr)
 
 end class

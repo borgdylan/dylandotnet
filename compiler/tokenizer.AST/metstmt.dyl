@@ -55,12 +55,7 @@ class public MethodStmt extends BlockStmt implements IExprBodyable
 		return false
 	end method
 
-	method public override boolean ValidateEnding(var stm as Stmt)
-		return stm is EndMethodStmt
-	end method
-
-	method public override boolean ValidateContext(var ctx as ContextType)
-		return ctx == ContextType::Class orelse ctx == ContextType::Interface
-	end method
+	method public override boolean ValidateEnding(var stm as Stmt) => stm is EndMethodStmt
+	method public override boolean ValidateContext(var ctx as ContextType) => ctx == ContextType::Class orelse ctx == ContextType::Interface
 
 end class

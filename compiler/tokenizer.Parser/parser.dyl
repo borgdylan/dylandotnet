@@ -111,8 +111,6 @@ class public Parser
 		return nwss
 	end method
 
-	method public StmtSet Parse(var stms as StmtSet)
-		return Parse(stms, false)
-	end method
+	method public StmtSet Parse(var stms as StmtSet) => Parse(stms, false)
 
 end class

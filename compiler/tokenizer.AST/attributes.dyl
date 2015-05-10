@@ -14,86 +14,62 @@ end class
 
 // hidebysig
 class public HideBySigAttr extends Attributes.Attribute
-	method public override string ToString()
-		return "hidebysig"
-	end method
+	method public override string ToString() => "hidebysig"
 end class
 
 // specialname
 class public SpecialNameAttr extends Attributes.Attribute
-	method public override string ToString()
-		return "specialname"
-	end method
+	method public override string ToString() => "specialname"
 end class
 
 // private 
 class public PrivateAttr extends VisibilityAttr
-	method public override string ToString()
-		return "private"
-	end method
+	method public override string ToString() => "private"
 end class
 
 // family
 class public FamilyAttr extends VisibilityAttr
-	method public override string ToString()
-		return "family"
-	end method
+	method public override string ToString() => "family"
 end class
 
 // public
 class public PublicAttr extends VisibilityAttr
-	method public override string ToString()
-		return "public"
-	end method
+	method public override string ToString() => "public"
 end class
 
 // static
 class public StaticAttr extends Attributes.Attribute
-	method public override string ToString()
-		return "static"
-	end method
+	method public override string ToString() => "static"
 end class
 
 // virtual
 class public VirtualAttr extends Attributes.Attribute
-	method public override string ToString()
-		return "virtual"
-	end method
+	method public override string ToString() => "virtual"
 end class
 
 // abstract
 class public AbstractAttr extends Attributes.Attribute
-	method public override string ToString()
-		return "abstract"
-	end method
+	method public override string ToString() => "abstract"
 end class
 
 // prototype
 class public PrototypeAttr extends Attributes.Attribute
-	method public override string ToString()
-		return "prototype"
-	end method
+	method public override string ToString() => "prototype"
 end class
 
 // partial
 class public PartialAttr extends Attributes.Attribute
-	method public override string ToString()
-		return "partial"
-	end method
+	method public override string ToString() => "partial"
 end class
 
 // newslot
 class public NewSlotAttr extends Attributes.Attribute
-	method public override string ToString()
-		return "newslot"
-	end method
+	method public override string ToString() => "newslot"
 end class
 
 //pinvokeimpl
 class public PinvokeImplAttr extends Attributes.Attribute
-	method public override string ToString()
-		return "pinvokeimpl"
-	end method
+	method public override string ToString() => "pinvokeimpl"
 end class
 
 //// hasdefault
@@ -105,16 +81,12 @@ end class
 
 // none
 class public NoneAttr extends Attributes.Attribute
-	method public override string ToString()
-		return "none"
-	end method
+	method public override string ToString() => "none"
 end class
 
 // autochar
 class public AutoClassAttr extends Attributes.Attribute
-	method public override string ToString()
-		return "autochar"
-	end method
+	method public override string ToString() => "autochar"
 end class
 
 // ansi
@@ -126,92 +98,65 @@ end class
 
 // beforefieldinit
 class public BeforeFieldInitAttr extends Attributes.Attribute
-	method public override string ToString()
-		return "beforefieldinit"
-	end method
+	method public override string ToString() => "beforefieldinit"
 end class
 
 // sealed
 class public SealedAttr extends Attributes.Attribute
-	method public override string ToString()
-		return "sealed"
-	end method
+	method public override string ToString() => "sealed"
 end class
 
 // interface
 class public InterfaceAttr extends Attributes.Attribute
-	method public override string ToString()
-		return "interface"
-	end method
+	method public override string ToString() => "interface"
 end class
 
 // initonly
 class public InitOnlyAttr extends Attributes.Attribute
-	method public override string ToString()
-		return "initonly"
-	end method
+	method public override string ToString() => "initonly"
 end class
 
 // literal
 class public LiteralAttr extends Attributes.Attribute
-	method public override string ToString()
-		return "literal"
-	end method
+	method public override string ToString() => "literal"
 end class
 
 // final
 class public FinalAttr extends Attributes.Attribute
-	method public override string ToString()
-		return "final"
-	end method
+	method public override string ToString() => "final"
 end class
-
 
 // assembly
 class public AssemblyAttr extends VisibilityAttr
-	method public override string ToString()
-		return "assembly"
-	end method
+	method public override string ToString() => "assembly"
 end class
 
 // famandassem
 class public FamANDAssemAttr extends VisibilityAttr
-	method public override string ToString()
-		return "famandassem"
-	end method
+	method public override string ToString() => "famandassem"
 end class
 
 // famorassem
 class public FamORAssemAttr extends VisibilityAttr
-	method public override string ToString()
-		return "famorassem"
-	end method
+	method public override string ToString() => "famorassem"
 end class
 
 // sequential
 class public SequentialLayoutAttr extends Attributes.Attribute
-	method public override string ToString()
-		return "sequential"
-	end method
+	method public override string ToString() => "sequential"
 end class
 
 // auto
 class public AutoLayoutAttr extends Attributes.Attribute
-	method public override string ToString()
-		return "auto"
-	end method
+	method public override string ToString() => "auto"
 end class
 
 // autogen
 class public AutoGenAttr extends Attributes.Attribute
-	method public override string ToString()
-		return "autogen"
-	end method
+	method public override string ToString() => "autogen"
 end class
 
 // override
 class public OverrideAttr extends Attributes.Attribute
-	method public override string ToString()
-		return "override"
-	end method
+	method public override string ToString() => "override"
 end class

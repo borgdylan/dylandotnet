@@ -18,9 +18,7 @@ class public EqOp extends ConditionalOp
 		PrecNo = 8
 	end method
 	
-	method public override string ToString()
-		return "=="
-	end method
+	method public override string ToString() => "=="
 
 end class
 
@@ -32,9 +30,7 @@ class public StrictEqOp extends ConditionalOp
 		PrecNo = 8
 	end method
 	
-	method public override string ToString()
-		return "==="
-	end method
+	method public override string ToString() => "==="
 
 end class
 
@@ -46,9 +42,7 @@ class public IsOp extends ConditionalOp
 		PrecNo = 8
 	end method
 	
-	method public override string ToString()
-		return "is"
-	end method
+	method public override string ToString() => "is"
 
 end class
 
@@ -60,9 +54,7 @@ class public IsNotOp extends ConditionalOp
 		PrecNo = 8
 	end method
 	
-	method public override string ToString()
-		return "isnot"
-	end method
+	method public override string ToString() => "isnot"
 
 end class
 
@@ -74,9 +66,7 @@ class public LikeOp extends ConditionalOp
 		PrecNo = 8
 	end method
 	
-	method public override string ToString()
-		return "like"
-	end method
+	method public override string ToString() => "like"
 
 end class
 
@@ -90,9 +80,7 @@ class public NeqOp extends ConditionalOp
 		PrecNo = 8
 	end method
 	
-	method public override string ToString()
-		return "!="
-	end method
+	method public override string ToString() => "!="
 
 end class
 
@@ -104,9 +92,7 @@ class public StrictNeqOp extends ConditionalOp
 		PrecNo = 8
 	end method
 	
-	method public override string ToString()
-		return "!=="
-	end method
+	method public override string ToString() => "!=="
 
 end class
 
@@ -118,9 +104,7 @@ class public NLikeOp extends ConditionalOp
 		PrecNo = 8
 	end method
 	
-	method public override string ToString()
-		return "notlike"
-	end method
+	method public override string ToString() => "notlike"
 
 end class
 
@@ -133,9 +117,7 @@ class public GtOp extends ConditionalOp
 		PrecNo = 9
 	end method
 	
-	method public override string ToString()
-		return ">"
-	end method
+	method public override string ToString() => ">"
 
 end class
 
@@ -147,9 +129,7 @@ class public LtOp extends ConditionalOp
 		PrecNo = 9
 	end method
 	
-	method public override string ToString()
-		return "<"
-	end method
+	method public override string ToString() => "<"
 
 end class
 
@@ -161,9 +141,7 @@ class public GeOp extends ConditionalOp
 		PrecNo = 9
 	end method
 	
-	method public override string ToString()
-		return ">="
-	end method
+	method public override string ToString() => ">="
 
 end class
 
@@ -175,8 +153,6 @@ class public LeOp extends ConditionalOp
 		PrecNo = 9
 	end method
 	
-	method public override string ToString()
-		return "<="
-	end method
+	method public override string ToString() => "<="
 
 end class

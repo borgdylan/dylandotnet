@@ -274,9 +274,8 @@ class public static Loader
 	end method
 
 	[method: ComVisible(false)]
-	method public static IKVM.Reflection.Type[] GetDelegateInvokeParams(var typ as IKVM.Reflection.Type)
-		return ParamsToTyps(LoadMethodWithoutParams(typ, "Invoke")::GetParameters())
-	end method
+	method public static IKVM.Reflection.Type[] GetDelegateInvokeParams(var typ as IKVM.Reflection.Type) => _
+		ParamsToTyps(LoadMethodWithoutParams(typ, "Invoke")::GetParameters())
 
 	[method: ComVisible(false)]
 	method public static IEnumerable<of IKVM.Reflection.MethodInfo> LoadNormalMtdOverlds(var typ as IKVM.Reflection.Type, var name as string)
@@ -414,9 +413,8 @@ class public static Loader
 	end method
 
 	[method: ComVisible(false)]
-	method public static IEnumerable<of IKVM.Reflection.MethodInfo> LoadSpecMtds(var typ as IKVM.Reflection.Type)
-		return Enumerable::Where<of IKVM.Reflection.MethodInfo>(typ::GetMethods(), new Func<of IKVM.Reflection.MethodInfo,boolean>(MILambdas::IsSpecial))
-	end method
+	method public static IEnumerable<of IKVM.Reflection.MethodInfo> LoadSpecMtds(var typ as IKVM.Reflection.Type) => _
+		Enumerable::Where<of IKVM.Reflection.MethodInfo>(typ::GetMethods(), new Func<of IKVM.Reflection.MethodInfo,boolean>(MILambdas::IsSpecial))
 
 	[method: ComVisible(false)]
 	method public static IEnumerable<of IKVM.Reflection.MethodInfo> LoadGenericMtdOverlds(var typ as IKVM.Reflection.Type, var name as string, var paramlen as integer)

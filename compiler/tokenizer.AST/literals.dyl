@@ -42,9 +42,7 @@ class public NullLiteral extends Literal
 		ctor(string::Empty)
 	end method
 
-	method public override string ToString()
-		return "null"
-	end method
+	method public override string ToString() => "null"
 	
 end class
 
@@ -81,9 +79,7 @@ class public StringLiteral extends Literal
 		ctor(string::Empty)
 	end method
 
-	method public override string ToString()
-		return c"\q" + Value + c"\q"
-	end method
+	method public override string ToString() => c"\q" + Value + c"\q"
 
 end class
 
@@ -98,9 +94,7 @@ class public InterpolateLiteral extends Literal
 		ctor(string::Empty)
 	end method
 
-	method public override string ToString()
-		return c"\q" + Value + c"\q"
-	end method
+	method public override string ToString() => c"\q" + Value + c"\q"
 
 end class
 
@@ -130,9 +124,7 @@ class public CharLiteral extends Literal
 		ctor($string$value, value)
 	end method
 
-	method public override string ToString()
-		return "'" + $string$CharVal + "'"
-	end method
+	method public override string ToString() => "'" + $string$CharVal + "'"
 
 end class
 
@@ -165,9 +157,7 @@ class public BooleanLiteral extends Literal implements INegatable
 		Value = #ternary {value ? "true", "false"}
 	end method
 
-	method public override string ToString()
-		return #ternary {BoolVal ? "true", "false"}
-	end method
+	method public override string ToString() => #ternary {BoolVal ? "true", "false"}
 
 	property public virtual autogen boolean DoNeg
 
@@ -226,13 +216,9 @@ class public IntLiteral extends NumberLiteral<of integer> implements INegatable,
 		LitTyp = new IntegerTok()
 	end method
 
-	method public override string ToString()
-		return $string$NumVal + "i"
-	end method
+	method public override string ToString() => $string$NumVal + "i"
 	
-	method public string ToStringNoI()
-		return $string$NumVal
-	end method
+	method public string ToStringNoI() => $string$NumVal
 
 	property public virtual autogen boolean DoNeg
 	property public virtual autogen boolean DoNot
@@ -264,9 +250,7 @@ class public DoubleLiteral extends NumberLiteral<of double> implements INegatabl
 		LitTyp = new DoubleTok()
 	end method
 
-	method public override string ToString()
-		return $string$NumVal + "d"
-	end method
+	method public override string ToString() => $string$NumVal + "d"
 
 	property public virtual autogen boolean DoNeg
 
@@ -296,9 +280,7 @@ class public DecimalLiteral extends NumberLiteral<of decimal> implements INegata
 		LitTyp = new DecimalTok()
 	end method
 
-	method public override string ToString()
-		return $string$NumVal + "m"
-	end method
+	method public override string ToString() => $string$NumVal + "m"
 
 	property public virtual autogen boolean DoNeg
 
@@ -329,9 +311,7 @@ class public SByteLiteral extends NumberLiteral<of sbyte> implements INegatable,
 		LitTyp = new SByteTok()
 	end method
 
-	method public override string ToString()
-		return $string$NumVal + "b"
-	end method
+	method public override string ToString() => $string$NumVal + "b"
 
 	property public virtual autogen boolean DoNeg
 	property public virtual autogen boolean DoNot
@@ -407,9 +387,7 @@ class public LongLiteral extends NumberLiteral<of long> implements INegatable, I
 		LitTyp = new LongTok()
 	end method
 
-	method public override string ToString()
-		return $string$NumVal + "l"
-	end method
+	method public override string ToString() => $string$NumVal + "l"
 
 	property public virtual autogen boolean DoNeg
 	property public virtual autogen boolean DoNot
@@ -440,9 +418,7 @@ class public FloatLiteral extends NumberLiteral<of single> implements INegatable
 		LitTyp = new SingleTok()
 	end method
 
-	method public override string ToString()
-		return $string$NumVal + "f"
-	end method
+	method public override string ToString() => $string$NumVal + "f"
 
 	property public virtual autogen boolean DoNeg
 
@@ -472,9 +448,7 @@ class public UIntLiteral extends NumberLiteral<of uinteger> implements INotable
 		LitTyp = new UIntegerTok()
 	end method
 
-	method public override string ToString()
-		return $string$NumVal + "ui"
-	end method
+	method public override string ToString() => $string$NumVal + "ui"
 		
 	property public virtual autogen boolean DoNot
 
@@ -504,9 +478,7 @@ class public ByteLiteral extends NumberLiteral<of byte> implements INotable
 		LitTyp = new ByteTok()
 	end method
 
-	method public override string ToString()
-		return $string$NumVal + "ub"
-	end method
+	method public override string ToString() => $string$NumVal + "ub"
 
 	property public virtual autogen boolean DoNot
 
@@ -536,9 +508,7 @@ class public UShortLiteral extends NumberLiteral<of ushort> implements INotable
 		LitTyp = new UShortTok()
 	end method
 
-	method public override string ToString()
-		return $string$NumVal + "us"
-	end method
+	method public override string ToString() => $string$NumVal + "us"
 
 	property public virtual autogen boolean DoNot
 
@@ -569,9 +539,7 @@ class public ULongLiteral extends NumberLiteral<of ulong> implements INotable
 		LitTyp = new ULongTok()
 	end method
 
-	method public override string ToString()
-		return $string$NumVal + "ul"
-	end method
+	method public override string ToString() => $string$NumVal + "ul"
 
 	property public virtual autogen boolean DoNot
 
@@ -592,9 +560,7 @@ class public IntPtrLiteral extends NumberLiteral<of IntPtr> implements INegatabl
 		LitTyp = new IntPtrTok()
 	end method
 
-	method public override string ToString()
-		return $string$NumVal + "ip"
-	end method
+	method public override string ToString() => $string$NumVal + "ip"
 
 	property public virtual autogen boolean DoNeg
 	property public virtual autogen boolean DoNot

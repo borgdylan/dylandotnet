@@ -27,8 +27,6 @@ class public MethodItem
 		ctor(string::Empty, $IKVM.Reflection.Type$null, new IKVM.Reflection.Type[0], $MethodBuilder$null)
 	end method
 
-	method public override string ToString()
-		return Name + " : " + $string$ParamTyps[l] + " : " + MethodTyp::ToString()
-	end method
+	method public override string ToString() => i"{Name} : {$string$ParamTyps[l]} : {MethodTyp::ToString()}"
 
 end class

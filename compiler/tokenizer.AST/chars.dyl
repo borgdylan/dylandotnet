@@ -20,134 +20,95 @@ end class
 
 // ]
 class public RSParen extends Character
-	method public override string ToString()
-		return "]"
-	end method
+	method public override string ToString() => "]"
 end class
 
 // [
 class public LSParen extends Character
-	method public override string ToString()
-		return "["
-	end method
+	method public override string ToString() => "["
 end class
 
 // {
 class public RCParen extends Character
-	method public override string ToString()
-		return "}"
-	end method
+	method public override string ToString() => "}"
 end class
 
 // }
 class public LCParen extends Character
-	method public override string ToString()
-		return "{"
-	end method
+	method public override string ToString() => "{"
 end class
 
 // []
 class public LRSParen extends Character
-	method public override string ToString()
-		return "[]"
-	end method
+	method public override string ToString() => "[]"
 end class
 
 // >
 class public RAParen extends Character
-	method public override string ToString()
-		return ">"
-	end method
+	method public override string ToString() => ">"
 end class
 
 // <
 class public LAParen extends Character
-	method public override string ToString()
-		return "<"
-	end method
+	method public override string ToString() => "<"
 end class
 
 // )
 class public RParen extends Character
-	method public override string ToString()
-		return ")"
-	end method
+	method public override string ToString() => ")"
 end class
 
 // (
 class public LParen extends Character
-	method public override string ToString()
-		return "("
-	end method
+	method public override string ToString() => "("
 end class
 
 // ,
 class public Comma extends Character
-	method public override string ToString()
-		return ","
-	end method
+	method public override string ToString() => ","
 end class
 
 // \r\n
 class public CrLf extends Character
-	method public override string ToString()
-		return c"\r\n"
-	end method
+	method public override string ToString() => c"\r\n"
 end class
 
 // \r
 class public Cr extends Character
-	method public override string ToString()
-		return c"\r"
-	end method
+	method public override string ToString() => c"\r"
 end class
 
 // \n
 class public Lf extends Character
-	method public override string ToString()
-		return c"\n"
-	end method
+	method public override string ToString() => c"\n"
 end class
 
 // |
 class public Pipe extends Character
-	method public override string ToString()
-		return "|"
-	end method
+	method public override string ToString() => "|"
 end class
 
 // &
 class public Ampersand extends Character
-	method public override string ToString()
-		return "&"
-	end method
+	method public override string ToString() => "&"
 end class
 
 // $
 class public DollarSign extends Character
-	method public override string ToString()
-		return "$"
-	end method
+	method public override string ToString() => "$"
 end class
 
 // ?
 class public QuestionMark extends Character
-	method public override string ToString()
-		return "?"
-	end method
+	method public override string ToString() => "?"
 end class
 
 // :
 class public Colon extends Character
-	method public override string ToString()
-		return ":"
-	end method
+	method public override string ToString() => ":"
 end class
 
 // =>
 class public GoesToTok extends Character
-	method public override string ToString()
-		return "=>"
-	end method
+	method public override string ToString() => "=>"
 end class
-

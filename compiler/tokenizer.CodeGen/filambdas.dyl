@@ -20,8 +20,6 @@ class private FILambdas
 		Name = name
 	end method
 
-	method assembly boolean DetermineIfCandidate(var fi as FieldItem)
-		return fi::Name == Name
-	end method
+	method assembly boolean DetermineIfCandidate(var fi as FieldItem) => fi::Name == Name
 
 end class

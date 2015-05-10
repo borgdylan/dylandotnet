@@ -17,9 +17,7 @@ class public VarStmt extends Stmt
 		VarName = new Ident()
 	end method
 
-	method public override boolean ValidateContext(var ctx as ContextType)
-		return ctx == ContextType::Method orelse ctx == ContextType::Loop
-	end method
+	method public override boolean ValidateContext(var ctx as ContextType) => ctx == ContextType::Method orelse ctx == ContextType::Loop
 
 end class
 
@@ -36,9 +34,7 @@ class public VarAsgnStmt extends Stmt
 		RExpr = new Expr()
 	end method
 
-	method public override boolean ValidateContext(var ctx as ContextType)
-		return ctx == ContextType::Method orelse ctx == ContextType::Loop
-	end method
+	method public override boolean ValidateContext(var ctx as ContextType) => ctx == ContextType::Method orelse ctx == ContextType::Loop
 
 end class
 
@@ -53,16 +49,12 @@ class public InfVarAsgnStmt extends Stmt
 		RExpr = new Expr()
 	end method
 
-	method public override boolean ValidateContext(var ctx as ContextType)
-		return ctx == ContextType::Method orelse ctx == ContextType::Loop
-	end method
+	method public override boolean ValidateContext(var ctx as ContextType) => ctx == ContextType::Method orelse ctx == ContextType::Loop
 
 end class
 
 class public EndUsingStmt extends EndStmt
-	method public override string ToString()
-		return "end using"
-	end method
+	method public override string ToString() => "end using"
 end class
 
 class public UsingAsgnStmt extends BlockStmt
@@ -78,13 +70,8 @@ class public UsingAsgnStmt extends BlockStmt
 		RExpr = new Expr()
 	end method
 
-	method public override boolean ValidateEnding(var stm as Stmt)
-		return stm is EndUsingStmt
-	end method
-
-	method public override boolean ValidateContext(var ctx as ContextType)
-		return ctx == ContextType::Method orelse ctx == ContextType::Loop
-	end method
+	method public override boolean ValidateEnding(var stm as Stmt) => stm is EndUsingStmt
+	method public override boolean ValidateContext(var ctx as ContextType) => ctx == ContextType::Method orelse ctx == ContextType::Loop
 
 end class
 
@@ -99,12 +86,7 @@ class public InfUsingAsgnStmt extends BlockStmt
 		RExpr = new Expr()
 	end method
 
-	method public override boolean ValidateEnding(var stm as Stmt)
-		return stm is EndUsingStmt
-	end method
-
-	method public override boolean ValidateContext(var ctx as ContextType)
-		return ctx == ContextType::Method orelse ctx == ContextType::Loop
-	end method
+	method public override boolean ValidateEnding(var stm as Stmt) => stm is EndUsingStmt
+	method public override boolean ValidateContext(var ctx as ContextType) => ctx == ContextType::Method orelse ctx == ContextType::Loop
 
 end class
