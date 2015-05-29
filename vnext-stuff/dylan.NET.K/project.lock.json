@@ -1,53 +1,58 @@
 {
   "locked": false,
-  "version": -9998,
-  "projectFileDependencyGroups": {
-    "": [],
-    "DNX,Version=v4.5.1": [
-      "Microsoft.Framework.Runtime >= 1.0.0-*",
-      "Microsoft.Framework.Runtime.Compilation.DesignTime >= 1.0.0-*",
-      "dylan.NET >= 11.5.6.4"
-    ]
-  },
-  "libraries": {
-    "dylan.NET/11.5.6.4": {
-      "serviceable": false,
-      "sha": "WSR86tIRWuZ3Y1NmnIUZMLN64prIXy44UWy2qX+3zLX44O7KxL4bzwJyPTkNWMtttc/Yn18lt6XDQi71PdKkLQ==",
-      "frameworks": {
-        "DNX,Version=v4.5.1": {
-          "dependencies": {},
-          "frameworkAssemblies": [],
-          "runtimeAssemblies": [
-            "lib/net40/C5.dll",
-            "lib/net40/IKVM.Reflection.dll",
-            "lib/net40/Mono.CompilerServices.SymbolWriter.dll",
-            "lib/net40/System.Interactive.dll",
-            "lib/net40/dnc.dll",
-            "lib/net40/dnr.dll",
-            "lib/net40/dnu.dll",
-            "lib/net40/tokenizer.AST.dll",
-            "lib/net40/tokenizer.CodeGen.dll",
-            "lib/net40/tokenizer.Lexer.dll",
-            "lib/net40/tokenizer.Parser.dll"
-          ],
-          "compileAssemblies": [
-            "lib/net40/C5.dll",
-            "lib/net40/IKVM.Reflection.dll",
-            "lib/net40/Mono.CompilerServices.SymbolWriter.dll",
-            "lib/net40/System.Interactive.dll",
-            "lib/net40/dnc.dll",
-            "lib/net40/dnr.dll",
-            "lib/net40/dnu.dll",
-            "lib/net40/tokenizer.AST.dll",
-            "lib/net40/tokenizer.CodeGen.dll",
-            "lib/net40/tokenizer.Lexer.dll",
-            "lib/net40/tokenizer.Parser.dll"
-          ]
+  "version": -9996,
+  "targets": {
+    "DNX,Version=v4.5.1": {
+      "dylan.NET/11.6.1.1": {
+        "compile": {
+          "lib/net40/C5.dll": {},
+          "lib/net40/IKVM.Reflection.dll": {},
+          "lib/net40/Mono.CompilerServices.SymbolWriter.dll": {},
+          "lib/net40/System.Interactive.dll": {},
+          "lib/net40/dnc.dll": {},
+          "lib/net40/dnr.dll": {},
+          "lib/net40/dnu.dll": {},
+          "lib/net40/tokenizer.AST.dll": {},
+          "lib/net40/tokenizer.CodeGen.dll": {},
+          "lib/net40/tokenizer.Lexer.dll": {},
+          "lib/net40/tokenizer.Parser.dll": {}
+        },
+        "runtime": {
+          "lib/net40/C5.dll": {},
+          "lib/net40/IKVM.Reflection.dll": {},
+          "lib/net40/Mono.CompilerServices.SymbolWriter.dll": {},
+          "lib/net40/System.Interactive.dll": {},
+          "lib/net40/dnc.dll": {},
+          "lib/net40/dnr.dll": {},
+          "lib/net40/dnu.dll": {},
+          "lib/net40/tokenizer.AST.dll": {},
+          "lib/net40/tokenizer.CodeGen.dll": {},
+          "lib/net40/tokenizer.Lexer.dll": {},
+          "lib/net40/tokenizer.Parser.dll": {}
         }
       },
+      "Microsoft.Framework.Runtime.Abstractions/1.0.0-beta6-11921": {
+        "frameworkAssemblies": [
+          "mscorlib",
+          "System",
+          "System.Core",
+          "Microsoft.CSharp"
+        ],
+        "compile": {
+          "lib/dnx451/Microsoft.Framework.Runtime.Abstractions.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/Microsoft.Framework.Runtime.Abstractions.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "dylan.NET/11.6.1.1": {
+      "sha512": "blai/Dm4C26WknR5lAHjkxiag2Q8UKPQFI5svK3kX8L/p1wSc3RR9JqZtTdGelBtv4VCgRhkAqr0j5PIAbu9hg==",
       "files": [
-        "dylan.NET.11.5.6.4.nupkg",
-        "dylan.NET.11.5.6.4.nupkg.sha512",
+        "dylan.NET.11.6.1.1.nupkg",
+        "dylan.NET.11.6.1.1.nupkg.sha512",
         "dylan.NET.nuspec",
         "lib/net40/C5.dll",
         "lib/net40/IKVM.Reflection.dll",
@@ -79,263 +84,25 @@
         "tools/tokenizer.Parser.dll"
       ]
     },
-    "Microsoft.Framework.Runtime/1.0.0-beta5-11406": {
-      "serviceable": false,
-      "sha": "u7ePrLA9tovQJiyVQsUBq6GJb9JxPDkKKGI8GjGThYQIoGcOfxPBI5geoqy4jLa5XfUuxuh8e+pMjltiB/b2PQ==",
-      "frameworks": {
-        "DNX,Version=v4.5.1": {
-          "dependencies": {
-            "System.Reflection.Metadata": "1.0.18-beta",
-            "Microsoft.Framework.Runtime.Loader": "1.0.0-beta5-11406",
-            "Microsoft.Framework.Runtime.Caching": "1.0.0-beta5-11406",
-            "Microsoft.Framework.Runtime.Interfaces": "1.0.0-beta5-11406",
-            "Newtonsoft.Json": "6.0.6"
-          },
-          "frameworkAssemblies": [
-            "System.Collections",
-            "System.Text.Encoding",
-            "System.Threading.Tasks",
-            "System.IO",
-            "System.IO.Compression",
-            "System.IO.Compression.FileSystem",
-            "System.Runtime",
-            "System.Xml",
-            "System.Xml.Linq",
-            "mscorlib",
-            "System",
-            "System.Core",
-            "Microsoft.CSharp"
-          ],
-          "runtimeAssemblies": [
-            "lib/dnx451/Microsoft.Framework.Runtime.dll"
-          ],
-          "compileAssemblies": [
-            "lib/dnx451/Microsoft.Framework.Runtime.dll"
-          ]
-        }
-      },
-      "files": [
-        "Microsoft.Framework.Runtime.1.0.0-beta5-11406.nupkg",
-        "Microsoft.Framework.Runtime.1.0.0-beta5-11406.nupkg.sha512",
-        "Microsoft.Framework.Runtime.nuspec",
-        "lib/dnx451/Microsoft.Framework.Runtime.dll",
-        "lib/dnx451/Microsoft.Framework.Runtime.xml",
-        "lib/dnxcore50/Microsoft.Framework.Runtime.dll",
-        "lib/dnxcore50/Microsoft.Framework.Runtime.xml"
-      ]
-    },
-    "Microsoft.Framework.Runtime.Caching/1.0.0-beta5-11406": {
-      "serviceable": false,
-      "sha": "3ubGzjN8jJmJI/KKFPGRUxEXiWNfB6W4OjjJAKDXyTzxH1mTtN/QwZ0E2vvWMq/lB1Bw44uYMqLE3PzW7JuvTw==",
-      "frameworks": {
-        "DNX,Version=v4.5.1": {
-          "dependencies": {
-            "Microsoft.Framework.Runtime.Interfaces": "1.0.0-beta5-11406"
-          },
-          "frameworkAssemblies": [
-            "mscorlib",
-            "System",
-            "System.Core",
-            "Microsoft.CSharp"
-          ],
-          "runtimeAssemblies": [
-            "lib/dnx451/Microsoft.Framework.Runtime.Caching.dll"
-          ],
-          "compileAssemblies": [
-            "lib/dnx451/Microsoft.Framework.Runtime.Caching.dll"
-          ]
-        }
-      },
-      "files": [
-        "Microsoft.Framework.Runtime.Caching.1.0.0-beta5-11406.nupkg",
-        "Microsoft.Framework.Runtime.Caching.1.0.0-beta5-11406.nupkg.sha512",
-        "Microsoft.Framework.Runtime.Caching.nuspec",
-        "lib/dnx451/Microsoft.Framework.Runtime.Caching.dll",
-        "lib/dnx451/Microsoft.Framework.Runtime.Caching.xml",
-        "lib/dnxcore50/Microsoft.Framework.Runtime.Caching.dll",
-        "lib/dnxcore50/Microsoft.Framework.Runtime.Caching.xml"
-      ]
-    },
-    "Microsoft.Framework.Runtime.Compilation.DesignTime/1.0.0-beta5-11406": {
-      "serviceable": false,
-      "sha": "mxJpUecziB49G+5UFLG2JdESzRoCtirAr6iODJKsU1XxbZ9U9yC1+5AGwZ8ZBs56f4viFWpDX+aARUidD/m+qA==",
-      "frameworks": {
-        "DNX,Version=v4.5.1": {
-          "dependencies": {
-            "Newtonsoft.Json": "6.0.6",
-            "Microsoft.Framework.Runtime.Interfaces": "1.0.0-beta5-11406"
-          },
-          "frameworkAssemblies": [
-            "mscorlib",
-            "System",
-            "System.Core",
-            "Microsoft.CSharp"
-          ],
-          "runtimeAssemblies": [
-            "lib/dnx451/Microsoft.Framework.Runtime.Compilation.DesignTime.dll"
-          ],
-          "compileAssemblies": [
-            "lib/dnx451/Microsoft.Framework.Runtime.Compilation.DesignTime.dll"
-          ]
-        }
-      },
-      "files": [
-        "Microsoft.Framework.Runtime.Compilation.DesignTime.1.0.0-beta5-11406.nupkg",
-        "Microsoft.Framework.Runtime.Compilation.DesignTime.1.0.0-beta5-11406.nupkg.sha512",
-        "Microsoft.Framework.Runtime.Compilation.DesignTime.nuspec",
-        "lib/dnx451/Microsoft.Framework.Runtime.Compilation.DesignTime.dll",
-        "lib/dnx451/Microsoft.Framework.Runtime.Compilation.DesignTime.xml",
-        "lib/dnxcore50/Microsoft.Framework.Runtime.Compilation.DesignTime.dll",
-        "lib/dnxcore50/Microsoft.Framework.Runtime.Compilation.DesignTime.xml"
-      ]
-    },
-    "Microsoft.Framework.Runtime.Interfaces/1.0.0-beta5-11406": {
-      "serviceable": false,
-      "sha": "3jPfmDYoDz1qecr/pYNoZmtF41GGLi8/efnrDHDOPfb6SJQ9bXBZx+MisaMzCqQGV9vWWi/zqb1ehnez2SW56w==",
-      "frameworks": {
-        "DNX,Version=v4.5.1": {
-          "dependencies": {},
-          "frameworkAssemblies": [
-            "mscorlib",
-            "System",
-            "System.Core",
-            "Microsoft.CSharp"
-          ],
-          "runtimeAssemblies": [
-            "lib/dnx451/Microsoft.Framework.Runtime.Interfaces.dll"
-          ],
-          "compileAssemblies": [
-            "lib/dnx451/Microsoft.Framework.Runtime.Interfaces.dll"
-          ]
-        }
-      },
-      "files": [
-        "Microsoft.Framework.Runtime.Interfaces.1.0.0-beta5-11406.nupkg",
-        "Microsoft.Framework.Runtime.Interfaces.1.0.0-beta5-11406.nupkg.sha512",
-        "Microsoft.Framework.Runtime.Interfaces.nuspec",
-        "lib/dnx451/Microsoft.Framework.Runtime.Interfaces.dll",
-        "lib/dnx451/Microsoft.Framework.Runtime.Interfaces.xml",
-        "lib/dnxcore50/Microsoft.Framework.Runtime.Interfaces.dll",
-        "lib/dnxcore50/Microsoft.Framework.Runtime.Interfaces.xml"
-      ]
-    },
-    "Microsoft.Framework.Runtime.Loader/1.0.0-beta5-11406": {
-      "serviceable": false,
-      "sha": "unNVF9JgkPPrX/9Ma1uMnao39fSQhXq/e/C8mt8hhqDnXBsKcAIJYDquPgwnKOfdrr1be5/pM47tlW7wahNq3Q==",
-      "frameworks": {
-        "DNX,Version=v4.5.1": {
-          "dependencies": {
-            "Microsoft.Framework.Runtime.Interfaces": "1.0.0-beta5-11406"
-          },
-          "frameworkAssemblies": [
-            "mscorlib",
-            "System",
-            "System.Core",
-            "Microsoft.CSharp"
-          ],
-          "runtimeAssemblies": [
-            "lib/dnx451/Microsoft.Framework.Runtime.Loader.dll"
-          ],
-          "compileAssemblies": [
-            "lib/dnx451/Microsoft.Framework.Runtime.Loader.dll"
-          ]
-        }
-      },
-      "files": [
-        "Microsoft.Framework.Runtime.Loader.1.0.0-beta5-11406.nupkg",
-        "Microsoft.Framework.Runtime.Loader.1.0.0-beta5-11406.nupkg.sha512",
-        "Microsoft.Framework.Runtime.Loader.nuspec",
-        "lib/dnx451/Microsoft.Framework.Runtime.Loader.dll",
-        "lib/dnx451/Microsoft.Framework.Runtime.Loader.xml",
-        "lib/dnxcore50/Microsoft.Framework.Runtime.Loader.dll",
-        "lib/dnxcore50/Microsoft.Framework.Runtime.Loader.xml"
-      ]
-    },
-    "Newtonsoft.Json/6.0.6": {
-      "serviceable": false,
-      "sha": "w26uZNyCG5VeoKiEOJ4+9/o8koSofLKwHl7WLreIcp0U6r57L7WiRXmjp8MTKFw6dYNZ9AE0lw69WYbIhUsU9Q==",
-      "frameworks": {
-        "DNX,Version=v4.5.1": {
-          "dependencies": {},
-          "frameworkAssemblies": [],
-          "runtimeAssemblies": [
-            "lib/net45/Newtonsoft.Json.dll"
-          ],
-          "compileAssemblies": [
-            "lib/net45/Newtonsoft.Json.dll"
-          ]
-        }
-      },
-      "files": [
-        "Newtonsoft.Json.6.0.6.nupkg",
-        "Newtonsoft.Json.6.0.6.nupkg.sha512",
-        "Newtonsoft.Json.nuspec",
-        "lib/net20/Newtonsoft.Json.dll",
-        "lib/net20/Newtonsoft.Json.xml",
-        "lib/net35/Newtonsoft.Json.dll",
-        "lib/net35/Newtonsoft.Json.xml",
-        "lib/net40/Newtonsoft.Json.dll",
-        "lib/net40/Newtonsoft.Json.xml",
-        "lib/net45/Newtonsoft.Json.dll",
-        "lib/net45/Newtonsoft.Json.xml",
-        "lib/netcore45/Newtonsoft.Json.dll",
-        "lib/netcore45/Newtonsoft.Json.xml",
-        "lib/portable-net40+sl5+wp80+win8+wpa81/Newtonsoft.Json.dll",
-        "lib/portable-net40+sl5+wp80+win8+wpa81/Newtonsoft.Json.xml",
-        "lib/portable-net45+wp80+win8+wpa81+aspnetcore50/Newtonsoft.Json.dll",
-        "lib/portable-net45+wp80+win8+wpa81+aspnetcore50/Newtonsoft.Json.xml",
-        "tools/install.ps1"
-      ]
-    },
-    "System.Collections.Immutable/1.1.33-beta": {
+    "Microsoft.Framework.Runtime.Abstractions/1.0.0-beta6-11921": {
       "serviceable": true,
-      "sha": "Qnv6M/BRf0w1xNoD5tH7V+jK0kdO+OZymwQS5Lj6FALt3AZMGVeJs+lHXi1PsKFll67UtGY+I7r8WDhRzspXCA==",
-      "frameworks": {
-        "DNX,Version=v4.5.1": {
-          "dependencies": {},
-          "frameworkAssemblies": [],
-          "runtimeAssemblies": [
-            "lib/portable-net45+win8+wp8+wpa81/System.Collections.Immutable.dll"
-          ],
-          "compileAssemblies": [
-            "lib/portable-net45+win8+wp8+wpa81/System.Collections.Immutable.dll"
-          ]
-        }
-      },
+      "sha512": "EE8RPjyTzszPNZj2dWQwaakd1xqzsqBrS7kdDEwKTMhxSy5ERKudVWJ/A7ju1247y0RTmqapG4ev7ncjQgLbXA==",
       "files": [
-        "License-Stable.rtf",
-        "System.Collections.Immutable.1.1.33-beta.nupkg",
-        "System.Collections.Immutable.1.1.33-beta.nupkg.sha512",
-        "System.Collections.Immutable.nuspec",
-        "lib/portable-net45+win8+wp8+wpa81/System.Collections.Immutable.dll",
-        "lib/portable-net45+win8+wp8+wpa81/System.Collections.Immutable.xml"
-      ]
-    },
-    "System.Reflection.Metadata/1.0.18-beta": {
-      "serviceable": true,
-      "sha": "4PtC2U6seQthZMvXvGTxXZUqlF0oV9jzYNTkG0Yo/D6cLO5AH3lrxh2djGyKsDYnAZjBCoyA/z3vHRCeaBEp4w==",
-      "frameworks": {
-        "DNX,Version=v4.5.1": {
-          "dependencies": {
-            "System.Collections.Immutable": "1.1.33-beta"
-          },
-          "frameworkAssemblies": [],
-          "runtimeAssemblies": [
-            "lib/portable-net45+win8/System.Reflection.Metadata.dll"
-          ],
-          "compileAssemblies": [
-            "lib/portable-net45+win8/System.Reflection.Metadata.dll"
-          ]
-        }
-      },
-      "files": [
-        "License-Stable.rtf",
-        "System.Reflection.Metadata.1.0.18-beta.nupkg",
-        "System.Reflection.Metadata.1.0.18-beta.nupkg.sha512",
-        "System.Reflection.Metadata.nuspec",
-        "lib/portable-net45+win8/System.Reflection.Metadata.dll",
-        "lib/portable-net45+win8/System.Reflection.Metadata.xml"
+        "Microsoft.Framework.Runtime.Abstractions.1.0.0-beta6-11921.nupkg",
+        "Microsoft.Framework.Runtime.Abstractions.1.0.0-beta6-11921.nupkg.sha512",
+        "Microsoft.Framework.Runtime.Abstractions.nuspec",
+        "lib/dnx451/Microsoft.Framework.Runtime.Abstractions.dll",
+        "lib/dnx451/Microsoft.Framework.Runtime.Abstractions.xml",
+        "lib/dnxcore50/Microsoft.Framework.Runtime.Abstractions.dll",
+        "lib/dnxcore50/Microsoft.Framework.Runtime.Abstractions.xml"
       ]
     }
+  },
+  "projectFileDependencyGroups": {
+    "": [],
+    "DNX,Version=v4.5.1": [
+      "Microsoft.Framework.Runtime.Abstractions >= 1.0.0-*",
+      "dylan.NET >= 11.6.1.1"
+    ]
   }
 }
