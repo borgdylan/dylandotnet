@@ -179,6 +179,25 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="procMtdNameDecl">
+      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Exprs.Expr procMtdNameDecl (dylan.NET.Tokenizer.AST.Exprs.Expr stm, int i);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance class dylan.NET.Tokenizer.AST.Exprs.Expr procMtdNameDecl(class dylan.NET.Tokenizer.AST.Exprs.Expr stm, int32 i) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.AST.Exprs.Expr</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="stm" Type="dylan.NET.Tokenizer.AST.Exprs.Expr" />
+        <Parameter Name="i" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="stm">To be added.</param>
+        <param name="i">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="procNewCall">
       <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Exprs.Expr procNewCall (dylan.NET.Tokenizer.AST.Exprs.Expr stm, int i);" />
       <MemberSignature Language="ILAsm" Value=".method public instance class dylan.NET.Tokenizer.AST.Exprs.Expr procNewCall(class dylan.NET.Tokenizer.AST.Exprs.Expr stm, int32 i) cil managed" />
@@ -242,6 +261,25 @@
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Exprs.Expr</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="stm" Type="dylan.NET.Tokenizer.AST.Exprs.Expr" />
+        <Parameter Name="i" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="stm">To be added.</param>
+        <param name="i">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="procType2">
+      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok procType2 (dylan.NET.Tokenizer.AST.Exprs.Expr stm, int i);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance class dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok procType2(class dylan.NET.Tokenizer.AST.Exprs.Expr stm, int32 i) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="stm" Type="dylan.NET.Tokenizer.AST.Exprs.Expr" />

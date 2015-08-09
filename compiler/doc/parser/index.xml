@@ -1,6 +1,6 @@
 <Overview>
   <Assemblies>
-    <Assembly Name="tokenizer.Parser" Version="11.5.3.4">
+    <Assembly Name="tokenizer.Parser" Version="11.7.1.1">
       <Attributes>
         <Attribute>
           <AttributeName>System.Diagnostics.Debuggable(System.Diagnostics.DebuggableAttribute+DebuggingModes.Default | System.Diagnostics.DebuggableAttribute+DebuggingModes.DisableOptimizations)</AttributeName>

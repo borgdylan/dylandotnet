@@ -193,6 +193,18 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="GenParams">
+      <MemberSignature Language="C#" Value="public C5.LinkedList&lt;IKVM.Reflection.Emit.GenericTypeParameterBuilder&gt; GenParams;" />
+      <MemberSignature Language="ILAsm" Value=".field public class C5.LinkedList`1&lt;class IKVM.Reflection.Emit.GenericTypeParameterBuilder&gt; GenParams" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>C5.LinkedList&lt;IKVM.Reflection.Emit.GenericTypeParameterBuilder&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="GetCtor">
       <MemberSignature Language="C#" Value="public IKVM.Reflection.ConstructorInfo GetCtor (IKVM.Reflection.Type[] paramst, IKVM.Reflection.Type auxt);" />
       <MemberSignature Language="ILAsm" Value=".method public instance class IKVM.Reflection.ConstructorInfo GetCtor(class IKVM.Reflection.Type[] paramst, class IKVM.Reflection.Type auxt) cil managed" />
@@ -363,18 +375,6 @@
       <MemberType>Field</MemberType>
       <ReturnValue>
         <ReturnType>C5.IList&lt;IKVM.Reflection.Type&gt;</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="IsANI">
-      <MemberSignature Language="C#" Value="public bool IsANI;" />
-      <MemberSignature Language="ILAsm" Value=".field public bool IsANI" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

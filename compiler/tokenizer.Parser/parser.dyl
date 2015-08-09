@@ -57,7 +57,10 @@ class public Parser
 							string::Format("You cannot put a '{0}' into the '{1}' context type!", nstm::GetType()::get_Name(), $object$ctxstack::get_Last()))
 				end if
 
-				curc::AddStmt(nstm)
+				if !curc::AddStmt(nstm) then
+					StreamUtils::WriteError(nstm::Line, PFlags::CurPath, i"You cannot put a {nstm::GetType()::get_Name()} into a {curc::GetType()::get_Name()}!")
+				end if
+
 				var isc = $IStmtContainer$nstm
 				if !isc::IsOneLiner(curc) then
 					cstack::Push(isc)
@@ -80,7 +83,10 @@ class public Parser
 						ctxstack::Pop()
 					end if
 
-					curc::AddStmt(nstm)
+					if !curc::AddStmt(nstm) then
+						StreamUtils::WriteError(nstm::Line, PFlags::CurPath, i"You cannot put a {nstm::GetType()::get_Name()} into a {curc::GetType()::get_Name()}!")
+					end if
+
 					cstack::Pop()
 
 					var curb = cstack::get_Last() as IBranchContainer

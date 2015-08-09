@@ -80,6 +80,8 @@
 	
 	<Keywords color = "Keyword(Selection)">
 		<Word>if</Word>
+		<Word>switch</Word>
+		<Word>state</Word>
 		<Word>then</Word>
 		<Word>else</Word>
 		<Word>elseif</Word>
@@ -137,6 +139,8 @@
 		
 		<Word>auto</Word>
 		<Word>sequential</Word>
+		<Word>serializable</Word>
+		<Word>notserialized</Word>
 		<Word>autochar</Word>
 		<Word>ansi</Word>
 		<Word>literal</Word>

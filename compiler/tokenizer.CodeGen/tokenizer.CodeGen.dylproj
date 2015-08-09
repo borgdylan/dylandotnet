@@ -8,7 +8,7 @@
     <RootNamespace>dylan.NET.Tokenizer.CodeGen</RootNamespace>
     <UsePartialTypes>false</UsePartialTypes>
     <AssemblyName>tokenizer.CodeGen</AssemblyName>
-    <ReleaseVersion>11.6.1.6</ReleaseVersion>
+    <ReleaseVersion>11.7.1.1</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -46,6 +46,7 @@
     <Compile Include="tokenizer.CodeGen.dyl" />
     <Compile Include="Properties\AssemblyInfo.dyl" />
     <Compile Include="eval-pre.dyl" />
+    <Compile Include="switchitem.dyl" />
   </ItemGroup>
   <Import Project="..\4.0\dylan.NET.targets" />
   <ItemGroup>

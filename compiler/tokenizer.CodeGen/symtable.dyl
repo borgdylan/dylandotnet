@@ -12,6 +12,7 @@ class public static SymTable
 	field public static C5.HashDictionary<of IKVM.Reflection.Type, integer> TempVTMap
 	field public static C5.HashDictionary<of string, TypeParamItem> MetGenParams
 	field public static C5.HashDictionary<of string, TypeParamItem> TypGenParams
+	field public static C5.LinkedList<of GenericTypeParameterBuilder> GenParams
 	field public static C5.HashDictionary<of string, TypeParamItem> TypGenParams2
 	field public static C5.IList<of CustomAttributeBuilder> MethodCALst
 	field public static C5.IList<of CustomAttributeBuilder> FieldCALst
@@ -30,7 +31,7 @@ class public static SymTable
 	field public static PInvokeInfo PIInfo
 	
 	field private static C5.LinkedList<of IfItem> IfLst
-
+	field private static C5.LinkedList<of SwitchItem> SwitchLst
 	//tuples have file, logical name, embed only if used (for assemblies), is ani (for assemblies)
 	field assembly static C5.LinkedList<of Tuple<of string, string, boolean, boolean> > ResLst
 	field private static C5.LinkedList<of LoopItem> LoopLst
@@ -47,9 +48,11 @@ class public static SymTable
 		TempVTMap = new C5.HashDictionary<of IKVM.Reflection.Type, integer>()
 		MetGenParams = new C5.HashDictionary<of string, TypeParamItem>()
 		TypGenParams = new C5.HashDictionary<of string, TypeParamItem>()
+		GenParams = new C5.LinkedList<of GenericTypeParameterBuilder>()
 		TypGenParams2 = new C5.HashDictionary<of string, TypeParamItem>()
 		VarLst::Push(new C5.HashDictionary<of string, VarItem>())
 		IfLst = new C5.LinkedList<of IfItem>()
+		SwitchLst = new C5.LinkedList<of SwitchItem>()
 		LoopLst = new C5.LinkedList<of LoopItem>()
 		TryLst = new C5.LinkedList<of TryItem>()
 		LblLst = new C5.LinkedList<of LabelItem>()
@@ -74,27 +77,12 @@ class public static SymTable
 	end method
 
 	[method: ComVisible(false)]
-	method public static void ResetIf()
+	method public static void ResetMethodLsts()
 		IfLst::Clear()
-	end method
-
-	[method: ComVisible(false)]
-	method public static void ResetTry()
+		SwitchLst::Clear()
 		TryLst::Clear()
-	end method
-		
-	[method: ComVisible(false)]
-	method public static void ResetLoop()
 		LoopLst::Clear()
-	end method
-
-	[method: ComVisible(false)]
-	method public static void ResetLbl()
 		LblLst::Clear()
-	end method
-	
-	[method: ComVisible(false)]
-	method public static void ResetVar()
 		VarLst::Clear()
 		VarLst::Push(new C5.HashDictionary<of string, VarItem>())
 		TempVTMap::Clear()
@@ -111,6 +99,7 @@ class public static SymTable
 			SymTable::TypGenParams2 = SymTable::TypGenParams
 		end if
 		TypGenParams = new C5.HashDictionary<of string, TypeParamItem>()
+		GenParams = new C5.LinkedList<of GenericTypeParameterBuilder>()
 	end method
 
 	[method: ComVisible(false)]
@@ -124,6 +113,7 @@ class public static SymTable
 	method public static void SetTypGenParams(var names as string[], var actuals as GenericTypeParameterBuilder[])
 		for i = 0 upto --names[l]
 			TypGenParams::Add(names[i], new TypeParamItem(names[i], actuals[i]))
+			GenParams::Add(actuals[i])
 		end for
 	end method
 
@@ -228,7 +218,17 @@ class public static SymTable
 	method public static void AddIf()
 		IfLst::Push(new IfItem(ILEmitter::DefineLbl(), ILEmitter::DefineLbl(), ILEmitter::LineNr))
 	end method
-	
+
+	[method: ComVisible(false)]
+	method public static void AddSwitch(var statecount as integer, var hd as boolean)
+		var arr = new Emit.Label[statecount]
+		for i = 0 upto --statecount
+			arr[i] = ILEmitter::DefineLbl()
+		end for
+
+		SwitchLst::Push(new SwitchItem(ILEmitter::DefineLbl(), #ternary {hd ? ILEmitter::DefineLbl() , default Emit.Label}, arr, hd, ILEmitter::LineNr))
+	end method
+
 	[method: ComVisible(false)]
 	method public static void AddLock(var loc as integer)
 		TryLst::Push(new LockItem(loc, ILEmitter::LineNr))
@@ -263,7 +263,12 @@ class public static SymTable
 	method public static void PopIf()
 		IfLst::Pop()
 	end method
-	
+
+	[method: ComVisible(false)]
+	method public static void PopSwitch()
+		SwitchLst::Pop()
+	end method
+
 	[method: ComVisible(false)]
 	method public static void PopLock()
 		TryLst::Pop()
@@ -302,7 +307,22 @@ class public static SymTable
 
 	[method: ComVisible(false)]
 	method public static Emit.Label ReadIfNxtBlkLbl() => IfLst::get_Last()::NextBlkLabel
-	
+
+	[method: ComVisible(false)]
+	method public static Emit.Label ReadSwitchEndLbl() => SwitchLst::get_Last()::EndLabel
+
+	[method: ComVisible(false)]
+	method public static Emit.Label ReadSwitchDefaultLbl() => SwitchLst::get_Last()::DefaultLabel
+
+	[method: ComVisible(false)]
+	method public static Emit.Label ReadSwitchFallbackLbl() => #ternary{ SwitchLst::get_Last()::HasDefault ? SwitchLst::get_Last()::DefaultLabel, SwitchLst::get_Last()::EndLabel }
+
+	[method: ComVisible(false)]
+	method public static Emit.Label ReadSwitchStateLbl(var ind as integer) => SwitchLst::get_Last()::StateLabels[ind]
+
+	[method: ComVisible(false)]
+	method public static Emit.Label[] ReadSwitchStateLbls() => SwitchLst::get_Last()::StateLabels
+
 	[method: ComVisible(false)]
 	method public static LockItem ReadLock() => $LockItem$TryLst::get_Last()
 	
@@ -388,6 +408,8 @@ class public static SymTable
 	method public static void CheckCtrlBlks()
 		if IfLst::get_Count() != 0 then
 			StreamUtils::WriteError(IfLst::get_First()::Line, ILEmitter::CurSrcFile, "This if statement is unterminated.")
+		elseif SwitchLst::get_Count() != 0 then
+			StreamUtils::WriteError(SwitchLst::get_First()::Line, ILEmitter::CurSrcFile, "This switch statement is unterminated.")
 		elseif LoopLst::get_Count() != 0 then
 			StreamUtils::WriteError(LoopLst::get_First()::Line, ILEmitter::CurSrcFile, "This looping statement is unterminated.")
 		elseif TryLst::get_Count() != 0 then

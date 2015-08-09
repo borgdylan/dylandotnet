@@ -1,11 +1,14 @@
 <Type Name="ULongLiteral" FullName="dylan.NET.Tokenizer.AST.Tokens.Literals.ULongLiteral">
-  <TypeSignature Language="C#" Value="public class ULongLiteral : dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral, dylan.NET.Tokenizer.AST.Interfaces.INotable" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi ULongLiteral extends dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral implements class dylan.NET.Tokenizer.AST.Interfaces.INotable" />
+  <TypeSignature Language="C#" Value="public class ULongLiteral : dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral&lt;ulong&gt;, dylan.NET.Tokenizer.AST.Interfaces.INotable" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi ULongLiteral extends dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral`1&lt;unsigned int64&gt; implements class dylan.NET.Tokenizer.AST.Interfaces.INotable" />
   <AssemblyInfo>
     <AssemblyName>tokenizer.AST</AssemblyName>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral</BaseTypeName>
+    <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral&lt;System.UInt64&gt;</BaseTypeName>
+    <BaseTypeArguments>
+      <BaseTypeArgument TypeParamName="T">System.UInt64</BaseTypeArgument>
+    </BaseTypeArguments>
   </Base>
   <Interfaces>
     <Interface>
@@ -63,18 +66,6 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="NumVal">
-      <MemberSignature Language="C#" Value="public ulong NumVal;" />
-      <MemberSignature Language="ILAsm" Value=".field public unsigned int64 NumVal" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>System.UInt64</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

@@ -1,6 +1,6 @@
 <Overview>
   <Assemblies>
-    <Assembly Name="tokenizer.AST" Version="11.5.3.4">
+    <Assembly Name="tokenizer.AST" Version="11.7.1.1">
       <Attributes>
         <Attribute>
           <AttributeName>System.Diagnostics.Debuggable(System.Diagnostics.DebuggableAttribute+DebuggingModes.Default | System.Diagnostics.DebuggableAttribute+DebuggingModes.DisableOptimizations)</AttributeName>
@@ -48,6 +48,7 @@
     <Namespace Name="dylan.NET.Tokenizer.AST.Interfaces">
       <Type Name="IConstrainable" Kind="Interface" />
       <Type Name="IConvable" Kind="Interface" />
+      <Type Name="IExprBodyable" Kind="Interface" />
       <Type Name="IIncDecable" Kind="Interface" />
       <Type Name="IMayHaveConstraints" Kind="Interface" />
       <Type Name="INegatable" Kind="Interface" />
@@ -70,6 +71,7 @@
       <Type Name="ContinueStmt" Kind="Class" />
       <Type Name="DebugStmt" Kind="Class" />
       <Type Name="DecStmt" Kind="Class" />
+      <Type Name="DefaultStmt" Kind="Class" />
       <Type Name="DelegateStmt" Kind="Class" />
       <Type Name="DoStmt" Kind="Class" />
       <Type Name="DoUntilStmt" Kind="Class" />
@@ -93,6 +95,7 @@
       <Type Name="EndRemoveStmt" Kind="Class" />
       <Type Name="EndSetStmt" Kind="Class" />
       <Type Name="EndStmt" Kind="Class" />
+      <Type Name="EndSwitchStmt" Kind="Class" />
       <Type Name="EndTryStmt" Kind="Class" />
       <Type Name="EndUsingStmt" Kind="Class" />
       <Type Name="EnumAttrStmt" Kind="Class" />
@@ -137,8 +140,10 @@
       <Type Name="RegionStmt" Kind="Class" />
       <Type Name="ReturnStmt" Kind="Class" />
       <Type Name="SignStmt" Kind="Class" />
+      <Type Name="StateStmt" Kind="Class" />
       <Type Name="Stmt" Kind="Class" />
       <Type Name="StmtSet" Kind="Class" />
+      <Type Name="SwitchStmt" Kind="Class" />
       <Type Name="ThrowStmt" Kind="Class" />
       <Type Name="TryLockStmt" Kind="Class" />
       <Type Name="TryStmt" Kind="Class" />
@@ -180,6 +185,7 @@
       <Type Name="EventCTok" Kind="Class" />
       <Type Name="EventTok" Kind="Class" />
       <Type Name="ExeTok" Kind="Class" />
+      <Type Name="ExplImplAccessToken" Kind="Class" />
       <Type Name="ExprCallTok" Kind="Class" />
       <Type Name="ExprTok" Kind="Class" />
       <Type Name="ExtendsTok" Kind="Class" />
@@ -216,7 +222,6 @@
       <Type Name="NamespaceTok" Kind="Class" />
       <Type Name="NestedAccessToken" Kind="Class" />
       <Type Name="NewarrCallTok" Kind="Class" />
-      <Type Name="NewarrTok" Kind="Class" />
       <Type Name="NewCallTok" Kind="Class" />
       <Type Name="NewTok" Kind="Class" />
       <Type Name="NonExprToken" Kind="Class" />
@@ -229,7 +234,6 @@
       <Type Name="PropertyCTok" Kind="Class" />
       <Type Name="PropertyTok" Kind="Class" />
       <Type Name="RefasmTok" Kind="Class" />
-      <Type Name="RefembedasmTok" Kind="Class" />
       <Type Name="RefstdasmTok" Kind="Class" />
       <Type Name="RefTok" Kind="Class" />
       <Type Name="RegionTok" Kind="Class" />
@@ -238,9 +242,11 @@
       <Type Name="ScopeTok" Kind="Class" />
       <Type Name="SetTok" Kind="Class" />
       <Type Name="SignTok" Kind="Class" />
+      <Type Name="StateTok" Kind="Class" />
       <Type Name="StepTok" Kind="Class" />
       <Type Name="StructTok" Kind="Class" />
       <Type Name="SwitchTok" Kind="Class" />
+      <Type Name="SwitchTok2" Kind="Class" />
       <Type Name="TernaryCallTok" Kind="Class" />
       <Type Name="TernaryTok" Kind="Class" />
       <Type Name="ThenTok" Kind="Class" />
@@ -300,6 +306,7 @@
       <Type Name="Cr" Kind="Class" />
       <Type Name="CrLf" Kind="Class" />
       <Type Name="DollarSign" Kind="Class" />
+      <Type Name="GoesToTok" Kind="Class" />
       <Type Name="LAParen" Kind="Class" />
       <Type Name="LCParen" Kind="Class" />
       <Type Name="Lf" Kind="Class" />
@@ -328,6 +335,7 @@
       <Type Name="LongLiteral" Kind="Class" />
       <Type Name="NullLiteral" Kind="Class" />
       <Type Name="NumberLiteral" Kind="Class" />
+      <Type Name="NumberLiteral`1" DisplayName="NumberLiteral&lt;T&gt;" Kind="Class" />
       <Type Name="SByteLiteral" Kind="Class" />
       <Type Name="ShortLiteral" Kind="Class" />
       <Type Name="StringLiteral" Kind="Class" />

@@ -18,8 +18,8 @@ end class
 
 enum public integer BranchOptimisation
 	None = 0
-	Normal = 1
-	Inverted = 2
+	Inverted = 1
+	Normal = 2
 end enum
 
 class public static ILEmitter
@@ -146,29 +146,37 @@ class public static ILEmitter
 	[method: ComVisible(false)]
 	method public static void EmitIs(var t as IKVM.Reflection.Type, var bo as BranchOptimisation, var lab as IKVM.Reflection.Emit.Label)
 		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Isinst, t)
-		if bo == BranchOptimisation::None then
+		switch $integer$bo
+		state
+			//none
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldnull)
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ceq)
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_0)
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ceq)
-		elseif bo == BranchOptimisation::Inverted then
+		state
+			//inverted
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Brfalse, lab)
-		else
+		state
+			//normal
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Brtrue, lab)
-		end if
+		end switch
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitIsNot(var t as IKVM.Reflection.Type, var bo as BranchOptimisation, var lab as IKVM.Reflection.Emit.Label)
 		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Isinst, t)
-		if bo == BranchOptimisation::None then
+		switch $integer$bo
+		state
+			//none
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldnull)
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ceq)
-		elseif bo == BranchOptimisation::Inverted then
+		state
+			//inverted
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Brtrue, lab)
-		else
+		state
+			//normal
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Brfalse, lab)
-		end if
+		end switch
 	end method
 
 	[method: ComVisible(false)]
@@ -177,15 +185,18 @@ class public static ILEmitter
 	end method
 
 	[method: ComVisible(false)]
-	method public static void EmitLdloc(var num as integer)		
-		if num == 0 then
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldloc_0)
-		elseif num == 1 then
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldloc_1)
-		elseif num == 2 then
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldloc_2)
-		elseif num == 3 then
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldloc_3)
+	method public static void EmitLdloc(var num as integer)
+		if num > -1 andalso num < 4 then
+			switch num
+			state
+				ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldloc_0)
+			state
+				ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldloc_1)
+			state
+				ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldloc_2)
+			state
+				ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldloc_3)
+			end switch
 		elseif num <= 255 then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldloc_S, $byte$num)
 		else
@@ -204,14 +215,17 @@ class public static ILEmitter
 
 	[method: ComVisible(false)]
 	method public static void EmitLdarg(var num as integer)
-		if num == 0 then
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldarg_0)
-		elseif num == 1 then
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldarg_1)
-		elseif num == 2 then
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldarg_2)
-		elseif num == 3 then
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldarg_3)
+		if num > -1 andalso num < 4 then
+			switch num
+			state
+				ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldarg_0)
+			state
+				ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldarg_1)
+			state
+				ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldarg_2)
+			state
+				ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldarg_3)
+			end switch
 		elseif num <= 255 then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldarg_S, $byte$num)
 		else
@@ -230,14 +244,17 @@ class public static ILEmitter
 
 	[method: ComVisible(false)]
 	method public static void EmitStloc(var num as integer)
-		if num == 0 then
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stloc_0)
-		elseif num == 1 then
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stloc_1)
-		elseif num == 2 then
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stloc_2)
-		elseif num == 3 then
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stloc_3)
+		if num > -1 andalso num < 4 then
+			switch num
+			state
+				ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stloc_0)
+			state
+				ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stloc_1)
+			state
+				ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stloc_2)
+			state
+				ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stloc_3)
+			end switch
 		elseif num <= 255 then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Stloc_S, $byte$num)
 		else
@@ -386,32 +403,27 @@ class public static ILEmitter
 		if n == -1l then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_M1)
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_I8)
-		elseif n == 0l then
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_0)
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_I8)
-		elseif n == 1l then
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_1)
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_I8)
-		elseif n == 2l then
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_2)
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_I8)
-		elseif n == 3l then
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_3)
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_I8)
-		elseif n == 4l then
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_4)
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_I8)
-		elseif n == 5l then
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_5)
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_I8)
-		elseif n == 6l then
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_6)
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_I8)
-		elseif n == 7l then
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_7)
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_I8)
-		elseif n == 8l then
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_8)
+		elseif n > -1l andalso n < 9l then
+			switch n
+			state
+				ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_0)
+			state
+				ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_1)
+			state
+				ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_2)
+			state
+				ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_3)
+			state
+				ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_4)
+			state
+				ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_5)
+			state
+				ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_6)
+			state
+				ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_7)
+			state
+				ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_8)
+			end switch
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_I8)
 		elseif (n >= $long$integer::MinValue) andalso (n <= $long$integer::MaxValue) then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4, $integer$n)
@@ -423,32 +435,27 @@ class public static ILEmitter
 
 	[method: ComVisible(false)]
 	method public static void EmitLdcU8(var n as ulong)
-		if n == $ulong$0 then
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_0)
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_U8)
-		elseif n == $ulong$1 then
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_1)
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_U8)
-		elseif n == $ulong$2 then
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_2)
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_U8)
-		elseif n == $ulong$3 then
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_3)
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_U8)
-		elseif n == $ulong$4 then
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_4)
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_U8)
-		elseif n == $ulong$5 then
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_5)
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_U8)
-		elseif n == $ulong$6 then
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_6)
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_U8)
-		elseif n == $ulong$7 then
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_7)
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_U8)
-		elseif n == $ulong$8 then
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_8)
+		if n >= 0ul andalso n < 9ul then
+			switch n
+			state
+				ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_0)
+			state
+				ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_1)
+			state
+				ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_2)
+			state
+				ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_3)
+			state
+				ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_4)
+			state
+				ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_5)
+			state
+				ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_6)
+			state
+				ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_7)
+			state
+				ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_8)
+			end switch
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_U8)
 		elseif n <= $ulong$integer::MaxValue then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4, $integer$n)
@@ -464,53 +471,59 @@ class public static ILEmitter
 	end method
 
 	[method: ComVisible(false)]
-	method public static void EmitLdcI4(var num as integer)
-		if num == -1 then
+	method public static void EmitLdcI4(var n as integer)
+		if n == -1 then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_M1)
-		elseif num == 0 then
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_0)
-		elseif num == 1 then
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_1)
-		elseif num == 2 then
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_2)
-		elseif num == 3 then
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_3)
-		elseif num == 4 then
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_4)
-		elseif num == 5 then
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_5)
-		elseif num == 6 then
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_6)
-		elseif num == 7 then
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_7)
-		elseif num == 8 then
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_8)
+		elseif n > -1 andalso n < 9 then
+			switch n
+			state
+				ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_0)
+			state
+				ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_1)
+			state
+				ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_2)
+			state
+				ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_3)
+			state
+				ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_4)
+			state
+				ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_5)
+			state
+				ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_6)
+			state
+				ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_7)
+			state
+				ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_8)
+			end switch
 		else
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4, num)
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4, n)
 		end if
 	end method
 	
 	[method: ComVisible(false)]
 	method public static void EmitLdcU4(var n as uinteger)
 		var num as long = $long$n		
-		if num == 0l then
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_0)
-		elseif num == 1l then
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_1)
-		elseif num == 2l then
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_2)
-		elseif num == 3l then
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_3)
-		elseif num == 4l then
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_4)
-		elseif num == 5l then
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_5)
-		elseif num == 6l then
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_6)
-		elseif num == 7l then
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_7)
-		elseif num == 8l then
-			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_8)
+		if num > -1l andalso num < 9l then
+			switch num
+			state
+				ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_0)
+			state
+				ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_1)
+			state
+				ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_2)
+			state
+				ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_3)
+			state
+				ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_4)
+			state
+				ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_5)
+			state
+				ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_6)
+			state
+				ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_7)
+			state
+				ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_8)
+			end switch
 		elseif num <= $long$integer::MaxValue then
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4, $integer$num)
 		else
@@ -708,42 +721,54 @@ class public static ILEmitter
 
 	[method: ComVisible(false)]
 	method public static void EmitNot(var bo as BranchOptimisation, var lab as IKVM.Reflection.Emit.Label)
-		if bo == BranchOptimisation::None then
+		switch $integer$bo
+		state
+			//none
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_0)
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ceq)
-		elseif bo == BranchOptimisation::Inverted then
+		state
+			//inverted
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Brtrue, lab)
-		else
+		state
+			//normal
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Brfalse, lab)
-		end if
+		end switch
 	end method
 
 	//true if null
 	[method: ComVisible(false)]
 	method public static void EmitNotRef(var bo as BranchOptimisation, var lab as IKVM.Reflection.Emit.Label)
-		if bo == BranchOptimisation::None then
+		switch $integer$bo
+		state
+			//none
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldnull)
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ceq)
-		elseif bo == BranchOptimisation::Inverted then
+		state
+			//inverted
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Brtrue, lab)
-		else
+		state
+			//normal
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Brfalse, lab)
-		end if
+		end switch
 	end method
 
 	//true if not null
 	[method: ComVisible(false)]
 	method public static void EmitIsNotRef(var bo as BranchOptimisation, var lab as IKVM.Reflection.Emit.Label)
-		if bo == BranchOptimisation::None then
+		switch $integer$bo
+		state
+			//none
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldnull)
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ceq)
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_0)
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ceq)
-		elseif bo == BranchOptimisation::Inverted then
+		state
+			//inverted
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Brfalse, lab)
-		else
+		state
+			//normal
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Brtrue, lab)
-		end if
+		end switch
 	end method
 
 	[method: ComVisible(false)]
@@ -797,74 +822,98 @@ class public static ILEmitter
 
 	[method: ComVisible(false)]
 	method public static void EmitCeq(var bo as BranchOptimisation, var lab as IKVM.Reflection.Emit.Label)
-		if bo == BranchOptimisation::None then
+		switch $integer$bo
+		state
+			//none
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ceq)
-		elseif bo == BranchOptimisation::Inverted then
+		state
+			//inverted
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Bne_Un, lab)
-		else
+		state
+			//normal
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Beq, lab)
-		end if
+		end switch
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitCneq(var bo as BranchOptimisation, var lab as IKVM.Reflection.Emit.Label)
-		if bo == BranchOptimisation::None then
+		switch $integer$bo
+		state
+			//none
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ceq)
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_0)
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ceq)
-		elseif bo == BranchOptimisation::Inverted then
+		state
+			//inverted
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Beq, lab)
-		else
+		state
+			//normal
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Bne_Un, lab)
-		end if
+		end switch
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitCgt(var s as boolean, var bo as BranchOptimisation, var lab as IKVM.Reflection.Emit.Label)
-		if bo == BranchOptimisation::None then
+		switch $integer$bo
+		state
+			//none
 			ILGen::Emit(#ternary{s ? IKVM.Reflection.Emit.OpCodes::Cgt, IKVM.Reflection.Emit.OpCodes::Cgt_Un})
-		elseif bo == BranchOptimisation::Inverted then
+		state
+			//inverted
 			ILGen::Emit(#ternary{s ? IKVM.Reflection.Emit.OpCodes::Ble, IKVM.Reflection.Emit.OpCodes::Ble_Un}, lab)
-		else
+		state
+			//normal
 			ILGen::Emit(#ternary{s ? IKVM.Reflection.Emit.OpCodes::Bgt, IKVM.Reflection.Emit.OpCodes::Bgt_Un}, lab)
-		end if
+		end switch
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitClt(var s as boolean, var bo as BranchOptimisation, var lab as IKVM.Reflection.Emit.Label)
-		if bo == BranchOptimisation::None then
+		switch $integer$bo
+		state
+			//none
 			ILGen::Emit(#ternary{s ? IKVM.Reflection.Emit.OpCodes::Clt, IKVM.Reflection.Emit.OpCodes::Clt_Un})
-		elseif bo == BranchOptimisation::Inverted then
+		state
+			//inverted
 			ILGen::Emit(#ternary{s ? IKVM.Reflection.Emit.OpCodes::Bge, IKVM.Reflection.Emit.OpCodes::Bge_Un}, lab)
-		else
+		state
+			//normal
 			ILGen::Emit(#ternary{s ? IKVM.Reflection.Emit.OpCodes::Blt, IKVM.Reflection.Emit.OpCodes::Blt_Un}, lab)
-		end if
+		end switch
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitCle(var s as boolean, var bo as BranchOptimisation, var lab as IKVM.Reflection.Emit.Label)
-		if bo == BranchOptimisation::None then
+		switch $integer$bo
+		state
+			//none
 			ILGen::Emit(#ternary{s ? IKVM.Reflection.Emit.OpCodes::Cgt, IKVM.Reflection.Emit.OpCodes::Cgt_Un})
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_0)
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ceq)
-		elseif bo == BranchOptimisation::Inverted then
+		state
+			//inverted
 			ILGen::Emit(#ternary{s ? IKVM.Reflection.Emit.OpCodes::Bgt, IKVM.Reflection.Emit.OpCodes::Bgt_Un}, lab)
-		else
+		state
+			//normal
 			ILGen::Emit(#ternary{s ? IKVM.Reflection.Emit.OpCodes::Ble, IKVM.Reflection.Emit.OpCodes::Ble_Un}, lab)
-		end if
+		end switch
 	end method
 
 	[method: ComVisible(false)]
 	method public static void EmitCge(var s as boolean, var bo as BranchOptimisation, var lab as IKVM.Reflection.Emit.Label)
-		if bo == BranchOptimisation::None then
+		switch $integer$bo
+		state
+			//none
 			ILGen::Emit(#ternary{s ? IKVM.Reflection.Emit.OpCodes::Clt, IKVM.Reflection.Emit.OpCodes::Clt_Un})
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ldc_I4_0)
 			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Ceq)
-		elseif bo == BranchOptimisation::Inverted then
+		state
+			//inverted
 			ILGen::Emit(#ternary{s ? IKVM.Reflection.Emit.OpCodes::Blt, IKVM.Reflection.Emit.OpCodes::Blt_Un}, lab)
-		else
+		state
+			//normal
 			ILGen::Emit(#ternary{s ? IKVM.Reflection.Emit.OpCodes::Bge, IKVM.Reflection.Emit.OpCodes::Bge_Un}, lab)
-		end if
+		end switch
 	end method
 
 	[method: ComVisible(false)]
@@ -945,6 +994,11 @@ class public static ILEmitter
 	end method
 
 	[method: ComVisible(false)]
+	method public static void EmitSwitch(var lbls as IKVM.Reflection.Emit.Label[])
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Switch, lbls)
+	end method
+
+	[method: ComVisible(false)]
 	method public static void EmitLeave(var lbl as IKVM.Reflection.Emit.Label)
 		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Leave, lbl)
 	end method
@@ -1013,7 +1067,21 @@ class public static ILEmitter
 	method public static void EmitConvU2()
 		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_U2)
 	end method
-	
+
+	[method: ComVisible(false)]
+	method public static void EmitConvU4()
+		ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_U4)
+	end method
+
+	[method: ComVisible(false)]
+	method public static void EmitConvU4(var s as boolean, var size as integer)
+		if s orelse size > 32 then
+			ILGen::Emit(#ternary {s ? IKVM.Reflection.Emit.OpCodes::Conv_Ovf_U4, IKVM.Reflection.Emit.OpCodes::Conv_Ovf_U4_Un})
+		else
+			ILGen::Emit(IKVM.Reflection.Emit.OpCodes::Conv_U4)
+		end if
+	end method
+
 	[method: ComVisible(false)]
 	method public static void EmitConvOvfU2(var s as boolean)
 		ILGen::Emit(#ternary {s ? IKVM.Reflection.Emit.OpCodes::Conv_Ovf_U2, IKVM.Reflection.Emit.OpCodes::Conv_Ovf_U2_Un})

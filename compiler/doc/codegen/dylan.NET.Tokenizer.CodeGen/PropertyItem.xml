@@ -68,6 +68,18 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="ExplType">
+      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok ExplType;" />
+      <MemberSignature Language="ILAsm" Value=".field public class dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok ExplType" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.AST.Tokens.TypeToks.TypeTok</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Name">
       <MemberSignature Language="C#" Value="public string Name;" />
       <MemberSignature Language="ILAsm" Value=".field public string Name" />

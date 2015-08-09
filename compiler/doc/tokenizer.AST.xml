@@ -82,6 +82,15 @@
             <value>The TypeTok encoding the Type to convert to.</value>
             <remarks>For this property to have effect set the 'Conv' property should be set to true.</remarks>
         </member>
+        <member name="T:dylan.NET.Tokenizer.AST.Interfaces.IExprBodyable">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:dylan.NET.Tokenizer.AST.Interfaces.IExprBodyable.ExprBody">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="T:dylan.NET.Tokenizer.AST.Interfaces.IIncDecable">
             <summary>The interface implemented by all Tokens supporting increment i.e. '++' and decrement i.e. '--'.</summary>
             <remarks>This interface depends on IUnaryOperatable.</remarks>
@@ -235,6 +244,7 @@
         <member name="M:dylan.NET.Tokenizer.AST.Stmts.BlockStmt.AddStmt(dylan.NET.Tokenizer.AST.Stmts.Stmt)">
             <param name="stmttoadd">To be added.</param>
             <summary>To be added.</summary>
+            <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
         <member name="P:dylan.NET.Tokenizer.AST.Stmts.BlockStmt.Children">
@@ -499,6 +509,14 @@
             <param name="ctx">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="T:dylan.NET.Tokenizer.AST.Stmts.DefaultStmt">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.AST.Stmts.DefaultStmt">
+            <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="T:dylan.NET.Tokenizer.AST.Stmts.DelegateStmt">
@@ -845,6 +863,14 @@
             <remarks>To be added.</remarks>
         </member>
         <member name="C:dylan.NET.Tokenizer.AST.Stmts.EndStmt">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="T:dylan.NET.Tokenizer.AST.Stmts.EndSwitchStmt">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.AST.Stmts.EndSwitchStmt">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -1507,6 +1533,7 @@
         <member name="M:dylan.NET.Tokenizer.AST.Stmts.IStmtContainer.AddStmt(dylan.NET.Tokenizer.AST.Stmts.Stmt)">
             <param name="stmttoadd">To be added.</param>
             <summary>To be added.</summary>
+            <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
         <member name="P:dylan.NET.Tokenizer.AST.Stmts.IStmtContainer.Children">
@@ -1635,6 +1662,11 @@
         </member>
         <member name="F:dylan.NET.Tokenizer.AST.Stmts.MethodStmt.Attrs">
             <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:dylan.NET.Tokenizer.AST.Stmts.MethodStmt.ExprBody">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
             <remarks>To be added.</remarks>
         </member>
         <member name="M:dylan.NET.Tokenizer.AST.Stmts.MethodStmt.IsOneLiner(dylan.NET.Tokenizer.AST.Stmts.IStmtContainer)">
@@ -1818,6 +1850,11 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="P:dylan.NET.Tokenizer.AST.Stmts.PropertyStmt.ExprBody">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:dylan.NET.Tokenizer.AST.Stmts.PropertyStmt.IsOneLiner(dylan.NET.Tokenizer.AST.Stmts.IStmtContainer)">
             <param name="ctx">To be added.</param>
             <summary>To be added.</summary>
@@ -1857,10 +1894,6 @@
             <remarks>To be added.</remarks>
         </member>
         <member name="F:dylan.NET.Tokenizer.AST.Stmts.RefasmStmt.AsmPath">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="F:dylan.NET.Tokenizer.AST.Stmts.RefasmStmt.EmbedIfUsed">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -1963,6 +1996,14 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
+        <member name="T:dylan.NET.Tokenizer.AST.Stmts.StateStmt">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.AST.Stmts.StateStmt">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="T:dylan.NET.Tokenizer.AST.Stmts.Stmt">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -2011,6 +2052,7 @@
         <member name="M:dylan.NET.Tokenizer.AST.Stmts.StmtSet.AddStmt(dylan.NET.Tokenizer.AST.Stmts.Stmt)">
             <param name="stmttoadd">To be added.</param>
             <summary>To be added.</summary>
+            <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
         <member name="P:dylan.NET.Tokenizer.AST.Stmts.StmtSet.Children">
@@ -2043,6 +2085,60 @@
             <remarks>To be added.</remarks>
         </member>
         <member name="M:dylan.NET.Tokenizer.AST.Stmts.StmtSet.ValidateEnding(dylan.NET.Tokenizer.AST.Stmts.Stmt)">
+            <param name="stm">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="T:dylan.NET.Tokenizer.AST.Stmts.SwitchStmt">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.AST.Stmts.SwitchStmt">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.AST.Stmts.SwitchStmt.AddBranch(dylan.NET.Tokenizer.AST.Stmts.BranchStmt)">
+            <param name="stmttoadd">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.AST.Stmts.SwitchStmt.AddStmt(dylan.NET.Tokenizer.AST.Stmts.Stmt)">
+            <param name="stmttoadd">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:dylan.NET.Tokenizer.AST.Stmts.SwitchStmt.BranchChildren">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.AST.Stmts.SwitchStmt.Branches">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:dylan.NET.Tokenizer.AST.Stmts.SwitchStmt.CurrentContainer">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.AST.Stmts.SwitchStmt.Exp">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.AST.Stmts.SwitchStmt.HasDefault">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.AST.Stmts.SwitchStmt.ValidateContext(dylan.NET.Tokenizer.AST.Stmts.ContextType)">
+            <param name="ctx">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.AST.Stmts.SwitchStmt.ValidateEnding(dylan.NET.Tokenizer.AST.Stmts.Stmt)">
             <param name="stm">To be added.</param>
             <summary>To be added.</summary>
             <returns>To be added.</returns>
@@ -2692,6 +2788,24 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
+        <member name="T:dylan.NET.Tokenizer.AST.Tokens.ExplImplAccessToken">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.AST.Tokens.ExplImplAccessToken">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.AST.Tokens.ExplImplAccessToken(System.String)">
+            <param name="value">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:dylan.NET.Tokenizer.AST.Tokens.ExplImplAccessToken.ActualValue">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="T:dylan.NET.Tokenizer.AST.Tokens.ExprCallTok">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -3252,6 +3366,18 @@
             <summary>Adds another parameter expression to the list of parameters.</summary>
             <remarks>Initially the amount of parameters is 0.</remarks>
         </member>
+        <member name="F:dylan.NET.Tokenizer.AST.Tokens.MethodCallTok.CondAvailable">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.AST.Tokens.MethodCallTok.CondFlg">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.AST.Tokens.MethodCallTok.CondFlgValue">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="F:dylan.NET.Tokenizer.AST.Tokens.MethodCallTok.Name">
             <summary>The MethodName instance containg the method's name and other information.</summary>
             <remarks>Any identifier whose Value is a valid and accessible method name can be used as a valid value for this field provided that the Params fields is adequatley set.</remarks>
@@ -3414,19 +3540,6 @@
         </member>
         <member name="F:dylan.NET.Tokenizer.AST.Tokens.NewarrCallTok.ArrayType">
             <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="T:dylan.NET.Tokenizer.AST.Tokens.NewarrTok">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="C:dylan.NET.Tokenizer.AST.Tokens.NewarrTok">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="M:dylan.NET.Tokenizer.AST.Tokens.NewarrTok.ToString">
-            <summary>To be added.</summary>
-            <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
         <member name="T:dylan.NET.Tokenizer.AST.Tokens.NewCallTok">
@@ -3635,19 +3748,6 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
-        <member name="T:dylan.NET.Tokenizer.AST.Tokens.RefembedasmTok">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="C:dylan.NET.Tokenizer.AST.Tokens.RefembedasmTok">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="M:dylan.NET.Tokenizer.AST.Tokens.RefembedasmTok.ToString">
-            <summary>To be added.</summary>
-            <returns>To be added.</returns>
-            <remarks>To be added.</remarks>
-        </member>
         <member name="T:dylan.NET.Tokenizer.AST.Tokens.RefstdasmTok">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -3752,6 +3852,19 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
+        <member name="T:dylan.NET.Tokenizer.AST.Tokens.StateTok">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.AST.Tokens.StateTok">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.AST.Tokens.StateTok.ToString">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="T:dylan.NET.Tokenizer.AST.Tokens.StepTok">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
@@ -3785,6 +3898,19 @@
         <member name="C:dylan.NET.Tokenizer.AST.Tokens.SwitchTok">
             <summary>Constructs a new SwitchTok.</summary>
             <remarks />
+        </member>
+        <member name="T:dylan.NET.Tokenizer.AST.Tokens.SwitchTok2">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.AST.Tokens.SwitchTok2">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.AST.Tokens.SwitchTok2.ToString">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
         </member>
         <member name="T:dylan.NET.Tokenizer.AST.Tokens.TernaryCallTok">
             <summary>To be added.</summary>
@@ -4521,6 +4647,19 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
+        <member name="T:dylan.NET.Tokenizer.AST.Tokens.Chars.GoesToTok">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.AST.Tokens.Chars.GoesToTok">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.AST.Tokens.Chars.GoesToTok.ToString">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="T:dylan.NET.Tokenizer.AST.Tokens.Chars.LAParen">
             <summary>Represents a left angle bracket '&lt;' character.</summary>
             <remarks>To be used by the Parser while detecting generic type tokens.</remarks>
@@ -4732,10 +4871,6 @@
             <value>To be added.</value>
             <remarks>To be added.</remarks>
         </member>
-        <member name="F:dylan.NET.Tokenizer.AST.Tokens.Literals.ByteLiteral.NumVal">
-            <summary>The numeric value of the literal.</summary>
-            <remarks>It is loaded using the ldc.i4 set of opcodes followed by a conv.u1.</remarks>
-        </member>
         <member name="M:dylan.NET.Tokenizer.AST.Tokens.Literals.ByteLiteral.ToString">
             <summary>Returns the dylan.NET syntax that is parsable into this literal.</summary>
             <returns>The dylan.NET syntactic equivalent to this literal ie. NumVal + "ub".</returns>
@@ -4816,10 +4951,6 @@
             <value>To be added.</value>
             <remarks>To be added.</remarks>
         </member>
-        <member name="F:dylan.NET.Tokenizer.AST.Tokens.Literals.DecimalLiteral.NumVal">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
         <member name="M:dylan.NET.Tokenizer.AST.Tokens.Literals.DecimalLiteral.ToString">
             <summary>To be added.</summary>
             <returns>To be added.</returns>
@@ -4848,10 +4979,6 @@
             <value>To be added.</value>
             <remarks>To be added.</remarks>
         </member>
-        <member name="F:dylan.NET.Tokenizer.AST.Tokens.Literals.DoubleLiteral.NumVal">
-            <summary>The numeric value of the literal.</summary>
-            <remarks>It is loaded using the ldc.r8 opcode.</remarks>
-        </member>
         <member name="M:dylan.NET.Tokenizer.AST.Tokens.Literals.DoubleLiteral.ToString">
             <summary>Returns the dylan.NET syntax that is parsable into this literal.</summary>
             <returns>The dylan.NET syntactic equivalent to this literal ie. NumVal + "d".</returns>
@@ -4879,10 +5006,6 @@
             <summary>To be added.</summary>
             <value>To be added.</value>
             <remarks>To be added.</remarks>
-        </member>
-        <member name="F:dylan.NET.Tokenizer.AST.Tokens.Literals.FloatLiteral.NumVal">
-            <summary>The numeric value of the literal.</summary>
-            <remarks>It is loaded using the ldc.r4 opcode.</remarks>
         </member>
         <member name="M:dylan.NET.Tokenizer.AST.Tokens.Literals.FloatLiteral.ToString">
             <summary>Returns the dylan.NET syntax that is parsable into this literal.</summary>
@@ -4935,10 +5058,6 @@
             <value>To be added.</value>
             <remarks>To be added.</remarks>
         </member>
-        <member name="F:dylan.NET.Tokenizer.AST.Tokens.Literals.IntLiteral.NumVal">
-            <summary>The numerical value of this literal.</summary>
-            <remarks>It is loaded using just the ldc.i4 set of opcodes.</remarks>
-        </member>
         <member name="M:dylan.NET.Tokenizer.AST.Tokens.Literals.IntLiteral.ToString">
             <summary>Returns the dylan.NET syntax that is parsable into this literal.</summary>
             <returns>The dylan.NET syntactic equivalent to this literal ie. NumVal + "i".</returns>
@@ -4970,10 +5089,6 @@
         <member name="P:dylan.NET.Tokenizer.AST.Tokens.Literals.IntPtrLiteral.DoNot">
             <summary>To be added.</summary>
             <value>To be added.</value>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="F:dylan.NET.Tokenizer.AST.Tokens.Literals.IntPtrLiteral.NumVal">
-            <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="M:dylan.NET.Tokenizer.AST.Tokens.Literals.IntPtrLiteral.ToString">
@@ -5053,10 +5168,6 @@
             <value>To be added.</value>
             <remarks>To be added.</remarks>
         </member>
-        <member name="F:dylan.NET.Tokenizer.AST.Tokens.Literals.LongLiteral.NumVal">
-            <summary>The numeric value of the literal.</summary>
-            <remarks>It is loaded using the ldc.i4 set of opcodes folowed by a conv.i8 or by using ldc.i8 directly.</remarks>
-        </member>
         <member name="M:dylan.NET.Tokenizer.AST.Tokens.Literals.LongLiteral.ToString">
             <summary>Returns the dylan.NET syntax that is parsable into this literal.</summary>
             <returns>The dylan.NET syntactic equivalent to this literal ie. NumVal + "l".</returns>
@@ -5097,6 +5208,24 @@
             <summary>Constructs a new NumberLiteral.</summary>
             <remarks />
         </member>
+        <member name="T:dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral`1">
+            <typeparam name="T">To be added.</typeparam>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral`1">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral`1(System.String)">
+            <param name="value">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral`1.NumVal">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="T:dylan.NET.Tokenizer.AST.Tokens.Literals.SByteLiteral">
             <summary>Represents an sbyte (int8) literal.</summary>
             <remarks>Such literals have a 'b' suffix.</remarks>
@@ -5124,10 +5253,6 @@
             <summary>To be added.</summary>
             <value>To be added.</value>
             <remarks>To be added.</remarks>
-        </member>
-        <member name="F:dylan.NET.Tokenizer.AST.Tokens.Literals.SByteLiteral.NumVal">
-            <summary>The numeric value of the literal.</summary>
-            <remarks>It is loaded using the ldc.i4 set of opcodes followed by a conv.i1.</remarks>
         </member>
         <member name="M:dylan.NET.Tokenizer.AST.Tokens.Literals.SByteLiteral.ToString">
             <summary>Returns the dylan.NET syntax that is parsable into this literal.</summary>
@@ -5161,10 +5286,6 @@
             <summary>To be added.</summary>
             <value>To be added.</value>
             <remarks>To be added.</remarks>
-        </member>
-        <member name="F:dylan.NET.Tokenizer.AST.Tokens.Literals.ShortLiteral.NumVal">
-            <summary>The numeric value of this literal.</summary>
-            <remarks>It is loaded by the ldc.i4 set of opcodes followed by a conv.i2.</remarks>
         </member>
         <member name="P:dylan.NET.Tokenizer.AST.Tokens.Literals.ShortLiteral.OrdOp">
             <summary>To be added.</summary>
@@ -5225,10 +5346,6 @@
             <value>To be added.</value>
             <remarks>To be added.</remarks>
         </member>
-        <member name="F:dylan.NET.Tokenizer.AST.Tokens.Literals.UIntLiteral.NumVal">
-            <summary>The numerical value of this literal.</summary>
-            <remarks>It is loaded using the ldc.i4 set of opcodes or the 'ldc.i8' opcode followed by a conv.u4.</remarks>
-        </member>
         <member name="M:dylan.NET.Tokenizer.AST.Tokens.Literals.UIntLiteral.ToString">
             <summary>Returns the dylan.NET syntax that is parsable into this literal.</summary>
             <returns>The dylan.NET syntactic equivalent to this literal ie. NumVal + "ui".</returns>
@@ -5257,10 +5374,6 @@
             <value>To be added.</value>
             <remarks>To be added.</remarks>
         </member>
-        <member name="F:dylan.NET.Tokenizer.AST.Tokens.Literals.ULongLiteral.NumVal">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
         <member name="M:dylan.NET.Tokenizer.AST.Tokens.Literals.ULongLiteral.ToString">
             <summary>To be added.</summary>
             <returns>To be added.</returns>
@@ -5287,10 +5400,6 @@
         <member name="P:dylan.NET.Tokenizer.AST.Tokens.Literals.UShortLiteral.DoNot">
             <summary>To be added.</summary>
             <value>To be added.</value>
-            <remarks>To be added.</remarks>
-        </member>
-        <member name="F:dylan.NET.Tokenizer.AST.Tokens.Literals.UShortLiteral.NumVal">
-            <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
         <member name="M:dylan.NET.Tokenizer.AST.Tokens.Literals.UShortLiteral.ToString">

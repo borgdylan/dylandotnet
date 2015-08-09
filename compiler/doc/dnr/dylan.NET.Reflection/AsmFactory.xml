@@ -211,6 +211,18 @@
         </remarks>
       </Docs>
     </Member>
+    <Member MemberName="CurnInhTyp2">
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.Type CurnInhTyp2;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class IKVM.Reflection.Type CurnInhTyp2" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.Type</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="CurnMetB">
       <MemberSignature Language="C#" Value="public static IKVM.Reflection.Emit.MethodBuilder CurnMetB;" />
       <MemberSignature Language="ILAsm" Value=".field public static class IKVM.Reflection.Emit.MethodBuilder CurnMetB" />

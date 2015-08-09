@@ -35,13 +35,14 @@ class public static Helpers
 				return null
 			else
 				var params = lcad::get_Item(0)::get_ConstructorArguments()
-				if params::get_Count() == 0 then
+				switch params::get_Count()
+				state
 					return new ObsoleteAttribute()
-				elseif params::get_Count() == 1 then
+				state
 					return new ObsoleteAttribute($string$params::get_Item(0)::get_Value())
-				elseif params::get_Count() == 2 then
+				state
 					return new ObsoleteAttribute($string$params::get_Item(0)::get_Value(), $boolean$params::get_Item(1)::get_Value())
-				end if
+				end switch
 			end if
 		catch ex as Exception
 		end try
@@ -112,6 +113,8 @@ class public static Helpers
 			elseif attr is Attributes.StaticAttr then
 				temp = TypeAttributes::Abstract or TypeAttributes::BeforeFieldInit or TypeAttributes::Sealed
 				ILEmitter::StaticCFlg = true
+			elseif attr is Attributes.SerializableAttr then
+				temp = TypeAttributes::Serializable
 			elseif attr is Attributes.PartialAttr then
 				ILEmitter::PartialFlg = true
 			else
@@ -304,6 +307,8 @@ class public static Helpers
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, errs)
 				end if
 				faa = true
+			elseif attr is Attributes.NotSerializedAttr then
+				temp = FieldAttributes::NotSerialized
 			else
 				flg = false
 				StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "'" + attr::Value + "' is not a valid attribute for a field.")
@@ -2354,11 +2359,7 @@ class public static Helpers
 
 	method public static ConstInfo ProcessConstExpr(var exp as Expr)
 		if exp::Tokens::get_Count() > 0 then
-			//to remove when done
-			//return ProcessConstValueTok(exp::Tokens::get_Item(0))
-
-			var tree = Evaluator::ConvToAST(Evaluator::ConvToRPN(exp))
-			return ProcessConstTok(tree)
+			return ProcessConstTok(Evaluator::ConvToAST(Evaluator::ConvToRPN(exp)))
 		else
 			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Unexpected empty constant expression.")
 		end if

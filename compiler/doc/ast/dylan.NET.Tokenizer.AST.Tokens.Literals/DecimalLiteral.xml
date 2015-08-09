@@ -1,11 +1,14 @@
 <Type Name="DecimalLiteral" FullName="dylan.NET.Tokenizer.AST.Tokens.Literals.DecimalLiteral">
-  <TypeSignature Language="C#" Value="public class DecimalLiteral : dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral, dylan.NET.Tokenizer.AST.Interfaces.INegatable" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi DecimalLiteral extends dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral implements class dylan.NET.Tokenizer.AST.Interfaces.INegatable" />
+  <TypeSignature Language="C#" Value="public class DecimalLiteral : dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral&lt;decimal&gt;, dylan.NET.Tokenizer.AST.Interfaces.INegatable" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi DecimalLiteral extends dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral`1&lt;valuetype System.Decimal&gt; implements class dylan.NET.Tokenizer.AST.Interfaces.INegatable" />
   <AssemblyInfo>
     <AssemblyName>tokenizer.AST</AssemblyName>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral</BaseTypeName>
+    <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral&lt;System.Decimal&gt;</BaseTypeName>
+    <BaseTypeArguments>
+      <BaseTypeArgument TypeParamName="T">System.Decimal</BaseTypeArgument>
+    </BaseTypeArguments>
   </Base>
   <Interfaces>
     <Interface>
@@ -63,18 +66,6 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="NumVal">
-      <MemberSignature Language="C#" Value="public decimal NumVal;" />
-      <MemberSignature Language="ILAsm" Value=".field public valuetype System.Decimal NumVal" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Decimal</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

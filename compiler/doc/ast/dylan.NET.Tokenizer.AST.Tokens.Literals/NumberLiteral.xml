@@ -1,6 +1,6 @@
 <Type Name="NumberLiteral" FullName="dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral">
-  <TypeSignature Language="C#" Value="public class NumberLiteral : dylan.NET.Tokenizer.AST.Tokens.Literals.Literal" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi NumberLiteral extends dylan.NET.Tokenizer.AST.Tokens.Literals.Literal" />
+  <TypeSignature Language="C#" Value="public abstract class NumberLiteral : dylan.NET.Tokenizer.AST.Tokens.Literals.Literal" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract NumberLiteral extends dylan.NET.Tokenizer.AST.Tokens.Literals.Literal" />
   <AssemblyInfo>
     <AssemblyName>tokenizer.AST</AssemblyName>
   </AssemblyInfo>

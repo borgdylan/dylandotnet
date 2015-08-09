@@ -1,11 +1,14 @@
 <Type Name="IntPtrLiteral" FullName="dylan.NET.Tokenizer.AST.Tokens.Literals.IntPtrLiteral">
-  <TypeSignature Language="C#" Value="public class IntPtrLiteral : dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral, dylan.NET.Tokenizer.AST.Interfaces.INegatable, dylan.NET.Tokenizer.AST.Interfaces.INotable" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi IntPtrLiteral extends dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral implements class dylan.NET.Tokenizer.AST.Interfaces.INegatable, class dylan.NET.Tokenizer.AST.Interfaces.INotable" />
+  <TypeSignature Language="C#" Value="public class IntPtrLiteral : dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral&lt;IntPtr&gt;, dylan.NET.Tokenizer.AST.Interfaces.INegatable, dylan.NET.Tokenizer.AST.Interfaces.INotable" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi IntPtrLiteral extends dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral`1&lt;native int&gt; implements class dylan.NET.Tokenizer.AST.Interfaces.INegatable, class dylan.NET.Tokenizer.AST.Interfaces.INotable" />
   <AssemblyInfo>
     <AssemblyName>tokenizer.AST</AssemblyName>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral</BaseTypeName>
+    <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral&lt;System.IntPtr&gt;</BaseTypeName>
+    <BaseTypeArguments>
+      <BaseTypeArgument TypeParamName="T">System.IntPtr</BaseTypeArgument>
+    </BaseTypeArguments>
   </Base>
   <Interfaces>
     <Interface>
@@ -66,18 +69,6 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="NumVal">
-      <MemberSignature Language="C#" Value="public IntPtr NumVal;" />
-      <MemberSignature Language="ILAsm" Value=".field public native int NumVal" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>System.IntPtr</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

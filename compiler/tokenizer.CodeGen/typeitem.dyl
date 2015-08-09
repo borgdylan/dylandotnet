@@ -23,6 +23,7 @@ class public partial TypeItem
 	field public boolean IsEnum
 	field public integer NrGenParams
 	field public C5.HashDictionary<of string, TypeParamItem> TypGenParams
+	field public C5.LinkedList<of GenericTypeParameterBuilder> GenParams
 	field public AssemblyBuilder AsmB
 
 	method private void TypeItem(var nme as string, var bld as TypeBuilder, var bld3 as EnumBuilder)
@@ -36,6 +37,7 @@ class public partial TypeItem
 		Ctors = new C5.LinkedList<of CtorItem>()
 		Fields = new C5.HashDictionary<of string, FieldItem>()
 		TypGenParams = new C5.HashDictionary<of string, TypeParamItem>()
+		GenParams = new C5.LinkedList<of GenericTypeParameterBuilder>()
 	end method
 	
 	method public void TypeItem(var nme as string, var bld as TypeBuilder)

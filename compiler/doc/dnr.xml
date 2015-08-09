@@ -68,6 +68,10 @@
             <summary>Holds a Type instance representing the base class for the class under construction.</summary>
             <remarks />
         </member>
+        <member name="F:dylan.NET.Reflection.AsmFactory.CurnInhTyp2">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="F:dylan.NET.Reflection.AsmFactory.CurnMetB">
             <summary>Holds the current MethodBuilder.</summary>
             <remarks />
@@ -269,10 +273,6 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="F:dylan.NET.Reflection.ILEmitter.ANIFlg">
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
-        </member>
         <member name="F:dylan.NET.Reflection.ILEmitter.ArgInd">
             <summary>The index for the last declared argument.</summary>
             <remarks />
@@ -471,6 +471,16 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitConvU4">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitConvU4(System.Boolean,System.Int32)">
+            <param name="s">To be added.</param>
+            <param name="size">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:dylan.NET.Reflection.ILEmitter.EmitConvU8(System.Boolean)">
             <param name="s">To be added.</param>
             <summary>To be added.</summary>
@@ -525,6 +535,12 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitIsNotRef(dylan.NET.Reflection.BranchOptimisation,IKVM.Reflection.Emit.Label)">
+            <param name="bo">To be added.</param>
+            <param name="lab">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:dylan.NET.Reflection.ILEmitter.EmitLdarg(System.Int32)">
             <param name="num">The index of the argument to load.</param>
             <summary>Emits one of the variants of 'ldarg' accordingly.</summary>
@@ -561,7 +577,7 @@
             <remarks />
         </member>
         <member name="M:dylan.NET.Reflection.ILEmitter.EmitLdcI4(System.Int32)">
-            <param name="num">The int32 number to emit a load for.</param>
+            <param name="n">The int32 number to emit a load for.</param>
             <summary>Emits one of the variants of the 'ldc.i4' opcode.</summary>
             <remarks />
         </member>
@@ -721,15 +737,19 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Reflection.ILEmitter.EmitNot">
-            <summary>Emits the 'not' opcode.</summary>
-            <remarks>For booleans consider using 'ldc.i4.0' followed by a 'ceq' instead i.e. use EmitLdcI4(0) and EmitCeq.</remarks>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitNot(dylan.NET.Reflection.BranchOptimisation,IKVM.Reflection.Emit.Label)">
+            <param name="bo">To be added.</param>
+            <param name="lab">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
         </member>
         <member name="M:dylan.NET.Reflection.ILEmitter.EmitNotOther">
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
-        <member name="M:dylan.NET.Reflection.ILEmitter.EmitNotRef">
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitNotRef(dylan.NET.Reflection.BranchOptimisation,IKVM.Reflection.Emit.Label)">
+            <param name="bo">To be added.</param>
+            <param name="lab">To be added.</param>
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
@@ -809,6 +829,11 @@
             <param name="s">If the operands are signed or not.</param>
             <summary>Emits one of the variants of the 'sub' opcode.</summary>
             <remarks />
+        </member>
+        <member name="M:dylan.NET.Reflection.ILEmitter.EmitSwitch(IKVM.Reflection.Emit.Label[])">
+            <param name="lbls">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
         </member>
         <member name="M:dylan.NET.Reflection.ILEmitter.EmitThrow">
             <summary>To be added.</summary>
