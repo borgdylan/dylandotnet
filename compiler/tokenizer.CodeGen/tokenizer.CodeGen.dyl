@@ -62,6 +62,7 @@ namespace dylan.NET.Tokenizer.CodeGen
 	#include "labelitem.dyl"
 	#include "loopitem.dyl"
 	#include "ifitem.dyl"
+	#include "switchitem.dyl"
 	#include "tryitem.dyl"
 	#include "lockitem.dyl"
 	#include "usingitem.dyl"

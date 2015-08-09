@@ -47,7 +47,7 @@ end class
 
 interface public IStmtContainer
 
-	method public void AddStmt(var stmttoadd as Stmt)
+	method public boolean AddStmt(var stmttoadd as Stmt)
 	property public autogen ContextType Context
 	property public autogen IStmtContainer Parent
 	property public autogen initonly Stmt[] Children
@@ -75,13 +75,14 @@ class public abstract BlockStmt extends Stmt implements IStmtContainer
 		ctor(ContextType::None)
 	end method
 
-	method public virtual void AddStmt(var stmttoadd as Stmt)
+	method public virtual boolean AddStmt(var stmttoadd as Stmt)
 		Stmts::Add(stmttoadd)
 
 		var sc = stmttoadd as IStmtContainer 
 		if sc isnot null then
 			sc::set_Parent(me)
 		end if
+		return true
 	end method
 
 	property public virtual autogen IStmtContainer Parent
@@ -121,13 +122,14 @@ class public StmtSet implements IStmtContainer
 		Path = p
 	end method
 
-	method public virtual void AddStmt(var stmttoadd as Stmt)
+	method public virtual boolean AddStmt(var stmttoadd as Stmt)
 		Stmts::Add(stmttoadd)
 
 		var sc = stmttoadd as IStmtContainer 
 		if sc isnot null then
 			sc::set_Parent(me)
 		end if
+		return true
 	end method
 
 	property public virtual ContextType Context

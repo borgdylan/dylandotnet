@@ -1138,7 +1138,19 @@ class public Evaluator
 				if emt then
 					ILEmitter::EmitLdarg(0)
 				end if
-				AsmFactory::Type02 = AsmFactory::CurnTypB
+				var ti = SymTable:::CurnTypItem
+				if ti::NrGenParams > 0 then
+					var tps = new IKVM.Reflection.Type[ti::NrGenParams]
+					var i = -1
+					foreach tpi in ti::GenParams
+						i++
+						tps[i] = tpi
+					end for
+
+					AsmFactory::Type02 = AsmFactory::CurnTypB::MakeGenericType(tps)
+				else
+					AsmFactory::Type02 = AsmFactory::CurnTypB
+				end if
 				ASTEmitUnary($MeTok$tok, emt)
 			elseif tok is NewarrCallTok then
 				//array creation section

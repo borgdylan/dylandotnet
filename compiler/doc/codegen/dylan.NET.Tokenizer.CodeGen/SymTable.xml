@@ -388,6 +388,29 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="AddSwitch">
+      <MemberSignature Language="C#" Value="public static void AddSwitch (int statecount, bool hd);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void AddSwitch(int32 statecount, bool hd) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="statecount" Type="System.Int32" />
+        <Parameter Name="hd" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="statecount">To be added.</param>
+        <param name="hd">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="AddTry">
       <MemberSignature Language="C#" Value="public static void AddTry ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void AddTry() cil managed" />
@@ -848,6 +871,18 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="GenParams">
+      <MemberSignature Language="C#" Value="public static C5.LinkedList&lt;IKVM.Reflection.Emit.GenericTypeParameterBuilder&gt; GenParams;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class C5.LinkedList`1&lt;class IKVM.Reflection.Emit.GenericTypeParameterBuilder&gt; GenParams" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>C5.LinkedList&lt;IKVM.Reflection.Emit.GenericTypeParameterBuilder&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="GetInCatch">
       <MemberSignature Language="C#" Value="public static bool GetInCatch ();" />
       <MemberSignature Language="ILAsm" Value=".method public static bool GetInCatch() cil managed" />
@@ -1004,6 +1039,24 @@
     <Member MemberName="PopScope">
       <MemberSignature Language="C#" Value="public static void PopScope ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void PopScope() cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PopSwitch">
+      <MemberSignature Language="C#" Value="public static void PopSwitch ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static void PopSwitch() cil managed" />
       <MemberType>Method</MemberType>
       <Attributes>
         <Attribute>
@@ -1218,6 +1271,104 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="ReadSwitchDefaultLbl">
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.Emit.Label ReadSwitchDefaultLbl ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static valuetype IKVM.Reflection.Emit.Label ReadSwitchDefaultLbl() cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.Emit.Label</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ReadSwitchEndLbl">
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.Emit.Label ReadSwitchEndLbl ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static valuetype IKVM.Reflection.Emit.Label ReadSwitchEndLbl() cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.Emit.Label</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ReadSwitchFallbackLbl">
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.Emit.Label ReadSwitchFallbackLbl ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static valuetype IKVM.Reflection.Emit.Label ReadSwitchFallbackLbl() cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.Emit.Label</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ReadSwitchStateLbl">
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.Emit.Label ReadSwitchStateLbl (int ind);" />
+      <MemberSignature Language="ILAsm" Value=".method public static valuetype IKVM.Reflection.Emit.Label ReadSwitchStateLbl(int32 ind) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.Emit.Label</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ind" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="ind">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ReadSwitchStateLbls">
+      <MemberSignature Language="C#" Value="public static IKVM.Reflection.Emit.Label[] ReadSwitchStateLbls ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static valuetype IKVM.Reflection.Emit.Label[] ReadSwitchStateLbls() cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>IKVM.Reflection.Emit.Label[]</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="ReadUseeLoc">
       <MemberSignature Language="C#" Value="public static string ReadUseeLoc ();" />
       <MemberSignature Language="ILAsm" Value=".method public static string ReadUseeLoc() cil managed" />
@@ -1234,60 +1385,6 @@
       <Docs>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="ResetIf">
-      <MemberSignature Language="C#" Value="public static void ResetIf ();" />
-      <MemberSignature Language="ILAsm" Value=".method public static void ResetIf() cil managed" />
-      <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="ResetLbl">
-      <MemberSignature Language="C#" Value="public static void ResetLbl ();" />
-      <MemberSignature Language="ILAsm" Value=".method public static void ResetLbl() cil managed" />
-      <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="ResetLoop">
-      <MemberSignature Language="C#" Value="public static void ResetLoop ();" />
-      <MemberSignature Language="ILAsm" Value=".method public static void ResetLoop() cil managed" />
-      <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1309,9 +1406,9 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="ResetTry">
-      <MemberSignature Language="C#" Value="public static void ResetTry ();" />
-      <MemberSignature Language="ILAsm" Value=".method public static void ResetTry() cil managed" />
+    <Member MemberName="ResetMethodLsts">
+      <MemberSignature Language="C#" Value="public static void ResetMethodLsts ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static void ResetMethodLsts() cil managed" />
       <MemberType>Method</MemberType>
       <Attributes>
         <Attribute>
@@ -1330,24 +1427,6 @@
     <Member MemberName="ResetTypGenParams">
       <MemberSignature Language="C#" Value="public static void ResetTypGenParams ();" />
       <MemberSignature Language="ILAsm" Value=".method public static void ResetTypGenParams() cil managed" />
-      <MemberType>Method</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="ResetVar">
-      <MemberSignature Language="C#" Value="public static void ResetVar ();" />
-      <MemberSignature Language="ILAsm" Value=".method public static void ResetVar() cil managed" />
       <MemberType>Method</MemberType>
       <Attributes>
         <Attribute>

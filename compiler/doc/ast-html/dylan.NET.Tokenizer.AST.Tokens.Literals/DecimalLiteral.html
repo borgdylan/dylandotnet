@@ -211,7 +211,7 @@
     </p>
     <div>
       <h2>Syntax</h2>
-      <div class="Signature" id="T:dylan.NET.Tokenizer.AST.Tokens.Literals.DecimalLiteral:Signature">public class  <b>DecimalLiteral</b> : <a href="../dylan.NET.Tokenizer.AST.Tokens.Literals/NumberLiteral.html">NumberLiteral</a>,	<a href="../dylan.NET.Tokenizer.AST.Interfaces/INegatable.html">dylan.NET.Tokenizer.AST.Interfaces.INegatable</a></div>
+      <div class="Signature" id="T:dylan.NET.Tokenizer.AST.Tokens.Literals.DecimalLiteral:Signature">public class  <b>DecimalLiteral</b> : <a href="../dylan.NET.Tokenizer.AST.Tokens.Literals/NumberLiteral`1.html">NumberLiteral&lt;decimal&gt;</a>,	<a href="../dylan.NET.Tokenizer.AST.Interfaces/INegatable.html">dylan.NET.Tokenizer.AST.Interfaces.INegatable</a></div>
     </div>
     <div class="Remarks" id="T:dylan.NET.Tokenizer.AST.Tokens.Literals.DecimalLiteral:Docs">
       <h2 class="Section">Remarks</h2>
@@ -225,7 +225,7 @@
       <div class="SectionBox" id="_Members">
         <p>
 								See Also: Inherited members from
-								<a href="../dylan.NET.Tokenizer.AST.Tokens.Literals/NumberLiteral.html">NumberLiteral</a>.
+								<a href="../dylan.NET.Tokenizer.AST.Tokens.Literals/NumberLiteral`1.html">NumberLiteral&lt;decimal&gt;</a>.
 							</p>
         <h2 class="Section">Public Constructors</h2>
         <div class="SectionBox" id="Public Constructors">
@@ -320,13 +320,13 @@
                 </td>
                 <td>
                   <b>
-                    <a href="#F:dylan.NET.Tokenizer.AST.Tokens.Literals.DecimalLiteral.NumVal">NumVal</a>
+                    <a href="../dylan.NET.Tokenizer.AST.Tokens.Literals/NumberLiteral`1.html#F:dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral`1.NumVal">NumVal</a>
                   </b>
                 </td>
                 <td>
                   <i>
                     <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Decimal">decimal</a>
-                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span> (<i>Inherited from <a href="../dylan.NET.Tokenizer.AST.Tokens.Literals/NumberLiteral`1.html">NumberLiteral&lt;T&gt;</a>.</i>)</td>
               </tr>
               <tr valign="top">
                 <td>
@@ -509,9 +509,9 @@
       <div class="SectionBox" id="_MemberDetails">
         <h3 id="C:dylan.NET.Tokenizer.AST.Tokens.Literals.DecimalLiteral()">DecimalLiteral Constructor</h3>
         <blockquote id="C:dylan.NET.Tokenizer.AST.Tokens.Literals.DecimalLiteral():member">
-          <p class="Summary">
+          <div class="msummary">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          </div>
           <h2>Syntax</h2>
           <div class="Signature">public  <b>DecimalLiteral</b> ()</div>
           <h2 class="Section">Remarks</h2>
@@ -525,9 +525,9 @@
         </blockquote>
         <h3 id="C:dylan.NET.Tokenizer.AST.Tokens.Literals.DecimalLiteral(System.Decimal)">DecimalLiteral Constructor</h3>
         <blockquote id="C:dylan.NET.Tokenizer.AST.Tokens.Literals.DecimalLiteral(System.Decimal):member">
-          <p class="Summary">
+          <div class="msummary">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          </div>
           <h2>Syntax</h2>
           <div class="Signature">public  <b>DecimalLiteral</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Decimal">decimal</a> value)</div>
           <h4 class="Subsection">Parameters</h4>
@@ -552,9 +552,9 @@
         </blockquote>
         <h3 id="C:dylan.NET.Tokenizer.AST.Tokens.Literals.DecimalLiteral(System.String)">DecimalLiteral Constructor</h3>
         <blockquote id="C:dylan.NET.Tokenizer.AST.Tokens.Literals.DecimalLiteral(System.String):member">
-          <p class="Summary">
+          <div class="msummary">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          </div>
           <h2>Syntax</h2>
           <div class="Signature">public  <b>DecimalLiteral</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> value)</div>
           <h4 class="Subsection">Parameters</h4>
@@ -579,9 +579,9 @@
         </blockquote>
         <h3 id="P:dylan.NET.Tokenizer.AST.Tokens.Literals.DecimalLiteral.DoNeg">DoNeg Property</h3>
         <blockquote id="P:dylan.NET.Tokenizer.AST.Tokens.Literals.DecimalLiteral.DoNeg:member">
-          <p class="Summary">
+          <div class="msummary">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          </div>
           <h2>Syntax</h2>
           <div class="Signature">public virtual <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> <b>DoNeg</b>  { get; set; }</div>
           <h4 class="Subsection">Value</h4>
@@ -597,27 +597,11 @@
             <b>Namespace: </b>dylan.NET.Tokenizer.AST.Tokens.Literals<br /><b>Assembly: </b>tokenizer.AST (in tokenizer.AST.dll)</div>
           <hr size="1" />
         </blockquote>
-        <h3 id="F:dylan.NET.Tokenizer.AST.Tokens.Literals.DecimalLiteral.NumVal">NumVal Field</h3>
-        <blockquote id="F:dylan.NET.Tokenizer.AST.Tokens.Literals.DecimalLiteral.NumVal:member">
-          <p class="Summary">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
-          <h2>Syntax</h2>
-          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Decimal">decimal</a> <b>NumVal</b> </div>
-          <h2 class="Section">Remarks</h2>
-          <div class="SectionBox" id="F:dylan.NET.Tokenizer.AST.Tokens.Literals.DecimalLiteral.NumVal:Remarks">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </div>
-          <h2 class="Section">Requirements</h2>
-          <div class="SectionBox" id="F:dylan.NET.Tokenizer.AST.Tokens.Literals.DecimalLiteral.NumVal:Version Information">
-            <b>Namespace: </b>dylan.NET.Tokenizer.AST.Tokens.Literals<br /><b>Assembly: </b>tokenizer.AST (in tokenizer.AST.dll)</div>
-          <hr size="1" />
-        </blockquote>
         <h3 id="M:dylan.NET.Tokenizer.AST.Tokens.Literals.DecimalLiteral.ToString()">ToString Method</h3>
         <blockquote id="M:dylan.NET.Tokenizer.AST.Tokens.Literals.DecimalLiteral.ToString():member">
-          <p class="Summary">
+          <div class="msummary">
             <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </p>
+          </div>
           <h2>Syntax</h2>
           <div class="Signature">public override <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.String">string</a> <b>ToString</b> ()</div>
           <h4 class="Subsection">Returns</h4>

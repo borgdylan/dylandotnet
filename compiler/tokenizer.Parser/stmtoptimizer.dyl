@@ -265,7 +265,7 @@ class public StmtOptimizer
 		
 		return null
 	end method
-	
+			
 	method private Stmt checkHIf(var stm as Stmt, var b as boolean&)
 		b = stm::Tokens::get_Item(0) is HIfTok
 		
@@ -420,7 +420,7 @@ class public StmtOptimizer
 			var endexp as Expr = new Expr() {Line = stm::Line}
 			var stepexp as Expr = null
 			var direction as boolean = true
-			var status as integer = 1
+			var status as integer = 0
 			
 			var i as integer = 2
 			var typ as TypeTok = null
@@ -442,53 +442,57 @@ class public StmtOptimizer
 				var curtok as Token = stm::Tokens::get_Item(i)
 				
 				if curtok is UptoTok then
-					if status == 1 then
-						status = 2
+					switch status
+					state
+						status = 1
 						direction = true
 						continue
-					elseif status == 2 then
+					state
 						StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, "Did not expect an 'upto' after another 'upto'/'downto' was met!")
 						break
-					elseif status == 3 then
+					state
 						StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, "Did not expect an 'upto' after a 'step' was met!")
 						break
-					end if
+					end switch
 				elseif curtok is DowntoTok then
-					if status == 1 then
-						status = 2
+					switch status
+					state
+						status = 1
 						direction = false
 						continue
-					elseif status == 2 then
+					state
 						StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, "Did not expect a 'downto' after another 'upto'/'downto' was met!")
 						break
-					elseif status == 3 then
+					state
 						StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, "Did not expect a 'downto' after a 'step' was met!")
 						break
-					end if
+					end switch
 				elseif curtok is StepTok then
-					if status == 1 then
+					switch status
+					state
 						StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, "Did not expect a 'step' before an 'upto'/'downto' wasn't even met!")
 						break
-					elseif status == 2 then
-						status = 3
+					state
+						status = 2
 						stepexp = new Expr() {Line = stm::Line}
 						continue
-					elseif status == 3 then
+					state
 						StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, "Did not expect a 'step' after another 'step' was met!")
 						break
-					end if
+					end switch
 				end if
-				
-				if status == 1 then
+
+				switch status
+				state
 					startexp::AddToken(curtok)
-				elseif status == 2 then
+				state
 					endexp::AddToken(curtok)
-				elseif status == 3 then
+				state
 					stepexp::AddToken(curtok)
-				end if
+				end switch
 			end do
 			
-			if status < 2 then
+			if status < 1 then
 				StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, "For loops require the use of a 'downto'/'upto' clause!")
 			end if
 			
@@ -732,7 +736,25 @@ class public StmtOptimizer
 		end if
 		return null
 	end method
-		
+
+	method private Stmt checkSwitch(var stm as Stmt, var b as boolean&)
+		b = (stm::Tokens::get_Item(0) is SwitchTok2) andalso (stm::Tokens::get_Count() >= 2)
+		if b then
+
+			var i as integer = 0
+			var len as integer = --stm::Tokens::get_Count() 
+			var exp as Expr = new Expr() {Line = stm::Line}
+			
+			do until i = len
+				i++
+				exp::AddToken(stm::Tokens::get_Item(i))
+			end do
+			
+			return new SwitchStmt() {Line = stm::Line, Exp = new ExprOptimizer(PFlags)::Optimize(exp)}
+		end if
+		return null
+	end method
+
 	method private Stmt checkTryLock(var stm as Stmt, var b as boolean&)
 		b = (stm::Tokens::get_Item(0) is TryLockTok) andalso (stm::Tokens::get_Count() >= 2)
 		if b then
@@ -769,7 +791,29 @@ class public StmtOptimizer
 		end if
 		return null
 	end method
-	
+
+	method private Stmt checkState(var stm as Stmt, var b as boolean&)
+		b = false
+		if stm::Tokens::get_Count() < 2 then	
+			b = stm::Tokens::get_Item(0) is StateTok
+			if b then
+				return new StateStmt() {Line = stm::Line}
+			end if
+		end if
+		return null
+	end method
+
+	method private Stmt checkDefault(var stm as Stmt, var b as boolean&)
+		b = false
+		if stm::Tokens::get_Count() < 2 then	
+			b = stm::Tokens::get_Item(0) is DefaultTok
+			if b then
+				return new DefaultStmt() {Line = stm::Line}
+			end if
+		end if
+		return null
+	end method
+
 	method private Stmt checkHElse(var stm as Stmt, var b as boolean&)
 		b = false
 		if stm::Tokens::get_Count() < 2 then	
@@ -892,7 +936,12 @@ class public StmtOptimizer
 				if b then
 					return new EndTryStmt() {Line = stm::Line}
 				end if
-				
+
+				b = stm::Tokens::get_Item(1) is SwitchTok2
+				if b then
+					return new EndSwitchStmt() {Line = stm::Line}
+				end if
+
 				b = stm::Tokens::get_Item(1) is LockTok
 				if b then
 					return new EndLockStmt() {Line = stm::Line}
@@ -2288,7 +2337,13 @@ class public StmtOptimizer
 			stm = tmpstm
 			return stm
 		end if
-		
+
+		tmpstm = checkSwitch(stm, ref compb)
+		if compb then
+			stm = tmpstm
+			return stm
+		end if
+
 		tmpstm = checkHIf(stm, ref compb)
 		if compb then
 			stm = tmpstm
@@ -2348,7 +2403,19 @@ class public StmtOptimizer
 			stm = tmpstm
 			return stm
 		end if
-		
+
+		tmpstm = checkState(stm, ref compb)
+		if compb then
+			stm = tmpstm
+			return stm
+		end if
+
+		tmpstm = checkDefault(stm, ref compb)
+		if compb then
+			stm = tmpstm
+			return stm
+		end if
+
 		tmpstm = checkHElse(stm, ref compb)
 		if compb then
 			stm = tmpstm

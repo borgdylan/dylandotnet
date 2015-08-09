@@ -152,3 +152,63 @@ class public RegionStmt extends BlockStmt
 	method public override boolean ValidateContext(var ctx as ContextType) => true
 
 end class
+
+#region "switch statements"
+	
+	class public StateStmt extends BranchStmt
+
+		method public void StateStmt()
+			mybase::ctor()
+		end method
+
+	end class
+
+	class public DefaultStmt extends BranchStmt
+	end class
+
+	class public EndSwitchStmt extends EndStmt
+	end class
+
+	class public SwitchStmt extends BlockStmt implements IBranchContainer
+
+		field public Expr Exp
+		field public C5.ArrayList<of BranchStmt> Branches
+		field public boolean HasDefault
+
+
+		method public void SwitchStmt()
+			mybase::ctor()
+			Exp = new Expr()
+			Branches = new C5.ArrayList<of BranchStmt>()
+		end method
+
+		property public virtual IStmtContainer CurrentContainer => #ternary{ Branches::get_Count() == 0 ?  me, Branches::get_Last() }
+
+		method public virtual boolean AddBranch(var stmttoadd as BranchStmt)
+			if stmttoadd is StateStmt orelse stmttoadd is DefaultStmt then
+
+				if stmttoadd is DefaultStmt then
+					HasDefault = true
+				end if
+
+				var res = get_CurrentContainer() isnot DefaultStmt
+				Branches::Add(stmttoadd)
+				stmttoadd::set_Parent(me)
+				return res
+			else
+				return false
+			end if
+		end method
+
+		method public override boolean AddStmt(var stmttoadd as Stmt)
+			return false
+		end method
+
+		property public virtual BranchStmt[] BranchChildren => Branches::ToArray()
+
+		method public override boolean ValidateEnding(var stm as Stmt) => stm is EndSwitchStmt
+		method public override boolean ValidateContext(var ctx as ContextType) => ctx == ContextType::Method orelse ctx == ContextType::Loop
+
+	end class
+
+end #region

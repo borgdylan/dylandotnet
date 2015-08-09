@@ -14,7 +14,7 @@
   <Members>
     <Member MemberName="Inverted">
       <MemberSignature Language="C#" Value="Inverted" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype dylan.NET.Reflection.BranchOptimisation Inverted = int32(2)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype dylan.NET.Reflection.BranchOptimisation Inverted = int32(1)" />
       <MemberType>Field</MemberType>
       <ReturnValue>
         <ReturnType>dylan.NET.Reflection.BranchOptimisation</ReturnType>
@@ -36,7 +36,7 @@
     </Member>
     <Member MemberName="Normal">
       <MemberSignature Language="C#" Value="Normal" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype dylan.NET.Reflection.BranchOptimisation Normal = int32(1)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype dylan.NET.Reflection.BranchOptimisation Normal = int32(2)" />
       <MemberType>Field</MemberType>
       <ReturnValue>
         <ReturnType>dylan.NET.Reflection.BranchOptimisation</ReturnType>

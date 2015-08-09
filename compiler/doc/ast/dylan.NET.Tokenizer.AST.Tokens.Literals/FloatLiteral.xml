@@ -1,11 +1,14 @@
 <Type Name="FloatLiteral" FullName="dylan.NET.Tokenizer.AST.Tokens.Literals.FloatLiteral">
-  <TypeSignature Language="C#" Value="public class FloatLiteral : dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral, dylan.NET.Tokenizer.AST.Interfaces.INegatable" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi FloatLiteral extends dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral implements class dylan.NET.Tokenizer.AST.Interfaces.INegatable" />
+  <TypeSignature Language="C#" Value="public class FloatLiteral : dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral&lt;float&gt;, dylan.NET.Tokenizer.AST.Interfaces.INegatable" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi FloatLiteral extends dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral`1&lt;float32&gt; implements class dylan.NET.Tokenizer.AST.Interfaces.INegatable" />
   <AssemblyInfo>
     <AssemblyName>tokenizer.AST</AssemblyName>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral</BaseTypeName>
+    <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral&lt;System.Single&gt;</BaseTypeName>
+    <BaseTypeArguments>
+      <BaseTypeArgument TypeParamName="T">System.Single</BaseTypeArgument>
+    </BaseTypeArguments>
   </Base>
   <Interfaces>
     <Interface>
@@ -67,18 +70,6 @@
         <summary>To be added.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="NumVal">
-      <MemberSignature Language="C#" Value="public float NumVal;" />
-      <MemberSignature Language="ILAsm" Value=".field public float32 NumVal" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>The numeric value of the literal.</summary>
-        <remarks>It is loaded using the ldc.r4 opcode.</remarks>
       </Docs>
     </Member>
     <Member MemberName="ToString">

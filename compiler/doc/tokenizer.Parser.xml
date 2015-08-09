@@ -68,6 +68,13 @@
             <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
+        <member name="M:dylan.NET.Tokenizer.Parser.ExprOptimizer.procMtdNameDecl(dylan.NET.Tokenizer.AST.Exprs.Expr,System.Int32)">
+            <param name="stm">To be added.</param>
+            <param name="i">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:dylan.NET.Tokenizer.Parser.ExprOptimizer.procNewCall(dylan.NET.Tokenizer.AST.Exprs.Expr,System.Int32)">
             <param name="stm">To be added.</param>
             <param name="i">To be added.</param>
@@ -90,6 +97,13 @@
             <remarks>To be added.</remarks>
         </member>
         <member name="M:dylan.NET.Tokenizer.Parser.ExprOptimizer.procType(dylan.NET.Tokenizer.AST.Exprs.Expr,System.Int32)">
+            <param name="stm">To be added.</param>
+            <param name="i">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.Parser.ExprOptimizer.procType2(dylan.NET.Tokenizer.AST.Exprs.Expr,System.Int32)">
             <param name="stm">To be added.</param>
             <param name="i">To be added.</param>
             <summary>To be added.</summary>
@@ -309,6 +323,14 @@
         </member>
         <member name="F:dylan.NET.Tokenizer.Parser.StmtOptimizer.PFlags">
             <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.procExprBody(dylan.NET.Tokenizer.AST.Stmts.Stmt,dylan.NET.Tokenizer.AST.Interfaces.IExprBodyable,System.Int32)">
+            <param name="stm">To be added.</param>
+            <param name="mn">To be added.</param>
+            <param name="i">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
             <remarks>To be added.</remarks>
         </member>
         <member name="M:dylan.NET.Tokenizer.Parser.StmtOptimizer.procWhere(dylan.NET.Tokenizer.AST.Stmts.Stmt,dylan.NET.Tokenizer.AST.Interfaces.IMayHaveConstraints,System.Int32)">

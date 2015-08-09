@@ -948,12 +948,12 @@ class public ExprOptimizer
 
 	method public void Verify(var exp as Expr, var i as integer, var j as integer)
 		//true - expect valuetoken, false expect an operator
-		var state as boolean = true
+		var statef as boolean = true
 
 		for k = i upto j
 			//StreamUtils::WriteWarn(exp::Line, PFlags::CurPath, "Expressions should not be empty!")
 			var tok = exp::Tokens::get_Item(k)
-			if state then
+			if statef then
 				if tok is ValueToken then
 				elseif tok is LParen then
 					var iprime = ++k
@@ -991,7 +991,7 @@ class public ExprOptimizer
 					StreamUtils::WriteError(exp::Line, PFlags::CurPath, string::Format("Expected a binary operator instead of '{0}'!", tok::ToString()))
 				end if		
 			end if
-			state = !state
+			statef = !statef
 		end for
 
 	end method

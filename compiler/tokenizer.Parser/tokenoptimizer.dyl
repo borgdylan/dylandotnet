@@ -169,6 +169,8 @@ class public TokenOptimizer
 			return new HIfTok() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value == "try" then
 			return new TryTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value == "switch" then
+			return new SwitchTok2() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value == "finally" then
 			return new FinallyTok() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value == "until" then
@@ -185,6 +187,8 @@ class public TokenOptimizer
 			return new HElseIfTok() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value == "else" then
 			return new ElseTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value == "state" then
+			return new StateTok() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value == "#else" then
 			return new HElseTok() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value == "#ternary" then
@@ -423,6 +427,10 @@ class public TokenOptimizer
 			return new PinvokeImplAttr() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value == "sequential" then
 			return new SequentialLayoutAttr() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value == "serializable" then
+			return new SerializableAttr() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value == "notserialized" then
+			return new NotSerializedAttr() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value == "string" then
 			return new StringTok(tok::Value) {Line = tok::Line}
 		elseif tok::Value == "void" then

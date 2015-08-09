@@ -1,6 +1,6 @@
 <Overview>
   <Assemblies>
-    <Assembly Name="tokenizer.CodeGen" Version="11.5.3.4">
+    <Assembly Name="tokenizer.CodeGen" Version="11.7.1.1">
       <Attributes>
         <Attribute>
           <AttributeName>System.Diagnostics.Debuggable(System.Diagnostics.DebuggableAttribute+DebuggingModes.Default | System.Diagnostics.DebuggableAttribute+DebuggingModes.DisableOptimizations)</AttributeName>
@@ -60,6 +60,7 @@
       <Type Name="PInvokeInfo" Kind="Class" />
       <Type Name="PropertyItem" Kind="Class" />
       <Type Name="StmtReader" Kind="Class" />
+      <Type Name="SwitchItem" Kind="Class" />
       <Type Name="SymTable" Kind="Class" />
       <Type Name="TryItem" Kind="Class" />
       <Type Name="TypeItem" Kind="Class" />

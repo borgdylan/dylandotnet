@@ -1,6 +1,6 @@
 <Type Name="Evaluator" FullName="dylan.NET.Tokenizer.CodeGen.Evaluator">
   <TypeSignature Language="C#" Value="public class Evaluator" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit Evaluator extends System.Object" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi Evaluator extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>tokenizer.CodeGen</AssemblyName>
   </AssemblyInfo>
@@ -65,38 +65,48 @@
       </Docs>
     </Member>
     <Member MemberName="ASTEmitIdent">
-      <MemberSignature Language="C#" Value="public void ASTEmitIdent (dylan.NET.Tokenizer.AST.Tokens.Ident idt, bool emt);" />
-      <MemberSignature Language="ILAsm" Value=".method public instance void ASTEmitIdent(class dylan.NET.Tokenizer.AST.Tokens.Ident idt, bool emt) cil managed" />
+      <MemberSignature Language="C#" Value="public bool ASTEmitIdent (dylan.NET.Tokenizer.AST.Tokens.Ident idt, bool emt, dylan.NET.Reflection.BranchOptimisation bo, IKVM.Reflection.Emit.Label lab);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance bool ASTEmitIdent(class dylan.NET.Tokenizer.AST.Tokens.Ident idt, bool emt, valuetype dylan.NET.Reflection.BranchOptimisation bo, valuetype IKVM.Reflection.Emit.Label lab) cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
+        <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="idt" Type="dylan.NET.Tokenizer.AST.Tokens.Ident" />
         <Parameter Name="emt" Type="System.Boolean" />
+        <Parameter Name="bo" Type="dylan.NET.Reflection.BranchOptimisation" />
+        <Parameter Name="lab" Type="IKVM.Reflection.Emit.Label" />
       </Parameters>
       <Docs>
         <param name="idt">To be added.</param>
         <param name="emt">To be added.</param>
+        <param name="bo">To be added.</param>
+        <param name="lab">To be added.</param>
         <summary>To be added.</summary>
+        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="ASTEmitMethod">
-      <MemberSignature Language="C#" Value="public void ASTEmitMethod (dylan.NET.Tokenizer.AST.Tokens.MethodCallTok mctok, bool emt);" />
-      <MemberSignature Language="ILAsm" Value=".method public instance void ASTEmitMethod(class dylan.NET.Tokenizer.AST.Tokens.MethodCallTok mctok, bool emt) cil managed" />
+      <MemberSignature Language="C#" Value="public bool ASTEmitMethod (dylan.NET.Tokenizer.AST.Tokens.MethodCallTok mctok, bool emt, dylan.NET.Reflection.BranchOptimisation bo, IKVM.Reflection.Emit.Label lab);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance bool ASTEmitMethod(class dylan.NET.Tokenizer.AST.Tokens.MethodCallTok mctok, bool emt, valuetype dylan.NET.Reflection.BranchOptimisation bo, valuetype IKVM.Reflection.Emit.Label lab) cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
+        <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="mctok" Type="dylan.NET.Tokenizer.AST.Tokens.MethodCallTok" />
         <Parameter Name="emt" Type="System.Boolean" />
+        <Parameter Name="bo" Type="dylan.NET.Reflection.BranchOptimisation" />
+        <Parameter Name="lab" Type="IKVM.Reflection.Emit.Label" />
       </Parameters>
       <Docs>
         <param name="mctok">To be added.</param>
         <param name="emt">To be added.</param>
+        <param name="bo">To be added.</param>
+        <param name="lab">To be added.</param>
         <summary>To be added.</summary>
+        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -136,9 +146,32 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="ASTEmitUnary">
+      <MemberSignature Language="C#" Value="public bool ASTEmitUnary (dylan.NET.Tokenizer.AST.Interfaces.IUnaryOperatable iuo, bool emt, dylan.NET.Reflection.BranchOptimisation bo, IKVM.Reflection.Emit.Label lab);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance bool ASTEmitUnary(class dylan.NET.Tokenizer.AST.Interfaces.IUnaryOperatable iuo, bool emt, valuetype dylan.NET.Reflection.BranchOptimisation bo, valuetype IKVM.Reflection.Emit.Label lab) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="iuo" Type="dylan.NET.Tokenizer.AST.Interfaces.IUnaryOperatable" />
+        <Parameter Name="emt" Type="System.Boolean" />
+        <Parameter Name="bo" Type="dylan.NET.Reflection.BranchOptimisation" />
+        <Parameter Name="lab" Type="IKVM.Reflection.Emit.Label" />
+      </Parameters>
+      <Docs>
+        <param name="iuo">To be added.</param>
+        <param name="emt">To be added.</param>
+        <param name="bo">To be added.</param>
+        <param name="lab">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="ConvToAST">
-      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Tokens.Token ConvToAST (dylan.NET.Tokenizer.AST.Exprs.Expr exp);" />
-      <MemberSignature Language="ILAsm" Value=".method public instance class dylan.NET.Tokenizer.AST.Tokens.Token ConvToAST(class dylan.NET.Tokenizer.AST.Exprs.Expr exp) cil managed" />
+      <MemberSignature Language="C#" Value="public static dylan.NET.Tokenizer.AST.Tokens.Token ConvToAST (dylan.NET.Tokenizer.AST.Exprs.Expr exp);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class dylan.NET.Tokenizer.AST.Tokens.Token ConvToAST(class dylan.NET.Tokenizer.AST.Exprs.Expr exp) cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Tokens.Token</ReturnType>
@@ -154,8 +187,8 @@
       </Docs>
     </Member>
     <Member MemberName="ConvToRPN">
-      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Exprs.Expr ConvToRPN (dylan.NET.Tokenizer.AST.Exprs.Expr exp);" />
-      <MemberSignature Language="ILAsm" Value=".method public instance class dylan.NET.Tokenizer.AST.Exprs.Expr ConvToRPN(class dylan.NET.Tokenizer.AST.Exprs.Expr exp) cil managed" />
+      <MemberSignature Language="C#" Value="public static dylan.NET.Tokenizer.AST.Exprs.Expr ConvToRPN (dylan.NET.Tokenizer.AST.Exprs.Expr exp);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class dylan.NET.Tokenizer.AST.Exprs.Expr ConvToRPN(class dylan.NET.Tokenizer.AST.Exprs.Expr exp) cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>dylan.NET.Tokenizer.AST.Exprs.Expr</ReturnType>
@@ -272,18 +305,6 @@
         <param name="tok">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Stack">
-      <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.CodeGen.OpStack Stack;" />
-      <MemberSignature Language="ILAsm" Value=".field public class dylan.NET.Tokenizer.CodeGen.OpStack Stack" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>dylan.NET.Tokenizer.CodeGen.OpStack</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

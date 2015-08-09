@@ -13,39 +13,23 @@
     <remarks>This class can be used for in-memory stream input and output from libraries/compilers.</remarks>
   </Docs>
   <Members>
-    <Member MemberName="AddANI">
-      <MemberSignature Language="C#" Value="public static void AddANI (string path);" />
-      <MemberSignature Language="ILAsm" Value=".method public static void AddANI(string path) cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="path" Type="System.String" />
-      </Parameters>
-      <Docs>
-        <param name="path">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="AddFile">
-      <MemberSignature Language="C#" Value="public static void AddFile (string path, System.IO.Stream s);" />
-      <MemberSignature Language="ILAsm" Value=".method public static void AddFile(string path, class System.IO.Stream s) cil managed" />
+      <MemberSignature Language="C#" Value="public static bool AddFile (string path, System.IO.Stream s);" />
+      <MemberSignature Language="ILAsm" Value=".method public static bool AddFile(string path, class System.IO.Stream s) cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
+        <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="path" Type="System.String" />
         <Parameter Name="s" Type="System.IO.Stream" />
       </Parameters>
       <Docs>
-        <param name="path">The path where the stream should be placed inside the file system.</param>
-        <param name="s">The stream to add to the file system.</param>
-        <summary>Adds a new stream to the in-memory file system.</summary>
-        <remarks>
-        </remarks>
+        <param name="path">To be added.</param>
+        <param name="s">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Clear">
@@ -59,20 +43,6 @@
       <Docs>
         <summary>Clears all streams from the file system restoring it to an empty state.</summary>
         <remarks>The clearing operation does not dispose any of the streams so that they still could be used by code that still references them.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="GetANIs">
-      <MemberSignature Language="C#" Value="public static System.Collections.Generic.IEnumerable&lt;string&gt; GetANIs ();" />
-      <MemberSignature Language="ILAsm" Value=".method public static class System.Collections.Generic.IEnumerable`1&lt;string&gt; GetANIs() cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Collections.Generic.IEnumerable&lt;System.String&gt;</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="GetFile">
@@ -90,6 +60,20 @@
         <summary>Tries to retrieve the stream at the specified path.</summary>
         <returns>The desired stream if found, else null.</returns>
         <remarks>A return value of null means the stream required was not found. Handle this special return value accordingly.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetFiles">
+      <MemberSignature Language="C#" Value="public static System.Collections.Generic.IEnumerable&lt;string&gt; GetFiles ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static class System.Collections.Generic.IEnumerable`1&lt;string&gt; GetFiles() cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.IEnumerable&lt;System.String&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="HasFile">

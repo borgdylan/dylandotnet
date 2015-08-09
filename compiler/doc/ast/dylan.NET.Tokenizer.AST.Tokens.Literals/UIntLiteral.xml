@@ -1,11 +1,14 @@
 <Type Name="UIntLiteral" FullName="dylan.NET.Tokenizer.AST.Tokens.Literals.UIntLiteral">
-  <TypeSignature Language="C#" Value="public class UIntLiteral : dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral, dylan.NET.Tokenizer.AST.Interfaces.INotable" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi UIntLiteral extends dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral implements class dylan.NET.Tokenizer.AST.Interfaces.INotable" />
+  <TypeSignature Language="C#" Value="public class UIntLiteral : dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral&lt;uint&gt;, dylan.NET.Tokenizer.AST.Interfaces.INotable" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi UIntLiteral extends dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral`1&lt;unsigned int32&gt; implements class dylan.NET.Tokenizer.AST.Interfaces.INotable" />
   <AssemblyInfo>
     <AssemblyName>tokenizer.AST</AssemblyName>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral</BaseTypeName>
+    <BaseTypeName>dylan.NET.Tokenizer.AST.Tokens.Literals.NumberLiteral&lt;System.UInt32&gt;</BaseTypeName>
+    <BaseTypeArguments>
+      <BaseTypeArgument TypeParamName="T">System.UInt32</BaseTypeArgument>
+    </BaseTypeArguments>
   </Base>
   <Interfaces>
     <Interface>
@@ -67,18 +70,6 @@
         <summary>To be added.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="NumVal">
-      <MemberSignature Language="C#" Value="public uint NumVal;" />
-      <MemberSignature Language="ILAsm" Value=".field public unsigned int32 NumVal" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>System.UInt32</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>The numerical value of this literal.</summary>
-        <remarks>It is loaded using the ldc.i4 set of opcodes or the 'ldc.i8' opcode followed by a conv.u4.</remarks>
       </Docs>
     </Member>
     <Member MemberName="ToString">

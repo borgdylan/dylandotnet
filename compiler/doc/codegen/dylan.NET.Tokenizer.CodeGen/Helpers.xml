@@ -604,8 +604,8 @@
       </Docs>
     </Member>
     <Member MemberName="EmitNeg">
-      <MemberSignature Language="C#" Value="public static void EmitNeg (IKVM.Reflection.Type t);" />
-      <MemberSignature Language="ILAsm" Value=".method public static void EmitNeg(class IKVM.Reflection.Type t) cil managed" />
+      <MemberSignature Language="C#" Value="public static bool EmitNeg (IKVM.Reflection.Type t, bool emt, dylan.NET.Reflection.BranchOptimisation bo, IKVM.Reflection.Emit.Label lab);" />
+      <MemberSignature Language="ILAsm" Value=".method public static bool EmitNeg(class IKVM.Reflection.Type t, bool emt, valuetype dylan.NET.Reflection.BranchOptimisation bo, valuetype IKVM.Reflection.Emit.Label lab) cil managed" />
       <MemberType>Method</MemberType>
       <Attributes>
         <Attribute>
@@ -613,14 +613,21 @@
         </Attribute>
       </Attributes>
       <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
+        <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="t" Type="IKVM.Reflection.Type" />
+        <Parameter Name="emt" Type="System.Boolean" />
+        <Parameter Name="bo" Type="dylan.NET.Reflection.BranchOptimisation" />
+        <Parameter Name="lab" Type="IKVM.Reflection.Emit.Label" />
       </Parameters>
       <Docs>
         <param name="t">To be added.</param>
+        <param name="emt">To be added.</param>
+        <param name="bo">To be added.</param>
+        <param name="lab">To be added.</param>
         <summary>To be added.</summary>
+        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -707,6 +714,28 @@
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetConditional">
+      <MemberSignature Language="C#" Value="public static System.Collections.Generic.IEnumerable&lt;System.Diagnostics.ConditionalAttribute&gt; GetConditional (IKVM.Reflection.MemberInfo m);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class System.Collections.Generic.IEnumerable`1&lt;class System.Diagnostics.ConditionalAttribute&gt; GetConditional(class IKVM.Reflection.MemberInfo m) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.IEnumerable&lt;System.Diagnostics.ConditionalAttribute&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="m" Type="IKVM.Reflection.MemberInfo" />
+      </Parameters>
+      <Docs>
+        <param name="m">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1285,6 +1314,50 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="ProcessConstTok">
+      <MemberSignature Language="C#" Value="public static dylan.NET.Tokenizer.CodeGen.ConstInfo ProcessConstTok (dylan.NET.Tokenizer.AST.Tokens.Token tok);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class dylan.NET.Tokenizer.CodeGen.ConstInfo ProcessConstTok(class dylan.NET.Tokenizer.AST.Tokens.Token tok) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.CodeGen.ConstInfo</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="tok" Type="dylan.NET.Tokenizer.AST.Tokens.Token" />
+      </Parameters>
+      <Docs>
+        <param name="tok">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ProcessConstValueTok">
+      <MemberSignature Language="C#" Value="public static dylan.NET.Tokenizer.CodeGen.ConstInfo ProcessConstValueTok (dylan.NET.Tokenizer.AST.Tokens.Token tok);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class dylan.NET.Tokenizer.CodeGen.ConstInfo ProcessConstValueTok(class dylan.NET.Tokenizer.AST.Tokens.Token tok) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.CodeGen.ConstInfo</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="tok" Type="dylan.NET.Tokenizer.AST.Tokens.Token" />
+      </Parameters>
+      <Docs>
+        <param name="tok">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="ProcessEventAttrs">
       <MemberSignature Language="C#" Value="public static IKVM.Reflection.EventAttributes ProcessEventAttrs (System.Collections.Generic.IEnumerable&lt;dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute&gt; attrs);" />
       <MemberSignature Language="ILAsm" Value=".method public static valuetype IKVM.Reflection.EventAttributes ProcessEventAttrs(class System.Collections.Generic.IEnumerable`1&lt;class dylan.NET.Tokenizer.AST.Tokens.Attributes.Attribute&gt; attrs) cil managed" />
@@ -1470,6 +1543,28 @@
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetCondFlg">
+      <MemberSignature Language="C#" Value="public static bool SetCondFlg (dylan.NET.Tokenizer.AST.Tokens.Token t);" />
+      <MemberSignature Language="ILAsm" Value=".method public static bool SetCondFlg(class dylan.NET.Tokenizer.AST.Tokens.Token t) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="t" Type="dylan.NET.Tokenizer.AST.Tokens.Token" />
+      </Parameters>
+      <Docs>
+        <param name="t">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

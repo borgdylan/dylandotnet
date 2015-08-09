@@ -146,6 +146,16 @@ class public SequentialLayoutAttr extends Attributes.Attribute
 	method public override string ToString() => "sequential"
 end class
 
+// serializable
+class public SerializableAttr extends Attributes.Attribute
+	method public override string ToString() => "serializable"
+end class
+
+// notserializable
+class public NotSerializedAttr extends Attributes.Attribute
+	method public override string ToString() => "notserialized"
+end class
+
 // auto
 class public AutoLayoutAttr extends Attributes.Attribute
 	method public override string ToString() => "auto"

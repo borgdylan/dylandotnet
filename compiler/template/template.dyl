@@ -922,6 +922,22 @@ class public static Program
 
 		Debug::WriteLine("DEBUG is on")
 		Trace::WriteLine("TRACE is on")
+
+		for si = 0 upto 10
+			switch si % 5
+			state
+				Console::WriteLine(0)
+			state
+				Console::WriteLine(1)
+			state
+				Console::WriteLine(2)
+			state
+				Console::WriteLine(3)
+			default
+				Console::WriteLine("default")
+			end switch
+		end for
+
 	end method
 
 	[method: My(new integer[] {1, 2})]
@@ -998,7 +1014,9 @@ class public abstract AbsClass
 
 end class
 
-class public ConcClass extends AbsClass
+class public serializable ConcClass extends AbsClass
+
+	field public notserialized integer MyInt
 
 	method public override void AMet()
 		Console::WriteLine("A")

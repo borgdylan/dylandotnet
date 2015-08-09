@@ -239,7 +239,7 @@ class public StmtReader
 
 		if ti2 is null then
 			ti = new TypeItem(#ternary{AsmFactory::isNested ? string::Empty, AsmFactory::CurnNS + "."} + clss::ClassName::Value, AsmFactory::CurnTypB) _
-				{ IsStatic = ILEmitter::StaticCFlg, NrGenParams = nrgenparams, TypGenParams = SymTable::TypGenParams, AsmB = asmb}
+				{ IsStatic = ILEmitter::StaticCFlg, NrGenParams = nrgenparams, TypGenParams = SymTable::TypGenParams, GenParams = SymTable::GenParams, AsmB = asmb}
 			SymTable::CurnTypItem = ti
 		
 			inhtyp = reft ?? #ternary {clss::InhClass::Value::get_Length() == 0 ? _
@@ -432,12 +432,7 @@ class public StmtReader
 		end if
 		
 		Helpers::ApplyClsAttrs()
-
-		SymTable::ResetVar()
-		SymTable::ResetIf()
-		SymTable::ResetTry()
-		SymTable::ResetLoop()
-		SymTable::ResetLbl()
+		SymTable::ResetMethodLsts()
 
 		if dels::DelegateName is GenericMethodNameTok then
 			var gmn = $GenericMethodNameTok$dels::DelegateName
@@ -568,12 +563,7 @@ class public StmtReader
 		ILEmitter::PInvokeFlg = false
 		ILEmitter::OverrideFlg = false
 
-		SymTable::ResetVar()
-		SymTable::ResetIf()
-		SymTable::ResetLbl()
-		SymTable::ResetTry()
-		SymTable::ResetLoop()
-
+		SymTable::ResetMethodLsts()
 		SymTable::ResetMetGenParams()
 
 		var mtssnamstr as string = mtss::MethodName::Value
@@ -1349,11 +1339,6 @@ class public StmtReader
 				StreamUtils::Write("Referencing In-Memory Assembly: ")
 				StreamUtils::WriteLine(pth)
 				Importer::AddAsm(rastm::AsmPath::Value, ILEmitter::Univ::LoadAssembly(ILEmitter::Univ::OpenRawModule(MemoryFS::GetFile(pth), $string$null)))
-
-				//if rastm::EmbedIfUsed then
-				//	SymTable::ResLst::Add(Tuple::Create<of string, string, boolean, boolean>(rastm::AsmPath::Value, string::Empty, true, true))
-				//end if
-
 			else
 				rastm::AsmPath::Value = ParseUtils::ProcessMSYSPath(rastm::AsmPath::Value)
 			
@@ -1364,10 +1349,6 @@ class public StmtReader
 				StreamUtils::Write("Referencing Assembly: ")
 				StreamUtils::WriteLine(rastm::AsmPath::Value)
 				Importer::AddAsm(rastm::AsmPath::Value, ILEmitter::Univ::LoadFile(rastm::AsmPath::Value))
-
-				//if rastm::EmbedIfUsed then
-				//	SymTable::ResLst::Add(Tuple::Create<of string, string, boolean, boolean>(rastm::AsmPath::Value, string::Empty, true, true))
-				//end if
 			end if
 		elseif stm is RefstdasmStmt then
 			var rsastm as RefstdasmStmt = $RefstdasmStmt$stm
@@ -1395,14 +1376,27 @@ class public StmtReader
 			end if
 		elseif stm is EmbedStmt then
 			var sstm as EmbedStmt = $EmbedStmt$stm
-			sstm::Path::Value = ParseUtils::ProcessMSYSPath(sstm::Path::get_UnquotedValue())
+			sstm::Path::Value = sstm::Path::get_UnquotedValue()
+
+			if sstm::Path::Value like "^memory:(.)*$" then
+				var pth = sstm::Path::Value::Substring(7)
+
+				if !MemoryFS::HasFile(pth) then
+					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "In-Memory Resource File '" + pth + "' does not exist.")
+				end if
 			
-			if File::Exists(sstm::Path::Value) then
-				StreamUtils::Write("Adding Resource: ")
-				StreamUtils::WriteLine(sstm::Path::Value)
+				StreamUtils::Write("Adding In-Memory Resource: ")
+				StreamUtils::WriteLine(pth)
 				SymTable::ResLst::Add(Tuple::Create<of string, string, boolean, boolean>(sstm::Path::Value, sstm::LogicalName::get_UnquotedValue(), false, false))
 			else
-				StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Resource File '" + sstm::Path::Value + "' does not exist.")
+				sstm::Path::Value = ParseUtils::ProcessMSYSPath(sstm::Path::Value)
+				if File::Exists(sstm::Path::Value) then
+					StreamUtils::Write("Adding Resource: ")
+					StreamUtils::WriteLine(sstm::Path::Value)
+					SymTable::ResLst::Add(Tuple::Create<of string, string, boolean, boolean>(sstm::Path::Value, sstm::LogicalName::get_UnquotedValue(), false, false))
+				else
+					StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Resource File '" + sstm::Path::Value + "' does not exist.")
+				end if
 			end if
 		elseif stm is ImportStmt then
 			var istm as ImportStmt = $ImportStmt$stm
@@ -1715,6 +1709,54 @@ class public StmtReader
 			end for
 
 			return rtf andalso he
+		elseif stm is SwitchStmt then
+			var swstm as SwitchStmt = $SwitchStmt$stm
+			var brs = swstm::Branches
+
+			var cases = #ternary { swstm::HasDefault ? --brs::get_Count(), brs::get_Count() }
+			SymTable::AddSwitch(cases, swstm::HasDefault)
+
+			if cases == 0 then
+				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Switch statements should declare at least one state handler!")
+			end if
+
+			new Evaluator()::Evaluate(swstm::Exp)
+			if !Helpers::IsPrimitiveIntegralType(AsmFactory::Type02) then
+				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Switch arguments should be of a Primitive Integer Type!")
+			end if
+
+			//convert to uint32, exec switch with fallback
+			ILEmitter::EmitConvU4(Helpers::CheckSigned(AsmFactory::Type02), Helpers::GetPrimitiveNumericSize(AsmFactory::Type02))
+			ILEmitter::EmitSwitch(SymTable::ReadSwitchStateLbls())
+			ILEmitter::EmitBr(SymTable::ReadSwitchFallbackLbl())
+
+			var rtf = false
+			var he = false
+			var i as integer = -1
+
+			foreach b in swstm::Branches
+				if b is StateStmt then
+					i++
+					PreRead(b::Line, fpath)
+					ILEmitter::MarkLbl(SymTable::ReadSwitchStateLbl(i))
+					SymTable::PushScope()				
+					rtf = cg::Process(b, fpath)::get_Item1() andalso rtf
+					SymTable::PopScope()
+					if swstm::HasDefault orelse i != --brs::get_Count() then
+						ILEmitter::EmitBr(SymTable::ReadSwitchEndLbl())
+					end if
+				elseif b is DefaultStmt then
+					he = true
+					PreRead(b::Line, fpath)	
+					ILEmitter::MarkLbl(SymTable::ReadSwitchDefaultLbl())
+					SymTable::PushScope()
+					rtf = cg::Process(b, fpath)::get_Item1() andalso rtf
+					SymTable::PopScope()
+					//this is the latest branch, no jump needed
+				end if
+			end for
+
+			return rtf andalso he
 		elseif stm is DoStmt then
 			SymTable::PushScope()
 			SymTable::AddLoop()
@@ -1804,6 +1846,9 @@ class public StmtReader
 			ILEmitter::MarkLbl(SymTable::ReadIfEndLbl())
 			SymTable::PopIf()
 			SymTable::PopScope()
+		elseif stm is EndSwitchStmt then
+			ILEmitter::MarkLbl(SymTable::ReadSwitchEndLbl())
+			SymTable::PopSwitch()
 		elseif stm is EndDoStmt then
 			ReadEndDo(fpath)
 //		elseif stm is LabelStmt then

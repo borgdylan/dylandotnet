@@ -54,6 +54,42 @@
         <remarks>Initially the amount of parameters is 0.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="CondAvailable">
+      <MemberSignature Language="C#" Value="public bool CondAvailable;" />
+      <MemberSignature Language="ILAsm" Value=".field public bool CondAvailable" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CondFlg">
+      <MemberSignature Language="C#" Value="public bool CondFlg;" />
+      <MemberSignature Language="ILAsm" Value=".field public bool CondFlg" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CondFlgValue">
+      <MemberSignature Language="C#" Value="public bool CondFlgValue;" />
+      <MemberSignature Language="ILAsm" Value=".field public bool CondFlgValue" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Name">
       <MemberSignature Language="C#" Value="public dylan.NET.Tokenizer.AST.Tokens.MethodNameTok Name;" />
       <MemberSignature Language="ILAsm" Value=".field public class dylan.NET.Tokenizer.AST.Tokens.MethodNameTok Name" />

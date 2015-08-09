@@ -1,13 +1,17 @@
 <Type Name="PropertyStmt" FullName="dylan.NET.Tokenizer.AST.Stmts.PropertyStmt">
-  <TypeSignature Language="C#" Value="public class PropertyStmt : dylan.NET.Tokenizer.AST.Stmts.BlockStmt" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi PropertyStmt extends dylan.NET.Tokenizer.AST.Stmts.BlockStmt" />
+  <TypeSignature Language="C#" Value="public class PropertyStmt : dylan.NET.Tokenizer.AST.Stmts.BlockStmt, dylan.NET.Tokenizer.AST.Interfaces.IExprBodyable" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi PropertyStmt extends dylan.NET.Tokenizer.AST.Stmts.BlockStmt implements class dylan.NET.Tokenizer.AST.Interfaces.IExprBodyable" />
   <AssemblyInfo>
     <AssemblyName>tokenizer.AST</AssemblyName>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>dylan.NET.Tokenizer.AST.Stmts.BlockStmt</BaseTypeName>
   </Base>
-  <Interfaces />
+  <Interfaces>
+    <Interface>
+      <InterfaceName>dylan.NET.Tokenizer.AST.Interfaces.IExprBodyable</InterfaceName>
+    </Interface>
+  </Interfaces>
   <Docs>
     <summary>To be added.</summary>
     <remarks>To be added.</remarks>
@@ -64,6 +68,19 @@
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ExprBody">
+      <MemberSignature Language="C#" Value="public virtual dylan.NET.Tokenizer.AST.Exprs.Expr ExprBody { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class dylan.NET.Tokenizer.AST.Exprs.Expr ExprBody" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>dylan.NET.Tokenizer.AST.Exprs.Expr</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

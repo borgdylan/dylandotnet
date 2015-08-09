@@ -80,18 +80,6 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="ANIFlg">
-      <MemberSignature Language="C#" Value="public static bool ANIFlg;" />
-      <MemberSignature Language="ILAsm" Value=".field public static bool ANIFlg" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="ArgInd">
       <MemberSignature Language="C#" Value="public static int ArgInd;" />
       <MemberSignature Language="ILAsm" Value=".field public static int32 ArgInd" />
@@ -881,6 +869,47 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="EmitConvU4">
+      <MemberSignature Language="C#" Value="public static void EmitConvU4 ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static void EmitConvU4() cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EmitConvU4">
+      <MemberSignature Language="C#" Value="public static void EmitConvU4 (bool s, int size);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void EmitConvU4(bool s, int32 size) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="s" Type="System.Boolean" />
+        <Parameter Name="size" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="s">To be added.</param>
+        <param name="size">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="EmitConvU8">
       <MemberSignature Language="C#" Value="public static void EmitConvU8 (bool s);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitConvU8(bool s) cil managed" />
@@ -1107,6 +1136,29 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="EmitIsNotRef">
+      <MemberSignature Language="C#" Value="public static void EmitIsNotRef (dylan.NET.Reflection.BranchOptimisation bo, IKVM.Reflection.Emit.Label lab);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void EmitIsNotRef(valuetype dylan.NET.Reflection.BranchOptimisation bo, valuetype IKVM.Reflection.Emit.Label lab) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="bo" Type="dylan.NET.Reflection.BranchOptimisation" />
+        <Parameter Name="lab" Type="IKVM.Reflection.Emit.Label" />
+      </Parameters>
+      <Docs>
+        <param name="bo">To be added.</param>
+        <param name="lab">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="EmitLdarg">
       <MemberSignature Language="C#" Value="public static void EmitLdarg (int num);" />
       <MemberSignature Language="ILAsm" Value=".method public static void EmitLdarg(int32 num) cil managed" />
@@ -1259,8 +1311,8 @@
       </Docs>
     </Member>
     <Member MemberName="EmitLdcI4">
-      <MemberSignature Language="C#" Value="public static void EmitLdcI4 (int num);" />
-      <MemberSignature Language="ILAsm" Value=".method public static void EmitLdcI4(int32 num) cil managed" />
+      <MemberSignature Language="C#" Value="public static void EmitLdcI4 (int n);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void EmitLdcI4(int32 n) cil managed" />
       <MemberType>Method</MemberType>
       <Attributes>
         <Attribute>
@@ -1274,7 +1326,7 @@
         <Parameter Name="num" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="num">The int32 number to emit a load for.</param>
+        <param name="n">The int32 number to emit a load for.</param>
         <summary>Emits one of the variants of the 'ldc.i4' opcode.</summary>
         <remarks>
         </remarks>
@@ -1951,8 +2003,8 @@
       </Docs>
     </Member>
     <Member MemberName="EmitNot">
-      <MemberSignature Language="C#" Value="public static void EmitNot ();" />
-      <MemberSignature Language="ILAsm" Value=".method public static void EmitNot() cil managed" />
+      <MemberSignature Language="C#" Value="public static void EmitNot (dylan.NET.Reflection.BranchOptimisation bo, IKVM.Reflection.Emit.Label lab);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void EmitNot(valuetype dylan.NET.Reflection.BranchOptimisation bo, valuetype IKVM.Reflection.Emit.Label lab) cil managed" />
       <MemberType>Method</MemberType>
       <Attributes>
         <Attribute>
@@ -1962,10 +2014,15 @@
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
-      <Parameters />
+      <Parameters>
+        <Parameter Name="bo" Type="dylan.NET.Reflection.BranchOptimisation" />
+        <Parameter Name="lab" Type="IKVM.Reflection.Emit.Label" />
+      </Parameters>
       <Docs>
-        <summary>Emits the 'not' opcode.</summary>
-        <remarks>For booleans consider using 'ldc.i4.0' followed by a 'ceq' instead i.e. use EmitLdcI4(0) and EmitCeq.</remarks>
+        <param name="bo">To be added.</param>
+        <param name="lab">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="EmitNotOther">
@@ -1987,8 +2044,8 @@
       </Docs>
     </Member>
     <Member MemberName="EmitNotRef">
-      <MemberSignature Language="C#" Value="public static void EmitNotRef ();" />
-      <MemberSignature Language="ILAsm" Value=".method public static void EmitNotRef() cil managed" />
+      <MemberSignature Language="C#" Value="public static void EmitNotRef (dylan.NET.Reflection.BranchOptimisation bo, IKVM.Reflection.Emit.Label lab);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void EmitNotRef(valuetype dylan.NET.Reflection.BranchOptimisation bo, valuetype IKVM.Reflection.Emit.Label lab) cil managed" />
       <MemberType>Method</MemberType>
       <Attributes>
         <Attribute>
@@ -1998,8 +2055,13 @@
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
-      <Parameters />
+      <Parameters>
+        <Parameter Name="bo" Type="dylan.NET.Reflection.BranchOptimisation" />
+        <Parameter Name="lab" Type="IKVM.Reflection.Emit.Label" />
+      </Parameters>
       <Docs>
+        <param name="bo">To be added.</param>
+        <param name="lab">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -2337,6 +2399,27 @@
         <summary>Emits one of the variants of the 'sub' opcode.</summary>
         <remarks>
         </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EmitSwitch">
+      <MemberSignature Language="C#" Value="public static void EmitSwitch (IKVM.Reflection.Emit.Label[] lbls);" />
+      <MemberSignature Language="ILAsm" Value=".method public static void EmitSwitch(valuetype IKVM.Reflection.Emit.Label[] lbls) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Runtime.InteropServices.ComVisible(false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="lbls" Type="IKVM.Reflection.Emit.Label[]" />
+      </Parameters>
+      <Docs>
+        <param name="lbls">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="EmitThrow">

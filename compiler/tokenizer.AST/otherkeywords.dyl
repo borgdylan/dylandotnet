@@ -121,7 +121,6 @@ class public SignTok extends NonExprToken
 	method public override string ToString() => "#sign"
 end class
 
-
 class public NamespaceTok extends NonExprToken
 	method public override string ToString() => "namespace"
 end class
@@ -186,7 +185,6 @@ class public EventCTok extends NonExprToken
 	method public override string ToString() => "event:"
 end class
 
-
 class public GetTok extends NonExprToken
 	method public override string ToString() => "get"
 end class
@@ -202,7 +200,6 @@ end class
 class public RemoveTok extends NonExprToken
 	method public override string ToString() => "remove"
 end class
-
 
 class public MethodTok extends NonExprToken
 	method public override string ToString() => "method"
@@ -256,6 +253,10 @@ class public IfTok extends NonExprToken
 	method public override string ToString() => "if"
 end class
 
+class public SwitchTok2 extends NonExprToken
+	method public override string ToString() => "switch"
+end class
+
 class public HIfTok extends NonExprToken
 	method public override string ToString() => "#if"
 end class
@@ -264,10 +265,13 @@ class public ElseIfTok extends NonExprToken
 	method public override string ToString() => "elseif"
 end class
 
+class public StateTok extends NonExprToken
+	method public override string ToString() => "state"
+end class
+
 class public HElseIfTok extends NonExprToken
 	method public override string ToString() => "#elseif"
 end class
-
 
 class public ThenTok extends NonExprToken
 	method public override string ToString() => "then"
