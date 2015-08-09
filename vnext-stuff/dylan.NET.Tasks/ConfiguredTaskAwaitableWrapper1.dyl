@@ -11,6 +11,7 @@ class public ConfiguredTaskAwaiterWrapper<of TResult> implements IAwaiter<of TRe
 	field private ConfiguredTaskAwaitable<of TResult>\ConfiguredTaskAwaiter<of TResult> _awaiter
 	
 	method public void ConfiguredTaskAwaiterWrapper(var awaiter as ConfiguredTaskAwaitable<of TResult>\ConfiguredTaskAwaiter<of TResult>)
+		mybase::ctor()
 		_awaiter = awaiter
 	end method
 	
@@ -35,6 +36,7 @@ class public ConfiguredTaskAwaitableWrapper<of TResult> implements IAwaitable<of
 	field private ConfiguredTaskAwaitable<of TResult> _awaitable
 	
 	method public void ConfiguredTaskAwaitableWrapper(var awaitable as ConfiguredTaskAwaitable<of TResult>)
+		mybase::ctor()
 		_awaitable = awaitable
 	end method
 	

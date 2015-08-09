@@ -26,7 +26,12 @@ class public ReflectAwaiterWrapper implements IAwaiter, INotifyCompletion
 				//#if DEBUG then
 				//	Console::WriteLine("IsCompleted - reflected")
 				//end #if
-				var prop = _awaiter::GetType()::GetProperty("IsCompleted")
+				#if CORE50 then
+					var prop = TypeExtensions::GetProperty(_awaiter::GetType(), "IsCompleted")
+				#else
+					var prop = _awaiter::GetType()::GetProperty("IsCompleted")
+				end #if
+				
 				if prop isnot null then
 					var val = prop::GetValue(_awaiter)
 					if val::GetType()::Equals(gettype boolean) then
@@ -52,7 +57,12 @@ class public ReflectAwaiterWrapper implements IAwaiter, INotifyCompletion
 			//#if DEBUG then
 			//	Console::WriteLine("GetResult - reflected")
 			//end #if
-			var met = _awaiter::GetType()::GetMethod("GetResult", Type::EmptyTypes)
+			#if CORE50 then
+				var met = TypeExtensions::GetMethod(_awaiter::GetType(), "GetResult", Type::EmptyTypes)
+			#else
+				var met = _awaiter::GetType()::GetMethod("GetResult", Type::EmptyTypes)
+			end #if
+			
 			if met isnot null then
 				met::Invoke(_awaiter, new object[0])
 			else
@@ -72,7 +82,12 @@ class public ReflectAwaiterWrapper implements IAwaiter, INotifyCompletion
 			//#if DEBUG then
 			//	Console::WriteLine("OnCompleted - reflected")
 			//end #if
-			var met = _awaiter::GetType()::GetMethod("OnCompleted", new Type[] {gettype Action})
+			#if CORE50 then
+				var met = TypeExtensions::GetMethod(_awaiter::GetType(), "OnCompleted", new Type[] {gettype Action})
+			#else
+				var met = _awaiter::GetType()::GetMethod("OnCompleted", new Type[] {gettype Action})
+			end #if
+					
 			if met isnot null then
 				met::Invoke(_awaiter, new object[] {continuation})
 			else
@@ -88,6 +103,7 @@ class public ReflectWrapper implements IAwaitable
 	field private object _awaitable
 	
 	method public void ReflectWrapper(var awaitable as object)
+		mybase::ctor()
 		_awaitable = awaitable
 	end method
 	
@@ -102,7 +118,12 @@ class public ReflectWrapper implements IAwaitable
 			//#if DEBUG then
 			//	Console::WriteLine("GetAwaiter - reflected")
 			//end #if
-			var met = _awaitable::GetType()::GetMethod("GetAwaiter", Type::EmptyTypes)
+			#if CORE50 then
+				var met = TypeExtensions::GetMethod(_awaitable::GetType(), "GetAwaiter", Type::EmptyTypes)
+			#else
+				var met = _awaitable::GetType()::GetMethod("GetAwaiter", Type::EmptyTypes)
+			end #if
+			
 			if met isnot null then
 				return new ReflectAwaiterWrapper(met::Invoke(_awaitable, new object[0]))
 			else

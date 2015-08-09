@@ -1,0 +1,51 @@
+<Type Name="IAsyncValue&lt;TResult&gt;" FullName="System.Threading.Tasks.IAsyncValue&lt;TResult&gt;">
+  <TypeSignature Language="C#" Value="public interface IAsyncValue&lt;TResult&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract IAsyncValue`1&lt;TResult&gt;" />
+  <AssemblyInfo>
+    <AssemblyName>dylan.NET.Tasks</AssemblyName>
+    <AssemblyVersion>1.3.2.0</AssemblyVersion>
+  </AssemblyInfo>
+  <TypeParameters>
+    <TypeParameter Name="TResult" />
+  </TypeParameters>
+  <Interfaces />
+  <Docs>
+    <typeparam name="TResult">The type of the value returned.</typeparam>
+    <summary>An interface for the mechanism with which a value can be asynchronously returned from an awaited method.</summary>
+    <remarks>This library provides a reference implementation of this interface. The methods of this library depend on this interface, not on the implementation provided by this library to enable consumers to implement the interface in the way that is best for their application.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="IsAvailable">
+      <MemberSignature Language="C#" Value="public bool IsAvailable { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsAvailable" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.3.2.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Gets whether the value is available.</summary>
+        <value>True if the value is available, else false.</value>
+        <remarks>In the case where an Await overload that returns a value inside an IAsyncValue is used, you can use this property to see if the await actually happened successfully if the await was part of an optional execution path.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Value">
+      <MemberSignature Language="C#" Value="public TResult Value { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance !TResult Value" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.3.2.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>TResult</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Gets or sets the value returned by the asynchronous method.</summary>
+        <value>The value returned by the method.</value>
+        <remarks>Any implementation should set IsAvailable to true inside this property's setter.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

@@ -1,6 +1,6 @@
+#refasm "/home/dylan/.dnx/packages/Microsoft.Bcl.Async/1.0.168/lib/net40/Microsoft.Threading.Tasks.dll"
 #refasm "/home/dylan/.dnx/packages/Microsoft.Bcl.Async/1.0.168/lib/net40/Microsoft.Threading.Tasks.Extensions.Desktop.dll"
 #refasm "/home/dylan/.dnx/packages/Microsoft.Bcl.Async/1.0.168/lib/net40/Microsoft.Threading.Tasks.Extensions.dll"
-#refasm "/home/dylan/.dnx/packages/Microsoft.Bcl.Async/1.0.168/lib/net40/Microsoft.Threading.Tasks.dll"
 #refasm "/usr/local/lib/mono/4.0/mscorlib.dll"
 #refasm "/usr/local/lib/mono/4.0/System.dll"
 #refasm "/usr/local/lib/mono/4.0/System.Core.dll"
@@ -16,9 +16,9 @@
 #debug on
 
 [assembly: System.Reflection.AssemblyTitle("dylan.NET.Tasks")]
-[assembly: System.Reflection.AssemblyInformationalVersion("1.3.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersion("1.3.2")]
 [assembly: System.Runtime.CompilerServices.RuntimeCompatibility(), WrapNonExceptionThrows = true]
 [assembly: System.Runtime.Versioning.TargetFramework(".NETFramework,Version=v4.0")]
 
 assembly dylan.NET.Tasks dll
-ver 1.3.0.0
+ver 1.3.2.0

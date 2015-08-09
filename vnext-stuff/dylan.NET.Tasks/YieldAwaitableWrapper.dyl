@@ -11,6 +11,7 @@ class public YieldAwaiterWrapper implements IAwaiter, INotifyCompletion
 	field private YieldAwaitable\YieldAwaiter _awaiter
 	
 	method public void YieldAwaiterWrapper(var awaiter as YieldAwaitable\YieldAwaiter)
+		mybase::ctor()
 		_awaiter = awaiter
 	end method
 	
@@ -35,6 +36,7 @@ class public YieldAwaitableWrapper implements IAwaitable
 	field private YieldAwaitable _awaitable
 	
 	method public void YieldAwaitableWrapper(var awaitable as YieldAwaitable)
+		mybase::ctor()
 		_awaitable = awaitable
 	end method
 	

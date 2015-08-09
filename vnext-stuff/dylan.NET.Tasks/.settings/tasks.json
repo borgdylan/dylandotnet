@@ -1,0 +1,30 @@
+{
+    "version": "0.1.0",
+    "command": "gulp",
+    "isShellCommand": true,
+    "args": [
+        "--no-color"
+    ],
+    "tasks": [
+        {
+            "taskName": "build",
+            "args": [],
+            "isBuildCommand": true,
+            "isWatching": false,
+            "showOutput": "never",
+            "problemMatcher": [
+                {
+                    "owner": "dylandotnet",
+                   "fileLocation": ["relative", "${workspaceRoot}"],
+                    "pattern": {
+                        "regexp": "^(.*)\\((\\d+)?(,(\\d+))\\):\\s+(error|warning):\\s+(.*)$",
+                        "file": 1,
+                        "line": 2,
+                        "severity": 5,
+                        "message": 6
+                    }
+                }
+            ]
+        }
+    ]
+}

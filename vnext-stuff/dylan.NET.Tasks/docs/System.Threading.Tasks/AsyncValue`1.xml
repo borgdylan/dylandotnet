@@ -1,0 +1,76 @@
+<Type Name="AsyncValue&lt;TResult&gt;" FullName="System.Threading.Tasks.AsyncValue&lt;TResult&gt;">
+  <TypeSignature Language="C#" Value="public class AsyncValue&lt;TResult&gt; : System.Threading.Tasks.IAsyncValue&lt;TResult&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi AsyncValue`1&lt;TResult&gt; extends System.Object implements class System.Threading.Tasks.IAsyncValue`1&lt;!TResult&gt;" />
+  <AssemblyInfo>
+    <AssemblyName>dylan.NET.Tasks</AssemblyName>
+    <AssemblyVersion>1.3.2.0</AssemblyVersion>
+  </AssemblyInfo>
+  <TypeParameters>
+    <TypeParameter Name="TResult" />
+  </TypeParameters>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>System.Threading.Tasks.IAsyncValue&lt;TResult&gt;</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <typeparam name="TResult">To be added.</typeparam>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public AsyncValue ();" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.3.2.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>Creates a new AsyncValue&lt;TResult&gt;.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsAvailable">
+      <MemberSignature Language="C#" Value="public virtual bool IsAvailable { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsAvailable" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.3.2.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Gets whether the value is available.</summary>
+        <value>True if the value is available, else false.</value>
+        <remarks>This property is automatically set to true when the Value property is set.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Value">
+      <MemberSignature Language="C#" Value="public virtual TResult Value { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance !TResult Value" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.3.2.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>TResult</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Gets or sets the value returned by the asynchronous method.</summary>
+        <value>The value returned by the method.</value>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+  </Members>
+  <typeparam name="TResult">The type of the value returned.</typeparam>
+  <summary>A mechanism with which a value can be asynchronously returned from an awaited method.</summary>
+  <remarks>You can extend this class in order to support firing events when the value changes. This implementation is only a minimal implementation.</remarks>
+</Type>

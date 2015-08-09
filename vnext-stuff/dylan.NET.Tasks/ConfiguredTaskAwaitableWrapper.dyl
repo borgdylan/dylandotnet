@@ -11,6 +11,7 @@ class public ConfiguredTaskAwaiterWrapper implements IAwaiter, INotifyCompletion
 	field private ConfiguredTaskAwaitable\ConfiguredTaskAwaiter _awaiter
 	
 	method public void ConfiguredTaskAwaiterWrapper(var awaiter as ConfiguredTaskAwaitable\ConfiguredTaskAwaiter)
+		mybase::ctor()
 		_awaiter = awaiter
 	end method
 	
@@ -35,6 +36,7 @@ class public ConfiguredTaskAwaitableWrapper implements IAwaitable
 	field private ConfiguredTaskAwaitable _awaitable
 	
 	method public void ConfiguredTaskAwaitableWrapper(var awaitable as ConfiguredTaskAwaitable)
+		mybase::ctor()
 		_awaitable = awaitable
 	end method
 	

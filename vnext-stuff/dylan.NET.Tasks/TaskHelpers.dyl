@@ -20,8 +20,12 @@ class public static TaskHelpers
 	#region "Code from TaskHelpers.Sources/ASP.NET"
 		//The code in this region was ported from code in ASP.NET WebStack which is under the Apache License
 		//Original code was: Copyright (c) Microsoft Open Technologies, Inc. All rights reserved. See COPYING.TaskHelpers.Sources
-
-		field private static initonly Task _defaultCompleted
+		//Optimization for .NET 4.6 done by the library author.
+		
+		#if !NET46 andalso !CORE50 then
+			field private static initonly Task _defaultCompleted
+		end #if
+			
 		field private static initonly Task<of object> _completedTaskReturningNull
 
 		method private static void TaskHelpers()
@@ -29,23 +33,37 @@ class public static TaskHelpers
 				_defaultCompleted = FromResult<of AsyncVoid>(default AsyncVoid)
 				_completedTaskReturningNull = FromResult<of object>(null)
 			#else
+				#if !NET46 andalso !CORE50 then
 				_defaultCompleted = Task::FromResult<of AsyncVoid>(default AsyncVoid)
+				end #if
 				_completedTaskReturningNull = Task::FromResult<of object>(null)
 			end #if
 		end method
 
         method public static Task<of TResult> FromError<of TResult>(var exception as Exception)
-            var tcs as TaskCompletionSource<of TResult> = new TaskCompletionSource<of TResult>()
-            tcs::SetException(exception)
-            return tcs::get_Task()
+			#if NET46 orelse CORE50 then
+				return Task::FromException<of TResult>(exception)
+			#else
+				var tcs as TaskCompletionSource<of TResult> = new TaskCompletionSource<of TResult>()
+            	tcs::SetException(exception)
+            	return tcs::get_Task()
+			end #if
         end method
 
         method public static Task FromError(var exception as Exception)
-            return FromError<of AsyncVoid>(exception)
+            #if NET46 orelse CORE50 then
+				return Task::FromException<of AsyncVoid>(exception)
+			#else
+				return FromError<of AsyncVoid>(exception)
+			end #if
         end method
 
         method public static Task Completed()
-            return _defaultCompleted
+			#if NET46 orelse CORE50 then
+				return Task::get_CompletedTask()
+			#else
+				return _defaultCompleted
+			end #if
         end method
 
         method public static Task<of object> NullResult()

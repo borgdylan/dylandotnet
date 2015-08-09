@@ -216,7 +216,7 @@
       <div class="SectionBox" id="T:System.Threading.Tasks.TaskClosure:Docs:Remarks">This class encapsulates a TaskCompletionSource instance and calls methods on it as you do awaits or return a value. It also handles exceptions thrown by awaited methods and sets them on the Task exposed by the TaskCompletionSource.</div>
       <h2 class="Section">Requirements</h2>
       <div class="SectionBox" id="T:System.Threading.Tasks.TaskClosure:Docs:Version Information">
-        <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.2.1.0, 1.3.0.0</div>
+        <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.2.1.0, 1.3.0.0, 1.3.2.0</div>
       <h2 class="Section" id="Members">Members</h2>
       <div class="SectionBox" id="_Members">
         <p>
@@ -428,6 +428,46 @@
                 </td>
                 <td colspan="2">
                   <b>
+                    <a href="../System.Threading.Tasks/TaskClosure`1.html#M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Runtime.CompilerServices.ConfiguredTaskAwaitable{``0},System.Threading.Tasks.AsyncValue{``0},System.Action)">Await&lt;U&gt;</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Runtime.CompilerServices.ConfiguredTaskAwaitable`1">System.Runtime.CompilerServices.ConfiguredTaskAwaitable&lt;U&gt;</a>, <a href="../System.Threading.Tasks/AsyncValue`1.html">AsyncValue&lt;U&gt;</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action">Action</a>)<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.Task`1">Task&lt;T&gt;</a></nobr><blockquote>Runs the given function if the await completes successfully else propagates the exception. (<i>Inherited from <a href="../System.Threading.Tasks/TaskClosure`1.html">TaskClosure&lt;T&gt;</a>.</i>)</blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="../System.Threading.Tasks/TaskClosure`1.html#M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Threading.Tasks.IAwaitable{``0},System.Threading.Tasks.AsyncValue{``0},System.Action)">Await&lt;U&gt;</a>
+                  </b>(<a href="../System.Threading.Tasks/IAwaitable`1.html">IAwaitable&lt;U&gt;</a>, <a href="../System.Threading.Tasks/AsyncValue`1.html">AsyncValue&lt;U&gt;</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action">Action</a>)<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.Task`1">Task&lt;T&gt;</a></nobr><blockquote>Runs the given function if the await completes successfully else propagates the exception. (<i>Inherited from <a href="../System.Threading.Tasks/TaskClosure`1.html">TaskClosure&lt;T&gt;</a>.</i>)</blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="../System.Threading.Tasks/TaskClosure`1.html#M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Threading.Tasks.IAwaiter{``0},System.Threading.Tasks.AsyncValue{``0},System.Action)">Await&lt;U&gt;</a>
+                  </b>(<a href="../System.Threading.Tasks/IAwaiter`1.html">IAwaiter&lt;U&gt;</a>, <a href="../System.Threading.Tasks/AsyncValue`1.html">AsyncValue&lt;U&gt;</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action">Action</a>)<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.Task`1">Task&lt;T&gt;</a></nobr><blockquote>Runs the given function if the await completes successfully else propagates the exception. (<i>Inherited from <a href="../System.Threading.Tasks/TaskClosure`1.html">TaskClosure&lt;T&gt;</a>.</i>)</blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="../System.Threading.Tasks/TaskClosure`1.html#M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Threading.Tasks.Task{``0},System.Threading.Tasks.AsyncValue{``0},System.Action)">Await&lt;U&gt;</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.Task`1">Task&lt;U&gt;</a>, <a href="../System.Threading.Tasks/AsyncValue`1.html">AsyncValue&lt;U&gt;</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action">Action</a>)<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.Task`1">Task&lt;T&gt;</a></nobr><blockquote>Runs the given function if the await completes successfully else propagates the exception. (<i>Inherited from <a href="../System.Threading.Tasks/TaskClosure`1.html">TaskClosure&lt;T&gt;</a>.</i>)</blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
                     <a href="../System.Threading.Tasks/TaskClosure`1.html#M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Runtime.CompilerServices.ConfiguredTaskAwaitable{``0},System.Action{``0},System.Action{``1})">Await&lt;U,TException&gt;</a>
                   </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Runtime.CompilerServices.ConfiguredTaskAwaitable`1">System.Runtime.CompilerServices.ConfiguredTaskAwaitable&lt;U&gt;</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action`1">Action&lt;U&gt;</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action`1">Action&lt;TException&gt;</a>)<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.Task`1">Task&lt;T&gt;</a></nobr><blockquote>Runs the given function if the awaited configured task completes successfully else runs the given exception handler. (<i>Inherited from <a href="../System.Threading.Tasks/TaskClosure`1.html">TaskClosure&lt;T&gt;</a>.</i>)</blockquote></td>
               </tr>
@@ -460,6 +500,46 @@
                   <b>
                     <a href="../System.Threading.Tasks/TaskClosure`1.html#M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Threading.Tasks.Task{``0},System.Action{``0},System.Action{``1})">Await&lt;U,TException&gt;</a>
                   </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.Task`1">Task&lt;U&gt;</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action`1">Action&lt;U&gt;</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action`1">Action&lt;TException&gt;</a>)<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.Task`1">Task&lt;T&gt;</a></nobr><blockquote>Runs the given function if the awaited task completes successfully else runs the given exception handler. (<i>Inherited from <a href="../System.Threading.Tasks/TaskClosure`1.html">TaskClosure&lt;T&gt;</a>.</i>)</blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="../System.Threading.Tasks/TaskClosure`1.html#M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Runtime.CompilerServices.ConfiguredTaskAwaitable{``0},System.Threading.Tasks.AsyncValue{``0},System.Action,System.Action{``1})">Await&lt;U,TException&gt;</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Runtime.CompilerServices.ConfiguredTaskAwaitable`1">System.Runtime.CompilerServices.ConfiguredTaskAwaitable&lt;U&gt;</a>, <a href="../System.Threading.Tasks/AsyncValue`1.html">AsyncValue&lt;U&gt;</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action">Action</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action`1">Action&lt;TException&gt;</a>)<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.Task`1">Task&lt;T&gt;</a></nobr><blockquote>Runs the given function if the await completes successfully else runs the given exception handler. (<i>Inherited from <a href="../System.Threading.Tasks/TaskClosure`1.html">TaskClosure&lt;T&gt;</a>.</i>)</blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="../System.Threading.Tasks/TaskClosure`1.html#M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Threading.Tasks.IAwaitable{``0},System.Threading.Tasks.AsyncValue{``0},System.Action,System.Action{``1})">Await&lt;U,TException&gt;</a>
+                  </b>(<a href="../System.Threading.Tasks/IAwaitable`1.html">IAwaitable&lt;U&gt;</a>, <a href="../System.Threading.Tasks/AsyncValue`1.html">AsyncValue&lt;U&gt;</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action">Action</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action`1">Action&lt;TException&gt;</a>)<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.Task`1">Task&lt;T&gt;</a></nobr><blockquote>Runs the given function if the await completes successfully else runs the given exception handler. (<i>Inherited from <a href="../System.Threading.Tasks/TaskClosure`1.html">TaskClosure&lt;T&gt;</a>.</i>)</blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="../System.Threading.Tasks/TaskClosure`1.html#M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Threading.Tasks.IAwaiter{``0},System.Threading.Tasks.AsyncValue{``0},System.Action,System.Action{``1})">Await&lt;U,TException&gt;</a>
+                  </b>(<a href="../System.Threading.Tasks/IAwaiter`1.html">IAwaiter&lt;U&gt;</a>, <a href="../System.Threading.Tasks/AsyncValue`1.html">AsyncValue&lt;U&gt;</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action">Action</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action`1">Action&lt;TException&gt;</a>)<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.Task`1">Task&lt;T&gt;</a></nobr><blockquote>Runs the given function if the await completes successfully else runs the given exception handler. (<i>Inherited from <a href="../System.Threading.Tasks/TaskClosure`1.html">TaskClosure&lt;T&gt;</a>.</i>)</blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="../System.Threading.Tasks/TaskClosure`1.html#M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Threading.Tasks.Task{``0},System.Threading.Tasks.AsyncValue{``0},System.Action,System.Action{``1})">Await&lt;U,TException&gt;</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.Task`1">Task&lt;U&gt;</a>, <a href="../System.Threading.Tasks/AsyncValue`1.html">AsyncValue&lt;U&gt;</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action">Action</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action`1">Action&lt;TException&gt;</a>)<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.Task`1">Task&lt;T&gt;</a></nobr><blockquote>Runs the given function if the await completes successfully else runs the given exception handler. (<i>Inherited from <a href="../System.Threading.Tasks/TaskClosure`1.html">TaskClosure&lt;T&gt;</a>.</i>)</blockquote></td>
               </tr>
               <tr valign="top">
                 <td>
@@ -526,7 +606,7 @@
           </div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="C:System.Threading.Tasks.TaskClosure():Version Information">
-            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.1.1.1, 1.2.0.0, 1.2.1.0, 1.3.0.0</div>
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.1.1.1, 1.2.0.0, 1.2.1.0, 1.3.0.0, 1.3.2.0</div>
           <hr size="1" />
         </blockquote>
         <h3 id="M:System.Threading.Tasks.TaskClosure.Return()">Return Method</h3>
@@ -538,7 +618,7 @@
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure.Return():Remarks">This method also handles cleanup of resources.</div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure.Return():Version Information">
-            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.1.1.1, 1.2.0.0, 1.2.1.0, 1.3.0.0</div>
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.1.1.1, 1.2.0.0, 1.2.1.0, 1.3.0.0, 1.3.2.0</div>
           <hr size="1" />
         </blockquote>
       </div>

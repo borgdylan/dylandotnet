@@ -9,9 +9,9 @@
 #debug on
 
 [assembly: System.Reflection.AssemblyTitle("dylan.NET.Tasks")]
-[assembly: System.Reflection.AssemblyInformationalVersion("1.3.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersion("1.3.2")]
 [assembly: System.Runtime.CompilerServices.RuntimeCompatibility(), WrapNonExceptionThrows = true]
 [assembly: System.Runtime.Versioning.TargetFramework(".NETFramework,Version=v4.5")]
 
 assembly dylan.NET.Tasks dll
-ver 1.3.0.0
+ver 1.3.2.0

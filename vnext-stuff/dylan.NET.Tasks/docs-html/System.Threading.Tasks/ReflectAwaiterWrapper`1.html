@@ -225,7 +225,7 @@
       <div class="SectionBox" id="T:System.Threading.Tasks.ReflectAwaiterWrapper`1:Docs:Remarks">This implementation makes use of reflection and is not available for PCLs. It is recommended to make use of strongly typed wrappers instead due to the penalties associated with reflection. If an IAwaiter&lt;TResult&gt; implementation is passed in, no reflection will be used in preference to calling the methods on the IAwaiter&lt;TResult&gt; directly.</div>
       <h2 class="Section">Requirements</h2>
       <div class="SectionBox" id="T:System.Threading.Tasks.ReflectAwaiterWrapper`1:Docs:Version Information">
-        <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.2.1.0, 1.3.0.0</div>
+        <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.2.1.0, 1.3.0.0, 1.3.2.0</div>
       <h2 class="Section" id="Members">Members</h2>
       <div class="SectionBox" id="_Members">
         <p>
@@ -321,7 +321,7 @@
           <div class="SectionBox" id="C:System.Threading.Tasks.ReflectAwaiterWrapper`1(System.Object):Remarks">No validation regarding whether the object's type implements the required functions is made at this point. That is done lazily when an actual function call is made.</div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="C:System.Threading.Tasks.ReflectAwaiterWrapper`1(System.Object):Version Information">
-            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.2.1.0, 1.3.0.0</div>
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.2.1.0, 1.3.0.0, 1.3.2.0</div>
           <hr size="1" />
         </blockquote>
         <h3 id="M:System.Threading.Tasks.ReflectAwaiterWrapper`1.GetResult()">GetResult Method</h3>
@@ -350,7 +350,7 @@
           <div class="SectionBox" id="M:System.Threading.Tasks.ReflectAwaiterWrapper`1.GetResult():Remarks">Calls the underlying GetResult by using reflection. If the given awaiter is an IAwaiter&lt;TResult&gt;, its GetResult code is called directly to bypass the reflection penalty.</div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="M:System.Threading.Tasks.ReflectAwaiterWrapper`1.GetResult():Version Information">
-            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.2.1.0, 1.3.0.0</div>
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.2.1.0, 1.3.0.0, 1.3.2.0</div>
           <hr size="1" />
         </blockquote>
         <h3 id="P:System.Threading.Tasks.ReflectAwaiterWrapper`1.IsCompleted">IsCompleted Property</h3>
@@ -379,7 +379,7 @@
           <div class="SectionBox" id="P:System.Threading.Tasks.ReflectAwaiterWrapper`1.IsCompleted:Remarks">Gets the underlying IsCompleted value by using reflection. If the given awaiter is an IAwaiter&lt;TResult&gt;, its IsCompleted property value is retrieved directly to avoid the penalties of reflection.</div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="P:System.Threading.Tasks.ReflectAwaiterWrapper`1.IsCompleted:Version Information">
-            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.2.1.0, 1.3.0.0</div>
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.2.1.0, 1.3.0.0, 1.3.2.0</div>
           <hr size="1" />
         </blockquote>
         <h3 id="M:System.Threading.Tasks.ReflectAwaiterWrapper`1.OnCompleted(System.Action)">OnCompleted Method</h3>
@@ -415,7 +415,7 @@
           <div class="SectionBox" id="M:System.Threading.Tasks.ReflectAwaiterWrapper`1.OnCompleted(System.Action):Remarks">Calls the underlying OnCompleted using reflection. If the given awaiter implements INotifyCompletion, its OnCompleted method is used instead to avoid using reflection. Note that all IAwaiter&lt;TResult&gt; implementations also implement INotifyCompletion.</div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="M:System.Threading.Tasks.ReflectAwaiterWrapper`1.OnCompleted(System.Action):Version Information">
-            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.2.1.0, 1.3.0.0</div>
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.2.1.0, 1.3.0.0, 1.3.2.0</div>
           <hr size="1" />
         </blockquote>
       </div>

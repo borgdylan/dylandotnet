@@ -1,0 +1,18 @@
+{
+  "name": "dylan.NET.Tasks",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "LGPL3",
+  "devDependencies": {
+    "gulp": "^3.8.11",
+    "gulp-dnx": "^0.1.0",
+    "strip-ansi": "^2.0.1"
+  },
+  "dependencies": {
+  }
+}

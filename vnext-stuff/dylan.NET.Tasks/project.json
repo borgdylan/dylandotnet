@@ -1,12 +1,12 @@
 {
-	"version": "1.3.0.0",
+	"version": "1.3.2",
 	"authors": ["borgdylan"],
 	"description": "Task helper library for dylan.NET (await support for Task, Task<T>, YieldAwaitable, ConfiguredTaskAwaitable, ConfiguredTaskAwaitable<T> + new IAwaiter(<T>)/IAwaitable(<T>) abstractions)",
-	"license": "http://www.gnu.org/copyleft/lesser.html",
+	"licenseUrl": "http://www.gnu.org/copyleft/lesser.html",
 	"projectUrl": "https://github.com/borgdylan/dylandotnet",
-	"tags": [".NET4.0" ,".NET4.5", "DNX4.5.1", "DNXCORE5.0", "Mono", "PCL"],
+	"tags": [".NET4.0" ,".NET4.5", "DNX4.5.1", "NETCORE5.0", "Mono", "PCL"],
 	"compile" : "*.dyl;*/*.dyl",
-	"resource" : "*.resources",
+	"resource" : ["*.resources"],
 	"exclude": "msbuild.dyl",
 	"compiler": {
         "name": "dylan.NET",
@@ -23,7 +23,7 @@
   "frameworks": {
     "dnx451": {
       "dependencies": {
-      	"dylan.NET.K" : {"type": "build"}
+      	"dylan.NET.K" : {"type": "build", "version": ""}
      }
     },
     "net45": {
@@ -39,7 +39,20 @@
     	"dependencies": {
     		"System.Runtime": "4.0.20-*",
     		"System.Text.RegularExpressions": "4.0.10-*",
-    		"System.Threading.Tasks": "4.0.10-*"
+    		"System.Threading.Tasks": "4.0.10-*",
+    		"System.Reflection": "4.0.10-*",
+    		"System.IO": "4.0.10-*",
+            "System.Reflection.TypeExtensions": "4.0.0-*"
+    	}
+    },
+    "netcore50": {
+    	"dependencies": {
+    		"System.Runtime": "4.0.20-*",
+    		"System.Text.RegularExpressions": "4.0.10-*",
+    		"System.Threading.Tasks": "4.0.10-*",
+    		"System.Reflection": "4.0.10-*",
+    		"System.IO": "4.0.10-*",
+            "System.Reflection.TypeExtensions": "4.0.0-*"
     	}
     },
     ".NETPortable,Version=v4.5,Profile=Profile78": {

@@ -4,12 +4,16 @@
 //    dylan.NET.Tasks.dll dylan.NET.Tasks Copyright (C) 2014 Dylan Borg <borgdylan@hotmail.com>
 //    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software
 // Foundation; either version 3 of the License, or (at your option) any later version.
-//    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+//    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
 //PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
-//    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
-//Place, Suite 330, Boston, MA 02111-1307 USA 
+//    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple
+//Place, Suite 330, Boston, MA 02111-1307 USA
 
 #include "msbuild.dyl"
+
+#if DNXCORE50 orelse NETCORE50 then
+	#define CORE50
+end #if
 
 import System
 import System.Threading
@@ -23,11 +27,17 @@ end #if
 	import System.Runtime.CompilerServices
 end #if
 
+#if CORE50 then
+	import System.Reflection
+end #if
+
 namespace System.Threading.Tasks
 	#include "AsyncVoid.dyl"
 	#include "IAwaitable1.dyl"
 	#include "IAwaitable.dyl"
-	
+	#include "IAsyncValue.dyl"
+	#include "AsyncValue.dyl"
+
 	#if !PORTABLESHIM then
 		#include "YieldAwaitableWrapper.dyl"
 		#include "TaskWrapper.dyl"
@@ -35,16 +45,17 @@ namespace System.Threading.Tasks
 		#include "ConfiguredTaskAwaitableWrapper.dyl"
 		#include "ConfiguredTaskAwaitableWrapper1.dyl"
 	end #if
-	
-	#if !PORTABLE andalso !NET40 andalso !DNXCORE50 then
+
+	#if !PORTABLE andalso !NET40 then
 		#include "ReflectWrapper.dyl"
 		#include "ReflectWrapper1.dyl"
 	end #if
-	
+
 	#include "SetHelper.dyl"
 	#include "AwaitClosures.dyl"
 	#include "TaskHelpers.dyl"
 	#include "CatchClosure.dyl"
+	#include "AsyncValueClosure.dyl"
 	#include "TaskClosure1.dyl"
 	#include "TaskClosure.dyl"
 	#include "DisposerTaskClosure1.dyl"
