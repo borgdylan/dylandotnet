@@ -1,5 +1,5 @@
-﻿{	
-	"version": "1.3.5.0",
+﻿{
+	"version": "1.3.7",
 	"authors": ["borgdylan"],
 	"description": "dylan.NET support for ASP.NET 5",
 	"licenseUrl": "http://www.gnu.org/copyleft/lesser.html",
@@ -13,10 +13,10 @@
      "warningsAsErrors": false
   },
     "frameworks" : {
-        "dnx451" : { 
+        "dnx451" : {
             "dependencies": {
-            	"Microsoft.Framework.Runtime.Abstractions": "1.0.0-*",
-       			 "dylan.NET": "11.6.1.1"
+            	"Microsoft.Dnx.Compilation.Abstractions": "1.0.0-*",
+       			 "dylan.NET": "11.7.1.1"
             }
         }
     }

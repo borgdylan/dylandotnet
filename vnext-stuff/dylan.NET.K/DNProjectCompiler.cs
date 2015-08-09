@@ -9,16 +9,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Diagnostics;
+//using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Runtime.Versioning;
-using System.Text;
-using Microsoft.Framework.Runtime;
-using Microsoft.Framework.Runtime.Helpers;
-using Microsoft.Framework.Runtime.Compilation;
-using NuGet;
-using dylan.NET.Compiler;
+//using System.Text;
+using Microsoft.Dnx.Runtime;
+using Microsoft.Dnx.Compilation;
 using dylan.NET.Utils;
 using dylan.NET.Reflection;
 using dylan.NET.Tokenizer.CodeGen;
@@ -44,56 +41,30 @@ namespace dylan.NET.K
         	}
         }
     }
-    
-    public class DNDiagnosticResult : IDiagnosticResult
-    {
-    	private bool _success;
-    	private IEnumerable<ICompilationMessage> _messages;
-    
-    	public DNDiagnosticResult(bool success, IEnumerable<ICompilationMessage> messages) {
-    		_success = success;
-    		_messages = messages;
-    	}
-    
-        public bool Success
-        {
-        	get
-        	{
-        		return _success;
-        	}
-        }
 
-        public IEnumerable<ICompilationMessage> Diagnostics
-        {
-        	get
-        	{
-        		return _messages;
-        	}
-        }
-    }
-    
 	public class DNCompilation
     {
         private string assemblyName;
         private FrameworkName effectiveTargetFramework;
         private string config;
         private Tuple<Stream, Stream> streams;
-        internal IDiagnosticResult result;
-        internal ICompilationMessage finalError;
-		private List<ICompilationMessage> messages;
-		private ICompilationProject Project;
+        internal DiagnosticResult result;
+        internal DiagnosticMessage finalError;
+		private List<DiagnosticMessage> messages;
+		private CompilationProjectContext Project;
         private IEnumerable<IMetadataReference> MetadataReferences;
         private IEnumerable<ISourceReference> SourceReferences;
 		private bool success;
 		private bool warnErrors;
 		public static object lockobj;
 		private ICompilerOptions compileOpts;
+		private IList<ResourceDescriptor> _resources;
 
 		static DNCompilation() {
 			lockobj = new object();
 		}
-		
-        public DNCompilation(string name, ICompilationProject project, IEnumerable<IMetadataReference> metadataReferences, IEnumerable<ISourceReference> sourceReferences, FrameworkName targetFramework, string configuration)
+
+        public DNCompilation(string name, CompilationProjectContext project, IEnumerable<IMetadataReference> metadataReferences, IEnumerable<ISourceReference> sourceReferences, FrameworkName targetFramework, string configuration, IList<ResourceDescriptor> resources)
         {
             Project = project;
             MetadataReferences = metadataReferences;
@@ -101,9 +72,10 @@ namespace dylan.NET.K
             assemblyName = name;
             effectiveTargetFramework = targetFramework;
             config = configuration;
-            messages = new List<ICompilationMessage>();
+            messages = new List<DiagnosticMessage>();
             success = true;
-            compileOpts = project.GetCompilerOptions(targetFramework, configuration);
+            compileOpts = project.CompilerOptions;
+			_resources = resources;
 
             if (compileOpts.WarningsAsErrors.HasValue) {
 	            warnErrors = (bool)compileOpts.WarningsAsErrors;
@@ -112,8 +84,10 @@ namespace dylan.NET.K
 
 		private void ErrorH(CompilerMsg cm) {
 			//Console.WriteLine("ERROR: {0} inside project {1} at line {2} in file: {3}", cm.Msg, assemblyName, cm.Line.ToString(), cm.File);
-			var formatted = $"ERROR: {cm.Msg} inside project {assemblyName}({effectiveTargetFramework.FullName}) at line {cm.Line} in file: {cm.File}";
-			var msg = new CompilationMessage() {Message = cm.Msg, StartLine = cm.Line, EndLine = cm.Line, StartColumn = 1, SourceFilePath = cm.File, FormattedMessage = formatted, Severity = CompilationMessageSeverity.Error};
+
+			cm.File = cm.File.Substring(Project.ProjectDirectory.Length + 1);
+
+			var msg = new DiagnosticMessage($"{cm.Msg} in project {assemblyName}({effectiveTargetFramework.FullName})", cm.File, DiagnosticMessageSeverity.Error, cm.Line, cm.Line);
 			messages.Add(msg);
 			finalError = msg;
 			success = false;
@@ -125,22 +99,23 @@ namespace dylan.NET.K
 				ErrorH(cm);
 				return;
 			}
-			
-			var formatted = $"WARNING: {cm.Msg} inside project {assemblyName}({effectiveTargetFramework.FullName}) at line {cm.Line} in file: {cm.File}";
-			messages.Add(new CompilationMessage() {Message = cm.Msg, StartLine = cm.Line, EndLine = cm.Line, StartColumn = 1, SourceFilePath = cm.File, FormattedMessage = formatted, Severity = CompilationMessageSeverity.Warning});
+
+			cm.File = cm.File.Substring(Project.ProjectDirectory.Length + 1);
+
+			messages.Add(new DiagnosticMessage($"{cm.Msg} in project {assemblyName}({effectiveTargetFramework.FullName})", cm.File, DiagnosticMessageSeverity.Warning, cm.Line, cm.Line));
 		}
-		
+
 		private static Version ParseVersion(string version)
         {
         	//adapted from roslyn project compiler
-        	//but in away it ensures that dylan.NET gets
+        	//but it ensures that dylan.NET gets
         	//a version with all four integers
             var dashIdx = version.IndexOf('-');
             if (dashIdx >= 0)
             {
                version = version.Substring(0, dashIdx);
             }
-            
+
             string[] parsed = version.Split(new char[] {'.'});
             string[] dest = new string[4];
             int i = 0;
@@ -154,15 +129,15 @@ namespace dylan.NET.K
             	dest[i] = "0";
             	i++;
             }
-            
+
             return new Version(string.Join(".", dest));
         }
-		
+
 		internal Tuple<Stream, Stream> CompileInMemory() {
 			if (streams == null) {
-				
+
 				var lst = new List<Tuple<string, Stream> >();
-				
+
 				//get value for debug switch
 				bool debugOpt = true;
 				if (compileOpts.Optimize.HasValue) {
@@ -197,7 +172,7 @@ namespace dylan.NET.K
 	        	       		}
 	        	       	}
 	        	    }
-	        	    
+
 	        	   //write out all defines
 					if (compileOpts != null && compileOpts.Defines != null) {
 		        	   	 foreach (string r in compileOpts.Defines) {
@@ -207,18 +182,27 @@ namespace dylan.NET.K
 					}
 
 					//write out resource embeds
-	        	    foreach (string r in Project.Files.ResourceFiles) {
-		            	sw.Write("#embed \"");
-	        	        sw.Write(r);
-	        	        sw.WriteLine("\"");
+	        	    foreach (ResourceDescriptor rd in _resources) {
+						var ms = new MemoryStream();
+						rd.StreamFactory.Invoke().CopyTo(ms);
+		            	if (ms.Length > 0) {
+				        	ms.Seek(0, SeekOrigin.Begin);
+				            //put into in memory filesystem
+	        	       	 	lst.Add(Tuple.Create<string, Stream>(rd.Name, ms));
+	        	        	sw.Write("#embed \"");
+	        	        	sw.Write(rd.Name);
+	        	        	sw.Write("\" = \"memory:");
+							sw.Write(rd.Name);
+							sw.WriteLine("\"");
+	        	        }
 		            }
-					
+
 					//write out debug switch prference
 					sw.WriteLine();
 					sw.Write("#debug ");
 					sw.WriteLine(debugOpt ? "on" : "off");
 					sw.WriteLine();
-					
+
 					//write assembly attributes (similar set to the ones set by roslyn)
 					//name
 					sw.WriteLine($"[assembly: System.Reflection.AssemblyTitle(\"{assemblyName}\")]");
@@ -228,17 +212,17 @@ namespace dylan.NET.K
 					sw.WriteLine("[assembly: System.Runtime.CompilerServices.RuntimeCompatibility(), WrapNonExceptionThrows = true]");
 					//write out the TFM i.e. target framework moniker
 					sw.WriteLine($"[assembly: System.Runtime.Versioning.TargetFramework(\"{effectiveTargetFramework.FullName}\")]");
-					
+
 					//define assembly as a dll since k does not really use exes
 	        	    sw.WriteLine();
 	        	    sw.Write("assembly ");
 	        	    sw.Write(assemblyName);
 	        	    sw.WriteLine(" dll");
-					
+
 					//finalise assembly definition by issuing the version directive
 	        	    Version ver = ParseVersion(Project.Version);
 	        	    sw.WriteLine($"ver {ver.Major}.{ver.Minor}.{ver.Build}.{ver.Revision}");
-	        	    
+
 	        	    //include any 'shared.dyl' export files from referenced projects
 	        	    foreach (ISourceFileReference p in SourceReferences.OfType<ISourceFileReference>()) {
 	        	    	if (Path.GetFileName(p.Path) == "shared.dyl") {
@@ -248,12 +232,11 @@ namespace dylan.NET.K
 	        	    	}
 	        	    }
 				}
-				
+
 				foreach (Tuple<string, Stream> tup in lst) {
 					MemoryFS.AddFile(tup.Item1, tup.Item2);
 				}
-				lst = null;
-				
+
 				var w = new Action<CompilerMsg>(WarnH);
 				var e = new Action<CompilerMsg>(ErrorH);
 
@@ -261,9 +244,9 @@ namespace dylan.NET.K
 					StreamUtils.UseConsole = false;
 					StreamUtils.WarnH += w;
 					StreamUtils.ErrorH += e;
-					
+
 					string srcFile = "msbuild.dyl";
-					
+
 					if (File.Exists(Path.Combine(Project.ProjectDirectory, $"{assemblyName}.dyl"))) {
 						srcFile = $"{assemblyName}.dyl";
 					}
@@ -271,25 +254,24 @@ namespace dylan.NET.K
 						srcFile = "project.dyl";
 					}
 					else {
-						var formatted = $"WARNING: The file '{assemblyName}.dyl' or 'project.dyl' was not found, compiling 'msbuild.dyl' into an assembly instead! inside project {assemblyName}({effectiveTargetFramework.FullName})";
-						messages.Add(new CompilationMessage() {Message = $"The file '{assemblyName}.dyl' or 'project.dyl' was not found, compiling 'msbuild.dyl' into an assembly instead!", SourceFilePath = string.Empty, FormattedMessage = formatted, Severity = CompilationMessageSeverity.Warning});
+						messages.Add(new DiagnosticMessage($"The file '{assemblyName}.dyl' or 'project.dyl' was not found, compiling 'msbuild.dyl' into an assembly instead! inside project {assemblyName}({effectiveTargetFramework.FullName})", string.Empty, DiagnosticMessageSeverity.Warning));
 					}
-					
+
 					StreamUtils.UseConsole = false;
 					var cd = Environment.CurrentDirectory;
 					dylan.NET.Compiler.Program.Invoke(new string[] {"-inmemory", "-cd", Project.ProjectDirectory, srcFile});
 					Environment.CurrentDirectory = cd;
 				}
-				catch (ErrorException fe) {
+				catch {
 					success = false;
 				}
 				finally {
 					StreamUtils.WarnH -= w;
 					StreamUtils.ErrorH -= e;
 				}
-				
+
 				var asm = MemoryFS.GetFile(assemblyName + ".dll");
-				
+
 				//clean stuff up
 				MemoryFS.Clear();
 				ILEmitter.Init();
@@ -297,6 +279,11 @@ namespace dylan.NET.K
 				Importer.Init();
 				Loader.Init();
 				SymTable.Init();
+
+				foreach (Tuple<string, Stream> tup in lst) {
+					tup.Item2.Dispose();
+				}
+				lst = null;
 
 				if (success) {
 					//load debug symbols if they got made
@@ -316,59 +303,59 @@ namespace dylan.NET.K
 					streams = Tuple.Create<Stream, Stream>(null, null);
 				}
 
-				result = new DNDiagnosticResult(success, messages);
+				result = new DiagnosticResult(success, messages);
 			}
 
 			return streams;
 		}
     }
-	
+
 	public class DNCompilationException : Exception, ICompilationException
     {
-    	private IEnumerable<ICompilationMessage> _messages;
-    	private ICompilationMessage _finalError;
-    
-        public DNCompilationException(ICompilationMessage finalError, IEnumerable<ICompilationMessage> messages) :base(finalError.FormattedMessage)
+    	private IEnumerable<DiagnosticMessage> _messages;
+    	private DiagnosticMessage _finalError;
+
+        public DNCompilationException(DiagnosticMessage finalError, IEnumerable<DiagnosticMessage> messages) :base(finalError.FormattedMessage)
         {
         	_finalError = finalError;
         	_messages = messages;
-        } 
-        
-        public virtual IEnumerable<ICompilationFailure> CompilationFailures
+        }
+
+        public virtual IEnumerable<CompilationFailure> CompilationFailures
         {
         	get {
-        		return new ICompilationFailure[] {new CompilationFailure() {CompiledContent = string.Empty, SourceFileContent = string.Empty, SourceFilePath = _finalError.SourceFilePath, Messages = _messages } };
+        		return new CompilationFailure[] {new CompilationFailure(_finalError.SourceFilePath, _messages) };
         	}
         }
     }
-	
+
 	public class DNProjectReference : IMetadataProjectReference, IDisposable
     {
     	private Stream _assembly;
     	private Stream _symbols;
-    	private IDiagnosticResult _result;
+    	private DiagnosticResult _result;
     	private string _name;
-    	private ICompilationProject _project;
+    	private CompilationProjectContext _project;
     	private bool _compiled;
     	private DNCompilation _comp;
-		private ICompilationMessage _finalError;
+		private DiagnosticMessage _finalError;
 
-        public DNProjectReference(ICompilationProject project, string name, DNCompilation compilation)
+        public DNProjectReference(CompilationProjectContext project, string name, DNCompilation compilation)
         {
         	_name = name;
             _project = project;
             _compiled = false;
             _comp = compilation;
         }
-        
+
         private void EnsureCompiled() {
         	if (!_compiled) {
         		Tuple<Stream, Stream> cim;
-        		
+
         		lock (DNCompilation.lockobj) {
 	        		cim = _comp.CompileInMemory();
      			}
-     			   		
+
         		_result = _comp.result;
         		_finalError = _comp.finalError;
         		_assembly = cim.Item1;
@@ -402,7 +389,7 @@ namespace dylan.NET.K
             }
         }
 
-		public virtual IDiagnosticResult GetDiagnostics() {
+		public virtual DiagnosticResult GetDiagnostics() {
 			EnsureCompiled();
 			return _result;
 		}
@@ -441,7 +428,7 @@ namespace dylan.NET.K
             return asm;
         }
 
-        public virtual IDiagnosticResult EmitAssembly(string path)
+        public virtual DiagnosticResult EmitAssembly(string path)
         {
         	EnsureCompiled();
         	//make folder if it does not exist
@@ -465,12 +452,12 @@ namespace dylan.NET.K
     		        symbols.Seek(0, SeekOrigin.Begin);
     		   }
     		}
-			
+
 			//copy directive file made by build tooling
 			if (File.Exists("msbuild.dyl")) {
 	    		File.Copy("msbuild.dyl", Path.Combine(path, "msbuild.dyl"), true);
 	    	}
-	    	
+
 	    	//copy docs in msxdoc format if they are found
 	    	var ps = ParseUtils.StringParser(path, Path.DirectorySeparatorChar);
 	    	//the short framework name e.g. aspnet50 extracted from path
@@ -479,7 +466,7 @@ namespace dylan.NET.K
 			var fsDocs = $"{_name}.{fn}.xml";
 			//general docs
 			var docs = $"{_name}.xml";
-			
+
 			if (File.Exists(Path.Combine(_project.ProjectDirectory, fsDocs))) {
 	    		File.Copy(Path.Combine(_project.ProjectDirectory, fsDocs), Path.Combine(path, docs), true);
 	    	}
@@ -488,8 +475,8 @@ namespace dylan.NET.K
 	    			File.Copy(Path.Combine(_project.ProjectDirectory, docs), Path.Combine(path, docs), true);
 	    		}
 	    	}
-	    	
-			
+
+
             return _result;
         }
     }
@@ -503,9 +490,9 @@ namespace dylan.NET.K
             compilations = new Dictionary<string, DNCompilation>();
         }
 
-        public virtual IMetadataProjectReference CompileProject(ICompilationProject project, ILibraryKey target, Func<ILibraryExport> getExport, Func<IList<ResourceDescriptor>> getResources)
+        public virtual IMetadataProjectReference CompileProject(CompilationProjectContext project, Func<LibraryExport> getExport, Func<IList<ResourceDescriptor>> getResources)
         {
-        	string assemblyName = target.Name;
+        	string assemblyName = project.Target.Name;
 
             DNCompilation comp;
 			if (compilations.ContainsKey(assemblyName)) {
@@ -513,10 +500,10 @@ namespace dylan.NET.K
 			}
 			else {
 				try {
-					ILibraryExport incomingRefs = getExport.Invoke();
-					comp = new DNCompilation(assemblyName, project, incomingRefs.MetadataReferences, incomingRefs.SourceReferences, target.TargetFramework, target.Configuration);
+					LibraryExport incomingRefs = getExport.Invoke();
+					comp = new DNCompilation(assemblyName, project, incomingRefs.MetadataReferences, incomingRefs.SourceReferences, project.Target.TargetFramework, project.Target.Configuration, getResources.Invoke());
 				}
-				catch (ErrorException e) {
+				catch {
 					comp = null;
 				}
 				compilations.Add(assemblyName, comp);

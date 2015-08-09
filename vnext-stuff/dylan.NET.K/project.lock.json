@@ -1,17 +1,18 @@
 {
   "locked": false,
-  "version": -9996,
+  "version": 1,
   "targets": {
     "DNX,Version=v4.5.1": {
-      "dylan.NET/11.6.1.1": {
+      "dylan.NET/11.7.1.1": {
         "compile": {
           "lib/net40/C5.dll": {},
-          "lib/net40/IKVM.Reflection.dll": {},
-          "lib/net40/Mono.CompilerServices.SymbolWriter.dll": {},
-          "lib/net40/System.Interactive.dll": {},
           "lib/net40/dnc.dll": {},
           "lib/net40/dnr.dll": {},
           "lib/net40/dnu.dll": {},
+          "lib/net40/Extra.Tasks.dll": {},
+          "lib/net40/IKVM.Reflection.dll": {},
+          "lib/net40/Mono.CompilerServices.SymbolWriter.dll": {},
+          "lib/net40/System.Interactive.dll": {},
           "lib/net40/tokenizer.AST.dll": {},
           "lib/net40/tokenizer.CodeGen.dll": {},
           "lib/net40/tokenizer.Lexer.dll": {},
@@ -19,90 +20,122 @@
         },
         "runtime": {
           "lib/net40/C5.dll": {},
-          "lib/net40/IKVM.Reflection.dll": {},
-          "lib/net40/Mono.CompilerServices.SymbolWriter.dll": {},
-          "lib/net40/System.Interactive.dll": {},
           "lib/net40/dnc.dll": {},
           "lib/net40/dnr.dll": {},
           "lib/net40/dnu.dll": {},
+          "lib/net40/Extra.Tasks.dll": {},
+          "lib/net40/IKVM.Reflection.dll": {},
+          "lib/net40/Mono.CompilerServices.SymbolWriter.dll": {},
+          "lib/net40/System.Interactive.dll": {},
           "lib/net40/tokenizer.AST.dll": {},
           "lib/net40/tokenizer.CodeGen.dll": {},
           "lib/net40/tokenizer.Lexer.dll": {},
           "lib/net40/tokenizer.Parser.dll": {}
         }
       },
-      "Microsoft.Framework.Runtime.Abstractions/1.0.0-beta6-11921": {
+      "Microsoft.Dnx.Compilation.Abstractions/1.0.0-beta7-12330": {
+        "dependencies": {
+          "Microsoft.Dnx.Runtime.Abstractions": "1.0.0-beta7-12330"
+        },
         "frameworkAssemblies": [
+          "Microsoft.CSharp",
           "mscorlib",
           "System",
-          "System.Core",
-          "Microsoft.CSharp"
+          "System.Core"
         ],
         "compile": {
-          "lib/dnx451/Microsoft.Framework.Runtime.Abstractions.dll": {}
+          "lib/dnx451/Microsoft.Dnx.Compilation.Abstractions.dll": {}
         },
         "runtime": {
-          "lib/dnx451/Microsoft.Framework.Runtime.Abstractions.dll": {}
+          "lib/dnx451/Microsoft.Dnx.Compilation.Abstractions.dll": {}
+        }
+      },
+      "Microsoft.Dnx.Runtime.Abstractions/1.0.0-beta7-12330": {
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/dnx451/Microsoft.Dnx.Runtime.Abstractions.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/Microsoft.Dnx.Runtime.Abstractions.dll": {}
         }
       }
     }
   },
   "libraries": {
-    "dylan.NET/11.6.1.1": {
-      "sha512": "blai/Dm4C26WknR5lAHjkxiag2Q8UKPQFI5svK3kX8L/p1wSc3RR9JqZtTdGelBtv4VCgRhkAqr0j5PIAbu9hg==",
+    "dylan.NET/11.7.1.1": {
+      "sha512": "3/ZtyJoR6Nx0spLM6Ca18vACc8UCsGNlTHWv0khtDX6v5pS5y9fleP6tcW5/1cFS3RjcCI0BN0pvbx/5Ta+7Zg==",
       "files": [
-        "dylan.NET.11.6.1.1.nupkg",
-        "dylan.NET.11.6.1.1.nupkg.sha512",
+        "dylan.NET.11.7.1.1.nupkg",
+        "dylan.NET.11.7.1.1.nupkg.sha512",
         "dylan.NET.nuspec",
         "lib/net40/C5.dll",
-        "lib/net40/IKVM.Reflection.dll",
-        "lib/net40/Mono.CompilerServices.SymbolWriter.dll",
-        "lib/net40/System.Interactive.dll",
         "lib/net40/dnc.dll",
         "lib/net40/dnr.dll",
         "lib/net40/dnu.dll",
+        "lib/net40/Extra.Tasks.dll",
+        "lib/net40/IKVM.Reflection.dll",
+        "lib/net40/Mono.CompilerServices.SymbolWriter.dll",
+        "lib/net40/System.Interactive.dll",
         "lib/net40/tokenizer.AST.dll",
         "lib/net40/tokenizer.CodeGen.dll",
         "lib/net40/tokenizer.Lexer.dll",
         "lib/net40/tokenizer.Parser.dll",
         "tools/C5.dll",
-        "tools/Extra.Tasks.dll",
-        "tools/Extra.tasks",
-        "tools/IKVM.Reflection.dll",
-        "tools/INSTALL",
-        "tools/Mono.CompilerServices.SymbolWriter.dll",
-        "tools/System.Interactive.dll",
         "tools/dnc.exe",
         "tools/dnr.dll",
         "tools/dnu.dll",
         "tools/dylan.NET.Portable.targets",
         "tools/dylan.NET.targets",
+        "tools/Extra.tasks",
+        "tools/Extra.Tasks.dll",
+        "tools/IKVM.Reflection.dll",
+        "tools/INSTALL",
+        "tools/Mono.CompilerServices.SymbolWriter.dll",
         "tools/resproc.exe",
+        "tools/System.Interactive.dll",
         "tools/tokenizer.AST.dll",
         "tools/tokenizer.CodeGen.dll",
         "tools/tokenizer.Lexer.dll",
         "tools/tokenizer.Parser.dll"
       ]
     },
-    "Microsoft.Framework.Runtime.Abstractions/1.0.0-beta6-11921": {
+    "Microsoft.Dnx.Compilation.Abstractions/1.0.0-beta7-12330": {
       "serviceable": true,
-      "sha512": "EE8RPjyTzszPNZj2dWQwaakd1xqzsqBrS7kdDEwKTMhxSy5ERKudVWJ/A7ju1247y0RTmqapG4ev7ncjQgLbXA==",
+      "sha512": "f+8n/11+4F5zGUS55cbt7RsQD+5AU9WA41Ho4ouuE51eN3gn2xCC1MSOVxcH859iq8rX7d6Hj2AVutjLJ8Ap+w==",
       "files": [
-        "Microsoft.Framework.Runtime.Abstractions.1.0.0-beta6-11921.nupkg",
-        "Microsoft.Framework.Runtime.Abstractions.1.0.0-beta6-11921.nupkg.sha512",
-        "Microsoft.Framework.Runtime.Abstractions.nuspec",
-        "lib/dnx451/Microsoft.Framework.Runtime.Abstractions.dll",
-        "lib/dnx451/Microsoft.Framework.Runtime.Abstractions.xml",
-        "lib/dnxcore50/Microsoft.Framework.Runtime.Abstractions.dll",
-        "lib/dnxcore50/Microsoft.Framework.Runtime.Abstractions.xml"
+        "lib/dnx451/Microsoft.Dnx.Compilation.Abstractions.dll",
+        "lib/dnx451/Microsoft.Dnx.Compilation.Abstractions.xml",
+        "lib/dnxcore50/Microsoft.Dnx.Compilation.Abstractions.dll",
+        "lib/dnxcore50/Microsoft.Dnx.Compilation.Abstractions.xml",
+        "Microsoft.Dnx.Compilation.Abstractions.1.0.0-beta7-12330.nupkg",
+        "Microsoft.Dnx.Compilation.Abstractions.1.0.0-beta7-12330.nupkg.sha512",
+        "Microsoft.Dnx.Compilation.Abstractions.nuspec"
+      ]
+    },
+    "Microsoft.Dnx.Runtime.Abstractions/1.0.0-beta7-12330": {
+      "serviceable": true,
+      "sha512": "qX+EWZ8S0BzkM3aUkGFAcqHiNPGJorRkFyQZpXaCCpwl4K4Zjp0wEibW7QlIAZPlLByIKBSRH/rKZT+olsOw6Q==",
+      "files": [
+        "lib/dnx451/Microsoft.Dnx.Runtime.Abstractions.dll",
+        "lib/dnx451/Microsoft.Dnx.Runtime.Abstractions.xml",
+        "lib/dnxcore50/Microsoft.Dnx.Runtime.Abstractions.dll",
+        "lib/dnxcore50/Microsoft.Dnx.Runtime.Abstractions.xml",
+        "Microsoft.Dnx.Runtime.Abstractions.1.0.0-beta7-12330.nupkg",
+        "Microsoft.Dnx.Runtime.Abstractions.1.0.0-beta7-12330.nupkg.sha512",
+        "Microsoft.Dnx.Runtime.Abstractions.nuspec"
       ]
     }
   },
   "projectFileDependencyGroups": {
     "": [],
     "DNX,Version=v4.5.1": [
-      "Microsoft.Framework.Runtime.Abstractions >= 1.0.0-*",
-      "dylan.NET >= 11.6.1.1"
+      "Microsoft.Dnx.Compilation.Abstractions >= 1.0.0-*",
+      "dylan.NET >= 11.7.1.1"
     ]
   }
 }
