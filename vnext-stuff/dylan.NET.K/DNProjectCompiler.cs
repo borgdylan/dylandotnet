@@ -195,15 +195,16 @@ namespace dylan.NET.K
 		        	    	sw.WriteLine(r);
 			            }
 					}
-
+					
 					var cultureName = string.Empty;
 					//write out resource embeds
 					if (requestedName != null)
 					{
 						cultureName = requestedName.CultureName ?? string.Empty;
 					}
-
-					var resourcesForCulture = ResourcesForCulture.GetResourcesForCulture(cultureName, _resources);
+					
+					var resourcesForCulture = ResourcesForCulture.GetResourcesForCulture(cultureName, _resources) ?? new ResourceDescriptor[0];
+	        	 	
 	        	    foreach (ResourceDescriptor rd in resourcesForCulture) {
 						var ms = new MemoryStream();
 						rd.StreamFactory.Invoke().CopyTo(ms);
@@ -218,7 +219,7 @@ namespace dylan.NET.K
 							sw.WriteLine("\"");
 	        	        }
 		            }
-
+					
 					//write out debug switch prference
 					sw.WriteLine();
 					sw.Write("#debug ");
@@ -254,7 +255,7 @@ namespace dylan.NET.K
 	        	    	}
 	        	    }
 				}
-
+				
 				foreach (Tuple<string, Stream> tup in lst) {
 					MemoryFS.AddFile(tup.Item1, tup.Item2);
 				}
