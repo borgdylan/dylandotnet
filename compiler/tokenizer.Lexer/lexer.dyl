@@ -11,53 +11,23 @@ class public Lexer
 	method public StmtSet AnalyzeCore(var sr as TextReader, var path as string)
 		var stmts as StmtSet = new StmtSet(path)
 		var curstmt as Stmt = null
-		var crflag as boolean = false
-		var lfflag as boolean = false
-		var buf as StringBuilder = new StringBuilder()
+		//var crflag as boolean = false
+		//var lfflag as boolean = false
+		//var buf as StringBuilder = new StringBuilder()
 		var curline as integer = 0
 		var curstmtlen as integer = -1
-		var chr as char = 'a'
-		
-		do while sr::Peek() >= 0
-		
-			chr = $char$sr::Read()
+		//var chr as char = 'a'
+
+		var buf = sr::ReadLine()
+		do while buf != null
+			curline++
+			curstmt = new Line()::Analyze(new Stmt() {Line = curline}, buf)
+			curstmtlen = curstmt::Tokens::get_Count()
 			
-			if chr == c'\r' then
-				crflag = true
+			if curstmtlen != 0 then
+				stmts::AddStmt(curstmt)
 			end if
-			
-			if chr == c'\n' then
-				lfflag = true
-			end if
-			
-			if !#expr(crflag orelse lfflag) then
-				buf::Append(chr)
-			else
-				if lfflag then
-					curline++
-					curstmt = new Line()::Analyze(new Stmt() {Line = curline}, buf::ToString())
-					curstmtlen = curstmt::Tokens::get_Count()
-			
-					if curstmtlen != 0 then
-						stmts::AddStmt(curstmt)
-					end if
-			
-					buf::Clear()
-					crflag = false
-					lfflag = false
-				end if
-			end if
-			
-			if sr::Peek() == -1 then
-				curline++
-				curstmt = new Line()::Analyze(new Stmt() {Line = curline}, buf::ToString())
-				curstmtlen = curstmt::Tokens::get_Count()
-			
-				if curstmtlen != 0 then
-					stmts::AddStmt(curstmt)
-				end if
-			end if
-		
+			buf = sr::ReadLine()
 		end do
 		
 		return stmts

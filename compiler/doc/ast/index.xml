@@ -285,6 +285,7 @@
       <Type Name="LiteralAttr" Kind="Class" />
       <Type Name="NewSlotAttr" Kind="Class" />
       <Type Name="NoneAttr" Kind="Class" />
+      <Type Name="NotSerializedAttr" Kind="Class" />
       <Type Name="OverrideAttr" Kind="Class" />
       <Type Name="PartialAttr" Kind="Class" />
       <Type Name="PinvokeImplAttr" Kind="Class" />
@@ -293,6 +294,7 @@
       <Type Name="PublicAttr" Kind="Class" />
       <Type Name="SealedAttr" Kind="Class" />
       <Type Name="SequentialLayoutAttr" Kind="Class" />
+      <Type Name="SerializableAttr" Kind="Class" />
       <Type Name="SpecialNameAttr" Kind="Class" />
       <Type Name="StaticAttr" Kind="Class" />
       <Type Name="VirtualAttr" Kind="Class" />
