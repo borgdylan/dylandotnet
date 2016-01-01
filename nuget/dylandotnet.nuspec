@@ -2,14 +2,14 @@
 <package >
   <metadata>
     <id>dylan.NET</id>
-    <version>11.7.1.1</version>
+    <version>11.7.1.3</version>
     <authors>borgdylan</authors>
     <owners>borgdylan</owners>
     <licenseUrl>http://www.gnu.org/copyleft/lesser.html</licenseUrl>
     <projectUrl>https://github.com/borgdylan/dylandotnet</projectUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>A compiler for dylan.NET, a new language targeting the CLR</description>
-    <releaseNotes>dylan.NET v.11.7.1.1 with MSBuild support files, resource compilation support and in-memory assembly I/O.
+    <releaseNotes>dylan.NET v.11.7.1.3 with MSBuild support files, resource compilation support and in-memory assembly I/O.
     	dylan.NET 11.7.x.y includes experimental support for adding the 'serializable' modifier on classes and the 'notserialized' modifier on fields.
     </releaseNotes>
     <copyright>Copyright 2015</copyright>
