@@ -1,19 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Testing</Configuration>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{0F9F2777-58A0-4F4E-9405-DCDD9C21FAD0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>units</RootNamespace>
     <UsePartialTypes>false</UsePartialTypes>
     <AssemblyName>units</AssemblyName>
-    <ReleaseVersion>11.7.1.1</ReleaseVersion>
+    <ReleaseVersion>11.8.1.1</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Testing|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\Testing</OutputPath>
     <DefineConstants>DEBUG</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>false</DebugSymbols>
+    <OutputPath>bin\Release</OutputPath>
+    <DefineConstants>RELEASE</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />

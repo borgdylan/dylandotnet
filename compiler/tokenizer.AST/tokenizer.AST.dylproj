@@ -8,7 +8,7 @@
     <RootNamespace>dylan.NET.Tokenizer.AST</RootNamespace>
     <UsePartialTypes>false</UsePartialTypes>
     <AssemblyName>tokenizer.AST</AssemblyName>
-    <ReleaseVersion>11.7.1.1</ReleaseVersion>
+    <ReleaseVersion>11.8.1.1</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -88,6 +88,7 @@
     <Compile Include="methodnametok.dyl" />
     <Compile Include="attrstmts.dyl" />
     <Compile Include="assemblyinfo.dyl" />
+    <Compile Include="nullcondcall.dyl" />
   </ItemGroup>
   <Import Project="..\4.0\dylan.NET.targets" />
   <ItemGroup>

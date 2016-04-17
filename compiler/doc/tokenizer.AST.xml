@@ -2331,6 +2331,10 @@
             <summary>To be added.</summary>
             <remarks>To be added.</remarks>
         </member>
+        <member name="F:dylan.NET.Tokenizer.AST.Stmts.VerStmt.Locale">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:dylan.NET.Tokenizer.AST.Stmts.VerStmt.ToString">
             <summary>To be added.</summary>
             <returns>To be added.</returns>

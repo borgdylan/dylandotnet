@@ -610,6 +610,50 @@ class public ExprOptimizer
 		return stm
 	end method
 
+	method public Expr procNullCondCall(var stm as Expr, var i as integer)
+		var e as Expr = new Expr() {Line = stm::Tokens::get_Item(i)::Line}
+		var ecc as NullCondCallTok = $NullCondCallTok$stm::Tokens::get_Item(i)
+		var lvl as integer = 1
+		var d as boolean = true
+		
+		i++
+		stm::RemToken(i)
+		var len as integer = --stm::Tokens::get_Count()
+		i--
+
+		do until i = len
+			i++
+			
+			if (stm::Tokens::get_Item(i) is RParen) orelse (stm::Tokens::get_Item(i) is RAParen) orelse (stm::Tokens::get_Item(i) is RCParen) then
+				lvl--
+				if lvl = 0 then
+					d = false
+					stm::RemToken(i)
+					len = --stm::Tokens::get_Count()
+					i--
+					break
+				else
+					d = true
+				end if
+			elseif (stm::Tokens::get_Item(i) is LParen) orelse (stm::Tokens::get_Item(i) is LAParen) orelse (stm::Tokens::get_Item(i) is LCParen) then
+				lvl++
+				d = true
+			else
+				d = true
+			end if
+			
+			if d then
+				e::AddToken(stm::Tokens::get_Item(i))
+				stm::RemToken(i)
+				len = --stm::Tokens::get_Count()
+				i--
+			end if
+		end do
+		
+		ecc::Exp = Optimize(e)
+		return stm
+	end method
+
 	method public Expr procNewCall(var stm as Expr, var i as integer)
 
 		var nct as NewCallTok = new NewCallTok()
@@ -850,7 +894,7 @@ class public ExprOptimizer
 		return stm
 	end method
 
-	method public Expr procInterpolate(var stm as Expr, var i as integer)
+	method public Expr procInterpolate(var stm as Expr, var i as integer, var formattable as boolean)
 		var ir = ParseUtils::Interpolate(stm::Tokens::get_Item(i)::Value)
 
 		if ir::get_Expressions()[l] == 0 then
@@ -925,10 +969,18 @@ class public ExprOptimizer
 			exps::Add(eo::Optimize(new Expr() {Line = stm::Line, Tokens = ss::Tokens}))
 		end for
 			
-		var res = new MethodCallTok() {Line = stm::Line, Name = new MethodNameTok("System.String::Format")}
+
+		var res as MethodCallTok
+
+		if formattable then
+			res = new MethodCallTok() {Line = stm::Line, Name = new MethodNameTok("System.Runtime.CompilerServices.FormattableStringFactory::Create")}
+		else
+			res = new MethodCallTok() {Line = stm::Line, Name = new MethodNameTok("System.String::Format")}
+		end if
+
 		res::AddParam(new Expr() {Line = stm::Line, AddToken(new StringLiteral(ir::get_Format()) {Line = stm::Line})})
 
-		if exps::get_Count() > 3 then
+		if formattable orelse (exps::get_Count() > 3) then
 			var aic = new ArrInitCallTok() {Line = stm::Line, ArrayType = new ObjectTok()}
 			res::AddParam(new Expr() {Line = stm::Line, AddToken(aic)})
 			foreach ex in exps
@@ -1138,7 +1190,15 @@ class public ExprOptimizer
 				end if
 			elseif tok is InterpolateLiteral then
 				PFlags::MetCallFlag = true
-				procInterpolate(exp, i)
+				procInterpolate(exp, i, false)
+				if PFlags::isChanged then
+					PFlags::UpdateIdent(#expr($MethodCallTok$exp::Tokens::get_Item(i))::Name)
+					PFlags::SetUnaryFalse()
+					j = i
+				end if
+			elseif tok is FormattableLiteral then
+				PFlags::MetCallFlag = true
+				procInterpolate(exp, i, true)
 				if PFlags::isChanged then
 					PFlags::UpdateIdent(#expr($MethodCallTok$exp::Tokens::get_Item(i))::Name)
 					PFlags::SetUnaryFalse()
@@ -1219,6 +1279,24 @@ class public ExprOptimizer
 					end if 
 				else
 					StreamUtils::WriteErrorLine(exp::Line, PFlags::CurPath, "Expected a '(' after a '#expr'!")
+				end if
+			elseif tok is NullCondTok then
+				if i < len then
+					if exp::Tokens::get_Item(++i) is LParen then
+						exp::Tokens::set_Item(i, new NullCondCallTok() {Line = exp::Line})
+						if PFlags::isChanged then
+							PFlags::UpdateToken($IUnaryOperatable$exp::Tokens::get_Item(i))
+							PFlags::SetUnaryFalse()
+							j = i
+						end if
+						exp = procNullCondCall(exp, i)
+						len = --exp::Tokens::get_Count()
+						PFlags::CtorFlag = true
+					else
+						StreamUtils::WriteErrorLine(exp::Line, PFlags::CurPath, "Expected a '(' after a '#nullcond'!")
+					end if 
+				else
+					StreamUtils::WriteErrorLine(exp::Line, PFlags::CurPath, "Expected a '(' after a '#nullcond'!")
 				end if
 //			elseif tok is NewarrTok then
 //				exp::RemToken(i)

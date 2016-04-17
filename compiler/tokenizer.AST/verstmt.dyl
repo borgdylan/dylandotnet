@@ -9,6 +9,7 @@
 class public VerStmt extends Stmt
 
 	field public IntLiteral[] VersionNos
+	field public string Locale
 
 	method public void VerStmt()
 		mybase::ctor()
@@ -23,6 +24,9 @@ class public VerStmt extends Stmt
 				sw::Write(".")
 			end if
 		end for
+		if !string::IsNullOrEmpty(Locale) then
+			sw::Write(i" \q{Locale}\q")
+		end if
 		return "ver " + sw::ToString()
 	end method
 	

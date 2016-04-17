@@ -265,6 +265,8 @@ class public TokenOptimizer
 			return new EmbedTok() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value == "#expr" then
 			return new ExprTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value == "#nullcond" then
+			return new NullCondTok() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value == "#region" then
 			return new RegionTok() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value == "import" then
@@ -357,6 +359,8 @@ class public TokenOptimizer
 		elseif tok::Value == "catch" then
 			PFlags::AsFlag = true
 			return new CatchTok() {Line = tok::Line, Value = tok::Value}
+		elseif tok::Value == "when" then
+			return new WhenTok() {Line = tok::Line, Value = tok::Value}
 		elseif tok::Value == "as" then
 			return #ternary {PFlags::AsFlag ? new AsTok() {Line = tok::Line, Value = tok::Value}, new AsOp() {Line = tok::Line, Value = tok::Value}}
 		elseif tok::Value == "of" then
@@ -477,6 +481,8 @@ class public TokenOptimizer
 			return new CharLiteral($char$tok::Value) {Line = tok::Line}
 		elseif tok::Value like c"^(i)\q(.)*\q$" then
 			return new InterpolateLiteral(tok::Value::TrimStart(new char[] {'i'})::Trim(new char[] {c'\q'})) {Line = tok::Line}
+		elseif tok::Value like c"^(f)\q(.)*\q$" then
+			return new FormattableLiteral(tok::Value::TrimStart(new char[] {'f'})::Trim(new char[] {c'\q'})) {Line = tok::Line}
 		elseif tok::Value like c"^(c)?\q(.)*\q$" then
 			return new StringLiteral(#ternary {tok::Value::StartsWith("c") ? ParseUtils::ProcessString(tok::Value::TrimStart(new char[] {'c'})::Trim(new char[] {c'\q'})), tok::Value::Trim(new char[] {c'\q'})}) {Line = tok::Line}
 		elseif tok::Value like "^(\+|-)?(\d)+\.(\d)+d$" then

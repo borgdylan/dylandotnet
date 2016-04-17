@@ -10,6 +10,7 @@ class public CatchStmt extends BranchStmt
 
 	field public Ident ExName
 	field public TypeTok ExTyp
+	field public Expr FilterExp
 
 	method public void CatchStmt()
 		mybase::ctor()

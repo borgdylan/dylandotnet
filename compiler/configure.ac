@@ -27,7 +27,7 @@ if test "x$PKG_CONFIG" = "xno"; then
 fi
 
 dnl mono
-AC_PATH_PROG(MONO, mono-boehm, no)
+AC_PATH_PROG(MONO, mono, no)
 if test "x$MONO" = "xno"; then
 	AC_MSG_ERROR([You need to install the mono runtime])
 fi

@@ -30,7 +30,7 @@ import System.Runtime.InteropServices
 //import dylan.NET.Utils
 //import dylan.NET
 
-#include "Messages.designer.dyl"
+//#include "Messages.designer.dyl"
 
 namespace dylan.NET.Utils
 	//#include "consts.dyl"

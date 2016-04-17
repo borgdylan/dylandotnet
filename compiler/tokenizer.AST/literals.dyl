@@ -94,7 +94,22 @@ class public InterpolateLiteral extends Literal
 		ctor(string::Empty)
 	end method
 
-	method public override string ToString() => c"\q" + Value + c"\q"
+	method public override string ToString() => c"i\q" + Value + c"\q"
+
+end class
+
+class public FormattableLiteral extends Literal
+
+	method public void FormattableLiteral(var value as string)
+		mybase::ctor(value)
+		LitTyp = new StringTok()
+	end method
+	
+	method public void FormattableLiteral()
+		ctor(string::Empty)
+	end method
+
+	method public override string ToString() => c"f\q" + Value + c"\q"
 
 end class
 

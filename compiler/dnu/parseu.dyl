@@ -199,7 +199,6 @@ class public static ParseUtils
 		var i as integer = -1
 		var cc as char = 'a'
 		var len as integer = --escstr::get_Length()
-		var buf as string = string::Empty
 		
 		do until i >= len
 			i++
@@ -233,12 +232,10 @@ class public static ParseUtils
 					if i < (len - 3) then
 						i++
 						if IsHexDigit(escstr::get_Chars(i)) andalso IsHexDigit(escstr::get_Chars(++i)) andalso IsHexDigit(escstr::get_Chars(i + 2)) andalso IsHexDigit(escstr::get_Chars(i + 3)) then
-							buf = $string$escstr::get_Chars(i) + $string$escstr::get_Chars(++i) + $string$escstr::get_Chars(i + 2) + $string$escstr::get_Chars(i + 3)
-							sb::Append($char$integer::Parse(buf,NumberStyles::HexNumber))
+							sb::Append($char$integer::Parse(i"{escstr::get_Chars(i)}{escstr::get_Chars(++i)}{escstr::get_Chars(i + 2)}{escstr::get_Chars(i + 3)}", NumberStyles::HexNumber))
 							i = i + 3
 						elseif IsHexDigit(escstr::get_Chars(i)) andalso IsHexDigit(escstr::get_Chars(++i)) then
-							buf = $string$escstr::get_Chars(i) + $string$escstr::get_Chars(++i)
-							sb::Append($char$integer::Parse(buf,NumberStyles::HexNumber))
+							sb::Append($char$integer::Parse(i"{escstr::get_Chars(i)}{escstr::get_Chars(++i)}", NumberStyles::HexNumber))
 							i++
 						else
 							i--
@@ -246,8 +243,7 @@ class public static ParseUtils
 					elseif i < --len then
 						i++
 						if IsHexDigit(escstr::get_Chars(i)) andalso IsHexDigit(escstr::get_Chars(++i)) then
-							buf = $string$escstr::get_Chars(i) + $string$escstr::get_Chars(++i)
-							sb::Append($char$integer::Parse(buf,NumberStyles::HexNumber))
+							sb::Append($char$integer::Parse(i"{escstr::get_Chars(i)}{escstr::get_Chars(++i)}", NumberStyles::HexNumber))
 							i++
 						else
 							i--

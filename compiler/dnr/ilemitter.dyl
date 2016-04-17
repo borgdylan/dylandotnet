@@ -572,6 +572,11 @@ class public static ILEmitter
 	end method
 
 	[method: ComVisible(false)]
+	method public static void EmitCatchFilter()
+		ILGen::BeginExceptFilterBlock()
+	end method
+
+	[method: ComVisible(false)]
 	method public static void EmitFinally()
 		ILGen::BeginFinallyBlock()
 	end method

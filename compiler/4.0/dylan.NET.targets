@@ -52,13 +52,20 @@
 	</PropertyGroup>
 	
 	<ItemGroup>
-		<NETDefines Condition=" '$(TargetFrameworkVersion)' == 'v2.0' or '$(TargetFrameworkVersion)' == 'v3.5' or '$(TargetFrameworkVersion)' == 'v4.0' or '$(TargetFrameworkVersion)' == 'v4.5' or '$(TargetFrameworkVersion)' == 'v4.5.1' " Include="NET_2_0" />
+		<NETDefines Condition=" '$(TargetFrameworkVersion)' == 'v2.0' or '$(TargetFrameworkVersion)' == 'v3.5' or '$(TargetFrameworkVersion)' == 'v4.0' or '$(TargetFrameworkVersion)' == 'v4.5' or '$(TargetFrameworkVersion)' == 'v4.5.1' or '$(TargetFrameworkVersion)' == 'v4.6' or '$(TargetFrameworkVersion)' == 'v4.6.1' " Include="NET_2_0" />
 		<NETDefines Condition=" '$(TargetFrameworkVersion)' == 'v3.5' or '$(TargetFrameworkVersion)' == 'v4.0' or '$(TargetFrameworkVersion)' == 'v4.5' or '$(TargetFrameworkVersion)' == 'v4.5.1' " Include="NET_3_5" />
-		<NETDefines Condition=" '$(TargetFrameworkVersion)' == 'v4.0' or '$(TargetFrameworkVersion)' == 'v4.5' or '$(TargetFrameworkVersion)' == 'v4.5.1' " Include="NET_4_0" />
+		
+		<NETDefines Condition=" '$(TargetFrameworkVersion)' == 'v4.0' or '$(TargetFrameworkVersion)' == 'v4.5' or '$(TargetFrameworkVersion)' == 'v4.5.1' or '$(TargetFrameworkVersion)' == 'v4.6' or '$(TargetFrameworkVersion)' == 'v4.6.1' " Include="NET_4_0" />
 		<NETDefines Condition=" '$(TargetFrameworkVersion)' == 'v4.0' and '$(TargetFrameworkIdentifier)' == '.NETFramework' " Include="NET40" />
-		<NETDefines Condition=" '$(TargetFrameworkVersion)' == 'v4.5' or '$(TargetFrameworkVersion)' == 'v4.5.1' " Include="NET_4_5" />
+		
+		<NETDefines Condition=" '$(TargetFrameworkVersion)' == 'v4.5' or '$(TargetFrameworkVersion)' == 'v4.5.1' or '$(TargetFrameworkVersion)' == 'v4.6' or '$(TargetFrameworkVersion)' == 'v4.6.1' " Include="NET_4_5" />
 		<NETDefines Condition=" ('$(TargetFrameworkVersion)' == 'v4.5' or '$(TargetFrameworkVersion)' == 'v4.5.1') and '$(TargetFrameworkIdentifier)' == '.NETFramework' " Include="NET45" />
 		<NETDefines Condition=" '$(TargetFrameworkVersion)' == 'v4.5.1' and '$(TargetFrameworkIdentifier)' == '.NETFramework' " Include="NET451" />
+		
+		<NETDefines Condition=" '$(TargetFrameworkVersion)' == 'v4.6' or '$(TargetFrameworkVersion)' == 'v4.6.1' " Include="NET_4_6" />
+		<NETDefines Condition=" ('$(TargetFrameworkVersion)' == 'v4.6' or '$(TargetFrameworkVersion)' == 'v4.6.1') and '$(TargetFrameworkIdentifier)' == '.NETFramework' " Include="NET46" />
+		<NETDefines Condition=" '$(TargetFrameworkVersion)' == 'v4.6.1' and '$(TargetFrameworkIdentifier)' == '.NETFramework' " Include="NET461" />
+		
 		<NETDefines Condition=" '$(TargetFrameworkIdentifier)' == '.NETPortable' " Include="PORTABLE" />
 	</ItemGroup>
 	

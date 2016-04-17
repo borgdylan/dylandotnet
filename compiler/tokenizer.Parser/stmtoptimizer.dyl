@@ -1157,8 +1157,11 @@ class public StmtOptimizer
 			var vers as VerStmt = new VerStmt() {Line = stm::Line}
 			var ars as string[] = ParseUtils::StringParser(stm::Tokens::get_Item(1)::Value, '.')
 			vers::VersionNos = new IntLiteral[] {new IntLiteral($integer$ars[0]),new IntLiteral($integer$ars[1]),new IntLiteral($integer$ars[2]),new IntLiteral($integer$ars[3])}
-
 			if stm::Tokens::get_Count() > 2 then
+				vers::Locale = stm::Tokens::get_Item(2)::get_UnquotedValue()
+			end if
+
+			if stm::Tokens::get_Count() > 3 then
 				StreamUtils::WriteWarnLine(stm::Line, PFlags::CurPath, "Unexpected tokens at end of statement!")	
 			end if
 
@@ -1867,7 +1870,28 @@ class public StmtOptimizer
 				end if
 
 				var tempexp as Expr = new ExprOptimizer(PFlags)::procType(new Expr() {Line = stm::Line, Tokens = stm::Tokens}, 3)
-				return new CatchStmt() {Line = stm::Line, ExName = $Ident$tempexp::Tokens::get_Item(1), ExTyp = $TypeTok$tempexp::Tokens::get_Item(3)}
+				var cstmt = new CatchStmt() {Line = stm::Line, ExName = $Ident$tempexp::Tokens::get_Item(1), ExTyp = $TypeTok$tempexp::Tokens::get_Item(3)}
+
+				if tempexp::Tokens::get_Count() > 4 then
+					if stm::Tokens::get_Item(4) isnot WhenTok then
+						StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, string::Format("Expected 'when' or nothing at all instead of '{0}'!", stm::Tokens::get_Item(4)::Value))
+					else
+						var exp as Expr = new Expr() {Line = stm::Line}
+						var i as integer = 4
+						var len as integer = --tempexp::Tokens::get_Count()
+			
+						do until i = len
+							i++
+							exp::AddToken(stm::Tokens::get_Item(i))
+						end do
+
+						if exp::Tokens::get_Count() > 0 then
+							cstmt::FilterExp = new ExprOptimizer(PFlags)::Optimize(exp)
+						end if
+					end if
+				end if
+
+				return cstmt
 			end if
 		end if
 		return null

@@ -70,6 +70,7 @@ namespace dylan.NET.Tokenizer.AST
 
 		#include "ident.dyl"
 		#include "exprcalltok.dyl"
+		#include "nullcondcall.dyl"
 
 		namespace Attributes
 			#include "attributes.dyl"

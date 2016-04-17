@@ -943,6 +943,9 @@ class public StmtReader
 		if AsmFactory::PCLSet then
 			AsmFactory::AsmNameStr::set_Flags(AssemblyNameFlags::Retargetable)
 		end if
+		if !string::IsNullOrEmpty(asmv::Locale) then
+			AsmFactory::AsmNameStr::set_CultureInfo(new System.Globalization.CultureInfo(asmv::Locale))
+		end if
 
 		var mods as string = #ternary {AsmFactory::AsmMode == "exe" or AsmFactory::AsmMode == "winexe" ? "exe", "dll" }
 
@@ -1511,7 +1514,7 @@ class public StmtReader
 
 				SymTable::CheckUnusedVar()
 				SymTable::CheckCtrlBlks()
-				if AsmFactory::CurnMetName == "main" orelse AsmFactory::CurnMetName == "Main" then
+				if ILEmitter::StaticFlg andalso AsmFactory::CurnMetName == "main" orelse AsmFactory::CurnMetName == "Main" then
 					if AsmFactory::AsmMode == "exe" orelse AsmFactory::AsmMode == "winexe" then
 						var pef as PEFileKinds = #ternary {AsmFactory::AsmMode == "exe" ? PEFileKinds::ConsoleApplication, _
 							#ternary {AsmFactory::AsmMode == "winexe" ? PEFileKinds::WindowApplication, PEFileKinds::Dll} }
@@ -1763,6 +1766,7 @@ class public StmtReader
 			ILEmitter::MarkLbl(SymTable::ReadLoopStartLbl())
 			cg::Process($DoStmt$stm, fpath)
 		elseif stm is BreakStmt then
+			//TODO: Fix cases when jumping out of a protected try/catch
 			ILEmitter::EmitBr(SymTable::ReadLoopEndLbl())
 		elseif stm is ContinueStmt then
 			var fl = SymTable::ReadLoop() as ForLoopItem
@@ -1888,6 +1892,7 @@ class public StmtReader
 					ILEmitter::EmitFinally()
 					cg::Process($FinallyStmt$b, fpath)
 				elseif b is CatchStmt then
+					//TODO: see into exception filters
 					PreRead(b::Line, fpath)
 					SymTable::PopScope()
 					SymTable::PushScope()
@@ -1902,8 +1907,36 @@ class public StmtReader
 					SymTable::StoreFlg = true
 					SymTable::AddVar(cats::ExName::Value, true, ILEmitter::LocInd, vtyp, ILEmitter::LineNr)
 					SymTable::StoreFlg = false
-					ILEmitter::EmitCatch(vtyp)
+
+					if cats::FilterExp isnot null then
+						ILEmitter::EmitCatchFilter()
+						ILEmitter::EmitDup()
+						ILEmitter::EmitStloc(SymTable::FindVar(cats::ExName::Value)::Index)
+
+						var midl = ILEmitter::DefineLbl()
+						var endl = ILEmitter::DefineLbl()
+
+						//type test
+						ILEmitter::EmitIsinst(vtyp)
+						ILEmitter::EmitBrtrue(midl)
+						ILEmitter::EmitLdcBool(false)
+						ILEmitter::EmitBr(endl)
+						ILEmitter::MarkLbl(midl)
+
+						//evaluate actual condition
+						new Evaluator()::Evaluate(cats::FilterExp)
+						if !AsmFactory::Type02::Equals(Loader::CachedLoadClass("System.Boolean")) then
+							StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Conditions for exception filters should evaluate to boolean.")
+						end if
+
+						ILEmitter::MarkLbl(endl)
+						ILEmitter::EmitCatch($IKVM.Reflection.Type$null)
+					else
+						ILEmitter::EmitCatch(vtyp)
+					end if
+
 					ILEmitter::EmitStloc(SymTable::FindVar(cats::ExName::Value)::Index)
+
 					rtf = cg::Process(cats, fpath)::get_Item1() andalso rtf
 				end if
 			end for

@@ -103,22 +103,22 @@ class public auto ansi TestParseUtils
 	
 	[method: Test()]
 	method public void TestStringParserQ()
-		Assert::AreEqual(1, ParseUtils::StringParser(c"\qI am a Test Case\q"," ")[l], "The string should only be one token long.")
+		Assert::AreEqual(1, ParseUtils::StringParser(c"\qI am a Test Case\q",' ')[l], "The string should only be one token long.")
 	end method
 	
 	[method: Test()]
 	method public void TestStringParserNoQ()
-		Assert::AreEqual(5, ParseUtils::StringParser("I am a Test Case"," ")[l], "The string should be 5 tokens long.")
+		Assert::AreEqual(5, ParseUtils::StringParser("I am a Test Case",' ')[l], "The string should be 5 tokens long.")
 	end method
 	
 	[method: Test()]
 	method public void TestStringParserEmpty()
-		Assert::AreEqual(0, ParseUtils::StringParser(string::Empty," ")[l], "The string should be 0 tokens long.")
+		Assert::AreEqual(0, ParseUtils::StringParser(string::Empty,' ')[l], "The string should be 0 tokens long.")
 	end method
 	
 	[method: Test()]
 	method public void TestStringParserCQ()
-		Assert::AreEqual(4, ParseUtils::StringParser(c"I,am,a,\qTest,Case\q",",")[l], "The string should be 4 tokens long.")
+		Assert::AreEqual(4, ParseUtils::StringParser(c"I,am,a,\qTest,Case\q",',')[l], "The string should be 4 tokens long.")
 	end method
 	
 	[method: Test()]

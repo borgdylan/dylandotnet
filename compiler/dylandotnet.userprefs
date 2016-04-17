@@ -1,18 +1,50 @@
 ﻿<Properties StartupItem="dnc/dnc.dylproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="tokenizer.Lexer/lexer.dyl">
+  <MonoDevelop.Ide.Workbench ActiveDocument="tokenizer.CodeGen/codegenerator.dyl">
     <Files>
-      <File FileName="tokenizer.AST/attributes.dyl" Line="1" Column="1" />
       <File FileName="tokenizer.Parser/tokenoptimizer.dyl" Line="1" Column="1" />
       <File FileName="tokenizer.CodeGen/helpers.dyl" Line="1" Column="1" />
       <File FileName="template/template.dyl" Line="1" Column="1" />
       <File FileName="dnc/Program.dyl" Line="1" Column="1" />
-      <File FileName="tokenizer.CodeGen/stmtreader.dyl" Line="1" Column="1" />
-      <File FileName="tokenizer.CodeGen/codegenerator.dyl" Line="1" Column="1" />
+      <File FileName="tokenizer.CodeGen/stmtreader.dyl" Line="1325" Column="17" />
+      <File FileName="tokenizer.CodeGen/codegenerator.dyl" Line="135" Column="30" />
       <File FileName="tokenizer.Parser/stmtoptimizer.dyl" Line="1" Column="1" />
-      <File FileName="resproc/Program.dyl" Line="15" Column="44" />
-      <File FileName="tokenizer.CodeGen/pinvokeinfo.dyl" Line="17" Column="19" />
-      <File FileName="tokenizer.Lexer/lexer.dyl" Line="24" Column="52" />
+      <File FileName="resproc/Program.dyl" Line="321" Column="11" />
+      <File FileName="tokenizer.CodeGen/pinvokeinfo.dyl" Line="1" Column="1" />
+      <File FileName="tokenizer.Lexer/lexer.dyl" Line="1" Column="1" />
+      <File FileName="dnu/consts.dyl" Line="1" Column="1" />
+      <File FileName="dnu/dnu.dyl" Line="1" Column="1" />
+      <File FileName="dnu/InterpolateResult.dyl" Line="1" Column="1" />
+      <File FileName="dnu/keyboard.dyl" Line="1" Column="1" />
+      <File FileName="dnu/MemoryFS.dyl" Line="1" Column="1" />
+      <File FileName="dnu/parseu.dyl" Line="1" Column="1" />
+      <File FileName="dnu/streamu.dyl" Line="1" Column="1" />
+      <File FileName="dnu/winapi.dyl" Line="1" Column="1" />
+      <File FileName="dnu/xmlu.dyl" Line="1" Column="1" />
+      <File FileName="units/parseutests.dyl" Line="1" Column="1" />
+      <File FileName="test/test.dylproj" Line="1" Column="1" />
+      <File FileName="units/units.dylproj" Line="1" Column="1" />
+      <File FileName="resproc/Msg.dyl" Line="1" Column="1" />
+      <File FileName="tokenizer.AST/nsstmt.dyl" Line="1" Column="1" />
+      <File FileName="tokenizer.AST/stmt.dyl" Line="1" Column="1" />
+      <File FileName="tokenizer.AST/exprcalltok.dyl" Line="1" Column="1" />
+      <File FileName="tokenizer.AST/methods.dyl" Line="1" Column="1" />
+      <File FileName="tokenizer.AST/methodnametok.dyl" Line="1" Column="1" />
+      <File FileName="tokenizer.AST/ident.dyl" Line="1" Column="1" />
+      <File FileName="tokenizer.AST/nullcondcall.dyl" Line="1" Column="1" />
+      <File FileName="tokenizer.AST/tokenizer.AST.dyl" Line="1" Column="1" />
+      <File FileName="tokenizer.AST/otherkeywords.dyl" Line="1" Column="1" />
+      <File FileName="tokenizer.Parser/exproptimizer.dyl" Line="1" Column="1" />
+      <File FileName="tokenizer.CodeGen/assemblyinfo.dyl" Line="1" Column="1" />
+      <File FileName="tokenizer.CodeGen/cilambdas.dyl" Line="1" Column="1" />
+      <File FileName="tokenizer.CodeGen/eval.dyl" Line="1" Column="1" />
+      <File FileName="tokenizer.CodeGen/eval-pre.dyl" Line="1" Column="1" />
+      <File FileName="dnr/ilemitter.dyl" Line="1" Column="1" />
+      <File FileName="tokenizer.AST/exceptionstmts.dyl" Line="1" Column="1" />
+      <File FileName="tokenizer.AST/literals.dyl" Line="1" Column="1" />
+      <File FileName="../../../../usr/local/lib/mono/4.5/Microsoft.Common.targets" Line="1" Column="1" />
+      <File FileName="tokenizer.AST/otherstmts.dyl" Line="1" Column="1" />
+      <File FileName="tokenizer.CodeGen/symtable.dyl" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

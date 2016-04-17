@@ -217,6 +217,10 @@ class public CatchTok extends NonExprToken
 	method public override string ToString() => "catch"
 end class
 
+class public WhenTok extends NonExprToken
+	method public override string ToString() => "when"
+end class
+
 class public AsTok extends NonExprToken
 	method public override string ToString() => "as"
 end class
@@ -391,6 +395,10 @@ end class
 
 class public ExprTok extends Token
 	method public override string ToString() => "#expr"
+end class
+
+class public NullCondTok extends Token
+	method public override string ToString() => "#nullcond"
 end class
 
 class public RegionTok extends NonExprToken

@@ -427,7 +427,7 @@ Copyright (C) 2012 Free Software Foundation, Inc.
 This config.status script is free software; the Free Software Foundation
 gives unlimited permission to copy, distribute and modify it."
 
-ac_pwd='/var/www/Code/dylannet/dylandotnet/compiler'
+ac_pwd='/mnt/ssd/dylandotnet/compiler'
 srcdir='.'
 INSTALL='/usr/bin/install -c'
 MKDIR_P='/bin/mkdir -p'
@@ -600,7 +600,7 @@ S["PKG_CONFIG_LIBDIR"]=""
 S["PKG_CONFIG_PATH"]=""
 S["NUNIT"]="/usr/local/bin/nunit-console"
 S["MDOC"]="/usr/local/bin/mdoc"
-S["MONO"]="/usr/local/bin/mono-boehm"
+S["MONO"]="/usr/local/bin/mono"
 S["PKG_CONFIG"]="/usr/bin/pkg-config"
 S["AOT_FALSE"]=""
 S["AOT_TRUE"]="#"
@@ -624,12 +624,12 @@ S["mkdir_p"]="$(MKDIR_P)"
 S["MKDIR_P"]="/bin/mkdir -p"
 S["INSTALL_STRIP_PROGRAM"]="$(install_sh) -c -s"
 S["STRIP"]=""
-S["install_sh"]="${SHELL} /var/www/Code/dylannet/dylandotnet/compiler/install-sh"
-S["MAKEINFO"]="${SHELL} /var/www/Code/dylannet/dylandotnet/compiler/missing makeinfo"
-S["AUTOHEADER"]="${SHELL} /var/www/Code/dylannet/dylandotnet/compiler/missing autoheader"
-S["AUTOMAKE"]="${SHELL} /var/www/Code/dylannet/dylandotnet/compiler/missing automake-1.14"
-S["AUTOCONF"]="${SHELL} /var/www/Code/dylannet/dylandotnet/compiler/missing autoconf"
-S["ACLOCAL"]="${SHELL} /var/www/Code/dylannet/dylandotnet/compiler/missing aclocal-1.14"
+S["install_sh"]="${SHELL} /mnt/ssd/dylandotnet/compiler/install-sh"
+S["MAKEINFO"]="${SHELL} /mnt/ssd/dylandotnet/compiler/missing makeinfo"
+S["AUTOHEADER"]="${SHELL} /mnt/ssd/dylandotnet/compiler/missing autoheader"
+S["AUTOMAKE"]="${SHELL} /mnt/ssd/dylandotnet/compiler/missing automake-1.14"
+S["AUTOCONF"]="${SHELL} /mnt/ssd/dylandotnet/compiler/missing autoconf"
+S["ACLOCAL"]="${SHELL} /mnt/ssd/dylandotnet/compiler/missing aclocal-1.14"
 S["VERSION"]="11.5.1.2"
 S["PACKAGE"]="dylandotnet"
 S["CYGPATH_W"]="echo"

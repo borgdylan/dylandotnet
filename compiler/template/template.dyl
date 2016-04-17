@@ -822,28 +822,28 @@ class public static Program
 			Console::WriteLine(o)
 		end for
 		
-		var ao as object = new integer[] {1,2,3}
-		var ai = $integer[]$ao
-		var oi = new ObjInit() {A = 1, B = 2, C = new ObjInit() {A = 3, B = 4, C = null, set_Msg("InnerHello")}, set_Msg("Hello")}
-		var ti = #ternary {true or false ? new C5.LinkedList<of string>() , new C5.ArrayList<of string>()}
-		var ci = new ObjInit()::XYZ("hello")
-		ci = new ObjInit(){A = 3, C = null}::A
-		new ObjInit()::ABC()
-		new ObjInit()::XYZ("t")
-		new ObjInit(){C = new ObjInit()}::C::XYZ("u")
-		Console::WriteLine(new ObjInit(){A = 3, B = new ObjInit()::XYZ("q")}::B)
-		Console::WriteLine("Hello from {0} {1}" _
-			, "a continued" _
-			, "line")
-		var x = #expr("abc" + $string$!#expr(12 + 6))::Trim()::get_Length()
-		
-		for xi = 1 upto 7
-			for xj = xi downto 1
-				for xz = xj downto 1
-					Console::WriteLine("{0}, {1}, {2}", $object$xi, $object$xj, $object$xz)
-				end for
-			end for
-		end for
+//		var ao as object = new integer[] {1,2,3}
+//		var ai = $integer[]$ao
+//		var oi = new ObjInit() {A = 1, B = 2, C = new ObjInit() {A = 3, B = 4, C = null, set_Msg("InnerHello")}, set_Msg("Hello")}
+//		var ti = #ternary {true or false ? new C5.LinkedList<of string>() , new C5.ArrayList<of string>()}
+//		var ci = new ObjInit()::XYZ("hello")
+//		ci = new ObjInit(){A = 3, C = null}::A
+//		new ObjInit()::ABC()
+//		new ObjInit()::XYZ("t")
+//		new ObjInit(){C = new ObjInit()}::C::XYZ("u")
+//		Console::WriteLine(new ObjInit(){A = 3, B = new ObjInit()::XYZ("q")}::B)
+//		Console::WriteLine("Hello from {0} {1}" _
+//			, "a continued" _
+//			, "line")
+//		var x = #expr("abc" + $string$!#expr(12 + 6))::Trim()::get_Length()
+//		
+//		for xi = 1 upto 7
+//			for xj = xi downto 1
+//				for xz = xj downto 1
+//					Console::WriteLine("{0}, {1}, {2}", $object$xi, $object$xj, $object$xz)
+//				end for
+//			end for
+//		end for
 		
 		Console::WriteLine(integer::MinValue)
 		Console::WriteLine(Const)
@@ -923,20 +923,40 @@ class public static Program
 		Debug::WriteLine("DEBUG is on")
 		Trace::WriteLine("TRACE is on")
 
-		for si = 0 upto 10
-			switch si % 5
-			state
-				Console::WriteLine(0)
-			state
-				Console::WriteLine(1)
-			state
-				Console::WriteLine(2)
-			state
-				Console::WriteLine(3)
-			default
-				Console::WriteLine("default")
-			end switch
-		end for
+//		for si = 0 upto 10
+//			switch si % 5
+//			state
+//				Console::WriteLine(0)
+//			state
+//				Console::WriteLine(1)
+//			state
+//				Console::WriteLine(2)
+//			state
+//				Console::WriteLine(3)
+//			default
+//				Console::WriteLine("default")
+//			end switch
+//		end for
+
+		var fable = f"This is a formattable date: {DateTime::get_Now()}"
+		Console::WriteLine(fable::ToString(new System.Globalization.CultureInfo("en-US")))
+		Console::WriteLine(fable::ToString(new System.Globalization.CultureInfo("en-GB")))
+		Console::WriteLine(fable::ToString(new System.Globalization.CultureInfo("it-IT")))
+		Console::WriteLine(fable::ToString(new System.Globalization.CultureInfo("fr-CA")))
+		Console::WriteLine(fable::ToString(new System.Globalization.CultureInfo("en-AU")))
+
+		var discr = 35
+
+		try
+			Console::WriteLine("Just testing.")
+			throw new Exception()
+		catch aex as ArithmeticException
+			Console::WriteLine("Caught!")
+		catch ex as Exception when discr > 5
+			Console::WriteLine(i"Caught 1: {ex::get_Message()}!")
+		catch ex2 as Exception when discr < 5 andalso ex2 isnot ArithmeticException
+			Console::WriteLine(i"Caught 2: {ex2::get_Message()}!")
+		end try
 
 	end method
 
