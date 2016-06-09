@@ -1316,6 +1316,116 @@ class public Evaluator
 				if AsmFactory::AutoChainFlg then
 					ans = ASTEmitUnary(ecc, emt, bo, lab)
 				end if
+			elseif tok is NullCondCallTok then
+				var ecc as NullCondCallTok = $NullCondCallTok$tok
+				ASTEmit(ConvToAST(ConvToRPN(ecc::Exp)), emt)
+
+				if ecc::MemberAccessFlg then
+					//test inner expression for nullability
+					var innerType = AsmFactory::Type02
+					var n1 = Helpers::ProcessNullable(innerType)
+
+					//validate: either a ref type, or T? where T is a struct
+					if !innerType::get_IsValueType() orelse n1 isnot null then
+						//T?
+						if n1 isnot null then
+							StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "NYI: null conditionals")
+							AsmFactory::ChainFlg = true
+							ASTEmit(ecc::MemberToAccess, false)
+							var chainType = AsmFactory::Type02
+							var n2 = Helpers::ProcessNullable(chainType)
+							var retType = Helpers::MakeNullable(chainType)
+
+							if emt then
+								SymTable::AddIf()
+								ILEmitter::EmitDup()
+								ASTEmitValueFilter(true)
+								ILEmitter::EmitCall(Loader::LoadMethod(innerType, "get_HasValue", IKVM.Reflection.Type::EmptyTypes))
+								ILEmitter::EmitBrfalse(SymTable::ReadIfNxtBlkLbl())
+							end if
+
+							//chain if not null
+							AsmFactory::Type02 = innerType
+							//chaining is assured
+							ASTEmitValueFilter(emt)
+							AsmFactory::ChainFlg = true
+							if AsmFactory::AutoChainFlg then
+								ASTEmit(ecc::MemberToAccess, emt)
+							end if
+
+							if emt then
+								if retType::get_IsValueType() andalso n2 is null then
+									//convert T to T? if T is a non nullable struct
+									ILEmitter::EmitNewobj(Helpers::GetLocCtor(retType, new IKVM.Reflection.Type[] {chainType}))
+								end if
+
+								if retType::get_IsValueType() then
+									ILEmitter::EmitBr(SymTable::ReadIfEndLbl())
+								end if
+								ILEmitter::MarkLbl(SymTable::ReadIfNxtBlkLbl())
+								//handle null case
+								if retType::get_IsValueType() then
+									//do conversions of null to T? if needed
+									ILEmitter::EmitUnboxAny(retType)
+									ILEmitter::MarkLbl(SymTable::ReadIfEndLbl())
+								end if
+								SymTable::PopIf()
+							end if
+
+							AsmFactory::Type02 = retType
+						//ref
+						else
+							AsmFactory::ChainFlg = true
+							ASTEmit(ecc::MemberToAccess, false)
+							var chainType = AsmFactory::Type02
+							var n2 = Helpers::ProcessNullable(chainType)
+							var retType = Helpers::MakeNullable(chainType)
+
+							if emt then
+								SymTable::AddIf()
+								ILEmitter::EmitDup()
+								ILEmitter::EmitBrfalse(SymTable::ReadIfNxtBlkLbl())
+							end if
+
+							//chain if not null
+							AsmFactory::Type02 = innerType
+							//chaining is assured
+							ASTEmitValueFilter(emt)
+							AsmFactory::ChainFlg = true
+							if AsmFactory::AutoChainFlg then
+								ASTEmit(ecc::MemberToAccess, emt)
+							end if
+
+							if emt then
+								if retType::get_IsValueType() andalso n2 is null then
+									//convert T to T? if T is a non nullable struct
+									ILEmitter::EmitNewobj(Helpers::GetLocCtor(retType, new IKVM.Reflection.Type[] {chainType}))
+								end if
+
+								if retType::get_IsValueType() then
+									ILEmitter::EmitBr(SymTable::ReadIfEndLbl())
+								end if
+								ILEmitter::MarkLbl(SymTable::ReadIfNxtBlkLbl())
+								//handle null case
+								if retType::get_IsValueType() then
+									//do conversions of null to T? if needed
+									ILEmitter::EmitUnboxAny(retType)
+									ILEmitter::MarkLbl(SymTable::ReadIfEndLbl())
+								end if
+								SymTable::PopIf()
+							end if
+
+							AsmFactory::Type02 = retType
+						end if
+					else
+						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, i"The type {innerType::ToString()} is not nullable!")
+					end if
+				end if
+
+				if AsmFactory::AutoChainFlg then
+					ans = ASTEmitUnary(ecc, emt, bo, lab)
+				end if
+
 			//elseif tok is PtrCallTok then
 				//ptr load section - obsolete
 				//if emt then
@@ -1329,6 +1439,8 @@ class public Evaluator
 				//	Helpers::EmitPtrLd(mcmetinf, mcisstatic)
 				//end if
 				//AsmFactory::Type02 = Loader::CachedLoadClass("System.IntPtr")
+			else
+				StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, i"Using '{tok::GetType()}' is not supported.")
 			end if
 
 		end if

@@ -153,10 +153,21 @@ class public CodeGenerator
 						if !File::Exists(inclustm::Path::Value) then
 							StreamUtils::WriteError(inclustm::Line, spth, string::Format("File '{0}' does not exist.", inclustm::Path::Value))
 						end if
+
 						StreamUtils::WriteLine(string::Format("Now Lexing: {0}", inclustm::Path::Value))
+
+						ILEmitter::CurSrcFile = inclustm::Path::Value
+						ILEmitter::AddSrcFile(inclustm::Path::Value)
+
 						var pstmts as StmtSet = new Lexer()::Analyze(inclustm::Path::Value)
 						StreamUtils::WriteLine(string::Format("Now Parsing: {0}", inclustm::Path::Value))
 						sset = new Parser()::Parse(pstmts, true)
+
+						ILEmitter::PopSrcFile()
+						if ILEmitter::SrcFiles::get_Count() > 0 then
+							ILEmitter::CurSrcFile = ILEmitter::SrcFiles::get_Last()
+						end if
+
 						inclustm::SSet = sset
 						StreamUtils::WriteLine(string::Format("Finished Processing: {0} (inline)", inclustm::Path::Value))
 					else

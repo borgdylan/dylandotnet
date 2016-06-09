@@ -830,6 +830,59 @@ class public ExprOptimizer
 		return stm
 	end method
 
+	method public Expr procNullCondArrayAccess(var stm as Expr, var i as integer)
+		var ep2 as Expr = new Expr() {Line = stm::Line}
+		var lvl as integer = 1
+		var d as boolean = true
+		var j as integer = 0
+
+		i--
+		var idt as NullCondCallTok = $NullCondCallTok$stm::Tokens::get_Item(i)
+		j = i
+		i++
+
+		var len as integer = --stm::Tokens::get_Count()
+		stm::RemToken(i)
+		len = --stm::Tokens::get_Count()
+		i--
+
+		do until i == len
+			//get parameters
+			i++
+
+			if stm::Tokens::get_Item(i) is RSParen then
+				lvl--
+				if lvl = 0 then
+					d = false
+					stm::RemToken(i)
+					len = --stm::Tokens::get_Count()
+					i--
+					break
+				else
+					d = true
+				end if
+			elseif stm::Tokens::get_Item(i) is LSParen then
+				lvl++
+				d = true
+			elseif !#expr(stm::Tokens::get_Item(i) is Comma) then
+				d = true
+			end if
+
+			if d then
+				ep2::AddToken(stm::Tokens::get_Item(i))
+				stm::RemToken(i)
+				len = --stm::Tokens::get_Count()
+				i--
+			end if
+		end do
+
+		idt::ArrLoc = Optimize(ep2)
+		idt::IsArr = true
+		stm::Tokens::set_Item(j,idt)
+
+		return stm
+	end method
+
 	method public Expr procMtdArrayAccess(var stm as Expr, var i as integer)
 		var ep2 as Expr = new Expr() {Line = stm::Line}
 		var lvl as integer = 1
@@ -1291,7 +1344,7 @@ class public ExprOptimizer
 						end if
 						exp = procNullCondCall(exp, i)
 						len = --exp::Tokens::get_Count()
-						PFlags::CtorFlag = true
+						PFlags::NullCondFlag = true
 					else
 						StreamUtils::WriteErrorLine(exp::Line, PFlags::CurPath, "Expected a '(' after a '#nullcond'!")
 					end if 
@@ -1309,7 +1362,7 @@ class public ExprOptimizer
 			elseif tok is LParen then
 				if PFlags::IdentFlag then
 					PFlags::IdentFlag = false
-					if PFlags::MetCallFlag orelse PFlags::StringFlag orelse PFlags::IdentFlag  orelse PFlags::CtorFlag then
+					if PFlags::MetCallFlag orelse PFlags::StringFlag orelse PFlags::IdentFlag orelse PFlags::CtorFlag orelse PFlags::NullCondFlag then
 						mcbool = true
 					end if
 					PFlags::MetCallFlag = true
@@ -1331,6 +1384,13 @@ class public ExprOptimizer
 					i--
 					len = --exp::Tokens::get_Count() 
 					PFlags::MetCallFlag = true
+					j = i
+				elseif PFlags::NullCondFlag then
+					PFlags::NullCondFlag = false
+					exp = procNullCondArrayAccess(exp, i)
+					i--
+					len = --exp::Tokens::get_Count() 
+					PFlags::NullCondFlag = true
 					j = i
 				end if
 			else
@@ -1401,6 +1461,16 @@ class public ExprOptimizer
 					end if
 				elseif mctok is ExprCallTok then
 					var mcnct = $ExprCallTok$mctok
+					if PFlags::MetCallFlag orelse PFlags::IdentFlag then
+						PFlags::MetCallFlag = false
+						PFlags::IdentFlag = false
+						mcnct::MemberAccessFlg = true
+						mcnct::MemberToAccess = exp::Tokens::get_Item(++i)
+						exp::RemToken(++i)
+						exp::Tokens::set_Item(i,mcnct)
+					end if
+				elseif mctok is NullCondCallTok then
+					var mcnct = $NullCondCallTok$mctok
 					if PFlags::MetCallFlag orelse PFlags::IdentFlag then
 						PFlags::MetCallFlag = false
 						PFlags::IdentFlag = false

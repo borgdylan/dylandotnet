@@ -628,7 +628,7 @@ class public StmtOptimizer
 	end method
 
 	method private Stmt checkImport(var stm as Stmt, var b as boolean&)
-		b = stm::Tokens::get_Item(0) is ImportTok
+		b = (stm::Tokens::get_Item(0) is ImportTok) orelse (stm::Tokens::get_Item(0) is LocimportTok)
 		if b then
 			var imps as ImportStmt = new ImportStmt() {Line = stm::Line}
 			if stm::Tokens::get_Count() >= 4 then
@@ -663,16 +663,16 @@ class public StmtOptimizer
 		return null
 	end method
 	
-	method private Stmt checkLocimport(var stm as Stmt, var b as boolean&)
-		b = stm::Tokens::get_Item(0) is LocimportTok
-		if b then
-			if stm::Tokens::get_Count() > 2 then
-				StreamUtils::WriteWarnLine(stm::Line, PFlags::CurPath, "Unexpected tokens at end of statement!")	
-			end if
-			return new LocimportStmt() {Line = stm::Line, NS = stm::Tokens::get_Item(1)}
-		end if
-		return null
-	end method
+//	method private Stmt checkLocimport(var stm as Stmt, var b as boolean&)
+//		b = stm::Tokens::get_Item(0) is LocimportTok
+//		if b then
+//			if stm::Tokens::get_Count() > 2 then
+//				StreamUtils::WriteWarnLine(stm::Line, PFlags::CurPath, "Unexpected tokens at end of statement!")	
+//			end if
+//			return new LocimportStmt() {Line = stm::Line, NS = stm::Tokens::get_Item(1)}
+//		end if
+//		return null
+//	end method
 	
 	method private Stmt checkReturn(var stm as Stmt, var b as boolean&)
 		b = stm::Tokens::get_Item(0) is ReturnTok
@@ -2080,11 +2080,11 @@ class public StmtOptimizer
 			return stm
 		end if
 		
-		tmpstm = checkLocimport(stm, ref compb)
-		if compb then
-			stm = tmpstm
-			return stm
-		end if
+//		tmpstm = checkLocimport(stm, ref compb)
+//		if compb then
+//			stm = tmpstm
+//			return stm
+//		end if
 		
 		tmpstm = checkAsmAttr(stm, ref compb)
 		if compb then

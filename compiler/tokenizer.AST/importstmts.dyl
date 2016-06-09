@@ -35,23 +35,23 @@ class public ImportStmt extends Stmt
 
 end class
 
-class public LocimportStmt extends Stmt
-
-	field public Token NS
-
-	method public void LocimportStmt()
-		mybase::ctor()
-		NS = new Token()
-	end method
-	
-	method public override string ToString()
-		var temp as string = NS::Value
-		if temp notlike c"^\q(.)*\q$" then
-			temp = c"\q" + temp + c"\q"
-		end if
-		return "locimport " + temp
-	end method
-
-	method public override boolean ValidateContext(var ctx as ContextType) => ctx == ContextType::Assembly
-
-end class
+//class public LocimportStmt extends Stmt
+//
+//	field public Token NS
+//
+//	method public void LocimportStmt()
+//		mybase::ctor()
+//		NS = new Token()
+//	end method
+//	
+//	method public override string ToString()
+//		var temp as string = NS::Value
+//		if temp notlike c"^\q(.)*\q$" then
+//			temp = c"\q" + temp + c"\q"
+//		end if
+//		return "locimport " + temp
+//	end method
+//
+//	method public override boolean ValidateContext(var ctx as ContextType) => ctx == ContextType::Assembly
+//
+//end class

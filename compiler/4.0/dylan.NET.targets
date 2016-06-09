@@ -67,6 +67,7 @@
 		<NETDefines Condition=" '$(TargetFrameworkVersion)' == 'v4.6.1' and '$(TargetFrameworkIdentifier)' == '.NETFramework' " Include="NET461" />
 		
 		<NETDefines Condition=" '$(TargetFrameworkIdentifier)' == '.NETPortable' " Include="PORTABLE" />
+		<NETDefines Condition=" '$(TargetFrameworkIdentifier)' == 'MonoAndroid' " Include="ANDROID" />
 	</ItemGroup>
 	
 	<ItemGroup>

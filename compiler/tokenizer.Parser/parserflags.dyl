@@ -29,6 +29,7 @@ class public Flags
 	field public boolean IdentFlag
 	field public boolean MetCallFlag
 	field public boolean CtorFlag
+	field public boolean NullCondFlag
 	//field public boolean MetChainFlag
 	field public boolean StringFlag
 	field public string CurPath
@@ -142,6 +143,7 @@ class public Flags
 		IdentFlag = false
 		StringFlag = false
 		CtorFlag = false
+		NullCondFlag = false
 	end method
 
 end class

@@ -284,6 +284,13 @@ class public ObjInit
 		end set
 	end property
 
+
+	property public integer? PSN
+		get
+			return new integer?(0)
+		end get
+	end property
+
 end class
 
 #region genericfuncs
@@ -957,6 +964,10 @@ class public static Program
 		catch ex2 as Exception when discr < 5 andalso ex2 isnot ArithmeticException
 			Console::WriteLine(i"Caught 2: {ex2::get_Message()}!")
 		end try
+
+		Console::WriteLine(#nullcond("test")::ToString() ?? "null")
+		Console::WriteLine(#nullcond($ObjInit$null)::get_PSN() ?? 11)
+		//nc = #nullcond(new integer?(1))::ToString()
 
 	end method
 

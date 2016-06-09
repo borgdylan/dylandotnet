@@ -32,6 +32,7 @@ class public Parser
 		do until i >= (--stms::Stmts::get_Count())
 			i++
 			var cs as Stmt = stms::Stmts::get_Item(i)
+			dylan.NET.Reflection.ILEmitter::LineNr = cs::Line
 			
 			do while cs::Tokens::get_Item(--cs::Tokens::get_Count())::Value == "_"
 				cs::RemToken(--cs::Tokens::get_Count())

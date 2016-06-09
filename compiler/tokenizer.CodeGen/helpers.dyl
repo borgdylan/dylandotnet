@@ -2063,6 +2063,22 @@ class public static Helpers
 		return null
 	end method
 
+	//for Nullable<of T>
+	[method: ComVisible(false)]
+	method public static IKVM.Reflection.Type MakeNullable(var t as IKVM.Reflection.Type)
+		if !t::get_IsValueType() then
+			return t
+		end if
+
+		var nult as IKVM.Reflection.Type = Loader::CachedLoadClass("System.Nullable`1")
+
+		if t::get_IsGenericType() andalso nult::Equals(t::GetGenericTypeDefinition()) then
+			return t
+		else
+			return nult::MakeGenericType(new IKVM.Reflection.Type[] {t})
+		end if
+	end method
+
 	[method: ComVisible(false)]
 	method public static IEnumerable<of IKVM.Reflection.Type> GetInhHierarchy(var t as IKVM.Reflection.Type)
 		var l = new C5.LinkedList<of IKVM.Reflection.Type> {t}

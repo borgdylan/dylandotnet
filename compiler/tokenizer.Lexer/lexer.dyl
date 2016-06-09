@@ -36,7 +36,7 @@ class public Lexer
 	//NOTE: Close calls only Dispose so the calls are semantically equivalent
 	
 	method public StmtSet Analyze(var path as string)
-		using sr as StreamReader = new StreamReader(path,true)
+		using sr as StreamReader = new StreamReader(path, Encoding::get_UTF8(), true, 4096)
 			return AnalyzeCore(sr, path)
 		end using
 	end method
@@ -47,6 +47,6 @@ class public Lexer
 		end using
 	end method
 	
-	method public StmtSet AnalyzeStream(var sm as Stream) => AnalyzeCore(new StreamReader(sm), string::Empty)
+	method public StmtSet AnalyzeStream(var sm as Stream) => AnalyzeCore(new StreamReader(sm, Encoding::get_UTF8(), true, 4096), string::Empty)
 
 end class

@@ -1414,13 +1414,13 @@ class public StmtReader
 				StreamUtils::WriteLine("Aliasing '" + istm::Alias::Value + "' to Namespace: " + istm::NS::Value)
 				Importer::RegisterAlias(istm::Alias::Value,istm::NS::Value)
 			end if
-		elseif stm is LocimportStmt then
-			var listm as LocimportStmt = $LocimportStmt$stm
-			listm::NS::Value = listm::NS::get_UnquotedValue()
-			
-			StreamUtils::Write("Importing Namespace: ")
-			StreamUtils::WriteLine(listm::NS::Value)
-			Importer::AddImp(listm::NS::Value)
+//		elseif stm is LocimportStmt then
+//			var listm as LocimportStmt = $LocimportStmt$stm
+//			listm::NS::Value = listm::NS::get_UnquotedValue()
+//			
+//			StreamUtils::Write("Importing Namespace: ")
+//			StreamUtils::WriteLine(listm::NS::Value)
+//			Importer::AddImp(listm::NS::Value)
 		elseif stm is AssemblyStmt then
 			var asms as AssemblyStmt = $AssemblyStmt$stm
 			AsmFactory::AsmNameStr = new AssemblyName(asms::AsmName::Value)
@@ -1892,7 +1892,7 @@ class public StmtReader
 					ILEmitter::EmitFinally()
 					cg::Process($FinallyStmt$b, fpath)
 				elseif b is CatchStmt then
-					//TODO: see into exception filters
+					//exception filters
 					PreRead(b::Line, fpath)
 					SymTable::PopScope()
 					SymTable::PushScope()
