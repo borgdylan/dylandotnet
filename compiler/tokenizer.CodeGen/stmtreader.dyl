@@ -2064,8 +2064,8 @@ class public StmtReader
 			dc::NumVar::set_OrdOp("dec")
 			dc::NumVar::set_DoDec(true)
 			new Evaluator()::StoreEmit(dc::NumVar, new Expr() {AddToken(dc::NumVar)})
-		else
-			StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Processing of this type of statement is not supported.")
+//		else
+//			StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Processing of this type of statement is not supported.")
 		end if
 
 		if stm isnot ReturnStmt then

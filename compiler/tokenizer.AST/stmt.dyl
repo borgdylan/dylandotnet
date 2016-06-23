@@ -51,6 +51,7 @@ interface public IStmtContainer
 	property public autogen ContextType Context
 	property public autogen IStmtContainer Parent
 	property public autogen initonly Stmt[] Children
+	property public autogen string FilePath	
 	method public boolean IsOneLiner(var ctx as IStmtContainer)
 	method public boolean ValidateEnding(var stm as Stmt)
 
@@ -88,6 +89,7 @@ class public abstract BlockStmt extends Stmt implements IStmtContainer
 	property public virtual autogen IStmtContainer Parent
 	property public virtual autogen ContextType Context
 	property public virtual Stmt[] Children => Stmts::ToArray()
+	property public virtual autogen string FilePath
 
 	method public virtual boolean IsOneLiner(var ctx as IStmtContainer) => false
 	method public virtual boolean ValidateEnding(var stm as Stmt) => false
@@ -145,6 +147,15 @@ class public StmtSet implements IStmtContainer
 			return null
 		end get
 		set
+		end set
+	end property
+
+	property public virtual string FilePath
+		get
+			return Path
+		end get
+		set
+			Path = value
 		end set
 	end property
 

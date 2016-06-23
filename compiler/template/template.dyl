@@ -967,8 +967,10 @@ class public static Program
 
 		Console::WriteLine(#nullcond("test")::ToString() ?? "null")
 		Console::WriteLine(#nullcond($ObjInit$null)::get_PSN() ?? 11)
-		//nc = #nullcond(new integer?(1))::ToString()
-
+		Console::WriteLine(#nullcond(new integer?(1))::ToString() ?? "null")
+		Console::WriteLine(#nullcond(new integer?(1))::get_Value() ?? 11)
+		Console::WriteLine(#nullcond($integer?$null)::ToString() ?? "null")
+		Console::WriteLine(#nullcond($integer?$null)::get_Value() ?? 11)
 	end method
 
 	[method: My(new integer[] {1, 2})]

@@ -48,6 +48,7 @@ class public Parser
 						StreamUtils::WriteError(nstm::Line, PFlags::CurPath, string::Format("This branch on a '{0}' is invalid!", curb::GetType()::get_Name()))
 					end if
 					curc = $IStmtContainer$nstm
+					curc::set_FilePath(stms::Path)
 				else
 					//throw an error here (cant branch on a non branch container)
 					StreamUtils::WriteError(nstm::Line, PFlags::CurPath, "You cannot branch on a non-branchable container!")
@@ -63,6 +64,7 @@ class public Parser
 				end if
 
 				var isc = $IStmtContainer$nstm
+				isc::set_FilePath(stms::Path)
 				if !isc::IsOneLiner(curc) then
 					cstack::Push(isc)
 					curc = isc

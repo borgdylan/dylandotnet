@@ -6,18 +6,72 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
 //Place, Suite 330, Boston, MA 02111-1307 USA 
 
-//class private LPFileTuple
-//
-//	field public string Path
-//	field public IncludeStmt InclStmt
-//	
-//	method public void LPFileTuple(var p as string,var incs as IncludeStmt)
-//		me::ctor()
-//		Path = p
-//		InclStmt = incs
-//	end method
-//
-//end class
+class private LPFileTuple
+
+	field public string Path
+	field public IncludeStmt InclStmt
+	
+	method public void LPFileTuple(var p as string,var incs as IncludeStmt)
+		mybase::ctor()
+		Path = p
+		InclStmt = incs
+	end method
+
+end class
+
+class private LPFileClosure
+
+	field public IStmtContainer sst
+
+	method private static void LPFile(var incstm as object)
+		var tup as LPFileTuple = $LPFileTuple$incstm
+		var inclustm as IncludeStmt = tup::InclStmt
+		trylock inclustm::Path
+			if inclustm::SSet is null then
+				try
+					if inclustm::Path::Value like c"^\q(.)*\q$" then
+						inclustm::Path::Value = inclustm::Path::Value::Trim(new char[] {c'\q'})
+					end if
+
+					inclustm::Path::Value = ParseUtils::ProcessMSYSPath(inclustm::Path::Value)
+					if !File::Exists(inclustm::Path::Value) then
+						StreamUtils::WriteError(inclustm::Line, tup::Path, string::Format("File '{0}' does not exist.", inclustm::Path::Value))
+					end if
+					StreamUtils::WriteLine(string::Format("Now Lexing: {0}", inclustm::Path::Value))
+					var pstmts as StmtSet = new Lexer()::Analyze(inclustm::Path::Value)
+					StreamUtils::WriteLine(string::Format("Now Parsing: {0}", inclustm::Path::Value))
+					inclustm::SSet = new Parser()::Parse(pstmts)
+					StreamUtils::WriteLine(string::Format("Finished Processing: {0} (worker thread)", inclustm::Path::Value))
+				catch errex as ErrorException
+					inclustm::HasError = true
+				catch ex as Exception
+					StreamUtils::WriteLine(string::Empty)
+					try
+						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, ex::ToString())
+					catch errex2 as ErrorException
+						inclustm::HasError = true
+					end try
+				end try
+			end if
+		end lock
+	end method
+
+	method public void LPThreadIteration(var stm as Stmt)
+		if stm is IncludeStmt then
+			if #expr($IncludeStmt$stm)::SSet is null then
+				//ThreadPool::QueueUserWorkItem(new WaitCallback(LPFile()),new LPFileTuple(sst::Path, $IncludeStmt$stm))
+				LPFile(new LPFileTuple(sst::get_FilePath(), $IncludeStmt$stm))
+			end if
+		elseif stm is IStmtContainer then
+			var clos = new LPFileClosure()
+			clos::sst = $IStmtContainer$stm
+			if !clos::sst::IsOneLiner(sst) then
+				System.Threading.Tasks.Parallel::ForEach<of Stmt>(clos::sst::get_Children(), new Action<of Stmt>(clos::LPThreadIteration))
+			end if
+		end if
+	end method
+
+end class
 
 class public partial CodeGenerator
 
@@ -38,49 +92,11 @@ class public CodeGenerator
 		sr = new StmtReader(me)
 	end method
 
-//	method private static void LPFile(var incstm as object)
-//		var tup as LPFileTuple = $LPFileTuple$incstm
-//		var inclustm as IncludeStmt = tup::InclStmt
-//		trylock inclustm::Path
-//			if inclustm::SSet == null then
-//				try
-//					if inclustm::Path::Value like c"^\q(.)*\q$" then
-//						inclustm::Path::Value = inclustm::Path::Value::Trim(new char[] {c'\q'})
-//					end if
-//
-//					inclustm::Path::Value = ParseUtils::ProcessMSYSPath(inclustm::Path::Value)
-//					if !File::Exists(inclustm::Path::Value) then
-//						StreamUtils::WriteError(inclustm::Line, tup::Path, string::Format("File '{0}' does not exist.", inclustm::Path::Value))
-//					end if
-//					StreamUtils::WriteLine(string::Format("Now Lexing: {0}", inclustm::Path::Value))
-//					var pstmts as StmtSet = new Lexer()::Analyze(inclustm::Path::Value)
-//					StreamUtils::WriteLine(string::Format("Now Parsing: {0}", inclustm::Path::Value))
-//					inclustm::SSet = new Parser()::Parse(pstmts)
-//					StreamUtils::WriteLine(string::Format("Finished Processing: {0} (worker thread)", inclustm::Path::Value))
-//				catch errex as ErrorException
-//					inclustm::HasError = true
-//				catch ex as Exception
-//					StreamUtils::WriteLine(string::Empty)
-//					try
-//						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, ex::ToString())
-//					catch errex2 as ErrorException
-//						inclustm::HasError = true
-//					end try
-//				end try
-//			end if
-//		end lock
-//	end method
-//	
-//	method private static void LPThread(var sset as object)
-//		var sst as StmtSet = $StmtSet$sset
-//		foreach stm in sst::Stmts
-//			if stm is IncludeStmt then
-//				if #expr($IncludeStmt$stm)::SSet == null then
-//					ThreadPool::QueueUserWorkItem(new WaitCallback(LPFile()),new LPFileTuple(sst::Path, $IncludeStmt$stm))
-//				end if
-//			end if
-//		end for
-//	end method
+	method private static void LPThread(var sset as object)
+		var clos = new LPFileClosure()
+		clos::sst = $StmtSet$sset
+		System.Threading.Tasks.Parallel::ForEach<of Stmt>(clos::sst::get_Children(), new Action<of Stmt>(clos::LPThreadIteration))
+	end method
 	
 // 	hash set is used to keep track of visited assemblies to avoid cycles in the dep graph
 //	method private void MarkUsed(var lst as IEnumerable<of string>, var hset as C5.HashSet<of string>)
@@ -139,11 +155,11 @@ class public CodeGenerator
 				//var pth as string
 				var sset as StmtSet
 					
-				//lock inclustm::Path
+				lock inclustm::Path
 						
-					//if inclustm::HasError then
-					//	StreamUtils::Terminate()
-					//end if
+					if inclustm::HasError then
+						StreamUtils::Terminate()
+					end if
 
 					inclustm::Path::Value = ParseUtils::ProcessMSYSPath(inclustm::Path::get_UnquotedValue())
 					//pth = inclustm::Path::Value
@@ -173,7 +189,7 @@ class public CodeGenerator
 					else
 						sset = inclustm::SSet
 					end if
-				//end lock
+				end lock
 						
 				EmitMSIL(sset, inclustm::Path::Value)
 			else
@@ -199,7 +215,7 @@ class public CodeGenerator
 
 	method public void EmitMSIL(var stmts as StmtSet, var fpath as string)
 
-		//ThreadPool::QueueUserWorkItem(new WaitCallback(LPThread()),stmts)
+		ThreadPool::QueueUserWorkItem(new WaitCallback(LPThread()),stmts)
 		
 		//var i as integer = -1
 		

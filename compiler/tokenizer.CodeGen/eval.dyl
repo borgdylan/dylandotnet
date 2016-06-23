@@ -1329,7 +1329,7 @@ class public Evaluator
 					if !innerType::get_IsValueType() orelse n1 isnot null then
 						//T?
 						if n1 isnot null then
-							StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "NYI: null conditionals")
+							//StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "NYI: null conditionals")
 							AsmFactory::ChainFlg = true
 							ASTEmit(ecc::MemberToAccess, false)
 							var chainType = AsmFactory::Type02
@@ -1339,6 +1339,7 @@ class public Evaluator
 							if emt then
 								SymTable::AddIf()
 								ILEmitter::EmitDup()
+								AsmFactory::Type02 = innerType
 								ASTEmitValueFilter(true)
 								ILEmitter::EmitCall(Loader::LoadMethod(innerType, "get_HasValue", IKVM.Reflection.Type::EmptyTypes))
 								ILEmitter::EmitBrfalse(SymTable::ReadIfNxtBlkLbl())
@@ -1359,14 +1360,17 @@ class public Evaluator
 									ILEmitter::EmitNewobj(Helpers::GetLocCtor(retType, new IKVM.Reflection.Type[] {chainType}))
 								end if
 
-								if retType::get_IsValueType() then
+								if !innerType::Equals(retType) then
 									ILEmitter::EmitBr(SymTable::ReadIfEndLbl())
 								end if
 								ILEmitter::MarkLbl(SymTable::ReadIfNxtBlkLbl())
 								//handle null case
-								if retType::get_IsValueType() then
-									//do conversions of null to T? if needed
-									ILEmitter::EmitUnboxAny(retType)
+								if !innerType::Equals(retType) then
+									ILEmitter::EmitBox(innerType)
+									if retType::get_IsValueType() then
+										//do conversions of null T? to U? if needed
+										ILEmitter::EmitUnboxAny(retType)
+									end if
 									ILEmitter::MarkLbl(SymTable::ReadIfEndLbl())
 								end if
 								SymTable::PopIf()
