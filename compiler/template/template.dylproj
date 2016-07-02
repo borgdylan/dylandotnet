@@ -8,7 +8,7 @@
     <RootNamespace>template</RootNamespace>
     <UsePartialTypes>false</UsePartialTypes>
     <AssemblyName>template</AssemblyName>
-    <ReleaseVersion>11.8.2.2</ReleaseVersion>
+    <ReleaseVersion>11.8.2.3</ReleaseVersion>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">

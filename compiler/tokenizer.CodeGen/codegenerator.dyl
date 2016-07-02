@@ -23,17 +23,14 @@ class private LPFileClosure
 
 	field public IStmtContainer sst
 
-	method private static void LPFile(var incstm as object)
+	method private void LPFile(var incstm as object)
 		var tup as LPFileTuple = $LPFileTuple$incstm
 		var inclustm as IncludeStmt = tup::InclStmt
 		trylock inclustm::Path
 			if inclustm::SSet is null then
 				try
-					if inclustm::Path::Value like c"^\q(.)*\q$" then
-						inclustm::Path::Value = inclustm::Path::Value::Trim(new char[] {c'\q'})
-					end if
-
-					inclustm::Path::Value = ParseUtils::ProcessMSYSPath(inclustm::Path::Value)
+					inclustm::Path::Value = ParseUtils::ProcessMSYSPath(inclustm::Path::get_UnquotedValue())
+					inclustm::Path::Value = Path::Combine(Path::GetDirectoryName(tup::Path), inclustm::Path::Value)
 					if !File::Exists(inclustm::Path::Value) then
 						StreamUtils::WriteError(inclustm::Line, tup::Path, string::Format("File '{0}' does not exist.", inclustm::Path::Value))
 					end if
@@ -41,6 +38,7 @@ class private LPFileClosure
 					var pstmts as StmtSet = new Lexer()::Analyze(inclustm::Path::Value)
 					StreamUtils::WriteLine(string::Format("Now Parsing: {0}", inclustm::Path::Value))
 					inclustm::SSet = new Parser()::Parse(pstmts)
+					inclustm::SSet::Path = inclustm::Path::Value
 					StreamUtils::WriteLine(string::Format("Finished Processing: {0} (worker thread)", inclustm::Path::Value))
 				catch errex as ErrorException
 					inclustm::HasError = true
@@ -214,7 +212,7 @@ class public CodeGenerator
 	method assembly Tuple<of boolean, boolean> Process(var c as IStmtContainer, var spth as string) => Process(c, spth, false, false)
 
 	method public void EmitMSIL(var stmts as StmtSet, var fpath as string)
-
+		stmts::Path = fpath
 		ThreadPool::QueueUserWorkItem(new WaitCallback(LPThread()),stmts)
 		
 		//var i as integer = -1
