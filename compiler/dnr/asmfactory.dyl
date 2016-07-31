@@ -92,7 +92,11 @@ class public static AsmFactory
 
 	[method: ComVisible(false)]
 	method public static void InitMtd()
-		CurnILGen = CurnMetB::GetILGenerator()
+		if CurnMetB::get_IsAbstract() then
+			CurnILGen = null
+		else
+			CurnILGen = CurnMetB::GetILGenerator()
+		end if
 		ILEmitter::Met = CurnMetB
 		ILEmitter::ILGen = CurnILGen
 		ILEmitter::DebugFlg = DebugFlg

@@ -9,7 +9,7 @@
     <UsePartialTypes>false</UsePartialTypes>
     <AssemblyName>test</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <ReleaseVersion>11.8.2.3</ReleaseVersion>
+    <ReleaseVersion>11.8.2.4</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
