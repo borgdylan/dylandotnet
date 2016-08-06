@@ -10,7 +10,7 @@ class public TypeTok extends ValueToken implements ICloneable
 
 	field public boolean IsArray
 	field public boolean IsByRef
-	field public IKVM.Reflection.Type RefTyp
+	field public Managed.Reflection.Type RefTyp
 
 	method public void TypeTok(var value as string)
 		mybase::ctor(value)
@@ -20,7 +20,7 @@ class public TypeTok extends ValueToken implements ICloneable
 		mybase::ctor(string::Empty)
 	end method
 
-	method public void TypeTok(var value as IKVM.Reflection.Type)
+	method public void TypeTok(var value as Managed.Reflection.Type)
 		mybase::ctor(value::ToString())
 		IsByRef = value::get_IsByRef()
 		if IsByRef then

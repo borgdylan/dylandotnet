@@ -12,16 +12,16 @@ class public static Importer
 	//field public static C5.IList<of string> Imps
 	field public static C5.LinkedList<of C5.LinkedList<of ImportRecord> > ImpsStack
 	field public static C5.IDictionary<of string, string> AliasMap
-	//field public static C5.IDictionary<of string, IKVM.Reflection.Type> TypeMap
+	//field public static C5.IDictionary<of string, Managed.Reflection.Type> TypeMap
 	field public static string AsmBasePath
 
 	[method: ComVisible(false)]
 	method public static void Init()
-		Asms = new C5.HashDictionary<of string, AssemblyRecord>()
+		Asms = new C5.HashDictionary<of string, AssemblyRecord>(C5.MemoryType::Normal)
 		//Imps = new C5.LinkedList<of string>()
 		ImpsStack = new C5.LinkedList<of C5.LinkedList<of ImportRecord> > {new C5.LinkedList<of ImportRecord>()}
 		AsmBasePath = RuntimeEnvironment::GetRuntimeDirectory()
-		AliasMap = new C5.HashDictionary<of string,string>() { _
+		AliasMap = new C5.HashDictionary<of string,string>(C5.MemoryType::Normal) { _
 			Add("object", "System.Object"), _
 			Add("void", "System.Void"), _
 			Add("string", "System.String"), _
@@ -40,7 +40,7 @@ class public static Importer
 			Add("intptr", "System.IntPtr"), _
 			Add("uintptr", "System.UIntPtr"), _
 			Add("decimal", "System.Decimal") }
-		//TypeMap = new C5.HashDictionary<of string, IKVM.Reflection.Type>()
+		//TypeMap = new C5.HashDictionary<of string, Managed.Reflection.Type>()
 	end method
 
 	method private static void Importer()
@@ -48,7 +48,7 @@ class public static Importer
 	end method
 
 	[method: ComVisible(false)]
-	method public static void AddAsm(var path as string, var asmm as IKVM.Reflection.Assembly)
+	method public static void AddAsm(var path as string, var asmm as Managed.Reflection.Assembly)
 		if !Asms::Contains(path) then
 			Asms::Add(path, new AssemblyRecord(asmm))
 		end if

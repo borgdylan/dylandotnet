@@ -49,13 +49,13 @@ class public GenericMethodNameTok extends MethodNameTok implements IMayHaveConst
 	method public void GenericMethodNameTok()
 		mybase::ctor()
 		Params = new C5.LinkedList<of TypeTok>()
-		_Constraints = new C5.HashDictionary<of string, C5.LinkedList<of Token> >()
+		_Constraints = new C5.HashDictionary<of string, C5.LinkedList<of Token> >(C5.MemoryType::Normal)
 	end method
 
 	method public void GenericMethodNameTok(var value as string)
 		mybase::ctor(value)
 		Params = new C5.LinkedList<of TypeTok>()
-		_Constraints = new C5.HashDictionary<of string, C5.LinkedList<of Token> >()
+		_Constraints = new C5.HashDictionary<of string, C5.LinkedList<of Token> >(C5.MemoryType::Normal)
 	end method
 	
 	method public void GenericMethodNameTok(var idt as Ident)
@@ -73,7 +73,7 @@ class public GenericMethodNameTok extends MethodNameTok implements IMayHaveConst
 		_TTok = idt::get_TTok()
 		_OrdOp = idt::get_OrdOp()
 		Line = idt::Line
-		_Constraints = new C5.HashDictionary<of string, C5.LinkedList<of Token> >()
+		_Constraints = new C5.HashDictionary<of string, C5.LinkedList<of Token> >(C5.MemoryType::Normal)
 	end method
 	
 	method public static specialname GenericMethodNameTok op_Implicit(var idt as Ident) => #ternary {idt is GenericMethodNameTok ? $GenericMethodNameTok$idt, new GenericMethodNameTok(idt)}

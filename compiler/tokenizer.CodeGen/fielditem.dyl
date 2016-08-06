@@ -9,11 +9,11 @@
 class public FieldItem
 
 	field public string Name
-	field public IKVM.Reflection.Type FieldTyp
+	field public Managed.Reflection.Type FieldTyp
 	field public FieldBuilder FieldBldr
 	field public object LitVal
 
-	method public void FieldItem(var nme as string, var typ as IKVM.Reflection.Type, var bld as FieldBuilder, var litval as object)
+	method public void FieldItem(var nme as string, var typ as Managed.Reflection.Type, var bld as FieldBuilder, var litval as object)
 		mybase::ctor()
 		Name = nme
 		FieldTyp = typ
@@ -22,7 +22,7 @@ class public FieldItem
 	end method
 	
 	method public void FieldItem()
-		ctor(string::Empty, $IKVM.Reflection.Type$null, $FieldBuilder$null, null)
+		ctor(string::Empty, $Managed.Reflection.Type$null, $FieldBuilder$null, null)
 	end method
 
 	method public override string ToString() => Name + " : " + FieldTyp::ToString()

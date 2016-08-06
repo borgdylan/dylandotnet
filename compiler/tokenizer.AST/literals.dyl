@@ -49,8 +49,8 @@ end class
 class public ConstLiteral extends Literal
 
 	field public object ConstVal
-	field public IKVM.Reflection.Type ExtTyp
-	field public IKVM.Reflection.Type IntTyp
+	field public Managed.Reflection.Type ExtTyp
+	field public Managed.Reflection.Type IntTyp
 
 	method public void ConstLiteral(var value as object)
 		mybase::ctor()

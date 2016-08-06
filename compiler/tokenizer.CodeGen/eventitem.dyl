@@ -9,7 +9,7 @@
 class public EventItem
 
 	field public string Name
-	field public IKVM.Reflection.Type EventTyp
+	field public Managed.Reflection.Type EventTyp
 	field public EventBuilder EventBldr
 	field public string ExplImplType
 	field public TypeTok ExplType
@@ -21,7 +21,7 @@ class public EventItem
 		ExplImplType = string::Empty
 	end method
 
-	method public void EventItem(var nme as string, var typ as IKVM.Reflection.Type, var bld as EventBuilder, var attr as IEnumerable<of Attributes.Attribute>, var expl as string)
+	method public void EventItem(var nme as string, var typ as Managed.Reflection.Type, var bld as EventBuilder, var attr as IEnumerable<of Attributes.Attribute>, var expl as string)
 		mybase::ctor()
 		Name = nme
 		EventTyp = typ

@@ -10,7 +10,7 @@ class private TILambdas
 
 	field assembly string Name
 	field assembly integer NrGenParams
-	field assembly IKVM.Reflection.Type TB
+	field assembly Managed.Reflection.Type TB
 
 	method assembly void TILambdas()
 		mybase::ctor()
@@ -23,7 +23,7 @@ class private TILambdas
 		NrGenParams = gp
 	end method
 
-	method assembly void TILambdas(var name as IKVM.Reflection.Type)
+	method assembly void TILambdas(var name as Managed.Reflection.Type)
 		mybase::ctor()
 		TB = #ternary {name::get_IsConstructedGenericType() ? name::GetGenericTypeDefinition(), name}
 	end method

@@ -8,8 +8,8 @@
     <RootNamespace>dylan.NET.Tokenizer.Lexer</RootNamespace>
     <UsePartialTypes>false</UsePartialTypes>
     <AssemblyName>tokenizer.Lexer</AssemblyName>
-    <UseMSBuildEngine>True</UseMSBuildEngine>
-    <ReleaseVersion>11.8.2.4</ReleaseVersion>
+    <ReleaseVersion>11.8.3.0</ReleaseVersion>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>

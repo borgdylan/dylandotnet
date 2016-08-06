@@ -2,15 +2,15 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>dylan.NET</id>
-    <version>11.8.2.4</version>
+    <version>11.8.3.1</version>
     <authors>borgdylan</authors>
     <owners>borgdylan</owners>
     <licenseUrl>http://www.gnu.org/copyleft/lesser.html</licenseUrl>
     <projectUrl>https://github.com/borgdylan/dylandotnet</projectUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>A compiler for dylan.NET, a new language targeting the CLR</description>
-    <releaseNotes>dylan.NET v.11.8.2.4 with MSBuild support files, resource compilation support and in-memory assembly I/O.
-    	dylan.NET 11.8.x.y includes experimental support for formattable strings and exception filters as well as experimental support for the #nullcond operator.
+    <releaseNotes>dylan.NET v.11.8.3.1 with MSBuild support files, resource compilation support and in-memory assembly I/O.
+    	dylan.NET 11.8.x.y includes experimental support for formattable strings and exception filters as well as experimental support for the #nullcond operator. dylan.NEt has switched to use portable pdb as its debug databse output format.
     </releaseNotes>
     <copyright>Copyright 2016</copyright>
     <tags>.NET3.5 .NET4.0 .NET4.5 .NET4.6 NETCOREAPP1.0 Mono PCL MSBuild</tags>
@@ -20,7 +20,7 @@
   </metadata>
   <files>
   	<!--<file src="lib/net45/*.dll" target="lib/net45/" />-->
-  	<file src="lib/net40/*.dll" target="lib/net40/" />
+  	<file src="lib/net46/*.dll" target="lib/net46/" />
   	<!--<file src="lib/net35/*.dll" target="lib/net35/" />-->
   	<!--<file src="lib/net45/*.exe" target="lib/net45/" />-->
   	<!--<file src="lib/net40/*.exe" target="lib/net40/" />-->

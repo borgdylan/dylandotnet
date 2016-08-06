@@ -7,7 +7,7 @@
 //Place, Suite 330, Boston, MA 02111-1307 USA
 
 class public static partial Helpers
-	method public static prototype IKVM.Reflection.Type CommitEvalTTok(var tt as TypeTok)
+	method public static prototype Managed.Reflection.Type CommitEvalTTok(var tt as TypeTok)
 end class
 
 class public TypeList
@@ -63,7 +63,7 @@ class public TypeList
 		return null
 	end method
 
-	method public TypeItem GetTypeItem(var t as IKVM.Reflection.Type)
+	method public TypeItem GetTypeItem(var t as Managed.Reflection.Type)
 		var til as TILambdas = new TILambdas(t)
 
 		if t::get_IsNested() then
@@ -79,7 +79,7 @@ class public TypeList
 		return null
 	end method
 	
-	method public IKVM.Reflection.Type GetType(var nam as string, var gp as integer)
+	method public Managed.Reflection.Type GetType(var nam as string, var gp as integer)
 		var ti as TypeItem = GetTypeItem(nam, gp)
 		if ti is null then
 			return null
@@ -89,7 +89,7 @@ class public TypeList
 	end method
 
 
-	method public ConstructorInfo GetCtor(var t as IKVM.Reflection.Type,var paramst as IKVM.Reflection.Type[], var auxt as IKVM.Reflection.Type)
+	method public ConstructorInfo GetCtor(var t as Managed.Reflection.Type,var paramst as Managed.Reflection.Type[], var auxt as Managed.Reflection.Type)
 		var ti as TypeItem = GetTypeItem(t)
 		if ti is null then
 			return null
@@ -117,10 +117,10 @@ class public TypeList
 		end if
 	end method
 	
-	method assembly ConstructorInfo GetDefaultCtor(var t as IKVM.Reflection.Type) => _
-		#ternary {GetTypeItem(t) is null ? Loader::LoadCtor(t, IKVM.Reflection.Type::EmptyTypes), GetCtor(t, IKVM.Reflection.Type::EmptyTypes, t)}
+	method assembly ConstructorInfo GetDefaultCtor(var t as Managed.Reflection.Type) => _
+		#ternary {GetTypeItem(t) is null ? Loader::LoadCtor(t, Managed.Reflection.Type::EmptyTypes), GetCtor(t, Managed.Reflection.Type::EmptyTypes, t)}
 	
-	method public void EnsureDefaultCtor(var t as IKVM.Reflection.Type)
+	method public void EnsureDefaultCtor(var t as Managed.Reflection.Type)
 		if !#expr(ILEmitter::InterfaceFlg orelse ILEmitter::StaticCFlg) then
 			var ti as TypeItem = GetTypeItem(t)
 			if ti isnot null then
@@ -133,16 +133,16 @@ class public TypeList
 					Loader::ProtectedFlag = false
 
 					if (ctorinf isnot null) orelse ILEmitter::StructFlg then
-						var cb as ConstructorBuilder = ti::TypeBldr::DefineConstructor(#ternary {ILEmitter::AbstractCFlg ? MethodAttributes::Family, MethodAttributes::Public}, CallingConventions::Standard, IKVM.Reflection.Type::EmptyTypes)
+						var cb as ConstructorBuilder = ti::TypeBldr::DefineConstructor(#ternary {ILEmitter::AbstractCFlg ? MethodAttributes::Family, MethodAttributes::Public}, CallingConventions::Standard, Managed.Reflection.Type::EmptyTypes)
 						var ilg = cb::GetILGenerator()
 
 						if !ILEmitter::StructFlg then
-							ilg::Emit(IKVM.Reflection.Emit.OpCodes::Ldarg_0)
-							ilg::Emit(IKVM.Reflection.Emit.OpCodes::Call, ctorinf)
+							ilg::Emit(Managed.Reflection.Emit.OpCodes::Ldarg_0)
+							ilg::Emit(Managed.Reflection.Emit.OpCodes::Call, ctorinf)
 						end if
 
-						ilg::Emit(IKVM.Reflection.Emit.OpCodes::Ret)
-						ti::Ctors::Add(new CtorItem(IKVM.Reflection.Type::EmptyTypes, cb))
+						ilg::Emit(Managed.Reflection.Emit.OpCodes::Ret)
+						ti::Ctors::Add(new CtorItem(Managed.Reflection.Type::EmptyTypes, cb))
 					end if
 				end if
 			end if
@@ -153,7 +153,7 @@ class public TypeList
 		Types::Add(t)
 	end method
 
-	method public FieldInfo GetField(var t as IKVM.Reflection.Type, var nam as string, var auxt as IKVM.Reflection.Type)
+	method public FieldInfo GetField(var t as Managed.Reflection.Type, var nam as string, var auxt as Managed.Reflection.Type)
 		var ti as TypeItem = GetTypeItem(t)
 		if ti is null then
 			return null
@@ -182,7 +182,7 @@ class public TypeList
 		end if
 	end method
 
-	method public MethodInfo GetMethod(var t as IKVM.Reflection.Type,var mn as MethodNameTok,var paramst as IKVM.Reflection.Type[], var auxt as IKVM.Reflection.Type)
+	method public MethodInfo GetMethod(var t as Managed.Reflection.Type,var mn as MethodNameTok,var paramst as Managed.Reflection.Type[], var auxt as Managed.Reflection.Type)
 		var ti as TypeItem = GetTypeItem(t)
 		if ti = null then
 			return null
@@ -193,7 +193,7 @@ class public TypeList
 			var mtdinfo as MethodInfo
 			if mn is GenericMethodNameTok then
 				var gmn as GenericMethodNameTok = $GenericMethodNameTok$mn
-				var genparams as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[gmn::Params::get_Count()]
+				var genparams as Managed.Reflection.Type[] = new Managed.Reflection.Type[gmn::Params::get_Count()]
 				var i = -1
 				foreach gp in gmn::Params
 					i++
@@ -231,7 +231,7 @@ class public TypeList
 				if mtdinfo is null then
 					if mn is GenericMethodNameTok then
 						var gmn as GenericMethodNameTok = $GenericMethodNameTok$mn
-						var genparams as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[gmn::Params::get_Count()]
+						var genparams as Managed.Reflection.Type[] = new Managed.Reflection.Type[gmn::Params::get_Count()]
 						var i = -1
 						foreach gp in gmn::Params
 							i++

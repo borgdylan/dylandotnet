@@ -17,17 +17,17 @@ class public static AsmFactory
 	field public static boolean PopFlg
 	field public static boolean ForcedAddrFlg
 	field public static boolean AddrFlg
-	field public static IKVM.Reflection.AssemblyName AsmNameStr
-	field public static IKVM.Reflection.StrongNameKeyPair StrongKey
-	field public static IKVM.Reflection.Emit.AssemblyBuilder AsmB
-	field public static IKVM.Reflection.Type Type01
-	field public static IKVM.Reflection.Type Type02
-	field public static IKVM.Reflection.Type Type03
-	field public static IKVM.Reflection.Type Type04
-	field public static IKVM.Reflection.Type Type05
-	field public static IKVM.Reflection.Type CurnEventType
-	field public static IKVM.Reflection.Emit.ModuleBuilder MdlB
-	field public static ISymbolDocumentWriter DocWriter
+	field public static Managed.Reflection.AssemblyName AsmNameStr
+	field public static Managed.Reflection.StrongNameKeyPair StrongKey
+	field public static Managed.Reflection.Emit.AssemblyBuilder AsmB
+	field public static Managed.Reflection.Type Type01
+	field public static Managed.Reflection.Type Type02
+	field public static Managed.Reflection.Type Type03
+	field public static Managed.Reflection.Type Type04
+	field public static Managed.Reflection.Type Type05
+	field public static Managed.Reflection.Type CurnEventType
+	field public static Managed.Reflection.Emit.ModuleBuilder MdlB
+	field public static Managed.Reflection.Emit.ISymbolDocumentWriter DocWriter
 	field public static string CurnNS
 	field public static C5.LinkedList<of string> NSStack
 	field public static string DfltNS
@@ -36,23 +36,23 @@ class public static AsmFactory
 	field public static string CurnTypName
 	field public static string CurnTypName2
 	field public static string CurnMetName
-	field public static IKVM.Reflection.Emit.MethodBuilder CurnMetB
-	field public static IKVM.Reflection.Emit.ConstructorBuilder CurnConB
-	field public static IKVM.Reflection.Emit.FieldBuilder CurnFldB
-	field public static IKVM.Reflection.Emit.PropertyBuilder CurnPropB
-	field public static IKVM.Reflection.Emit.EventBuilder CurnEventB
-	field public static IKVM.Reflection.Emit.ILGenerator CurnILGen
-	field public static IKVM.Reflection.Type CurnInhTyp
-	field public static IKVM.Reflection.Type CurnInhTyp2
-	field public static IKVM.Reflection.Emit.TypeBuilder CurnTypB
-	field public static IKVM.Reflection.Emit.TypeBuilder CurnTypB2
-	//field public static IKVM.Reflection.Emit.TypeBuilder[] CurnTypList
-	field public static IKVM.Reflection.Emit.EnumBuilder CurnEnumB
+	field public static Managed.Reflection.Emit.MethodBuilder CurnMetB
+	field public static Managed.Reflection.Emit.ConstructorBuilder CurnConB
+	field public static Managed.Reflection.Emit.FieldBuilder CurnFldB
+	field public static Managed.Reflection.Emit.PropertyBuilder CurnPropB
+	field public static Managed.Reflection.Emit.EventBuilder CurnEventB
+	field public static Managed.Reflection.Emit.ILGenerator CurnILGen
+	field public static Managed.Reflection.Type CurnInhTyp
+	field public static Managed.Reflection.Type CurnInhTyp2
+	field public static Managed.Reflection.Emit.TypeBuilder CurnTypB
+	field public static Managed.Reflection.Emit.TypeBuilder CurnTypB2
+	//field public static Managed.Reflection.Emit.TypeBuilder[] CurnTypList
+	field public static Managed.Reflection.Emit.EnumBuilder CurnEnumB
 	field public static boolean isNested
 	field public static boolean inClass
 	field public static boolean inEnum
 	//field public static string[] GenParamNames
-	//field public static IKVM.Reflection.Emit.GenericTypeParameterBuilder[] GenParamTyps
+	//field public static Managed.Reflection.Emit.GenericTypeParameterBuilder[] GenParamTyps
 	field public static boolean PCLSet
 	field public static boolean InMemorySet
 
@@ -70,9 +70,9 @@ class public static AsmFactory
 		CurnNS = string::Empty
 		DfltNS = string::Empty
 		AsmFile = string::Empty
-		//CurnTypList = new IKVM.Reflection.Emit.TypeBuilder[0]
+		//CurnTypList = new Managed.Reflection.Emit.TypeBuilder[0]
 		//GenParamNames = new string[0]
-		//GenParamTyps = new IKVM.Reflection.Emit.GenericTypeParameterBuilder[0]
+		//GenParamTyps = new Managed.Reflection.Emit.GenericTypeParameterBuilder[0]
 		isNested = false
 		inClass = false
 		inEnum = false
@@ -88,7 +88,7 @@ class public static AsmFactory
 	end method
 
 	[method: ComVisible(false)]
-	method public static IKVM.Reflection.Type CreateTyp() => CurnTypB::CreateType()
+	method public static Managed.Reflection.Type CreateTyp() => CurnTypB::CreateType()
 
 	[method: ComVisible(false)]
 	method public static void InitMtd()
@@ -116,29 +116,29 @@ class public static AsmFactory
 
 	[method: ComVisible(false)]
 	method public static void InitDelConstr()
-		CurnConB::DefineParameter(1, IKVM.Reflection.ParameterAttributes::None, "obj")
-		CurnConB::DefineParameter(2, IKVM.Reflection.ParameterAttributes::None, "ptr")
-		CurnConB::SetImplementationFlags(IKVM.Reflection.MethodImplAttributes::Runtime or IKVM.Reflection.MethodImplAttributes::Managed)
+		CurnConB::DefineParameter(1, Managed.Reflection.ParameterAttributes::None, "obj")
+		CurnConB::DefineParameter(2, Managed.Reflection.ParameterAttributes::None, "ptr")
+		CurnConB::SetImplementationFlags(Managed.Reflection.MethodImplAttributes::Runtime or Managed.Reflection.MethodImplAttributes::Managed)
 	end method
 
 	[method: ComVisible(false)]
 	method public static void InitDelMet()
 		ILEmitter::Met = CurnMetB
-		CurnMetB::SetImplementationFlags(IKVM.Reflection.MethodImplAttributes::Runtime or IKVM.Reflection.MethodImplAttributes::Managed)
+		CurnMetB::SetImplementationFlags(Managed.Reflection.MethodImplAttributes::Runtime or Managed.Reflection.MethodImplAttributes::Managed)
 	end method
 	
 	[method: ComVisible(false)]
 	method public static void InitPInvokeMtd()
 		ILEmitter::Met = CurnMetB
-		CurnMetB::SetImplementationFlags(CurnMetB::GetMethodImplementationFlags() or IKVM.Reflection.MethodImplAttributes::PreserveSig)
+		CurnMetB::SetImplementationFlags(CurnMetB::GetMethodImplementationFlags() or Managed.Reflection.MethodImplAttributes::PreserveSig)
 	end method
 
 //	[method: ComVisible(false)]
-//	method public static void AddTypB(var typ as IKVM.Reflection.Emit.TypeBuilder)
+//	method public static void AddTypB(var typ as Managed.Reflection.Emit.TypeBuilder)
 //
 //		var len as integer = CurnTypList[l]
 //		var stopel as integer = --len
-//		var destarr as IKVM.Reflection.Emit.TypeBuilder[] = new IKVM.Reflection.Emit.TypeBuilder[++len]
+//		var destarr as Managed.Reflection.Emit.TypeBuilder[] = new Managed.Reflection.Emit.TypeBuilder[++len]
 //
 //		for i = 0 upto stopel
 //			destarr[i] = CurnTypList[i]

@@ -9,10 +9,10 @@ namespace dylan.NET.Reflection
 
 	class public auto ansi AssemblyRecord
 		
-		field public IKVM.Reflection.Assembly Asm
+		field public Managed.Reflection.Assembly Asm
 		field public boolean Used
 
-		method public void AssemblyRecord(var asm as IKVM.Reflection.Assembly)
+		method public void AssemblyRecord(var asm as Managed.Reflection.Assembly)
 			mybase::ctor()
 			Asm = asm
 		end method

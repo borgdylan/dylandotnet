@@ -38,7 +38,7 @@ class public Evaluator
 	
 	method private void ASTEmitArrayLoad(var idt as Ident, var emt as boolean)
 		if idt::IsArr then
-			var typ as IKVM.Reflection.Type = null
+			var typ as Managed.Reflection.Type = null
 			if Helpers::CheckIfArrLen(idt::ArrLoc) then
 				typ = AsmFactory::Type02
 				if !typ::get_IsArray() then
@@ -142,7 +142,7 @@ class public Evaluator
 		var vr as VarItem
 		var idtfldinf as FieldInfo
 		var idtisstatic as boolean = false
-		var typ as IKVM.Reflection.Type
+		var typ as Managed.Reflection.Type
 		var idtnamarr as string[] = ParseUtils::StringParser(idt::Value, ':')
 		var pushaddr as boolean = idt::IsRef and idt::MemberAccessFlg
 
@@ -339,7 +339,7 @@ class public Evaluator
 		var idtisstatic as boolean = false
 		var pushaddr as boolean = mntok::IsRef andalso mntok::MemberAccessFlg
 		var baseflg as boolean = false
-		var mcparenttyp as IKVM.Reflection.Type = AsmFactory::CurnTypB
+		var mcparenttyp as Managed.Reflection.Type = AsmFactory::CurnTypB
 		var mectorflg as boolean = (mntok::Value == "mybase::ctor") orelse (mntok::Value == "me::ctor")
 
 		if emt andalso (mntok::Value == "me::ctor") then
@@ -509,12 +509,12 @@ class public Evaluator
 		
 		AsmFactory::Type03 = AsmFactory::Type02
 			
-		var lt = new C5.LinkedList<of IKVM.Reflection.Type>()
+		var lt = new C5.LinkedList<of Managed.Reflection.Type>()
 		foreach param in mctok::Params
 			ASTEmit(ConvToAST(ConvToRPN(param)), emt)
 			lt::Add(AsmFactory::Type02)
 		end for
-		var typarr1 as IKVM.Reflection.Type[] = lt::ToArray()
+		var typarr1 as Managed.Reflection.Type[] = lt::ToArray()
 		
 		if !emt then
 			mctok::TypArr = typarr1
@@ -643,16 +643,16 @@ class public Evaluator
 
 	method public void ASTEmitNew(var nctok as NewCallTok, var emt as boolean)
 		//constructor call section
-		var delparamarr as IKVM.Reflection.Type[]
+		var delparamarr as Managed.Reflection.Type[]
 		var delmtdnam as MethodNameTok
-		var nctyp as IKVM.Reflection.Type = Helpers::CommitEvalTTok(nctok::Name)
+		var nctyp as Managed.Reflection.Type = Helpers::CommitEvalTTok(nctok::Name)
 		var delcreate as boolean = false
-		var typarr1 as IKVM.Reflection.Type[] = IKVM.Reflection.Type::EmptyTypes
+		var typarr1 as Managed.Reflection.Type[] = Managed.Reflection.Type::EmptyTypes
 		var ncctorinf as ConstructorInfo
 		var i as integer = -1
 		var mnstrarr as string[]
 		var len as integer
-		var mcparenttyp as IKVM.Reflection.Type = null
+		var mcparenttyp as Managed.Reflection.Type = null
 		var idtb1 as boolean = false
 		var idtb2 as boolean = false
 		var mcvr as VarItem
@@ -670,7 +670,7 @@ class public Evaluator
 			delparamarr = Loader::GetDelegateInvokeParams(nctyp)
 			delmtdnam = Helpers::StripDelMtdName(nctok::Params::get_Item(0)::Tokens::get_Item(0))
 		else
-			var lt = new C5.LinkedList<of IKVM.Reflection.Type>()
+			var lt = new C5.LinkedList<of Managed.Reflection.Type>()
 			foreach param in nctok::Params
 				ASTEmit(ConvToAST(ConvToRPN(param)), emt)
 				lt::Add(AsmFactory::Type02)
@@ -679,7 +679,7 @@ class public Evaluator
 		end if
 
 		if delcreate then
-			typarr1 = new IKVM.Reflection.Type[] {Loader::CachedLoadClass("System.Object"), Loader::CachedLoadClass("System.IntPtr")}
+			typarr1 = new Managed.Reflection.Type[] {Loader::CachedLoadClass("System.Object"), Loader::CachedLoadClass("System.IntPtr")}
 
 			//-------------------------------------------------------------------------------------------
 			//delegate pointer loading section
@@ -852,7 +852,7 @@ class public Evaluator
 			var tpi = Helpers::GetTPI(nctyp::get_Name())
 			if tpi::HasCtor andalso (typarr1[l] == 0) then
 				if emt then
-					mcmetinf = Loader::LoadGenericMethod(Loader::CachedLoadClass("System.Activator"), "CreateInstance", new IKVM.Reflection.Type[] {tpi::Bldr}, typarr1)
+					mcmetinf = Loader::LoadGenericMethod(Loader::CachedLoadClass("System.Activator"), "CreateInstance", new Managed.Reflection.Type[] {tpi::Bldr}, typarr1)
 					Helpers::EmitMetCall(mcmetinf, true)
 					if nctok::PopFlg then
 						ILEmitter::EmitPop()
@@ -891,8 +891,8 @@ class public Evaluator
 		var optok as Op = null
 		var rc as Token = null
 		var lc as Token = null
-		var lctyp as IKVM.Reflection.Type = null
-		var rctyp as IKVM.Reflection.Type = null
+		var lctyp as Managed.Reflection.Type = null
+		var rctyp as Managed.Reflection.Type = null
 		var ans = false
 
 		if tok is Op then
@@ -938,7 +938,7 @@ class public Evaluator
 						ILEmitter::EmitNotRef(bo, lab)
 						ans = bo != BranchOptimisation::None
 					else
-						var istyp as IKVM.Reflection.Type = Helpers::CommitEvalTTok(rc as TypeTok)
+						var istyp as Managed.Reflection.Type = Helpers::CommitEvalTTok(rc as TypeTok)
 						if istyp is null then
 							StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("The Class '{0}' is undefined.", rc::Value))
 						else
@@ -953,7 +953,7 @@ class public Evaluator
 						ILEmitter::EmitIsNotRef(bo, lab)
 						ans = bo != BranchOptimisation::None
 					else
-						var istyp as IKVM.Reflection.Type = Helpers::CommitEvalTTok(rc as TypeTok)
+						var istyp as Managed.Reflection.Type = Helpers::CommitEvalTTok(rc as TypeTok)
 						if istyp is null then
 							StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("The Class '{0}' is undefined.", rc::Value))
 						else
@@ -963,7 +963,7 @@ class public Evaluator
 					end if
 				end if
 			elseif asflg then
-				var astyp as IKVM.Reflection.Type = Helpers::CommitEvalTTok(rc as TypeTok)
+				var astyp as Managed.Reflection.Type = Helpers::CommitEvalTTok(rc as TypeTok)
 				if astyp is null then
 					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("The Class '{1}' was not found.", rc::Value))
 				else
@@ -973,7 +973,7 @@ class public Evaluator
 				end if
 				AsmFactory::Type02 = astyp
 			elseif coalflg then
-				var rt as IKVM.Reflection.Type = null
+				var rt as Managed.Reflection.Type = null
 				ASTEmit(rc, false)
 				rctyp = AsmFactory::Type02
 				var n1 = Helpers::ProcessNullable(lctyp)
@@ -1008,13 +1008,13 @@ class public Evaluator
 						//convert T? to object
 						AsmFactory::Type02 = lctyp
 						ASTEmitValueFilter(true)
-						ILEmitter::EmitCall(Loader::LoadMethod(lctyp, "get_HasValue", IKVM.Reflection.Type::EmptyTypes))
+						ILEmitter::EmitCall(Loader::LoadMethod(lctyp, "get_HasValue", Managed.Reflection.Type::EmptyTypes))
 						ILEmitter::EmitBrfalse(SymTable::ReadIfEndLbl())
 						if n2 is null then
 							//unpack T from T?
 							AsmFactory::Type02 = lctyp
 							ASTEmitValueFilter(true)
-							ILEmitter::EmitCall(Loader::LoadMethod(lctyp, "get_Value", IKVM.Reflection.Type::EmptyTypes))
+							ILEmitter::EmitCall(Loader::LoadMethod(lctyp, "get_Value", Managed.Reflection.Type::EmptyTypes))
 						end if
 						ILEmitter::EmitBr(SymTable::ReadIfNxtBlkLbl())
 						ILEmitter::MarkLbl(SymTable::ReadIfEndLbl())
@@ -1062,7 +1062,7 @@ class public Evaluator
 				Helpers::DelegateFlg = false
 			end if
 		else
-			var typ2 as IKVM.Reflection.Type
+			var typ2 as Managed.Reflection.Type
 		
 			if tok is StringLiteral then
 				var slit as StringLiteral = $StringLiteral$tok
@@ -1106,7 +1106,7 @@ class public Evaluator
 						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("The Class '{0}' is not defined.", gtctok::Name::Value))
 					end if
 					ILEmitter::EmitLdtoken(typ2)
-					ILEmitter::EmitCall(Loader::CachedLoadClass("System.Type")::GetMethod("GetTypeFromHandle", new IKVM.Reflection.Type[] {Loader::LoadClass("System.RuntimeTypeHandle")}))
+					ILEmitter::EmitCall(Loader::CachedLoadClass("System.Type")::GetMethod("GetTypeFromHandle", new Managed.Reflection.Type[] {Loader::LoadClass("System.RuntimeTypeHandle")}))
 				end if
 				AsmFactory::Type02 = Loader::CachedLoadClass("System.Type")
 			elseif tok is DefaultCallTok then
@@ -1140,7 +1140,7 @@ class public Evaluator
 				end if
 				var ti = SymTable:::CurnTypItem
 				if ti::NrGenParams > 0 then
-					var tps = new IKVM.Reflection.Type[ti::NrGenParams]
+					var tps = new Managed.Reflection.Type[ti::NrGenParams]
 					var i = -1
 					foreach tpi in ti::GenParams
 						i++
@@ -1341,7 +1341,7 @@ class public Evaluator
 								ILEmitter::EmitDup()
 								AsmFactory::Type02 = innerType
 								ASTEmitValueFilter(true)
-								ILEmitter::EmitCall(Loader::LoadMethod(innerType, "get_HasValue", IKVM.Reflection.Type::EmptyTypes))
+								ILEmitter::EmitCall(Loader::LoadMethod(innerType, "get_HasValue", Managed.Reflection.Type::EmptyTypes))
 								ILEmitter::EmitBrfalse(SymTable::ReadIfNxtBlkLbl())
 							end if
 
@@ -1357,7 +1357,7 @@ class public Evaluator
 							if emt then
 								if retType::get_IsValueType() andalso n2 is null then
 									//convert T to T? if T is a non nullable struct
-									ILEmitter::EmitNewobj(Helpers::GetLocCtor(retType, new IKVM.Reflection.Type[] {chainType}))
+									ILEmitter::EmitNewobj(Helpers::GetLocCtor(retType, new Managed.Reflection.Type[] {chainType}))
 								end if
 
 								if !innerType::Equals(retType) then
@@ -1403,7 +1403,7 @@ class public Evaluator
 							if emt then
 								if retType::get_IsValueType() andalso n2 is null then
 									//convert T to T? if T is a non nullable struct
-									ILEmitter::EmitNewobj(Helpers::GetLocCtor(retType, new IKVM.Reflection.Type[] {chainType}))
+									ILEmitter::EmitNewobj(Helpers::GetLocCtor(retType, new Managed.Reflection.Type[] {chainType}))
 								end if
 
 								if retType::get_IsValueType() then
@@ -1467,7 +1467,7 @@ class public Evaluator
 		return ASTEmit(asttok, true, bo, lab)
 	end method
 	
-	method public IKVM.Reflection.Type EvaluateType(var exp as Expr)
+	method public Managed.Reflection.Type EvaluateType(var exp as Expr)
 		ASTEmit(ConvToAST(ConvToRPN(exp)), false)
 		return AsmFactory::Type02
 	end method
@@ -1482,7 +1482,7 @@ class public Evaluator
 		var idtb1 as boolean = false
 		var idtb2 as boolean = false
 		var idtisstatic as boolean = false
-		var idttyp as IKVM.Reflection.Type
+		var idttyp as Managed.Reflection.Type
 		var fldinf as FieldInfo
 		var restrord as integer = 2
 		var isbyref as boolean = false
@@ -1647,7 +1647,7 @@ class public Evaluator
 		Evaluate(exp)
 		//--------------------------------------------------------------
 		
-		var outt as IKVM.Reflection.Type = AsmFactory::Type02
+		var outt as Managed.Reflection.Type = AsmFactory::Type02
 		
 		if idt::IsArr then
 			if !idttyp::get_IsArray() then

@@ -11,9 +11,9 @@ class public partial TypeItem
 	field public string Name
 	field public boolean IsStatic
 	//field public boolean IsANI
-	field public IKVM.Reflection.Type InhTyp
-	field public IKVM.Reflection.Type BakedTyp
-	field public C5.IList<of IKVM.Reflection.Type> Interfaces
+	field public Managed.Reflection.Type InhTyp
+	field public Managed.Reflection.Type BakedTyp
+	field public C5.IList<of Managed.Reflection.Type> Interfaces
 	field public TypeBuilder TypeBldr
 	field public EnumBuilder EnumBldr
 	field public C5.HashDictionary<of string, C5.IList<of MethodItem> > Methods
@@ -31,12 +31,12 @@ class public partial TypeItem
 		Name = nme
 		TypeBldr = bld
 		EnumBldr = bld3
-		Interfaces = new C5.LinkedList<of IKVM.Reflection.Type>()
-		Methods = new C5.HashDictionary<of string, C5.IList<of MethodItem> >()
+		Interfaces = new C5.LinkedList<of Managed.Reflection.Type>()
+		Methods = new C5.HashDictionary<of string, C5.IList<of MethodItem> >(C5.MemoryType::Normal)
 		Types = new C5.LinkedList<of TypeItem>()
 		Ctors = new C5.LinkedList<of CtorItem>()
-		Fields = new C5.HashDictionary<of string, FieldItem>()
-		TypGenParams = new C5.HashDictionary<of string, TypeParamItem>()
+		Fields = new C5.HashDictionary<of string, FieldItem>(C5.MemoryType::Normal)
+		TypGenParams = new C5.HashDictionary<of string, TypeParamItem>(C5.MemoryType::Normal)
 		GenParams = new C5.LinkedList<of GenericTypeParameterBuilder>()
 	end method
 	
@@ -77,15 +77,15 @@ class public partial TypeItem
 		Types::Add(t)
 	end method
 
-	method public void AddInterface(var i as IKVM.Reflection.Type)
+	method public void AddInterface(var i as Managed.Reflection.Type)
 		Interfaces::Add(i)
 	end method
 	
 	method public void NormalizeInterfaces()
-		Interfaces = new C5.LinkedList<of IKVM.Reflection.Type>() {AddAll(Enumerable::Distinct<of IKVM.Reflection.Type>(Interfaces))}
+		Interfaces = new C5.LinkedList<of Managed.Reflection.Type>() {AddAll(Enumerable::Distinct<of Managed.Reflection.Type>(Interfaces))}
 	end method
 
-	method public MethodInfo GetMethod(var nam as string, var paramst as IKVM.Reflection.Type[], var auxt as IKVM.Reflection.Type)
+	method public MethodInfo GetMethod(var nam as string, var paramst as Managed.Reflection.Type[], var auxt as Managed.Reflection.Type)
 		if !Methods::Contains(nam) then
 			return null
 		end if
@@ -107,7 +107,7 @@ class public partial TypeItem
 		end if
 	end method
 	
-	method public MethodInfo GetGenericMethod(var nam as string, var genparams as IKVM.Reflection.Type[], var paramst as IKVM.Reflection.Type[], var auxt as IKVM.Reflection.Type)
+	method public MethodInfo GetGenericMethod(var nam as string, var genparams as Managed.Reflection.Type[], var paramst as Managed.Reflection.Type[], var auxt as Managed.Reflection.Type)
 		if !Methods::Contains(nam) then
 			return null
 		end if
@@ -130,7 +130,7 @@ class public partial TypeItem
 		end if
 	end method
 	
-	method public MethodItem GetProtoMethod(var nam as string, var paramst as IKVM.Reflection.Type[])
+	method public MethodItem GetProtoMethod(var nam as string, var paramst as Managed.Reflection.Type[])
 		if !Methods::Contains(nam) then
 			return null
 		end if
@@ -144,7 +144,7 @@ class public partial TypeItem
 		end if
 	end method
 
-	method public ConstructorInfo GetCtor(var paramst as IKVM.Reflection.Type[], var auxt as IKVM.Reflection.Type)
+	method public ConstructorInfo GetCtor(var paramst as Managed.Reflection.Type[], var auxt as Managed.Reflection.Type)
 		var cil as CILambdas = new CILambdas(paramst, auxt)
 		var bd as IEnumerable<of ConstructorInfo> = Enumerable::Select<of CtorItem, ConstructorInfo>(Ctors,new Func<of CtorItem, ConstructorInfo>(cil::Bind))
 		var loc2 as IEnumerable<of ConstructorInfo> = Enumerable::Where<of ConstructorInfo>(bd,new Func<of ConstructorInfo,boolean>(cil::DetermineIfCandidate))
@@ -153,7 +153,7 @@ class public partial TypeItem
 		if matches[l] == 0 then
 			if (paramst[l] == 0) and (Ctors::get_Count() == 0) then
 				var cb as ConstructorBuilder = TypeBldr::DefineDefaultConstructor(MethodAttributes::Public)
-				Ctors::Add(new CtorItem(new IKVM.Reflection.Type[0], cb))
+				Ctors::Add(new CtorItem(new Managed.Reflection.Type[0], cb))
 				Loader::MemberTyp = TypeBldr
 				return cb
 			else
@@ -169,7 +169,7 @@ class public partial TypeItem
 		end if
 	end method
 
-	method public FieldInfo GetField(var nam as string, var auxt as IKVM.Reflection.Type)
+	method public FieldInfo GetField(var nam as string, var auxt as Managed.Reflection.Type)
 		Loader::FldLitFlag = false
 		Loader::EnumLitFlag = false
 	
@@ -213,7 +213,7 @@ end class
 
 class public TypeItem
 
-	method public TypeItem GetTypeItem(var t as IKVM.Reflection.Type)
+	method public TypeItem GetTypeItem(var t as Managed.Reflection.Type)
 		var til as TILambdas = new TILambdas(t)
 		return Enumerable::FirstOrDefault<of TypeItem>(Enumerable::Where<of TypeItem>(Types,new Func<of TypeItem,boolean>(til::DetermineIfCandidateType)))
 	end method
@@ -224,7 +224,7 @@ class public TypeItem
 		return Enumerable::FirstOrDefault<of TypeItem>(lot2)
 	end method
 
-	method public IKVM.Reflection.Type GetType(var nam as string)
+	method public Managed.Reflection.Type GetType(var nam as string)
 		var ti as TypeItem = GetTypeItem(nam)
 		if ti == null then
 			return null

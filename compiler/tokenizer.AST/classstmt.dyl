@@ -37,7 +37,7 @@ class public ClassStmt extends BlockStmt implements IMayHaveConstraints, IConstr
 		ClassName = new TypeTok()
 		InhClass = new TypeTok()
 		ImplInterfaces = new C5.LinkedList<of TypeTok>()
-		_Constraints = new C5.HashDictionary<of string, C5.LinkedList<of Token> >()
+		_Constraints = new C5.HashDictionary<of string, C5.LinkedList<of Token> >(C5.MemoryType::Normal)
 	end method
 
 	method public void AddAttr(var attrtoadd as Attributes.Attribute)

@@ -8,7 +8,8 @@
     <RootNamespace>dylan.NET.Tokenizer.AST</RootNamespace>
     <UsePartialTypes>false</UsePartialTypes>
     <AssemblyName>tokenizer.AST</AssemblyName>
-    <ReleaseVersion>11.8.2.4</ReleaseVersion>
+    <ReleaseVersion>11.8.3.0</ReleaseVersion>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,11 +32,11 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
-    <Reference Include="IKVM.Reflection">
-      <HintPath>..\lib\IKVM.Reflection.dll</HintPath>
+    <Reference Include="Managed.Reflection">
+      <HintPath>..\lib\Managed.Reflection.dll</HintPath>
     </Reference>
     <Reference Include="C5">
-      <HintPath>..\packages\C5.2.3.0.1\lib\net40\C5.dll</HintPath>
+      <HintPath>..\packages\C5.2.4.5947.17249\lib\net45\C5.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

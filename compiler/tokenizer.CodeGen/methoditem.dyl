@@ -9,12 +9,12 @@
 class public MethodItem
 
 	field public string Name
-	field public IKVM.Reflection.Type MethodTyp
-	field public IKVM.Reflection.Type[] ParamTyps
+	field public Managed.Reflection.Type MethodTyp
+	field public Managed.Reflection.Type[] ParamTyps
 	field public MethodBuilder MethodBldr
 	field public integer NrGenParams
 
-	method public void MethodItem(var nme as string, var typ as IKVM.Reflection.Type, var ptyps as IKVM.Reflection.Type[], var bld as MethodBuilder)
+	method public void MethodItem(var nme as string, var typ as Managed.Reflection.Type, var ptyps as Managed.Reflection.Type[], var bld as MethodBuilder)
 		mybase::ctor()
 		Name = nme
 		MethodTyp = typ
@@ -24,7 +24,7 @@ class public MethodItem
 	end method
 	
 	method public void MethodItem()
-		ctor(string::Empty, $IKVM.Reflection.Type$null, new IKVM.Reflection.Type[0], $MethodBuilder$null)
+		ctor(string::Empty, $Managed.Reflection.Type$null, new Managed.Reflection.Type[0], $MethodBuilder$null)
 	end method
 
 	method public override string ToString() => i"{Name} : {$string$ParamTyps[l]} : {MethodTyp::ToString()}"

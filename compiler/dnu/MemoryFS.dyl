@@ -13,7 +13,7 @@ namespace dylan.NET.Utils
 		//field private static C5.LinkedList<of string> anis
 
 		method private static void MemoryFS()
-			fs = new C5.HashDictionary<of string, Stream>()
+			fs = new C5.HashDictionary<of string, Stream>(C5.MemoryType::Normal)
 			//anis = new C5.LinkedList<of string>()
 		end method
 

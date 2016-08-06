@@ -213,7 +213,7 @@ class public CodeGenerator
 
 	method public void EmitMSIL(var stmts as StmtSet, var fpath as string)
 		stmts::Path = fpath
-		ThreadPool::QueueUserWorkItem(new WaitCallback(LPThread()),stmts)
+		//ThreadPool::QueueUserWorkItem(new WaitCallback(LPThread()),stmts)
 		
 		//var i as integer = -1
 		
@@ -229,7 +229,7 @@ class public CodeGenerator
 
 		if ILEmitter::DocWriters::get_Count() >= 0 then
 			if AsmFactory::MdlB isnot null and AsmFactory::DebugFlg then
-				var docw as ISymbolDocumentWriter = AsmFactory::MdlB::DefineDocument(fpath, Guid::Empty, Guid::Empty, Guid::Empty)
+				var docw as Managed.Reflection.Emit.ISymbolDocumentWriter = AsmFactory::MdlB::DefineDocument(fpath, Guid::Parse("3f5162f8-07c6-11d3-9053-00c04fa302a1"), Guid::Empty, Guid::Empty)
 				ILEmitter::DocWriter = docw
 				ILEmitter::AddDocWriter(docw)
 			end if
@@ -258,7 +258,7 @@ class public CodeGenerator
 				if ILEmitter::SrcFiles::get_Count() > 0 then
 					if AsmFactory::MdlB isnot null and AsmFactory::DebugFlg then
 						var fp = Path::GetFullPath(ILEmitter::SrcFiles::get_Last())
-						var docw as ISymbolDocumentWriter = AsmFactory::MdlB::DefineDocument(fp, Guid::Empty, Guid::Empty, Guid::Empty)
+						var docw as Managed.Reflection.Emit.ISymbolDocumentWriter = AsmFactory::MdlB::DefineDocument(fp, Guid::Parse("3f5162f8-07c6-11d3-9053-00c04fa302a1"), Guid::Empty, Guid::Empty)
 						ILEmitter::DocWriter = docw
 						ILEmitter::AddDocWriter(docw)
 					end if
@@ -322,7 +322,7 @@ class public CodeGenerator
 		end if
 
 		stmts::Stmts::Clear()
-		stmts::Stmts = new C5.ArrayList<of Stmt>(0)
+		stmts::Stmts = new C5.ArrayList<of Stmt>(0, C5.MemoryType::Normal)
 	end method
 
 end class

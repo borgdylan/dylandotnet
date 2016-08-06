@@ -11,15 +11,15 @@ class public TypeParamItem
 	field public GenericTypeParameterBuilder Bldr
 	field public string Name
 	field public boolean HasCtor
-	field public IKVM.Reflection.Type BaseType
-	field public C5.LinkedList<of IKVM.Reflection.Type> Interfaces
+	field public Managed.Reflection.Type BaseType
+	field public C5.LinkedList<of Managed.Reflection.Type> Interfaces
 	
 	method public void TypeParamItem(var name as string, var bld as GenericTypeParameterBuilder)
 		mybase::ctor()
 		Bldr = bld
 		Name = name
 		BaseType = Loader::CachedLoadClass("System.Object")
-		Interfaces = new C5.LinkedList<of IKVM.Reflection.Type>()
+		Interfaces = new C5.LinkedList<of Managed.Reflection.Type>()
 	end method
 	
 end class

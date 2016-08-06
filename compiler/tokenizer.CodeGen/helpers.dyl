@@ -15,12 +15,12 @@ class public static Helpers
 	field public static boolean OpCodeSuppFlg
 	field public static boolean EqSuppFlg
 	field public static boolean BaseFlg
-	field public static IKVM.Reflection.Type LeftOp
-	field public static IKVM.Reflection.Type RightOp
+	field public static Managed.Reflection.Type LeftOp
+	field public static Managed.Reflection.Type RightOp
 
 	//uses NullExprFlag as input
 	[method: ComVisible(false)]
-	method public static void CheckAssignability(var t1 as IKVM.Reflection.Type, var t2 as IKVM.Reflection.Type)
+	method public static void CheckAssignability(var t1 as Managed.Reflection.Type, var t2 as Managed.Reflection.Type)
 		if !t1::IsAssignableFrom(t2) andalso #expr(!NullExprFlg orelse Loader::CachedLoadClass("System.ValueType")::IsAssignableFrom(t1)) then
 			//StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("'{0}','{1}'.", t1::get_AssemblyQualifiedName(), t2::get_AssemblyQualifiedName()))
 			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Slots of type '{0}' cannot be assigned values of type '{1}'.", t1::ToString(), t2::ToString()))
@@ -388,7 +388,7 @@ class public static Helpers
 
 
 	[method: ComVisible(false)]
-	method public static boolean CheckUnsigned(var t as IKVM.Reflection.Type) => _
+	method public static boolean CheckUnsigned(var t as Managed.Reflection.Type) => _
 		t::Equals(Loader::CachedLoadClass("System.UInt32")) orelse _
 		t::Equals(Loader::CachedLoadClass("System.UInt64")) orelse _
 		t::Equals(Loader::CachedLoadClass("System.Char")) orelse _
@@ -397,7 +397,7 @@ class public static Helpers
 		t::Equals(Loader::CachedLoadClass("System.UIntPtr"))
 	
 	[method: ComVisible(false)]
-	method public static boolean CheckSigned(var t as IKVM.Reflection.Type) => _
+	method public static boolean CheckSigned(var t as Managed.Reflection.Type) => _
 		t::Equals(Loader::CachedLoadClass("System.SByte")) orelse _
 		t::Equals(Loader::CachedLoadClass("System.Int16")) orelse _
 		t::Equals(Loader::CachedLoadClass("System.Int32")) orelse _
@@ -405,30 +405,30 @@ class public static Helpers
 		t::Equals(Loader::CachedLoadClass("System.IntPtr"))
 	
 	[method: ComVisible(false)]
-	method public static boolean CheckSHLRLHS(var t as IKVM.Reflection.Type) => _
+	method public static boolean CheckSHLRLHS(var t as Managed.Reflection.Type) => _
 		t::Equals(Loader::CachedLoadClass("System.Int32")) orelse t::Equals(Loader::CachedLoadClass("System.UInt32")) _
 		orelse t::Equals(Loader::CachedLoadClass("System.Int64")) orelse t::Equals(Loader::CachedLoadClass("System.UInt64")) _
 		orelse t::Equals(Loader::CachedLoadClass("System.IntPtr")) orelse t::Equals(Loader::CachedLoadClass("System.UIntPtr"))
 	
 	[method: ComVisible(false)]
-	method public static boolean CheckSHLRRHS(var t as IKVM.Reflection.Type, var accepti64 as boolean) => _
+	method public static boolean CheckSHLRRHS(var t as Managed.Reflection.Type, var accepti64 as boolean) => _
 		t::Equals(Loader::CachedLoadClass("System.Int32")) orelse _
 		(accepti64 andalso t::Equals(Loader::CachedLoadClass("System.Int64"))) _
 		orelse t::Equals(Loader::CachedLoadClass("System.IntPtr"))
 	
 	[method: ComVisible(false)]
-	method public static boolean IsPrimitiveIntegralType(var t as IKVM.Reflection.Type) => CheckSigned(t) orelse CheckUnsigned(t)
+	method public static boolean IsPrimitiveIntegralType(var t as Managed.Reflection.Type) => CheckSigned(t) orelse CheckUnsigned(t)
 	
 	[method: ComVisible(false)]
-	method public static boolean IsPrimitiveFPType(var t as IKVM.Reflection.Type) => _
+	method public static boolean IsPrimitiveFPType(var t as Managed.Reflection.Type) => _
 		t::Equals(Loader::CachedLoadClass("System.Double")) orelse t::Equals(Loader::CachedLoadClass("System.Single"))
 	
 	[method: ComVisible(false)]
-	method public static boolean IsPrimitiveNumericType(var t as IKVM.Reflection.Type) => _
+	method public static boolean IsPrimitiveNumericType(var t as Managed.Reflection.Type) => _
 		CheckSigned(t) orelse IsPrimitiveFPType(t) orelse CheckUnsigned(t)
 	
 	[method: ComVisible(false)]
-	method public static integer GetPrimitiveNumericSize(var t as IKVM.Reflection.Type)
+	method public static integer GetPrimitiveNumericSize(var t as Managed.Reflection.Type)
 		if t::Equals(Loader::CachedLoadClass("System.Boolean")) then
 			return 1
 		elseif t::Equals(Loader::CachedLoadClass("System.SByte")) orelse t::Equals(Loader::CachedLoadClass("System.Byte")) then
@@ -447,14 +447,14 @@ class public static Helpers
 	end method
 
 	[method: ComVisible(false)]
-	method public static IKVM.Reflection.Type CommitEvalTTok(var tt as TypeTok)
+	method public static Managed.Reflection.Type CommitEvalTTok(var tt as TypeTok)
 		
 		if tt is null then
 			return null
 		end if
 		
-		var typ as IKVM.Reflection.Type = null
-		var temptyp as IKVM.Reflection.Type
+		var typ as Managed.Reflection.Type = null
+		var temptyp as Managed.Reflection.Type
 		var gtt as GenericTypeTok
 		var pttoks as C5.LinkedList<of TypeTok> = new C5.LinkedList<of TypeTok>()
 
@@ -463,7 +463,7 @@ class public static Helpers
 			gtt = $GenericTypeTok$tt
 			pttoks = gtt::Params
 
-			var lop as C5.IList<of IKVM.Reflection.Type> = new C5.LinkedList<of IKVM.Reflection.Type>()
+			var lop as C5.IList<of Managed.Reflection.Type> = new C5.LinkedList<of Managed.Reflection.Type>()
 			
 			var tstr = gtt::Value + "`" + $string$pttoks::get_Count()
 
@@ -502,7 +502,7 @@ class public static Helpers
 				else
 					if gtt::NestedType is GenericTypeTok then
 						var pttoks2 = #expr($GenericTypeTok$gtt::NestedType)::Params
-						var lop2 as C5.IList<of IKVM.Reflection.Type> = new C5.LinkedList<of IKVM.Reflection.Type>()
+						var lop2 as C5.IList<of Managed.Reflection.Type> = new C5.LinkedList<of Managed.Reflection.Type>()
 
 						foreach pt in pttoks2
 							temptyp = CommitEvalTTok(pt)
@@ -583,11 +583,11 @@ class public static Helpers
 	end method
 
 	[method: ComVisible(false)]
-	method public static IKVM.Reflection.Type[] ProcessParams(var ps as IEnumerable<of Expr>)
+	method public static Managed.Reflection.Type[] ProcessParams(var ps as IEnumerable<of Expr>)
 		var curp as VarExpr = null
-		var typ as IKVM.Reflection.Type = null
+		var typ as Managed.Reflection.Type = null
 		
-		var lt = new C5.LinkedList<of IKVM.Reflection.Type>()
+		var lt = new C5.LinkedList<of Managed.Reflection.Type>()
 		
 		foreach p in ps
 			curp = $VarExpr$p
@@ -1228,7 +1228,7 @@ class public static Helpers
 	end method
 
 	[method: ComVisible(false)]
-	method public static void EmitElemLd(var t as IKVM.Reflection.Type)
+	method public static void EmitElemLd(var t as Managed.Reflection.Type)
 		if (AsmFactory::AddrFlg andalso Loader::CachedLoadClass("System.ValueType")::IsAssignableFrom(AsmFactory::Type04) andalso (AsmFactory::Type04 isnot GenericTypeParameterBuilder) ) _
 		 orelse AsmFactory::ForcedAddrFlg then
 			ILEmitter::EmitLdelema(t)
@@ -1247,10 +1247,10 @@ class public static Helpers
 	end method
 
 	[method: ComVisible(false)]
-	method public static void EmitConv(var source as IKVM.Reflection.Type, var sink as IKVM.Reflection.Type, var isNull as boolean)
+	method public static void EmitConv(var source as Managed.Reflection.Type, var sink as Managed.Reflection.Type, var isNull as boolean)
 		var isgenparam = (source is GenericTypeParameterBuilder) orelse (sink  is GenericTypeParameterBuilder)
-		var convc as IKVM.Reflection.Type = Loader::LoadClass("System.Convert")
-		var typ as IKVM.Reflection.Type
+		var convc as Managed.Reflection.Type = Loader::LoadClass("System.Convert")
+		var typ as Managed.Reflection.Type
 		var m1 as MethodInfo
 		//var c1 as ConstructorInfo
 	
@@ -1354,18 +1354,18 @@ class public static Helpers
 		
 		if source::Equals(Loader::CachedLoadClass("System.IntPtr")) then
 			typ = Loader::CachedLoadClass("System.IntPtr")
-			m1 = typ::GetMethod("ToInt64", IKVM.Reflection.Type::EmptyTypes)
+			m1 = typ::GetMethod("ToInt64", Managed.Reflection.Type::EmptyTypes)
 			ILEmitter::EmitCallvirt(m1)
 			source = Loader::CachedLoadClass("System.Int64")
 		end if
 		
 		if sink::Equals(Loader::CachedLoadClass("System.String")) then
-			m1 = convc::GetMethod("ToString", new IKVM.Reflection.Type[] {source})
+			m1 = convc::GetMethod("ToString", new Managed.Reflection.Type[] {source})
 			if m1 isnot null then
 				ILEmitter::EmitCall(m1)
 			end if
 		elseif sink::Equals(Loader::CachedLoadClass("System.Char")) then
-			m1 = convc::GetMethod("ToChar", new IKVM.Reflection.Type[] {source})
+			m1 = convc::GetMethod("ToChar", new Managed.Reflection.Type[] {source})
 			if IsPrimitiveIntegralType(source) then
 				if (GetPrimitiveNumericSize(source) <= 16) and CheckUnsigned(source) then
 					ILEmitter::EmitConvU2()
@@ -1376,22 +1376,22 @@ class public static Helpers
 				ILEmitter::EmitCall(m1)
 			end if
 		elseif sink::Equals(Loader::CachedLoadClass("System.Decimal")) then
-			m1 = convc::GetMethod("ToDecimal", new IKVM.Reflection.Type[] {source})
+			m1 = convc::GetMethod("ToDecimal", new Managed.Reflection.Type[] {source})
 			if m1 isnot null then
 				ILEmitter::EmitCall(m1)
 			end if
 		elseif sink::Equals(Loader::CachedLoadClass("System.Double")) then
-			m1 = convc::GetMethod("ToDouble", new IKVM.Reflection.Type[] {source})
+			m1 = convc::GetMethod("ToDouble", new Managed.Reflection.Type[] {source})
 			if m1 isnot null then
 				ILEmitter::EmitCall(m1)
 			end if
 		elseif sink::Equals(Loader::CachedLoadClass("System.Single")) then
-			m1 = convc::GetMethod("ToSingle", new IKVM.Reflection.Type[] {source})
+			m1 = convc::GetMethod("ToSingle", new Managed.Reflection.Type[] {source})
 			if m1 isnot null then
 				ILEmitter::EmitCall(m1)
 			end if
 		elseif sink::Equals(Loader::CachedLoadClass("System.Int64")) then
-			m1 = convc::GetMethod("ToInt64", new IKVM.Reflection.Type[] {source})
+			m1 = convc::GetMethod("ToInt64", new Managed.Reflection.Type[] {source})
 			if IsPrimitiveIntegralType(source) then
 				if GetPrimitiveNumericSize(source) <= 32 then
 					ILEmitter::EmitConvI8(CheckSigned(source))
@@ -1402,14 +1402,14 @@ class public static Helpers
 				ILEmitter::EmitCall(m1)
 			end if
 		elseif sink::Equals(Loader::CachedLoadClass("System.UInt64")) then
-			m1 = convc::GetMethod("ToUInt64", new IKVM.Reflection.Type[] {source})
+			m1 = convc::GetMethod("ToUInt64", new Managed.Reflection.Type[] {source})
 			if IsPrimitiveIntegralType(source) then
 				ILEmitter::EmitConvU8(CheckSigned(source))
 			elseif m1 isnot null then
 				ILEmitter::EmitCall(m1)
 			end if
 		elseif sink::Equals(Loader::CachedLoadClass("System.Int32")) then
-			m1 = convc::GetMethod("ToInt32", new IKVM.Reflection.Type[] {source})
+			m1 = convc::GetMethod("ToInt32", new Managed.Reflection.Type[] {source})
 			if IsPrimitiveIntegralType(source) then
 				if GetPrimitiveNumericSize(source) <= 16 then
 					ILEmitter::EmitConvI4()
@@ -1420,14 +1420,14 @@ class public static Helpers
 				ILEmitter::EmitCall(m1)
 			end if
 		elseif sink::Equals(Loader::LoadClass("System.UInt32")) then
-			m1 = convc::GetMethod("ToUInt32", new IKVM.Reflection.Type[] {source})
+			m1 = convc::GetMethod("ToUInt32", new Managed.Reflection.Type[] {source})
 			if IsPrimitiveIntegralType(source) then
 				ILEmitter::EmitConvOvfU4(CheckSigned(source))
 			elseif m1 isnot null then
 				ILEmitter::EmitCall(m1)
 			end if
 		elseif sink::Equals(Loader::CachedLoadClass("System.Int16")) then
-			m1 = convc::GetMethod("ToInt16", new IKVM.Reflection.Type[] {source})
+			m1 = convc::GetMethod("ToInt16", new Managed.Reflection.Type[] {source})
 			if IsPrimitiveIntegralType(source) then
 				if GetPrimitiveNumericSize(source) <= 8 then
 					ILEmitter::EmitConvI2()
@@ -1438,28 +1438,28 @@ class public static Helpers
 				ILEmitter::EmitCall(m1)
 			end if
 		elseif sink::Equals(Loader::CachedLoadClass("System.UInt16")) then
-			m1 = convc::GetMethod("ToUInt16", new IKVM.Reflection.Type[] {source})
+			m1 = convc::GetMethod("ToUInt16", new Managed.Reflection.Type[] {source})
 			if IsPrimitiveIntegralType(source) then
 				ILEmitter::EmitConvOvfU2(CheckSigned(source))
 			elseif m1 isnot null then
 				ILEmitter::EmitCall(m1)
 			end if
 		elseif sink::Equals(Loader::CachedLoadClass("System.SByte")) then
-			m1 = convc::GetMethod("ToSByte", new IKVM.Reflection.Type[] {source})
+			m1 = convc::GetMethod("ToSByte", new Managed.Reflection.Type[] {source})
 			if IsPrimitiveIntegralType(source) then
 				ILEmitter::EmitConvOvfI1(CheckSigned(source))
 			elseif m1 isnot null then
 				ILEmitter::EmitCall(m1)
 			end if
 		elseif sink::Equals(Loader::CachedLoadClass("System.Byte")) then
-			m1 = convc::GetMethod("ToByte", new IKVM.Reflection.Type[] {source})
+			m1 = convc::GetMethod("ToByte", new Managed.Reflection.Type[] {source})
 			if IsPrimitiveIntegralType(source) then
 				ILEmitter::EmitConvOvfU1(CheckSigned(source))
 			elseif m1 isnot null then
 				ILEmitter::EmitCall(m1)
 			end if
 		elseif sink::Equals(Loader::CachedLoadClass("System.Boolean")) then
-			m1 = convc::GetMethod("ToBoolean", new IKVM.Reflection.Type[] {source})
+			m1 = convc::GetMethod("ToBoolean", new Managed.Reflection.Type[] {source})
 			if m1 isnot null then
 				ILEmitter::EmitCall(m1)
 			end if
@@ -1469,7 +1469,7 @@ class public static Helpers
 	end method
 
 	[method: ComVisible(false)]
-	method public static void EmitConv(var source as IKVM.Reflection.Type, var sink as IKVM.Reflection.Type)
+	method public static void EmitConv(var source as Managed.Reflection.Type, var sink as Managed.Reflection.Type)
 		EmitConv(source, sink, false)
 	end method
 
@@ -1535,7 +1535,7 @@ class public static Helpers
 	end method
 
 	[method: ComVisible(false)]
-	method public static ConstructorInfo GetLocCtor(var t as IKVM.Reflection.Type, var typs as IKVM.Reflection.Type[])
+	method public static ConstructorInfo GetLocCtor(var t as Managed.Reflection.Type, var typs as Managed.Reflection.Type[])
 		if t::Equals(AsmFactory::CurnTypB) then
 			return SymTable::FindCtor(typs)
 		else
@@ -1678,7 +1678,7 @@ class public static Helpers
 	end method
 
 	[method: ComVisible(false)]
-	method public static IEnumerable<of IKVM.Reflection.Type> GetTypeInterfaces(var t as IKVM.Reflection.Type)
+	method public static IEnumerable<of Managed.Reflection.Type> GetTypeInterfaces(var t as Managed.Reflection.Type)
 		if t is GenericTypeParameterBuilder then
 			return GetTPI(t::get_Name())::Interfaces
 		end if
@@ -1692,7 +1692,7 @@ class public static Helpers
 	end method
 
 	[method: ComVisible(false)]
-	method public static MethodInfo GetExtMet(var t as IKVM.Reflection.Type, var mn as MethodNameTok, var paramtyps as IKVM.Reflection.Type[])
+	method public static MethodInfo GetExtMet(var t as Managed.Reflection.Type, var mn as MethodNameTok, var paramtyps as Managed.Reflection.Type[])
 		if t is null then
 			return null
 		end if
@@ -1723,7 +1723,7 @@ class public static Helpers
 		else		
 			if mn is GenericMethodNameTok then
 				var gmn as GenericMethodNameTok = $GenericMethodNameTok$mn
-				var genparams as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[gmn::Params::get_Count()]
+				var genparams as Managed.Reflection.Type[] = new Managed.Reflection.Type[gmn::Params::get_Count()]
 				var i = -1
 				foreach gp in gmn::Params
 					i++
@@ -1748,7 +1748,7 @@ class public static Helpers
 	end method
 
 	[method: ComVisible(false)]
-	method public static MethodInfo GetExtMet(var ts as IEnumerable<of IKVM.Reflection.Type>, var mn as MethodNameTok, var paramtyps as IKVM.Reflection.Type[])
+	method public static MethodInfo GetExtMet(var ts as IEnumerable<of Managed.Reflection.Type>, var mn as MethodNameTok, var paramtyps as Managed.Reflection.Type[])
 		foreach t in ts
 			var res = GetExtMet(t, mn, paramtyps)
 			if res isnot null then
@@ -1760,7 +1760,7 @@ class public static Helpers
 	end method
 
 	[method: ComVisible(false)]
-	method public static MethodInfo GetLocMet(var mn as MethodNameTok, var typs as IKVM.Reflection.Type[])
+	method public static MethodInfo GetLocMet(var mn as MethodNameTok, var typs as Managed.Reflection.Type[])
 		var mnstrarr as string[] = ParseUtils::StringParser(mn::Value, ':')
 		var nam as string = mnstrarr[--mnstrarr[l]]
 		var metinf as MethodInfo = null
@@ -1768,7 +1768,7 @@ class public static Helpers
 
 		if mn is GenericMethodNameTok then
 			var gmn as GenericMethodNameTok = $GenericMethodNameTok$mn
-			var genparams as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[gmn::Params::get_Count()]
+			var genparams as Managed.Reflection.Type[] = new Managed.Reflection.Type[gmn::Params::get_Count()]
 			var i = -1
 			foreach gp in gmn::Params
 				i++
@@ -1794,7 +1794,7 @@ class public static Helpers
 	end method
 	
 	[method: ComVisible(false)]
-	method public static FieldInfo GetExtFld(var t as IKVM.Reflection.Type, var fld as string)
+	method public static FieldInfo GetExtFld(var t as Managed.Reflection.Type, var fld as string)
 		if t is null then
 			return null
 		end if
@@ -1803,7 +1803,7 @@ class public static Helpers
 	end method
 	
 	[method: ComVisible(false)]
-	method public static PropertyInfo GetExtProp(var t as IKVM.Reflection.Type, var prop as string)
+	method public static PropertyInfo GetExtProp(var t as Managed.Reflection.Type, var prop as string)
 		if t is null then
 			return null
 		end if
@@ -1877,16 +1877,16 @@ class public static Helpers
 	end method
 	
 	[method: ComVisible(false)]
-	method public static CollectionItem ProcessCollection(var t as IKVM.Reflection.Type, var forcearr as boolean)
+	method public static CollectionItem ProcessCollection(var t as Managed.Reflection.Type, var forcearr as boolean)
 		
 		if forcearr then
 			return null
 		end if
 		
 		var ci as CollectionItem = new CollectionItem()
-		var ie as IKVM.Reflection.Type = Loader::CachedLoadClass("System.Collections.Generic.ICollection`1")
-		var ie2 as IKVM.Reflection.Type = Loader::CachedLoadClass("System.Collections.ICollection")
-		var ie3 as IKVM.Reflection.Type = null
+		var ie as Managed.Reflection.Type = Loader::CachedLoadClass("System.Collections.Generic.ICollection`1")
+		var ie2 as Managed.Reflection.Type = Loader::CachedLoadClass("System.Collections.ICollection")
+		var ie3 as Managed.Reflection.Type = null
 		var flgs as boolean[] = new boolean[] {false, false}
 		
 		if t::get_IsGenericType() then
@@ -1929,8 +1929,8 @@ class public static Helpers
 			end if
 		end if
 		
-		ci::AddMtd = Loader::LoadMethod(ie3, "Add", new IKVM.Reflection.Type[] {ci::ElemType})
-		ci::Ctor = GetLocCtor(t, IKVM.Reflection.Type::EmptyTypes)
+		ci::AddMtd = Loader::LoadMethod(ie3, "Add", new Managed.Reflection.Type[] {ci::ElemType})
+		ci::Ctor = GetLocCtor(t, Managed.Reflection.Type::EmptyTypes)
 		
 		return ci
 	end method
@@ -1938,11 +1938,11 @@ class public static Helpers
 	
 	//for IEnumerable<of T>
 	[method: ComVisible(false)]
-	method public static MethodInfo[] ProcessForeach(var t as IKVM.Reflection.Type)
+	method public static MethodInfo[] ProcessForeach(var t as Managed.Reflection.Type)
 		var arr as MethodInfo[] = new MethodInfo[3]
-		var ie as IKVM.Reflection.Type = Loader::CachedLoadClass("System.Collections.Generic.IEnumerable`1")
-		var ie2 as IKVM.Reflection.Type = Loader::CachedLoadClass("System.Collections.IEnumerable")
-		var ie3 as IKVM.Reflection.Type = null
+		var ie as Managed.Reflection.Type = Loader::CachedLoadClass("System.Collections.Generic.IEnumerable`1")
+		var ie2 as Managed.Reflection.Type = Loader::CachedLoadClass("System.Collections.IEnumerable")
+		var ie3 as Managed.Reflection.Type = null
 		var flgs as boolean[] = new boolean[] {false, false}
 		
 		if t::get_IsGenericType() then
@@ -1988,19 +1988,19 @@ class public static Helpers
 			end if
 		end if
 		
-		arr[0] = Loader::LoadMethod(ie3, "GetEnumerator", IKVM.Reflection.Type::EmptyTypes)
-		arr[1] = Loader::LoadMethod(arr[0]::get_ReturnType(), "MoveNext", IKVM.Reflection.Type::EmptyTypes)
-		arr[2] = Loader::LoadMethod(arr[0]::get_ReturnType(), "get_Current", IKVM.Reflection.Type::EmptyTypes)
+		arr[0] = Loader::LoadMethod(ie3, "GetEnumerator", Managed.Reflection.Type::EmptyTypes)
+		arr[1] = Loader::LoadMethod(arr[0]::get_ReturnType(), "MoveNext", Managed.Reflection.Type::EmptyTypes)
+		arr[2] = Loader::LoadMethod(arr[0]::get_ReturnType(), "get_Current", Managed.Reflection.Type::EmptyTypes)
 		
 		return arr
 	end method
 	
 	//for IEnumerator<of T>
 	[method: ComVisible(false)]
-	method public static MethodInfo[] ProcessForeach2(var t as IKVM.Reflection.Type)
-		var ie as IKVM.Reflection.Type = Loader::CachedLoadClass("System.Collections.Generic.IEnumerator`1")
-		var ie2 as IKVM.Reflection.Type = Loader::CachedLoadClass("System.Collections.IEnumerator")
-		var ie3 as IKVM.Reflection.Type = null
+	method public static MethodInfo[] ProcessForeach2(var t as Managed.Reflection.Type)
+		var ie as Managed.Reflection.Type = Loader::CachedLoadClass("System.Collections.Generic.IEnumerator`1")
+		var ie2 as Managed.Reflection.Type = Loader::CachedLoadClass("System.Collections.IEnumerator")
+		var ie3 as Managed.Reflection.Type = null
 		var flgs as boolean[] = new boolean[] {false, false}
 		
 		if t::get_IsGenericType() then
@@ -2046,13 +2046,13 @@ class public static Helpers
 			end if
 		end if
 		
-		return new MethodInfo[] {Loader::LoadMethod(ie3, "MoveNext", IKVM.Reflection.Type::EmptyTypes), Loader::LoadMethod(ie3, "get_Current", IKVM.Reflection.Type::EmptyTypes)}
+		return new MethodInfo[] {Loader::LoadMethod(ie3, "MoveNext", Managed.Reflection.Type::EmptyTypes), Loader::LoadMethod(ie3, "get_Current", Managed.Reflection.Type::EmptyTypes)}
 	end method
 
 	//for Nullable<of T>
 	[method: ComVisible(false)]
-	method public static IKVM.Reflection.Type ProcessNullable(var t as IKVM.Reflection.Type)
-		var nult as IKVM.Reflection.Type = Loader::CachedLoadClass("System.Nullable`1")
+	method public static Managed.Reflection.Type ProcessNullable(var t as Managed.Reflection.Type)
+		var nult as Managed.Reflection.Type = Loader::CachedLoadClass("System.Nullable`1")
 
 		if t::get_IsGenericType() then
 			if nult::Equals(t::GetGenericTypeDefinition()) then
@@ -2065,23 +2065,23 @@ class public static Helpers
 
 	//for Nullable<of T>
 	[method: ComVisible(false)]
-	method public static IKVM.Reflection.Type MakeNullable(var t as IKVM.Reflection.Type)
+	method public static Managed.Reflection.Type MakeNullable(var t as Managed.Reflection.Type)
 		if !t::get_IsValueType() then
 			return t
 		end if
 
-		var nult as IKVM.Reflection.Type = Loader::CachedLoadClass("System.Nullable`1")
+		var nult as Managed.Reflection.Type = Loader::CachedLoadClass("System.Nullable`1")
 
 		if t::get_IsGenericType() andalso nult::Equals(t::GetGenericTypeDefinition()) then
 			return t
 		else
-			return nult::MakeGenericType(new IKVM.Reflection.Type[] {t})
+			return nult::MakeGenericType(new Managed.Reflection.Type[] {t})
 		end if
 	end method
 
 	[method: ComVisible(false)]
-	method public static IEnumerable<of IKVM.Reflection.Type> GetInhHierarchy(var t as IKVM.Reflection.Type)
-		var l = new C5.LinkedList<of IKVM.Reflection.Type> {t}
+	method public static IEnumerable<of Managed.Reflection.Type> GetInhHierarchy(var t as Managed.Reflection.Type)
+		var l = new C5.LinkedList<of Managed.Reflection.Type> {t}
 		do while t::get_BaseType() isnot null
 			t = t::get_BaseType()
 			l::Add(t)
@@ -2090,7 +2090,7 @@ class public static Helpers
 	end method
 	
 	[method: ComVisible(false)]
-	method public static IKVM.Reflection.Type CheckCompat(var ta as IKVM.Reflection.Type,var tb as IKVM.Reflection.Type)
+	method public static Managed.Reflection.Type CheckCompat(var ta as Managed.Reflection.Type,var tb as Managed.Reflection.Type)
 		if ta::Equals(tb) then
 			return ta
 		else
@@ -2111,7 +2111,7 @@ class public static Helpers
 			
 			var la = GetInhHierarchy(ta)::GetEnumerator()
 			var lb = GetInhHierarchy(tb)::GetEnumerator()
-			var curans as IKVM.Reflection.Type = null
+			var curans as Managed.Reflection.Type = null
 			do while la::MoveNext() and lb::MoveNext()
 				if la::get_Current()::Equals(lb::get_Current()) then
 					curans = la::get_Current()
@@ -2126,7 +2126,7 @@ class public static Helpers
 	end method
 	
 	[method: ComVisible(false)]
-	method public static boolean EmitNeg(var t as IKVM.Reflection.Type, var emt as boolean, var bo as BranchOptimisation, var lab as Emit.Label)
+	method public static boolean EmitNeg(var t as Managed.Reflection.Type, var emt as boolean, var bo as BranchOptimisation, var lab as Emit.Label)
 		var oo = Loader::LoadUnaOp(t, "op_UnaryNegation", t)
 		if oo isnot null then
 			if emt then
@@ -2153,7 +2153,7 @@ class public static Helpers
 	end method
 	
 	[method: ComVisible(false)]
-	method public static void EmitNot(var t as IKVM.Reflection.Type)
+	method public static void EmitNot(var t as Managed.Reflection.Type)
 		var oo = Loader::LoadUnaOp(t, "op_OnesComplement", t)
 		if oo isnot null then
 			ILEmitter::EmitCall(oo)
@@ -2166,7 +2166,7 @@ class public static Helpers
 	end method
 	
 	[method: ComVisible(false)]
-	method public static void EmitInc(var t as IKVM.Reflection.Type)
+	method public static void EmitInc(var t as Managed.Reflection.Type)
 		var oo = Loader::LoadUnaOp(t, "op_Increment", t)
 		if oo isnot null then
 			ILEmitter::EmitCall(oo)
@@ -2210,7 +2210,7 @@ class public static Helpers
 	end method
 	
 	[method: ComVisible(false)]
-	method public static void EmitDec(var t as IKVM.Reflection.Type)
+	method public static void EmitDec(var t as Managed.Reflection.Type)
 		var oo = Loader::LoadUnaOp(t, "op_Decrement", t)
 		if oo isnot null then
 			ILEmitter::EmitCall(oo)
@@ -2263,7 +2263,7 @@ class public static Helpers
 			return new ConstInfo() {Typ = CommitEvalTTok(lit::LitTyp), Value = LiteralToConst(lit)}
 		elseif tok is Ident then
 			var idtnamarr as string[] = ParseUtils::StringParser(tok::Value, ':')
-			var typ as IKVM.Reflection.Type = CommitEvalTTok(new TypeTok(idtnamarr[0]))
+			var typ as Managed.Reflection.Type = CommitEvalTTok(new TypeTok(idtnamarr[0]))
 			if typ isnot null then
 				if  GetExtFld(typ, idtnamarr[1]) isnot null then
 					if Loader::FldLitFlag then

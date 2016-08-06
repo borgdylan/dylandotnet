@@ -19,7 +19,7 @@ class public StmtReader
 	method public prototype boolean Read(var stm as Stmt, var fpath as string)
 
 	method public CustomAttributeBuilder AttrStmtToCAB(var stm as AttrStmt)
-		var typ as IKVM.Reflection.Type = null
+		var typ as Managed.Reflection.Type = null
 		if !stm::Ctor::Name::Value::EndsWith("Attribute") then
 			typ = Helpers::CommitEvalTTok(new TypeTok(stm::Ctor::Name::Value + "Attribute"))
 		end if
@@ -59,7 +59,7 @@ class public StmtReader
 			end if
 		end if 
 
-		var tarr as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[stm::Ctor::Params::get_Count()]
+		var tarr as Managed.Reflection.Type[] = new Managed.Reflection.Type[stm::Ctor::Params::get_Count()]
 		var oarr as object[] = new object[stm::Ctor::Params::get_Count()]
 		
 		var i as integer = -1
@@ -117,9 +117,9 @@ class public StmtReader
 
 		SymTable::ResetTypGenParams()
 
-		var inhtyp as IKVM.Reflection.Type = null
-		var interftyp as IKVM.Reflection.Type = null
-		var reft as IKVM.Reflection.Type = clss::InhClass::RefTyp
+		var inhtyp as Managed.Reflection.Type = null
+		var interftyp as Managed.Reflection.Type = null
+		var reft as Managed.Reflection.Type = clss::InhClass::RefTyp
 		var nrgenparams = 0
 
 		if clss::ClassName is GenericTypeTok then
@@ -409,7 +409,7 @@ class public StmtReader
 		end if
 
 		var dta as TypeAttributes = Helpers::ProcessClassAttrs(dels::Attrs) or TypeAttributes::AnsiClass or TypeAttributes::Sealed or TypeAttributes::AutoClass
-		var dinhtyp as IKVM.Reflection.Type = Loader::CachedLoadClass("System.MulticastDelegate")
+		var dinhtyp as Managed.Reflection.Type = Loader::CachedLoadClass("System.MulticastDelegate")
 		AsmFactory::CurnInhTyp = dinhtyp
 
 		if !AsmFactory::isNested then
@@ -491,7 +491,7 @@ class public StmtReader
 			{InhTyp = dinhtyp, NrGenParams = nrgenparams, TypGenParams = SymTable::TypGenParams}
 		SymTable::CurnTypItem = dti
 
-		var dtarr as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[] {Loader::LoadClass("System.Object"), Loader::LoadClass("System.IntPtr")}
+		var dtarr as Managed.Reflection.Type[] = new Managed.Reflection.Type[] {Loader::LoadClass("System.Object"), Loader::LoadClass("System.IntPtr")}
 		AsmFactory::CurnConB = AsmFactory::CurnTypB::DefineConstructor(MethodAttributes::HideBySig or MethodAttributes::Public _
 			, CallingConventions::Standard, dtarr)
 		AsmFactory::InitDelConstr()
@@ -499,9 +499,9 @@ class public StmtReader
 		SymTable::CurnTypItem::AddCtor(new CtorItem(dtarr,AsmFactory::CurnConB))
 
 		var dema as MethodAttributes = MethodAttributes::HideBySig or MethodAttributes::Public or MethodAttributes::NewSlot or MethodAttributes::Virtual
-		dtarr = #ternary {dels::Params::get_Count() == 0 ? IKVM.Reflection.Type::EmptyTypes, Helpers::ProcessParams(dels::Params)}
+		dtarr = #ternary {dels::Params::get_Count() == 0 ? Managed.Reflection.Type::EmptyTypes, Helpers::ProcessParams(dels::Params)}
 		
-		var drettyp as IKVM.Reflection.Type = Helpers::CommitEvalTTok(dels::RetTyp)
+		var drettyp as Managed.Reflection.Type = Helpers::CommitEvalTTok(dels::RetTyp)
 		
 		if drettyp is null then
 			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class '" + dels::RetTyp::Value + "' is not defined or is not accessible.")
@@ -513,7 +513,7 @@ class public StmtReader
 
 		SymTable::CurnTypItem::AddMethod(new MethodItem("Invoke",drettyp,dtarr,AsmFactory::CurnMetB))
 
-		var dtarr2 as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[dtarr[l] + 2]
+		var dtarr2 as Managed.Reflection.Type[] = new Managed.Reflection.Type[dtarr[l] + 2]
 		Array::Copy(dtarr,dtarr2,$long$dtarr[l])
 		dtarr2[dtarr2[l] - 2] = Loader::CachedLoadClass("System.AsyncCallback")
 		dtarr2[--dtarr2[l]] = Loader::CachedLoadClass("System.Object")
@@ -524,16 +524,16 @@ class public StmtReader
 		SymTable::CurnTypItem::AddMethod(new MethodItem("BeginInvoke",Loader::LoadClass("System.IAsyncResult"),dtarr2,AsmFactory::CurnMetB))
 
 		var iter as integer = -1
-		var lis as IList<of IKVM.Reflection.Type> = new List<of IKVM.Reflection.Type>()
+		var lis as IList<of Managed.Reflection.Type> = new List<of Managed.Reflection.Type>()
 		do until iter = --dtarr[l]
 			iter = ++iter
 			if dtarr[iter]::get_IsByRef() then
 				lis::Add(dtarr[iter])
 			end if
 		end do
-		dtarr = Enumerable::ToArray<of IKVM.Reflection.Type>(lis)
+		dtarr = Enumerable::ToArray<of Managed.Reflection.Type>(lis)
 
-		var dtarr3 as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[++dtarr[l]]
+		var dtarr3 as Managed.Reflection.Type[] = new Managed.Reflection.Type[++dtarr[l]]
 		Array::Copy(dtarr,dtarr3,$long$dtarr[l])
 		dtarr3[--dtarr3[l]] = Loader::CachedLoadClass("System.IAsyncResult")
 
@@ -567,19 +567,19 @@ class public StmtReader
 		SymTable::ResetMetGenParams()
 
 		var mtssnamstr as string = mtss::MethodName::Value
-		var typ as IKVM.Reflection.Type = null
+		var typ as Managed.Reflection.Type = null
 		
 		//var mtssnamarr as C5.IList<of string>
 		var overldnam as string = String::Empty
 		var overldmtd as MethodInfo = null
 		var mipt as MethodItem = null
 		var fromproto as boolean = false
-		var rettyp as IKVM.Reflection.Type = null
+		var rettyp as Managed.Reflection.Type = null
 
 		if (mtssnamstr == AsmFactory::CurnTypName) orelse (mtssnamstr like "^ctor\d*$") then
 			StreamUtils::WriteLine("	Adding Constructor: " + mtssnamstr)
 			rettyp = Loader::CachedLoadClass("System.Void")
-			var paramstyps as IKVM.Reflection.Type[] = #ternary {mtss::Params::get_Count() == 0 ? IKVM.Reflection.Type::EmptyTypes , Helpers::ProcessParams(mtss::Params)}			
+			var paramstyps as Managed.Reflection.Type[] = #ternary {mtss::Params::get_Count() == 0 ? Managed.Reflection.Type::EmptyTypes , Helpers::ProcessParams(mtss::Params)}			
 			AsmFactory::CurnConB = AsmFactory::CurnTypB::DefineConstructor(Helpers::ProcessMethodAttrs(mtss::Attrs), CallingConventions::Standard, paramstyps)
 			AsmFactory::InitConstr()
 			
@@ -610,11 +610,11 @@ class public StmtReader
 				mtssnamstr = string::Format("{0}.{1}", typ::ToString(), overldnam)
 			end if
 			
-			var paramstyps as IKVM.Reflection.Type[]
+			var paramstyps as Managed.Reflection.Type[]
 			var nrgenparams = 0
 			
 			if mtss::MethodName isnot GenericMethodNameTok then
-				paramstyps = #ternary {mtss::Params::get_Count() == 0 ? IKVM.Reflection.Type::EmptyTypes , Helpers::ProcessParams(mtss::Params)}
+				paramstyps = #ternary {mtss::Params::get_Count() == 0 ? Managed.Reflection.Type::EmptyTypes , Helpers::ProcessParams(mtss::Params)}
 				mipt = SymTable::FindProtoMet(mtssnamstr, paramstyps)
 			end if
 			
@@ -641,7 +641,7 @@ class public StmtReader
 				
 				if ILEmitter::PInvokeFlg then
 					
-					paramstyps = #ternary {mtss::Params::get_Count() == 0 ? IKVM.Reflection.Type::EmptyTypes , Helpers::ProcessParams(mtss::Params)}
+					paramstyps = #ternary {mtss::Params::get_Count() == 0 ? Managed.Reflection.Type::EmptyTypes , Helpers::ProcessParams(mtss::Params)}
 					rettyp = Helpers::CommitEvalTTok(mtss::RetTyp)
 					if rettyp = null then
 						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Class '{0}' is not defined or is not accessible.", mtss::RetTyp::Value))
@@ -649,7 +649,7 @@ class public StmtReader
 
 					AsmFactory::CurnMetB = AsmFactory::CurnTypB::DefinePInvokeMethod(mtssnamstr, pinfo::LibName, ma, CallingConventions::Standard, rettyp, paramstyps, pinfo::CallConv, pinfo::CSet)
 				else
-					AsmFactory::CurnMetB = AsmFactory::CurnTypB::DefineMethod(mtssnamstr, ma, Loader::CachedLoadClass("System.Void"), IKVM.Reflection.Type::EmptyTypes)
+					AsmFactory::CurnMetB = AsmFactory::CurnTypB::DefineMethod(mtssnamstr, ma, Loader::CachedLoadClass("System.Void"), Managed.Reflection.Type::EmptyTypes)
 					
 					if mtss::MethodName is GenericMethodNameTok then
 						var gmn = $GenericMethodNameTok$mtss::MethodName
@@ -705,7 +705,7 @@ class public StmtReader
 
 					end if
 					
-					paramstyps = #ternary {mtss::Params::get_Count() == 0 ? IKVM.Reflection.Type::EmptyTypes , Helpers::ProcessParams(mtss::Params)}
+					paramstyps = #ternary {mtss::Params::get_Count() == 0 ? Managed.Reflection.Type::EmptyTypes , Helpers::ProcessParams(mtss::Params)}
 					rettyp = Helpers::CommitEvalTTok(mtss::RetTyp)
 					if rettyp is null then
 						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Class '{0}' is not defined or is not accessible.", mtss::RetTyp::Value))
@@ -726,7 +726,7 @@ class public StmtReader
 			end if
 			
 			if !ILEmitter::ProtoFlg then
-				var pbrv as ParameterBuilder = AsmFactory::CurnMetB::DefineParameter(0, IKVM.Reflection.ParameterAttributes::Retval, $string$null)
+				var pbrv as ParameterBuilder = AsmFactory::CurnMetB::DefineParameter(0, Managed.Reflection.ParameterAttributes::Retval, $string$null)
 				if Enumerable::Contains<of integer>(SymTable::ParameterCALst::get_Keys(), 0) then
 					foreach ca in SymTable::ParameterCALst::get_Item(0)
 						pbrv::SetCustomAttribute(ca)
@@ -796,7 +796,7 @@ class public StmtReader
 		if (ttu is null) andalso (festm::Typ isnot null) then
 			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Class '{0}' is not defined.", festm::Typ::ToString()))
 		end if
-		var ttu2 as IKVM.Reflection.Type
+		var ttu2 as Managed.Reflection.Type
 		if mtds isnot null then
 			ILEmitter::EmitCallvirt(mtds[0])
 			ILEmitter::DeclVar(string::Empty, mtds[0]::get_ReturnType())
@@ -856,10 +856,10 @@ class public StmtReader
 	end method
 	
 	method public void ReadEvent(var evss as EventStmt, var fpath as string)
-		var etyp as IKVM.Reflection.Type = Helpers::CommitEvalTTok(evss::EventTyp)
+		var etyp as Managed.Reflection.Type = Helpers::CommitEvalTTok(evss::EventTyp)
 		var eit = string::Empty
 		var eit2 as TypeTok = null
-		var typ as IKVM.Reflection.Type = null
+		var typ as Managed.Reflection.Type = null
 		
 		if etyp is null then
 			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class '" + evss::EventTyp::Value + "' is not defined.")
@@ -894,7 +894,7 @@ class public StmtReader
 				evas::Adder::Value = SymTable::CurnEvent::ExplImplType + "." + evas::Adder::Value
 			end if
 			
-			var mb as MethodBuilder = $MethodBuilder$SymTable::FindMet(evas:Adder::Value, new IKVM.Reflection.Type[] {SymTable::CurnEvent::EventTyp})
+			var mb as MethodBuilder = $MethodBuilder$SymTable::FindMet(evas:Adder::Value, new Managed.Reflection.Type[] {SymTable::CurnEvent::EventTyp})
 			if mb isnot null then
 				AsmFactory::CurnEventB::SetAddOnMethod(mb)
 			else
@@ -919,7 +919,7 @@ class public StmtReader
 				evas::Remover::Value = SymTable::CurnEvent::ExplImplType + "." + evas::Remover::Value
 			end if
 			
-			var mb as MethodBuilder = $MethodBuilder$SymTable::FindMet(evas:Remover::Value, new IKVM.Reflection.Type[] {SymTable::CurnEvent::EventTyp})
+			var mb as MethodBuilder = $MethodBuilder$SymTable::FindMet(evas:Remover::Value, new Managed.Reflection.Type[] {SymTable::CurnEvent::EventTyp})
 			if mb isnot null then
 				AsmFactory::CurnEventB::SetRemoveOnMethod(mb)
 			else
@@ -954,17 +954,17 @@ class public StmtReader
 
 		if AsmFactory::DebugFlg then
 			fpath = Path::GetFullPath(fpath)
-			var docw as ISymbolDocumentWriter = AsmFactory::MdlB::DefineDocument(fpath, Guid::Empty, Guid::Empty, Guid::Empty)
+			var docw as Managed.Reflection.Emit.ISymbolDocumentWriter = AsmFactory::MdlB::DefineDocument(fpath, Guid::Empty, Guid::Empty, Guid::Empty)
 			ILEmitter::DocWriter = docw
 			ILEmitter::AddDocWriter(docw)
 		end if
 
 		// --------------------------------------------------------------------------------------------------------
 		if AsmFactory::DebugFlg then
-			var dtyp as IKVM.Reflection.Type = Loader::CachedLoadClass("System.Diagnostics.DebuggableAttribute")
+			var dtyp as Managed.Reflection.Type = Loader::CachedLoadClass("System.Diagnostics.DebuggableAttribute")
 			var debugattr as DebuggableAttribute\DebuggingModes = DebuggableAttribute\DebuggingModes::Default or DebuggableAttribute\DebuggingModes::DisableOptimizations
-			var dattyp as IKVM.Reflection.Type = Loader::CachedLoadClass("System.Diagnostics.DebuggableAttribute\DebuggingModes")
-			AsmFactory::AsmB::SetCustomAttribute(new CustomAttributeBuilder(dtyp::GetConstructor(new IKVM.Reflection.Type[] {dattyp}), new object[] {$object$debugattr}))
+			var dattyp as Managed.Reflection.Type = Loader::CachedLoadClass("System.Diagnostics.DebuggableAttribute\DebuggingModes")
+			AsmFactory::AsmB::SetCustomAttribute(new CustomAttributeBuilder(dtyp::GetConstructor(new Managed.Reflection.Type[] {dattyp}), new object[] {$object$debugattr}))
 		end if
 		// --------------------------------------------------------------------------------------------------------
 		
@@ -975,7 +975,7 @@ class public StmtReader
 	end method
 	
 	method public void ReadField(var flss as FieldStmt)
-		var ftyp as IKVM.Reflection.Type = Helpers::CommitEvalTTok(flss::FieldTyp)
+		var ftyp as Managed.Reflection.Type = Helpers::CommitEvalTTok(flss::FieldTyp)
 			
 		if ftyp is null then
 			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("Class '{0}' is not defined.", flss::FieldTyp::Value))
@@ -1100,7 +1100,7 @@ class public StmtReader
 			end if
 			
 			var mb as MethodBuilder = $MethodBuilder$SymTable::FindMet(prss::Setter::Value, _
-				Enumerable::ToArray<of IKVM.Reflection.Type>(Enumerable::Concat<of IKVM.Reflection.Type>(cprop::ParamTyps, new IKVM.Reflection.Type[] {cprop::PropertyTyp})) )
+				Enumerable::ToArray<of Managed.Reflection.Type>(Enumerable::Concat<of Managed.Reflection.Type>(cprop::ParamTyps, new Managed.Reflection.Type[] {cprop::PropertyTyp})) )
 			if mb isnot null then
 				AsmFactory::CurnPropB::SetSetMethod(mb)
 			else
@@ -1132,16 +1132,16 @@ class public StmtReader
 			prss = prss
 		end if
 
-		var ptyp as IKVM.Reflection.Type = Helpers::CommitEvalTTok(prss::PropertyTyp)
+		var ptyp as Managed.Reflection.Type = Helpers::CommitEvalTTok(prss::PropertyTyp)
 		var eit = string::Empty
 		var eit2 as TypeTok = null
-		var typ as IKVM.Reflection.Type = null
+		var typ as Managed.Reflection.Type = null
 		
 		if ptyp is null then
 			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Class '" + prss::PropertyTyp::Value + "' is not defined.")
 		end if
 
-		var paramstyps as IKVM.Reflection.Type[] = #ternary {prss::Params::get_Count() == 0 ? IKVM.Reflection.Type::EmptyTypes , Helpers::ProcessParams(prss::Params)}
+		var paramstyps as Managed.Reflection.Type[] = #ternary {prss::Params::get_Count() == 0 ? Managed.Reflection.Type::EmptyTypes , Helpers::ProcessParams(prss::Params)}
 
 		var prssnamstr as string = prss::PropertyName::Value
 		//var prssnamarr as C5.IList<of string> = ParseUtils::StringParserL(prssnamstr, '.')
@@ -1323,7 +1323,7 @@ class public StmtReader
 	end method
 
 	method public boolean Read(var stm as Stmt, var fpath as string)
-		var vtyp as IKVM.Reflection.Type = null
+		var vtyp as Managed.Reflection.Type = null
 		var eval as Evaluator = null
 
 		PreRead(stm::Line, fpath)
@@ -1930,7 +1930,7 @@ class public StmtReader
 						end if
 
 						ILEmitter::MarkLbl(endl)
-						ILEmitter::EmitCatch($IKVM.Reflection.Type$null)
+						ILEmitter::EmitCatch($Managed.Reflection.Type$null)
 					else
 						ILEmitter::EmitCatch(vtyp)
 					end if
@@ -2022,7 +2022,7 @@ class public StmtReader
 			ILEmitter::EmitStloc(lockee)
 			SymTable::AddLock(lockee)
 			ILEmitter::EmitLdloc(lockee)
-			ILEmitter::EmitCall(Loader::CachedLoadClass("System.Threading.Monitor")::GetMethod("Enter", new IKVM.Reflection.Type[] {Loader::LoadClass("System.Object")}))
+			ILEmitter::EmitCall(Loader::CachedLoadClass("System.Threading.Monitor")::GetMethod("Enter", new Managed.Reflection.Type[] {Loader::LoadClass("System.Object")}))
 			ILEmitter::EmitTry()
 			return cg::Process(lstm, fpath)::get_Item1()
 		elseif stm is TryLockStmt then
@@ -2039,7 +2039,7 @@ class public StmtReader
 			SymTable::AddTryLock(lockee)
 			var li = SymTable::ReadLock()
 			ILEmitter::EmitLdloc(lockee)
-			ILEmitter::EmitCall(Loader::CachedLoadClass("System.Threading.Monitor")::GetMethod("TryEnter", new IKVM.Reflection.Type[] {Loader::LoadClass("System.Object")}))
+			ILEmitter::EmitCall(Loader::CachedLoadClass("System.Threading.Monitor")::GetMethod("TryEnter", new Managed.Reflection.Type[] {Loader::LoadClass("System.Object")}))
 			ILEmitter::EmitBrfalse(li::Lbl)
 			ILEmitter::EmitTry()
 			cg::Process(lstm, fpath)
@@ -2047,7 +2047,7 @@ class public StmtReader
 			ILEmitter::EmitFinally()
 			var li = SymTable::ReadLock()
 			ILEmitter::EmitLdloc(li::LockeeLoc)
-			ILEmitter::EmitCall(Loader::CachedLoadClass("System.Threading.Monitor")::GetMethod("Exit", new IKVM.Reflection.Type[] {Loader::LoadClass("System.Object")}))
+			ILEmitter::EmitCall(Loader::CachedLoadClass("System.Threading.Monitor")::GetMethod("Exit", new Managed.Reflection.Type[] {Loader::LoadClass("System.Object")}))
 			ILEmitter::EmitEndTry()
 			if li::IsTryLock then
 				ILEmitter::MarkLbl(li::Lbl)

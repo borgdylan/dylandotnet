@@ -9,7 +9,7 @@
 class public static SymTable
 
 	field private static C5.LinkedList<of C5.HashDictionary<of string, VarItem> > VarLst
-	field public static C5.HashDictionary<of IKVM.Reflection.Type, integer> TempVTMap
+	field public static C5.HashDictionary<of Managed.Reflection.Type, integer> TempVTMap
 	field public static C5.HashDictionary<of string, TypeParamItem> MetGenParams
 	field public static C5.HashDictionary<of string, TypeParamItem> TypGenParams
 	field public static C5.LinkedList<of GenericTypeParameterBuilder> GenParams
@@ -45,12 +45,12 @@ class public static SymTable
 	method public static void Init()
 		TypeLst = new TypeList()
 		VarLst = new C5.LinkedList<of C5.HashDictionary<of string, VarItem> >()
-		TempVTMap = new C5.HashDictionary<of IKVM.Reflection.Type, integer>()
-		MetGenParams = new C5.HashDictionary<of string, TypeParamItem>()
-		TypGenParams = new C5.HashDictionary<of string, TypeParamItem>()
+		TempVTMap = new C5.HashDictionary<of Managed.Reflection.Type, integer>(C5.MemoryType::Normal)
+		MetGenParams = new C5.HashDictionary<of string, TypeParamItem>(C5.MemoryType::Normal)
+		TypGenParams = new C5.HashDictionary<of string, TypeParamItem>(C5.MemoryType::Normal)
 		GenParams = new C5.LinkedList<of GenericTypeParameterBuilder>()
-		TypGenParams2 = new C5.HashDictionary<of string, TypeParamItem>()
-		VarLst::Push(new C5.HashDictionary<of string, VarItem>())
+		TypGenParams2 = new C5.HashDictionary<of string, TypeParamItem>(C5.MemoryType::Normal)
+		VarLst::Push(new C5.HashDictionary<of string, VarItem>(C5.MemoryType::Normal))
 		IfLst = new C5.LinkedList<of IfItem>()
 		SwitchLst = new C5.LinkedList<of SwitchItem>()
 		LoopLst = new C5.LinkedList<of LoopItem>()
@@ -65,8 +65,8 @@ class public static SymTable
 		PropertyCALst = new C5.LinkedList<of CustomAttributeBuilder>()
 		EventCALst = new C5.LinkedList<of CustomAttributeBuilder>()
 		EnumCALst = new C5.LinkedList<of CustomAttributeBuilder>()
-		ParameterCALst = new C5.HashDictionary<of integer, C5.LinkedList<of CustomAttributeBuilder> >()
-		DefSyms = new C5.TreeSet<of string>()
+		ParameterCALst = new C5.HashDictionary<of integer, C5.LinkedList<of CustomAttributeBuilder> >(C5.MemoryType::Normal)
+		DefSyms = new C5.TreeSet<of string>(C5.MemoryType::Normal)
 		CurnProp = null
 		CurnEvent = null
 		PIInfo = null
@@ -84,13 +84,13 @@ class public static SymTable
 		LoopLst::Clear()
 		LblLst::Clear()
 		VarLst::Clear()
-		VarLst::Push(new C5.HashDictionary<of string, VarItem>())
+		VarLst::Push(new C5.HashDictionary<of string, VarItem>(C5.MemoryType::Normal))
 		TempVTMap::Clear()
 	end method
 	
 	[method: ComVisible(false)]
 	method public static void ResetMetGenParams()
-		MetGenParams = new C5.HashDictionary<of string, TypeParamItem>()
+		MetGenParams = new C5.HashDictionary<of string, TypeParamItem>(C5.MemoryType::Normal)
 	end method
 
 	[method: ComVisible(false)]
@@ -98,7 +98,7 @@ class public static SymTable
 		if AsmFactory::inClass then
 			SymTable::TypGenParams2 = SymTable::TypGenParams
 		end if
-		TypGenParams = new C5.HashDictionary<of string, TypeParamItem>()
+		TypGenParams = new C5.HashDictionary<of string, TypeParamItem>(C5.MemoryType::Normal)
 		GenParams = new C5.LinkedList<of GenericTypeParameterBuilder>()
 	end method
 
@@ -118,7 +118,7 @@ class public static SymTable
 	end method
 
 	[method: ComVisible(false)]
-	method public static void AddVar(var nme as string, var la as boolean, var ind as integer, var typ as IKVM.Reflection.Type, var lin as integer)
+	method public static void AddVar(var nme as string, var la as boolean, var ind as integer, var typ as Managed.Reflection.Type, var lin as integer)
 		
 		var flg = false
 		foreach s in VarLst::Backwards()
@@ -141,7 +141,7 @@ class public static SymTable
 	end method
 
 	[method: ComVisible(false)]
-	method public static void AddFld(var nme as string, var typ as IKVM.Reflection.Type, var fld as FieldBuilder, var litval as object)
+	method public static void AddFld(var nme as string, var typ as Managed.Reflection.Type, var fld as FieldBuilder, var litval as object)
 		CurnTypItem::AddField(new FieldItem(nme, typ, fld, litval))
 	end method
 	
@@ -205,12 +205,12 @@ class public static SymTable
 	end method
 
 	[method: ComVisible(false)]
-	method public static void AddMet(var nme as string, var typ as IKVM.Reflection.Type, var ptyps as IKVM.Reflection.Type[], var met as MethodBuilder, var nrgenparams as integer)
+	method public static void AddMet(var nme as string, var typ as Managed.Reflection.Type, var ptyps as Managed.Reflection.Type[], var met as MethodBuilder, var nrgenparams as integer)
 		CurnTypItem::AddMethod(new MethodItem(nme, typ, ptyps, met) {NrGenParams = nrgenparams})
 	end method
 	
 	[method: ComVisible(false)]
-	method public static void AddCtor(var ptyps as IKVM.Reflection.Type[], var met as ConstructorBuilder)
+	method public static void AddCtor(var ptyps as Managed.Reflection.Type[], var met as ConstructorBuilder)
 		CurnTypItem::AddCtor(new CtorItem(ptyps, met))
 	end method
 
@@ -423,7 +423,7 @@ class public static SymTable
 	[method: ComVisible(false)]
 	method public static void PushScope()
 		ILEmitter::BeginScope()
-		VarLst::Push(new C5.HashDictionary<of string, VarItem>())
+		VarLst::Push(new C5.HashDictionary<of string, VarItem>(C5.MemoryType::Normal))
 	end method
 	
 	[method: ComVisible(false)]
@@ -466,7 +466,7 @@ class public static SymTable
 	method public static FieldInfo FindFld(var nam as string) => CurnTypItem::GetField(nam, CurnTypItem::TypeBldr)
 
 	[method: ComVisible(false)]
-	method public static boolean CmpTyps(var arra as IKVM.Reflection.Type[], var arrb as IKVM.Reflection.Type[])
+	method public static boolean CmpTyps(var arra as Managed.Reflection.Type[], var arrb as Managed.Reflection.Type[])
 		if arra[l] = arrb[l] then
 			if arra[l] = 0 then
 				return true
@@ -485,16 +485,16 @@ class public static SymTable
 	end method
 
 	[method: ComVisible(false)]
-	method public static MethodInfo FindMet(var nam as string, var paramst as IKVM.Reflection.Type[]) => CurnTypItem::GetMethod(nam, paramst, CurnTypItem::TypeBldr)
+	method public static MethodInfo FindMet(var nam as string, var paramst as Managed.Reflection.Type[]) => CurnTypItem::GetMethod(nam, paramst, CurnTypItem::TypeBldr)
 	
 	[method: ComVisible(false)]
-	method public static MethodInfo FindGenMet(var nam as string, var genparams as IKVM.Reflection.Type[], var paramst as IKVM.Reflection.Type[]) => _
+	method public static MethodInfo FindGenMet(var nam as string, var genparams as Managed.Reflection.Type[], var paramst as Managed.Reflection.Type[]) => _
 		CurnTypItem::GetGenericMethod(nam, genparams, paramst, CurnTypItem::TypeBldr)
 	
 	[method: ComVisible(false)]
-	method public static MethodItem FindProtoMet(var nam as string, var paramst as IKVM.Reflection.Type[]) => CurnTypItem::GetProtoMethod(nam,paramst)
+	method public static MethodItem FindProtoMet(var nam as string, var paramst as Managed.Reflection.Type[]) => CurnTypItem::GetProtoMethod(nam,paramst)
 
 	[method: ComVisible(false)]
-	method public static ConstructorInfo FindCtor(var paramst as IKVM.Reflection.Type[]) => CurnTypItem::GetCtor(paramst, CurnTypItem::TypeBldr)
+	method public static ConstructorInfo FindCtor(var paramst as Managed.Reflection.Type[]) => CurnTypItem::GetCtor(paramst, CurnTypItem::TypeBldr)
 
 end class

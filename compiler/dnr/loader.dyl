@@ -12,13 +12,13 @@ class public static Loader
 	field public static boolean ProtectedFlag
 	field public static object FldLitVal
 	field public static boolean EnumLitFlag
-	field public static IKVM.Reflection.Type EnumLitTyp
-	field public static IKVM.Reflection.Type FldLitTyp
-	field public static IKVM.Reflection.Type MemberTyp
-	field public static IKVM.Reflection.Type PreProcTyp
+	field public static Managed.Reflection.Type EnumLitTyp
+	field public static Managed.Reflection.Type FldLitTyp
+	field public static Managed.Reflection.Type MemberTyp
+	field public static Managed.Reflection.Type PreProcTyp
 	field public static boolean MakeArr
 	field public static boolean MakeRef
-	field private static C5.HashDictionary<of string, IKVM.Reflection.Type> TypeCache
+	field private static C5.HashDictionary<of string, Managed.Reflection.Type> TypeCache
 
 	method public static void Init()
 		ProtectedFlag = false
@@ -30,17 +30,17 @@ class public static Loader
 		MakeArr = false
 		MakeRef = false
 		PreProcTyp = null
-		TypeCache = new C5.HashDictionary<of string, IKVM.Reflection.Type>()
+		TypeCache = new C5.HashDictionary<of string, Managed.Reflection.Type>(C5.MemoryType::Normal)
 	end method
 
 	method private static void Loader()
 		Init()
 	end method
 	
-	method public static IKVM.Reflection.Type LoadClass(var name as string) 
-		var typ as IKVM.Reflection.Type = null
+	method public static Managed.Reflection.Type LoadClass(var name as string) 
+		var typ as Managed.Reflection.Type = null
 		var nest as boolean = false
-		//var asmb as IKVM.Reflection.Emit.AssemblyBuilder
+		//var asmb as Managed.Reflection.Emit.AssemblyBuilder
 
 		var na as string[] = ParseUtils::StringParser(name, c'\\')
 		name = na[0]
@@ -70,7 +70,7 @@ class public static Loader
 				var curasm = curasmrec::Asm
 				try
 //					if curasm == AsmFactory::AsmB then
-//						//asmb = $IKVM.Reflection.Emit.AssemblyBuilder$curasm
+//						//asmb = $Managed.Reflection.Emit.AssemblyBuilder$curasm
 //						typ = curasm::GetType(#ternary{curns::get_Length() == 0 ? name , curns + "." + name})
 //						//,false,false)
 //						if typ isnot null then
@@ -118,9 +118,9 @@ class public static Loader
 
 	end method
 
-	method public static IEnumerable<of IKVM.Reflection.Type> LoadClasses(var name as string) 
-		var typ as IKVM.Reflection.Type = null
-		var typs as C5.LinkedList<of IKVM.Reflection.Type> = new C5.LinkedList<of IKVM.Reflection.Type>()
+	method public static IEnumerable<of Managed.Reflection.Type> LoadClasses(var name as string) 
+		var typ as Managed.Reflection.Type = null
+		var typs as C5.LinkedList<of Managed.Reflection.Type> = new C5.LinkedList<of Managed.Reflection.Type>()
 		var nest as boolean = false
 
 		var na as string[] = ParseUtils::StringParser(name, c'\\')
@@ -187,7 +187,7 @@ class public static Loader
 		return typs
 	end method
 
-	method public static IKVM.Reflection.Type CachedLoadClass(var name as string) 
+	method public static Managed.Reflection.Type CachedLoadClass(var name as string) 
 		if TypeCache::Contains(name) then
 			var typ = TypeCache::get_Item(name)
 			PreProcTyp = typ
@@ -215,7 +215,7 @@ class public static Loader
 	end method
 
 	[method: ComVisible(false)]
-	method public static IKVM.Reflection.Type ProcessType(var typ as IKVM.Reflection.Type)
+	method public static Managed.Reflection.Type ProcessType(var typ as Managed.Reflection.Type)
 		if typ isnot null then
 			if MakeArr then
 				typ = typ::MakeArrayType()
@@ -232,11 +232,11 @@ class public static Loader
 	end method
 
 	[method: ComVisible(false)]
-	method public static IKVM.Reflection.Type[] ParamsToTyps(var t as IKVM.Reflection.ParameterInfo[])
-		var arr as IKVM.Reflection.Type[] = new IKVM.Reflection.Type[t[l]]
+	method public static Managed.Reflection.Type[] ParamsToTyps(var t as Managed.Reflection.ParameterInfo[])
+		var arr as Managed.Reflection.Type[] = new Managed.Reflection.Type[t[l]]
 		
 		if t[l] == 0 then
-			return IKVM.Reflection.Type::EmptyTypes
+			return Managed.Reflection.Type::EmptyTypes
 		end if
 
 		for i = 0 upto --t[l]
@@ -247,10 +247,10 @@ class public static Loader
 	end method
 
 	[method: ComVisible(false)]
-	method public static IKVM.Reflection.MethodInfo LoadMethodWithoutParams(var typ as IKVM.Reflection.Type, var name as string)
+	method public static Managed.Reflection.MethodInfo LoadMethodWithoutParams(var typ as Managed.Reflection.Type, var name as string)
 
-		var ints as IKVM.Reflection.Type[] = null
-		var mtdinfo as IKVM.Reflection.MethodInfo = typ::GetMethod(name)
+		var ints as Managed.Reflection.Type[] = null
+		var mtdinfo as Managed.Reflection.MethodInfo = typ::GetMethod(name)
 
 		if mtdinfo is null then
 			ints = typ::GetInterfaces()
@@ -274,44 +274,44 @@ class public static Loader
 	end method
 
 	[method: ComVisible(false)]
-	method public static IKVM.Reflection.Type[] GetDelegateInvokeParams(var typ as IKVM.Reflection.Type) => _
+	method public static Managed.Reflection.Type[] GetDelegateInvokeParams(var typ as Managed.Reflection.Type) => _
 		ParamsToTyps(LoadMethodWithoutParams(typ, "Invoke")::GetParameters())
 
 	[method: ComVisible(false)]
-	method public static IEnumerable<of IKVM.Reflection.MethodInfo> LoadNormalMtdOverlds(var typ as IKVM.Reflection.Type, var name as string)
-		var asmn as IKVM.Reflection.AssemblyName = typ::get_Assembly()::GetName()
-		var asmnc as IKVM.Reflection.AssemblyName = AsmFactory::AsmNameStr
+	method public static IEnumerable<of Managed.Reflection.MethodInfo> LoadNormalMtdOverlds(var typ as Managed.Reflection.Type, var name as string)
+		var asmn as Managed.Reflection.AssemblyName = typ::get_Assembly()::GetName()
+		var asmnc as Managed.Reflection.AssemblyName = AsmFactory::AsmNameStr
 		var havinternal as boolean = false
 		if asmnc isnot null then
 			havinternal = asmn::get_Version()::Equals(asmnc::get_Version()) andalso (asmn::get_Name() == asmnc::get_Name())
 		end if
 					
 		var mil as MILambdas = new MILambdas(name, 0, havinternal, ProtectedFlag)
-		return Enumerable::Where<of IKVM.Reflection.MethodInfo>(typ::GetMethods(IKVM.Reflection.BindingFlags::Instance or IKVM.Reflection.BindingFlags::Static or IKVM.Reflection.BindingFlags::Public or IKVM.Reflection.BindingFlags::NonPublic), new Func<of IKVM.Reflection.MethodInfo,boolean>(mil::NormalMtdFilter))
+		return Enumerable::Where<of Managed.Reflection.MethodInfo>(typ::GetMethods(Managed.Reflection.BindingFlags::Instance or Managed.Reflection.BindingFlags::Static or Managed.Reflection.BindingFlags::Public or Managed.Reflection.BindingFlags::NonPublic), new Func<of Managed.Reflection.MethodInfo,boolean>(mil::NormalMtdFilter))
 	end method
 
 	[method: ComVisible(false)]
-	method public static IKVM.Reflection.MethodInfo LoadMethod(var typ as IKVM.Reflection.Type, var name as string, var typs as IKVM.Reflection.Type[])
+	method public static Managed.Reflection.MethodInfo LoadMethod(var typ as Managed.Reflection.Type, var name as string, var typs as Managed.Reflection.Type[])
 		
 		if typ is null then
 			return null
 		end if
 
-		var ints as IKVM.Reflection.Type[] = null
-		var mtdinfo as IKVM.Reflection.MethodInfo = null
+		var ints as Managed.Reflection.Type[] = null
+		var mtdinfo as Managed.Reflection.MethodInfo = null
 
 		if typ::get_IsArray() then
 			typ = Loader::CachedLoadClass("System.Array")
 		end if
 
-		var matches = Enumerable::ToArray<of IKVM.Reflection.MethodInfo>(LoadNormalMtdOverlds(typ, name))
+		var matches = Enumerable::ToArray<of Managed.Reflection.MethodInfo>(LoadNormalMtdOverlds(typ, name))
 		
 		if matches[l] = 0 then
 			mtdinfo = null
 		else
-			var bind as IKVM.Reflection.Binder = IKVM.Reflection.Type::get_DefaultBinder()
-			var bf as IKVM.Reflection.BindingFlags = IKVM.Reflection.BindingFlags::Instance or IKVM.Reflection.BindingFlags::Static or IKVM.Reflection.BindingFlags::Public or IKVM.Reflection.BindingFlags::NonPublic
-			mtdinfo =  $IKVM.Reflection.MethodInfo$bind::SelectMethod(bf,matches,typs,new IKVM.Reflection.ParameterModifier[0])
+			var bind as Managed.Reflection.Binder = Managed.Reflection.Type::get_DefaultBinder()
+			var bf as Managed.Reflection.BindingFlags = Managed.Reflection.BindingFlags::Instance or Managed.Reflection.BindingFlags::Static or Managed.Reflection.BindingFlags::Public or Managed.Reflection.BindingFlags::NonPublic
+			mtdinfo =  $Managed.Reflection.MethodInfo$bind::SelectMethod(bf,matches,typs,new Managed.Reflection.ParameterModifier[0])
 		end if
 
 		if mtdinfo is null then
@@ -334,13 +334,13 @@ class public static Loader
 		end if
 
 //		if mtdinfo == null then
-//			mtdinfo = typ::GetMethod(name,IKVM.Reflection.BindingFlags::Instance or IKVM.Reflection.BindingFlags::Static or IKVM.Reflection.BindingFlags::Public or IKVM.Reflection.BindingFlags::NonPublic, $IKVM.Reflection.Binder$null, typs, new IKVM.Reflection.ParameterModifier[0])
+//			mtdinfo = typ::GetMethod(name,Managed.Reflection.BindingFlags::Instance or Managed.Reflection.BindingFlags::Static or Managed.Reflection.BindingFlags::Public or Managed.Reflection.BindingFlags::NonPublic, $Managed.Reflection.Binder$null, typs, new Managed.Reflection.ParameterModifier[0])
 //
 //			if mtdinfo isnot null then
 //				//filter out private members
 //				if !mtdinfo::get_IsPrivate() then
-//					var asmn as IKVM.Reflection.AssemblyName = typ::get_Assembly()::GetName()
-//					var asmnc as IKVM.Reflection.AssemblyName = AsmFactory::AsmNameStr
+//					var asmn as Managed.Reflection.AssemblyName = typ::get_Assembly()::GetName()
+//					var asmnc as Managed.Reflection.AssemblyName = AsmFactory::AsmNameStr
 //					var havinternal as boolean = false
 //					if asmnc isnot null then
 //						havinternal = asmn::get_Version()::Equals(asmnc::get_Version()) andalso (asmn::get_Name() == asmnc::get_Name())
@@ -371,19 +371,19 @@ class public static Loader
 	end method
 
 	[method: ComVisible(false)]
-	method public static IKVM.Reflection.ConstructorInfo LoadCtor(var typ as IKVM.Reflection.Type, var typs as IKVM.Reflection.Type[])
+	method public static Managed.Reflection.ConstructorInfo LoadCtor(var typ as Managed.Reflection.Type, var typs as Managed.Reflection.Type[])
 
-		var ctorinf as IKVM.Reflection.ConstructorInfo = null
+		var ctorinf as Managed.Reflection.ConstructorInfo = null
 		if ctorinf is null then
-			ctorinf = typ::GetConstructor(IKVM.Reflection.BindingFlags::Instance or IKVM.Reflection.BindingFlags::Public or IKVM.Reflection.BindingFlags::NonPublic or IKVM.Reflection.BindingFlags::DeclaredOnly, $IKVM.Reflection.Binder$null, typs, new IKVM.Reflection.ParameterModifier[0])
+			ctorinf = typ::GetConstructor(Managed.Reflection.BindingFlags::Instance or Managed.Reflection.BindingFlags::Public or Managed.Reflection.BindingFlags::NonPublic or Managed.Reflection.BindingFlags::DeclaredOnly, $Managed.Reflection.Binder$null, typs, new Managed.Reflection.ParameterModifier[0])
 
 			if ctorinf isnot null then
 				//filter out private members
 				if ctorinf::get_IsPublic() then
 				elseif !ctorinf::get_IsPrivate() then
 				
-					var asmn as IKVM.Reflection.AssemblyName = typ::get_Assembly()::GetName()
-					var asmnc as IKVM.Reflection.AssemblyName = AsmFactory::AsmNameStr
+					var asmn as Managed.Reflection.AssemblyName = typ::get_Assembly()::GetName()
+					var asmnc as Managed.Reflection.AssemblyName = AsmFactory::AsmNameStr
 					var havinternal as boolean = false
 					if asmnc isnot null then
 						havinternal = asmn::get_Version()::Equals(asmnc::get_Version()) and (asmn::get_Name() == asmnc::get_Name())
@@ -413,20 +413,20 @@ class public static Loader
 	end method
 
 	[method: ComVisible(false)]
-	method public static IEnumerable<of IKVM.Reflection.MethodInfo> LoadSpecMtds(var typ as IKVM.Reflection.Type) => _
-		Enumerable::Where<of IKVM.Reflection.MethodInfo>(typ::GetMethods(), new Func<of IKVM.Reflection.MethodInfo,boolean>(MILambdas::IsSpecial))
+	method public static IEnumerable<of Managed.Reflection.MethodInfo> LoadSpecMtds(var typ as Managed.Reflection.Type) => _
+		Enumerable::Where<of Managed.Reflection.MethodInfo>(typ::GetMethods(), new Func<of Managed.Reflection.MethodInfo,boolean>(MILambdas::IsSpecial))
 
 	[method: ComVisible(false)]
-	method public static IEnumerable<of IKVM.Reflection.MethodInfo> LoadGenericMtdOverlds(var typ as IKVM.Reflection.Type, var name as string, var paramlen as integer)
-		var asmn as IKVM.Reflection.AssemblyName = typ::get_Assembly()::GetName()
-		var asmnc as IKVM.Reflection.AssemblyName = AsmFactory::AsmNameStr
+	method public static IEnumerable<of Managed.Reflection.MethodInfo> LoadGenericMtdOverlds(var typ as Managed.Reflection.Type, var name as string, var paramlen as integer)
+		var asmn as Managed.Reflection.AssemblyName = typ::get_Assembly()::GetName()
+		var asmnc as Managed.Reflection.AssemblyName = AsmFactory::AsmNameStr
 		var havinternal as boolean = false
 		if asmnc isnot null then
 			havinternal = asmn::get_Version()::Equals(asmnc::get_Version()) and (asmn::get_Name() == asmnc::get_Name())
 		end if
 					
 		var mil as MILambdas = new MILambdas(name,paramlen, havinternal, ProtectedFlag)
-		return Enumerable::Where<of IKVM.Reflection.MethodInfo>(typ::GetMethods(IKVM.Reflection.BindingFlags::Instance or IKVM.Reflection.BindingFlags::Static or IKVM.Reflection.BindingFlags::Public or IKVM.Reflection.BindingFlags::NonPublic), new Func<of IKVM.Reflection.MethodInfo,boolean>(mil::GenericMtdFilter()))
+		return Enumerable::Where<of Managed.Reflection.MethodInfo>(typ::GetMethods(Managed.Reflection.BindingFlags::Instance or Managed.Reflection.BindingFlags::Static or Managed.Reflection.BindingFlags::Public or Managed.Reflection.BindingFlags::NonPublic), new Func<of Managed.Reflection.MethodInfo,boolean>(mil::GenericMtdFilter()))
 	end method
 
 	[method: ComVisible(false)]
@@ -447,45 +447,45 @@ class public static Loader
 	end method
 
 	[method: ComVisible(false)]
-	method public static IKVM.Reflection.MethodInfo LoadBinOp(var typ as IKVM.Reflection.Type, var name as string, var typa as IKVM.Reflection.Type, var typb as IKVM.Reflection.Type)
+	method public static Managed.Reflection.MethodInfo LoadBinOp(var typ as Managed.Reflection.Type, var name as string, var typa as Managed.Reflection.Type, var typb as Managed.Reflection.Type)
 		var mil as MILambdas = new MILambdas(name)
-		var matches = Enumerable::ToArray<of IKVM.Reflection.MethodInfo>(Enumerable::Where<of IKVM.Reflection.MethodInfo>(LoadSpecMtds(typ), new Func<of IKVM.Reflection.MethodInfo,boolean>(mil::IsSameName)))
+		var matches = Enumerable::ToArray<of Managed.Reflection.MethodInfo>(Enumerable::Where<of Managed.Reflection.MethodInfo>(LoadSpecMtds(typ), new Func<of Managed.Reflection.MethodInfo,boolean>(mil::IsSameName)))
 
 		if matches[l] = 0 then
 			return null
 		else
-			var bind as IKVM.Reflection.Binder = IKVM.Reflection.Type::get_DefaultBinder()
-			var bf as IKVM.Reflection.BindingFlags = IKVM.Reflection.BindingFlags::Instance or IKVM.Reflection.BindingFlags::Static or IKVM.Reflection.BindingFlags::Public
-			return $IKVM.Reflection.MethodInfo$bind::SelectMethod(bf,matches,new IKVM.Reflection.Type[] {typa, typb},new IKVM.Reflection.ParameterModifier[0])
+			var bind as Managed.Reflection.Binder = Managed.Reflection.Type::get_DefaultBinder()
+			var bf as Managed.Reflection.BindingFlags = Managed.Reflection.BindingFlags::Instance or Managed.Reflection.BindingFlags::Static or Managed.Reflection.BindingFlags::Public
+			return $Managed.Reflection.MethodInfo$bind::SelectMethod(bf,matches,new Managed.Reflection.Type[] {typa, typb},new Managed.Reflection.ParameterModifier[0])
 		end if
 	end method
 	
 	[method: ComVisible(false)]
-	method public static IKVM.Reflection.MethodInfo LoadUnaOp(var typ as IKVM.Reflection.Type, var name as string, var typa as IKVM.Reflection.Type)
+	method public static Managed.Reflection.MethodInfo LoadUnaOp(var typ as Managed.Reflection.Type, var name as string, var typa as Managed.Reflection.Type)
 		var mil as MILambdas = new MILambdas(name)
-		var matches = Enumerable::ToArray<of IKVM.Reflection.MethodInfo>(Enumerable::Where<of IKVM.Reflection.MethodInfo>(LoadSpecMtds(typ), new Func<of IKVM.Reflection.MethodInfo,boolean>(mil::IsSameName)))
+		var matches = Enumerable::ToArray<of Managed.Reflection.MethodInfo>(Enumerable::Where<of Managed.Reflection.MethodInfo>(LoadSpecMtds(typ), new Func<of Managed.Reflection.MethodInfo,boolean>(mil::IsSameName)))
 
 		if matches[l] = 0 then
 			return null
 		else
-			var bind as IKVM.Reflection.Binder = IKVM.Reflection.Type::get_DefaultBinder()
-			var bf as IKVM.Reflection.BindingFlags = IKVM.Reflection.BindingFlags::Instance or IKVM.Reflection.BindingFlags::Static or IKVM.Reflection.BindingFlags::Public
-			return $IKVM.Reflection.MethodInfo$bind::SelectMethod(bf,matches,new IKVM.Reflection.Type[] {typa},new IKVM.Reflection.ParameterModifier[0])
+			var bind as Managed.Reflection.Binder = Managed.Reflection.Type::get_DefaultBinder()
+			var bf as Managed.Reflection.BindingFlags = Managed.Reflection.BindingFlags::Instance or Managed.Reflection.BindingFlags::Static or Managed.Reflection.BindingFlags::Public
+			return $Managed.Reflection.MethodInfo$bind::SelectMethod(bf,matches,new Managed.Reflection.Type[] {typa},new Managed.Reflection.ParameterModifier[0])
 		end if
 	end method
 
 	[method: ComVisible(false)]
-	method public static IKVM.Reflection.MethodInfo LoadGenericMethod(var typ as IKVM.Reflection.Type, var name as string, var genparams as IKVM.Reflection.Type[], var paramst as IKVM.Reflection.Type[])
-		var mtdinfo as IKVM.Reflection.MethodInfo = null
+	method public static Managed.Reflection.MethodInfo LoadGenericMethod(var typ as Managed.Reflection.Type, var name as string, var genparams as Managed.Reflection.Type[], var paramst as Managed.Reflection.Type[])
+		var mtdinfo as Managed.Reflection.MethodInfo = null
 		var mil as MILambdas = new MILambdas(genparams)
-		var matches = Enumerable::ToArray<of IKVM.Reflection.MethodInfo>(Enumerable::Select<of IKVM.Reflection.MethodInfo,IKVM.Reflection.MethodInfo>(LoadGenericMtdOverlds(typ, name, genparams[l]), new Func<of IKVM.Reflection.MethodInfo,IKVM.Reflection.MethodInfo>(mil::InstGenMtd)))
+		var matches = Enumerable::ToArray<of Managed.Reflection.MethodInfo>(Enumerable::Select<of Managed.Reflection.MethodInfo,Managed.Reflection.MethodInfo>(LoadGenericMtdOverlds(typ, name, genparams[l]), new Func<of Managed.Reflection.MethodInfo,Managed.Reflection.MethodInfo>(mil::InstGenMtd)))
 		
 		if matches[l] = 0 then
 			mtdinfo = null
 		else
-			var bind as IKVM.Reflection.Binder = IKVM.Reflection.Type::get_DefaultBinder()
-			var bf as IKVM.Reflection.BindingFlags = IKVM.Reflection.BindingFlags::Instance or IKVM.Reflection.BindingFlags::Static or IKVM.Reflection.BindingFlags::Public
-			mtdinfo =  $IKVM.Reflection.MethodInfo$bind::SelectMethod(bf,matches,paramst,new IKVM.Reflection.ParameterModifier[0])
+			var bind as Managed.Reflection.Binder = Managed.Reflection.Type::get_DefaultBinder()
+			var bf as Managed.Reflection.BindingFlags = Managed.Reflection.BindingFlags::Instance or Managed.Reflection.BindingFlags::Static or Managed.Reflection.BindingFlags::Public
+			mtdinfo =  $Managed.Reflection.MethodInfo$bind::SelectMethod(bf,matches,paramst,new Managed.Reflection.ParameterModifier[0])
 		end if
 
 		if mtdinfo isnot null then
@@ -496,33 +496,33 @@ class public static Loader
 	end method
 
 	[method: ComVisible(false)]
-	method public static IKVM.Reflection.MethodInfo LoadConvOp(var typ as IKVM.Reflection.Type, var name as string, var src as IKVM.Reflection.Type, var snk as IKVM.Reflection.Type)
+	method public static Managed.Reflection.MethodInfo LoadConvOp(var typ as Managed.Reflection.Type, var name as string, var src as Managed.Reflection.Type, var snk as Managed.Reflection.Type)
 		var mil as MILambdas = new MILambdas(name,snk)
-		var matches = Enumerable::ToArray<of IKVM.Reflection.MethodInfo>(Enumerable::Where<of IKVM.Reflection.MethodInfo>(LoadSpecMtds(typ), new Func<of IKVM.Reflection.MethodInfo,boolean>(mil::IsSameNameAndReturn)))
+		var matches = Enumerable::ToArray<of Managed.Reflection.MethodInfo>(Enumerable::Where<of Managed.Reflection.MethodInfo>(LoadSpecMtds(typ), new Func<of Managed.Reflection.MethodInfo,boolean>(mil::IsSameNameAndReturn)))
 		
 		if matches[l] = 0 then
 			return null
 		else
-			var bind as IKVM.Reflection.Binder = IKVM.Reflection.Type::get_DefaultBinder()
-			var bf as IKVM.Reflection.BindingFlags = IKVM.Reflection.BindingFlags::Instance or IKVM.Reflection.BindingFlags::Static or IKVM.Reflection.BindingFlags::Public
-			return $IKVM.Reflection.MethodInfo$bind::SelectMethod(bf,matches,new IKVM.Reflection.Type[] {src},new IKVM.Reflection.ParameterModifier[0])
+			var bind as Managed.Reflection.Binder = Managed.Reflection.Type::get_DefaultBinder()
+			var bf as Managed.Reflection.BindingFlags = Managed.Reflection.BindingFlags::Instance or Managed.Reflection.BindingFlags::Static or Managed.Reflection.BindingFlags::Public
+			return $Managed.Reflection.MethodInfo$bind::SelectMethod(bf,matches,new Managed.Reflection.Type[] {src},new Managed.Reflection.ParameterModifier[0])
 		end if
 
 	end method
 
 	[method: ComVisible(false)]
-	method public static IKVM.Reflection.FieldInfo LoadField(var typ as IKVM.Reflection.Type, var name as string)
-		var fldinfo as IKVM.Reflection.FieldInfo = typ::GetField(name)
+	method public static Managed.Reflection.FieldInfo LoadField(var typ as Managed.Reflection.Type, var name as string)
+		var fldinfo as Managed.Reflection.FieldInfo = typ::GetField(name)
 		
 		if fldinfo is null then
-			fldinfo = typ::GetField(name,IKVM.Reflection.BindingFlags::Instance or IKVM.Reflection.BindingFlags::Static or IKVM.Reflection.BindingFlags::Public or IKVM.Reflection.BindingFlags::NonPublic)
+			fldinfo = typ::GetField(name,Managed.Reflection.BindingFlags::Instance or Managed.Reflection.BindingFlags::Static or Managed.Reflection.BindingFlags::Public or Managed.Reflection.BindingFlags::NonPublic)
 
 			if fldinfo isnot null then
 				//filter out private members
 				if !fldinfo::get_IsPrivate() then
 			
-					var asmn as IKVM.Reflection.AssemblyName = typ::get_Assembly()::GetName()
-					var asmnc as IKVM.Reflection.AssemblyName = AsmFactory::AsmNameStr
+					var asmn as Managed.Reflection.AssemblyName = typ::get_Assembly()::GetName()
+					var asmnc as Managed.Reflection.AssemblyName = AsmFactory::AsmNameStr
 					var havinternal as boolean = false
 					if asmnc isnot null then
 						havinternal = asmn::get_Version()::Equals(asmnc::get_Version()) andalso (asmn::get_Name() == asmnc::get_Name())
@@ -560,19 +560,19 @@ class public static Loader
 	end method
 	
 	[method: ComVisible(false)]
-	method public static IKVM.Reflection.PropertyInfo LoadProperty(var typ as IKVM.Reflection.Type, var name as string)
+	method public static Managed.Reflection.PropertyInfo LoadProperty(var typ as Managed.Reflection.Type, var name as string)
 
-		var propinfo as IKVM.Reflection.PropertyInfo = typ::GetProperty(name)
+		var propinfo as Managed.Reflection.PropertyInfo = typ::GetProperty(name)
 		
 //		if propinfo = null then
-//			propinfo = typ::GetProperty(name,IKVM.Reflection.BindingFlags::Instance or IKVM.Reflection.BindingFlags::Static or IKVM.Reflection.BindingFlags::Public or IKVM.Reflection.BindingFlags::NonPublic)
+//			propinfo = typ::GetProperty(name,Managed.Reflection.BindingFlags::Instance or Managed.Reflection.BindingFlags::Static or Managed.Reflection.BindingFlags::Public or Managed.Reflection.BindingFlags::NonPublic)
 //
 //			if propinfo isnot null then
 //				//filter out private members
 //				if propinfo::get_IsPrivate() = false then
 //			
-//					var asmn as IKVM.Reflection.AssemblyName = typ::get_Assembly()::GetName()
-//					var asmnc as IKVM.Reflection.AssemblyName = AsmFactory::AsmNameStr
+//					var asmn as Managed.Reflection.AssemblyName = typ::get_Assembly()::GetName()
+//					var asmnc as Managed.Reflection.AssemblyName = AsmFactory::AsmNameStr
 //					var havinternal as boolean = false
 //					if asmnc isnot null then
 //						havinternal = asmn::get_Version()::Equals(asmnc::get_Version()) and (asmn::get_Name() == asmnc::get_Name())

@@ -10,22 +10,22 @@ class private MILambdas2
 
 	field assembly string Name
 	field assembly integer ParamLen
-	field assembly IKVM.Reflection.Type[] Params
-	field assembly IKVM.Reflection.Type Auxt
+	field assembly Managed.Reflection.Type[] Params
+	field assembly Managed.Reflection.Type Auxt
 	
 	method assembly void MILambdas2()
 		mybase::ctor()
 		Name = string::Empty
 	end method
 
-	method assembly void MILambdas2(var name as string, var params as IKVM.Reflection.Type[], var auxt as IKVM.Reflection.Type)
+	method assembly void MILambdas2(var name as string, var params as Managed.Reflection.Type[], var auxt as Managed.Reflection.Type)
 		mybase::ctor()
 		Name = name
 		Params = params
 		Auxt = auxt
 	end method
 	
-	method assembly void MILambdas2(var params as IKVM.Reflection.Type[], var auxt as IKVM.Reflection.Type)
+	method assembly void MILambdas2(var params as Managed.Reflection.Type[], var auxt as Managed.Reflection.Type)
 		mybase::ctor()
 		Name = string::Empty
 		Params = params
@@ -73,10 +73,10 @@ class private MILambdas2
 		return true
 	end method
 	
-	method assembly IKVM.Reflection.MethodInfo InstGenMtd(var mi as MethodItem) => _
+	method assembly Managed.Reflection.MethodInfo InstGenMtd(var mi as MethodItem) => _
 		#expr($MethodInfo$mi::MethodBldr::BindTypeParameters(Auxt))::MakeGenericMethod(Params)
 
-	method assembly boolean CmpTyps(var arra as ParameterInfo[], var arrb as IKVM.Reflection.Type[])
+	method assembly boolean CmpTyps(var arra as ParameterInfo[], var arrb as Managed.Reflection.Type[])
 		if arra[l] == arrb[l] then
 			if arra[l] == 0 then
 				return true
@@ -94,7 +94,7 @@ class private MILambdas2
 		return true
 	end method
 	
-	method assembly boolean CmpTyps2(var arra as IKVM.Reflection.Type[], var arrb as IKVM.Reflection.Type[])
+	method assembly boolean CmpTyps2(var arra as Managed.Reflection.Type[], var arrb as Managed.Reflection.Type[])
 		if arra[l] == arrb[l] then
 			if arra[l] = 0 then
 				return true
@@ -126,7 +126,7 @@ class private MILambdas2
 		end if
 	end method
 
-	method assembly static integer CalcDeriveness(var t as IKVM.Reflection.Type)
+	method assembly static integer CalcDeriveness(var t as Managed.Reflection.Type)
 		var d as integer = 1
 		do while t::get_BaseType() isnot null
 			d++

@@ -9,15 +9,15 @@
 class public PropertyItem
 
 	field public string Name
-	field public IKVM.Reflection.Type PropertyTyp
+	field public Managed.Reflection.Type PropertyTyp
 	field public PropertyBuilder PropertyBldr
 	field public string ExplImplType
 	field public TypeTok ExplType
 	field public IEnumerable<of Attributes.Attribute> Attrs
-	field public IKVM.Reflection.Type[] ParamTyps
+	field public Managed.Reflection.Type[] ParamTyps
 	field public C5.LinkedList<of Expr> Params
 
-	method public void PropertyItem(var nme as string, var typ as IKVM.Reflection.Type, var bld as PropertyBuilder, var attr as IEnumerable<of Attributes.Attribute>, var expl as string)
+	method public void PropertyItem(var nme as string, var typ as Managed.Reflection.Type, var bld as PropertyBuilder, var attr as IEnumerable<of Attributes.Attribute>, var expl as string)
 		mybase::ctor()
 		Name = nme
 		PropertyTyp = typ
@@ -25,12 +25,12 @@ class public PropertyItem
 		ExplImplType = string::Empty
 		Attrs = attr
 		ExplImplType = expl
-		ParamTyps = IKVM.Reflection.Type::EmptyTypes
+		ParamTyps = Managed.Reflection.Type::EmptyTypes
 		Params = new C5.LinkedList<of Expr>()
 	end method
 	
 	method public void PropertyItem()
-		ctor(string::Empty, $IKVM.Reflection.Type$null, $PropertyBuilder$null, $IEnumerable<of Attributes.Attribute>$null, string::Empty)
+		ctor(string::Empty, $Managed.Reflection.Type$null, $PropertyBuilder$null, $IEnumerable<of Attributes.Attribute>$null, string::Empty)
 	end method
 
 	method public override string ToString() => i"{Name} : {PropertyTyp::ToString()}"

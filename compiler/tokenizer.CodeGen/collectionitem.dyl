@@ -8,7 +8,7 @@
 
 class public CollectionItem
 
-	field public IKVM.Reflection.Type ElemType
+	field public Managed.Reflection.Type ElemType
 	field public ConstructorInfo Ctor
 	field public MethodInfo AddMtd
 	

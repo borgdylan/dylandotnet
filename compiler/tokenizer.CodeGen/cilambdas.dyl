@@ -8,20 +8,20 @@
 
 class private CILambdas
 
-	field assembly IKVM.Reflection.Type[] Params
-	field assembly IKVM.Reflection.Type Auxt
+	field assembly Managed.Reflection.Type[] Params
+	field assembly Managed.Reflection.Type Auxt
 
 	method assembly void CILambdas()
 		mybase::ctor()
 	end method
 
-	method assembly void CILambdas(var params as IKVM.Reflection.Type[], var auxt as IKVM.Reflection.Type)
+	method assembly void CILambdas(var params as Managed.Reflection.Type[], var auxt as Managed.Reflection.Type)
 		mybase::ctor()
 		Params = params
 		Auxt = auxt
 	end method
 
-	method assembly boolean CmpTyps(var arra as ParameterInfo[], var arrb as IKVM.Reflection.Type[])
+	method assembly boolean CmpTyps(var arra as ParameterInfo[], var arrb as Managed.Reflection.Type[])
 		if arra[l] = arrb[l] then
 			if arra[l] = 0 then
 				return true
@@ -42,7 +42,7 @@ class private CILambdas
 	method assembly ConstructorInfo Bind(var ci as CtorItem) => $ConstructorInfo$ci::CtorBldr::BindTypeParameters(Auxt)
 	method assembly boolean DetermineIfCandidate(var ci as ConstructorInfo) => CmpTyps(ci::GetParameters(),Params)
 
-	method assembly static integer CalcDeriveness(var t as IKVM.Reflection.Type)
+	method assembly static integer CalcDeriveness(var t as Managed.Reflection.Type)
 		var d as integer = 1
 		do while t::get_BaseType() isnot null
 			d++

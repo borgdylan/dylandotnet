@@ -167,7 +167,7 @@
 	</Target>
 	
 	<PropertyGroup>
-		<DebugExt Condition=" '$(OS)' != 'Windows_NT' ">$(TargetExt).mdb</DebugExt>
+		<DebugExt Condition=" '$(OS)' != 'Windows_NT' ">.pdb</DebugExt>
 		<DebugExt Condition=" '$(OS)' == 'Windows_NT' ">.pdb</DebugExt>
 	</PropertyGroup>
 	

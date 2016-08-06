@@ -14,13 +14,13 @@ class public MethodCallTok extends ValueToken
 	field public boolean CondFlg
 	field public boolean CondAvailable
 	field public boolean CondFlgValue
-	field public IKVM.Reflection.Type[] TypArr
+	field public Managed.Reflection.Type[] TypArr
 
 	method public void MethodCallTok(var value as string)
 		mybase::ctor(value)
 		Name = new MethodNameTok()
 		Params = new C5.ArrayList<of Expr>()
-		TypArr = IKVM.Reflection.Type::EmptyTypes
+		TypArr = Managed.Reflection.Type::EmptyTypes
 	end method
 	
 	method public void MethodCallTok()

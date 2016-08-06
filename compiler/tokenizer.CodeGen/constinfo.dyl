@@ -9,6 +9,6 @@
 class public sealed ConstInfo
 
 	field public object Value
-	field public IKVM.Reflection.Type Typ
+	field public Managed.Reflection.Type Typ
 	
 end class

@@ -12,7 +12,7 @@ class public VarItem
 	// t for loc f for arg
 	field public boolean LocArg
 	field public integer Index
-	field public IKVM.Reflection.Type VarTyp
+	field public Managed.Reflection.Type VarTyp
 	field public boolean Used
 	field public boolean Stored
 	field public integer Line
@@ -22,26 +22,26 @@ class public VarItem
 		mybase::ctor()
 		Name = String::Empty
 		Index = -1
-		StoreLines = new C5.TreeSet<of integer>()
+		StoreLines = new C5.TreeSet<of integer>(C5.MemoryType::Normal)
 	end method
 
-	method public void VarItem(var nme as string, var la as boolean, var ind as integer, var typ as IKVM.Reflection.Type)
+	method public void VarItem(var nme as string, var la as boolean, var ind as integer, var typ as Managed.Reflection.Type)
 		mybase::ctor()
 		Name = nme
 		LocArg = la
 		Index = ind
 		VarTyp = typ
-		StoreLines = new C5.TreeSet<of integer>()
+		StoreLines = new C5.TreeSet<of integer>(C5.MemoryType::Normal)
 	end method
 
-	method public void VarItem(var nme as string, var la as boolean, var ind as integer, var typ as IKVM.Reflection.Type, var line as integer)
+	method public void VarItem(var nme as string, var la as boolean, var ind as integer, var typ as Managed.Reflection.Type, var line as integer)
 		mybase::ctor()
 		Name = nme
 		LocArg = la
 		Index = ind
 		VarTyp = typ
 		Line = line
-		StoreLines = new C5.TreeSet<of integer>()
+		StoreLines = new C5.TreeSet<of integer>(C5.MemoryType::Normal)
 	end method
 	
 	method public override string ToString() => Name

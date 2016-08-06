@@ -8,17 +8,17 @@
 
 class public CtorItem
 
-	field public IKVM.Reflection.Type[] ParamTyps
+	field public Managed.Reflection.Type[] ParamTyps
 	field public ConstructorBuilder CtorBldr
 
-	method public void CtorItem(var ptyps as IKVM.Reflection.Type[], var bld as ConstructorBuilder)
+	method public void CtorItem(var ptyps as Managed.Reflection.Type[], var bld as ConstructorBuilder)
 		mybase::ctor()
 		CtorBldr = bld
 		ParamTyps = ptyps
 	end method
 	
 	method public void CtorItem()
-		ctor(new IKVM.Reflection.Type[0], $ConstructorBuilder$null)
+		ctor(new Managed.Reflection.Type[0], $ConstructorBuilder$null)
 	end method
 
 	method public override string ToString() => "ctor : " + $string$ParamTyps[l]

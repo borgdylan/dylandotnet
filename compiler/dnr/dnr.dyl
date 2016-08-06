@@ -27,8 +27,8 @@ import System.Runtime.InteropServices
 //import dylan.NET
 import dylan.NET.Utils
 //import dylan.NET.Reflection
-import IKVM.Reflection
-//import IKVM.Reflection.Emit
+import Managed.Reflection
+import Managed.Reflection.Emit
 
 #include "AssemblyRecord.dyl"
 #include "ImportRecord.dyl"

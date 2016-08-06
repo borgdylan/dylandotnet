@@ -1041,7 +1041,7 @@ class public StmtOptimizer
 			end if
 		end for
 
-		mas::Tokens = new C5.ArrayList<of Token>(0)
+		mas::Tokens = new C5.ArrayList<of Token>(0, C5.MemoryType::Normal)
 		mas::Pairs = lp
 		return mas
 	end method

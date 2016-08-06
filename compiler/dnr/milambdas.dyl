@@ -10,8 +10,8 @@ class private MILambdas
 
 	field assembly string Name
 	field assembly integer ParamLen
-	field assembly IKVM.Reflection.Type[] GenParams
-	field assembly IKVM.Reflection.Type ConvTyp
+	field assembly Managed.Reflection.Type[] GenParams
+	field assembly Managed.Reflection.Type ConvTyp
 	field assembly boolean HaveInternal
 	field assembly boolean ProtectedFlag
 
@@ -35,7 +35,7 @@ class private MILambdas
 		//ProtectedFlag = false
 	end method
 
-	method assembly void MILambdas(var name as string, var snk as IKVM.Reflection.Type)
+	method assembly void MILambdas(var name as string, var snk as Managed.Reflection.Type)
 		mybase::ctor()
 		Name = name
 		//ParamLen = 0
@@ -45,7 +45,7 @@ class private MILambdas
 		//ProtectedFlag = false
 	end method
 
-	method assembly void MILambdas(var genparams as IKVM.Reflection.Type[])
+	method assembly void MILambdas(var genparams as Managed.Reflection.Type[])
 		mybase::ctor()
 		Name = string::Empty
 		//ParamLen = 0
@@ -65,7 +65,7 @@ class private MILambdas
 		ProtectedFlag = protf
 	end method
 
-	method assembly boolean NormalMtdFilter(var mi as IKVM.Reflection.MethodInfo)
+	method assembly boolean NormalMtdFilter(var mi as Managed.Reflection.MethodInfo)
 		if !mi::get_IsGenericMethod() andalso !mi::get_IsGenericMethodDefinition() then
 			if mi::get_Name() != Name then
 				return false
@@ -93,7 +93,7 @@ class private MILambdas
 		return true
 	end method
 
-	method assembly boolean GenericMtdFilter(var mi as IKVM.Reflection.MethodInfo)
+	method assembly boolean GenericMtdFilter(var mi as Managed.Reflection.MethodInfo)
 		if mi::get_IsGenericMethod() then
 			if mi::get_Name() == Name then
 				if mi::GetGenericArguments()[l] != ParamLen then
@@ -125,10 +125,10 @@ class private MILambdas
 		return true
 	end method
 
-	method assembly boolean IsSameName(var mi as IKVM.Reflection.MethodInfo) => mi::get_Name() == Name
-	method assembly boolean IsSameNameAndReturn(var mi as IKVM.Reflection.MethodInfo) => _
+	method assembly boolean IsSameName(var mi as Managed.Reflection.MethodInfo) => mi::get_Name() == Name
+	method assembly boolean IsSameNameAndReturn(var mi as Managed.Reflection.MethodInfo) => _
 		(mi::get_Name() == Name) andalso mi::get_ReturnType()::Equals(ConvTyp)
-	method assembly IKVM.Reflection.MethodInfo InstGenMtd(var mi as IKVM.Reflection.MethodInfo) => mi::MakeGenericMethod(GenParams)
-	method assembly static boolean IsSpecial(var mi as IKVM.Reflection.MethodInfo) => mi::get_IsSpecialName()
+	method assembly Managed.Reflection.MethodInfo InstGenMtd(var mi as Managed.Reflection.MethodInfo) => mi::MakeGenericMethod(GenParams)
+	method assembly static boolean IsSpecial(var mi as Managed.Reflection.MethodInfo) => mi::get_IsSpecialName()
 
 end class
