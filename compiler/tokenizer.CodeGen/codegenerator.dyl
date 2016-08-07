@@ -229,7 +229,7 @@ class public CodeGenerator
 
 		if ILEmitter::DocWriters::get_Count() >= 0 then
 			if AsmFactory::MdlB isnot null and AsmFactory::DebugFlg then
-				var docw as Managed.Reflection.Emit.ISymbolDocumentWriter = AsmFactory::MdlB::DefineDocument(fpath, Guid::Parse("3f5162f8-07c6-11d3-9053-00c04fa302a1"), Guid::Empty, Guid::Empty)
+				var docw as Managed.Reflection.Emit.ISymbolDocumentWriter = AsmFactory::MdlB::DefineDocument(fpath, new Guid("{3F5162F8-07C6-11D3-9053-00C04FA302A1}"), Guid::Empty, Guid::Empty)
 				ILEmitter::DocWriter = docw
 				ILEmitter::AddDocWriter(docw)
 			end if
@@ -258,7 +258,7 @@ class public CodeGenerator
 				if ILEmitter::SrcFiles::get_Count() > 0 then
 					if AsmFactory::MdlB isnot null and AsmFactory::DebugFlg then
 						var fp = Path::GetFullPath(ILEmitter::SrcFiles::get_Last())
-						var docw as Managed.Reflection.Emit.ISymbolDocumentWriter = AsmFactory::MdlB::DefineDocument(fp, Guid::Parse("3f5162f8-07c6-11d3-9053-00c04fa302a1"), Guid::Empty, Guid::Empty)
+						var docw as Managed.Reflection.Emit.ISymbolDocumentWriter = AsmFactory::MdlB::DefineDocument(fp, new Guid("{3F5162F8-07C6-11D3-9053-00C04FA302A1}"), Guid::Empty, Guid::Empty)
 						ILEmitter::DocWriter = docw
 						ILEmitter::AddDocWriter(docw)
 					end if

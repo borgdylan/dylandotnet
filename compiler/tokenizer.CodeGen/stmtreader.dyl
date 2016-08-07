@@ -954,7 +954,7 @@ class public StmtReader
 
 		if AsmFactory::DebugFlg then
 			fpath = Path::GetFullPath(fpath)
-			var docw as Managed.Reflection.Emit.ISymbolDocumentWriter = AsmFactory::MdlB::DefineDocument(fpath, Guid::Empty, Guid::Empty, Guid::Empty)
+			var docw as Managed.Reflection.Emit.ISymbolDocumentWriter = AsmFactory::MdlB::DefineDocument(fpath, new Guid("{3F5162F8-07C6-11D3-9053-00C04FA302A1}"), Guid::Empty, Guid::Empty)
 			ILEmitter::DocWriter = docw
 			ILEmitter::AddDocWriter(docw)
 		end if
