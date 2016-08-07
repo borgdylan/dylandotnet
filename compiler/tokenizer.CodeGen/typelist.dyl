@@ -136,6 +136,10 @@ class public TypeList
 						var cb as ConstructorBuilder = ti::TypeBldr::DefineConstructor(#ternary {ILEmitter::AbstractCFlg ? MethodAttributes::Family, MethodAttributes::Public}, CallingConventions::Standard, Managed.Reflection.Type::EmptyTypes)
 						var ilg = cb::GetILGenerator()
 
+						if AsmFactory::DebugFlg then
+						    ilg::MarkSequencePoint(ILEmitter::DocWriter, ILEmitter::LineNr, 1, ILEmitter::LineNr, 100)
+						end if
+
 						if !ILEmitter::StructFlg then
 							ilg::Emit(Managed.Reflection.Emit.OpCodes::Ldarg_0)
 							ilg::Emit(Managed.Reflection.Emit.OpCodes::Call, ctorinf)
