@@ -3,7 +3,7 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="tokenizer.CodeGen/typelist.dyl">
     <Files>
       <File FileName="template/template.dyl" Line="1" Column="1" />
-      <File FileName="tokenizer.CodeGen/stmtreader.dyl" Line="1321" Column="30" />
+      <File FileName="tokenizer.CodeGen/stmtreader.dyl" Line="1" Column="1" />
       <File FileName="tokenizer.CodeGen/eval.dyl" Line="1" Column="1" />
       <File FileName="tokenizer.Lexer/lexer.dyl" Line="1" Column="1" />
       <File FileName="tokenizer.Parser/parser.dyl" Line="1" Column="1" />
@@ -21,16 +21,15 @@
       <File FileName="../../mono/mcs/class/referencesource/mscorlib/system/threading/ManualResetEventSlim.cs" Line="1" Column="1" />
       <File FileName="../../mono/mcs/class/referencesource/mscorlib/system/threading/monitor.cs" Line="1" Column="1" />
       <File FileName="../../mono/mcs/class/corlib/System.Threading/Monitor.cs" Line="1" Column="1" />
-      <File FileName="tokenizer.CodeGen/typelist.dyl" Line="149" Column="26" />
-      <File FileName="dnr/asmfactory.dyl" Line="71" Column="25" />
-      <File FileName="dnr/ilemitter.dyl" Line="1139" Column="1" />
+      <File FileName="tokenizer.CodeGen/typelist.dyl" Line="142" Column="7" />
+      <File FileName="dnr/asmfactory.dyl" Line="1" Column="1" />
+      <File FileName="dnr/ilemitter.dyl" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/mnt/ssd/dylandotnet/compiler/dnu/streamu.dyl" line="183" column="1" />
       <Breakpoint file="/mnt/ssd/dylandotnet/compiler/dnc/Program.dyl" line="104" column="7" />
-      <Breakpoint file="/mnt/ssd/dylandotnet/compiler/dnc/Program.dyl" line="6" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
