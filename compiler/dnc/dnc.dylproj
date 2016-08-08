@@ -8,7 +8,7 @@
     <RootNamespace>dylan.NET.Compiler</RootNamespace>
     <UsePartialTypes>false</UsePartialTypes>
     <AssemblyName>dnc</AssemblyName>
-    <ReleaseVersion>11.8.3.2</ReleaseVersion>
+    <ReleaseVersion>11.8.3.3</ReleaseVersion>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -17,7 +17,7 @@
     <ErrorReport>prompt</ErrorReport>
     <DefineConstants>DEBUG</DefineConstants>
     <!--<Commandlineparameters>-cd /var/www/Code/dylannet/dylandotnet/compiler/template/ template.dyl</Commandlineparameters>-->
-    <Commandlineparameters>-cd /mnt/ssd/vnext/mypim mypim.dyl</Commandlineparameters>
+    <Commandlineparameters>-cd /mnt/ssd/dylandotnet/compiler/template template.dyl</Commandlineparameters>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>false</DebugSymbols>

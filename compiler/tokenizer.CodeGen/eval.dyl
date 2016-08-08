@@ -23,8 +23,8 @@ class public Evaluator
 					if SymTable::TempVTMap::Contains(AsmFactory::Type02) then
 						loc = SymTable::TempVTMap::get_Item(AsmFactory::Type02)
 					else
-						ILEmitter::DeclVar(string::Empty, AsmFactory::Type02)
-						ILEmitter::LocInd++
+					    ILEmitter::LocInd++
+						ILEmitter::DeclVar(i"__temp_{ILEmitter::LocInd}", AsmFactory::Type02)
 						loc = ILEmitter::LocInd
 						SymTable::TempVTMap::Add(AsmFactory::Type02, loc)
 					end if
@@ -582,8 +582,8 @@ class public Evaluator
 		
 			if emt then
 				if !iterflg andalso (AsmFactory::Type05 is GenericTypeParameterBuilder) then
-					ILEmitter::DeclVar(string::Empty, AsmFactory::Type05)
 					ILEmitter::LocInd++
+					ILEmitter::DeclVar(i"__temp_{ILEmitter::LocInd}", AsmFactory::Type05)
 					ILEmitter::EmitStloc(ILEmitter::LocInd)
 					ILEmitter::EmitLdloca(ILEmitter::LocInd)
 				end if
@@ -1122,8 +1122,8 @@ class public Evaluator
 					if SymTable::TempVTMap::Contains(typ2) then
 						loc = SymTable::TempVTMap::get_Item(typ2)
 					else
-						ILEmitter::DeclVar(string::Empty, typ2)
 						ILEmitter::LocInd++
+						ILEmitter::DeclVar(i"__temp_{ILEmitter::LocInd}", typ2)
 						loc = ILEmitter::LocInd
 						SymTable::TempVTMap::Add(typ2, loc)
 					end if

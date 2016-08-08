@@ -1,10 +1,10 @@
 ﻿<Properties StartupItem="dnc/dnc.dylproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="tokenizer.CodeGen/stmtreader.dyl">
+  <MonoDevelop.Ide.Workbench ActiveDocument="dnc/Program.dyl">
     <Files>
       <File FileName="template/template.dyl" Line="1" Column="1" />
-      <File FileName="tokenizer.CodeGen/stmtreader.dyl" Line="996" Column="34" />
-      <File FileName="tokenizer.CodeGen/eval.dyl" Line="1" Column="1" />
+      <File FileName="tokenizer.CodeGen/stmtreader.dyl" Line="1" Column="1" />
+      <File FileName="tokenizer.CodeGen/eval.dyl" Line="1134" Column="11" />
       <File FileName="tokenizer.Lexer/lexer.dyl" Line="1" Column="1" />
       <File FileName="tokenizer.Parser/parser.dyl" Line="1" Column="1" />
       <File FileName="tokenizer.Parser/stmtoptimizer.dyl" Line="1" Column="1" />
@@ -14,7 +14,7 @@
       <File FileName="tokenizer.CodeGen/codegenerator.dyl" Line="1" Column="1" />
       <File FileName="tokenizer.CodeGen/tokenizer.CodeGen.dyl" Line="1" Column="1" />
       <File FileName="tokenizer.AST/stmt.dyl" Line="1" Column="1" />
-      <File FileName="dnc/Program.dyl" Line="1" Column="1" />
+      <File FileName="dnc/Program.dyl" Line="32" Column="68" />
       <File FileName="dnu/streamu.dyl" Line="1" Column="1" />
       <File FileName="../../mono/mcs/class/referencesource/mscorlib/system/threading/Tasks/Parallel.cs" Line="1" Column="1" />
       <File FileName="../../mono/mcs/class/referencesource/mscorlib/system/threading/Tasks/Task.cs" Line="1" Column="1" />
@@ -24,6 +24,7 @@
       <File FileName="tokenizer.CodeGen/typelist.dyl" Line="1" Column="1" />
       <File FileName="dnr/asmfactory.dyl" Line="1" Column="1" />
       <File FileName="dnr/ilemitter.dyl" Line="1" Column="1" />
+      <File FileName="test/code.dyl" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

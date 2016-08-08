@@ -799,8 +799,8 @@ class public StmtReader
 		var ttu2 as Managed.Reflection.Type
 		if mtds isnot null then
 			ILEmitter::EmitCallvirt(mtds[0])
-			ILEmitter::DeclVar(string::Empty, mtds[0]::get_ReturnType())
 			ILEmitter::LocInd++
+			ILEmitter::DeclVar(i"__temp_{ILEmitter::LocInd}", mtds[0]::get_ReturnType())
 			var ien as integer = ILEmitter::LocInd
 			ILEmitter::EmitStloc(ien)
 			SymTable::AddLoop()
@@ -825,8 +825,8 @@ class public StmtReader
 		else
 			mtds = Helpers::ProcessForeach2(AsmFactory::Type02)
 			if mtds isnot null then
-				ILEmitter::DeclVar(string::Empty, AsmFactory::Type02)
 				ILEmitter::LocInd++
+				ILEmitter::DeclVar(i"__temp_{ILEmitter::LocInd}", AsmFactory::Type02)
 				var ien as integer = ILEmitter::LocInd
 				ILEmitter::EmitStloc(ien)
 				SymTable::AddLoop()
@@ -2016,8 +2016,8 @@ class public StmtReader
 			if Loader::CachedLoadClass("System.ValueType")::IsAssignableFrom(AsmFactory::Type02) then
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Locks should only be taken on Objects and not Valuetypes.")
 			end if
-			ILEmitter::DeclVar(String::Empty, Loader::CachedLoadClass("System.Object"))
 			ILEmitter::LocInd++
+			ILEmitter::DeclVar(i"__temp_{ILEmitter::LocInd}", Loader::CachedLoadClass("System.Object"))
 			var lockee as integer = ILEmitter::LocInd
 			ILEmitter::EmitStloc(lockee)
 			SymTable::AddLock(lockee)
@@ -2032,8 +2032,8 @@ class public StmtReader
 			if Loader::CachedLoadClass("System.ValueType")::IsAssignableFrom(AsmFactory::Type02) then
 				StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Locks should only be taken on Objects and not Valuetypes.")
 			end if
-			ILEmitter::DeclVar(String::Empty, Loader::CachedLoadClass("System.Object"))
 			ILEmitter::LocInd++
+			ILEmitter::DeclVar(i"__temp_{ILEmitter::LocInd}", Loader::CachedLoadClass("System.Object"))
 			var lockee as integer = ILEmitter::LocInd
 			ILEmitter::EmitStloc(lockee)
 			SymTable::AddTryLock(lockee)

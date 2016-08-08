@@ -756,8 +756,8 @@ class public StmtReader
 		var ttu2 as IKVM.Reflection.Type
 		if mtds != null then
 			ILEmitter::EmitCallvirt(mtds[0])
-			ILEmitter::DeclVar(string::Empty, mtds[0]::get_ReturnType())
 			ILEmitter::LocInd++
+			ILEmitter::DeclVar(string::Empty, mtds[0]::get_ReturnType())
 			var ien as integer = ILEmitter::LocInd
 			ILEmitter::EmitStloc(ien)
 			SymTable::AddLoop()
