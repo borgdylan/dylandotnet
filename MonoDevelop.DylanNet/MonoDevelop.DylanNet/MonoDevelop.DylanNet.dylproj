@@ -10,6 +10,7 @@
     <ReleaseVersion>2.8.1.0</ReleaseVersion>
     <SynchReleaseVersion>false</SynchReleaseVersion>
     <RootNamespace>MonoDevelop.DylanNet</RootNamespace>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>

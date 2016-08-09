@@ -19,12 +19,12 @@ namespace MonoDevelop.DylanNet
 		end method
 
 		method assembly void ErrorH(var cm as CompilerMsg)
-			doc::get_Errors()::Add(new Error(ErrorType::Error, cm::get_Msg(), new DomRegion(cm::get_File(), cm::get_Line(), 0)))
+			doc::get_Errors()::Add(new ICSharpCode.NRefactory.TypeSystem.Error(ErrorType::Error, cm::get_Msg(), new DomRegion(cm::get_File(), cm::get_Line(), 0)))
 			doc::set_IsInvalid(true)
 		end method
 
 		method assembly void WarnH(var cm as CompilerMsg)
-			doc::get_Errors()::Add(new Error(ErrorType::Warning, cm::get_Msg(), new DomRegion(cm::get_File(), cm::get_Line(), 0)))
+			doc::get_Errors()::Add(new ICSharpCode.NRefactory.TypeSystem.Error(ErrorType::Warning, cm::get_Msg(), new DomRegion(cm::get_File(), cm::get_Line(), 0)))
 		end method
 
 		method assembly string ExtractVal(var t as Token)

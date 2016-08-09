@@ -14,7 +14,7 @@
       		    <Addin id="::MonoDevelop.SourceEditor2" version="2.8.8.1"/>
       			<Addin id="::MonoDevelop.Refactoring" version="5.0"/> 
       			<!--<Addin id="::MonoDevelop.AspNet.Mvc" version="5.0"/>-->
-      			<Addin id="::MonoDevelop.AspNet" version="5.0"/>
+      			<!--<Addin id="::MonoDevelop.AspNet" version="5.0"/>0-->
       			<Addin id="::MonoDevelop.CSharpBinding" version="5.0"/>
   			</Dependencies>
   		
