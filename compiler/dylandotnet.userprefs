@@ -14,7 +14,7 @@
       <File FileName="tokenizer.CodeGen/codegenerator.dyl" Line="1" Column="1" />
       <File FileName="tokenizer.CodeGen/tokenizer.CodeGen.dyl" Line="1" Column="1" />
       <File FileName="tokenizer.AST/stmt.dyl" Line="1" Column="1" />
-      <File FileName="dnc/Program.dyl" Line="58" Column="29" />
+      <File FileName="dnc/Program.dyl" Line="17" Column="15" />
       <File FileName="dnu/streamu.dyl" Line="1" Column="1" />
       <File FileName="../../mono/mcs/class/referencesource/mscorlib/system/threading/Tasks/Parallel.cs" Line="1" Column="1" />
       <File FileName="../../mono/mcs/class/referencesource/mscorlib/system/threading/Tasks/Task.cs" Line="1" Column="1" />
@@ -25,12 +25,13 @@
       <File FileName="dnr/asmfactory.dyl" Line="1" Column="1" />
       <File FileName="dnr/ilemitter.dyl" Line="1" Column="1" />
       <File FileName="test/code.dyl" Line="1" Column="1" />
+      <File FileName="tokenizer.Parser/exproptimizer.dyl" Line="1037" Column="19" />
+      <File FileName="dnc/dnc.dyl" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/mnt/ssd/dylandotnet/compiler/dnu/streamu.dyl" line="183" column="1" />
-      <Breakpoint file="/mnt/ssd/dylandotnet/compiler/dnc/Program.dyl" line="104" column="7" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

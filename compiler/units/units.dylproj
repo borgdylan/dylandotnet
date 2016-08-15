@@ -8,7 +8,7 @@
     <RootNamespace>units</RootNamespace>
     <UsePartialTypes>false</UsePartialTypes>
     <AssemblyName>units</AssemblyName>
-    <ReleaseVersion>11.8.2.4</ReleaseVersion>
+    <ReleaseVersion>11.8.3.4</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Testing|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>

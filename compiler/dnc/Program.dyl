@@ -37,7 +37,7 @@ class public static Program
 	[method: ComVisible(false)]
 	method private static void main(var args as string[])
 		
-		StreamUtils::WriteLine("dylan.NET Compiler v. 11.8.3.3 RC for Microsoft (R) .NET Framework (R) v. 4.0+")
+		StreamUtils::WriteLine("dylan.NET Compiler v. 11.8.3.4 RC for Microsoft (R) .NET Framework (R) v. 4.0+")
 		StreamUtils::WriteLine("                           and Xamarin Mono v. 2.x.y+")
 		StreamUtils::WriteLine("This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.")
 		StreamUtils::WriteLine("Copyright (C) 2015 Dylan Borg")
@@ -116,7 +116,7 @@ class public static Program
 		main(args)
 	end method
 	
-	#if NET_4_0 or NET_4_5 then
+	#if NET_4_0 orelse NET_4_5 orelse NET_4_6 then
 	
 		method private static void InvokeAsyncWrapper(var args as object)
 			Invoke($string[]$args)
