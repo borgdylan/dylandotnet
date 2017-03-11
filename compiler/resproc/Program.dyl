@@ -312,7 +312,7 @@ namespace dylan.NET.ResProc
 
 		method public static IEnumerable<of string> Invoke(var args as string[])
 		
-			Console::WriteLine("dylan.NET Resource Processor v. 11.8.1.1 RC")
+			Console::WriteLine("dylan.NET Resource Processor v. 11.8.3.5 RC")
 			Console::WriteLine("This program is FREE and OPEN SOURCE software under the GNU LGPLv3 license.")
 			Console::WriteLine("Copyright (C) 2016 Dylan Borg")
 			if args[l] < 1 then

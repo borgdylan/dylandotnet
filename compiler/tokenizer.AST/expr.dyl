@@ -10,6 +10,9 @@ class public Expr
 
 	field public C5.ArrayList<of Token> Tokens
 	field public integer Line
+	field public integer EndLine
+	field public integer Column
+	field public integer EndColumn
 	field public Type ResultTyp
 
 	method public void Expr()
@@ -17,11 +20,34 @@ class public Expr
 		Tokens = new C5.ArrayList<of Token>(3, C5.MemoryType::Normal)
 	end method
 
+	method public void PosFromExpr(var exp as Expr)
+		Line = exp::Line
+		EndLine = exp::EndLine
+		Column = exp::Column
+		EndColumn = exp::EndColumn
+	end method
+
+	method public void PosFromStmt(var exp as Stmt)
+		Line = exp::Line
+		EndLine = exp::EndLine
+		Column = exp::Column
+		EndColumn = exp::EndColumn
+	end method
+
 	method public void AddToken(var toktoadd as Token)
 		if Tokens::get_Count() == 0 then
 			Line = toktoadd::Line
+			Column = toktoadd::Column
 		end if
 		Tokens::Add(toktoadd)
+		EndLine = toktoadd::EndLine
+		EndColumn = toktoadd::EndColumn
+	end method
+
+	method public void AddTokens(var tokstoadd as IEnumerable<of Token>)
+		foreach tok in tokstoadd
+			AddToken(tok)
+		end for
 	end method
 
 	method public void RemToken(var ind as integer)

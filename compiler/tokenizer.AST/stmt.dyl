@@ -21,17 +21,28 @@ enum public integer ContextType
 end enum
 
 class public Stmt
-
-	field public C5.ArrayList<of Token> Tokens
-	field public integer Line
+	//field defined in partial class inside expr.dyl
 
 	method public void Stmt()
 		mybase::ctor()
 		Tokens = new C5.ArrayList<of Token>(5, C5.MemoryType::Normal)
 	end method
 
+	method public void PosFromStmt(var stm as Stmt)
+		Line = stm::Line
+		EndLine = stm::EndLine
+		Column = stm::Column
+		EndColumn = stm::EndColumn
+	end method
+
 	method public void AddToken(var toktoadd as Token)
+		if Tokens::get_Count() == 0 then
+			Line = toktoadd::Line
+			Column = toktoadd::Column
+		end if
 		Tokens::Add(toktoadd)
+		EndLine = toktoadd::EndLine
+		EndColumn = toktoadd::EndColumn
 	end method
 	
 	method public void RemToken(var ind as integer)
@@ -112,17 +123,19 @@ class public StmtSet implements IStmtContainer
 	field public C5.ArrayList<of Stmt> Stmts
 	field public string Path
 
-	method public void StmtSet()
-		mybase::ctor()
-		Stmts = new C5.ArrayList<of Stmt>()
-		Path = string::Empty
-	end method
-	
+	property public virtual autogen ContextType Context
+
 	method public void StmtSet(var p as string)
 		mybase::ctor()
 		Stmts = new C5.ArrayList<of Stmt>()
 		Path = p
+		_Context = ContextType::Assembly
 	end method
+
+	method public void StmtSet()
+		ctor(string::Empty)
+	end method
+
 
 	method public virtual boolean AddStmt(var stmttoadd as Stmt)
 		Stmts::Add(stmttoadd)
@@ -133,14 +146,6 @@ class public StmtSet implements IStmtContainer
 		end if
 		return true
 	end method
-
-	property public virtual ContextType Context
-		get
-			return ContextType::Assembly
-		end get
-		set
-		end set
-	end property
 
 	property public virtual IStmtContainer Parent
 		get

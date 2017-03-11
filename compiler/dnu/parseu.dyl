@@ -268,9 +268,10 @@ class public static ParseUtils
 		var buf as StringBuilder = new StringBuilder(input::get_Length())
 		var cbuf as StringBuilder = null
 		var j as integer = -1
-		var es = new C5.ArrayList<of string>()
+		var es = new C5.ArrayList<of Tuple<of integer, string> >()
 		//false means copy to format, true means copy to current expression
 		var mode as boolean = false
+		var exprStart as integer = -1
 
 		for i = 0 upto len
 			cc = input::get_Chars(i)
@@ -290,6 +291,8 @@ class public static ParseUtils
 					j++
 					buf::Append('{')::Append(j)
 					cbuf = new StringBuilder(10)
+					//expression starts at ++i, Analyze() needs an offset so we pass in i instead
+					exprStart = i
 					continue
 				end if
 			elseif cc == '}' then
@@ -303,7 +306,7 @@ class public static ParseUtils
 					continue
 				elseif mode then
 					mode = false
-					es::Add(cbuf::ToString())
+					es::Add(Tuple::Create<of integer, string>(exprStart, cbuf::ToString()))
 				end if
 			elseif cc == c'\\' andalso lc == 'q' then
 				i++
@@ -332,7 +335,7 @@ class public static ParseUtils
 					continue
 				else
 					mode = false
-					es::Add(cbuf::ToString())
+					es::Add(Tuple::Create<of integer, string>(exprStart, cbuf::ToString()))
 				end if
 			end if
 			

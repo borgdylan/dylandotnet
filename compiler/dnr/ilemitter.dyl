@@ -1136,8 +1136,13 @@ class public static ILEmitter
 	end method
 	
 	[method: ComVisible(false)]
-	method public static void MarkDbgPt(var line as integer)
+	method public static void MarkDbgPt(var line as integer, var col as integer, var eline as integer, var ecol as integer)
+		//ok on mono and coreclr
 		ILGen::MarkSequencePoint(DocWriter, line, 1, line, 100)
+		//ok on mono but coreclr debugger rejects pdbs
+		//ILGen::MarkSequencePoint(DocWriter, line, col, eline, ecol)
+
+		//Console::WriteLine(i"{line},{col} -> {eline},{ecol}")
 	end method
 
 	[method: ComVisible(false)]

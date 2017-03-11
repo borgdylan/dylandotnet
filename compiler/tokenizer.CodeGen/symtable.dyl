@@ -124,10 +124,10 @@ class public static SymTable
 		foreach s in VarLst::Backwards()
 			if s::Contains(nme) then
 				if flg then
-					StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Variable '" + nme + "' will hide a variable in an outer scope!")
+					StreamUtils::WriteWarn(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "Variable '" + nme + "' will hide a variable in an outer scope!")
 					break
 				else
-					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Variable '" + nme + "' is already declared in the current scope!")
+					StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "Variable '" + nme + "' is already declared in the current scope!")
 					return
 				end if
 			end if
@@ -375,7 +375,7 @@ class public static SymTable
 				if !StoreFlg then
 					v::Used = true
 					if !v::Stored and v::LocArg and !AsmFactory::ForcedAddrFlg then
-						StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "The variable " + v::Name + " might not have been initialized.")
+						StreamUtils::WriteWarn(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "The variable " + v::Name + " might not have been initialized.")
 					end if
 				end if
 				return v
@@ -391,14 +391,14 @@ class public static SymTable
 			var vlec = hm::get_Item(k)
 			if !vlec::Used and vlec::LocArg then
 				if vlec::Stored then
-					StreamUtils::WriteWarn(vlec::Line, ILEmitter::CurSrcFile, "The variable " + vlec::Name + " was initialised but then not used.")
+					StreamUtils::WriteWarn(vlec::Line, 0, ILEmitter::CurSrcFile, "The variable " + vlec::Name + " was initialised but then not used.")
 					foreach line in vlec::StoreLines
 						if line != vlec::Line then
-							StreamUtils::WriteWarn(line, ILEmitter::CurSrcFile, "The variable " + vlec::Name + " was initialised but then not used.")
+							StreamUtils::WriteWarn(line, 0, ILEmitter::CurSrcFile, "The variable " + vlec::Name + " was initialised but then not used.")
 						end if
 					end for
 				else
-					StreamUtils::WriteWarn(vlec::Line, ILEmitter::CurSrcFile, "The variable " + vlec::Name + " was declared but never used.")
+					StreamUtils::WriteWarn(vlec::Line, 0, ILEmitter::CurSrcFile, "The variable " + vlec::Name + " was declared but never used.")
 				end if
 			end if
 		end for
@@ -407,13 +407,13 @@ class public static SymTable
 	[method: ComVisible(false)]
 	method public static void CheckCtrlBlks()
 		if IfLst::get_Count() != 0 then
-			StreamUtils::WriteError(IfLst::get_First()::Line, ILEmitter::CurSrcFile, "This if statement is unterminated.")
+			StreamUtils::WriteError(IfLst::get_First()::Line, 0, ILEmitter::CurSrcFile, "This if statement is unterminated.")
 		elseif SwitchLst::get_Count() != 0 then
-			StreamUtils::WriteError(SwitchLst::get_First()::Line, ILEmitter::CurSrcFile, "This switch statement is unterminated.")
+			StreamUtils::WriteError(SwitchLst::get_First()::Line, 0, ILEmitter::CurSrcFile, "This switch statement is unterminated.")
 		elseif LoopLst::get_Count() != 0 then
-			StreamUtils::WriteError(LoopLst::get_First()::Line, ILEmitter::CurSrcFile, "This looping statement is unterminated.")
+			StreamUtils::WriteError(LoopLst::get_First()::Line, 0, ILEmitter::CurSrcFile, "This looping statement is unterminated.")
 		elseif TryLst::get_Count() != 0 then
-			StreamUtils::WriteError(TryLst::get_First()::Line, ILEmitter::CurSrcFile, "This try,lock or using statement is unterminated.")
+			StreamUtils::WriteError(TryLst::get_First()::Line, 0, ILEmitter::CurSrcFile, "This try,lock or using statement is unterminated.")
 		end if
 	end method
 

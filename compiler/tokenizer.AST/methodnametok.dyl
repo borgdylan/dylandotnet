@@ -31,8 +31,8 @@ class public MethodNameTok extends Ident implements IMayHaveConstraints
 		IsValInRef = idt::IsValInRef
 		_TTok = idt::get_TTok()
 		_OrdOp = idt::get_OrdOp()
-		Line = idt::Line
 		ExplType = idt::ExplType
+		PosFromToken(idt)
 	end method
 	
 	method public static specialname MethodNameTok op_Implicit(var idt as Ident) => #ternary{idt is MethodNameTok ? $MethodNameTok$idt, new MethodNameTok(idt)}
@@ -72,8 +72,8 @@ class public GenericMethodNameTok extends MethodNameTok implements IMayHaveConst
 		IsValInRef = idt::IsValInRef
 		_TTok = idt::get_TTok()
 		_OrdOp = idt::get_OrdOp()
-		Line = idt::Line
 		_Constraints = new C5.HashDictionary<of string, C5.LinkedList<of Token> >(C5.MemoryType::Normal)
+		PosFromToken(idt)
 	end method
 	
 	method public static specialname GenericMethodNameTok op_Implicit(var idt as Ident) => #ternary {idt is GenericMethodNameTok ? $GenericMethodNameTok$idt, new GenericMethodNameTok(idt)}

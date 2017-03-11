@@ -24,7 +24,7 @@ import System.Linq
 import dylan.NET.Tokenizer.AST.Interfaces
 import dylan.NET.Tokenizer.AST.Tokens
 import dylan.NET.Tokenizer.AST.Exprs
-//import dylan.NET.Tokenizer.AST.Stmts
+import dylan.NET.Tokenizer.AST.Stmts
 //import dylan.NET.Tokenizer.AST.Tokens.Ops
 import dylan.NET.Tokenizer.AST.Tokens.TypeToks
 import dylan.NET.Tokenizer.AST.Tokens.Literals
@@ -37,6 +37,10 @@ namespace dylan.NET.Tokenizer.AST
 
 	namespace Tokens
 		#include "token.dyl"
+	end namespace
+
+	namespace Stmts
+		#include "stmt-pre.dyl"
 	end namespace
 
 	namespace Exprs

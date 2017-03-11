@@ -21,13 +21,13 @@ namespace Extra.Tasks
 
 		method private void ErrorH(var cm as CompilerMsg)
 			cm::set_File(Path::GetFullPath(cm::get_File())::Substring(Environment::get_CurrentDirectory()::get_Length() + 1))
-			get_Log()::LogError(string::Empty, string::Empty, string::Empty, cm::get_File(), cm::get_Line(), 0, cm::get_Line(), 0, cm::get_Msg(), new object[0])
+			get_Log()::LogError(string::Empty, string::Empty, string::Empty, cm::get_File(), cm::get_Line(), cm::get_Column(), cm::get_Line(), 0, cm::get_Msg(), new object[0])
 			haderrs = true
 		end method
 
 		method private void WarnH(var cm as CompilerMsg)
 			cm::set_File(Path::GetFullPath(cm::get_File())::Substring(Environment::get_CurrentDirectory()::get_Length() + 1))
-			get_Log()::LogWarning(string::Empty, string::Empty, string::Empty, cm::get_File(), cm::get_Line(), 0, cm::get_Line(), 0, cm::get_Msg(), new object[0])
+			get_Log()::LogWarning(string::Empty, string::Empty, string::Empty, cm::get_File(), cm::get_Line(), cm::get_Column(), cm::get_Line(), 0, cm::get_Msg(), new object[0])
 		end method
 
 		method public override boolean Execute()

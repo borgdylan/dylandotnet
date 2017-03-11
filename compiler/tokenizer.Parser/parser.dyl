@@ -19,14 +19,14 @@ class public Parser
 		ctor(new Flags())
 	end method
 	
-	method public StmtSet Parse(var stms as StmtSet, var ignf as boolean)
+	method public StmtSet Parse(var stms as StmtSet, var ctxType as ContextType, var ignf as boolean)
 		var i as integer = -1
 		var so as StmtOptimizer = new StmtOptimizer(PFlags)
 		PFlags::CurPath = stms::Path
 
-		var nwss as StmtSet = new StmtSet() {Path = stms::Path}
+		var nwss as StmtSet = new StmtSet() {Path = stms::Path, set_Context(ctxType)}
 		var cstack as C5.LinkedList<of IStmtContainer> = new C5.LinkedList<of IStmtContainer>() {Push(nwss)}
-		var ctxstack as C5.LinkedList<of ContextType> = new C5.LinkedList<of ContextType>() {Push(nwss::get_Context())}
+		var ctxstack as C5.LinkedList<of ContextType> = new C5.LinkedList<of ContextType>() {Push(ctxType)}
 		var curc as IStmtContainer = nwss
 
 		do until i >= (--stms::Stmts::get_Count())
@@ -36,7 +36,10 @@ class public Parser
 			
 			do while cs::Tokens::get_Item(--cs::Tokens::get_Count())::Value == "_"
 				cs::RemToken(--cs::Tokens::get_Count())
-				cs::Tokens::AddAll(stms::Stmts::get_Item(++i)::Tokens)
+				var nxts = stms::Stmts::get_Item(++i)
+				cs::Tokens::AddAll(nxts::Tokens)
+				cs::EndColumn = nxts::EndColumn
+				cs::EndLine = nxts::EndLine
 				i++
 			end do
 			
@@ -45,22 +48,22 @@ class public Parser
 				var curb = cstack::get_Last() as IBranchContainer
 				if curb isnot null then
 					if !curb::AddBranch($BranchStmt$nstm) then
-						StreamUtils::WriteError(nstm::Line, PFlags::CurPath, string::Format("This branch on a '{0}' is invalid!", curb::GetType()::get_Name()))
+						StreamUtils::WriteError(nstm::Line, 0, PFlags::CurPath, string::Format("This branch on a '{0}' is invalid!", curb::GetType()::get_Name()))
 					end if
 					curc = $IStmtContainer$nstm
 					curc::set_FilePath(stms::Path)
 				else
 					//throw an error here (cant branch on a non branch container)
-					StreamUtils::WriteError(nstm::Line, PFlags::CurPath, "You cannot branch on a non-branchable container!")
+					StreamUtils::WriteError(nstm::Line, 0, PFlags::CurPath, "You cannot branch on a non-branchable container!")
 				end if
 			elseif nstm is IStmtContainer then
 				if !nstm::ValidateContext(ctxstack::get_Last()) then
-					StreamUtils::WriteError(nstm::Line, PFlags::CurPath, _
+					StreamUtils::WriteError(nstm::Line, 0, PFlags::CurPath, _
 							string::Format("You cannot put a '{0}' into the '{1}' context type!", nstm::GetType()::get_Name(), $object$ctxstack::get_Last()))
 				end if
 
 				if !curc::AddStmt(nstm) then
-					StreamUtils::WriteError(nstm::Line, PFlags::CurPath, i"You cannot put a {nstm::GetType()::get_Name()} into a {curc::GetType()::get_Name()}!")
+					StreamUtils::WriteError(nstm::Line, 0, PFlags::CurPath, i"You cannot put a {nstm::GetType()::get_Name()} into a {curc::GetType()::get_Name()}!")
 				end if
 
 				var isc = $IStmtContainer$nstm
@@ -75,10 +78,10 @@ class public Parser
 			elseif nstm is EndStmt then
 				if curc is StmtSet then
 					//throw an error here (cant end an stmt set)
-					StreamUtils::WriteError(nstm::Line, PFlags::CurPath, "You cannot end the statement set programmatically!")
+					StreamUtils::WriteError(nstm::Line, 0, PFlags::CurPath, "You cannot end the statement set programmatically!")
 				else
 					if !cstack::get_Last()::ValidateEnding(nstm) then
-						StreamUtils::WriteError(nstm::Line, PFlags::CurPath, _
+						StreamUtils::WriteError(nstm::Line, 0, PFlags::CurPath, _
 							string::Format("You cannot end a '{0}' with a '{1}'!", cstack::get_Last()::GetType()::get_Name(), nstm::GetType()::get_Name()))
 					end if
 
@@ -87,7 +90,7 @@ class public Parser
 					end if
 
 					if !curc::AddStmt(nstm) then
-						StreamUtils::WriteError(nstm::Line, PFlags::CurPath, i"You cannot put a {nstm::GetType()::get_Name()} into a {curc::GetType()::get_Name()}!")
+						StreamUtils::WriteError(nstm::Line, 0, PFlags::CurPath, i"You cannot put a {nstm::GetType()::get_Name()} into a {curc::GetType()::get_Name()}!")
 					end if
 
 					cstack::Pop()
@@ -104,7 +107,7 @@ class public Parser
 					continue
 				end if
 				if !nstm::ValidateContext(ctxstack::get_Last()) then
-					StreamUtils::WriteError(nstm::Line, PFlags::CurPath, _
+					StreamUtils::WriteError(nstm::Line, 0, PFlags::CurPath, _
 							string::Format("You cannot put a '{0}' into the '{1}' context type!", nstm::GetType()::get_Name(), $object$ctxstack::get_Last()))
 				end if
 				curc::AddStmt(nstm)
@@ -114,12 +117,14 @@ class public Parser
 
 		if curc isnot StmtSet then
 			//throw an error here (code blocks have not been ended right)
-			StreamUtils::WriteError(#expr($Stmt$curc)::Line, PFlags::CurPath, "This block has not been terminated!")
+			StreamUtils::WriteError(#expr($Stmt$curc)::Line, 0, PFlags::CurPath, "This block has not been terminated!")
 		end if
 
 		return nwss
 	end method
 
-	method public StmtSet Parse(var stms as StmtSet) => Parse(stms, false)
+	method public StmtSet Parse(var stms as StmtSet, var ignf as boolean) => Parse(stms, ContextType::Assembly, ignf)
+	method public StmtSet Parse(var stms as StmtSet, var ctxType as ContextType) => Parse(stms, ctxType, false)
+	method public StmtSet Parse(var stms as StmtSet) => Parse(stms, ContextType::Assembly, false)
 
 end class

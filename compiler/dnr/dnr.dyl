@@ -19,7 +19,7 @@ import System.Linq
 //import System.Collections
 import System.Collections.Generic
 //import System.Diagnostics
-import System.Diagnostics.SymbolStore
+//import System.Diagnostics.SymbolStore
 import System.Reflection
 //import System.Reflection.Emit
 //import System.Text.RegularExpressions
@@ -28,7 +28,7 @@ import System.Runtime.InteropServices
 import dylan.NET.Utils
 //import dylan.NET.Reflection
 import Managed.Reflection
-import Managed.Reflection.Emit
+//import Managed.Reflection.Emit
 
 #include "AssemblyRecord.dyl"
 #include "ImportRecord.dyl"

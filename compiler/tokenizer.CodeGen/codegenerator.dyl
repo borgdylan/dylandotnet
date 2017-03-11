@@ -32,7 +32,7 @@ class private LPFileClosure
 					inclustm::Path::Value = ParseUtils::ProcessMSYSPath(inclustm::Path::get_UnquotedValue())
 					inclustm::Path::Value = Path::Combine(Path::GetDirectoryName(tup::Path), inclustm::Path::Value)
 					if !File::Exists(inclustm::Path::Value) then
-						StreamUtils::WriteError(inclustm::Line, tup::Path, string::Format("File '{0}' does not exist.", inclustm::Path::Value))
+						StreamUtils::WriteError(inclustm::Line, 0, tup::Path, string::Format("File '{0}' does not exist.", inclustm::Path::Value))
 					end if
 					StreamUtils::WriteLine(string::Format("Now Lexing: {0}", inclustm::Path::Value))
 					var pstmts as StmtSet = new Lexer()::Analyze(inclustm::Path::Value)
@@ -45,7 +45,7 @@ class private LPFileClosure
 				catch ex as Exception
 					StreamUtils::WriteLine(string::Empty)
 					try
-						StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, ex::ToString())
+						StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, ex::ToString())
 					catch errex2 as ErrorException
 						inclustm::HasError = true
 					end try
@@ -165,7 +165,7 @@ class public CodeGenerator
 					if inclustm::SSet is null then
 						inclustm::Path::Value = Path::Combine(Path::GetDirectoryName(spth), inclustm::Path::Value)
 						if !File::Exists(inclustm::Path::Value) then
-							StreamUtils::WriteError(inclustm::Line, spth, string::Format("File '{0}' does not exist.", inclustm::Path::Value))
+							StreamUtils::WriteError(inclustm::Line, 0, spth, string::Format("File '{0}' does not exist.", inclustm::Path::Value))
 						end if
 
 						StreamUtils::WriteLine(string::Format("Now Lexing: {0}", inclustm::Path::Value))
@@ -195,7 +195,7 @@ class public CodeGenerator
 					
 					if rtflag andalso s isnot EndStmt andalso !awflag then
 						awflag = true
-						StreamUtils::WriteWarn(s::Line, spth, "Unreachable code detected!")
+						StreamUtils::WriteWarn(s::Line, 0, spth, "Unreachable code detected!")
 					end if
 					
 					var res = sr::Read(s, spth)
@@ -241,7 +241,7 @@ class public CodeGenerator
 
 		foreach rec in Importer::ImpsStack::get_Last()
 			if !rec::Used then
-				StreamUtils::WriteWarn(rec::Line, ILEmitter::CurSrcFile, "Namespace  import for '" + rec::Namespace + "' was not used.")
+				StreamUtils::WriteWarn(rec::Line, 0, ILEmitter::CurSrcFile, "Namespace  import for '" + rec::Namespace + "' was not used.")
 			end if
 		end for
 
@@ -277,7 +277,7 @@ class public CodeGenerator
 					var pth = r::get_Item1()::Substring(7)
 
 					if !MemoryFS::HasFile(pth) then
-						StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "In-Memory File '" + pth + "' does not exist.")
+						StreamUtils::WriteWarn(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "In-Memory File '" + pth + "' does not exist.")
 						continue
 					end if
 

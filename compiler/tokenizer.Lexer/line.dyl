@@ -224,7 +224,7 @@ class public Line
 
 	end method
 
-	method public Stmt Analyze(var stm as Stmt, var str as string)
+	method public Stmt Analyze(var stm as Stmt, var str as string, var offset as integer)
 	
 		var curchar as string = string::Empty
 		var lachar as string = string::Empty
@@ -235,7 +235,8 @@ class public Line
 		var scl as boolean = false
 		var i as integer = -1
 		var j as integer = 0
-		
+		var startCol as integer = 0
+		var ln = stm::Line
 		
 		if len > -1 then
 			do			
@@ -248,7 +249,7 @@ class public Line
 				
 				if sc then
 					if buf::get_Length() != 0 then
-						stm::AddToken(new Token() {Value = buf::ToString(), Line = stm::Line})
+						stm::AddToken(new Token() {Value = buf::ToString(), Line = ln, EndLine = ln, EndColumn = i + offset, Column = startCol + offset})
 					end if
 					buf::Clear()
 				end if
@@ -260,13 +261,19 @@ class public Line
 				lachar = #ternary{i < len ? $string$str::get_Chars(j), null}
 				if isSep(curchar, lachar, ref sc, ref scl) then
 					if buf::get_Length() != 0 then
-						stm::AddToken(new Token() {Value = buf::ToString(), Line = stm::Line})
+						stm::AddToken(new Token() {Value = buf::ToString(), Line = ln, EndLine = ln, EndColumn = i + offset, Column = startCol + offset})
 					end if
 					buf::Clear()
 					if sc then
+						if buf::get_Length() == 0 then
+							startCol = ++i
+						end if
 						buf::Append(curchar)
 					end if
 				else
+					if buf::get_Length() == 0 then
+						startCol = ++i
+					end if
 					buf::Append(curchar)
 				end if
 			
@@ -274,12 +281,14 @@ class public Line
 		end if
 		
 		if buf::get_Length() != 0 then
-			stm::AddToken(new Token() {Value = buf::ToString(), Line = stm::Line})
+			stm::AddToken(new Token() {Value = buf::ToString(), Line = ln, EndLine = ln, EndColumn = ++i + offset, Column = startCol + offset})
 		end if
 		buf::Clear()
 		
 		return stm
 	
 	end method
+
+	method public Stmt Analyze(var stm as Stmt, var str as string) => Analyze(stm, str, 0)
 
 end class

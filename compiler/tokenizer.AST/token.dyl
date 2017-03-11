@@ -10,6 +10,9 @@ class public beforefieldinit Token
 
 	field public string Value
 	field public integer Line
+	field public integer EndLine
+	field public integer Column
+	field public integer EndColumn
 	field private static char[] q
 
 	method private static void Token()
@@ -23,6 +26,13 @@ class public beforefieldinit Token
 	
 	method public void Token()
 		ctor(string::Empty)
+	end method
+
+	method public void PosFromToken(var tok as Token)
+		Line = tok::Line
+		EndLine = tok::EndLine
+		Column = tok::Column
+		EndColumn = tok::EndColumn
 	end method
 	
 	method public override string ToString() => #ternary {Value is null ? string::Empty , Value}

@@ -23,6 +23,8 @@ System.Core.dll
 The IKVM.Reflection.dll was written by Jeroen Frijters and is part of IKVM.NET
 The C5.dll was written by Sestoft,Kokholm and Nielsen of the IT University of Copenhagen.
 
+The support for the new MSBuild based .NET CLI is done using modified targets files written by Microsoft. Those files including my own modifications are under teh MIT license as found in the "MIT-LICENSE" file. The attribution to Microsoft is still left in the headers of those files.
+
 COMPILING DYLAN.NET
 
 The compiler and the tokenizer libraries are now all compilable under Linux/Mac OSX. A system that uses autotools by GNU is used to help everyone compile the system as well as package it for the wanted linux distro. A directory with pre-made debian packaging info is available on the GIT repo to help make the packages. One can also specify different dh_make files or use cdbs instead. A PPA for ubuntu named ppa:borgdylan/ppa contains old stable builds of dylandotnet ready for testing. Newer builds are available as packages on NuGet.org as this facilitates usage of the compiler as part of third party toolchains such as MSBuild, DNX and the .NET CLI.

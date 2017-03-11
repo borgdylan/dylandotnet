@@ -1,121 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BD16CFAA-F03E-4D81-A8E7-7EF5E1C10E2C}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <RootNamespace>dylan.NET.Tokenizer.CodeGen</RootNamespace>
-    <UsePartialTypes>false</UsePartialTypes>
-    <AssemblyName>tokenizer.CodeGen</AssemblyName>
-    <ReleaseVersion>11.8.3.4</ReleaseVersion>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\Debug</OutputPath>
-    <ErrorReport>prompt</ErrorReport>
-    <ConsolePause>false</ConsolePause>
-    <DefineConstants>DEBUG</DefineConstants>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugSymbols>false</DebugSymbols>
-    <OutputPath>bin\Release</OutputPath>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Testing|AnyCPU' ">
-    <DebugSymbols>false</DebugSymbols>
-    <OutputPath>bin\Testing</OutputPath>
-  </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="mscorlib" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Xml" />
-    <Reference Include="Managed.Reflection">
-      <HintPath>..\lib\Managed.Reflection.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Interactive">
-      <HintPath>..\packages\Ix-Main.1.2.3\lib\net45\System.Interactive.dll</HintPath>
-    </Reference>
-    <Reference Include="C5">
-      <HintPath>..\packages\C5.2.4.5947.17249\lib\net45\C5.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="tokenizer.CodeGen.dyl" />
-    <Compile Include="Properties\AssemblyInfo.dyl" />
-    <Compile Include="eval-pre.dyl" />
-    <Compile Include="switchitem.dyl" />
-  </ItemGroup>
-  <Import Project="..\4.0\dylan.NET.targets" />
-  <ItemGroup>
-    <Compile Include="varitem.dyl" />
-    <Compile Include="usingitem.dyl" />
-    <Compile Include="typeparamitem.dyl" />
-    <Compile Include="typelist.dyl" />
-    <Compile Include="typeitem.dyl" />
-    <Compile Include="typearr.dyl" />
-    <Compile Include="typcodes.txt" />
-    <Compile Include="tryitem.dyl" />
-    <Compile Include="tilambdas.dyl" />
-    <Compile Include="symtable.dyl" />
-    <Compile Include="stmtreader.dyl" />
-    <Compile Include="propertyitem.dyl" />
-    <Compile Include="pinvokeinfo.dyl" />
-    <Compile Include="opstack.dyl" />
-    <Compile Include="milambdas.dyl" />
-    <Compile Include="methoditem.dyl" />
-    <Compile Include="loopitem.dyl" />
-    <Compile Include="lockitem.dyl" />
-    <Compile Include="labelitem.dyl" />
-    <Compile Include="ifitem.dyl" />
-    <Compile Include="helpers.dyl" />
-    <Compile Include="filambdas.dyl" />
-    <Compile Include="fielditem.dyl" />
-    <Compile Include="eventitem.dyl" />
-    <Compile Include="eval.dyl" />
-    <Compile Include="ctoritem.dyl" />
-    <Compile Include="constinfo.dyl" />
-    <Compile Include="collectionitem.dyl" />
-    <Compile Include="codegenerator.dyl" />
-    <Compile Include="cilambdas.dyl" />
-    <Compile Include="assemblyinfo.dyl" />
-    <Compile Include="DynamicHelpers.dyl" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\tokenizer.AST\tokenizer.AST.dylproj">
-      <Project>{8D686B86-929F-4A1B-980A-DC2DEA04AAD9}</Project>
-      <Name>tokenizer.AST</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\tokenizer.Lexer\tokenizer.Lexer.dylproj">
-      <Project>{5021F03A-944A-4F91-8F29-E7A4BC959052}</Project>
-      <Name>tokenizer.Lexer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\tokenizer.Parser\tokenizer.Parser.dylproj">
-      <Project>{04067AB5-DF32-47A1-A62B-56CF12B70E46}</Project>
-      <Name>tokenizer.Parser</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\dnu\dnu.dylproj">
-      <Project>{D61ACAE6-7B4E-4234-B40E-0A185815133D}</Project>
-      <Name>dnu</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\dnr\dnr.dylproj">
-      <Project>{2AE29F43-1588-407F-9F2E-EADE63A5D6C9}</Project>
-      <Name>dnr</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ProjectExtensions>
-    <MonoDevelop>
-      <Properties>
-        <Policies>
-          <StandardHeader Text="//    tokenizer.CodeGen.dll dylan.NET.Tokenizer.CodeGen Copyright (C) 2014 Dylan Borg &lt;borgdylan@hotmail.com&gt;&#xA;//    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software&#xA;// Foundation; either version 3 of the License, or (at your option) any later version.&#xA;//    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A&#xA;//PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.&#xA;//    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple&#xA;//Place, Suite 330, Boston, MA 02111-1307 USA" IncludeInNewFiles="True" />
-        </Policies>
-      </Properties>
-    </MonoDevelop>
-  </ProjectExtensions>
+<Project Sdk="Microsoft.NET.Sdk">
+    <Import Project="$(MSBuildThisFileDirectory)..\global.props" />
+    <PropertyGroup>
+        <LanguageTargets>$(MSBuildThisFileDirectory)..\4.0\dylan.NET.Cli.targets</LanguageTargets>
+        <OutputType>Library</OutputType>
+        <RootNamespace>dylan.NET.Tokenizer.CodeGen</RootNamespace>
+        <AssemblyName>tokenizer.CodeGen</AssemblyName>
+        <TargetFrameworks>net46</TargetFrameworks>
+    </PropertyGroup>
+    <ItemGroup>
+        <Reference Include="System" />
+        <Reference Include="mscorlib" />
+        <Reference Include="System.Core" />
+        <Reference Include="System.Xml.Linq" />
+        <Reference Include="System.Xml" />
+        <Reference Include="Microsoft.CSharp" />
+
+        <Reference Include="Managed.Reflection">
+            <HintPath>$(MSBuildThisFileDirectory)..\lib\Managed.Reflection.dll</HintPath>
+        </Reference>
+
+        <PackageReference Include="Ix-Main" Version="1.2.3" />
+        <PackageReference Include="C5" Version="2.4.5947" />
+
+        <ProjectReference Include="$(MSBuildThisFileDirectory)..\tokenizer.AST\tokenizer.AST.dylproj" />
+        <ProjectReference Include="$(MSBuildThisFileDirectory)..\tokenizer.Lexer\tokenizer.Lexer.dylproj" />
+        <ProjectReference Include="$(MSBuildThisFileDirectory)..\tokenizer.Parser\tokenizer.Parser.dylproj" />
+        <ProjectReference Include="$(MSBuildThisFileDirectory)..\dnu\dnu.dylproj" />
+        <ProjectReference Include="$(MSBuildThisFileDirectory)..\dnr\dnr.dylproj" />
+    </ItemGroup>
 </Project>

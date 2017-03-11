@@ -76,7 +76,7 @@ class public ArrInitCallTok extends ValueToken
 	
 	method public void AddElem(var eltoadd as Expr)
 		Elements::Add(eltoadd)
-		if Elements::get_Count() = 0 then
+		if Elements::get_Count() == 0 then
 			Line = eltoadd::Line
 		end if
 	end method

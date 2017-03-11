@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+    <PropertyGroup>
+        <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+        <Version>11.8.3.5</Version>
+    </PropertyGroup>
+    <ItemGroup>
+    </ItemGroup>
+</Project>

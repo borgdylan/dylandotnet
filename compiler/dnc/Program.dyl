@@ -1,13 +1,13 @@
 //    dnc.exe dylan.NET.Compiler Copyright (C) 2013 Dylan Borg <borgdylan@hotmail.com>
 //    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software
 // Foundation; either version 3 of the License, or (at your option) any later version.
-//    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+//    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
 //PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
-//    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
-//Place, Suite 330, Boston, MA 02111-1307 USA 
+//    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple
+//Place, Suite 330, Boston, MA 02111-1307 USA
 
 class public static Program
-	
+
 	method private static void OutputVersion()
 		StreamUtils::WriteLine("dylan.NET Version Info:")
 		StreamUtils::WriteLine(Assembly::GetExecutingAssembly()::ToString())
@@ -23,7 +23,7 @@ class public static Program
 		StreamUtils::WriteLine(string::Format("Runtime Version: {0}", Environment::get_Version()::ToString()))
 		StreamUtils::WriteLine(string::Format("OS: {0}", Environment::get_OSVersion()::ToString()))
 	end method
-	
+
 	method private static void OutputHelp()
 		StreamUtils::WriteLine("Usage: dylandotnet [options] <file-name>")
 		StreamUtils::WriteLine("Options:")
@@ -32,15 +32,15 @@ class public static Program
 		StreamUtils::WriteLine("   -sdk : Set sdk version (2.0/4.0/4.5)")
 		StreamUtils::WriteLine("   -pcl : Set retargatable bit")
 	end method
-	
+
 	[method: STAThread()]
 	[method: ComVisible(false)]
 	method private static void main(var args as string[])
-		
-		StreamUtils::WriteLine("dylan.NET Compiler v. 11.8.3.4 RC for Microsoft (R) .NET Framework (R) v. 4.0+")
-		StreamUtils::WriteLine("                           and Xamarin Mono v. 2.x.y+")
+
+		StreamUtils::WriteLine("dylan.NET Compiler v. 11.8.3.5 RC for Microsoft (R) .NET Framework (R) v. 4.6+")
+		StreamUtils::WriteLine("                                  and Xamarin Mono")
 		StreamUtils::WriteLine("This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.")
-		StreamUtils::WriteLine("Copyright (C) 2015 Dylan Borg")
+		StreamUtils::WriteLine("Copyright (C) 2017 Dylan Borg")
 
 		var lastsdk as string = null
 		var inm = false
@@ -86,7 +86,7 @@ class public static Program
 						end if
 
 						if !File::Exists(args[i]) then
-							StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("File '{0}' does not exist.", args[i]))
+							StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("File '{0}' does not exist.", args[i]))
 						end if
 						StreamUtils::Write(string::Format("Now Lexing: {0}", args[i]))
 						var pstmts as StmtSet = new Lexer()::Analyze(args[i])
@@ -95,13 +95,13 @@ class public static Program
 						StreamUtils::WriteLine("...Done.")
 						new CodeGenerator()::EmitMSIL(ppstmts, Path::GetFullPath(args[i]))
 					end if
-				end for	
+				end for
 			catch errex as ErrorException
-			
+
 			catch ex as Exception
 				StreamUtils::WriteLine(string::Empty)
 				try
-					StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, ex::ToString())
+					StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, ex::ToString())
 				catch errex2 as ErrorException
 				end try
 			end try
@@ -109,22 +109,22 @@ class public static Program
 		end if
 
 	end method
-	
+
 	[method: ComVisible(false)]
 	method public static void Invoke(var args as string[])
 		StreamUtils::TerminateOnError = false
 		main(args)
 	end method
-	
-	#if NET_4_0 orelse NET_4_5 orelse NET_4_6 then
-	
+
+	#if NET46 orelse NET45 orelse NET40 then
+
 		method private static void InvokeAsyncWrapper(var args as object)
 			Invoke($string[]$args)
 		end method
-	
+
 		[method: ComVisible(false)]
 		method public static Task InvokeAsync(var args as string[]) => Task::get_Factory()::StartNew(new Action<of object>(InvokeAsyncWrapper),args)
-	
+
 	end #if
 
 end class

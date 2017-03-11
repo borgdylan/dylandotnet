@@ -20,6 +20,7 @@ class public ExprOptimizer
 	end method
 	
 	method public prototype Expr Optimize(var exp as Expr)
+	method public prototype Expr Optimize(var exp as Expr, var causingTok as Token)
 	method public prototype Expr procType(var stm as Expr, var i as integer)
 	method public prototype TypeTok procType2(var stm as Expr, var i as integer)
 
@@ -35,7 +36,7 @@ class public ExprOptimizer
 			
 			var gttarg = stm::Tokens::get_Item(i)
 			if !#expr((gttarg is Ident) orelse (gttarg is TypeTok)) then
-				StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, string::Format("Expected an identifier instead of '{0}'!", gttarg::Value))
+				StreamUtils::WriteErrorLine(gttarg::Line, gttarg::Column, PFlags::CurPath, string::Format("Expected an identifier instead of '{0}'!", gttarg::Value))
 			end if
 			
 			var gtt as GenericTypeTok = new GenericTypeTok(gttarg::Value)
@@ -99,12 +100,13 @@ class public ExprOptimizer
 				if stm::Tokens::get_Item(i) is TypeTok then
 					tt = $TypeTok$stm::Tokens::get_Item(i)
 				elseif stm::Tokens::get_Item(i) is Ident then
-					tt = new TypeTok(stm::Tokens::get_Item(i)::Value) {Line = stm::Tokens::get_Item(i)::Line}	
+					tt = new TypeTok(stm::Tokens::get_Item(i)::Value) {PosFromToken(stm::Tokens::get_Item(i))}	
 				else
-					StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, string::Format("Expected an identifier instead of '{0}'!", stm::Tokens::get_Item(i)::Value))
+					var tok = stm::Tokens::get_Item(i)
+					StreamUtils::WriteErrorLine(tok::Line, tok::Column, PFlags::CurPath, string::Format("Expected an identifier instead of '{0}'!", tok::Value))
 				end if
 			else
-				StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, "Expected an identifier instead of ''!")
+				StreamUtils::WriteErrorLine(stm::Line, 0, PFlags::CurPath, "Expected an identifier instead of ''!")
 			end if
 		end if
 	
@@ -188,7 +190,7 @@ class public ExprOptimizer
 			stm::RemToken(++i)
 			stm::RemToken(++i)
 
-			var ep2 as Expr = new Expr() {Line = stm::Line}
+			var ep2 as Expr = new Expr()
 			var lvl as integer = 1
 			var len as integer = --stm::Tokens::get_Count()
 
@@ -208,7 +210,7 @@ class public ExprOptimizer
 					len--
 					if lvl <= 1 then
 						gtt::AddParam(procType2(ep2, 0))
-						ep2 = new Expr() {Line = stm::Line}
+						ep2 = new Expr()
 					end if
 					i--
 				elseif stm::Tokens::get_Item(i) is RAParen then
@@ -237,7 +239,8 @@ class public ExprOptimizer
 			elseif stm::Tokens::get_Item(i) is Ident then
 				tt = new MethodNameTok($Ident$stm::Tokens::get_Item(i))
 			else
-				StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, string::Format("Expected an identifier instead of '{0}'!", stm::Tokens::get_Item(i)::Value))
+				var tok = stm::Tokens::get_Item(i)
+				StreamUtils::WriteErrorLine(tok::Line, tok::Column, PFlags::CurPath, string::Format("Expected an identifier instead of '{0}'!", tok::Value))
 			end if
 		end if
 
@@ -254,7 +257,7 @@ class public ExprOptimizer
 			//in this case mn1 was the explicit interface name
 			//get the actual method name
 			i++
-			stm::Tokens::set_Item(i, new Ident(#expr($ExplImplAccessToken$stm::Tokens::get_Item(i))::get_ActualValue()) {Line = mn1::Line} )
+			stm::Tokens::set_Item(i, new Ident(#expr($ExplImplAccessToken$stm::Tokens::get_Item(i))::get_ActualValue()) {PosFromToken(mn1)} )
 			procMtdName(stm, i)
 			var mn2 = $MethodNameTok$stm::Tokens::get_Item(i)
 			stm::RemToken(i)
@@ -267,7 +270,7 @@ class public ExprOptimizer
 			else
 				tt = new TypeTok()
 			end if
-			tt::Line = mn1::Line
+			tt::PosFromToken(mn1)
 			tt::Value = mn1::Value
 			mn2::ExplType = tt
 			stm::Tokens::set_Item(i, mn2)
@@ -320,14 +323,17 @@ class public ExprOptimizer
 
 		if b then
 			if !#expr(stm::Tokens::get_Item(++bs) is Ident) then
-				StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, string::Format("Expected an identifier instead of '{0}'!", stm::Tokens::get_Item(++bs)))
+				var tok = stm::Tokens::get_Item(++bs)
+				StreamUtils::WriteErrorLine(tok::Line, tok::Column, PFlags::CurPath, string::Format("Expected an identifier instead of '{0}'!", tok))
 			elseif !#expr(stm::Tokens::get_Item(bs + 2) is AsTok) then
-				StreamUtils::WriteErrorLine(stm::Line, PFlags::CurPath, string::Format("Expected an 'as' instead of '{0}'!", stm::Tokens::get_Item(bs + 2)::Value))
+				var tok = stm::Tokens::get_Item(bs + 2)
+				StreamUtils::WriteErrorLine(tok::Line, tok::Column, PFlags::CurPath, string::Format("Expected an 'as' instead of '{0}'!", tok::Value))
 			end if
 			var vtt = procType2(stm,bs + 3)
 
 			if stm::Tokens::get_Count() > (bs + 4) then
-				StreamUtils::WriteWarnLine(stm::Line, PFlags::CurPath, "Unexpected token at end of parameter declaration!")	
+				var tok = stm::Tokens::get_Item(bs + 4)
+				StreamUtils::WriteWarnLine(tok::Line, tok::Column, PFlags::CurPath, "Unexpected token at end of parameter declaration!")	
 			end if
 
 			return new VarExpr() {Tokens = stm::Tokens, Line = stm::Line, VarName = $Ident$stm::Tokens::get_Item(++bs), VarTyp = vtt, Attr = bst}
@@ -347,13 +353,13 @@ class public ExprOptimizer
 		var mn as MethodNameTok = #ternary { stm::Tokens::get_Item(i) is MethodNameTok ? $MethodNameTok$stm::Tokens::get_Item(i), _
 			new MethodNameTok($Ident$stm::Tokens::get_Item(i)) }
 		
-		var mct as MethodCallTok = new MethodCallTok() {Name = mn, Line = mn::Line}
+		var mct as MethodCallTok = new MethodCallTok() {Name = mn, PosFromToken(mn)}
 		
 		j = i
 		i++
 
 		var len as integer = --stm::Tokens::get_Count()
-
+		var causingTok = stm::Tokens::get_Item(i)
 		stm::RemToken(i)
 		len = --stm::Tokens::get_Count()
 		i--
@@ -367,11 +373,11 @@ class public ExprOptimizer
 	
 			if (stm::Tokens::get_Item(i) is RParen) orelse (stm::Tokens::get_Item(i) is RAParen) orelse (stm::Tokens::get_Item(i) is RCParen) then
 				lvl--
-				if lvl = 0 then
+				if lvl == 0 then
 					d = false
 					if (ep2::Tokens::get_Count() > 0) orelse (cc > 0) then
 						PFlags::ResetMCISFlgs()
-						mct::AddParam(Optimize(ep2))
+						mct::AddParam(Optimize(ep2, causingTok))
 					end if
 					stm::RemToken(i)
 					len = --stm::Tokens::get_Count()
@@ -385,14 +391,15 @@ class public ExprOptimizer
 				d = true
 				len = --stm::Tokens::get_Count()
 			elseif (stm::Tokens::get_Item(i) is Comma) then
-				if lvl = 1 then
+				if lvl == 1 then
 					cc++
 					d = false
 					//if ep2::Tokens::get_Count() > 0 then
 						PFlags::ResetMCISFlgs()
-						mct::AddParam(Optimize(ep2))
+						mct::AddParam(Optimize(ep2, causingTok))
 					//end if
 					ep2 = new Expr() {Line = stm::Line}
+					causingTok = stm::Tokens::get_Item(i)
 					stm::RemToken(i)
 					len = --stm::Tokens::get_Count()
 					i--
@@ -424,7 +431,7 @@ class public ExprOptimizer
 	method private Token ObjInitHelper(var e as Expr)
 		e = Optimize(e)
 		if e::Tokens::get_Count() > 2 andalso e::Tokens::get_Item(1) is AssignOp2 then
-			var e2 as Expr = new Expr() {Line = e::Line}
+			var e2 as Expr = new Expr()
 			e2::Tokens::AddAll(e::Tokens::View(2,e::Tokens::get_Count() - 2))
 			return new AttrValuePair() {Name = $Ident$e::Tokens::get_Item(0), ValueExpr = e2}
 		end if
@@ -440,7 +447,7 @@ class public ExprOptimizer
 		var d as boolean = true
 		var j as integer = i
 		var lp as C5.ArrayList<of Token> = new C5.ArrayList<of Token>()
-		var ep as Expr = new Expr() {Line = stm::Line}
+		var ep as Expr = new Expr()
 		
 		i++
 		stm::RemToken(i)
@@ -469,7 +476,7 @@ class public ExprOptimizer
 				if lvl = 1 then
 					d = false
 					lp::Add(ObjInitHelper(ep))
-					ep = new Expr() {Line = stm::Line}
+					ep = new Expr()
 					stm::RemToken(i)
 					len = --stm::Tokens::get_Count()
 					i--
@@ -488,12 +495,12 @@ class public ExprOptimizer
 			end if
 		end do
 		
-		stm::Tokens::set_Item(j, new ObjInitCallTok() {Line = ct::Line, Ctor = ct, Elements = lp})
+		stm::Tokens::set_Item(j, new ObjInitCallTok() {PosFromToken(ct), Ctor = ct, Elements = lp})
 		return stm
 	end method
 	
 	method public Expr procTernaryCall(var stm as Expr, var i as integer)
-		var ct as TernaryCallTok = new TernaryCallTok() {Line = stm::Tokens::get_Item(i)::Line}
+		var ct as TernaryCallTok = new TernaryCallTok() {PosFromToken(stm::Tokens::get_Item(i))}
 		var lvl as integer = 1
 		var d as boolean = true
 		var j as integer = i
@@ -567,7 +574,7 @@ class public ExprOptimizer
 	end method
 	
 	method public Expr procExprCall(var stm as Expr, var i as integer)
-		var e as Expr = new Expr() {Line = stm::Tokens::get_Item(i)::Line}
+		var e as Expr = new Expr()
 		var ecc as ExprCallTok = $ExprCallTok$stm::Tokens::get_Item(i)
 		var lvl as integer = 1
 		var d as boolean = true
@@ -611,7 +618,7 @@ class public ExprOptimizer
 	end method
 
 	method public Expr procNullCondCall(var stm as Expr, var i as integer)
-		var e as Expr = new Expr() {Line = stm::Tokens::get_Item(i)::Line}
+		var e as Expr = new Expr()
 		var ecc as NullCondCallTok = $NullCondCallTok$stm::Tokens::get_Item(i)
 		var lvl as integer = 1
 		var d as boolean = true
@@ -739,7 +746,7 @@ class public ExprOptimizer
 						if nai then
 							aict::AddElem(Optimize(ep2))
 							ep2 = new Expr() {Line = stm::Line}
-						elseif nab = false then
+						elseif !nab then
 							nct::AddParam(Optimize(ep2))
 							ep2 = new Expr() {Line = stm::Line}
 						end if
@@ -764,13 +771,13 @@ class public ExprOptimizer
 		end do
 		
 		if nab then
-			nact::Line = tt::Line
+			nact::PosFromToken(tt)
 			stm::Tokens::set_Item(j,nact)
 		elseif nai then
-			aict::Line = tt::Line
+			aict::PosFromToken(tt)
 			stm::Tokens::set_Item(j,aict)
 		else
-			nct::Line = tt::Line
+			nct::PosFromToken(tt)
 			stm::Tokens::set_Item(j,nct)
 		end if
 		
@@ -948,25 +955,27 @@ class public ExprOptimizer
 	end method
 
 	method public Expr procInterpolate(var stm as Expr, var i as integer, var formattable as boolean)
-		var ir = ParseUtils::Interpolate(stm::Tokens::get_Item(i)::Value)
-
+	    var stok = stm::Tokens::get_Item(i)
+		var ir = ParseUtils::Interpolate(stok::Value)
+		
 		if ir::get_Expressions()[l] == 0 then
 			//error out
 			StreamUtils::WriteLine(string::Empty)
-			StreamUtils::WriteError(stm::Line, PFlags::CurPath, "Interpolated strings should have at least one interpolation!")
+			StreamUtils::WriteError(stok::Line, stok::Column, PFlags::CurPath, "Interpolated strings should have at least one interpolation!")
 
 			return stm
 		end if
 
 		var exps as C5.ArrayList<of Expr> = new C5.ArrayList<of Expr>()
-		var pf as Flags = new Flags()
+		var pf as Flags = new Flags() {CurPath = PFlags::CurPath}
 		var to as TokenOptimizer = new TokenOptimizer(pf)
 		var eo as ExprOptimizer = new ExprOptimizer(pf)
 
 		var k = 0
 		foreach e in ir::get_Expressions()
 			k++
-			var ss = new Line()::Analyze(new Stmt() {Line = stm::Line}, e)
+			//stok::Column points at the i or f that starts the interpolation
+			var ss = new Line()::Analyze(new Stmt() {Line = stm::Line}, e::get_Item2(), e::get_Item1() + stok::Column + 2)
 			var lenx as integer = --ss::Tokens::get_Count()
 
 			var j = -1
@@ -1007,42 +1016,35 @@ class public ExprOptimizer
 			//assert that bracket counts are ok
 			if pcnt != 0 then
 				StreamUtils::WriteLine(string::Empty)
-				StreamUtils::WriteError(stm::Line, PFlags::CurPath, string::Format("The amount of opening and closing parentheses do not match in sub-expression {0}!", $object$k))
+				StreamUtils::WriteError(stm::Line, 0, PFlags::CurPath, string::Format("The amount of opening and closing parentheses do not match in sub-expression {0}!", $object$k))
 			elseif acnt != 0 then
 				StreamUtils::WriteLine(string::Empty)
-				StreamUtils::WriteError(stm::Line, PFlags::CurPath, string::Format("The amount of opening and closing angle parentheses do not match in sub-expression {0}!", $object$k))
+				StreamUtils::WriteError(stm::Line, 0, PFlags::CurPath, string::Format("The amount of opening and closing angle parentheses do not match in sub-expression {0}!", $object$k))
 			elseif scnt != 0 then
 				StreamUtils::WriteLine(string::Empty)
-				StreamUtils::WriteError(stm::Line, PFlags::CurPath, string::Format("The amount of opening and closing square parentheses do not match in sub-expression {0}!", $object$k))
+				StreamUtils::WriteError(stm::Line, 0, PFlags::CurPath, string::Format("The amount of opening and closing square parentheses do not match in sub-expression {0}!", $object$k))
 			elseif ccnt != 0 then
 				StreamUtils::WriteLine(string::Empty)
-				StreamUtils::WriteError(stm::Line, PFlags::CurPath, string::Format("The amount of opening and closing curly parentheses do not match in sub-expression {0}!", $object$k))
+				StreamUtils::WriteError(stm::Line, 0, PFlags::CurPath, string::Format("The amount of opening and closing curly parentheses do not match in sub-expression {0}!", $object$k))
 			end if
 
 			exps::Add(eo::Optimize(new Expr() {Line = stm::Line, Tokens = ss::Tokens}))
 		end for
 			
 
-		var res as MethodCallTok
-
-		if formattable then
-			res = new MethodCallTok() {Line = stm::Line, Name = new MethodNameTok("System.Runtime.CompilerServices.FormattableStringFactory::Create")}
-		else
-			res = new MethodCallTok() {Line = stm::Line, Name = new MethodNameTok("System.String::Format")}
-		end if
-
-		res::AddParam(new Expr() {Line = stm::Line, AddToken(new StringLiteral(ir::get_Format()) {Line = stm::Line})})
+		var res as MethodCallTok = new MethodCallTok() {PosFromToken(stm::Tokens::get_Item(i)), Name = new MethodNameTok(#ternary { formattable ? "System.Runtime.CompilerServices.FormattableStringFactory::Create" , "System.String::Format"})}
+		res::AddParam(new Expr() {AddToken(new StringLiteral(ir::get_Format()) {PosFromToken(stm::Tokens::get_Item(i))})})
 
 		if formattable orelse (exps::get_Count() > 3) then
-			var aic = new ArrInitCallTok() {Line = stm::Line, ArrayType = new ObjectTok()}
-			res::AddParam(new Expr() {Line = stm::Line, AddToken(aic)})
+			var aic = new ArrInitCallTok() {PosFromToken(stm::Tokens::get_Item(i)), ArrayType = new ObjectTok()}
+			res::AddParam(new Expr() {AddToken(aic)})
 			foreach ex in exps
-				aic::AddElem(new Expr() {Line = stm::Line, AddToken(new ExprCallTok() {Line = stm::Line, _
+				aic::AddElem(new Expr() {AddToken(new ExprCallTok() {Line = stm::Line, _
 					Exp = ex, set_OrdOp("conv"), set_TTok(new ObjectTok()), set_Conv(true)})})
 			end for
 		else
 			foreach ex in exps
-				res::AddParam(new Expr() {Line = stm::Line, AddToken(new ExprCallTok() {Line = stm::Line, _
+				res::AddParam(new Expr() {AddToken(new ExprCallTok() {Line = stm::Line, _
 					Exp = ex, set_OrdOp("conv"), set_TTok(new ObjectTok()), set_Conv(true)})})
 			end for
 		end if
@@ -1078,22 +1080,22 @@ class public ExprOptimizer
 					end do 
 
 					if (jprime - k) == 1 then
-						StreamUtils::WriteError(exp::Line, PFlags::CurPath, "Subexpressions should not be empty!")
+						StreamUtils::WriteError(tok::Line, tok::Column, PFlags::CurPath, "Subexpressions should not be empty!")
 					else
 						Verify(exp, iprime, --jprime)
 					end if
 
 					k = jprime
 				else
-					StreamUtils::WriteError(exp::Line, PFlags::CurPath, string::Format("Expected a value token or expression in parentheses instead of '{0}'!", tok::ToString()))
+					StreamUtils::WriteError(tok::Line, tok::Column, PFlags::CurPath, string::Format("Expected a value token or expression in parentheses instead of '{0}'!", tok::ToString()))
 				end if
 			else
 				if tok is Op then
 					if k == j then
-						StreamUtils::WriteError(exp::Line, PFlags::CurPath, "Expressions should not end with an operator!")
+						StreamUtils::WriteError(tok::Line, tok::Column, PFlags::CurPath, "Expressions should not end with an operator!")
 					end if
 				else
-					StreamUtils::WriteError(exp::Line, PFlags::CurPath, string::Format("Expected a binary operator instead of '{0}'!", tok::ToString()))
+					StreamUtils::WriteError(tok::Line, tok::Column, PFlags::CurPath, string::Format("Expected a binary operator instead of '{0}'!", tok::ToString()))
 				end if		
 			end if
 			statef = !statef
@@ -1105,7 +1107,7 @@ class public ExprOptimizer
 		Verify(exp, 0, --exp::Tokens::get_Count())
 	end method
 
-	method public Expr Optimize(var exp as Expr)
+	method public Expr Optimize(var exp as Expr, var causingTok as Token)
 		var i as integer = -1
 		var j as integer = -1
 		var mcbool as boolean = false
@@ -1122,7 +1124,11 @@ class public ExprOptimizer
 
 		if exp::Tokens::get_Count() == 0 then
 			StreamUtils::WriteLine(string::Empty)
-			StreamUtils::WriteError(exp::Line, PFlags::CurPath, "Expressions should not be empty!")
+			if causingTok != null then
+			    StreamUtils::WriteError(causingTok::Line, ++causingTok::EndColumn, PFlags::CurPath, "Expressions should not be empty!")
+			else
+			    StreamUtils::WriteError(exp::Line, 0, PFlags::CurPath, "Expressions should not be empty!")
+			end if
 		end if
 		
 		var len as integer = --exp::Tokens::get_Count() 
@@ -1134,7 +1140,7 @@ class public ExprOptimizer
 			var tok as Token = exp::Tokens::get_Item(i)
 			if tok is NonExprToken then
 				StreamUtils::WriteLine(string::Empty)
-				StreamUtils::WriteError(exp::Line, PFlags::CurPath, string::Format("The token '{0}' is not allowed in expressions!", tok::Value))
+				StreamUtils::WriteError(tok::Line, tok::Column, PFlags::CurPath, string::Format("The token '{0}' is not allowed in expressions!", tok::Value))
 			end if
 
 			if tok is DollarSign then
@@ -1146,9 +1152,10 @@ class public ExprOptimizer
 				exp::RemToken(i)
 
 				if !#expr(i < exp::Tokens::get_Count()) then
-					StreamUtils::WriteErrorLine(exp::Line, PFlags::CurPath, "Expected '$' instead of nothing!")
+					StreamUtils::WriteErrorLine(exp::Line, 0, PFlags::CurPath, "Expected '$' instead of nothing!")
 				elseif exp::Tokens::get_Item(i) isnot DollarSign then
-					StreamUtils::WriteErrorLine(exp::Line, PFlags::CurPath, string::Format("Expected '$' instead of {0}!", exp::Tokens::get_Item(i)::Value))
+					var tk = exp::Tokens::get_Item(i)
+					StreamUtils::WriteErrorLine(tk::Line, tk::Column, PFlags::CurPath, string::Format("Expected '$' instead of '{0}'!", tk::Value))
 				else
 					exp::RemToken(i)
 					i--
@@ -1305,19 +1312,21 @@ class public ExprOptimizer
 				len = --exp::Tokens::get_Count()
 			elseif tok is TernaryTok then
 				if i < len then
-					if exp::Tokens::get_Item(++i) is LCParen then
+					var tk = exp::Tokens::get_Item(++i)
+					if tk is LCParen then
 						//call ternary processor
 						exp = procTernaryCall(exp, i)
 						len = --exp::Tokens::get_Count() 
 					else
-						StreamUtils::WriteErrorLine(exp::Line, PFlags::CurPath, "Expected a '{' after a '#ternary'!")
+						StreamUtils::WriteErrorLine(tk::Line, tk::Column, PFlags::CurPath, "Expected a '{' after a '#ternary'!")
 					end if
 				else
-					StreamUtils::WriteErrorLine(exp::Line, PFlags::CurPath, "Expected a '{' after a '#ternary'!")
+					StreamUtils::WriteErrorLine(tok::Line, ++tok::EndColumn, PFlags::CurPath, "Expected a '{' after a '#ternary'!")
 				end if
 			elseif tok is ExprTok then
 				if i < len then
-					if exp::Tokens::get_Item(++i) is LParen then
+					var tk = exp::Tokens::get_Item(++i)
+					if tk is LParen then
 						exp::Tokens::set_Item(i, new ExprCallTok() {Line = exp::Line})
 						if PFlags::isChanged then
 							PFlags::UpdateToken($IUnaryOperatable$exp::Tokens::get_Item(i))
@@ -1328,14 +1337,15 @@ class public ExprOptimizer
 						len = --exp::Tokens::get_Count()
 						PFlags::CtorFlag = true
 					else
-						StreamUtils::WriteErrorLine(exp::Line, PFlags::CurPath, "Expected a '(' after a '#expr'!")
+						StreamUtils::WriteErrorLine(tk::Line, tk::Column, PFlags::CurPath, "Expected a '(' after a '#expr'!")
 					end if 
 				else
-					StreamUtils::WriteErrorLine(exp::Line, PFlags::CurPath, "Expected a '(' after a '#expr'!")
+					StreamUtils::WriteErrorLine(tok::Line, ++tok::EndColumn, PFlags::CurPath, "Expected a '(' after a '#expr'!")
 				end if
 			elseif tok is NullCondTok then
 				if i < len then
-					if exp::Tokens::get_Item(++i) is LParen then
+					var tk = exp::Tokens::get_Item(++i)
+					if tk is LParen then
 						exp::Tokens::set_Item(i, new NullCondCallTok() {Line = exp::Line})
 						if PFlags::isChanged then
 							PFlags::UpdateToken($IUnaryOperatable$exp::Tokens::get_Item(i))
@@ -1346,10 +1356,10 @@ class public ExprOptimizer
 						len = --exp::Tokens::get_Count()
 						PFlags::NullCondFlag = true
 					else
-						StreamUtils::WriteErrorLine(exp::Line, PFlags::CurPath, "Expected a '(' after a '#nullcond'!")
+						StreamUtils::WriteErrorLine(tk::Line, tk::Column, PFlags::CurPath, "Expected a '(' after a '#nullcond'!")
 					end if 
 				else
-					StreamUtils::WriteErrorLine(exp::Line, PFlags::CurPath, "Expected a '(' after a '#nullcond'!")
+					StreamUtils::WriteErrorLine(tok::Line, ++tok::EndColumn, PFlags::CurPath, "Expected a '(' after a '#nullcond'!")
 				end if
 //			elseif tok is NewarrTok then
 //				exp::RemToken(i)
@@ -1513,5 +1523,7 @@ class public ExprOptimizer
 		Verify(exp)
 		return exp
 	end method
+
+	method public Expr Optimize(var exp as Expr) => Optimize(exp, $Token$null)
 
 end class

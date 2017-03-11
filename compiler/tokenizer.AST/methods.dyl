@@ -30,7 +30,9 @@ class public MethodCallTok extends ValueToken
 	method public void AddParam(var paramtoadd as Expr)
 		Params::Add(paramtoadd)
 		if Params::get_Count() = 0 then
+			//TODO: need Expr to provide richer metadata
 			Line = paramtoadd::Line
+			EndLine = paramtoadd::Line
 		end if
 	end method
 

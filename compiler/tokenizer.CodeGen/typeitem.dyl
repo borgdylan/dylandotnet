@@ -55,7 +55,7 @@ class public partial TypeItem
 
 	method public void AddField(var f as FieldItem)		
 		if Fields::Contains(f::Name) then
-			StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Field '" + f::Name + "' is already declared in the current class!")
+			StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "Field '" + f::Name + "' is already declared in the current class!")
 		end if
 
 		Fields::Add(f::Name, f)
