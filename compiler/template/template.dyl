@@ -39,7 +39,7 @@ end class
 
 interface public IHello
 	method public void Hello()
-	
+
 	property public autogen integer MyInt
 	property public initonly autogen integer MyInt2
 end interface
@@ -60,10 +60,10 @@ interface public IEvent<of T>
 end interface
 
 class public HelloClass implements IHello, IHello2, IHello3, IEvent<of integer>
-	
+
 	property public autogen integer MyInt
 	property public initonly autogen integer MyInt2
-	
+
 	method public virtual void IHello.Hello()
 		Console::WriteLine("I Implement Hello")
 	end method
@@ -138,25 +138,25 @@ class public BaseTest
 	method public void CallTS1()
 		Console::WriteLine(ToString())
 	end method
-	
+
 	method public override string ToString() => "Test " + mybase::ToString()
-	
+
 	method public void CallTS2()
 		Console::WriteLine(ToString())
 	end method
-	
+
 	method public void CallTS3()
 		Console::WriteLine(mybase::ToString())
 	end method
-	
+
 	method public void CallTS4(var o as object)
 		Console::WriteLine(o)
 	end method
-	
+
 	method public void CallTS4(var o as BaseTest)
 		Console::WriteLine(o)
 	end method
-	
+
 	method public void CallTS5()
 		CallTS4(me)
 	end method
@@ -166,11 +166,11 @@ end class
 class public beforefieldinit ROTest
 
 	field public static initonly integer X
-	
+
 	method public static void ROTest()
 		X = 11
 	end method
-	
+
 	method public static void Modifier()
 		var xc as integer = X
 		//X = xc * 2
@@ -181,11 +181,11 @@ end class
 class public OTTEnumerator implements IEnumerator<of integer>, IEnumerator, IDisposable
 
 	field private integer _Current
-	
+
 	method public void OTTEnumerator()
 		_Current = 0
 	end method
-	
+
 	method public virtual boolean MoveNext()
 		if _Current < 10 then
 			_Current++
@@ -194,20 +194,20 @@ class public OTTEnumerator implements IEnumerator<of integer>, IEnumerator, IDis
 			return false
 		end if
 	end method
-	
+
 	method public virtual void Reset()
 		_Current = 0
 	end method
-	
+
 	method public virtual void Dispose()
 	end method
-	
+
 	property public virtual integer IEnumerator<of integer>.Current
 		get
 			return _Current
 		end get
 	end property
-	
+
 	property public virtual object IEnumerator.Current
 		get
 			return $object$_Current
@@ -226,37 +226,37 @@ class public OTT implements IEnumerable<of integer>, IEnumerable
 	method public virtual IEnumerator IEnumerable.GetEnumerator()
 		return new OTTEnumerator()
 	end method
-	
+
 end class
 
 [class: System.Reflection.DefaultMember("Item")]
 class public ObjInit
-	
+
 	field public integer A
 	field public integer B
 	field public ObjInit C
 	field private string _Msg
-	
+
 	method public void ObjInit(var a as integer, var b as integer, var msg as string)
 		mybase::ctor()
 		A = a
 		B = b
 		_Msg = msg
 	end method
-	
+
 	method public void ObjInit()
 		ctor(0,0,string::Empty)
 	end method
-	
+
 	method public void ABC()
 		Console::WriteLine("hello")
 	end method
-	
+
 	method public integer XYZ(var s as string)
 		Console::WriteLine(s)
 		return s::GetHashCode()
 	end method
-	
+
 	property public string Msg
 		get
 			return _Msg
@@ -327,7 +327,7 @@ end class
 	end class
 
 	class public static Generics
-		
+
 		class public GenNest<of T, U> extends List<of T>
 		end class
 
@@ -355,7 +355,7 @@ end class
 		method public static Tuple<of T, U> Func<of T, U>(var o as T, var o2 as U)
 			return Tuple::Create<of T, U>(o, o2)
 		end method
-		
+
 		method public static T[] Func2<of T>(var ie as IEnumerable<of T>)
 			return Enumerable::ToArray<of T>(ie)
 		end method
@@ -372,7 +372,7 @@ end class
 
 			return destarr
 		end method
-		
+
 		method public static T[] remelem<of T>(var srcarr as T[], var ind as integer)
 			var destarr as T[] = new T[--srcarr[l]]
 
@@ -382,36 +382,36 @@ end class
 			for i = ++ind upto --srcarr[l]
 				destarr[--i] = srcarr[i]
 			end for
-			
+
 			return destarr
 		end method
-		
+
 		method public static T[] addelem<of T>(var srcarr as T[], var eltoadd as T, var eltoadd2 as T )
 			return addelem<of T>(addelem<of T>(srcarr, eltoadd), eltoadd2)
 		end method
-		
+
 		method public static T[] addremelem<of T>(var srcarr as T[], var eltoadd as T, var ind as integer)
 			return remelem<of T>(addelem<of T>(srcarr, eltoadd), ind)
 		end method
-		
+
 		method public static T[] addremelem<of T>(var srcarr as T[], var eltoadd as T, var eltoadd2 as T, var ind as integer)
 			return remelem<of T>(addelem<of T>(srcarr, eltoadd, eltoadd2), ind)
 		end method
-		
+
 		method public static void exch<of T>(var p1 as T&, var p2 as T&)
 			var temp = p1
 			p1 = p2
 			p2 = temp
 		end method
-		
+
 		method public static T getdefault<of T>()
 			return default T
 		end method
-		
+
 		method public static string ToString<of T>(var t as T)
 			return Func<of T>(t)::ToString()
 		end method
-		
+
 		method public static Type GetType<of T>(var t as T)
 			return t::GetType()
 		end method
@@ -448,10 +448,10 @@ class public sealed MyAttribute extends Attribute
 end class
 
 class public static Program
-	
+
 	property public static autogen integer AutoTest
 	property public initonly static autogen integer AutoROTest
-	
+
 	field public static integer X
 	field public static IEnumerable<of string> Y
 	field private static integer _TestProperty
@@ -473,15 +473,15 @@ class public static Program
 		_AutoTest = 11
 		_AutoROTest = 11
 	end method
-	
+
 	method public static void ProtoTest()
 		ProtoMethod(12,6)
 	end method
-	
+
 	method public static void ProtoMethod(var x as integer, var y as integer)
 		Console::WriteLine("ProtoImpl")
 	end method
-	
+
 	method public static void numerictest()
 		var bi as BigInteger = ($BigInteger$12 >> 1) << 2
 		Console::WriteLine(bi::ToString())
@@ -514,7 +514,7 @@ class public static Program
 		Console::WriteLine(bi <= 45l)
 		Console::WriteLine(bi >= 20l)
 	end method
-	
+
 	method public static void PrintXElement(var el as XElement)
 		Console::Write(el::Attribute(XName::Get("id"))::get_Value()::ToString())
 		Console::WriteLine(":" + el::get_Value()::ToString())
@@ -632,58 +632,58 @@ class public static Program
 		str = s::ToString()
 		sp = "Hello, You've been ByRefd"
 	end method
-	
+
 	method public static boolean[] test2()
 		return new boolean[2]
 	end method
-	
+
 	method public static void intest(in var p as integer&)
 	end method
-	
+
 	method public static void outtest(out var p as integer&)
 	end method
-	
+
 	method public static void inouttest(inout var p as integer&)
 	end method
-	
+
 	method public static void scopingtests()
 		var i as integer = 0
-		
+
 		if true then
 			var i as integer
 			i = 12
 			Console::WriteLine(i)
 		end if
-		
+
 		i = 23
 		Console::WriteLine(i)
 	end method
-	
+
 	method public static void foreachtests()
-		
+
 		foreach i in new integer[] {3, 23}
 			Console::WriteLine(i)
 		end for
-		
+
 		foreach i in new C5.LinkedList<of integer> {1,12,23}
 			Console::WriteLine(i)
 		end for
-		
+
 		Console::WriteLine("--------------------------")
-		
+
 		foreach i in new string[] {"This", "is", "a", "foreach"}
 			Console::WriteLine(i)
 		end for
-		
+
 		Console::WriteLine("--------------------------")
-		
+
 		var tl as C5.IList<of long> = new C5.LinkedList<of long>()
 		for tli = 1 upto 10
 			var dt as DateTime = DateTime::get_Now()
 			tl::Add(dt::get_Ticks() / TimeSpan::TicksPerMillisecond)
 			Thread::Sleep(500)
 		end for
-		
+
 		foreach dt as string in tl
 			Console::WriteLine(dt)
 		end for
@@ -691,14 +691,14 @@ class public static Program
 		foreach dt as string in tl::Backwards()::GetEnumerator()
 			Console::WriteLine(dt)
 		end for
-		
+
 	end method
-	
+
 	method public static void aliastests()
 		Console::WriteLine(string::Empty)
 		Console::WriteLine(integer::Parse("23"))
 	end method
-	
+
 	property public static integer TestProperty
 		get
 			return _TestProperty
@@ -722,7 +722,7 @@ class public static Program
 			_TestEvent::Invoke(null,new EventArgs())
 		end if
 	end method
-	
+
 	[event: Obsolete("Test Custom Attribute")]
 	event public static EventHandler TestEvent
 		add
@@ -742,19 +742,19 @@ class public static Program
 	#region "P/Invokes"
 		[method: DllImport("libm")]
 		method public pinvokeimpl static double sin(var x as double)
-		
+
 		[method: DllImport("libctest")]
 		method public pinvokeimpl static integer incr(var x as integer)
-		
+
 		[method: DllImport("libctest")]
 		method public pinvokeimpl static double cplxmod(var a as double, var b as double)
-		
+
 		[method: DllImport("libctest")]
 		method public pinvokeimpl static void printpt(var p as point)
-		
+
 		[method: DllImport("libctest")]
 		method public pinvokeimpl static void incrpt(var p as point&)
-	end #region	
+	end #region
 
 	[method: STAThread()]
 	method public static void main()
@@ -824,11 +824,11 @@ class public static Program
 		Console::WriteLine(1 nand 2)
 		Console::WriteLine(1 nor 2)
 		Console::WriteLine(1 xnor 3)
-		
+
 		foreach o in new OTT()
 			Console::WriteLine(o)
 		end for
-		
+
 //		var ao as object = new integer[] {1,2,3}
 //		var ai = $integer[]$ao
 //		var oi = new ObjInit() {A = 1, B = 2, C = new ObjInit() {A = 3, B = 4, C = null, set_Msg("InnerHello")}, set_Msg("Hello")}
@@ -843,7 +843,7 @@ class public static Program
 //			, "a continued" _
 //			, "line")
 //		var x = #expr("abc" + $string$!#expr(12 + 6))::Trim()::get_Length()
-//		
+//
 //		for xi = 1 upto 7
 //			for xj = xi downto 1
 //				for xz = xj downto 1
@@ -851,7 +851,7 @@ class public static Program
 //				end for
 //			end for
 //		end for
-		
+
 		Console::WriteLine(integer::MinValue)
 		Console::WriteLine(Const)
 		Console::WriteLine(Program::Const2)
@@ -1065,14 +1065,14 @@ end class
 namespace A
 
 	namespace B
-		
+
 		class public D
 		end class
 
 	end namespace
 
 	namespace global::C
-		
+
 		class public E
 		end class
 
@@ -1081,7 +1081,7 @@ namespace A
 end namespace
 
 namespace global::A
-		
+
 	class public F
 	end class
 

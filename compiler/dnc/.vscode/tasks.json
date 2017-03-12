@@ -20,7 +20,7 @@
                     "owner": "dylandotnet",
                    "fileLocation": ["absolute"],
                     "pattern": {
-                        "regexp": "^(.*)\\((\\d+)(,(\\d+))?\\):\\s*(error|warning):\\s*(.*)$",
+                        "regexp": "^(.*)\\((\\d+)(,(\\d+))?\\):\\s*(error|warning)\\s*:\\s*(.*)$",
                         "file": 1,
                         "line": 2,
                         "column": 4,

@@ -1,77 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildThisFileDirectory)..\global.props" />
-  <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7847A604-AE14-4379-85BD-11FC218BF749}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <RootNamespace>Extra.Tasks</RootNamespace>
-    <UsePartialTypes>false</UsePartialTypes>
-    <AssemblyName>Extra.Tasks</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\Debug</OutputPath>
-    <ErrorReport>prompt</ErrorReport>
-    <ConsolePause>false</ConsolePause>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <OutputPath>bin\Release</OutputPath>
-    <DebugSymbols>false</DebugSymbols>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Testing|AnyCPU' ">
-    <DebugSymbols>false</DebugSymbols>
-    <OutputPath>bin\Testing</OutputPath>
-  </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="mscorlib" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Xml" />
-    <Reference Include="Microsoft.Build.Framework" />
-    <Reference Include="Microsoft.Build.Utilities.v4.0" />
-    <Reference Include="Microsoft.Build.Tasks.v4.0" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Extra.tasks" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Extra.Tasks.dyl" />
-    <Compile Include="Properties\AssemblyInfo.dyl" />
-    <Compile Include="ErrorWarnTask.dyl" />
-    <Compile Include="DncTask.dyl" />
-    <Compile Include="ResProcTask.dyl" />
-    <Compile Include="FindResProcOuts.dyl" />
-  </ItemGroup>
-  <Import Project="..\4.0\dylan.NET.targets" />
-  <Target Name="AfterBuild" AfterTargets="Build">
+<Project Sdk="Microsoft.NET.Sdk">
+    <Import Project="$(MSBuildThisFileDirectory)..\global.props" />
+    <PropertyGroup>
+        <LanguageTargets>$(MSBuildThisFileDirectory)..\4.0\dylan.NET.Cli.targets</LanguageTargets>
+        <OutputType>Library</OutputType>
+        <RootNamespace>Extra.Tasks</RootNamespace>
+        <AssemblyName>Extra.Tasks</AssemblyName>
+        <TargetFrameworks>net46</TargetFrameworks>
+    </PropertyGroup>
     <ItemGroup>
-      <Stuff Include="$(OutputPath)\Extra.Tasks.dll" />
-      <Stuff Include="Extra.tasks" />
+        <Reference Include="System" />
+        <Reference Include="mscorlib" />
+        <Reference Include="System.Core" />
+        <Reference Include="System.Xml.Linq" />
+        <Reference Include="System.Xml" />
+
+        <!--<Reference Include="Microsoft.Build.Framework" />
+        <Reference Include="Microsoft.Build.Utilities.v4.0" />
+        <Reference Include="Microsoft.Build.Tasks.v4.0" />-->
+
+        <PackageReference Include="Microsoft.Build.Tasks.Core" Version="15.1.548" />
+
+        <ProjectReference Include="$(MSBuildThisFileDirectory)..\resproc\resproc.dylproj" />
+        <ProjectReference Include="$(MSBuildThisFileDirectory)..\dnc\dnc.dylproj" />
+        <ProjectReference Include="$(MSBuildThisFileDirectory)..\dnu\dnu.dylproj" />
     </ItemGroup>
-    <Copy SourceFiles="@(Stuff)" DestinationFolder="..\4.0" />
-  </Target>
-  <ItemGroup>
-    <ProjectReference Include="..\resproc\resproc.dylproj">
-      <Project>{CA24B74F-5AC3-4B3C-AF83-90645EDB7B82}</Project>
-      <Name>resproc</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\dnc\dnc.dylproj">
-      <Project>{170F5550-D546-4C43-90EA-598D803E338A}</Project>
-      <Name>dnc</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ProjectExtensions>
-    <MonoDevelop>
-      <Properties>
-        <Policies>
-          <StandardHeader Text="//    Extra.Tasks.dll Extra.Tasks Copyright (C) 2014 Dylan Borg &lt;borgdylan@hotmail.com&gt;&#xA;//    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software&#xA;// Foundation; either version 3 of the License, or (at your option) any later version.&#xA;//    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A &#xA;//PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.&#xA;//    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple &#xA;//Place, Suite 330, Boston, MA 02111-1307 USA " IncludeInNewFiles="True" />
-        </Policies>
-      </Properties>
-    </MonoDevelop>
-  </ProjectExtensions>
+    <Target Name="AfterBuild" AfterTargets="Build">
+        <ItemGroup>
+            <Stuff Include="$(OutputPath)\net46\Extra.Tasks.dll" />
+            <Stuff Include="Extra.tasks" />
+        </ItemGroup>
+        <Copy SourceFiles="@(Stuff)" DestinationFolder="..\4.0" />
+    </Target>
 </Project>

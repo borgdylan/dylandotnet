@@ -14,6 +14,7 @@ Modified by Dylan Borg for dylan.NET Support, based on the C# version.
 ***********************************************************************************************
 -->
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildThisFileDirectory)Extra.tasks" />
   <PropertyGroup>
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
   </PropertyGroup>
@@ -91,7 +92,8 @@ Modified by Dylan Borg for dylan.NET Support, based on the C# version.
 	
 	<WriteLinesToFile File="msbuild.dyl" Lines="@(InfoLines)" Overwrite="True" />
 	<Message Text="Compiling for Target: $(TargetFrameworkMoniker)"/>
-	<Exec Command="mono $(MSBuildThisFileDirectory)/dnc.exe $(InputFile)" />
+	<!--<Exec Command="mono $(MSBuildThisFileDirectory)dnc.exe $(InputFile)" />-->
+	<DncTask InputFile="$(InputFile)" />
 	
 	<!-- Hack to correctly handle .NET Core since dylan.NET uses .exe for all executables regardless of TFM -->
 	<Copy Condition=" ('$(OutputType)' != 'Exe') and ('$(OutputType)' != 'WinExe') " SourceFiles="$(AssemblyName).dll" DestinationFiles="$(IntermediateOutputPath)\$(AssemblyName)$(TargetExt)" />
