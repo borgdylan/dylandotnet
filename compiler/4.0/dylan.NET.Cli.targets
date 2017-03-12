@@ -25,6 +25,7 @@ Modified by Dylan Borg for dylan.NET Support, based on the C# version.
    <PropertyGroup Condition="'$(TargetFrameworks)' != '' and '$(TargetFramework)' == ''">
       <IsCrossTargetingBuild>true</IsCrossTargetingBuild>
       <BuildInParallel>false</BuildInParallel>
+      <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
       <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
    </PropertyGroup>
    
