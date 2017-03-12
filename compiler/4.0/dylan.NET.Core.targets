@@ -2,9 +2,9 @@
 ***********************************************************************************************
 dylan.NET.Core.targets
 
-WARNING:  DO NOT MODIFY this file unless you are knowledgeable about MSBuild and have
-          created a backup copy.  Incorrect changes to this file will make it
-          impossible to load or build your projects from the command-line or the IDE.
+WARNING:    DO NOT MODIFY this file unless you are knowledgeable about MSBuild and have
+            created a backup copy.    Incorrect changes to this file will make it
+            impossible to load or build your projects from the command-line or the IDE.
 
 This file defines the steps in the standard build process specific for dylan.NET projects.
 For example, it contains the step that actually calls the dylan.NET compiler.
@@ -14,96 +14,116 @@ Modified by Dylan Borg for dylan.NET Support, based on the C# version.
 ***********************************************************************************************
 -->
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildThisFileDirectory)Extra.tasks" />
-  <PropertyGroup>
-    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
-  </PropertyGroup>
-  <ItemGroup>
-    <CustomAdditionalCompileOutputs Include="msbuild.dyl" />
-    <Compile Remove="msbuild.dyl" />
-  </ItemGroup>
-  <Target
-          Name="CoreCompile"
-          Inputs="$(MSBuildAllProjects);
-                @(Compile);
-                @(_CoreCompileResourceInputs);
-                $(ApplicationIcon);
-                $(AssemblyOriginatorKeyFile);
-                @(ReferencePath);
-                @(CompiledLicenseFile);
-                @(LinkResource);
-                @(EmbeddedDocumentation);
-                $(Win32Resource);
-                $(Win32Manifest);
-                @(CustomAdditionalCompileInputs);
-                $(ResolvedCodeAnalysisRuleSet);
-                @(AdditionalFiles);
-                @(EmbeddedFiles)"
-          Outputs="@(DocFileItem);
-                 @(IntermediateAssembly);
-                 @(_DebugSymbolsIntermediatePath);
-                 $(NonExistentFile);
-                 @(CustomAdditionalCompileOutputs)"
-          Returns="@(CscCommandLineArgs)"
-          DependsOnTargets="$(CoreCompileDependsOn)"
-    >
-
-    <ItemGroup Condition="'$(TargetingClr2Framework)' == 'true'">
-      <ReferencePath>
-        <EmbedInteropTypes/>
-      </ReferencePath>
-    </ItemGroup>
+    <Import Project="$(MSBuildThisFileDirectory)Extra.tasks" />
 
     <PropertyGroup>
-      <!-- If we are targeting winmdobj we want to specifically the pdbFile property since we do not want it to collide with the output of winmdexp-->
-      <PdbFile Condition="'$(PdbFile)' == '' and '$(OutputType)' == 'winmdobj' and '$(_DebugSymbolsProduced)' == 'true'">$(IntermediateOutputPath)$(TargetName).compile.pdb</PdbFile>
+        <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+        <PrepareResourcesDependsOn>CalcResScriptOuts;ProcessResScripts;$(PrepareResourcesDependsOn)</PrepareResourcesDependsOn>
     </PropertyGroup>
 
-    <PropertyGroup Condition="'$(UseSharedCompilation)' == ''">
-      <UseSharedCompilation>true</UseSharedCompilation>
-    </PropertyGroup>
+    <ItemGroup>
+        <CustomAdditionalCompileOutputs Include="msbuild.dyl" />
+        <Compile Remove="msbuild.dyl" />
+    </ItemGroup>
 
-    <Message Text="Saving project settings into msbuild.dyl so you could use them as part of your code." />
-	<ItemGroup>
-		<DefineConsts Include="$(DefineConstants)" />
-		<!--<InfoLines Include="#define %(NETDefines.FileName)" />-->
-		<InfoLines Include="#refasm &quot;%(ReferencePath.FullPath)&quot;" />
-		<InfoLines Condition=" '$(DebugSymbols)' == 'true' " Include="#debug on" />
-		<InfoLines Condition=" '$(AssemblyOriginatorKeyFile)' != '' and $(SignAssembly) == 'true' " Include="#sign &quot;$(AssemblyOriginatorKeyFile)&quot;" />
-		<InfoLines Condition=" '$(ComVisibleUsable)' == 'true' " Include="[assembly: System.Runtime.InteropServices.ComVisible(false)]" />
-		<InfoLines Include="[assembly: System.Reflection.AssemblyConfiguration(&quot;$(Configuration)&quot;)]" />
-		<InfoLines Include="[assembly: System.Reflection.AssemblyTitle(&quot;$(AssemblyName)&quot;)]" />
-		<InfoLines Include="[assembly: System.Runtime.CompilerServices.RuntimeCompatibility(), WrapNonExceptionThrows = true]" />
-		<InfoLines Condition="'$(TargetFrameworkMoniker)' != '' and '$(TargetingClr2Framework)' != 'true'" Include="[assembly: System.Runtime.Versioning.TargetFramework(&quot;$(TargetFrameworkMoniker)&quot;), FrameworkDisplayName = &quot;$(TargetFrameworkMonikerDisplayName)&quot;]" />
-		<InfoLines Condition=" '$(OutputType)' == 'Library' " Include="assembly $(AssemblyName) dll" />
-		<InfoLines Condition=" '$(OutputType)' == 'Exe' " Include="assembly $(AssemblyName) exe" />
-		<InfoLines Condition=" '$(OutputType)' == 'WinExe' " Include="assembly $(AssemblyName) winexe" />
-		<InfoLines Include="ver $(Version)" />
-		<InfoLines Condition=" '$(DebugSymbols)' == 'true' " Include="#undef DEBUG" />
-		<InfoLines Condition=" '$(DefineConstants)' != '' " Include="#define %(DefineConsts.Identity)" />
+    <Target Name="CalcResScriptOuts">
+        <FindResProcOuts Inputs="@(ResScript)">
+            <Output TaskParameter="Outputs" ItemName="ProcScripts" />
+            <Output TaskParameter="Outputs" ItemName="EmbeddedResource" />
+        </FindResProcOuts>
+    </Target>
 
-		<InfoLines Condition=" '@(ManifestResourceWithNoCulture)' != '' and '%(ManifestResourceWithNoCulture.LogicalName)' != '%(ManifestResourceWithNoCulture.LogicalName)' " Include="#embed &quot;&quot; = &quot;%(ManifestResourceWithNoCulture.FullPath)&quot;" />
-		<InfoLines  Condition=" '@(ManifestNonResxWithNoCultureOnDisk)' != '' and '%(ManifestNonResxWithNoCultureOnDisk.LogicalName)' != '' " Include="#embed &quot;%(ManifestNonResxWithNoCultureOnDisk.LogicalName)&quot; = &quot;%(ManifestNonResxWithNoCultureOnDisk.FullPath)&quot;" />
+    <Target Name="ProcessResScripts" Inputs="@(ResScript);@(ResInput)" Outputs="@(ProcScripts)">
+        <Message Text="Compiling all Resource Scripts (.dylres) into .resx format."/>
+        <ResProcTask ResxInputs="@(ResScript)" NS="$(RootNamespace)">
+            <!--<Output TaskParameter="Outputs" ItemName="EmbeddedResource" />-->
+            <Output TaskParameter="Outputs" ItemName="FileWrites" />
+            <Output TaskParameter="Outputs" ItemName="CustomAdditionalCompileOutputs" />
+        </ResProcTask>
+    </Target>
 
-		<InfoLines Condition=" '@(ManifestResourceWithNoCulture)' != '' and '%(ManifestResourceWithNoCulture.LogicalName)' == '' " Include="#embed &quot;%(ManifestResourceWithNoCulture.FullPath)&quot;" />
-		<InfoLines  Condition=" '@(ManifestNonResxWithNoCultureOnDisk)' != ''  and '%(ManifestNonResxWithNoCultureOnDisk.LogicalName)' == ''  " Include="#embed &quot;%(ManifestNonResxWithNoCultureOnDisk.FullPath)&quot;" />
-		<FileWrites Include="msbuild.dyl" />
-	</ItemGroup>
-	
-	<WriteLinesToFile File="msbuild.dyl" Lines="@(InfoLines)" Overwrite="True" />
-	<Message Text="Compiling for Target: $(TargetFrameworkMoniker)"/>
-	<!--<Exec Command="mono $(MSBuildThisFileDirectory)dnc.exe $(InputFile)" />-->
-	<DncTask InputFile="$(InputFile)" />
-	
-	<!-- Hack to correctly handle .NET Core since dylan.NET uses .exe for all executables regardless of TFM -->
-	<Copy Condition=" ('$(OutputType)' != 'Exe') and ('$(OutputType)' != 'WinExe') " SourceFiles="$(AssemblyName).dll" DestinationFiles="$(IntermediateOutputPath)\$(AssemblyName)$(TargetExt)" />
-	<Copy Condition=" ('$(OutputType)' == 'Exe') or ('$(OutputType)' == 'WinExe') " SourceFiles="$(AssemblyName).exe" DestinationFiles="$(IntermediateOutputPath)\$(AssemblyName)$(TargetExt)" />
-	
-	<Copy Condition=" '$(DebugSymbols)' == 'true' " SourceFiles="$(AssemblyName).pdb" DestinationFiles="$(IntermediateOutputPath)\$(AssemblyName).pdb" />
-	<Delete Files="$(AssemblyName)$(TargetExt)" />
-	<Delete Condition=" '$(DebugSymbols)' == 'true' " Files="$(AssemblyName).pdb" />
-	<Message Text="Compilation Ready"/>
-    
-    <CallTarget Targets="$(TargetsTriggeredByCompilation)" Condition="'$(TargetsTriggeredByCompilation)' != ''"/>
-  </Target>
+    <Target
+        Name="CoreCompile"
+        Inputs="$(MSBuildAllProjects);
+            @(Compile);
+            @(_CoreCompileResourceInputs);
+            $(ApplicationIcon);
+            $(AssemblyOriginatorKeyFile);
+            @(ReferencePath);
+            @(CompiledLicenseFile);
+            @(LinkResource);
+            @(EmbeddedDocumentation);
+            $(Win32Resource);
+            $(Win32Manifest);
+            @(CustomAdditionalCompileInputs);
+            $(ResolvedCodeAnalysisRuleSet);
+            @(AdditionalFiles);
+            @(EmbeddedFiles)"
+        Outputs="@(DocFileItem);
+            @(IntermediateAssembly);
+            @(_DebugSymbolsIntermediatePath);
+            $(NonExistentFile);
+            @(CustomAdditionalCompileOutputs)"
+        Returns="@(CscCommandLineArgs)"
+        DependsOnTargets="$(CoreCompileDependsOn)"
+        >
+
+        <ItemGroup Condition="'$(TargetingClr2Framework)' == 'true'">
+            <ReferencePath>
+                <EmbedInteropTypes/>
+            </ReferencePath>
+        </ItemGroup>
+
+        <PropertyGroup>
+            <!-- If we are targeting winmdobj we want to specifically the pdbFile property since we do not want it to collide with the output of winmdexp-->
+            <PdbFile Condition="'$(PdbFile)' == '' and '$(OutputType)' == 'winmdobj' and '$(_DebugSymbolsProduced)' == 'true'">$(IntermediateOutputPath)$(TargetName).compile.pdb</PdbFile>
+        </PropertyGroup>
+
+        <PropertyGroup Condition="'$(UseSharedCompilation)' == ''">
+            <UseSharedCompilation>true</UseSharedCompilation>
+        </PropertyGroup>
+
+        <Message Text="Saving project settings into msbuild.dyl so you could use them as part of your code." />
+        <ItemGroup>
+            <DefineConsts Include="$(DefineConstants)" />
+            <!--<InfoLines Include="#define %(NETDefines.FileName)" />-->
+            <InfoLines Include="#refasm &quot;%(ReferencePath.FullPath)&quot;" />
+            <InfoLines Condition=" '$(DebugSymbols)' == 'true' " Include="#debug on" />
+            <InfoLines Condition=" '$(AssemblyOriginatorKeyFile)' != '' and $(SignAssembly) == 'true' " Include="#sign &quot;$(AssemblyOriginatorKeyFile)&quot;" />
+            <InfoLines Condition=" '$(ComVisibleUsable)' == 'true' " Include="[assembly: System.Runtime.InteropServices.ComVisible(false)]" />
+            <InfoLines Include="[assembly: System.Reflection.AssemblyConfiguration(&quot;$(Configuration)&quot;)]" />
+            <InfoLines Include="[assembly: System.Reflection.AssemblyTitle(&quot;$(AssemblyName)&quot;)]" />
+            <InfoLines Include="[assembly: System.Runtime.CompilerServices.RuntimeCompatibility(), WrapNonExceptionThrows = true]" />
+            <InfoLines Condition="'$(TargetFrameworkMoniker)' != '' and '$(TargetingClr2Framework)' != 'true'" Include="[assembly: System.Runtime.Versioning.TargetFramework(&quot;$(TargetFrameworkMoniker)&quot;), FrameworkDisplayName = &quot;$(TargetFrameworkMonikerDisplayName)&quot;]" />
+            <InfoLines Condition=" '$(OutputType)' == 'Library' " Include="assembly $(AssemblyName) dll" />
+            <InfoLines Condition=" '$(OutputType)' == 'Exe' " Include="assembly $(AssemblyName) exe" />
+            <InfoLines Condition=" '$(OutputType)' == 'WinExe' " Include="assembly $(AssemblyName) winexe" />
+            <InfoLines Include="ver $(Version)" />
+            <InfoLines Condition=" '$(DebugSymbols)' == 'true' " Include="#undef DEBUG" />
+            <InfoLines Condition=" '$(DefineConstants)' != '' " Include="#define %(DefineConsts.Identity)" />
+
+            <InfoLines Condition=" '@(ManifestResourceWithNoCulture)' != '' and '%(ManifestResourceWithNoCulture.LogicalName)' != '%(ManifestResourceWithNoCulture.LogicalName)' " Include="#embed &quot;&quot; = &quot;%(ManifestResourceWithNoCulture.FullPath)&quot;" />
+            <InfoLines    Condition=" '@(ManifestNonResxWithNoCultureOnDisk)' != '' and '%(ManifestNonResxWithNoCultureOnDisk.LogicalName)' != '' " Include="#embed &quot;%(ManifestNonResxWithNoCultureOnDisk.LogicalName)&quot; = &quot;%(ManifestNonResxWithNoCultureOnDisk.FullPath)&quot;" />
+
+            <InfoLines Condition=" '@(ManifestResourceWithNoCulture)' != '' and '%(ManifestResourceWithNoCulture.LogicalName)' == '' " Include="#embed &quot;%(ManifestResourceWithNoCulture.FullPath)&quot;" />
+            <InfoLines    Condition=" '@(ManifestNonResxWithNoCultureOnDisk)' != ''    and '%(ManifestNonResxWithNoCultureOnDisk.LogicalName)' == ''    " Include="#embed &quot;%(ManifestNonResxWithNoCultureOnDisk.FullPath)&quot;" />
+            <FileWrites Include="msbuild.dyl" />
+        </ItemGroup>
+
+        <WriteLinesToFile File="msbuild.dyl" Lines="@(InfoLines)" Overwrite="True" />
+        <Message Text="Compiling for Target: $(TargetFrameworkMoniker)"/>
+        <!--<Exec Command="mono $(MSBuildThisFileDirectory)dnc.exe $(InputFile)" />-->
+        <DncTask InputFile="$(InputFile)" />
+
+        <!-- Hack to correctly handle .NET Core since dylan.NET uses .exe for all executables regardless of TFM -->
+        <Copy Condition=" ('$(OutputType)' != 'Exe') and ('$(OutputType)' != 'WinExe') " SourceFiles="$(AssemblyName).dll" DestinationFiles="$(IntermediateOutputPath)\$(AssemblyName)$(TargetExt)" />
+        <Copy Condition=" ('$(OutputType)' == 'Exe') or ('$(OutputType)' == 'WinExe') " SourceFiles="$(AssemblyName).exe" DestinationFiles="$(IntermediateOutputPath)\$(AssemblyName)$(TargetExt)" />
+
+        <Copy Condition=" '$(DebugSymbols)' == 'true' " SourceFiles="$(AssemblyName).pdb" DestinationFiles="$(IntermediateOutputPath)\$(AssemblyName).pdb" />
+        <Delete Files="$(AssemblyName)$(TargetExt)" />
+        <Delete Condition=" '$(DebugSymbols)' == 'true' " Files="$(AssemblyName).pdb" />
+        <Message Text="Compilation Ready"/>
+        
+        <CallTarget Targets="$(TargetsTriggeredByCompilation)" Condition="'$(TargetsTriggeredByCompilation)' != ''"/>
+    </Target>
 </Project>

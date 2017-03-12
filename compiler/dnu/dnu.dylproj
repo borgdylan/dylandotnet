@@ -19,8 +19,6 @@
         <PackageReference Include="C5" Version="2.4.5947" />
     </ItemGroup>
     <ItemGroup>
-        <ResScript Include="Messages.dylres">
-            <EmitDesigner>True</EmitDesigner>
-        </ResScript>
+        <ResScript Include="Messages.dylres" EmitDesigner="True" />
     </ItemGroup>
 </Project>
