@@ -1146,7 +1146,7 @@ class public ExprOptimizer
 			if tok is DollarSign then
 				PFlags::isChanged = true
 				PFlags::ConvFlag = true
-				PFlags::OrdOp = #expr("conv " + PFlags::OrdOp)::Trim()
+				PFlags::OrdOp = #expr(i"conv {PFlags::OrdOp}")::Trim()
 				exp::RemToken(i)
 				PFlags::ConvTyp = procType2(exp,i)
 				exp::RemToken(i)
@@ -1164,28 +1164,28 @@ class public ExprOptimizer
 			elseif tok is NegOp then
 				PFlags::isChanged = true
 				PFlags::NegFlag = true
-				PFlags::OrdOp = #expr("neg " + PFlags::OrdOp)::Trim()
+				PFlags::OrdOp = #expr(i"neg {PFlags::OrdOp}")::Trim()
 				exp::RemToken(i)
 				i--
 				len = --exp::Tokens::get_Count()
 			elseif tok is NotOp then
 				PFlags::isChanged = true
 				PFlags::NotFlag = true
-				PFlags::OrdOp = #expr("not " + PFlags::OrdOp)::Trim()
+				PFlags::OrdOp = #expr(i"not {PFlags::OrdOp}")::Trim()
 				exp::RemToken(i)
 				i--
 				len = --exp::Tokens::get_Count()
 			elseif tok is IncOp then
 				PFlags::isChanged = true
 				PFlags::IncFlag = true
-				PFlags::OrdOp = #expr("inc " + PFlags::OrdOp)::Trim()
+				PFlags::OrdOp = #expr(i"inc {PFlags::OrdOp}")::Trim()
 				exp::RemToken(i)
 				i--
 				len = --exp::Tokens::get_Count()
 			elseif tok is DecOp then
 				PFlags::isChanged = true
 				PFlags::DecFlag = true
-				PFlags::OrdOp = #expr("dec " + PFlags::OrdOp)::Trim()
+				PFlags::OrdOp = #expr(i"dec {PFlags::OrdOp}")::Trim()
 				exp::RemToken(i)
 				i--
 				len = --exp::Tokens::get_Count()

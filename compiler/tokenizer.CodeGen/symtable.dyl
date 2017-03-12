@@ -1,10 +1,10 @@
 //    tokenizer.CodeGen.dll dylan.NET.Tokenizer.CodeGen Copyright (C) 2013 Dylan Borg <borgdylan@hotmail.com>
 //    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software
 // Foundation; either version 3 of the License, or (at your option) any later version.
-//    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+//    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
 //PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
-//    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
-//Place, Suite 330, Boston, MA 02111-1307 USA 
+//    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple
+//Place, Suite 330, Boston, MA 02111-1307 USA
 
 class public static SymTable
 
@@ -29,7 +29,7 @@ class public static SymTable
 	field public static PropertyItem CurnProp
 	field public static EventItem CurnEvent
 	field public static PInvokeInfo PIInfo
-	
+
 	field private static C5.LinkedList<of IfItem> IfLst
 	field private static C5.LinkedList<of SwitchItem> SwitchLst
 	//tuples have file, logical name, embed only if used (for assemblies), is ani (for assemblies)
@@ -38,10 +38,10 @@ class public static SymTable
 	field private static C5.LinkedList<of TryItem> TryLst
 
 	field assembly static C5.TreeSet<of string> DefSyms
-	
+
 	field private static C5.LinkedList<of LabelItem> LblLst
 	field public static boolean StoreFlg
-	
+
 	method public static void Init()
 		TypeLst = new TypeList()
 		VarLst = new C5.LinkedList<of C5.HashDictionary<of string, VarItem> >()
@@ -87,7 +87,7 @@ class public static SymTable
 		VarLst::Push(new C5.HashDictionary<of string, VarItem>(C5.MemoryType::Normal))
 		TempVTMap::Clear()
 	end method
-	
+
 	[method: ComVisible(false)]
 	method public static void ResetMetGenParams()
 		MetGenParams = new C5.HashDictionary<of string, TypeParamItem>(C5.MemoryType::Normal)
@@ -119,15 +119,15 @@ class public static SymTable
 
 	[method: ComVisible(false)]
 	method public static void AddVar(var nme as string, var la as boolean, var ind as integer, var typ as Managed.Reflection.Type, var lin as integer)
-		
+
 		var flg = false
 		foreach s in VarLst::Backwards()
 			if s::Contains(nme) then
 				if flg then
-					StreamUtils::WriteWarn(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "Variable '" + nme + "' will hide a variable in an outer scope!")
+					StreamUtils::WriteWarn(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"Variable '{nme }' will hide a variable in an outer scope!")
 					break
 				else
-					StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "Variable '" + nme + "' is already declared in the current scope!")
+					StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"Variable '{nme}' is already declared in the current scope!")
 					return
 				end if
 			end if
@@ -144,56 +144,56 @@ class public static SymTable
 	method public static void AddFld(var nme as string, var typ as Managed.Reflection.Type, var fld as FieldBuilder, var litval as object)
 		CurnTypItem::AddField(new FieldItem(nme, typ, fld, litval))
 	end method
-	
+
 	[method: ComVisible(false)]
 	method public static void AddMtdCA(var ca as CustomAttributeBuilder)
 		if ca isnot null then
 			MethodCALst::Add(ca)
 		end if
 	end method
-	
+
 	[method: ComVisible(false)]
 	method public static void AddFldCA(var ca as CustomAttributeBuilder)
 		if ca isnot null then
 			FieldCALst::Add(ca)
 		end if
 	end method
-	
+
 	[method: ComVisible(false)]
 	method public static void AddClsCA(var ca as CustomAttributeBuilder)
 		if ca isnot null then
 			ClassCALst::Add(ca)
 		end if
 	end method
-	
+
 	[method: ComVisible(false)]
 	method public static void AddAsmCA(var ca as CustomAttributeBuilder)
 		if ca isnot null then
 			AssemblyCALst::Add(ca)
 		end if
 	end method
-	
+
 	[method: ComVisible(false)]
 	method public static void AddEventCA(var ca as CustomAttributeBuilder)
 		if ca isnot null then
 			EventCALst::Add(ca)
 		end if
 	end method
-	
+
 	[method: ComVisible(false)]
 	method public static void AddEnumCA(var ca as CustomAttributeBuilder)
 		if ca isnot null then
 			EnumCALst::Add(ca)
 		end if
 	end method
-	
+
 	[method: ComVisible(false)]
 	method public static void AddPropCA(var ca as CustomAttributeBuilder)
 		if ca isnot null then
 			PropertyCALst::Add(ca)
 		end if
 	end method
-	
+
 	[method: ComVisible(false)]
 	method public static void AddParamCA(var ind as integer,var ca as CustomAttributeBuilder)
 		if ca isnot null then
@@ -208,7 +208,7 @@ class public static SymTable
 	method public static void AddMet(var nme as string, var typ as Managed.Reflection.Type, var ptyps as Managed.Reflection.Type[], var met as MethodBuilder, var nrgenparams as integer)
 		CurnTypItem::AddMethod(new MethodItem(nme, typ, ptyps, met) {NrGenParams = nrgenparams})
 	end method
-	
+
 	[method: ComVisible(false)]
 	method public static void AddCtor(var ptyps as Managed.Reflection.Type[], var met as ConstructorBuilder)
 		CurnTypItem::AddCtor(new CtorItem(ptyps, met))
@@ -253,7 +253,7 @@ class public static SymTable
 	method public static void AddLoop()
 		LoopLst::Push(new LoopItem(ILEmitter::DefineLbl(), ILEmitter::DefineLbl(), ILEmitter::LineNr))
 	end method
-	
+
 	[method: ComVisible(false)]
 	method public static void AddForLoop(var iter as string, var _step as Expr, var dir as boolean, var t as TypeTok)
 		LoopLst::Push(new ForLoopItem(ILEmitter::DefineLbl(), ILEmitter::DefineLbl(), iter, _step, dir, t, ILEmitter::LineNr))
@@ -288,7 +288,7 @@ class public static SymTable
 	method public static void PopLoop()
 		LoopLst::Pop()
 	end method
-	
+
 	[method: ComVisible(false)]
 	method public static void AddDef(var sym as string)
 		DefSyms::Add(sym)
@@ -298,10 +298,10 @@ class public static SymTable
 	method public static void UnDef(var sym as string)
 		DefSyms::Remove(sym)
 	end method
-	
+
 	[method: ComVisible(false)]
 	method public static boolean EvalDef(var sym as string) => DefSyms::Find(ref sym)
-	
+
 	[method: ComVisible(false)]
 	method public static Emit.Label ReadIfEndLbl() => IfLst::get_Last()::EndLabel
 
@@ -325,13 +325,13 @@ class public static SymTable
 
 	[method: ComVisible(false)]
 	method public static LockItem ReadLock() => $LockItem$TryLst::get_Last()
-	
+
 	[method: ComVisible(false)]
 	method public static string ReadUseeLoc() => #expr($UsingItem$TryLst::get_Last())::UseeLoc
 
 	[method: ComVisible(false)]
 	method public static Emit.Label ReadLoopEndLbl() => LoopLst::get_Last()::EndLabel
-	
+
 	[method: ComVisible(false)]
 	method public static LoopItem ReadLoop() => LoopLst::get_Last()
 
@@ -375,7 +375,7 @@ class public static SymTable
 				if !StoreFlg then
 					v::Used = true
 					if !v::Stored and v::LocArg and !AsmFactory::ForcedAddrFlg then
-						StreamUtils::WriteWarn(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "The variable " + v::Name + " might not have been initialized.")
+						StreamUtils::WriteWarn(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The variable {v::Name} might not have been initialized.")
 					end if
 				end if
 				return v
@@ -391,19 +391,19 @@ class public static SymTable
 			var vlec = hm::get_Item(k)
 			if !vlec::Used and vlec::LocArg then
 				if vlec::Stored then
-					StreamUtils::WriteWarn(vlec::Line, 0, ILEmitter::CurSrcFile, "The variable " + vlec::Name + " was initialised but then not used.")
+					StreamUtils::WriteWarn(vlec::Line, 0, ILEmitter::CurSrcFile, i"The variable {vlec::Name} was initialised but then not used.")
 					foreach line in vlec::StoreLines
 						if line != vlec::Line then
-							StreamUtils::WriteWarn(line, 0, ILEmitter::CurSrcFile, "The variable " + vlec::Name + " was initialised but then not used.")
+							StreamUtils::WriteWarn(line, 0, ILEmitter::CurSrcFile, i"The variable {vlec::Name} was initialised but then not used.")
 						end if
 					end for
 				else
-					StreamUtils::WriteWarn(vlec::Line, 0, ILEmitter::CurSrcFile, "The variable " + vlec::Name + " was declared but never used.")
+					StreamUtils::WriteWarn(vlec::Line, 0, ILEmitter::CurSrcFile, i"The variable {vlec::Name} was declared but never used.")
 				end if
 			end if
 		end for
 	end method
-	
+
 	[method: ComVisible(false)]
 	method public static void CheckCtrlBlks()
 		if IfLst::get_Count() != 0 then
@@ -419,13 +419,13 @@ class public static SymTable
 
 	[method: ComVisible(false)]
 	method public static boolean CheckReturnInTry() => TryLst::get_Count() != 0
-	
+
 	[method: ComVisible(false)]
 	method public static void PushScope()
 		ILEmitter::BeginScope()
 		VarLst::Push(new C5.HashDictionary<of string, VarItem>(C5.MemoryType::Normal))
 	end method
-	
+
 	[method: ComVisible(false)]
 	method public static void PopScope()
 		ILEmitter::EndScope()
@@ -486,11 +486,11 @@ class public static SymTable
 
 	[method: ComVisible(false)]
 	method public static MethodInfo FindMet(var nam as string, var paramst as Managed.Reflection.Type[]) => CurnTypItem::GetMethod(nam, paramst, CurnTypItem::TypeBldr)
-	
+
 	[method: ComVisible(false)]
 	method public static MethodInfo FindGenMet(var nam as string, var genparams as Managed.Reflection.Type[], var paramst as Managed.Reflection.Type[]) => _
 		CurnTypItem::GetGenericMethod(nam, genparams, paramst, CurnTypItem::TypeBldr)
-	
+
 	[method: ComVisible(false)]
 	method public static MethodItem FindProtoMet(var nam as string, var paramst as Managed.Reflection.Type[]) => CurnTypItem::GetProtoMethod(nam,paramst)
 

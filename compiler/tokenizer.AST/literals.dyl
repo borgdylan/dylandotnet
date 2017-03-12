@@ -1,10 +1,10 @@
 //    tokenizer.AST.dll dylan.NET.Tokenizer.AST Copyright (C) 2013 Dylan Borg <borgdylan@hotmail.com>
 //    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software
 // Foundation; either version 3 of the License, or (at your option) any later version.
-//    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+//    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
 //PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
-//    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
-//Place, Suite 330, Boston, MA 02111-1307 USA 
+//    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple
+//Place, Suite 330, Boston, MA 02111-1307 USA
 
 class public abstract Literal extends ValueToken implements IUnaryOperatable, IConvable
 
@@ -17,15 +17,15 @@ class public abstract Literal extends ValueToken implements IUnaryOperatable, IC
 		mybase::ctor(value)
 		_OrdOp = string::Empty
 	end method
-	
+
 	method family void Literal()
 		ctor(string::Empty)
 	end method
-	
+
 	property public virtual autogen string OrdOp
 	property public virtual autogen boolean Conv
 	property public virtual autogen TypeTok TTok
-	
+
 end class
 
 class public NullLiteral extends Literal
@@ -37,13 +37,13 @@ class public NullLiteral extends Literal
 		NullVal = null
 		LitTyp = new ObjectTok()
 	end method
-	
+
 	method public void NullLiteral()
 		ctor(string::Empty)
 	end method
 
 	method public override string ToString() => "null"
-	
+
 end class
 
 class public ConstLiteral extends Literal
@@ -57,7 +57,7 @@ class public ConstLiteral extends Literal
 		ConstVal = value
 		LitTyp = new ObjectTok()
 	end method
-	
+
 	method public void ConstLiteral()
 		ctor(null)
 	end method
@@ -74,7 +74,7 @@ class public StringLiteral extends Literal
 		LitTyp = new StringTok()
 		MemberToAccess = new Token()
 	end method
-	
+
 	method public void StringLiteral()
 		ctor(string::Empty)
 	end method
@@ -89,7 +89,7 @@ class public InterpolateLiteral extends Literal
 		mybase::ctor(value)
 		LitTyp = new StringTok()
 	end method
-	
+
 	method public void InterpolateLiteral()
 		ctor(string::Empty)
 	end method
@@ -104,7 +104,7 @@ class public FormattableLiteral extends Literal
 		mybase::ctor(value)
 		LitTyp = new StringTok()
 	end method
-	
+
 	method public void FormattableLiteral()
 		ctor(string::Empty)
 	end method
@@ -122,7 +122,7 @@ class public CharLiteral extends Literal
 		CharVal = value
 		LitTyp = new CharTok()
 	end method
-	
+
 	method public void CharLiteral()
 		ctor(string::Empty, c'\0')
 	end method
@@ -134,7 +134,7 @@ class public CharLiteral extends Literal
 			CharVal = c
 		end if
 	end method
-	
+
 	method public void CharLiteral(var value as char)
 		ctor($string$value, value)
 	end method
@@ -164,7 +164,7 @@ class public BooleanLiteral extends Literal implements INegatable
 			BoolVal = false
 		end if
 	end method
-	
+
 	method public void BooleanLiteral(var value as boolean)
 		mybase::ctor()
 		BoolVal = value
@@ -224,15 +224,15 @@ class public IntLiteral extends NumberLiteral<of integer> implements INegatable,
 			NumVal = n
 		end if
 	end method
-	
+
 	method public void IntLiteral(var value as integer)
 		mybase::ctor($string$value)
 		NumVal = value
 		LitTyp = new IntegerTok()
 	end method
 
-	method public override string ToString() => $string$NumVal + "i"
-	
+	method public override string ToString() => i"{NumVal}i"
+
 	method public string ToStringNoI() => $string$NumVal
 
 	property public virtual autogen boolean DoNeg
@@ -258,14 +258,14 @@ class public DoubleLiteral extends NumberLiteral<of double> implements INegatabl
 			NumVal = n
 		end if
 	end method
-	
+
 	method public void DoubleLiteral(var value as double)
 		mybase::ctor($string$value)
 		NumVal = value
 		LitTyp = new DoubleTok()
 	end method
 
-	method public override string ToString() => $string$NumVal + "d"
+	method public override string ToString() => i"{NumVal}d"
 
 	property public virtual autogen boolean DoNeg
 
@@ -288,14 +288,14 @@ class public DecimalLiteral extends NumberLiteral<of decimal> implements INegata
 			NumVal = n
 		end if
 	end method
-	
+
 	method public void DecimalLiteral(var value as decimal)
 		mybase::ctor($string$value)
 		NumVal = value
 		LitTyp = new DecimalTok()
 	end method
 
-	method public override string ToString() => $string$NumVal + "m"
+	method public override string ToString() => i"{NumVal}m"
 
 	property public virtual autogen boolean DoNeg
 
@@ -319,14 +319,14 @@ class public SByteLiteral extends NumberLiteral<of sbyte> implements INegatable,
 			NumVal = n
 		end if
 	end method
-	
+
 	method public void SByteLiteral(var value as sbyte)
 		mybase::ctor($string$value)
 		NumVal = value
 		LitTyp = new SByteTok()
 	end method
 
-	method public override string ToString() => $string$NumVal + "b"
+	method public override string ToString() => i"{NumVal}b"
 
 	property public virtual autogen boolean DoNeg
 	property public virtual autogen boolean DoNot
@@ -352,17 +352,15 @@ class public ShortLiteral extends NumberLiteral<of short> implements INegatable,
 			NumVal = n
 		end if
 	end method
-	
+
 	method public void ShortLiteral(var value as short)
 		mybase::ctor($string$value)
 		NumVal = value
 		LitTyp = new ShortTok()
 	end method
 
-	method public override string ToString()
-		return $string$NumVal + "s"
-	end method
-	
+	method public override string ToString() => i"{NumVal}s"
+
 	property public virtual string OrdOp
 		get
 			return _OrdOp
@@ -395,14 +393,14 @@ class public LongLiteral extends NumberLiteral<of long> implements INegatable, I
 			NumVal = n
 		end if
 	end method
-	
+
 	method public void LongLiteral(var value as long)
 		mybase::ctor($string$value)
 		NumVal = value
 		LitTyp = new LongTok()
 	end method
 
-	method public override string ToString() => $string$NumVal + "l"
+	method public override string ToString() => i"{NumVal}l"
 
 	property public virtual autogen boolean DoNeg
 	property public virtual autogen boolean DoNot
@@ -426,14 +424,14 @@ class public FloatLiteral extends NumberLiteral<of single> implements INegatable
 			NumVal = n
 		end if
 	end method
-	
+
 	method public void FloatLiteral(var value as single)
 		mybase::ctor($string$value)
 		NumVal = value
 		LitTyp = new SingleTok()
 	end method
 
-	method public override string ToString() => $string$NumVal + "f"
+	method public override string ToString() => i"{NumVal}f"
 
 	property public virtual autogen boolean DoNeg
 
@@ -456,15 +454,15 @@ class public UIntLiteral extends NumberLiteral<of uinteger> implements INotable
 			NumVal = n
 		end if
 	end method
-	
+
 	method public void UIntLiteral(var value as uinteger)
 		mybase::ctor($string$value)
 		NumVal = value
 		LitTyp = new UIntegerTok()
 	end method
 
-	method public override string ToString() => $string$NumVal + "ui"
-		
+	method public override string ToString() => i"{NumVal}ui"
+
 	property public virtual autogen boolean DoNot
 
 end class
@@ -486,14 +484,14 @@ class public ByteLiteral extends NumberLiteral<of byte> implements INotable
 			NumVal = n
 		end if
 	end method
-	
+
 	method public void ByteLiteral(var value as byte)
 		mybase::ctor($string$value)
 		NumVal = value
 		LitTyp = new ByteTok()
 	end method
 
-	method public override string ToString() => $string$NumVal + "ub"
+	method public override string ToString() => i"{NumVal}ub"
 
 	property public virtual autogen boolean DoNot
 
@@ -516,14 +514,14 @@ class public UShortLiteral extends NumberLiteral<of ushort> implements INotable
 			NumVal = n
 		end if
 	end method
-	
+
 	method public void UShortLiteral(var value as ushort)
 		mybase::ctor($string$value)
 		NumVal = value
 		LitTyp = new UShortTok()
 	end method
 
-	method public override string ToString() => $string$NumVal + "us"
+	method public override string ToString() => i"{NumVal}us"
 
 	property public virtual autogen boolean DoNot
 
@@ -547,14 +545,14 @@ class public ULongLiteral extends NumberLiteral<of ulong> implements INotable
 		end if
 		//_DoNot = false
 	end method
-	
+
 	method public void ULongLiteral(var value as ulong)
 		mybase::ctor($string$value)
 		NumVal = value
 		LitTyp = new ULongTok()
 	end method
 
-	method public override string ToString() => $string$NumVal + "ul"
+	method public override string ToString() => i"{NumVal}ul"
 
 	property public virtual autogen boolean DoNot
 
@@ -564,7 +562,7 @@ class public IntPtrLiteral extends NumberLiteral<of IntPtr> implements INegatabl
 
 	field private boolean _DoNot
 	field private boolean _DoNeg
-	
+
 	method public void IntPtrLiteral()
 		mybase::ctor()
 		LitTyp = new IntPtrTok()
@@ -575,7 +573,7 @@ class public IntPtrLiteral extends NumberLiteral<of IntPtr> implements INegatabl
 		LitTyp = new IntPtrTok()
 	end method
 
-	method public override string ToString() => $string$NumVal + "ip"
+	method public override string ToString() => i"{NumVal}ip"
 
 	property public virtual autogen boolean DoNeg
 	property public virtual autogen boolean DoNot

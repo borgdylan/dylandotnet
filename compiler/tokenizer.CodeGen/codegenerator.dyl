@@ -219,7 +219,7 @@ class public CodeGenerator
 
 		if ILEmitter::SrcFiles::get_Count() == 0 then
 			SymTable::DefSyms::Clear()
-			SymTable::AddDef("CLR_" + $string$Environment::get_Version()::get_Major())
+			SymTable::AddDef(i"CLR_{Environment::get_Version()::get_Major()}")
 		end if
 
 		//fpath = Path::GetFullPath(fpath)
@@ -241,7 +241,7 @@ class public CodeGenerator
 
 		foreach rec in Importer::ImpsStack::get_Last()
 			if !rec::Used then
-				StreamUtils::WriteWarn(rec::Line, 0, ILEmitter::CurSrcFile, "Namespace  import for '" + rec::Namespace + "' was not used.")
+				StreamUtils::WriteWarn(rec::Line, 0, ILEmitter::CurSrcFile, i"Namespace  import for '{rec::Namespace}' was not used.")
 			end if
 		end for
 
@@ -277,7 +277,7 @@ class public CodeGenerator
 					var pth = r::get_Item1()::Substring(7)
 
 					if !MemoryFS::HasFile(pth) then
-						StreamUtils::WriteWarn(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "In-Memory File '" + pth + "' does not exist.")
+						StreamUtils::WriteWarn(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"In-Memory File '{pth}' does not exist.")
 						continue
 					end if
 

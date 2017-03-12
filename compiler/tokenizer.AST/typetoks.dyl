@@ -1,10 +1,10 @@
 //    tokenizer.AST.dll dylan.NET.Tokenizer.AST Copyright (C) 2013 Dylan Borg <borgdylan@hotmail.com>
 //    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software
 // Foundation; either version 3 of the License, or (at your option) any later version.
-//    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+//    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
 //PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
-//    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
-//Place, Suite 330, Boston, MA 02111-1307 USA 
+//    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple
+//Place, Suite 330, Boston, MA 02111-1307 USA
 
 class public TypeTok extends ValueToken implements ICloneable
 
@@ -15,7 +15,7 @@ class public TypeTok extends ValueToken implements ICloneable
 	method public void TypeTok(var value as string)
 		mybase::ctor(value)
 	end method
-	
+
 	method public void TypeTok()
 		mybase::ctor(string::Empty)
 	end method
@@ -32,17 +32,17 @@ class public TypeTok extends ValueToken implements ICloneable
 		end if
 		RefTyp = value
 	end method
-	
+
 	method public virtual TypeTok CloneTT() => new TypeTok(Value) {IsArray = IsArray, IsByRef = IsByRef, RefTyp = RefTyp}
 	method public virtual final object Clone() => CloneTT()
-	
+
 	method public override string ToString()
 		if IsArray andalso IsByRef then
-			return Value + "[]&"
+			return i"{Value}[]&"
 		elseif IsArray then
-			return Value + "[]"
+			return i"{Value}[]"
 		elseif IsByRef then
-			return Value + "&"
+			return i"{Value}&"
 		else
 			return Value
 		end if
@@ -62,16 +62,16 @@ class public GenericTypeTok extends TypeTok implements ICloneable
 
 	field public C5.LinkedList<of TypeTok> Params
 	field public TypeTok NestedType
-	
+
 	method public void GenericTypeTok(var value as string, var params as IEnumerable<of TypeTok>)
 		mybase::ctor(value)
 		Params = new C5.LinkedList<of TypeTok>() {AddAll(params)}
 	end method
-	
+
 	method public void GenericTypeTok(var value as string)
 		ctor(value, new TypeTok[0])
 	end method
-	
+
 	method public void GenericTypeTok()
 		ctor(string::Empty)
 	end method
@@ -81,7 +81,7 @@ class public GenericTypeTok extends TypeTok implements ICloneable
 	method public override TypeTok CloneTT() => _
 		new GenericTypeTok(Value, Enumerable::Select<of TypeTok, TypeTok>(Params, new Func<of TypeTok, TypeTok>(CloneFilter))) _
 		{IsArray = IsArray, IsByRef = IsByRef, RefTyp = RefTyp, NestedType = NestedType}
-	
+
 	method public virtual final object Clone() => CloneTT()
 
 	method public void AddParam(var param as TypeTok)
@@ -122,12 +122,12 @@ class public beforefieldinit StringTok extends SpecialTypeTok
 	method public void StringTok(var value as string)
 		mybase::ctor(value)
 	end method
-	
+
 	method public void StringTok()
 		ctor("string")
 	end method
 
-				
+
 	method public override string ToString()
 		if IsArray andalso IsByRef then
 			return "string[]&"
@@ -147,11 +147,11 @@ class public beforefieldinit IntegerTok extends SpecialTypeTok
 	method public void IntegerTok(var value as string)
 		mybase::ctor(value)
 	end method
-	
+
 	method public void IntegerTok()
 		ctor("integer")
 	end method
-	
+
 	method public override string ToString()
 		if IsArray andalso IsByRef then
 			return "integer[]&"
@@ -171,11 +171,11 @@ class public beforefieldinit DoubleTok extends SpecialTypeTok
 	method public void DoubleTok(var value as string)
 		mybase::ctor(value)
 	end method
-	
+
 	method public void DoubleTok()
 		ctor("double")
 	end method
-				
+
 	method public override string ToString()
 		if IsArray andalso IsByRef then
 			return "double[]&"
@@ -191,15 +191,15 @@ class public beforefieldinit DoubleTok extends SpecialTypeTok
 end class
 
 class public beforefieldinit BooleanTok extends SpecialTypeTok
-	
+
 	method public void BooleanTok(var value as string)
 		mybase::ctor(value)
 	end method
-	
+
 	method public void BooleanTok()
 		ctor("boolean")
 	end method
-	
+
 	method public override string ToString()
 		if IsArray andalso IsByRef then
 			return "boolean[]&"
@@ -215,15 +215,15 @@ class public beforefieldinit BooleanTok extends SpecialTypeTok
 end class
 
 class public beforefieldinit CharTok extends SpecialTypeTok
-	
+
 	method public void CharTok(var value as string)
 		mybase::ctor(value)
 	end method
-	
+
 	method public void CharTok()
 		ctor("char")
 	end method
-	
+
 	method public override string ToString()
 		if IsArray andalso IsByRef then
 			return "char[]&"
@@ -239,15 +239,15 @@ class public beforefieldinit CharTok extends SpecialTypeTok
 end class
 
 class public beforefieldinit DecimalTok extends SpecialTypeTok
-	
+
 	method public void DecimalTok(var value as string)
 		mybase::ctor(value)
 	end method
-	
+
 	method public void DecimalTok()
 		ctor("decimal")
 	end method
-	
+
 	method public override string ToString()
 		if IsArray andalso IsByRef then
 			return "decimal[]&"
@@ -267,11 +267,11 @@ class public beforefieldinit LongTok extends SpecialTypeTok
 	method public void LongTok(var value as string)
 		mybase::ctor(value)
 	end method
-	
+
 	method public void LongTok()
 		ctor("long")
 	end method
-	
+
 	method public override string ToString()
 		if IsArray andalso IsByRef then
 			return "long[]&"
@@ -291,12 +291,12 @@ class public beforefieldinit SByteTok extends SpecialTypeTok
 	method public void SByteTok(var value as string)
 		mybase::ctor(value)
 	end method
-	
+
 	method public void SByteTok()
 		ctor("sbyte")
 	end method
 
-	
+
 	method public override string ToString()
 		if IsArray andalso IsByRef then
 			return "sbyte[]&"
@@ -312,15 +312,15 @@ class public beforefieldinit SByteTok extends SpecialTypeTok
 end class
 
 class public beforefieldinit ShortTok extends SpecialTypeTok
-	
+
 	method public void ShortTok(var value as string)
 		mybase::ctor(value)
 	end method
-	
+
 	method public void ShortTok()
 		ctor("short")
 	end method
-	
+
 	method public override string ToString()
 		if IsArray andalso IsByRef then
 			return "short[]&"
@@ -336,7 +336,7 @@ class public beforefieldinit ShortTok extends SpecialTypeTok
 end class
 
 class public beforefieldinit SingleTok extends SpecialTypeTok
-	
+
 	method public void SingleTok()
 		mybase::ctor("single")
 	end method
@@ -344,7 +344,7 @@ class public beforefieldinit SingleTok extends SpecialTypeTok
 	method public void SingleTok(var value as string)
 		mybase::ctor(value)
 	end method
-	
+
 	method public override string ToString()
 		if IsArray andalso IsByRef then
 			return "short[]&"
@@ -364,7 +364,7 @@ class public beforefieldinit ObjectTok extends SpecialTypeTok
 	method public void ObjectTok(var value as string)
 		mybase::ctor(value)
 	end method
-	
+
 	method public void ObjectTok()
 		ctor("object")
 	end method
@@ -388,11 +388,11 @@ class public beforefieldinit VoidTok extends SpecialTypeTok
 	method public void VoidTok(var value as string)
 		mybase::ctor(value)
 	end method
-	
+
 	method public void VoidTok()
 		ctor("void")
 	end method
-	
+
 	method public override string ToString()
 		return "void"
 	end method
@@ -404,7 +404,7 @@ class public beforefieldinit UIntegerTok extends SpecialTypeTok
 	method public void UIntegerTok(var value as string)
 		mybase::ctor(value)
 	end method
-	
+
 	method public void UIntegerTok()
 		ctor("uinteger")
 	end method
@@ -428,11 +428,11 @@ class public beforefieldinit ULongTok extends SpecialTypeTok
 	method public void ULongTok(var value as string)
 		mybase::ctor(value)
 	end method
-	
+
 	method public void ULongTok()
 		ctor("ulong")
 	end method
-	
+
 	method public override string ToString()
 		if IsArray andalso IsByRef then
 			return "ulong[]&"
@@ -452,11 +452,11 @@ class public beforefieldinit ByteTok extends SpecialTypeTok
 	method public void ByteTok(var value as string)
 		mybase::ctor(value)
 	end method
-	
+
 	method public void ByteTok()
 		ctor("byte")
 	end method
-	
+
 	method public override string ToString()
 		if IsArray andalso IsByRef then
 			return "byte[]&"
@@ -472,11 +472,11 @@ class public beforefieldinit ByteTok extends SpecialTypeTok
 end class
 
 class public beforefieldinit UShortTok extends SpecialTypeTok
-	
+
 	method public void UShortTok(var value as string)
 		mybase::ctor(value)
 	end method
-	
+
 	method public void UShortTok()
 		ctor("ushort")
 	end method
@@ -496,15 +496,15 @@ class public beforefieldinit UShortTok extends SpecialTypeTok
 end class
 
 class public beforefieldinit IntPtrTok extends SpecialTypeTok
-	
+
 	method public void IntPtrTok(var value as string)
 		mybase::ctor(value)
 	end method
-	
+
 	method public void IntPtrTok()
 		ctor("intptr")
 	end method
-	
+
 	method public override string ToString()
 		if IsArray andalso IsByRef then
 			return "intptr[]&"

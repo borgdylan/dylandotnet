@@ -171,7 +171,7 @@ namespace dylan.NET.ResProc
 
         [method: ComVisible(false)]
         method public static void WriteWarn(var line as integer, var file as string, var msg as string)
-            Console::WriteLine("WARNING: " + msg + " at line " + $string$line + " in file: " + file)
+            Console::WriteLine(i"WARNING: {msg} at line {line} in file: {file}")
             if _WarnH isnot null then
                 _WarnH::Invoke(new Msg(line,file,msg))
             end if
@@ -243,11 +243,11 @@ namespace dylan.NET.ResProc
                         var cls = pth::Split(new char[] {'.'})[0]
 
                         sw::WriteLine("namespace " + #ternary {NS == string::Empty ? "Resources" , NS})
-                        sw::WriteLine(c"\n    class private static " + cls)
+                        sw::WriteLine(i"\n    class private static {cls}")
 
                         sw::WriteLine(c"\n        field private static System.Resources.ResourceManager resman")
-                        sw::WriteLine(c"\n        method private static void " + cls + "()")
-                        sw::WriteLine("            resman = new System.Resources.ResourceManager(gettype " + cls + ")")
+                        sw::WriteLine(i"\n        method private static void {cls}()")
+                        sw::WriteLine(i"            resman = new System.Resources.ResourceManager(gettype {cls})")
                         sw::WriteLine(c"        end method\n")
 
                         do while !sr::get_EndOfStream()
@@ -258,16 +258,16 @@ namespace dylan.NET.ResProc
                                     line[2] = #ternary {line[2]::StartsWith("c") ? ProcessString(line[2]::TrimStart(new char[] {'c'})::Trim(new char[] {c'\q'})), line[2]::Trim(new char[] {c'\q'})}
 
                                     if line[1] == "string" then
-                                        sw::WriteLine(c"        property assembly static string " + line[0])
+                                        sw::WriteLine(i"        property assembly static string {line[0]}")
                                         sw::WriteLine("            get")
-                                        sw::WriteLine(c"                return resman::GetString(\q" + line[0] + c"\q)")
+                                        sw::WriteLine(i"                return resman::GetString(\q{line[0]}\q)")
                                         sw::WriteLine("            end get")
                                         sw::WriteLine(c"        end property\n")
                                     elseif line[1] == "file" then
                                         if File::Exists(line[2]) then
-                                            sw::WriteLine(c"        property assembly static byte[] " + line[0])
+                                            sw::WriteLine(i"        property assembly static byte[] {line[0]}")
                                             sw::WriteLine("            get")
-                                            sw::WriteLine(c"                return $byte[]$resman::GetObject(\q" + line[0] + c"\q)")
+                                            sw::WriteLine(i"                return $byte[]$resman::GetObject(\q{line[0]}\q)")
                                             sw::WriteLine("            end get")
                                             sw::WriteLine(c"        end property\n")
                                         else
@@ -275,9 +275,9 @@ namespace dylan.NET.ResProc
                                         end if
                                     elseif line[1] == "stream" then
                                         if File::Exists(line[2]) then
-                                            sw::WriteLine(c"        property assembly static System.IO.Stream " + line[0])
+                                            sw::WriteLine(i"        property assembly static System.IO.Stream {line[0]}")
                                             sw::WriteLine("            get")
-                                            sw::WriteLine(c"                return resman::GetStream(\q" + line[0] + c"\q)")
+                                            sw::WriteLine(i"                return resman::GetStream(\q{line[0]}\q)")
                                             sw::WriteLine("            end get")
                                             sw::WriteLine(c"        end property\n")
                                         else
@@ -285,9 +285,9 @@ namespace dylan.NET.ResProc
                                         end if
                                     elseif line[1] == "image" then
                                         if File::Exists(line[2]) then
-                                            sw::WriteLine(c"        property assembly static System.Drawing.Bitmap " + line[0])
+                                            sw::WriteLine(i"        property assembly static System.Drawing.Bitmap {line[0]}")
                                             sw::WriteLine("            get")
-                                            sw::WriteLine(c"                return $System.Drawing.Bitmap$resman::GetObject(\q" + line[0] + c"\q)")
+                                            sw::WriteLine(i"                return $System.Drawing.Bitmap$resman::GetObject(\q{line[0]}\q)")
                                             sw::WriteLine("            end get")
                                             sw::WriteLine(c"        end property\n")
                                         else

@@ -1,10 +1,10 @@
 //    tokenizer.CodeGen.dll dylan.NET.Tokenizer.CodeGen Copyright (C) 2013 Dylan Borg <borgdylan@hotmail.com>
 //    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software
 // Foundation; either version 3 of the License, or (at your option) any later version.
-//    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+//    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
 //PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
-//    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
-//Place, Suite 330, Boston, MA 02111-1307 USA 
+//    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple
+//Place, Suite 330, Boston, MA 02111-1307 USA
 
 class public static Helpers
 
@@ -70,7 +70,7 @@ class public static Helpers
 
 	[method: ComVisible(false)]
 	method public static TypeAttributes ProcessClassAttrs(var attrs as IEnumerable<of Attributes.Attribute>)
-		
+
 		var ta as TypeAttributes
 		var temp as TypeAttributes
 		var fir as boolean = true
@@ -81,10 +81,10 @@ class public static Helpers
 		var sldf as boolean = false
 		//sequential flag
 		var isseq as boolean = false
-		
+
 		foreach attr in attrs
 			flg = true
-			
+
 			if attr is Attributes.PublicAttr then
 				temp = #ternary{AsmFactory::isNested ? TypeAttributes::NestedPublic, TypeAttributes::Public}
 			elseif attr is Attributes.PrivateAttr then
@@ -119,7 +119,7 @@ class public static Helpers
 				ILEmitter::PartialFlg = true
 			else
 				flg = false
-				StreamUtils::WriteWarn(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "'" + attr::Value + "' is not a valid attribute for a class or delegate.")
+				StreamUtils::WriteWarn(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"'{attr::Value}' is not a valid attribute for a class or delegate.")
 			end if
 			if flg then
 				if fir then
@@ -140,18 +140,18 @@ class public static Helpers
 
 		return ta or TypeAttributes::AnsiClass
 	end method
-	
+
 	[method: ComVisible(false)]
 	method public static TypeAttributes ProcessClassAttrsE(var attrs as IEnumerable<of Attributes.Attribute>)
-		
+
 		var ta as TypeAttributes
 		var temp as TypeAttributes
 		var fir as boolean = true
 		var flg as boolean
-		
+
 		foreach attr in attrs
 			flg = true
-			
+
 			if attr is Attributes.PublicAttr then
 				temp = #ternary{AsmFactory::isNested ? TypeAttributes::NestedPublic, TypeAttributes::Public}
 			elseif attr is Attributes.PrivateAttr then
@@ -164,7 +164,7 @@ class public static Helpers
 				temp = TypeAttributes::Sealed
 			else
 				flg = false
-				StreamUtils::WriteWarn(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "'" + attr::Value + "' is not a valid attribute for an enum.")
+				StreamUtils::WriteWarn(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"'{attr::Value}' is not a valid attribute for an enum.")
 			end if
 			if flg then
 				if fir then
@@ -180,7 +180,7 @@ class public static Helpers
 
 	[method: ComVisible(false)]
 	method public static MethodAttributes ProcessMethodAttrs(var attrs as IEnumerable<of Attributes.Attribute>)
-		
+
 		var ta as MethodAttributes
 		var temp as MethodAttributes
 		var fir as boolean = true
@@ -243,7 +243,7 @@ class public static Helpers
 				ILEmitter::PInvokeFlg = true
 			else
 				flg = false
-				StreamUtils::WriteWarn(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "'" + attr::Value + "' is not a valid attribute for a method.")
+				StreamUtils::WriteWarn(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"'{attr::Value}' is not a valid attribute for a method.")
 			end if
 			if flg then
 				if fir then
@@ -252,14 +252,14 @@ class public static Helpers
 				else
 					ta = temp or ta
 				end if
-			end if		
+			end if
 		end for
 		return ta
 	end method
 
 	[method: ComVisible(false)]
 	method public static FieldAttributes ProcessFieldAttrs(var attrs as IEnumerable<of Attributes.Attribute>)
-		
+
 		var ta as FieldAttributes
 		var temp as FieldAttributes
 		var fir as boolean = true
@@ -269,7 +269,7 @@ class public static Helpers
 		var foa as boolean = false
 		var faa as boolean = false
 		var errs as string = "Only one of family, assembly, famorassem, famandassem can be used in an attribute list."
-		
+
 		foreach attr in attrs
 			flg = true
 
@@ -311,7 +311,7 @@ class public static Helpers
 				temp = FieldAttributes::NotSerialized
 			else
 				flg = false
-				StreamUtils::WriteWarn(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "'" + attr::Value + "' is not a valid attribute for a field.")
+				StreamUtils::WriteWarn(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"'{attr::Value}' is not a valid attribute for a field.")
 			end if
 			if flg then
 				if fir then
@@ -324,15 +324,15 @@ class public static Helpers
 		end for
 		return ta
 	end method
-	
+
 	[method: ComVisible(false)]
 	method public static PropertyAttributes ProcessPropAttrs(var attrs as IEnumerable<of Attributes.Attribute>)
-		
+
 		var ta as PropertyAttributes
 		var temp as PropertyAttributes
 		var fir as boolean = true
 		var flg as boolean
-		
+
 		foreach attr in attrs
 			flg = true
 
@@ -342,7 +342,7 @@ class public static Helpers
 				temp = PropertyAttributes::SpecialName
 			else
 				flg = false
-				StreamUtils::WriteWarn(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "'" + attr::Value + "' is not a valid attribute for a property.")
+				StreamUtils::WriteWarn(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"'{attr::Value}' is not a valid attribute for a property.")
 			end if
 			if flg then
 				if fir then
@@ -355,15 +355,15 @@ class public static Helpers
 		end for
 		return ta
 	end method
-	
+
 	[method: ComVisible(false)]
 	method public static EventAttributes ProcessEventAttrs(var attrs as IEnumerable<of Attributes.Attribute>)
-		
+
 		var ta as EventAttributes
 		var temp as EventAttributes
 		var fir as boolean = true
 		var flg as boolean
-		
+
 		foreach attr in attrs
 			flg = true
 			if attr is Attributes.NoneAttr then
@@ -372,7 +372,7 @@ class public static Helpers
 				temp = EventAttributes::SpecialName
 			else
 				flg = false
-				StreamUtils::WriteWarn(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "'" + attr::Value + "' is not a valid attribute for a property.")
+				StreamUtils::WriteWarn(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"'{attr::Value}' is not a valid attribute for a property.")
 			end if
 			if flg then
 				if fir then
@@ -395,7 +395,7 @@ class public static Helpers
 		t::Equals(Loader::CachedLoadClass("System.Byte")) orelse _
 		t::Equals(Loader::CachedLoadClass("System.UInt16")) orelse _
 		t::Equals(Loader::CachedLoadClass("System.UIntPtr"))
-	
+
 	[method: ComVisible(false)]
 	method public static boolean CheckSigned(var t as Managed.Reflection.Type) => _
 		t::Equals(Loader::CachedLoadClass("System.SByte")) orelse _
@@ -403,30 +403,30 @@ class public static Helpers
 		t::Equals(Loader::CachedLoadClass("System.Int32")) orelse _
 		t::Equals(Loader::CachedLoadClass("System.Int64")) orelse _
 		t::Equals(Loader::CachedLoadClass("System.IntPtr"))
-	
+
 	[method: ComVisible(false)]
 	method public static boolean CheckSHLRLHS(var t as Managed.Reflection.Type) => _
 		t::Equals(Loader::CachedLoadClass("System.Int32")) orelse t::Equals(Loader::CachedLoadClass("System.UInt32")) _
 		orelse t::Equals(Loader::CachedLoadClass("System.Int64")) orelse t::Equals(Loader::CachedLoadClass("System.UInt64")) _
 		orelse t::Equals(Loader::CachedLoadClass("System.IntPtr")) orelse t::Equals(Loader::CachedLoadClass("System.UIntPtr"))
-	
+
 	[method: ComVisible(false)]
 	method public static boolean CheckSHLRRHS(var t as Managed.Reflection.Type, var accepti64 as boolean) => _
 		t::Equals(Loader::CachedLoadClass("System.Int32")) orelse _
 		(accepti64 andalso t::Equals(Loader::CachedLoadClass("System.Int64"))) _
 		orelse t::Equals(Loader::CachedLoadClass("System.IntPtr"))
-	
+
 	[method: ComVisible(false)]
 	method public static boolean IsPrimitiveIntegralType(var t as Managed.Reflection.Type) => CheckSigned(t) orelse CheckUnsigned(t)
-	
+
 	[method: ComVisible(false)]
 	method public static boolean IsPrimitiveFPType(var t as Managed.Reflection.Type) => _
 		t::Equals(Loader::CachedLoadClass("System.Double")) orelse t::Equals(Loader::CachedLoadClass("System.Single"))
-	
+
 	[method: ComVisible(false)]
 	method public static boolean IsPrimitiveNumericType(var t as Managed.Reflection.Type) => _
 		CheckSigned(t) orelse IsPrimitiveFPType(t) orelse CheckUnsigned(t)
-	
+
 	[method: ComVisible(false)]
 	method public static integer GetPrimitiveNumericSize(var t as Managed.Reflection.Type)
 		if t::Equals(Loader::CachedLoadClass("System.Boolean")) then
@@ -448,11 +448,11 @@ class public static Helpers
 
 	[method: ComVisible(false)]
 	method public static Managed.Reflection.Type CommitEvalTTok(var tt as TypeTok)
-		
+
 		if tt is null then
 			return null
 		end if
-		
+
 		var typ as Managed.Reflection.Type = null
 		var temptyp as Managed.Reflection.Type
 		var gtt as GenericTypeTok
@@ -464,12 +464,12 @@ class public static Helpers
 			pttoks = gtt::Params
 
 			var lop as C5.IList<of Managed.Reflection.Type> = new C5.LinkedList<of Managed.Reflection.Type>()
-			
-			var tstr = gtt::Value + "`" + $string$pttoks::get_Count()
+
+			var tstr = i"{gtt::Value}`{pttoks::get_Count()}"
 
 			if gtt::RefTyp is null then
 				typ = SymTable::TypeLst::GetType(gtt::Value, pttoks::get_Count())
-				
+
 				if typ is null then
 					typ = Loader::LoadClass(tstr)
 					gtt::RefTyp = Loader::PreProcTyp
@@ -481,24 +481,24 @@ class public static Helpers
 			end if
 
 			if typ is null then
-				StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "Generic Type " + tstr + " could not be found!!")
+				StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"Generic Type {tstr} could not be found!!")
 			end if
 
 			foreach pt in pttoks
 				temptyp = CommitEvalTTok(pt)
 				if temptyp is null then
-					StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "Generic Argument " + pt::ToString() + " meant for Generic Type " + typ::ToString() + " could not be found!!")
+					StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"Generic Argument {pt::ToString()} meant for Generic Type {typ::ToString()} could not be found!!")
 				end if
 				lop::Add(temptyp)
 			end for
-			
+
 			typ = typ::MakeGenericType(lop::ToArray())
 
 			//process any nested access
 			if gtt::NestedType isnot null then
 				typ = typ::GetNestedType(gtt::NestedType::Value)
 				if typ is null then
-					StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "Nested Type " + gtt::NestedType::Value + " could not be found!")
+					StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"Nested Type {gtt::NestedType::Value} could not be found!")
 				else
 					if gtt::NestedType is GenericTypeTok then
 						var pttoks2 = #expr($GenericTypeTok$gtt::NestedType)::Params
@@ -507,11 +507,11 @@ class public static Helpers
 						foreach pt in pttoks2
 							temptyp = CommitEvalTTok(pt)
 							if temptyp is null then
-								StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "Generic Argument " + pt::ToString() + " meant for Generic Type " + typ::ToString() + " could not be found!!")
+								StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"Generic Argument {pt::ToString()} meant for Generic Type {typ::ToString()} could not be found!!")
 							end if
 							lop2::Add(temptyp)
 						end for
-			
+
 						typ = typ::MakeGenericType(lop2::ToArray())
 					end if
 				end if
@@ -521,7 +521,7 @@ class public static Helpers
 			Loader::MakeRef = gtt::IsByRef
 			typ = Loader::ProcessType(typ)
 		else
-			
+
 			var isgenparamm = SymTable::MetGenParams::Contains(tt::Value)
 			var isgenparamt = false
 			if SymTable::CurnTypItem isnot null then
@@ -550,7 +550,7 @@ class public static Helpers
 								typ = tti::GetType(tt::Value)
 							end if
 						end if
-					end if  
+					end if
 
 					if typ is null then
 						typ = SymTable::TypeLst::GetType(tt::Value, 0)
@@ -561,8 +561,8 @@ class public static Helpers
 						tt::RefTyp = Loader::PreProcTyp
 					else
 						tt::RefTyp = typ
-						typ = Loader::ProcessType(typ)						
-					end if 
+						typ = Loader::ProcessType(typ)
+					end if
 				end if
 			else
 				Loader::MakeArr = tt::IsArray
@@ -586,15 +586,15 @@ class public static Helpers
 	method public static Managed.Reflection.Type[] ProcessParams(var ps as IEnumerable<of Expr>)
 		var curp as VarExpr = null
 		var typ as Managed.Reflection.Type = null
-		
+
 		var lt = new C5.LinkedList<of Managed.Reflection.Type>()
-		
+
 		foreach p in ps
 			curp = $VarExpr$p
 			typ = CommitEvalTTok(curp::VarTyp)
 
 			if typ is null then
-				StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "Class '" + curp::VarTyp::Value + "' is not defined or is not accessible.")
+				StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"Class '{curp::VarTyp::Value}' is not defined or is not accessible.")
 			else
 				lt::Add(typ)
 			end if
@@ -608,12 +608,12 @@ class public static Helpers
 
 		var i as integer = -1
 		var curp as VarExpr = null
-		
+
 		foreach p in ps
 			i++
 			curp = $VarExpr$p
 			var pa as ParameterAttributes = ParameterAttributes::None
-			
+
 			if curp::Attr isnot null then
 				if curp::Attr is InTok then
 					pa = ParameterAttributes::In
@@ -621,23 +621,23 @@ class public static Helpers
 					pa = ParameterAttributes::Out
 				elseif curp::Attr is InOutTok then
 					pa = ParameterAttributes::In or ParameterAttributes::Out
-				end if	
+				end if
 			end if
-			
+
 			var pb as ParameterBuilder = ILEmitter::Met::DefineParameter(++i, pa, curp::VarName::Value)
-			
+
 			if Enumerable::Contains<of integer>(SymTable::ParameterCALst::get_Keys(),++i) then
 				foreach ca in SymTable::ParameterCALst::get_Item(++i)
 					pb::SetCustomAttribute(ca)
 				end for
 			end if
-			
+
 			ILEmitter::ArgInd++
 			SymTable::StoreFlg = true
 			SymTable::AddVar(curp::VarName::Value, false, ILEmitter::ArgInd, CommitEvalTTok(curp::VarTyp),ILEmitter::LineNr)
 			SymTable::StoreFlg = false
 		end for
-		
+
 		SymTable::ParameterCALst::Clear()
 	end method
 
@@ -646,12 +646,12 @@ class public static Helpers
 
 		var i as integer = -1
 		var curp as VarExpr = null
-		
+
 		foreach p in ps
 			i++
 			curp = $VarExpr$p
 			var pa as ParameterAttributes = ParameterAttributes::None
-			
+
 			if curp::Attr isnot null then
 				if curp::Attr is InTok then
 					pa = ParameterAttributes::In
@@ -659,23 +659,23 @@ class public static Helpers
 					pa = ParameterAttributes::Out
 				elseif curp::Attr is InOutTok then
 					pa = ParameterAttributes::In or ParameterAttributes::Out
-				end if	
+				end if
 			end if
-			
+
 			var pb as ParameterBuilder = ILEmitter::Constr::DefineParameter(++i, pa, curp::VarName::Value)
-			
+
 			if Enumerable::Contains<of integer>(SymTable::ParameterCALst::get_Keys(),++i) then
 				foreach ca in SymTable::ParameterCALst::get_Item(++i)
 					pb::SetCustomAttribute(ca)
 				end for
 			end if
-			
+
 			ILEmitter::ArgInd++
 			SymTable::StoreFlg = true
 			SymTable::AddVar(curp::VarName::Value, false, ILEmitter::ArgInd, CommitEvalTTok(curp::VarTyp),ILEmitter::LineNr)
 			SymTable::StoreFlg = false
 		end for
-		
+
 		SymTable::ParameterCALst::Clear()
 	end method
 
@@ -712,10 +712,10 @@ class public static Helpers
 		elseif lit is DecimalLiteral then
 			ILEmitter::EmitLdcDec(#expr($DecimalLiteral$lit)::NumVal)
 		else
-			StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "Loading of literals of type '" + CommitEvalTTok(lit::LitTyp)::ToString() + "' is not yet supported.")
+			StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"Loading of literals of type '{CommitEvalTTok(lit::LitTyp)::ToString()}' is not yet supported.")
 		end if
 	end method
-	
+
 	[method: ComVisible(false)]
 	method public static object LiteralToConst(var lit as Literal)
 		if lit is StringLiteral then
@@ -747,12 +747,12 @@ class public static Helpers
 		elseif lit is ULongLiteral then
 			return $object$#expr($ULongLiteral$lit)::NumVal
 		else
-			StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "Literals of type '" + CommitEvalTTok(lit::LitTyp)::ToString() + "' are not suitable for constants.")
+			StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"Literals of type '{CommitEvalTTok(lit::LitTyp)::ToString()}' are not suitable for constants.")
 			return null
 		end if
 	end method
 
-	method public static Literal ProcessConst(var lit as ConstLiteral)		
+	method public static Literal ProcessConst(var lit as ConstLiteral)
 		if Loader::CachedLoadClass("System.String")::Equals(lit::IntTyp) then
 			return new StringLiteral($string$lit::ConstVal)
 		elseif Loader::CachedLoadClass("System.SByte")::Equals(lit::IntTyp) then
@@ -782,7 +782,7 @@ class public static Helpers
 		elseif Loader::CachedLoadClass("System.UInt64")::Equals(lit::IntTyp) then
 			return new ULongLiteral($ulong$lit::ConstVal)
 		else
-			StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "Loading of constants of internal type '" + lit::IntTyp::ToString() + "' is not yet supported.")
+			StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"Loading of constants of internal type '{lit::IntTyp::ToString()}' is not yet supported.")
 			return null
 		end if
 	end method
@@ -811,7 +811,7 @@ class public static Helpers
 				elseif OpCodeSuppFlg then
 					ILEmitter::EmitAdd(s)
 				else
-					StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "The '+' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
+					StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The '+' operation is undefined for '{LeftOp::ToString()}' and '{RightOp::ToString()}'.")
 				end if
 			end if
 		elseif op is MulOp then
@@ -828,7 +828,7 @@ class public static Helpers
 				if OpCodeSuppFlg then
 					ILEmitter::EmitMul(s)
 				else
-					StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "The '*' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
+					StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The '*' operation is undefined for '{LeftOp::ToString()}' and '{RightOp::ToString()}'.")
 				end if
 			end if
 		elseif op is SubOp then
@@ -847,7 +847,7 @@ class public static Helpers
 				elseif OpCodeSuppFlg then
 					ILEmitter::EmitSub(s)
 				else
-					StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "The '-' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
+					StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The '-' operation is undefined for '{LeftOp::ToString()}' and '{RightOp::ToString()}'.")
 				end if
 			end if
 		elseif op is DivOp then
@@ -864,7 +864,7 @@ class public static Helpers
 				if OpCodeSuppFlg then
 					ILEmitter::EmitDiv(s)
 				else
-					StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "The '/' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
+					StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The '/' operation is undefined for '{LeftOp::ToString()}' and '{RightOp::ToString()}'.")
 				end if
 			end if
 		elseif op is ModOp then
@@ -881,7 +881,7 @@ class public static Helpers
 				if OpCodeSuppFlg then
 					ILEmitter::EmitRem(s)
 				else
-					StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "The '%' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
+					StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The '%' operation is undefined for '{LeftOp::ToString()}' and '{RightOp::ToString()}'.")
 				end if
 			end if
 		elseif op is OrOp then
@@ -898,7 +898,7 @@ class public static Helpers
 				if EqSuppFlg then
 					ILEmitter::EmitOr()
 				else
-					StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "The 'or' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
+					StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The 'or' operation is undefined for '{LeftOp::ToString()}' and '{RightOp::ToString()}'.")
 				end if
 			end if
 		elseif op is AndOp then
@@ -915,7 +915,7 @@ class public static Helpers
 				if EqSuppFlg then
 					ILEmitter::EmitAnd()
 				else
-					StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "The 'and' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
+					StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The 'and' operation is undefined for '{LeftOp::ToString()}' and '{RightOp::ToString()}'.")
 				end if
 			end if
 		elseif op is XorOp then
@@ -932,7 +932,7 @@ class public static Helpers
 				if EqSuppFlg then
 					ILEmitter::EmitXor()
 				else
-					StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "The 'xor' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
+					StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The 'xor' operation is undefined for '{LeftOp::ToString()}' and '{RightOp::ToString()}'.")
 				end if
 			end if
 		elseif op is NandOp then
@@ -943,7 +943,7 @@ class public static Helpers
 			if mtd1 isnot null then
 				mtd3 = Loader::LoadUnaOp(mtd1::get_ReturnType(), "op_OnesComplement", mtd1::get_ReturnType())
 			end if
-			
+
 			if mtd3 isnot null then
 				if emt then
 					ILEmitter::EmitCall(mtd1)
@@ -956,7 +956,7 @@ class public static Helpers
 				elseif EqSuppFlg then
 					ILEmitter::EmitNandOther()
 				else
-					StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "The 'nand' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
+					StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The 'nand' operation is undefined for '{LeftOp::ToString()}' and '{RightOp::ToString()}'.")
 				end if
 			end if
 		elseif op is NorOp then
@@ -967,7 +967,7 @@ class public static Helpers
 			if mtd1 isnot null then
 				mtd3 = Loader::LoadUnaOp(mtd1::get_ReturnType(), "op_OnesComplement", mtd1::get_ReturnType())
 			end if
-			
+
 			if mtd3 isnot null then
 				if emt then
 					ILEmitter::EmitCall(mtd1)
@@ -980,7 +980,7 @@ class public static Helpers
 				elseif EqSuppFlg then
 					ILEmitter::EmitNorOther()
 				else
-					StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "The 'nor' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
+					StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The 'nor' operation is undefined for '{LeftOp::ToString()}' and '{RightOp::ToString()}'.")
 				end if
 			end if
 		elseif op is XnorOp then
@@ -991,7 +991,7 @@ class public static Helpers
 			if mtd1 isnot null then
 				mtd3 = Loader::LoadUnaOp(mtd1::get_ReturnType(), "op_OnesComplement", mtd1::get_ReturnType())
 			end if
-			
+
 			if mtd3 isnot null then
 				if emt then
 					ILEmitter::EmitCall(mtd1)
@@ -1004,7 +1004,7 @@ class public static Helpers
 				elseif EqSuppFlg then
 					ILEmitter::EmitXnorOther()
 				else
-					StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "The 'xnor' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
+					StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The 'xnor' operation is undefined for '{LeftOp::ToString()}' and '{RightOp::ToString()}'.")
 				end if
 			end if
 		elseif op is GtOp then
@@ -1022,7 +1022,7 @@ class public static Helpers
 					ILEmitter::EmitCgt(s, bo, lab)
 					return bo != BranchOptimisation::None
 				else
-					StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "The '>' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
+					StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The '>' operation is undefined for '{LeftOp::ToString()}' and '{RightOp::ToString()}'.")
 				end if
 			end if
 		elseif op is LtOp then
@@ -1040,7 +1040,7 @@ class public static Helpers
 					ILEmitter::EmitClt(s, bo, lab)
 					return bo != BranchOptimisation::None
 				else
-					StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "The '<' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
+					StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The '<' operation is undefined for '{LeftOp::ToString()}' and '{RightOp::ToString()}'.")
 				end if
 			end if
 		elseif op is GeOp then
@@ -1058,7 +1058,7 @@ class public static Helpers
 					ILEmitter::EmitCge(s, bo, lab)
 					return bo != BranchOptimisation::None
 				else
-					StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "The '>=' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
+					StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The '>=' operation is undefined for '{LeftOp::ToString()}' and '{RightOp::ToString()}'.")
 				end if
 			end if
 		elseif op is LeOp then
@@ -1076,7 +1076,7 @@ class public static Helpers
 					ILEmitter::EmitCle(s, bo, lab)
 					return bo != BranchOptimisation::None
 				else
-					StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "The '<=' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
+					StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The '<=' operation is undefined for '{LeftOp::ToString()}' and '{RightOp::ToString()}'.")
 				end if
 			end if
 		elseif op is EqOp then
@@ -1098,7 +1098,7 @@ class public static Helpers
 					ILEmitter::EmitCeq(bo, lab)
 					return bo != BranchOptimisation::None
 				else
-					StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "The '==' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
+					StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The '==' operation is undefined for '{LeftOp::ToString()}' and '{RightOp::ToString()}'.")
 				end if
 			end if
 		elseif op is StrictEqOp then
@@ -1107,7 +1107,7 @@ class public static Helpers
 					ILEmitter::EmitCeq(bo, lab)
 					return bo != BranchOptimisation::None
 				else
-					StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "The '===' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
+					StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The '===' operation is undefined for '{LeftOp::ToString()}' and '{RightOp::ToString()}'.")
 				end if
 			end if
 		elseif op is NeqOp then
@@ -1129,7 +1129,7 @@ class public static Helpers
 					ILEmitter::EmitCneq(bo, lab)
 					return bo != BranchOptimisation::None
 				else
-					StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "The '!=' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
+					StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The '!=' operation is undefined for '{LeftOp::ToString()}' and '{RightOp::ToString()}'.")
 				end if
 			end if
 		elseif op is StrictNeqOp then
@@ -1138,7 +1138,7 @@ class public static Helpers
 					ILEmitter::EmitCneq(bo, lab)
 					return bo != BranchOptimisation::None
 				else
-					StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "The '!==' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
+					StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The '!==' operation is undefined for '{LeftOp::ToString()}' and '{RightOp::ToString()}'.")
 				end if
 			end if
 		elseif op is LikeOp then
@@ -1146,7 +1146,7 @@ class public static Helpers
 				if StringFlg then
 					ILEmitter::EmitLike()
 				else
-					StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "The 'like' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
+					StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The 'like' operation is undefined for '{LeftOp::ToString()}' and '{RightOp::ToString()}'.")
 				end if
 			end if
 		elseif op is NLikeOp then
@@ -1154,7 +1154,7 @@ class public static Helpers
 				if StringFlg then
 					ILEmitter::EmitNLike()
 				else
-					StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "The 'notlike' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
+					StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The 'notlike' operation is undefined for '{LeftOp::ToString()}' and '{RightOp::ToString()}'.")
 				end if
 			end if
 		elseif op is ShlOp then
@@ -1171,7 +1171,7 @@ class public static Helpers
 				if CheckSHLRLHS(LeftOp) and CheckSHLRRHS(RightOp, false) then
 					ILEmitter::EmitShl()
 				else
-					StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "The '<<' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
+					StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The '<<' operation is undefined for '{LeftOp::ToString()}' and '{RightOp::ToString()}'.")
 				end if
 			end if
 		elseif op is ShrOp then
@@ -1188,11 +1188,11 @@ class public static Helpers
 				if CheckSHLRLHS(LeftOp) and CheckSHLRRHS(RightOp, false) then
 					ILEmitter::EmitShr(s)
 				else
-					StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "The '>>' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
+					StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The '>>' operation is undefined for '{LeftOp::ToString()}' and '{RightOp::ToString()}'.")
 				end if
 			end if
 		else
-			StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "The '" + op::ToString() + "' operation is undefined for '" + LeftOp::ToString() + "' and '" + RightOp::ToString() + "'.")
+			StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The '{op::ToString()}' operation is undefined for '{LeftOp::ToString()}' and '{RightOp::ToString()}'.")
 		end if
 		return false
 	end method
@@ -1253,7 +1253,7 @@ class public static Helpers
 		var typ as Managed.Reflection.Type
 		var m1 as MethodInfo
 		//var c1 as ConstructorInfo
-	
+
 		if source::Equals(sink) then
 			//StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Converting from '" + source::ToString() + "' to '" + sink::ToString() + "' is redundant.")
 			return
@@ -1268,7 +1268,7 @@ class public static Helpers
 				return
 			end if
 		end if
-		
+
 		if !isgenparam then
 			//begin conv overload block
 			if !#expr(source::get_IsPrimitive() andalso sink::get_IsPrimitive()) then
@@ -1312,12 +1312,12 @@ class public static Helpers
 			end if
 			return
 		end if
-		
+
 		if sink::get_IsInterface() then
 			if Loader::CachedLoadClass("System.ValueType")::IsAssignableFrom(source) andalso sink::IsAssignableFrom(source) then
 				ILEmitter::EmitBox(source)
 			elseif !Loader::CachedLoadClass("System.Object")::IsAssignableFrom(source) then
-				StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "Type '" + source::ToString() + "' 's object/valuetype state could not be determined.")
+				StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"Type '{source::ToString()}' 's object/valuetype state could not be determined.")
 			end if
 			return
 		end if
@@ -1335,7 +1335,7 @@ class public static Helpers
 		if !#expr(typ::IsAssignableFrom(sink) orelse typ::IsAssignableFrom(source)) then
 			if sink::IsAssignableFrom(source) then
 				if !sink::get_IsInterface() then
-					StreamUtils::WriteWarn(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "Converting from '" + source::ToString() + "' to '" + sink::ToString() + "' is redundant.")
+					StreamUtils::WriteWarn(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"Converting from '{source::ToString()}' to '{sink::ToString()}' is redundant.")
 				end if
 			elseif source::IsAssignableFrom(sink) then
 				if !isNull then
@@ -1346,19 +1346,19 @@ class public static Helpers
 			end if
 			return
 		end if
-		
+
 		if isgenparam then
-			StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "No conversion from '" + source::ToString() + "' to '" + sink::ToString() + "' exists.")
+			StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"No conversion from '{source::ToString()}' to '{sink::ToString()}' exists.")
 			return
 		end if
-		
+
 		if source::Equals(Loader::CachedLoadClass("System.IntPtr")) then
 			typ = Loader::CachedLoadClass("System.IntPtr")
 			m1 = typ::GetMethod("ToInt64", Managed.Reflection.Type::EmptyTypes)
 			ILEmitter::EmitCallvirt(m1)
 			source = Loader::CachedLoadClass("System.Int64")
 		end if
-		
+
 		if sink::Equals(Loader::CachedLoadClass("System.String")) then
 			m1 = convc::GetMethod("ToString", new Managed.Reflection.Type[] {source})
 			if m1 isnot null then
@@ -1464,7 +1464,7 @@ class public static Helpers
 				ILEmitter::EmitCall(m1)
 			end if
 		else
-			StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "No conversion from '" + source::ToString() + "' to '" + sink::ToString() + "' exists.")
+			StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"No conversion from '{source::ToString()}' to '{sink::ToString()}' exists.")
 		end if
 	end method
 
@@ -1590,7 +1590,7 @@ class public static Helpers
 		var t5 as ObjInitCallTok = null
 
 		do while true
-			if t2 is MethodCallTok then 
+			if t2 is MethodCallTok then
 				t3 = $MethodCallTok$t2
 				if t3::Name::MemberAccessFlg then
 					t2 = t3::Name::MemberToAccess
@@ -1658,7 +1658,7 @@ class public static Helpers
 		if t3 isnot null then
 			t3::CondFlg = true
 			return true
-		end if 
+		end if
 		return false
 	end method
 
@@ -1713,14 +1713,14 @@ class public static Helpers
 			end if
 			return null
 		end if
-		
+
 		var mnstrarr as string[] = ParseUtils::StringParser(mn::Value, ':')
 		var name as string = mnstrarr[--mnstrarr[l]]
-		
+
 		var m as MethodInfo = SymTable::TypeLst::GetMethod(t,mn,paramtyps, t)
 		if m isnot null then
 			return m
-		else		
+		else
 			if mn is GenericMethodNameTok then
 				var gmn as GenericMethodNameTok = $GenericMethodNameTok$mn
 				var genparams as Managed.Reflection.Type[] = new Managed.Reflection.Type[gmn::Params::get_Count()]
@@ -1781,7 +1781,7 @@ class public static Helpers
 		else
 			meti = SymTable::FindMet(nam, typs)
 		end if
-		
+
 		if !BaseFlg andalso (meti isnot null) then
 			metinf = meti
 		else
@@ -1792,7 +1792,7 @@ class public static Helpers
 
 		return metinf
 	end method
-	
+
 	[method: ComVisible(false)]
 	method public static FieldInfo GetExtFld(var t as Managed.Reflection.Type, var fld as string)
 		if t is null then
@@ -1801,7 +1801,7 @@ class public static Helpers
 
 		return SymTable::TypeLst::GetField(t, fld, t) ?? Loader::LoadField(t, fld)
 	end method
-	
+
 	[method: ComVisible(false)]
 	method public static PropertyInfo GetExtProp(var t as Managed.Reflection.Type, var prop as string)
 		if t is null then
@@ -1815,7 +1815,7 @@ class public static Helpers
 			return Loader::LoadProperty(t,prop)
 		//end if
 	end method
-	
+
 	[method: ComVisible(false)]
 	method public static void ApplyMetAttrs()
 		foreach ca in SymTable::MethodCALst
@@ -1827,7 +1827,7 @@ class public static Helpers
 		end for
 		SymTable::MethodCALst::Clear()
 	end method
-	
+
 	[method: ComVisible(false)]
 	method public static void ApplyFldAttrs()
 		foreach ca in SymTable::FieldCALst
@@ -1835,7 +1835,7 @@ class public static Helpers
 		end for
 		SymTable::FieldCALst::Clear()
 	end method
-	
+
 	[method: ComVisible(false)]
 	method public static void ApplyClsAttrs()
 		foreach ca in SymTable::ClassCALst
@@ -1843,52 +1843,52 @@ class public static Helpers
 		end for
 		SymTable::ClassCALst::Clear()
 	end method
-	
+
 	[method: ComVisible(false)]
-	method public static void ApplyAsmAttrs()	
+	method public static void ApplyAsmAttrs()
 		foreach ca in SymTable::AssemblyCALst
 			AsmFactory::AsmB::SetCustomAttribute(ca)
 		end for
 		SymTable::AssemblyCALst::Clear()
 	end method
-	
+
 	[method: ComVisible(false)]
-	method public static void ApplyPropAttrs()	
+	method public static void ApplyPropAttrs()
 		foreach ca in SymTable::PropertyCALst
 			AsmFactory::CurnPropB::SetCustomAttribute(ca)
 		end for
 		SymTable::PropertyCALst::Clear()
 	end method
-	
+
 	[method: ComVisible(false)]
-	method public static void ApplyEventAttrs()	
+	method public static void ApplyEventAttrs()
 		foreach ca in SymTable::EventCALst
 			AsmFactory::CurnEventB::SetCustomAttribute(ca)
 		end for
 		SymTable::EventCALst::Clear()
 	end method
-	
+
 	[method: ComVisible(false)]
-	method public static void ApplyEnumAttrs()	
+	method public static void ApplyEnumAttrs()
 		foreach ca in SymTable::EnumCALst
 			AsmFactory::CurnEnumB::SetCustomAttribute(ca)
 		end for
 		SymTable::EnumCALst::Clear()
 	end method
-	
+
 	[method: ComVisible(false)]
 	method public static CollectionItem ProcessCollection(var t as Managed.Reflection.Type, var forcearr as boolean)
-		
+
 		if forcearr then
 			return null
 		end if
-		
+
 		var ci as CollectionItem = new CollectionItem()
 		var ie as Managed.Reflection.Type = Loader::CachedLoadClass("System.Collections.Generic.ICollection`1")
 		var ie2 as Managed.Reflection.Type = Loader::CachedLoadClass("System.Collections.ICollection")
 		var ie3 as Managed.Reflection.Type = null
 		var flgs as boolean[] = new boolean[] {false, false}
-		
+
 		if t::get_IsGenericType() then
 			if ie::Equals(t::GetGenericTypeDefinition()) then
 				flgs[0] = true
@@ -1899,7 +1899,7 @@ class public static Helpers
 				flgs[1] = true
 			end if
 		end if
-		
+
 		if flgs[0] then
 			ci::ElemType = ie3::GetGenericArguments()[0]
 		elseif flgs[1] then
@@ -1918,7 +1918,7 @@ class public static Helpers
 					end if
 				end if
 			end for
-			
+
 			if flgs[0] then
 				ci::ElemType = ie3::GetGenericArguments()[0]
 			elseif flgs[1] then
@@ -1928,14 +1928,14 @@ class public static Helpers
 				return null
 			end if
 		end if
-		
+
 		ci::AddMtd = Loader::LoadMethod(ie3, "Add", new Managed.Reflection.Type[] {ci::ElemType})
 		ci::Ctor = GetLocCtor(t, Managed.Reflection.Type::EmptyTypes)
-		
+
 		return ci
 	end method
-	
-	
+
+
 	//for IEnumerable<of T>
 	[method: ComVisible(false)]
 	method public static MethodInfo[] ProcessForeach(var t as Managed.Reflection.Type)
@@ -1944,7 +1944,7 @@ class public static Helpers
 		var ie2 as Managed.Reflection.Type = Loader::CachedLoadClass("System.Collections.IEnumerable")
 		var ie3 as Managed.Reflection.Type = null
 		var flgs as boolean[] = new boolean[] {false, false}
-		
+
 		if t::get_IsGenericType() then
 			if ie::Equals(t::GetGenericTypeDefinition()) then
 				flgs[0] = true
@@ -1955,7 +1955,7 @@ class public static Helpers
 				flgs[1] = true
 			end if
 		end if
-		
+
 		if flgs[0] then
 		elseif flgs[1] then
 			ie3 = ie2
@@ -1979,7 +1979,7 @@ class public static Helpers
 					end if
 				end if
 			end for
-			
+
 			if flgs[0] then
 			elseif flgs[1] then
 				ie3 = ie2
@@ -1987,14 +1987,14 @@ class public static Helpers
 				return null
 			end if
 		end if
-		
+
 		arr[0] = Loader::LoadMethod(ie3, "GetEnumerator", Managed.Reflection.Type::EmptyTypes)
 		arr[1] = Loader::LoadMethod(arr[0]::get_ReturnType(), "MoveNext", Managed.Reflection.Type::EmptyTypes)
 		arr[2] = Loader::LoadMethod(arr[0]::get_ReturnType(), "get_Current", Managed.Reflection.Type::EmptyTypes)
-		
+
 		return arr
 	end method
-	
+
 	//for IEnumerator<of T>
 	[method: ComVisible(false)]
 	method public static MethodInfo[] ProcessForeach2(var t as Managed.Reflection.Type)
@@ -2002,7 +2002,7 @@ class public static Helpers
 		var ie2 as Managed.Reflection.Type = Loader::CachedLoadClass("System.Collections.IEnumerator")
 		var ie3 as Managed.Reflection.Type = null
 		var flgs as boolean[] = new boolean[] {false, false}
-		
+
 		if t::get_IsGenericType() then
 			if ie::Equals(t::GetGenericTypeDefinition()) then
 				flgs[0] = true
@@ -2013,7 +2013,7 @@ class public static Helpers
 				flgs[1] = true
 			end if
 		end if
-		
+
 		if flgs[0] then
 		elseif flgs[1] then
 			ie3 = ie2
@@ -2037,7 +2037,7 @@ class public static Helpers
 					end if
 				end if
 			end for
-			
+
 			if flgs[0] then
 			elseif flgs[1] then
 				ie3 = ie2
@@ -2045,7 +2045,7 @@ class public static Helpers
 				return null
 			end if
 		end if
-		
+
 		return new MethodInfo[] {Loader::LoadMethod(ie3, "MoveNext", Managed.Reflection.Type::EmptyTypes), Loader::LoadMethod(ie3, "get_Current", Managed.Reflection.Type::EmptyTypes)}
 	end method
 
@@ -2088,7 +2088,7 @@ class public static Helpers
 		end do
 		return l::Backwards()
 	end method
-	
+
 	[method: ComVisible(false)]
 	method public static Managed.Reflection.Type CheckCompat(var ta as Managed.Reflection.Type,var tb as Managed.Reflection.Type)
 		if ta::Equals(tb) then
@@ -2099,7 +2099,7 @@ class public static Helpers
 			elseif tb::get_IsEnum() andalso tb::GetEnumUnderlyingType()::Equals(ta) then
 				return ta
 			end if
-		
+
 			var typ = Loader::CachedLoadClass("System.ValueType")
 			if typ::IsAssignableFrom(ta) orelse typ::IsAssignableFrom(tb) then
 				return null
@@ -2108,7 +2108,7 @@ class public static Helpers
 			elseif tb::IsAssignableFrom(ta) then
 				return tb
 			end if
-			
+
 			var la = GetInhHierarchy(ta)::GetEnumerator()
 			var lb = GetInhHierarchy(tb)::GetEnumerator()
 			var curans as Managed.Reflection.Type = null
@@ -2120,11 +2120,11 @@ class public static Helpers
 				end if
 			end do
 			return curans
-			
+
 		end if
 		//return null
 	end method
-	
+
 	[method: ComVisible(false)]
 	method public static boolean EmitNeg(var t as Managed.Reflection.Type, var emt as boolean, var bo as BranchOptimisation, var lab as Emit.Label)
 		var oo = Loader::LoadUnaOp(t, "op_UnaryNegation", t)
@@ -2147,11 +2147,11 @@ class public static Helpers
 				ILEmitter::EmitNeg()
 			end if
 		else
-			StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "The '!' operation is undefined for '" + t::ToString() + "'.")
+			StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The '!' operation is undefined for '{t::ToString()}'.")
 		end if
 		return false
 	end method
-	
+
 	[method: ComVisible(false)]
 	method public static void EmitNot(var t as Managed.Reflection.Type)
 		var oo = Loader::LoadUnaOp(t, "op_OnesComplement", t)
@@ -2161,10 +2161,10 @@ class public static Helpers
 		elseif IsPrimitiveIntegralType(t) then
 			ILEmitter::EmitNotOther()
 		else
-			StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "The '~' operation is undefined for '" + t::ToString() + "'.")
+			StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The '~' operation is undefined for '{t::ToString()}'.")
 		end if
 	end method
-	
+
 	[method: ComVisible(false)]
 	method public static void EmitInc(var t as Managed.Reflection.Type)
 		var oo = Loader::LoadUnaOp(t, "op_Increment", t)
@@ -2205,10 +2205,10 @@ class public static Helpers
 			ILEmitter::EmitLdcU1(1ub)
 			ILEmitter::EmitAdd(false)
 		else
-			StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "The '++' operation is undefined for '" + t::ToString() + "'.")
+			StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The '++' operation is undefined for '{t::ToString()}'.")
 		end if
 	end method
-	
+
 	[method: ComVisible(false)]
 	method public static void EmitDec(var t as Managed.Reflection.Type)
 		var oo = Loader::LoadUnaOp(t, "op_Decrement", t)
@@ -2249,7 +2249,7 @@ class public static Helpers
 			ILEmitter::EmitLdcU1(1ub)
 			ILEmitter::EmitSub(false)
 		else
-			StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "The '--' operation is undefined for '" + t::ToString() + "'.")
+			StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The '--' operation is undefined for '{t::ToString()}'.")
 		end if
 	end method
 
@@ -2268,7 +2268,7 @@ class public static Helpers
 				if  GetExtFld(typ, idtnamarr[1]) isnot null then
 					if Loader::FldLitFlag then
 						return new ConstInfo() {Typ = Loader::FldLitTyp, Value = Loader::FldLitVal}
-					else	
+					else
 						StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("Field '{0}' of the class '{1}' is not a constant.", idtnamarr[1], typ::ToString()))
 					end if
 				else
@@ -2330,40 +2330,40 @@ class public static Helpers
 				if opcf orelse sf then
 					return new ConstInfo() {Value = DynamicHelpers::Add<of object>(lci::Value, rci::Value), Typ = lci::Typ}
 				else
-					StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "The '+' operation is undefined for '" + lci::Typ::ToString() + "' and '" + rci::Typ::ToString() + "'.")
+					StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The '+' operation is undefined for '{lci::Typ::ToString()}' and '{rci::Typ::ToString()}'.")
 				end if
 			elseif tok is MulOp then
 				if opcf then
 					return new ConstInfo() {Value = DynamicHelpers::Multiply<of object>(lci::Value, rci::Value), Typ = lci::Typ}
 				else
-					StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "The '*' operation is undefined for '" + lci::Typ::ToString() + "' and '" + rci::Typ::ToString() + "'.")
+					StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The '*' operation is undefined for '{lci::Typ::ToString()}' and '{rci::Typ::ToString()}'.")
 				end if
 			elseif tok is SubOp then
 				if opcf then
 					return new ConstInfo() {Value = DynamicHelpers::Subtract<of object>(lci::Value, rci::Value), Typ = lci::Typ}
 				else
-					StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "The '-' operation is undefined for '" + lci::Typ::ToString() + "' and '" + rci::Typ::ToString() + "'.")
+					StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The '-' operation is undefined for '{lci::Typ::ToString()}' and '{rci::Typ::ToString()}'.")
 				end if
 			elseif tok is DivOp then
 				if opcf then
 					return new ConstInfo() {Value = DynamicHelpers::Divide<of object>(lci::Value, rci::Value), Typ = lci::Typ}
 				else
-					StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "The '/' operation is undefined for '" + lci::Typ::ToString() + "' and '" + rci::Typ::ToString() + "'.")
+					StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The '/' operation is undefined for '{lci::Typ::ToString()}' and '{rci::Typ::ToString()}'.")
 				end if
 			elseif tok is OrOp then
 				if eqf then
 					return new ConstInfo() {Value = DynamicHelpers::Or<of object>(lci::Value, rci::Value), Typ = lci::Typ}
 				else
-					StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "The 'or' operation is undefined for '" + lci::Typ::ToString() + "' and '" + rci::Typ::ToString() + "'.")
+					StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The 'or' operation is undefined for '{lci::Typ::ToString()}' and '{rci::Typ::ToString()}'.")
 				end if
 			elseif tok is AndOp then
 				if eqf then
 					return new ConstInfo() {Value = DynamicHelpers::And<of object>(lci::Value, rci::Value), Typ = lci::Typ}
 				else
-					StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "The 'and' operation is undefined for '" + lci::Typ::ToString() + "' and '" + rci::Typ::ToString() + "'.")
+					StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The 'and' operation is undefined for '{lci::Typ::ToString()}' and '{rci::Typ::ToString()}'.")
 				end if
 			else
-				StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "The '" + optok::ToString() + "' operation is undefined for '" + lci::Typ::ToString() + "' and '" + rci::Typ::ToString() + "'.")
+				StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The '{optok::ToString()}' operation is undefined for '{lci::Typ::ToString()}' and '{rci::Typ::ToString()}'.")
 			end if
 
 		else

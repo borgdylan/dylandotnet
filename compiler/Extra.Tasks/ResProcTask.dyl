@@ -29,11 +29,7 @@ namespace Extra.Tasks
 
 		method private boolean ExtractED(var i as ITaskItem)
 			var b as boolean = false
-			if boolean::TryParse(i::GetMetadata("EmitDesigner"), ref b) then
-				return b
-			else
-				return false
-			end if
+			return #ternary{ boolean::TryParse(i::GetMetadata("EmitDesigner"), ref b) ? b, false }
 		end method
 
 		method private ITaskItem Pack(var i as string) => new TaskItem(i)

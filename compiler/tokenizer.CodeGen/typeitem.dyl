@@ -39,23 +39,23 @@ class public partial TypeItem
 		TypGenParams = new C5.HashDictionary<of string, TypeParamItem>(C5.MemoryType::Normal)
 		GenParams = new C5.LinkedList<of GenericTypeParameterBuilder>()
 	end method
-	
+
 	method public void TypeItem(var nme as string, var bld as TypeBuilder)
 		ctor(nme, bld, $EnumBuilder$null)
 	end method
-	
+
 	method public void TypeItem(var nme as string, var bld3 as EnumBuilder)
 		ctor(nme, $TypeBuilder$null, bld3)
 		IsEnum = true
 	end method
-	
+
 	method public void TypeItem()
 		ctor(string::Empty, $TypeBuilder$null)
 	end method
 
-	method public void AddField(var f as FieldItem)		
+	method public void AddField(var f as FieldItem)
 		if Fields::Contains(f::Name) then
-			StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "Field '" + f::Name + "' is already declared in the current class!")
+			StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"Field '{f::Name}' is already declared in the current class!")
 		end if
 
 		Fields::Add(f::Name, f)
@@ -80,7 +80,7 @@ class public partial TypeItem
 	method public void AddInterface(var i as Managed.Reflection.Type)
 		Interfaces::Add(i)
 	end method
-	
+
 	method public void NormalizeInterfaces()
 		Interfaces = new C5.LinkedList<of Managed.Reflection.Type>() {AddAll(Enumerable::Distinct<of Managed.Reflection.Type>(Interfaces))}
 	end method
@@ -94,7 +94,7 @@ class public partial TypeItem
 		var bd as IEnumerable<of MethodInfo> = Enumerable::Select<of MethodItem, MethodInfo>(Methods::get_Item(nam),new Func<of MethodItem, MethodInfo>(mil::Bind))
 		var lom2 as IEnumerable<of MethodInfo> = Enumerable::Where<of MethodInfo>(bd,new Func<of MethodInfo,boolean>(mil::DetermineIfCandidate))
 		var matches as MethodInfo[] = Enumerable::ToArray<of MethodInfo>(lom2)
-		
+
 		if matches[l] == 0 then
 			return null
 		elseif matches[l] == 1 then
@@ -106,7 +106,7 @@ class public partial TypeItem
 			return matches[chosen[--chosen[l]]]
 		end if
 	end method
-	
+
 	method public MethodInfo GetGenericMethod(var nam as string, var genparams as Managed.Reflection.Type[], var paramst as Managed.Reflection.Type[], var auxt as Managed.Reflection.Type)
 		if !Methods::Contains(nam) then
 			return null
@@ -117,7 +117,7 @@ class public partial TypeItem
 		var mil3 as MILambdas2 = new MILambdas2(nam, paramst, auxt)
 		var glom as IEnumerable<of MethodInfo> = Enumerable::Where<of MethodInfo>(Enumerable::Select<of MethodItem, MethodInfo>(Enumerable::Where<of MethodItem>(Methods::get_Item(nam) , new Func<of MethodItem,boolean>(mil::GenericMtdFilter)), new Func<of MethodItem,MethodInfo>(mil2::InstGenMtd)), new Func<of MethodInfo, boolean>(mil3::DetermineIfCandidate2))
 		var matches as MethodInfo[] = Enumerable::ToArray<of MethodInfo>(glom)
-		
+
 		if matches[l] == 0 then
 			return null
 		elseif matches[l] == 1 then
@@ -129,7 +129,7 @@ class public partial TypeItem
 			return matches[chosen[--chosen[l]]]
 		end if
 	end method
-	
+
 	method public MethodItem GetProtoMethod(var nam as string, var paramst as Managed.Reflection.Type[])
 		if !Methods::Contains(nam) then
 			return null
@@ -149,7 +149,7 @@ class public partial TypeItem
 		var bd as IEnumerable<of ConstructorInfo> = Enumerable::Select<of CtorItem, ConstructorInfo>(Ctors,new Func<of CtorItem, ConstructorInfo>(cil::Bind))
 		var loc2 as IEnumerable<of ConstructorInfo> = Enumerable::Where<of ConstructorInfo>(bd,new Func<of ConstructorInfo,boolean>(cil::DetermineIfCandidate))
 		var matches as ConstructorInfo[] = Enumerable::ToArray<of ConstructorInfo>(loc2)
-		
+
 		if matches[l] == 0 then
 			if (paramst[l] == 0) and (Ctors::get_Count() == 0) then
 				var cb as ConstructorBuilder = TypeBldr::DefineDefaultConstructor(MethodAttributes::Public)
@@ -172,7 +172,7 @@ class public partial TypeItem
 	method public FieldInfo GetField(var nam as string, var auxt as Managed.Reflection.Type)
 		Loader::FldLitFlag = false
 		Loader::EnumLitFlag = false
-	
+
 		//var fil as FILambdas = new FILambdas(nam)
 		//var matches as FieldItem[] = Enumerable::ToArray<of FieldItem>(Enumerable::Where<of FieldItem>(Fields,new Func<of FieldItem,boolean>(fil::DetermineIfCandidate())))
 
@@ -185,7 +185,7 @@ class public partial TypeItem
 		//	fld = matches[0]
 		//	fldinfo = fld::FieldBldr
 		//end if
-		
+
 		if fldinfo isnot null then
 			fldinfo = fldinfo::BindTypeParameters(auxt)
 			Loader::MemberTyp = fldinfo::get_FieldType()
@@ -199,7 +199,7 @@ class public partial TypeItem
 				Loader::EnumLitTyp = InhTyp
 			end if
 		end if
-		
+
 		return fldinfo
 	end method
 

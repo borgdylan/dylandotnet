@@ -32,25 +32,25 @@ class public TypeList
 			if nam == alias then
 				nam = Importer::AliasMap::get_Item(alias)
 				break
-			elseif nam like ("^" + alias + "`\d+$") then
-				nam = Importer::AliasMap::get_Item(alias) + nam::Substring(alias::get_Length())
+			elseif nam like (i"^{alias}`\d+$") then
+				nam = i"{Importer::AliasMap::get_Item(alias)}{nam::Substring(alias::get_Length())}"
 				break
-			elseif nam::StartsWith(alias + ".") then
-				nam = Importer::AliasMap::get_Item(alias) + nam::Substring(alias::get_Length())
+			elseif nam::StartsWith(i"{alias}.") then
+				nam = i"{Importer::AliasMap::get_Item(alias)}{nam::Substring(alias::get_Length())}"
 				break
 			end if
 		end for
-		
+
 		foreach curnsrec in EnumerableEx::StartWith<of ImportRecord>(EnumerableEx::Concat<of ImportRecord>( _
 			Enumerable::ToArray<of C5.LinkedList<of ImportRecord> >(Importer::ImpsStack::Backwards())), _
 				new ImportRecord[] {new ImportRecord(string::Empty), new ImportRecord(AsmFactory::CurnNS)})
-			
+
 			var ns = curnsrec::Namespace ?? string::Empty
-				
-			var til as TILambdas = new TILambdas(#ternary{ns::get_Length() == 0 ? nam , ns + "." + nam}, gp)
+
+			var til as TILambdas = new TILambdas(#ternary{ns::get_Length() == 0 ? nam , i"{ns}.{nam}"}, gp)
 			var lot2 as IEnumerable<of TypeItem> = Enumerable::Where<of TypeItem>(Types,new Func<of TypeItem,boolean>(til::DetermineIfCandidate))
 			var match as TypeItem = Enumerable::FirstOrDefault<of TypeItem>(lot2)
-			
+
 			if match isnot null then
 				if nest then
 					match = match::GetTypeItem(na[1])
@@ -59,7 +59,7 @@ class public TypeList
 				return match
 			end if
 		end for
-		
+
 		return null
 	end method
 
@@ -72,13 +72,13 @@ class public TypeList
 				if t isnot null then
 					return res
 				end if
-			end for	
+			end for
 		else
 			return Enumerable::FirstOrDefault<of TypeItem>(Enumerable::Where<of TypeItem>(Types,new Func<of TypeItem,boolean>(til::DetermineIfCandidateType)))
 		end if
 		return null
 	end method
-	
+
 	method public Managed.Reflection.Type GetType(var nam as string, var gp as integer)
 		var ti as TypeItem = GetTypeItem(nam, gp)
 		if ti is null then
@@ -116,10 +116,10 @@ class public TypeList
 			return ctorinf
 		end if
 	end method
-	
+
 	method assembly ConstructorInfo GetDefaultCtor(var t as Managed.Reflection.Type) => _
 		#ternary {GetTypeItem(t) is null ? Loader::LoadCtor(t, Managed.Reflection.Type::EmptyTypes), GetCtor(t, Managed.Reflection.Type::EmptyTypes, t)}
-	
+
 	method public void EnsureDefaultCtor(var t as Managed.Reflection.Type)
 		if !#expr(ILEmitter::InterfaceFlg orelse ILEmitter::StaticCFlg) then
 			var ti as TypeItem = GetTypeItem(t)
@@ -152,7 +152,7 @@ class public TypeList
 			end if
 		end if
 	end method
-	
+
 	method public void AddType(var t as TypeItem)
 		Types::Add(t)
 	end method
@@ -181,7 +181,7 @@ class public TypeList
 					end if
 				end if
 			end if
-			
+
 			return fldinfo ?? (GetField(ti::InhTyp, nam, auxt::get_BaseType()) ?? Loader::LoadField(auxt::get_BaseType(), nam))
 		end if
 	end method
@@ -193,7 +193,7 @@ class public TypeList
 		else
 			var mnstrarr as string[] = ParseUtils::StringParser(mn::Value, ':')
 			var nam as string = mnstrarr[--mnstrarr[l]]
-		
+
 			var mtdinfo as MethodInfo
 			if mn is GenericMethodNameTok then
 				var gmn as GenericMethodNameTok = $GenericMethodNameTok$mn
@@ -210,7 +210,7 @@ class public TypeList
 			else
 				mtdinfo = ti::GetMethod(nam,paramst, auxt)
 			end if
-			
+
 			if mtdinfo isnot null then
 				if !mtdinfo::get_IsPublic() then
 					//filter out private members
@@ -229,7 +229,7 @@ class public TypeList
 					end if
 				end if
 			end if
-			
+
 			if mtdinfo is null then
 				mtdinfo = GetMethod(ti::InhTyp,mn,paramst, auxt::get_BaseType())
 				if mtdinfo is null then
@@ -250,7 +250,7 @@ class public TypeList
 					end if
 				end if
 			end if
-			
+
 			if mtdinfo is null then
 				if ti::Interfaces isnot null andalso !t::get_IsValueType() then
 					foreach interf in ti::Interfaces

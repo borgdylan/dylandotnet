@@ -1,10 +1,10 @@
 //    tokenizer.AST.dll dylan.NET.Tokenizer.AST Copyright (C) 2013 Dylan Borg <borgdylan@hotmail.com>
 //    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software
 // Foundation; either version 3 of the License, or (at your option) any later version.
-//    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+//    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
 //PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
-//    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
-//Place, Suite 330, Boston, MA 02111-1307 USA 
+//    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple
+//Place, Suite 330, Boston, MA 02111-1307 USA
 
 //class public NewarrTok extends Token
 //
@@ -424,9 +424,9 @@ class public MeTok extends ValueToken implements IUnaryOperatable, IConvable
 		_TTok = null
 		_OrdOp = string::Empty
 	end method
-	
-	method public override string ToString() => #ternary{_Conv ? "$" + _TTok::ToString() + "$me", "me"}
-	
+
+	method public override string ToString() => #ternary{_Conv ? i"${_TTok::ToString()}$me", "me"}
+
 	property public virtual string OrdOp
 		get
 			return _OrdOp
@@ -435,7 +435,7 @@ class public MeTok extends ValueToken implements IUnaryOperatable, IConvable
 			_OrdOp = value
 		end set
 	end property
-	
+
 	property public virtual boolean Conv
 		get
 			return _Conv
@@ -444,7 +444,7 @@ class public MeTok extends ValueToken implements IUnaryOperatable, IConvable
 			_Conv = value
 		end set
 	end property
-	
+
 	property public virtual TypeTok TTok
 		get
 			return _TTok
@@ -453,7 +453,7 @@ class public MeTok extends ValueToken implements IUnaryOperatable, IConvable
 			_TTok = value
 		end set
 	end property
-	
+
 end class
 
 class public ParameterCTok extends NonExprToken
