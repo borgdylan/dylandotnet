@@ -1,24 +1,24 @@
 //    tokenizer.Parser.dll dylan.NET.Tokenizer.Parser Copyright (C) 2013 Dylan Borg <borgdylan@hotmail.com>
 //    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software
 // Foundation; either version 3 of the License, or (at your option) any later version.
-//    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+//    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
 //PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
-//    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
-//Place, Suite 330, Boston, MA 02111-1307 USA 
+//    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple
+//Place, Suite 330, Boston, MA 02111-1307 USA
 
 class public ExprOptimizer
 
 	field public Flags PFlags
-	
+
 	method public void ExprOptimizer(var pf as Flags)
 		mybase::ctor()
 		PFlags = pf
 	end method
-	
+
 	method public void ExprOptimizer()
 		ctor(new Flags())
 	end method
-	
+
 	method public prototype Expr Optimize(var exp as Expr)
 	method public prototype Expr Optimize(var exp as Expr, var causingTok as Token)
 	method public prototype Expr procType(var stm as Expr, var i as integer)
@@ -33,12 +33,12 @@ class public ExprOptimizer
 		end if
 
 		if isgeneric then
-			
+
 			var gttarg = stm::Tokens::get_Item(i)
 			if !#expr((gttarg is Ident) orelse (gttarg is TypeTok)) then
 				StreamUtils::WriteErrorLine(gttarg::Line, gttarg::Column, PFlags::CurPath, string::Format("Expected an identifier instead of '{0}'!", gttarg::Value))
 			end if
-			
+
 			var gtt as GenericTypeTok = new GenericTypeTok(gttarg::Value)
 			stm::RemToken(++i)
 			stm::RemToken(++i)
@@ -100,7 +100,7 @@ class public ExprOptimizer
 				if stm::Tokens::get_Item(i) is TypeTok then
 					tt = $TypeTok$stm::Tokens::get_Item(i)
 				elseif stm::Tokens::get_Item(i) is Ident then
-					tt = new TypeTok(stm::Tokens::get_Item(i)::Value) {PosFromToken(stm::Tokens::get_Item(i))}	
+					tt = new TypeTok(stm::Tokens::get_Item(i)::Value) {PosFromToken(stm::Tokens::get_Item(i))}
 				else
 					var tok = stm::Tokens::get_Item(i)
 					StreamUtils::WriteErrorLine(tok::Line, tok::Column, PFlags::CurPath, string::Format("Expected an identifier instead of '{0}'!", tok::Value))
@@ -109,7 +109,7 @@ class public ExprOptimizer
 				StreamUtils::WriteErrorLine(stm::Line, 0, PFlags::CurPath, "Expected an identifier instead of ''!")
 			end if
 		end if
-	
+
 		return tt
 	end method
 
@@ -333,12 +333,12 @@ class public ExprOptimizer
 
 			if stm::Tokens::get_Count() > (bs + 4) then
 				var tok = stm::Tokens::get_Item(bs + 4)
-				StreamUtils::WriteWarnLine(tok::Line, tok::Column, PFlags::CurPath, "Unexpected token at end of parameter declaration!")	
+				StreamUtils::WriteWarnLine(tok::Line, tok::Column, PFlags::CurPath, "Unexpected token at end of parameter declaration!")
 			end if
 
 			return new VarExpr() {Tokens = stm::Tokens, Line = stm::Line, VarName = $Ident$stm::Tokens::get_Item(++bs), VarTyp = vtt, Attr = bst}
 		end if
-		
+
 		return null
 	end method
 
@@ -352,9 +352,9 @@ class public ExprOptimizer
 		i--
 		var mn as MethodNameTok = #ternary { stm::Tokens::get_Item(i) is MethodNameTok ? $MethodNameTok$stm::Tokens::get_Item(i), _
 			new MethodNameTok($Ident$stm::Tokens::get_Item(i)) }
-		
+
 		var mct as MethodCallTok = new MethodCallTok() {Name = mn, PosFromToken(mn)}
-		
+
 		j = i
 		i++
 
@@ -363,14 +363,14 @@ class public ExprOptimizer
 		stm::RemToken(i)
 		len = --stm::Tokens::get_Count()
 		i--
-		
+
 		var flgc as boolean[] = new boolean[] {PFlags::MetCallFlag, PFlags::IdentFlag, PFlags::StringFlag, PFlags::CtorFlag}
-				
+
 		do until i = len
 
 			//get parameters
 			i++
-	
+
 			if (stm::Tokens::get_Item(i) is RParen) orelse (stm::Tokens::get_Item(i) is RAParen) orelse (stm::Tokens::get_Item(i) is RCParen) then
 				lvl--
 				if lvl == 0 then
@@ -409,7 +409,7 @@ class public ExprOptimizer
 			else
 				d = true
 			end if
-			
+
 			if d then
 				ep2::AddToken(stm::Tokens::get_Item(i))
 				stm::RemToken(i)
@@ -417,17 +417,17 @@ class public ExprOptimizer
 				i--
 			end if
 		end do
-		
+
 		PFlags::MetCallFlag = flgc[0]
 		PFlags::IdentFlag = flgc[1]
 		PFlags::StringFlag = flgc[2]
 		PFlags::CtorFlag = flgc[3]
-		
+
 		stm::Tokens::set_Item(j,mct)
 		return stm
-	
+
 	end method
-	
+
 	method private Token ObjInitHelper(var e as Expr)
 		e = Optimize(e)
 		if e::Tokens::get_Count() > 2 andalso e::Tokens::get_Item(1) is AssignOp2 then
@@ -440,7 +440,7 @@ class public ExprOptimizer
 		end if
 		return null
 	end method
-	
+
 	method public Expr procObjInitCall(var stm as Expr, var i as integer)
 		var ct as NewCallTok = $NewCallTok$stm::Tokens::get_Item(i)
 		var lvl as integer = 1
@@ -448,7 +448,7 @@ class public ExprOptimizer
 		var j as integer = i
 		var lp as C5.ArrayList<of Token> = new C5.ArrayList<of Token>()
 		var ep as Expr = new Expr()
-		
+
 		i++
 		stm::RemToken(i)
 		var len as integer = --stm::Tokens::get_Count()
@@ -456,7 +456,7 @@ class public ExprOptimizer
 
 		do until i = len
 			i++
-	
+
 			if (stm::Tokens::get_Item(i) is RParen) orelse (stm::Tokens::get_Item(i) is RAParen) orelse (stm::Tokens::get_Item(i) is RCParen) then
 				lvl--
 				if lvl = 0 then
@@ -486,7 +486,7 @@ class public ExprOptimizer
 			else
 				d = true
 			end if
-			
+
 			if d then
 				ep::AddToken(stm::Tokens::get_Item(i))
 				stm::RemToken(i)
@@ -494,18 +494,18 @@ class public ExprOptimizer
 				i--
 			end if
 		end do
-		
+
 		stm::Tokens::set_Item(j, new ObjInitCallTok() {PosFromToken(ct), Ctor = ct, Elements = lp})
 		return stm
 	end method
-	
+
 	method public Expr procTernaryCall(var stm as Expr, var i as integer)
 		var ct as TernaryCallTok = new TernaryCallTok() {PosFromToken(stm::Tokens::get_Item(i))}
 		var lvl as integer = 1
 		var d as boolean = true
 		var j as integer = i
 		var stg as integer = 0
-		
+
 		i++
 		stm::RemToken(i)
 		var len as integer = --stm::Tokens::get_Count()
@@ -513,7 +513,7 @@ class public ExprOptimizer
 
 		do until i = len
 			i++
-			
+
 			if (stm::Tokens::get_Item(i) is RParen) orelse (stm::Tokens::get_Item(i) is RAParen) orelse (stm::Tokens::get_Item(i) is RCParen) then
 				lvl--
 				if lvl = 0 then
@@ -551,7 +551,7 @@ class public ExprOptimizer
 			else
 				d = true
 			end if
-			
+
 			if d then
 				if stg == 0 then
 					ct::Condition::AddToken(stm::Tokens::get_Item(i))
@@ -565,20 +565,20 @@ class public ExprOptimizer
 				i--
 			end if
 		end do
-		
+
 		ct::Condition = Optimize(ct::Condition)
 		ct::TrueExpr = Optimize(ct::TrueExpr)
 		ct::FalseExpr = Optimize(ct::FalseExpr)
 		stm::Tokens::set_Item(j, ct)
 		return stm
 	end method
-	
+
 	method public Expr procExprCall(var stm as Expr, var i as integer)
 		var e as Expr = new Expr()
 		var ecc as ExprCallTok = $ExprCallTok$stm::Tokens::get_Item(i)
 		var lvl as integer = 1
 		var d as boolean = true
-		
+
 		i++
 		stm::RemToken(i)
 		var len as integer = --stm::Tokens::get_Count()
@@ -586,7 +586,7 @@ class public ExprOptimizer
 
 		do until i = len
 			i++
-			
+
 			if (stm::Tokens::get_Item(i) is RParen) orelse (stm::Tokens::get_Item(i) is RAParen) orelse (stm::Tokens::get_Item(i) is RCParen) then
 				lvl--
 				if lvl = 0 then
@@ -604,7 +604,7 @@ class public ExprOptimizer
 			else
 				d = true
 			end if
-			
+
 			if d then
 				e::AddToken(stm::Tokens::get_Item(i))
 				stm::RemToken(i)
@@ -612,7 +612,7 @@ class public ExprOptimizer
 				i--
 			end if
 		end do
-		
+
 		ecc::Exp = Optimize(e)
 		return stm
 	end method
@@ -622,7 +622,7 @@ class public ExprOptimizer
 		var ecc as NullCondCallTok = $NullCondCallTok$stm::Tokens::get_Item(i)
 		var lvl as integer = 1
 		var d as boolean = true
-		
+
 		i++
 		stm::RemToken(i)
 		var len as integer = --stm::Tokens::get_Count()
@@ -630,7 +630,7 @@ class public ExprOptimizer
 
 		do until i = len
 			i++
-			
+
 			if (stm::Tokens::get_Item(i) is RParen) orelse (stm::Tokens::get_Item(i) is RAParen) orelse (stm::Tokens::get_Item(i) is RCParen) then
 				lvl--
 				if lvl = 0 then
@@ -648,7 +648,7 @@ class public ExprOptimizer
 			else
 				d = true
 			end if
-			
+
 			if d then
 				e::AddToken(stm::Tokens::get_Item(i))
 				stm::RemToken(i)
@@ -656,7 +656,7 @@ class public ExprOptimizer
 				i--
 			end if
 		end do
-		
+
 		ecc::Exp = Optimize(e)
 		return stm
 	end method
@@ -677,22 +677,22 @@ class public ExprOptimizer
 		var nai as boolean = false
 
 		var cc as integer = 0
-		
+
 		//no need to call the next line as its done before this method is used
 		//stm = procType(stm, i)
 		tt = $TypeTok$stm::Tokens::get_Item(i)
 		j = i
 		i++
-		
+
 		var tok2 as Token = stm::Tokens::get_Item(i)
 		var len as integer = --stm::Tokens::get_Count()
-		
+
 		if tok2 is LSParen then
 			nab = true
 		elseif tok2 is LCParen
 			nai = true
 		end if
-		
+
 		if nab then
 			nact::ArrayType = tt
 		elseif nai then
@@ -702,16 +702,16 @@ class public ExprOptimizer
 		else
 			nct::Name = tt
 		end if
-		
+
 		stm::RemToken(i)
 		len = --stm::Tokens::get_Count()
 		i--
-		
+
 		do until i = len
-		
+
 			//get parameters/members/length
 			i++
-			
+
 			if (stm::Tokens::get_Item(i) is RParen) orelse (stm::Tokens::get_Item(i) is RSParen) orelse (stm::Tokens::get_Item(i) is RAParen) orelse (stm::Tokens::get_Item(i) is RCParen) then
 				lvl--
 				if lvl = 0 then
@@ -760,16 +760,16 @@ class public ExprOptimizer
 			else
 				d = true
 			end if
-			
+
 			if d then
 				ep2::AddToken(stm::Tokens::get_Item(i))
 				stm::RemToken(i)
 				len = --stm::Tokens::get_Count()
 				i--
 			end if
-		
+
 		end do
-		
+
 		if nab then
 			nact::PosFromToken(tt)
 			stm::Tokens::set_Item(j,nact)
@@ -780,7 +780,7 @@ class public ExprOptimizer
 			nct::PosFromToken(tt)
 			stm::Tokens::set_Item(j,nct)
 		end if
-		
+
 		return stm
 	end method
 
@@ -945,19 +945,19 @@ class public ExprOptimizer
 		idt::IsArr = true
 		mtd::Name = idt
 		stm::Tokens::set_Item(j,mtd)
-		
+
 		PFlags::MetCallFlag = flgc[0]
 		PFlags::IdentFlag = flgc[1]
 		PFlags::StringFlag = flgc[2]
 		PFlags::CtorFlag = flgc[3]
-		
+
 		return stm
 	end method
 
 	method public Expr procInterpolate(var stm as Expr, var i as integer, var formattable as boolean)
 	    var stok = stm::Tokens::get_Item(i)
 		var ir = ParseUtils::Interpolate(stok::Value)
-		
+
 		if ir::get_Expressions()[l] == 0 then
 			//error out
 			StreamUtils::WriteLine(string::Empty)
@@ -975,7 +975,7 @@ class public ExprOptimizer
 		foreach e in ir::get_Expressions()
 			k++
 			//stok::Column points at the i or f that starts the interpolation
-			var ss = new Line()::Analyze(new Stmt() {Line = stm::Line}, e::get_Item2(), e::get_Item1() + stok::Column + 2)
+			var ss = new Line()::Analyze(new Stmt() {Line = stm::Line}, e::Item2, e::Item1 + stok::Column + 2)
 			var lenx as integer = --ss::Tokens::get_Count()
 
 			var j = -1
@@ -986,7 +986,7 @@ class public ExprOptimizer
 
 			do until j = lenx
 				j++
-			
+
 				if j != lenx then
 					ss::Tokens::set_Item(j,to::Optimize(ss::Tokens::get_Item(j),ss::Tokens::get_Item(++j)))
 				else
@@ -1030,7 +1030,7 @@ class public ExprOptimizer
 
 			exps::Add(eo::Optimize(new Expr() {Line = stm::Line, Tokens = ss::Tokens}))
 		end for
-			
+
 
 		var res as MethodCallTok = new MethodCallTok() {PosFromToken(stm::Tokens::get_Item(i)), Name = new MethodNameTok(#ternary { formattable ? "System.Runtime.CompilerServices.FormattableStringFactory::Create" , "System.String::Format"})}
 		res::AddParam(new Expr() {AddToken(new StringLiteral(ir::get_Format()) {PosFromToken(stm::Tokens::get_Item(i))})})
@@ -1077,7 +1077,7 @@ class public ExprOptimizer
 							end if
 						end if
 						jprime++
-					end do 
+					end do
 
 					if (jprime - k) == 1 then
 						StreamUtils::WriteError(tok::Line, tok::Column, PFlags::CurPath, "Subexpressions should not be empty!")
@@ -1096,7 +1096,7 @@ class public ExprOptimizer
 					end if
 				else
 					StreamUtils::WriteError(tok::Line, tok::Column, PFlags::CurPath, string::Format("Expected a binary operator instead of '{0}'!", tok::ToString()))
-				end if		
+				end if
 			end if
 			statef = !statef
 		end for
@@ -1117,7 +1117,7 @@ class public ExprOptimizer
 		var mcmetcall as MethodCallTok = null
 		var mcmetname as MethodNameTok = null
 		var mcstr as StringLiteral = null
-		
+
 		if exp is null then
 			return null
 		end if
@@ -1130,8 +1130,8 @@ class public ExprOptimizer
 			    StreamUtils::WriteError(exp::Line, 0, PFlags::CurPath, "Expressions should not be empty!")
 			end if
 		end if
-		
-		var len as integer = --exp::Tokens::get_Count() 
+
+		var len as integer = --exp::Tokens::get_Count()
 
 		do
 			//non-method chain i.e. normal code
@@ -1160,51 +1160,51 @@ class public ExprOptimizer
 					exp::RemToken(i)
 					i--
 					len = --exp::Tokens::get_Count()
-				end if 
+				end if
 			elseif tok is NegOp then
 				PFlags::isChanged = true
 				PFlags::NegFlag = true
 				PFlags::OrdOp = #expr("neg " + PFlags::OrdOp)::Trim()
 				exp::RemToken(i)
 				i--
-				len = --exp::Tokens::get_Count() 
+				len = --exp::Tokens::get_Count()
 			elseif tok is NotOp then
 				PFlags::isChanged = true
 				PFlags::NotFlag = true
 				PFlags::OrdOp = #expr("not " + PFlags::OrdOp)::Trim()
 				exp::RemToken(i)
 				i--
-				len = --exp::Tokens::get_Count() 
+				len = --exp::Tokens::get_Count()
 			elseif tok is IncOp then
 				PFlags::isChanged = true
 				PFlags::IncFlag = true
 				PFlags::OrdOp = #expr("inc " + PFlags::OrdOp)::Trim()
 				exp::RemToken(i)
 				i--
-				len = --exp::Tokens::get_Count() 
+				len = --exp::Tokens::get_Count()
 			elseif tok is DecOp then
 				PFlags::isChanged = true
 				PFlags::DecFlag = true
 				PFlags::OrdOp = #expr("dec " + PFlags::OrdOp)::Trim()
 				exp::RemToken(i)
 				i--
-				len = --exp::Tokens::get_Count() 
+				len = --exp::Tokens::get_Count()
 			elseif tok is Pipe then
 				exp::RemToken(i)
 				i--
-				len = --exp::Tokens::get_Count() 
+				len = --exp::Tokens::get_Count()
 			elseif tok is RefTok then
 				PFlags::isChanged = true
 				PFlags::RefFlag = true
 				exp::RemToken(i)
 				i--
-				len = --exp::Tokens::get_Count() 
+				len = --exp::Tokens::get_Count()
 			elseif tok is ValInRefTok then
 				PFlags::isChanged = true
 				PFlags::ValinrefFlag = true
 				exp::RemToken(i)
 				i--
-				len = --exp::Tokens::get_Count() 
+				len = --exp::Tokens::get_Count()
 			elseif tok is Ident then
 				if PFlags::MetCallFlag orelse PFlags::IdentFlag orelse PFlags::StringFlag orelse PFlags::CtorFlag then
 					mcbool = true
@@ -1220,7 +1220,7 @@ class public ExprOptimizer
 				if i < (exp::Tokens::get_Count() - 2) then
 					if (exp::Tokens::get_Item(++i) is LAParen) andalso (exp::Tokens::get_Item(i + 2) is OfTok) then
 						exp = procMtdName(exp, i)
-						len = --exp::Tokens::get_Count() 
+						len = --exp::Tokens::get_Count()
 					end if
 				end if
 			elseif tok is CharLiteral then
@@ -1279,13 +1279,13 @@ class public ExprOptimizer
 			elseif tok is NewTok then
 				exp::RemToken(i)
 				exp = procNewCall(procType(exp, i), i)
-				len = --exp::Tokens::get_Count() 
+				len = --exp::Tokens::get_Count()
 				if exp::Tokens::get_Item(i) is NewCallTok then
 					//if output is newcall
 					if i < len then
 						if exp::Tokens::get_Item(++i) is LCParen then
 							exp = procObjInitCall(exp, i)
-							len = --exp::Tokens::get_Count() 
+							len = --exp::Tokens::get_Count()
 						end if
 						PFlags::CtorFlag = true
 					end if
@@ -1293,12 +1293,12 @@ class public ExprOptimizer
 			elseif tok is GettypeTok then
 				exp::RemToken(i)
 				var n = procType2(exp,i)
-				len = --exp::Tokens::get_Count() 
+				len = --exp::Tokens::get_Count()
 				exp::Tokens::set_Item(i,new GettypeCallTok() {Name = n})
 			elseif tok is DefaultTok then
 				exp::RemToken(i)
 				var n = procType2(exp,i)
-				len = --exp::Tokens::get_Count() 
+				len = --exp::Tokens::get_Count()
 				exp::Tokens::set_Item(i,new DefaultCallTok() {Name = n})
 			elseif (tok is IsOp) orelse (tok is IsNotOp) then
 				i++
@@ -1316,7 +1316,7 @@ class public ExprOptimizer
 					if tk is LCParen then
 						//call ternary processor
 						exp = procTernaryCall(exp, i)
-						len = --exp::Tokens::get_Count() 
+						len = --exp::Tokens::get_Count()
 					else
 						StreamUtils::WriteErrorLine(tk::Line, tk::Column, PFlags::CurPath, "Expected a '{' after a '#ternary'!")
 					end if
@@ -1338,7 +1338,7 @@ class public ExprOptimizer
 						PFlags::CtorFlag = true
 					else
 						StreamUtils::WriteErrorLine(tk::Line, tk::Column, PFlags::CurPath, "Expected a '(' after a '#expr'!")
-					end if 
+					end if
 				else
 					StreamUtils::WriteErrorLine(tok::Line, ++tok::EndColumn, PFlags::CurPath, "Expected a '(' after a '#expr'!")
 				end if
@@ -1357,7 +1357,7 @@ class public ExprOptimizer
 						PFlags::NullCondFlag = true
 					else
 						StreamUtils::WriteErrorLine(tk::Line, tk::Column, PFlags::CurPath, "Expected a '(' after a '#nullcond'!")
-					end if 
+					end if
 				else
 					StreamUtils::WriteErrorLine(tok::Line, ++tok::EndColumn, PFlags::CurPath, "Expected a '(' after a '#nullcond'!")
 				end if
@@ -1378,28 +1378,28 @@ class public ExprOptimizer
 					PFlags::MetCallFlag = true
 					exp = procMethodCall(exp, i)
 					i--
-					len = --exp::Tokens::get_Count() 
+					len = --exp::Tokens::get_Count()
 				end if
 			elseif tok is LSParen then
 				if PFlags::IdentFlag then
 					PFlags::IdentFlag = false
 					exp = procIdentArrayAccess(exp, i)
 					i--
-					len = --exp::Tokens::get_Count() 
+					len = --exp::Tokens::get_Count()
 					PFlags::IdentFlag = true
 					j = i
 				elseif PFlags::MetCallFlag then
 					PFlags::MetCallFlag = false
 					exp = procMtdArrayAccess(exp, i)
 					i--
-					len = --exp::Tokens::get_Count() 
+					len = --exp::Tokens::get_Count()
 					PFlags::MetCallFlag = true
 					j = i
 				elseif PFlags::NullCondFlag then
 					PFlags::NullCondFlag = false
 					exp = procNullCondArrayAccess(exp, i)
 					i--
-					len = --exp::Tokens::get_Count() 
+					len = --exp::Tokens::get_Count()
 					PFlags::NullCondFlag = true
 					j = i
 				end if
@@ -1420,7 +1420,7 @@ class public ExprOptimizer
 				//method chain code
 				i--
 				mctok = exp::Tokens::get_Item(i)
-				
+
 				if mctok is GenericMethodNameTok then
 					var mct = $GenericMethodNameTok$mctok
 					if PFlags::MetCallFlag orelse PFlags::IdentFlag then
@@ -1433,7 +1433,7 @@ class public ExprOptimizer
 						elseif conseq is MethodCallTok then
 							mcident = #expr($MethodCallTok$conseq)::Name
 							mcident::ExplType = new GenericTypeTok(mct::Value, mct::Params)
-						end if	
+						end if
 						exp::RemToken(i)
 					end if
 				elseif mctok is Ident then

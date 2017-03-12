@@ -1,13 +1,13 @@
 //    tokenizer.CodeGen.dll dylan.NET.Tokenizer.CodeGen Copyright (C) 2013 Dylan Borg <borgdylan@hotmail.com>
 //    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software
 // Foundation; either version 3 of the License, or (at your option) any later version.
-//    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+//    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
 //PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
-//    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
-//Place, Suite 330, Boston, MA 02111-1307 USA 
+//    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple
+//Place, Suite 330, Boston, MA 02111-1307 USA
 
 class public StmtReader
-	
+
 	field private CodeGenerator cg
 	field private boolean ReturnFlg
 
@@ -57,11 +57,11 @@ class public StmtReader
 			if !acc then
 				return null
 			end if
-		end if 
+		end if
 
 		var tarr as Managed.Reflection.Type[] = new Managed.Reflection.Type[stm::Ctor::Params::get_Count()]
 		var oarr as object[] = new object[stm::Ctor::Params::get_Count()]
-		
+
 		var i as integer = -1
 		foreach param in stm::Ctor::Params
 			i++
@@ -69,14 +69,14 @@ class public StmtReader
 			tarr[i] = ci::Typ
 			oarr[i] = ci::Value
 		end for
-		
+
 		var piarr as C5.IList<of PropertyInfo> = new C5.LinkedList<of PropertyInfo>()
 		var poarr as C5.IList<of object> = new C5.LinkedList<of object>()
 		var fiarr as C5.IList<of FieldInfo> = new C5.LinkedList<of FieldInfo>()
 		var foarr as C5.IList<of object> = new C5.LinkedList<of object>()
 		var tempprop as PropertyInfo = null
 		var tempfld as FieldInfo = null
-		
+
 		foreach curpair in stm::Pairs
 			var multflg as boolean = true
 			tempprop = Helpers::GetExtProp(typ,curpair::Name::Value)
@@ -91,7 +91,7 @@ class public StmtReader
 					StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("Property or Field {0} does not exist in the attribute class {1}", curpair::Name::Value, typ::ToString()))
 				end if
 			end if
-			
+
 			var ci = Helpers::ProcessConstExpr(curpair::ValueExpr)
 			if multflg then
 				poarr::Add(ci::Value)
@@ -107,7 +107,7 @@ class public StmtReader
 
 		return new CustomAttributeBuilder(ctorinf, oarr, piarr::ToArray(), poarr::ToArray(), fiarr::ToArray(), foarr::ToArray())
 	end method
-	
+
 	method public void ReadClass(var clss as ClassStmt, var fpath as string)
 		ILEmitter::StructFlg = false
 		ILEmitter::PartialFlg = false
@@ -135,9 +135,9 @@ class public StmtReader
 		if !AsmFactory::isNested then
 			AsmFactory::inClass = true
 		end if
-			
+
 		var clssparams as TypeAttributes = TypeAttributes::Class
-		
+
 		if ti2 is null then
 			clssparams = Helpers::ProcessClassAttrs(clss::Attrs)
 		else
@@ -232,7 +232,7 @@ class public StmtReader
 				nrgenparams = paramdefs::get_Count()
 			end if
 		end if
-		
+
 		Helpers::ApplyClsAttrs()
 
 		var ti as TypeItem = null
@@ -241,7 +241,7 @@ class public StmtReader
 			ti = new TypeItem(#ternary{AsmFactory::isNested ? string::Empty, AsmFactory::CurnNS + "."} + clss::ClassName::Value, AsmFactory::CurnTypB) _
 				{ IsStatic = ILEmitter::StaticCFlg, NrGenParams = nrgenparams, TypGenParams = SymTable::TypGenParams, GenParams = SymTable::GenParams, AsmB = asmb}
 			SymTable::CurnTypItem = ti
-		
+
 			inhtyp = reft ?? #ternary {clss::InhClass::Value::get_Length() == 0 ? _
 					Loader::CachedLoadClass("System.Object"), Helpers::CommitEvalTTok(clss::InhClass)}
 			if inhtyp is null then
@@ -341,20 +341,20 @@ class public StmtReader
 		//ILEmitter::ANIFlg = false
 		cg::Process(clss, fpath)
 	end method
-	
+
 	method public void ReadEnum(var clss as EnumStmt, var fpath as string)
 		//if AsmFactory::inClass then
 		//	AsmFactory::isNested = true
 		//end if
 		AsmFactory::inEnum = true
-		
+
 		var enumtyp = Helpers::CommitEvalTTok(clss::EnumTyp)
 		if enumtyp is null then
 			StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("Class '{0}' is not defined or is not accessible.", clss::EnumTyp::Value))
 		end if
 
 		var asmb as AssemblyBuilder = AsmFactory::AsmB
-		var clssparams as TypeAttributes = Helpers::ProcessClassAttrsE(clss::Attrs) or TypeAttributes::Sealed		
+		var clssparams as TypeAttributes = Helpers::ProcessClassAttrsE(clss::Attrs) or TypeAttributes::Sealed
 		var mdlb = AsmFactory::MdlB
 		var typname = AsmFactory::CurnNS + "." + clss::EnumName::Value
 
@@ -374,19 +374,19 @@ class public StmtReader
 		//	AsmFactory::CurnTypName = clss::EnumName::Value
 		//	AsmFactory::CurnEnumB = AsmFactory::CurnTypB2::DefineEnum(clss::EnumName::Value, clssparams, enumtyp)
 		//end if
-		
+
 		Helpers::ApplyEnumAttrs()
 
 		var ti as TypeItem = new TypeItem(AsmFactory::CurnNS + "." + clss::EnumName::Value, AsmFactory::CurnEnumB) _
 			{InhTyp = enumtyp, AsmB = asmb}
-		
+
 		//ILEmitter::ANIFlg = false
 
 		SymTable::CurnTypItem = ti
 		SymTable::TypeLst::AddType(ti)
 		cg::Process(clss, fpath)
 	end method
-	
+
 	method public void ReadDelegate(var dels as DelegateStmt)
 		ILEmitter::StructFlg = false
 		ILEmitter::InterfaceFlg = false
@@ -430,7 +430,7 @@ class public StmtReader
 			AsmFactory::CurnTypB = AsmFactory::CurnTypB2::DefineNestedType(dels::DelegateName::Value +  _
 					#ternary {nrgenparams > 0 ? "`" + $string$nrgenparams, string::Empty}, dta, dinhtyp)
 		end if
-		
+
 		Helpers::ApplyClsAttrs()
 		SymTable::ResetMethodLsts()
 
@@ -500,9 +500,9 @@ class public StmtReader
 
 		var dema as MethodAttributes = MethodAttributes::HideBySig or MethodAttributes::Public or MethodAttributes::NewSlot or MethodAttributes::Virtual
 		dtarr = #ternary {dels::Params::get_Count() == 0 ? Managed.Reflection.Type::EmptyTypes, Helpers::ProcessParams(dels::Params)}
-		
+
 		var drettyp as Managed.Reflection.Type = Helpers::CommitEvalTTok(dels::RetTyp)
-		
+
 		if drettyp is null then
 			StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "Class '" + dels::RetTyp::Value + "' is not defined or is not accessible.")
 		end if
@@ -555,7 +555,7 @@ class public StmtReader
 			AsmFactory::inClass = false
 		end if
 	end method
-	
+
 	method public void ReadMethod(var mtss as MethodStmt, var fpath as string)
 		ILEmitter::StaticFlg = false
 		ILEmitter::AbstractFlg = false
@@ -568,7 +568,7 @@ class public StmtReader
 
 		var mtssnamstr as string = mtss::MethodName::Value
 		var typ as Managed.Reflection.Type = null
-		
+
 		//var mtssnamarr as C5.IList<of string>
 		var overldnam as string = String::Empty
 		var overldmtd as MethodInfo = null
@@ -579,10 +579,10 @@ class public StmtReader
 		if (mtssnamstr == AsmFactory::CurnTypName) orelse (mtssnamstr like "^ctor\d*$") then
 			StreamUtils::WriteLine("	Adding Constructor: " + mtssnamstr)
 			rettyp = Loader::CachedLoadClass("System.Void")
-			var paramstyps as Managed.Reflection.Type[] = #ternary {mtss::Params::get_Count() == 0 ? Managed.Reflection.Type::EmptyTypes , Helpers::ProcessParams(mtss::Params)}			
+			var paramstyps as Managed.Reflection.Type[] = #ternary {mtss::Params::get_Count() == 0 ? Managed.Reflection.Type::EmptyTypes , Helpers::ProcessParams(mtss::Params)}
 			AsmFactory::CurnConB = AsmFactory::CurnTypB::DefineConstructor(Helpers::ProcessMethodAttrs(mtss::Attrs), CallingConventions::Standard, paramstyps)
 			AsmFactory::InitConstr()
-			
+
 			if ILEmitter::InterfaceFlg then
 				StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "Interfaces should not have Constructors!")
 			elseif AsmFactory::CurnConB::get_IsPublic() and ILEmitter::AbstractCFlg then
@@ -592,7 +592,7 @@ class public StmtReader
 			elseif ILEmitter::StaticFlg and (paramstyps[l] != 0) then
 				StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "Type Initializers should NOT have any Parameters!")
 			end if
-			
+
 //			if AsmFactory::isNested then
 //				SymTable::AddNestedCtor(paramstyps, AsmFactory::CurnConB)
 //			else
@@ -609,17 +609,17 @@ class public StmtReader
 				typ = Helpers::CommitEvalTTok(mtss::MethodName::ExplType)
 				mtssnamstr = string::Format("{0}.{1}", typ::ToString(), overldnam)
 			end if
-			
+
 			var paramstyps as Managed.Reflection.Type[]
 			var nrgenparams = 0
-			
+
 			if mtss::MethodName isnot GenericMethodNameTok then
 				paramstyps = #ternary {mtss::Params::get_Count() == 0 ? Managed.Reflection.Type::EmptyTypes , Helpers::ProcessParams(mtss::Params)}
 				mipt = SymTable::FindProtoMet(mtssnamstr, paramstyps)
 			end if
-			
+
 			fromproto = mipt isnot null
-			
+
 			if fromproto then
 				StreamUtils::WriteLine("	Continuing Method: " + mtssnamstr)
 				AsmFactory::CurnMetB = mipt::MethodBldr
@@ -638,9 +638,9 @@ class public StmtReader
 
 				var ma = Helpers::ProcessMethodAttrs(mtss::Attrs)
 				var pinfo = SymTable::PIInfo
-				
+
 				if ILEmitter::PInvokeFlg then
-					
+
 					paramstyps = #ternary {mtss::Params::get_Count() == 0 ? Managed.Reflection.Type::EmptyTypes , Helpers::ProcessParams(mtss::Params)}
 					rettyp = Helpers::CommitEvalTTok(mtss::RetTyp)
 					if rettyp = null then
@@ -650,7 +650,7 @@ class public StmtReader
 					AsmFactory::CurnMetB = AsmFactory::CurnTypB::DefinePInvokeMethod(mtssnamstr, pinfo::LibName, ma, CallingConventions::Standard, rettyp, paramstyps, pinfo::CallConv, pinfo::CSet)
 				else
 					AsmFactory::CurnMetB = AsmFactory::CurnTypB::DefineMethod(mtssnamstr, ma, Loader::CachedLoadClass("System.Void"), Managed.Reflection.Type::EmptyTypes)
-					
+
 					if mtss::MethodName is GenericMethodNameTok then
 						var gmn = $GenericMethodNameTok$mtss::MethodName
 						var paramdefs = gmn::Params
@@ -704,7 +704,7 @@ class public StmtReader
 						end for
 
 					end if
-					
+
 					paramstyps = #ternary {mtss::Params::get_Count() == 0 ? Managed.Reflection.Type::EmptyTypes , Helpers::ProcessParams(mtss::Params)}
 					rettyp = Helpers::CommitEvalTTok(mtss::RetTyp)
 					if rettyp is null then
@@ -716,7 +716,7 @@ class public StmtReader
 					//overridability check
 				end if
 			end if
-			
+
 			//if ILEmitter::InterfaceFlg and !ILEmitter::AbstractFlg then
 			//	StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Methods in Interfaces should all be Abstract!")
 			if ILEmitter::InterfaceFlg and ILEmitter::StaticFlg then
@@ -724,7 +724,7 @@ class public StmtReader
 			elseif !ILEmitter::StaticFlg and ILEmitter::StaticCFlg then
 				StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "Static Classes should not have Instance Methods!")
 			end if
-			
+
 			if !ILEmitter::ProtoFlg then
 				var pbrv as ParameterBuilder = AsmFactory::CurnMetB::DefineParameter(0, Managed.Reflection.ParameterAttributes::Retval, $string$null)
 				if Enumerable::Contains<of integer>(SymTable::ParameterCALst::get_Keys(), 0) then
@@ -732,7 +732,7 @@ class public StmtReader
 						pbrv::SetCustomAttribute(ca)
 					end for
 				end if
-				
+
 				if ILEmitter::PInvokeFlg then
 					AsmFactory::InitPInvokeMtd()
 				else
@@ -744,7 +744,7 @@ class public StmtReader
 					AsmFactory::CurnTypB::DefineMethodOverride(AsmFactory::CurnMetB, overldmtd)
 				end if
 			end if
-			
+
 			if !fromproto then
 //				if AsmFactory::isNested then
 //					SymTable::AddNestedMet(mtssnamstr, rettyp, paramstyps, AsmFactory::CurnMetB)
@@ -752,16 +752,16 @@ class public StmtReader
 					SymTable::AddMet(mtssnamstr, rettyp, paramstyps, AsmFactory::CurnMetB, nrgenparams)
 //				end if
 			end if
-			
+
 			if !ILEmitter::ProtoFlg then
 				if mtss::Params::get_Count() != 0 then
 					Helpers::PostProcessParams(mtss::Params)
 				end if
 			end if
 		end if
-		
+
 		Helpers::ApplyMetAttrs()
-		
+
 		if !#expr(ILEmitter::AbstractFlg orelse ILEmitter::ProtoFlg orelse ILEmitter::PInvokeFlg) then
 			AsmFactory::InMethodFlg = true
 		end if
@@ -771,7 +771,7 @@ class public StmtReader
 			var res = cg::Process(mtss, fpath)
 
 			if !rettyp::Equals(Loader::CachedLoadClass("System.Void")) then
-				if !res::get_Item1() then
+				if !res::Item1 then
 					StreamUtils::WriteWarn(mtss::Line, 0, fpath, "This method may not return/throw in all code paths!")
 				end if
 			end if
@@ -787,7 +787,7 @@ class public StmtReader
 			end if
 		end if
 	end method
-	
+
 	method public void ReadForeach(var festm as ForeachStmt, var fpath as string)
 		SymTable::PushScope()
 		new Evaluator()::Evaluate(festm::Exp)
@@ -854,17 +854,17 @@ class public StmtReader
 		end if
 		cg::Process(festm, fpath)
 	end method
-	
+
 	method public void ReadEvent(var evss as EventStmt, var fpath as string)
 		var etyp as Managed.Reflection.Type = Helpers::CommitEvalTTok(evss::EventTyp)
 		var eit = string::Empty
 		var eit2 as TypeTok = null
 		var typ as Managed.Reflection.Type = null
-		
+
 		if etyp is null then
 			StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "Class '" + evss::EventTyp::Value + "' is not defined.")
 		end if
-		
+
 		var evssnamstr as string = evss::EventName::Value
 		//var evssnamarr as C5.IList<of string> = ParseUtils::StringParserL(evssnamstr, '.')
 		var evoverldnam as string = string::Empty
@@ -877,23 +877,23 @@ class public StmtReader
 			eit2 = evss::EventName::ExplType
 			evssnamstr = i"{typ::ToString()}.{evoverldnam}"
 		end if
-		
+
 		AsmFactory::CurnEventB = AsmFactory::CurnTypB::DefineEvent(evssnamstr,EventAttributes::None, etyp)
 		SymTable::CurnEvent = new EventItem(evnam, etyp, AsmFactory::CurnEventB, evss::Attrs, eit) {ExplType = eit2}
 		AsmFactory::CurnEventType = etyp
-		
+
 		Helpers::ApplyEventAttrs()
-		
+
 		StreamUtils::WriteLine("	Adding Event: " + evss::EventName::Value)
 		cg::Process(evss, fpath)
 	end method
-	
+
 	method public void ReadEventAdd(var evas as EventAddStmt, var fpath as string)
 		if evas::Adder isnot null then
 			if SymTable::CurnEvent::ExplImplType::get_Length() > 0 then
 				evas::Adder::Value = SymTable::CurnEvent::ExplImplType + "." + evas::Adder::Value
 			end if
-			
+
 			var mb as MethodBuilder = $MethodBuilder$SymTable::FindMet(evas:Adder::Value, new Managed.Reflection.Type[] {SymTable::CurnEvent::EventTyp})
 			if mb isnot null then
 				AsmFactory::CurnEventB::SetAddOnMethod(mb)
@@ -912,13 +912,13 @@ class public StmtReader
 		end if
 		cg::Process(evas, fpath)
 	end method
-	
+
 	method public void ReadEventRemove(var evas as EventRemoveStmt, var fpath as string)
 		if evas::Remover isnot null then
 			if SymTable::CurnEvent::ExplImplType::get_Length() > 0 then
 				evas::Remover::Value = SymTable::CurnEvent::ExplImplType + "." + evas::Remover::Value
 			end if
-			
+
 			var mb as MethodBuilder = $MethodBuilder$SymTable::FindMet(evas:Remover::Value, new Managed.Reflection.Type[] {SymTable::CurnEvent::EventTyp})
 			if mb isnot null then
 				AsmFactory::CurnEventB::SetRemoveOnMethod(mb)
@@ -937,7 +937,7 @@ class public StmtReader
 		end if
 		cg::Process(evas, fpath)
 	end method
-	
+
 	method public void ReadVer(var asmv as VerStmt, var fpath as string)
 		AsmFactory::AsmNameStr::set_Version(asmv::ToVersion())
 		if AsmFactory::PCLSet then
@@ -967,30 +967,30 @@ class public StmtReader
 			AsmFactory::AsmB::SetCustomAttribute(new CustomAttributeBuilder(dtyp::GetConstructor(new Managed.Reflection.Type[] {dattyp}), new object[] {$object$debugattr}))
 		end if
 		// --------------------------------------------------------------------------------------------------------
-		
+
 		Helpers::ApplyAsmAttrs()
-		
+
 		AsmFactory::AsmFile = AsmFactory::AsmNameStr::get_Name() + "." + mods
 //		Importer::AddAsm(AsmFactory::AsmB)
 	end method
-	
+
 	method public void ReadField(var flss as FieldStmt)
 		var ftyp as Managed.Reflection.Type = Helpers::CommitEvalTTok(flss::FieldTyp)
-			
+
 		if ftyp is null then
 			StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("Class '{0}' is not defined.", flss::FieldTyp::Value))
 		end if
-		
+
 		AsmFactory::CurnFldB = AsmFactory::CurnTypB::DefineField(flss::FieldName::Value, ftyp, Helpers::ProcessFieldAttrs(flss::Attrs))
-		
+
 		if ILEmitter::InterfaceFlg then
 			StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "Interfaces should not have Fields!")
 		elseif !AsmFactory::CurnFldB::get_IsStatic() andalso ILEmitter::StaticCFlg then
 			StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "Static Classes should not have Instance Fields!")
 		end if
-		
+
 		Helpers::ApplyFldAttrs()
-		
+
 		var litval as ConstInfo = null
 		if AsmFactory::CurnFldB::get_IsLiteral() then
 			if flss::ConstExp is null then
@@ -1004,7 +1004,7 @@ class public StmtReader
 				end if
 			end if
 		end if
-		
+
 //		if AsmFactory::isNested then
 //			SymTable::AddNestedFld(flss::FieldName::Value, ftyp, AsmFactory::CurnFldB)
 //		else
@@ -1014,14 +1014,14 @@ class public StmtReader
 		StreamUtils::Write(#ternary{AsmFactory::CurnFldB::get_IsLiteral() ?  "	Adding Constant: ", "	Adding Field: "})
 		StreamUtils::WriteLine(flss::FieldName::Value)
 	end method
-	
+
 	method public void ReadFor(var fstm as ForStmt, var fpath as string)
 		var ttu = Helpers::CommitEvalTTok(fstm::Typ)
 		if ttu is null andalso (fstm::Typ isnot null) then
 			StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("Class '{0}' is not defined.", fstm::Typ::ToString()))
 		end if
 		SymTable::PushScope()
-		
+
 		var eval = new Evaluator()
 		eval::Evaluate(fstm::StartExp)
 		var ttu2 = ttu ?? AsmFactory::Type02
@@ -1036,7 +1036,7 @@ class public StmtReader
 			end if
 		end if
 		ILEmitter::EmitStloc(ILEmitter::LocInd)
-		
+
 		SymTable::AddForLoop(fstm::Iter::Value, fstm::StepExp, fstm::Direction, fstm::Typ)
 		ILEmitter::MarkLbl(SymTable::ReadLoopStartLbl())
 		var et = Evaluator::ConvToAST(Evaluator::ConvToRPN(fstm::EndExp))
@@ -1051,7 +1051,7 @@ class public StmtReader
 		if !#expr(eval::Evaluate(new Expr() {AddToken(fstm::Iter), AddToken(#ternary{fstm::Direction ? new GtOp() {PosFromToken(fstm::Iter)}, new LtOp() {PosFromToken(fstm::Iter)}}) , _
 			AddToken(et)}, BranchOptimisation::Normal, SymTable::ReadLoopEndLbl())) then
 			ILEmitter::EmitBrtrue(SymTable::ReadLoopEndLbl())
-		end if		
+		end if
 
 		cg::Process(fstm, fpath)
 	end method
@@ -1066,7 +1066,7 @@ class public StmtReader
 			if cprop::ExplImplType::get_Length() > 0 then
 				prgs::Getter::Value = cprop::ExplImplType + "." + prgs::Getter::Value
 			end if
-			
+
 			var mb as MethodBuilder = $MethodBuilder$SymTable::FindMet(prgs::Getter::Value, cprop::ParamTyps)
 			if mb isnot null then
 				AsmFactory::CurnPropB::SetGetMethod(mb)
@@ -1091,14 +1091,14 @@ class public StmtReader
 		end if
 		cg::Process(prgs, fpath)
 	end method
-	
+
 	method public void ReadPropertySet(var prss as PropertySetStmt, var fpath as string)
 		var cprop = SymTable::CurnProp
 		if prss::Setter isnot null then
 			if cprop::ExplImplType::get_Length() > 0 then
 				prss::Setter::Value = cprop::ExplImplType + "." + prss::Setter::Value
 			end if
-			
+
 			var mb as MethodBuilder = $MethodBuilder$SymTable::FindMet(prss::Setter::Value, _
 				Enumerable::ToArray<of Managed.Reflection.Type>(Enumerable::Concat<of Managed.Reflection.Type>(cprop::ParamTyps, new Managed.Reflection.Type[] {cprop::PropertyTyp})) )
 			if mb isnot null then
@@ -1126,7 +1126,7 @@ class public StmtReader
 		end if
 		cg::Process(prss, fpath)
 	end method
-	
+
 	method public void ReadProperty(var prss as PropertyStmt, var fpath as string)
 		if prss::PropertyName::Value == "IEnumerator" then
 			prss = prss
@@ -1136,7 +1136,7 @@ class public StmtReader
 		var eit = string::Empty
 		var eit2 as TypeTok = null
 		var typ as Managed.Reflection.Type = null
-		
+
 		if ptyp is null then
 			StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "Class '" + prss::PropertyTyp::Value + "' is not defined.")
 		end if
@@ -1158,7 +1158,7 @@ class public StmtReader
 
 		StreamUtils::Write("	Adding Property: ")
 		StreamUtils::WriteLine(prss::PropertyName::Value)
-		
+
 		var isauto as boolean = false
 		var isautoind as integer = -1
 		var isrdonly as boolean = false
@@ -1174,7 +1174,7 @@ class public StmtReader
 
 		AsmFactory::CurnPropB = AsmFactory::CurnTypB::DefineProperty(prssnamstr, PropertyAttributes::None, ptyp, paramstyps)
 		SymTable::CurnProp = new PropertyItem(propnam, ptyp, AsmFactory::CurnPropB, pattrs, eit) {ParamTyps = paramstyps, Params = prss::Params, ExplType = eit2}
-		
+
 		Helpers::ApplyPropAttrs()
 
 		var i as integer = -1
@@ -1215,7 +1215,7 @@ class public StmtReader
 		end if
 
 		if isauto then
-			
+
 			//check that params[l] == 0
 			if paramstyps[l] > 0 then
 				StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "Auto generation of Indexers is not supported!")
@@ -1234,7 +1234,7 @@ class public StmtReader
 			elseif !isstatic and ILEmitter::StaticCFlg then
 				StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "Static Classes should not have Instance Properties!")
 			end if
-			
+
 			//field
 			if !isabstract then
 				var fld = Helpers::GetLocFld("_" + propnam)
@@ -1272,7 +1272,7 @@ class public StmtReader
 			cg::Process(prss, fpath)
 		end if
 	end method
-	
+
 	method public void ReadEndDo(var fpath as string)
 		var fl = SymTable::ReadLoop() as ForLoopItem
 		if fl isnot null then
@@ -1287,24 +1287,24 @@ class public StmtReader
 				if (ttu is null) andalso (fl::Typ isnot null) then
 					StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("Class '{0}' is not defined.", fl::Typ::ToString()))
 				end if
-				
+
 				var eval = new Evaluator()
 				var idt = new Ident(fl::Iter) {Line = fl::Line}
-				var et = Evaluator::ConvToAST(Evaluator::ConvToRPN(fl::StepExp))	
+				var et = Evaluator::ConvToAST(Evaluator::ConvToRPN(fl::StepExp))
 				eval::ASTEmit(et, false)
-				
+
 				if ttu isnot null then
 					if !ttu::Equals(AsmFactory::Type02) then
 						et = new ExprCallTok() {Exp = new Expr() {AddToken(et)}, set_Conv(true), set_TTok(fl::Typ), set_OrdOp("conv")}
 					end if
 				end if
-				
+
 				var ee = new Expr() { AddToken(idt), AddToken(#ternary{fl::Direction ? new AddOp(), _
 				 new SubOp()}) , AddToken(et)}
 				 Read(new AssignStmt() {Line = fl::Line, LExp = new Expr() { AddToken(idt) }, RExp = ee}, fpath)
 			end if
 		end if
-		
+
 		ILEmitter::EmitBr(SymTable::ReadLoopStartLbl())
 		ILEmitter::MarkLbl(SymTable::ReadLoopEndLbl())
 		SymTable::PopLoop()
@@ -1338,17 +1338,17 @@ class public StmtReader
 				if !MemoryFS::HasFile(pth) then
 					StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "In-Memory Assembly File '" + pth + "' does not exist.")
 				end if
-			
+
 				StreamUtils::Write("Referencing In-Memory Assembly: ")
 				StreamUtils::WriteLine(pth)
 				Importer::AddAsm(rastm::AsmPath::Value, ILEmitter::Univ::LoadAssembly(ILEmitter::Univ::OpenRawModule(MemoryFS::GetFile(pth), $string$null)))
 			else
 				rastm::AsmPath::Value = ParseUtils::ProcessMSYSPath(rastm::AsmPath::Value)
-			
+
 				if !File::Exists(rastm::AsmPath::Value) then
 					StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "Assembly File '" + rastm::AsmPath::Value + "' does not exist.")
 				end if
-			
+
 				StreamUtils::Write("Referencing Assembly: ")
 				StreamUtils::WriteLine(rastm::AsmPath::Value)
 				Importer::AddAsm(rastm::AsmPath::Value, ILEmitter::Univ::LoadFile(rastm::AsmPath::Value))
@@ -1356,18 +1356,18 @@ class public StmtReader
 		elseif stm is RefstdasmStmt then
 			var rsastm as RefstdasmStmt = $RefstdasmStmt$stm
 			rsastm::AsmPath::Value = Path::Combine(Importer::AsmBasePath, ParseUtils::ProcessMSYSPath(rsastm::AsmPath::get_UnquotedValue()))
-			
+
 			if !File::Exists(rsastm::AsmPath::Value) then
 				StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "Assembly File '" + rsastm::AsmPath::Value + "' does not exist.")
 			end if
-			
+
 			StreamUtils::Write("Referencing Assembly: ")
 			StreamUtils::WriteLine(rsastm::AsmPath::Value)
 			Importer::AddAsm(rsastm::AsmPath::Value, ILEmitter::Univ::LoadFile(rsastm::AsmPath::Value))
 		elseif stm is SignStmt then
 			var sstm as SignStmt = $SignStmt$stm
 			sstm::KeyPath::Value = ParseUtils::ProcessMSYSPath(sstm::KeyPath::get_UnquotedValue())
-			
+
 			if File::Exists(sstm::KeyPath::Value) then
 				StreamUtils::Write("Setting Signing Key: ")
 				StreamUtils::WriteLine(sstm::KeyPath::Value)
@@ -1387,7 +1387,7 @@ class public StmtReader
 				if !MemoryFS::HasFile(pth) then
 					StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "In-Memory Resource File '" + pth + "' does not exist.")
 				end if
-			
+
 				StreamUtils::Write("Adding In-Memory Resource: ")
 				StreamUtils::WriteLine(pth)
 				SymTable::ResLst::Add(Tuple::Create<of string, string, boolean, boolean>(sstm::Path::Value, sstm::LogicalName::get_UnquotedValue(), false, false))
@@ -1405,7 +1405,7 @@ class public StmtReader
 			var istm as ImportStmt = $ImportStmt$stm
 			istm::NS::Value = istm::NS::get_UnquotedValue()
 			istm::Alias::Value = istm::Alias::get_UnquotedValue()
-			
+
 			if istm::Alias::Value::get_Length() == 0 then
 				StreamUtils::Write("Importing Namespace: ")
 				StreamUtils::WriteLine(istm::NS::Value)
@@ -1417,7 +1417,7 @@ class public StmtReader
 //		elseif stm is LocimportStmt then
 //			var listm as LocimportStmt = $LocimportStmt$stm
 //			listm::NS::Value = listm::NS::get_UnquotedValue()
-//			
+//
 //			StreamUtils::Write("Importing Namespace: ")
 //			StreamUtils::WriteLine(listm::NS::Value)
 //			Importer::AddImp(listm::NS::Value)
@@ -1510,7 +1510,7 @@ class public StmtReader
 
 				if li isnot null orelse !ReturnFlg then
 					ILEmitter::EmitRet()
-				end if				
+				end if
 
 				SymTable::CheckUnusedVar()
 				SymTable::CheckCtrlBlks()
@@ -1560,7 +1560,7 @@ class public StmtReader
 			end if
 			ILEmitter::DeclVar(curva::VarName::Value, vtyp)
 			ILEmitter::LocInd++
-			
+
 			SymTable::AddVar(curva::VarName::Value, true, ILEmitter::LocInd, vtyp, ILEmitter::LineNr)
 			new Evaluator()::StoreEmit(curva::VarName, curva::RExpr)
 		elseif stm is InfVarAsgnStmt then
@@ -1569,7 +1569,7 @@ class public StmtReader
 			vtyp = eval::EvaluateType(curva::RExpr)
 			ILEmitter::DeclVar(curva::VarName::Value, vtyp)
 			ILEmitter::LocInd++
-			
+
 			SymTable::AddVar(curva::VarName::Value, true, ILEmitter::LocInd, vtyp, ILEmitter::LineNr)
 			eval::StoreEmit(curva::VarName, curva::RExpr)
 		elseif stm is UsingAsgnStmt then
@@ -1580,7 +1580,7 @@ class public StmtReader
 			end if
 			ILEmitter::DeclVar(curva::VarName::Value, vtyp)
 			ILEmitter::LocInd++
-			
+
 			if !Loader::CachedLoadClass("System.IDisposable")::IsAssignableFrom(vtyp) then
 				StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "Type '" + vtyp::ToString() + "' is not an IDisposable.")
 			end if
@@ -1588,17 +1588,17 @@ class public StmtReader
 
 			SymTable::AddVar(curva::VarName::Value, true, ILEmitter::LocInd, vtyp, ILEmitter::LineNr)
 			new Evaluator()::StoreEmit(curva::VarName, curva::RExpr)
-			
+
 			SymTable::AddUsing(curva::VarName::Value)
 			ILEmitter::EmitTry()
-			return cg::Process(curva, fpath)::get_Item1()
+			return cg::Process(curva, fpath)::Item1
 		elseif stm is InfUsingAsgnStmt then
 			var curva as InfUsingAsgnStmt = $InfUsingAsgnStmt$stm
 			eval = new Evaluator()
 			vtyp = eval::EvaluateType(curva::RExpr)
 			ILEmitter::DeclVar(curva::VarName::Value, vtyp)
 			ILEmitter::LocInd++
-			
+
 			if !Loader::CachedLoadClass("System.IDisposable")::IsAssignableFrom(vtyp) then
 				StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "Type '" + vtyp::ToString() + "' is not an IDisposable.")
 			end if
@@ -1606,10 +1606,10 @@ class public StmtReader
 
 			SymTable::AddVar(curva::VarName::Value, true, ILEmitter::LocInd, vtyp, ILEmitter::LineNr)
 			eval::StoreEmit(curva::VarName, curva::RExpr)
-			
+
 			SymTable::AddUsing(curva::VarName::Value)
 			ILEmitter::EmitTry()
-			return cg::Process(curva, fpath)::get_Item1()
+			return cg::Process(curva, fpath)::Item1
 		elseif stm is NSStmt then
 			var nss as NSStmt = $NSStmt$stm
 			AsmFactory::PushNS(nss::NS::get_UnquotedValue())
@@ -1676,8 +1676,8 @@ class public StmtReader
 			if !AsmFactory::Type02::Equals(Loader::CachedLoadClass("System.Boolean")) then
 				StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "Conditions for If Statements should evaluate to boolean.")
 			end if
-			
-			var rtf = cg::Process(ifstm, fpath)::get_Item1()
+
+			var rtf = cg::Process(ifstm, fpath)::Item1
 			var he = false
 
 			foreach b in ifstm::Branches
@@ -1697,17 +1697,17 @@ class public StmtReader
 					if !AsmFactory::Type02::Equals(Loader::CachedLoadClass("System.Boolean")) then
 						StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "Conditions for ElseIf Statements should evaluate to boolean.")
 					end if
-					
-					rtf = cg::Process(elifstm, fpath)::get_Item1() andalso rtf
+
+					rtf = cg::Process(elifstm, fpath)::Item1 andalso rtf
 				elseif b is ElseStmt then
 					he = true
-					PreRead(b, fpath)	
+					PreRead(b, fpath)
 					ILEmitter::EmitBr(SymTable::ReadIfEndLbl())
 					ILEmitter::MarkLbl(SymTable::ReadIfNxtBlkLbl())
 					SymTable::SetIfElsePass()
 					SymTable::PopScope()
 					SymTable::PushScope()
-					rtf = cg::Process($ElseStmt$b, fpath)::get_Item1() andalso rtf
+					rtf = cg::Process($ElseStmt$b, fpath)::Item1 andalso rtf
 				end if
 			end for
 
@@ -1742,18 +1742,18 @@ class public StmtReader
 					i++
 					PreRead(b, fpath)
 					ILEmitter::MarkLbl(SymTable::ReadSwitchStateLbl(i))
-					SymTable::PushScope()				
-					rtf = cg::Process(b, fpath)::get_Item1() andalso rtf
+					SymTable::PushScope()
+					rtf = cg::Process(b, fpath)::Item1 andalso rtf
 					SymTable::PopScope()
 					if swstm::HasDefault orelse i != --brs::get_Count() then
 						ILEmitter::EmitBr(SymTable::ReadSwitchEndLbl())
 					end if
 				elseif b is DefaultStmt then
 					he = true
-					PreRead(b, fpath)	
+					PreRead(b, fpath)
 					ILEmitter::MarkLbl(SymTable::ReadSwitchDefaultLbl())
 					SymTable::PushScope()
-					rtf = cg::Process(b, fpath)::get_Item1() andalso rtf
+					rtf = cg::Process(b, fpath)::Item1 andalso rtf
 					SymTable::PopScope()
 					//this is the latest branch, no jump needed
 				end if
@@ -1801,7 +1801,7 @@ class public StmtReader
 			if !#expr(new Evaluator()::Evaluate(whstm::Exp, BranchOptimisation::Normal, SymTable::ReadLoopStartLbl())) then
 				ILEmitter::EmitBrtrue(SymTable::ReadLoopStartLbl())
 			end if
-				
+
 			if !AsmFactory::Type02::Equals(Loader::CachedLoadClass("System.Boolean")) then
 				StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "Conditions for While Statements should evaluate to boolean.")
 			end if
@@ -1881,7 +1881,7 @@ class public StmtReader
 			SymTable::PushScope()
 			ILEmitter::EmitTry()
 			SymTable::AddTry()
-			var rtf = cg::Process($TryStmt$stm, fpath)::get_Item1()
+			var rtf = cg::Process($TryStmt$stm, fpath)::Item1
 
 			foreach b in #expr($TryStmt$stm)::Branches
 				if b is FinallyStmt then
@@ -1937,7 +1937,7 @@ class public StmtReader
 
 					ILEmitter::EmitStloc(SymTable::FindVar(cats::ExName::Value)::Index)
 
-					rtf = cg::Process(cats, fpath)::get_Item1() andalso rtf
+					rtf = cg::Process(cats, fpath)::Item1 andalso rtf
 				end if
 			end for
 			return rtf
@@ -2024,7 +2024,7 @@ class public StmtReader
 			ILEmitter::EmitLdloc(lockee)
 			ILEmitter::EmitCall(Loader::CachedLoadClass("System.Threading.Monitor")::GetMethod("Enter", new Managed.Reflection.Type[] {Loader::LoadClass("System.Object")}))
 			ILEmitter::EmitTry()
-			return cg::Process(lstm, fpath)::get_Item1()
+			return cg::Process(lstm, fpath)::Item1
 		elseif stm is TryLockStmt then
 			var lstm as TryLockStmt = $TryLockStmt$stm
 			SymTable::PushScope()

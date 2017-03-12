@@ -1,16 +1,16 @@
 //    tokenizer.CodeGen.dll dylan.NET.Tokenizer.CodeGen Copyright (C) 2013 Dylan Borg <borgdylan@hotmail.com>
 //    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software
 // Foundation; either version 3 of the License, or (at your option) any later version.
-//    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+//    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
 //PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
-//    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
-//Place, Suite 330, Boston, MA 02111-1307 USA 
+//    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple
+//Place, Suite 330, Boston, MA 02111-1307 USA
 
 class private LPFileTuple
 
 	field public string Path
 	field public IncludeStmt InclStmt
-	
+
 	method public void LPFileTuple(var p as string,var incs as IncludeStmt)
 		mybase::ctor()
 		Path = p
@@ -74,8 +74,8 @@ end class
 class public partial CodeGenerator
 
 	method public prototype void EmitMSIL(var stmts as StmtSet, var fpath as string)
-	method assembly prototype Tuple<of boolean, boolean> Process(var c as IStmtContainer, var spth as string)
-	method assembly prototype Tuple<of boolean, boolean> Process(var c as IStmtContainer, var spth as string, var rtflag as boolean, var awflag as boolean)
+	method assembly prototype ValueTuple<of boolean, boolean> Process(var c as IStmtContainer, var spth as string)
+	method assembly prototype ValueTuple<of boolean, boolean> Process(var c as IStmtContainer, var spth as string, var rtflag as boolean, var awflag as boolean)
 
 end class
 
@@ -95,7 +95,7 @@ class public CodeGenerator
 		clos::sst = $StmtSet$sset
 		System.Threading.Tasks.Parallel::ForEach<of Stmt>(clos::sst::get_Children(), new Action<of Stmt>(clos::LPThreadIteration))
 	end method
-	
+
 // 	hash set is used to keep track of visited assemblies to avoid cycles in the dep graph
 //	method private void MarkUsed(var lst as IEnumerable<of string>, var hset as C5.HashSet<of string>)
 //		foreach a in lst
@@ -115,15 +115,15 @@ class public CodeGenerator
 //		end for
 //	end method
 
-	method assembly Tuple<of boolean, boolean> Process(var c as IStmtContainer, var spth as string, var rtflag as boolean, var awflag as boolean)
+	method assembly ValueTuple<of boolean, boolean> Process(var c as IStmtContainer, var spth as string, var rtflag as boolean, var awflag as boolean)
 		var eval as Evaluator = new Evaluator()
 
 		foreach s in c::get_Children()
 			if s is HIfStmt then
 				if eval::EvaluateHIf(#expr($HIfStmt$s)::Exp) then
 					var res = Process($HIfStmt$s, spth)
-					rtflag = res::get_Item1()
-					awflag = res::get_Item2()
+					rtflag = res::Item1
+					awflag = res::Item2
 					continue
 				end if
 
@@ -131,37 +131,37 @@ class public CodeGenerator
 					if b is HElseIfStmt then
 						if eval::EvaluateHIf(#expr($HElseIfStmt$b)::Exp) then
 							var res = Process($HElseIfStmt$b, spth)
-							rtflag = res::get_Item1()
-							awflag = res::get_Item2()
+							rtflag = res::Item1
+							awflag = res::Item2
 							break
 						end if
 					elseif b is HElseStmt then
 						var res = Process($HElseStmt$b, spth)
-						rtflag = res::get_Item1()
-						awflag = res::get_Item2()
+						rtflag = res::Item1
+						awflag = res::Item2
 						break
 					end if
 				end for
 			elseif s is EndHIfStmt then
 			elseif s is RegionStmt then
 				var res = Process($RegionStmt$s, spth, rtflag, awflag)
-				rtflag = res::get_Item1()
-				awflag = res::get_Item2()
+				rtflag = res::Item1
+				awflag = res::Item2
 			elseif s is EndRegionStmt then
 			elseif s is IncludeStmt then
 				var inclustm as IncludeStmt = $IncludeStmt$s
 				//var pth as string
 				var sset as StmtSet
-					
+
 				lock inclustm::Path
-						
+
 					if inclustm::HasError then
 						StreamUtils::Terminate()
 					end if
 
 					inclustm::Path::Value = ParseUtils::ProcessMSYSPath(inclustm::Path::get_UnquotedValue())
 					//pth = inclustm::Path::Value
-						
+
 					if inclustm::SSet is null then
 						inclustm::Path::Value = Path::Combine(Path::GetDirectoryName(spth), inclustm::Path::Value)
 						if !File::Exists(inclustm::Path::Value) then
@@ -188,16 +188,16 @@ class public CodeGenerator
 						sset = inclustm::SSet
 					end if
 				end lock
-						
+
 				EmitMSIL(sset, inclustm::Path::Value)
 			else
 				if s isnot null then
-					
+
 					if rtflag andalso s isnot EndStmt andalso !awflag then
 						awflag = true
 						StreamUtils::WriteWarn(s::Line, 0, spth, "Unreachable code detected!")
 					end if
-					
+
 					var res = sr::Read(s, spth)
 					if res then
 						rtflag = true
@@ -206,17 +206,17 @@ class public CodeGenerator
 			end if
 		end for
 
-		return Tuple::Create<of boolean, boolean>(rtflag, awflag)
+		return ValueTuple::Create<of boolean, boolean>(rtflag, awflag)
 	end method
 
-	method assembly Tuple<of boolean, boolean> Process(var c as IStmtContainer, var spth as string) => Process(c, spth, false, false)
+	method assembly ValueTuple<of boolean, boolean> Process(var c as IStmtContainer, var spth as string) => Process(c, spth, false, false)
 
 	method public void EmitMSIL(var stmts as StmtSet, var fpath as string)
 		stmts::Path = fpath
 		//ThreadPool::QueueUserWorkItem(new WaitCallback(LPThread()),stmts)
-		
+
 		//var i as integer = -1
-		
+
 		if ILEmitter::SrcFiles::get_Count() == 0 then
 			SymTable::DefSyms::Clear()
 			SymTable::AddDef("CLR_" + $string$Environment::get_Version()::get_Major())
@@ -234,9 +234,9 @@ class public CodeGenerator
 				ILEmitter::AddDocWriter(docw)
 			end if
 		end if
-		
+
 		Process(stmts, fpath)
-		
+
 		ILEmitter::PopSrcFile()
 
 		foreach rec in Importer::ImpsStack::get_Last()
@@ -272,7 +272,7 @@ class public CodeGenerator
 			var fileHandles = new C5.LinkedList<of FileStream>()
 
 			foreach r in SymTable::ResLst
-				
+
 				if r::get_Item1() like "^memory:(.)*$" then
 					var pth = r::get_Item1()::Substring(7)
 

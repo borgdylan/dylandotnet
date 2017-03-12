@@ -17,6 +17,7 @@
 
         <PackageReference Include="Rx-Main" Version="2.2.5" />
         <PackageReference Include="C5" Version="2.4.5947" />
+        <PackageReference Include="System.ValueTuple" Version="4.3.0" />
     </ItemGroup>
     <ItemGroup>
         <ResScript Include="Messages.dylres" EmitDesigner="True" />
