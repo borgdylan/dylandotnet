@@ -22,7 +22,7 @@ Modified by Dylan Borg for dylan.NET Support, based on the C# version.
 		<Language>dylan.NET</Language>
 		<DefaultLanguageSourceExtension>.dyl</DefaultLanguageSourceExtension>
 		<InputFile Condition=" '$(InputFile)' == '' ">$(AssemblyName).dyl</InputFile>
-        
+
         <_SdkLanguageName>dylan.NET</_SdkLanguageName>
         <_SdkLangExtention>.dyl</_SdkLangExtention>
 
@@ -34,12 +34,32 @@ Modified by Dylan Borg for dylan.NET Support, based on the C# version.
         <DefineCommonCapabilities Condition=" '$(DefineCommonCapabilities)' == '' ">true</DefineCommonCapabilities>
         <SynthesizeLinkMetadata Condition=" '$(SynthesizeLinkMetadata)' == '' and '$(HasSharedItems)' == 'true' ">true</SynthesizeLinkMetadata>
     </PropertyGroup>
-    
+
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
         <DefineConstants>$(DefineConstants);DEBUG;TRACE</DefineConstants>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
         <DefineConstants>$(DefineConstants);TRACE</DefineConstants>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(DisableImplicitConfigurationDefines)' != 'true'">
+        <ImplicitConfigurationDefine>$(Configuration.ToUpperInvariant())</ImplicitConfigurationDefine>
+
+        <!-- Replace dashes and periods in the configuration with underscores.  This makes it more likely that
+            the resulting compilation constant will be a valid C# conditional compilation symbol.  As the set
+            of characters that aren't allowed is essentially open-ended, there's probably not a good way to
+            fully sanitize the Configuration in MSBuild evaluation.  If the resulting string still isn't a
+            valid conditional combilation symbol, then the compiler will generate the following error and
+            the define will be ignored:
+                warning MSB3052: The parameter to the compiler is invalid, '/define:0BAD_DEFINE' will be ignored.
+            -->
+
+        <ImplicitConfigurationDefine>$(ImplicitConfigurationDefine.Replace('-', '_'))</ImplicitConfigurationDefine>
+        <ImplicitConfigurationDefine>$(ImplicitConfigurationDefine.Replace('.', '_'))</ImplicitConfigurationDefine>
+        <DefineConstants>$(DefineConstants);$(ImplicitConfigurationDefine)</DefineConstants>
+    </PropertyGroup>
+    <PropertyGroup>
+        <DefineConstants>$(DefineConstants);$(ImplicitFrameworkDefine)</DefineConstants>
     </PropertyGroup>
 
     <ItemGroup>
@@ -52,8 +72,8 @@ Modified by Dylan Borg for dylan.NET Support, based on the C# version.
         </PropertyPageSchema>-->
 
         <ProjectCapability Include="dylan.NET;Managed"/>
-        <Compile Include="**\*.dyl" />
-        <Compile Include="*.dyl" />
+        <!--<Compile Include="**\*.dyl" />
+        <Compile Include="*.dyl" />-->
         <Compile Remove="msbuild.dyl" />
     </ItemGroup>
 

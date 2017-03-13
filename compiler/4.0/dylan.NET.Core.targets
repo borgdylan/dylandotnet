@@ -29,7 +29,7 @@ Modified by Dylan Borg for dylan.NET Support, based on the C# version.
     <Target Name="CalcResScriptOuts">
         <FindResProcOuts Inputs="@(ResScript)">
             <Output TaskParameter="Outputs" ItemName="ProcScripts" />
-            <Output TaskParameter="Outputs" ItemName="EmbeddedResource" />
+            <Output TaskParameter="FilteredOutputs" ItemName="EmbeddedResource" />
         </FindResProcOuts>
     </Target>
 

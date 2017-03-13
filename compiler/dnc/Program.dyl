@@ -117,7 +117,6 @@ class public static Program
 	end method
 
 	#if NET46 orelse NET45 orelse NET40 then
-
 		method private static void InvokeAsyncWrapper(var args as object)
 			Invoke($string[]$args)
 		end method

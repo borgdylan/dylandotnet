@@ -1,10 +1,8 @@
 namespace dylan.NET.Utils
-
-    class private static Messages
+\n    class private static Messages
 
         field private static System.Resources.ResourceManager resman
-
-        method private static void Messages()
+\n        method private static void Messages()
             resman = new System.Resources.ResourceManager(gettype Messages)
         end method
 
