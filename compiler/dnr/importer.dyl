@@ -1,14 +1,15 @@
 //    dnr.dll dylan.NET.Reflection Copyright (C) 2013 Dylan Borg <borgdylan@hotmail.com>
 //    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software
 // Foundation; either version 3 of the License, or (at your option) any later version.
-//    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+//    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
 //PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
-//    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
-//Place, Suite 330, Boston, MA 02111-1307 USA 
+//    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple
+//Place, Suite 330, Boston, MA 02111-1307 USA
 
 class public static Importer
 
 	field public static C5.HashDictionary<of string, AssemblyRecord> Asms
+	field public static AssemblyRecord ValueTupleAsm
 	//field public static C5.IList<of string> Imps
 	field public static C5.LinkedList<of C5.LinkedList<of ImportRecord> > ImpsStack
 	field public static C5.IDictionary<of string, string> AliasMap
@@ -17,6 +18,7 @@ class public static Importer
 
 	[method: ComVisible(false)]
 	method public static void Init()
+		ValueTupleAsm = null
 		Asms = new C5.HashDictionary<of string, AssemblyRecord>(C5.MemoryType::Normal)
 		//Imps = new C5.LinkedList<of string>()
 		ImpsStack = new C5.LinkedList<of C5.LinkedList<of ImportRecord> > {new C5.LinkedList<of ImportRecord>()}
@@ -51,6 +53,10 @@ class public static Importer
 	method public static void AddAsm(var path as string, var asmm as Managed.Reflection.Assembly)
 		if !Asms::Contains(path) then
 			Asms::Add(path, new AssemblyRecord(asmm))
+
+			if asmm::GetName()::get_Name() == "System.ValueTuple" then
+				ValueTupleAsm = Asms::get_Item(path)
+			end if
 		end if
 	end method
 
@@ -58,7 +64,7 @@ class public static Importer
 	method public static void AddImp(var imp as string)
 		ImpsStack::get_Last()::Add(new ImportRecord(imp, ILEmitter::LineNr))
 	end method
-	
+
 	[method: ComVisible(false)]
 	method public static void RegisterAlias(var alias as string, var ns as string)
 		AliasMap::Add(alias, ns)
