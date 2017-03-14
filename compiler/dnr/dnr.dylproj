@@ -20,7 +20,7 @@
         </Reference>
 
         <PackageReference Include="C5" Version="2.4.5947" />
-        <PackageReference Include="Ix-Main" Version="1.2.2" />
+        <PackageReference Include="System.Interactive" Version="3.1.1" />
 
         <ProjectReference Include="$(MSBuildThisFileDirectory)..\dnu\dnu.dylproj" />
     </ItemGroup>

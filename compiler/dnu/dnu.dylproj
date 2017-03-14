@@ -15,7 +15,7 @@
         <Reference Include="System.Xml.Linq" />
         <Reference Include="System.Xml" />
 
-        <PackageReference Include="Rx-Main" Version="2.2.5" />
+        <PackageReference Include="System.Reactive" Version="3.1.1" />
         <PackageReference Include="C5" Version="2.4.5947" />
         <PackageReference Include="System.ValueTuple" Version="4.3.0" />
     </ItemGroup>
