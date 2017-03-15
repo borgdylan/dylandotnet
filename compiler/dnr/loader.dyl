@@ -68,6 +68,7 @@ class public static Loader
 			var curns = curnsrec::Namespace ?? string::Empty
 			var typname = #ternary{curns::get_Length() == 0 ? name , i"{curns}.{name}"}
 
+			#if VTUP_HACK then
 			if typname == "System.ValueTuple" andalso (Importer::ValueTupleAsm isnot null) then
 				typ = Importer::ValueTupleAsm::Asm::GetType(typname)
 				if typ isnot null then
@@ -79,6 +80,7 @@ class public static Loader
 					break
 				end if
 			end if
+			end #if
 
 			foreach curasmrec in Importer::Asms::get_Values()
 				var curasm = curasmrec::Asm

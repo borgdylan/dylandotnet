@@ -7,6 +7,8 @@
         <RootNamespace>dylan.NET.Reflection</RootNamespace>
         <AssemblyName>dnr</AssemblyName>
         <TargetFrameworks>net46</TargetFrameworks>
+
+        <DefineConstants>$(DefineConstants);VTUP_HACK</DefineConstants>
     </PropertyGroup>
     <ItemGroup>
         <Reference Include="System" />

@@ -9,7 +9,11 @@
 class public static Importer
 
 	field public static C5.HashDictionary<of string, AssemblyRecord> Asms
+
+	#if VTUP_HACK then
 	field public static AssemblyRecord ValueTupleAsm
+	end #if
+
 	//field public static C5.IList<of string> Imps
 	field public static C5.LinkedList<of C5.LinkedList<of ImportRecord> > ImpsStack
 	field public static C5.IDictionary<of string, string> AliasMap
@@ -54,9 +58,11 @@ class public static Importer
 		if !Asms::Contains(path) then
 			Asms::Add(path, new AssemblyRecord(asmm))
 
+			#if VTUP_HACK then
 			if asmm::GetName()::get_Name() == "System.ValueTuple" then
 				ValueTupleAsm = Asms::get_Item(path)
 			end if
+			end #if
 		end if
 	end method
 
