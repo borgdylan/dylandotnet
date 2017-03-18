@@ -69,7 +69,7 @@ class public static Loader
 			var typname = #ternary{curns::get_Length() == 0 ? name , i"{curns}.{name}"}
 
 			#if VTUP_HACK then
-			if typname == "System.ValueTuple" andalso (Importer::ValueTupleAsm isnot null) then
+			if (typname == "System.ValueTuple" orelse typname like "^System.ValueTuple`\d+$") andalso (Importer::ValueTupleAsm isnot null) then
 				typ = Importer::ValueTupleAsm::Asm::GetType(typname)
 				if typ isnot null then
 					break
@@ -330,7 +330,7 @@ class public static Loader
 			mtdinfo =  $Managed.Reflection.MethodInfo$bind::SelectMethod(bf,matches,typs,new Managed.Reflection.ParameterModifier[0])
 		end if
 
-		if mtdinfo is null then
+		if mtdinfo is null andalso typ::get_IsInterface() then
 			ints = typ::GetInterfaces()
 
 			if ints isnot null andalso !typ::get_IsValueType() then

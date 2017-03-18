@@ -105,27 +105,25 @@ class public Evaluator
 					ans = Helpers::EmitNeg(AsmFactory::Type02, emt, #ternary { i == ops[l] ? bo, BranchOptimisation::None}, lab)
 				end if
 			end if
-			if (s == "not") andalso (iuo is INotable) then
-				if #expr($INotable$iuo)::get_DoNot() then
-					if emt then
+
+			if emt then
+				if (s == "not") andalso (iuo is INotable) then
+					if #expr($INotable$iuo)::get_DoNot() then
 						Helpers::EmitNot(AsmFactory::Type02)
 					end if
 				end if
-			end if
-			if (s == "inc") andalso (iuo is IIncDecable) then
-				if #expr($IIncDecable$iuo)::get_DoInc() then
-					if emt then
+				if (s == "inc") andalso (iuo is IIncDecable) then
+					if #expr($IIncDecable$iuo)::get_DoInc() then
 						Helpers::EmitInc(AsmFactory::Type02)
 					end if
 				end if
-			end if
-			if (s == "dec") andalso (iuo is IIncDecable) then
-				if #expr($IIncDecable$iuo)::get_DoDec() then
-					if emt then
+				if (s == "dec") andalso (iuo is IIncDecable) then
+					if #expr($IIncDecable$iuo)::get_DoDec() then
 						Helpers::EmitDec(AsmFactory::Type02)
 					end if
 				end if
 			end if
+
 		end for
 		return ans
 	end method
