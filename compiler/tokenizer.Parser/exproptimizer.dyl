@@ -194,7 +194,7 @@ class public ExprOptimizer
 			var lvl as integer = 1
 			var len as integer = --stm::Tokens::get_Count()
 
-			do until i = len
+			do until i == len
 				i++
 				if stm::Tokens::get_Item(i) is LAParen then
 					ep2::AddToken(stm::Tokens::get_Item(i))
@@ -366,7 +366,7 @@ class public ExprOptimizer
 
 		var flgc as boolean[] = new boolean[] {PFlags::MetCallFlag, PFlags::IdentFlag, PFlags::StringFlag, PFlags::CtorFlag}
 
-		do until i = len
+		do until i == len
 
 			//get parameters
 			i++
@@ -454,7 +454,7 @@ class public ExprOptimizer
 		var len as integer = --stm::Tokens::get_Count()
 		i--
 
-		do until i = len
+		do until i == len
 			i++
 
 			if (stm::Tokens::get_Item(i) is RParen) orelse (stm::Tokens::get_Item(i) is RAParen) orelse (stm::Tokens::get_Item(i) is RCParen) then
@@ -511,7 +511,7 @@ class public ExprOptimizer
 		var len as integer = --stm::Tokens::get_Count()
 		i--
 
-		do until i = len
+		do until i == len
 			i++
 
 			if (stm::Tokens::get_Item(i) is RParen) orelse (stm::Tokens::get_Item(i) is RAParen) orelse (stm::Tokens::get_Item(i) is RCParen) then
@@ -584,7 +584,7 @@ class public ExprOptimizer
 		var len as integer = --stm::Tokens::get_Count()
 		i--
 
-		do until i = len
+		do until i == len
 			i++
 
 			if (stm::Tokens::get_Item(i) is RParen) orelse (stm::Tokens::get_Item(i) is RAParen) orelse (stm::Tokens::get_Item(i) is RCParen) then
@@ -628,7 +628,7 @@ class public ExprOptimizer
 		var len as integer = --stm::Tokens::get_Count()
 		i--
 
-		do until i = len
+		do until i == len
 			i++
 
 			if (stm::Tokens::get_Item(i) is RParen) orelse (stm::Tokens::get_Item(i) is RAParen) orelse (stm::Tokens::get_Item(i) is RCParen) then
@@ -707,7 +707,7 @@ class public ExprOptimizer
 		len = --stm::Tokens::get_Count()
 		i--
 
-		do until i = len
+		do until i == len
 
 			//get parameters/members/length
 			i++
@@ -910,7 +910,7 @@ class public ExprOptimizer
 
 		var flgc as boolean[] = new boolean[] {PFlags::MetCallFlag, PFlags::IdentFlag, PFlags::StringFlag, PFlags::CtorFlag}
 
-		do until i = len
+		do until i == len
 			//get parameters
 			i++
 
