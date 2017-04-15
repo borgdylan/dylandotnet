@@ -316,6 +316,22 @@ class public static ParseUtils
 					buf::Append(c'\q')
 				end if
 				continue
+			elseif cc == c'\\' andalso lc == 'n' then
+				i++
+				if mode then
+					cbuf::Append(c'\n')
+				else
+					buf::Append(c'\n')
+				end if
+				continue
+			elseif cc == c'\\' andalso lc == 'r' then
+				i++
+				if mode then
+					cbuf::Append(c'\r')
+				else
+					buf::Append(c'\r')
+				end if
+				continue
 			elseif cc == c'\\' andalso lc == c'\\' then
 				i++
 				if mode then

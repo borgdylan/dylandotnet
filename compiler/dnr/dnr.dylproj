@@ -8,7 +8,7 @@
         <AssemblyName>dnr</AssemblyName>
         <TargetFrameworks>net46</TargetFrameworks>
 
-        <DefineConstants>$(DefineConstants);VTUP_HACK</DefineConstants>
+        <DefineConstants>$(DefineConstants);</DefineConstants>
     </PropertyGroup>
     <ItemGroup>
         <Reference Include="System" />

@@ -950,7 +950,8 @@ class public StmtReader
 		var mods as string = #ternary {AsmFactory::AsmMode == "exe" or AsmFactory::AsmMode == "winexe" ? "exe", "dll" }
 
 		AsmFactory::AsmB = ILEmitter::Univ::DefineDynamicAssembly(AsmFactory::AsmNameStr, AssemblyBuilderAccess::Save, Directory::GetCurrentDirectory())
-		AsmFactory::MdlB = AsmFactory::AsmB::DefineDynamicModule(i"{AsmFactory::AsmNameStr::get_Name()}.{mods}", i"{AsmFactory::AsmNameStr::get_Name()}.{mods}", AsmFactory::DebugFlg)
+		var modName as string = i"{AsmFactory::AsmNameStr::get_Name()}.{mods}"
+		AsmFactory::MdlB = AsmFactory::AsmB::DefineDynamicModule(modName, modName, AsmFactory::DebugFlg)
 
 		if AsmFactory::DebugFlg then
 			fpath = Path::GetFullPath(fpath)
@@ -970,7 +971,7 @@ class public StmtReader
 
 		Helpers::ApplyAsmAttrs()
 
-		AsmFactory::AsmFile = i"{AsmFactory::AsmNameStr::get_Name()}.{mods}"
+		AsmFactory::AsmFile = modName
 //		Importer::AddAsm(AsmFactory::AsmB)
 	end method
 

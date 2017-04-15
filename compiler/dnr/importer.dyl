@@ -22,7 +22,10 @@ class public static Importer
 
 	[method: ComVisible(false)]
 	method public static void Init()
+		#if VTUP_HACK
 		ValueTupleAsm = null
+		end #if
+
 		Asms = new C5.HashDictionary<of string, AssemblyRecord>(C5.MemoryType::Normal)
 		//Imps = new C5.LinkedList<of string>()
 		ImpsStack = new C5.LinkedList<of C5.LinkedList<of ImportRecord> > {new C5.LinkedList<of ImportRecord>()}
