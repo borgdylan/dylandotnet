@@ -64,7 +64,6 @@ Modified by Dylan Borg for dylan.NET Support, based on the C# version.
             @(_DebugSymbolsIntermediatePath);
             $(NonExistentFile);
             @(CustomAdditionalCompileOutputs)"
-        Returns="@(CscCommandLineArgs)"
         DependsOnTargets="$(CoreCompileDependsOn)"
         >
 
