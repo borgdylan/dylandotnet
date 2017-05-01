@@ -27,7 +27,7 @@ class public static Program
 	method private static void OutputHelp()
 		StreamUtils::WriteLine("Usage: dylandotnet [options] <file-name>")
 		StreamUtils::WriteLine("Options:")
-		StreamUtils::WriteLine("   -V : View Version Nrs. for all dylan.NET assemblies")
+		StreamUtils::WriteLine("   -V : View Version Nrs. for all dylan.NET assemblies (aliases are -v and --version)")
 		StreamUtils::WriteLine("   -h : View this help message")
 		StreamUtils::WriteLine("   -sdk : Set sdk version (2.0/4.0/4.5)")
 		StreamUtils::WriteLine("   -pcl : Set retargatable bit")
@@ -55,22 +55,27 @@ class public static Program
 				StreamUtils::WriteLine(string::Empty)
 
 				for i = 0 upto --args[l]
-					if args[i] == "-V" then
-						OutputVersion()
-					elseif args[i] == "-h" then
-						OutputHelp()
-					elseif args[i] == "-inmemory" then
-						inm = true
-					elseif args[i] == "-pcl" then
-						pcl = true
-					elseif args[i] == "-sdk" then
-						i++
-						if i < args[l] then
-							lastsdk = args[i]
+					if args[i]::StartsWith("-") then
+						if args[i] == "-V" orelse args[i] == "-v" orelse args[i] == "--version" then
+							OutputVersion()
+						elseif args[i] == "-h" then
+							OutputHelp()
+						elseif args[i] == "-cd" then
+							i++
+							Environment::set_CurrentDirectory(args[i])
+						elseif args[i] == "-inmemory" then
+							inm = true
+						elseif args[i] == "-pcl" then
+							pcl = true
+						elseif args[i] == "-sdk" then
+							i++
+							if i < args[l] then
+								lastsdk = args[i]
+							end if
+						else
+							//TODO: for now ignoring all bad command line switches by outputting help text
+							OutputHelp()
 						end if
-					elseif args[i] == "-cd" then
-						i++
-						Environment::set_CurrentDirectory(args[i])
 					else
 						ILEmitter::Init()
 						AsmFactory::Init()

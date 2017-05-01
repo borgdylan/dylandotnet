@@ -2032,11 +2032,12 @@ class public StmtOptimizer
 		end if
 
 		var tok as Token
-		var pcnt as integer = 0
-		var acnt as integer = 0
-		var scnt as integer = 0
-		var ccnt as integer = 0
+		// var pcnt as integer = 0
+		// var acnt as integer = 0
+		// var scnt as integer = 0
+		// var ccnt as integer = 0
 
+		var parenStack = new C5.LinkedList<of OpenParen>()
 		do until i == lenx
 			i++
 			if PFlags::CmtFlag then
@@ -2051,38 +2052,58 @@ class public StmtOptimizer
 			end if
 
 			tok = stm::Tokens::get_Item(i)
-			if tok is LParen then
-				pcnt++
-			elseif tok is RParen then
-				pcnt--
-			elseif tok is LAParen then
-				acnt++
-			elseif tok is RAParen then
-				acnt--
-			elseif tok is LSParen then
-				scnt++
-			elseif tok is RSParen then
-				scnt--
-			elseif tok is LCParen then
-				ccnt++
-			elseif tok is RCParen then
-				ccnt--
+
+			if tok is OpenParen then
+				parenStack::Push($OpenParen$tok)
+			elseif tok is CloseParen then
+				if parenStack::get_Count() > 0 then
+					var opn = parenStack::Pop()
+					if !opn::IsValidCloseParen($CloseParen$tok) then
+						StreamUtils::WriteError(tok::Line, tok::Column, PFlags::CurPath, i"This parenthesis of type '{tok::Value}' does not match the opening counterpart of type '{opn::Value}'!")
+					end if
+				else
+					StreamUtils::WriteError(tok::Line, tok::Column, PFlags::CurPath, "This parenthesis has no matching opening counterpart!")
+				end if
 			end if
+
+			// if tok is LParen then
+			// 	pcnt++
+			// elseif tok is RParen then
+			// 	pcnt--
+			// elseif tok is LAParen then
+			// 	acnt++
+			// elseif tok is RAParen then
+			// 	acnt--
+			// elseif tok is LSParen then
+			// 	scnt++
+			// elseif tok is RSParen then
+			// 	scnt--
+			// elseif tok is LCParen then
+			// 	ccnt++
+			// elseif tok is RCParen then
+			// 	ccnt--
+			// end if
 		end do
 
-		if pcnt != 0 then
-			StreamUtils::WriteLine(string::Empty)
-			StreamUtils::WriteError(stm::Line, 0, PFlags::CurPath, "The amount of opening and closing parentheses do not match!")
-		elseif acnt != 0 then
-			StreamUtils::WriteLine(string::Empty)
-			StreamUtils::WriteError(stm::Line, 0, PFlags::CurPath, "The amount of opening and closing angle parentheses do not match!")
-		elseif scnt != 0 then
-			StreamUtils::WriteLine(string::Empty)
-			StreamUtils::WriteError(stm::Line, 0, PFlags::CurPath, "The amount of opening and closing square parentheses do not match!")
-		elseif ccnt != 0 then
-			StreamUtils::WriteLine(string::Empty)
-			StreamUtils::WriteError(stm::Line, 0, PFlags::CurPath, "The amount of opening and closing curly parentheses do not match!")
+		//check for stray brackets
+		if parenStack::get_Count() > 0 then
+			var opn = parenStack::Pop()
+			StreamUtils::WriteError(opn::Line, opn::Column, PFlags::CurPath, "This parenthesis has no closing counterpart!")
 		end if
+
+		// if pcnt != 0 then
+		// 	StreamUtils::WriteLine(string::Empty)
+		// 	StreamUtils::WriteError(stm::Line, 0, PFlags::CurPath, "The amount of opening and closing parentheses do not match!")
+		// elseif acnt != 0 then
+		// 	StreamUtils::WriteLine(string::Empty)
+		// 	StreamUtils::WriteError(stm::Line, 0, PFlags::CurPath, "The amount of opening and closing angle parentheses do not match!")
+		// elseif scnt != 0 then
+		// 	StreamUtils::WriteLine(string::Empty)
+		// 	StreamUtils::WriteError(stm::Line, 0, PFlags::CurPath, "The amount of opening and closing square parentheses do not match!")
+		// elseif ccnt != 0 then
+		// 	StreamUtils::WriteLine(string::Empty)
+		// 	StreamUtils::WriteError(stm::Line, 0, PFlags::CurPath, "The amount of opening and closing curly parentheses do not match!")
+		// end if
 
 		tmpstm = checkCmt(stm, ref compb)
 		if compb then
