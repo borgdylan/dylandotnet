@@ -116,11 +116,12 @@ Modified by Dylan Borg for dylan.NET Support, based on the C# version.
         <DncTask InputFile="$(InputFile)" />
 
         <!-- Hack to correctly handle .NET Core since dylan.NET uses .exe for all executables regardless of TFM -->
-        <Copy Condition=" ('$(OutputType)' != 'Exe') and ('$(OutputType)' != 'WinExe') " SourceFiles="$(AssemblyName).dll" DestinationFiles="$(IntermediateOutputPath)\$(AssemblyName)$(TargetExt)" />
-        <Copy Condition=" ('$(OutputType)' == 'Exe') or ('$(OutputType)' == 'WinExe') " SourceFiles="$(AssemblyName).exe" DestinationFiles="$(IntermediateOutputPath)\$(AssemblyName)$(TargetExt)" />
+        <Copy Condition=" ('$(OutputType)' != 'Exe') and ('$(OutputType)' != 'WinExe') " SourceFiles="$(AssemblyName).dll" DestinationFiles="@(IntermediateAssembly)" />
+        <Copy Condition=" ('$(OutputType)' == 'Exe') or ('$(OutputType)' == 'WinExe') " SourceFiles="$(AssemblyName).exe" DestinationFiles="@(IntermediateAssembly)" />
 
-        <Copy Condition=" '$(DebugSymbols)' == 'true' " SourceFiles="$(AssemblyName).pdb" DestinationFiles="$(IntermediateOutputPath)\$(AssemblyName).pdb" />
-        <Delete Files="$(AssemblyName)$(TargetExt)" />
+        <Copy Condition=" '$(DebugSymbols)' == 'true' " SourceFiles="$(AssemblyName).pdb" DestinationFiles="@(_DebugSymbolsIntermediatePath)" />
+        <Delete Condition=" ('$(OutputType)' != 'Exe') and ('$(OutputType)' != 'WinExe') " Files="$(AssemblyName).dll" />
+        <Delete Condition=" ('$(OutputType)' == 'Exe') or ('$(OutputType)' == 'WinExe') " Files="$(AssemblyName).exe" />
         <Delete Condition=" '$(DebugSymbols)' == 'true' " Files="$(AssemblyName).pdb" />
         <Message Text="Compilation Ready"/>
         
