@@ -94,7 +94,7 @@ class public static Program
 							StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("File '{0}' does not exist.", args[i]))
 						end if
 						StreamUtils::Write(string::Format("Now Lexing: {0}", args[i]))
-						var pstmts as StmtSet = new Lexer()::Analyze(args[i])
+						var pstmts as StmtSet = new Lexer()::AnalyzeWithMMap(args[i])
 						StreamUtils::Write(string::Format(c"...Done.\nNow Parsing: {0}", args[i]))
 						var ppstmts as StmtSet = new Parser()::Parse(pstmts, true)
 						StreamUtils::WriteLine("...Done.")
