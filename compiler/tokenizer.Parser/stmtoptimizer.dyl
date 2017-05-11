@@ -1357,14 +1357,15 @@ class public StmtOptimizer
 
 						//get parameters
 						i++
+						var curtok = stm::Tokens::get_Item(i)
 
-						if stm::Tokens::get_Item(i) is RParen then
+						if curtok is RParen then
 							if d orelse (cc > 0) then
 								exp = new ExprOptimizer(PFlags)::checkVarAs(exp,ref bl)
 								if bl then
 									prss::AddParam(exp)
 								else
-									StreamUtils::WriteErrorLine(stm::Line, 0, PFlags::CurPath, "Expected a parameter declaration!")
+									StreamUtils::WriteErrorLine(curtok::Line, ++curtok::Column, PFlags::CurPath, "Expected a parameter declaration!")
 								end if
 							end if
 							d = false
@@ -1372,58 +1373,58 @@ class public StmtOptimizer
 							break
 						end if
 
-						if stm::Tokens::get_Item(i) is VarTok then
+						if curtok is VarTok then
 							d = true
 							if exp = null then
 								exp = new Expr()
 							end if
 						end if
 
-						if stm::Tokens::get_Item(i) is InTok then
+						if curtok is InTok then
 							d = true
 							if exp = null then
 								exp = new Expr()
 							end if
 						end if
 
-						if stm::Tokens::get_Item(i) is InOutTok then
+						if curtok is InOutTok then
 							d = true
 							if exp = null then
 								exp = new Expr()
 							end if
 						end if
 
-						if stm::Tokens::get_Item(i) is OutTok then
+						if curtok is OutTok then
 							d = true
 							if exp = null then
 								exp = new Expr()
 							end if
 						end if
 
-						if stm::Tokens::get_Item(i) is LAParen then
+						if curtok is LAParen then
 							d = true
 							lvl++
 						end if
 
-						if stm::Tokens::get_Item(i) is RAParen then
+						if curtok is RAParen then
 							d = true
 							lvl--
 						end if
 
-						if (lvl == 0) andalso (stm::Tokens::get_Item(i) is Comma) then
+						if (lvl == 0) andalso (curtok is Comma) then
 							cc++
 							exp = new ExprOptimizer(PFlags)::checkVarAs(exp,ref bl)
 							if bl then
 								prss::AddParam(exp)
 							else
-								StreamUtils::WriteErrorLine(stm::Line, 0, PFlags::CurPath, "Expected a parameter declaration!")
+								StreamUtils::WriteErrorLine(curtok::Line, ++curtok::Column, PFlags::CurPath, "Expected a parameter declaration!")
 							end if
 							d = false
 							exp = null
 						end if
 
 						if d then
-							exp::AddToken(stm::Tokens::get_Item(i))
+							exp::AddToken(curtok)
 						end if
 					end do
 				end if
@@ -1520,72 +1521,73 @@ class public StmtOptimizer
 
 					//get parameters
 					i++
+					var curtok = stm::Tokens::get_Item(i)
 
-					if stm::Tokens::get_Item(i) is RParen then
+					if curtok is RParen then
 						if d orelse (cc > 0) then
 							exp = new ExprOptimizer(PFlags)::checkVarAs(exp,ref bl)
 							if bl then
 								mtss::AddParam(exp)
 							else
-								StreamUtils::WriteErrorLine(stm::Line, 0, PFlags::CurPath, "Expected a parameter declaration!")
+								StreamUtils::WriteErrorLine(curtok::Line, ++curtok::Column, PFlags::CurPath, "Expected a parameter declaration!")
 							end if
 						end if
 						d = false
 						break
 					end if
 
-					if stm::Tokens::get_Item(i) is VarTok then
+					if curtok is VarTok then
 						d = true
 						if exp is null then
 							exp = new Expr()
 						end if
 					end if
 
-					if stm::Tokens::get_Item(i) is InTok then
+					if curtok is InTok then
 						d = true
 						if exp is null then
 							exp = new Expr()
 						end if
 					end if
 
-					if stm::Tokens::get_Item(i) is InOutTok then
+					if curtok is InOutTok then
 						d = true
 						if exp is null then
 							exp = new Expr()
 						end if
 					end if
 
-					if stm::Tokens::get_Item(i) is OutTok then
+					if curtok is OutTok then
 						d = true
 						if exp is null then
 							exp = new Expr()
 						end if
 					end if
 
-					if stm::Tokens::get_Item(i) is LAParen then
+					if curtok is LAParen then
 						d = true
 						lvl++
 					end if
 
-					if stm::Tokens::get_Item(i) is RAParen then
+					if curtok is RAParen then
 						d = true
 						lvl--
 					end if
 
-					if (lvl == 0) andalso (stm::Tokens::get_Item(i) is Comma) then
+					if (lvl == 0) andalso (curtok is Comma) then
 						cc++
 						exp = new ExprOptimizer(PFlags)::checkVarAs(exp,ref bl)
 						if bl then
 							mtss::AddParam(exp)
 						else
-							StreamUtils::WriteErrorLine(stm::Line, 0, PFlags::CurPath, "Expected a parameter declaration!")
+							StreamUtils::WriteErrorLine(curtok::Line, ++curtok::Column, PFlags::CurPath, "Expected a parameter declaration!")
 						end if
 						d = false
 						exp = null
 					end if
 
 					if d then
-						exp::AddToken(stm::Tokens::get_Item(i))
+						exp::AddToken(curtok)
 					end if
 				end do
 			end if
@@ -1637,68 +1639,69 @@ class public StmtOptimizer
 
 					//get parameters
 					i++
+					var curtok = stm::Tokens::get_Item(i)
 
-					if stm::Tokens::get_Item(i) is RParen then
+					if curtok is RParen then
 						if d orelse (cc > 0) then
 							exp = new ExprOptimizer(PFlags)::checkVarAs(exp,ref bl)
 							if bl then
 								dels::AddParam(exp)
 							else
-								StreamUtils::WriteErrorLine(stm::Line, 0, PFlags::CurPath, "Expected a parameter declaration!")
+								StreamUtils::WriteErrorLine(curtok::Line, ++curtok::Column, PFlags::CurPath, "Expected a parameter declaration!")
 							end if
 						end if
 						d = false
 						break
 					end if
-					if stm::Tokens::get_Item(i) is VarTok then
+					if curtok is VarTok then
 						d = true
 						if exp is null then
 							exp = new Expr()
 						end if
 					end if
-					if stm::Tokens::get_Item(i) is InTok then
+					if curtok is InTok then
 						d = true
 						if exp is null then
 							exp = new Expr()
 						end if
 					end if
-					if stm::Tokens::get_Item(i) is InOutTok then
+					if curtok is InOutTok then
 						d = true
 						if exp is null then
 							exp = new Expr()
 						end if
 					end if
-					if stm::Tokens::get_Item(i) is OutTok then
+					if curtok is OutTok then
 						d = true
 						if exp is null then
 							exp = new Expr()
 						end if
 					end if
 
-					if stm::Tokens::get_Item(i) is LAParen then
+					if curtok is LAParen then
 						d = true
 						lvl++
 					end if
 
-					if stm::Tokens::get_Item(i) is RAParen then
+					if curtok is RAParen then
 						d = true
 						lvl--
 					end if
 
-					if (lvl == 0) andalso (stm::Tokens::get_Item(i) is Comma) then
+					if (lvl == 0) andalso (curtok is Comma) then
 						cc++
 						exp = new ExprOptimizer(PFlags)::checkVarAs(exp,ref bl)
 						if bl then
 							dels::AddParam(exp)
 						else
-							StreamUtils::WriteErrorLine(stm::Line, 0, PFlags::CurPath, "Expected a parameter declaration!")
+							StreamUtils::WriteErrorLine(curtok::Line, ++curtok::Column, PFlags::CurPath, "Expected a parameter declaration!")
 						end if
 						d = false
 						exp = null
 					end if
 
 					if d then
-						exp::AddToken(stm::Tokens::get_Item(i))
+						exp::AddToken(curtok)
 					end if
 				end do
 			end if
