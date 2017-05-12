@@ -10,86 +10,86 @@ import System.IO.MemoryMappedFiles
 
 class public Lexer
 
-	method public StmtSet AnalyzeCore(var sr as TextReader, var path as string)
-		var stmts as StmtSet = new StmtSet(path)
-		var curstmt as Stmt = null
-		var crflag as boolean = false
-		var lfflag as boolean = false
-		var buf as StringBuilder = new StringBuilder()
-		var curline as integer = 0
-		var curstmtlen as integer = -1
-		var chr as char = 'a'
+    method public StmtSet AnalyzeCore(var sr as TextReader, var path as string)
+        var stmts as StmtSet = new StmtSet(path)
+        var curstmt as Stmt = null
+        var crflag as boolean = false
+        var lfflag as boolean = false
+        var buf as StringBuilder = new StringBuilder()
+        var curline as integer = 0
+        var curstmtlen as integer = -1
+        var chr as char = 'a'
 
-		//ignore char with code 0 which is null char as well
-		//when using mmap, the last page is padded with nulls at the end
-		do while sr::Peek() > 0
+        //ignore char with code 0 which is null char as well
+        //when using mmap, the last page is padded with nulls at the end
+        do while sr::Peek() > 0
 
-			chr = $char$sr::Read()
+            chr = $char$sr::Read()
 
-			if chr == c'\r' then
-				crflag = true
-			elseif chr == c'\n' then
-				lfflag = true
-			end if
+            if chr == c'\r' then
+                crflag = true
+            elseif chr == c'\n' then
+                lfflag = true
+            end if
 
-			if !#expr(crflag orelse lfflag) then
-				buf::Append(chr)
-			else
-				if lfflag then
-					curline++
-					curstmt = new Line()::Analyze(new Stmt() {Line = curline}, buf::ToString())
-					curstmtlen = curstmt::Tokens::get_Count()
+            if !#expr(crflag orelse lfflag) then
+                buf::Append(chr)
+            else
+                if lfflag then
+                    curline++
+                    curstmt = new Line()::Analyze(new Stmt() {Line = curline}, buf::ToString())
+                    curstmtlen = curstmt::Tokens::get_Count()
 
-					if curstmtlen != 0 then
-						stmts::AddStmt(curstmt)
-					end if
+                    if curstmtlen != 0 then
+                        stmts::AddStmt(curstmt)
+                    end if
 
-					buf::Clear()
-					crflag = false
-					lfflag = false
-				end if
-			end if
+                    buf::Clear()
+                    crflag = false
+                    lfflag = false
+                end if
+            end if
 
-			// var buf = sr::ReadLine()
-			// do while buf != null
+            // var buf = sr::ReadLine()
+            // do while buf != null
 
-			//make sure to detect null chars in mmapped files too
-			if sr::Peek() < 1 then
-				curline++
-				// curstmt = new Line()::Analyze(new Stmt() {Line = curline}, buf)
-				curstmt = new Line()::Analyze(new Stmt() {Line = curline}, buf::ToString())
-				curstmtlen = curstmt::Tokens::get_Count()
+            //make sure to detect null chars in mmapped files too
+            if sr::Peek() < 1 then
+                curline++
+                // curstmt = new Line()::Analyze(new Stmt() {Line = curline}, buf)
+                curstmt = new Line()::Analyze(new Stmt() {Line = curline}, buf::ToString())
+                curstmtlen = curstmt::Tokens::get_Count()
 
-				if curstmtlen != 0 then
-					stmts::AddStmt(curstmt)
-				end if
-			end if
-			// buf = sr::ReadLine()
-		end do
+                if curstmtlen != 0 then
+                    stmts::AddStmt(curstmt)
+                end if
+            end if
+            // buf = sr::ReadLine()
+        end do
 
-		return stmts
-	end method
+        return stmts
+    end method
 
-	//NOTE: Close calls only Dispose so the calls are semantically equivalent
+    //NOTE: Close calls only Dispose so the calls are semantically equivalent
 
-	method public StmtSet Analyze(var path as string)
-		using sr as StreamReader = new StreamReader(path, Encoding::get_UTF8(), true, 4096)
-			return AnalyzeCore(sr, path)
-		end using
-	end method
+    method public StmtSet Analyze(var path as string)
+        using sr as StreamReader = new StreamReader(path, Encoding::get_UTF8(), true, 4096)
+            return AnalyzeCore(sr, path)
+        end using
+    end method
 
-	method public StmtSet AnalyzeWithMMap(var path as string)
-		using sr as StreamReader = new StreamReader(MemoryMappedFile::CreateFromFile(path)::CreateViewStream(), Encoding::get_UTF8(), true, 4096)
-			return AnalyzeCore(sr, path)
-		end using
-	end method
+    method public StmtSet AnalyzeWithMMap(var path as string)
+        using sr as StreamReader = new StreamReader(MemoryMappedFile::CreateFromFile(path)::CreateViewStream(), Encoding::get_UTF8(), true, 4096)
+            return AnalyzeCore(sr, path)
+        end using
+    end method
 
-	method public StmtSet AnalyzeString(var str as string)
-		using sr as StringReader = new StringReader(str)
-			 return AnalyzeCore(sr, string::Empty)
-		end using
-	end method
+    method public StmtSet AnalyzeString(var str as string)
+        using sr as StringReader = new StringReader(str)
+             return AnalyzeCore(sr, string::Empty)
+        end using
+    end method
 
-	method public StmtSet AnalyzeStream(var sm as Stream) => AnalyzeCore(new StreamReader(sm, Encoding::get_UTF8(), true, 4096), string::Empty)
+    method public StmtSet AnalyzeStream(var sm as Stream) => AnalyzeCore(new StreamReader(sm, Encoding::get_UTF8(), true, 4096), string::Empty)
 
 end class

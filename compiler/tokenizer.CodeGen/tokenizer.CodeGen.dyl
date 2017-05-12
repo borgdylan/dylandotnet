@@ -1,14 +1,14 @@
-﻿//The Code Generator for the dylan.NET language
+//The Code Generator for the dylan.NET language
 //A Component of the NEW dylan.NET Compiler
 //compile with dylan.NET v. 11.3.1.5 or later
 
 //    tokenizer.CodeGen.dll dylan.NET.Tokenizer.CodeGen Copyright (C) 2012 Dylan Borg <borgdylan@hotmail.com>
 //    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software
 // Foundation; either version 3 of the License, or (at your option) any later version.
-//    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+//    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
 //PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
-//    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
-//Place, Suite 330, Boston, MA 02111-1307 USA 
+//    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple
+//Place, Suite 330, Boston, MA 02111-1307 USA
 
 #include "msbuild.dyl"
 #include "Properties/AssemblyInfo.dyl"
@@ -45,35 +45,35 @@ import Managed.Reflection.Emit
 //import dylan.NET.Tokenizer.CodeGen
 
 namespace dylan.NET.Tokenizer.CodeGen
-	#include "varitem.dyl"
-	#include "fielditem.dyl"
-	#include "propertyitem.dyl"
-	#include "eventitem.dyl"
-	//#include "filambdas.dyl"
-	#include "methoditem.dyl"
-	#include "milambdas.dyl"
-	#include "ctoritem.dyl"
-	#include "cilambdas.dyl"
-	#include "typeparamitem.dyl"
-	#include "typeitem.dyl"
-	//tilambdas included in typeitem file
-	#include "collectionitem.dyl"
-	#include "typelist.dyl"
-	#include "labelitem.dyl"
-	#include "loopitem.dyl"
-	#include "ifitem.dyl"
-	#include "switchitem.dyl"
-	#include "tryitem.dyl"
-	#include "lockitem.dyl"
-	#include "usingitem.dyl"
-	#include "pinvokeinfo.dyl"
-	#include "constinfo.dyl"
-	#include "symtable.dyl"
-	//included as internal, do not make public if inside the compiler dlls
-	#include "DynamicHelpers.dyl"
-	#include "opstack.dyl"
-	#include "eval-pre.dyl"
-	#include "helpers.dyl"
-	#include "eval.dyl"
-	#include "codegenerator.dyl"
+    #include "varitem.dyl"
+    #include "fielditem.dyl"
+    #include "propertyitem.dyl"
+    #include "eventitem.dyl"
+    //#include "filambdas.dyl"
+    #include "methoditem.dyl"
+    #include "milambdas.dyl"
+    #include "ctoritem.dyl"
+    #include "cilambdas.dyl"
+    #include "typeparamitem.dyl"
+    #include "typeitem.dyl"
+    //tilambdas included in typeitem file
+    #include "collectionitem.dyl"
+    #include "typelist.dyl"
+    #include "labelitem.dyl"
+    #include "loopitem.dyl"
+    #include "ifitem.dyl"
+    #include "switchitem.dyl"
+    #include "tryitem.dyl"
+    #include "lockitem.dyl"
+    #include "usingitem.dyl"
+    #include "pinvokeinfo.dyl"
+    #include "constinfo.dyl"
+    #include "symtable.dyl"
+    //included as internal, do not make public if inside the compiler dlls
+    #include "DynamicHelpers.dyl"
+    #include "opstack.dyl"
+    #include "eval-pre.dyl"
+    #include "helpers.dyl"
+    #include "eval.dyl"
+    #include "codegenerator.dyl"
 end namespace

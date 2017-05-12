@@ -327,7 +327,7 @@ class public static Loader
 		else
 			var bind as Managed.Reflection.Binder = Managed.Reflection.Type::get_DefaultBinder()
 			var bf as Managed.Reflection.BindingFlags = Managed.Reflection.BindingFlags::Instance or Managed.Reflection.BindingFlags::Static or Managed.Reflection.BindingFlags::Public or Managed.Reflection.BindingFlags::NonPublic
-			mtdinfo =  $Managed.Reflection.MethodInfo$bind::SelectMethod(bf,matches,typs,new Managed.Reflection.ParameterModifier[0])
+			mtdinfo =  $Managed.Reflection.MethodInfo$bind::SelectMethod(bf,matches,typs, Array::Empty<of Managed.Reflection.ParameterModifier>())
 		end if
 
 		if mtdinfo is null andalso typ::get_IsInterface() then
@@ -350,7 +350,7 @@ class public static Loader
 		end if
 
 //		if mtdinfo == null then
-//			mtdinfo = typ::GetMethod(name,Managed.Reflection.BindingFlags::Instance or Managed.Reflection.BindingFlags::Static or Managed.Reflection.BindingFlags::Public or Managed.Reflection.BindingFlags::NonPublic, $Managed.Reflection.Binder$null, typs, new Managed.Reflection.ParameterModifier[0])
+//			mtdinfo = typ::GetMethod(name,Managed.Reflection.BindingFlags::Instance or Managed.Reflection.BindingFlags::Static or Managed.Reflection.BindingFlags::Public or Managed.Reflection.BindingFlags::NonPublic, $Managed.Reflection.Binder$null, typs, Array::Empty<of Managed.Reflection.ParameterModifier>())
 //
 //			if mtdinfo isnot null then
 //				//filter out private members
@@ -391,7 +391,7 @@ class public static Loader
 
 		var ctorinf as Managed.Reflection.ConstructorInfo = null
 		if ctorinf is null then
-			ctorinf = typ::GetConstructor(Managed.Reflection.BindingFlags::Instance or Managed.Reflection.BindingFlags::Public or Managed.Reflection.BindingFlags::NonPublic or Managed.Reflection.BindingFlags::DeclaredOnly, $Managed.Reflection.Binder$null, typs, new Managed.Reflection.ParameterModifier[0])
+			ctorinf = typ::GetConstructor(Managed.Reflection.BindingFlags::Instance or Managed.Reflection.BindingFlags::Public or Managed.Reflection.BindingFlags::NonPublic or Managed.Reflection.BindingFlags::DeclaredOnly, $Managed.Reflection.Binder$null, typs, Array::Empty<of Managed.Reflection.ParameterModifier>())
 
 			if ctorinf isnot null then
 				//filter out private members
@@ -472,7 +472,7 @@ class public static Loader
 		else
 			var bind as Managed.Reflection.Binder = Managed.Reflection.Type::get_DefaultBinder()
 			var bf as Managed.Reflection.BindingFlags = Managed.Reflection.BindingFlags::Instance or Managed.Reflection.BindingFlags::Static or Managed.Reflection.BindingFlags::Public
-			return $Managed.Reflection.MethodInfo$bind::SelectMethod(bf,matches,new Managed.Reflection.Type[] {typa, typb},new Managed.Reflection.ParameterModifier[0])
+			return $Managed.Reflection.MethodInfo$bind::SelectMethod(bf,matches,new Managed.Reflection.Type[] {typa, typb}, Array::Empty<of Managed.Reflection.ParameterModifier>())
 		end if
 	end method
 
@@ -486,7 +486,7 @@ class public static Loader
 		else
 			var bind as Managed.Reflection.Binder = Managed.Reflection.Type::get_DefaultBinder()
 			var bf as Managed.Reflection.BindingFlags = Managed.Reflection.BindingFlags::Instance or Managed.Reflection.BindingFlags::Static or Managed.Reflection.BindingFlags::Public
-			return $Managed.Reflection.MethodInfo$bind::SelectMethod(bf,matches,new Managed.Reflection.Type[] {typa},new Managed.Reflection.ParameterModifier[0])
+			return $Managed.Reflection.MethodInfo$bind::SelectMethod(bf,matches,new Managed.Reflection.Type[] {typa}, Array::Empty<of Managed.Reflection.ParameterModifier>())
 		end if
 	end method
 
@@ -501,7 +501,7 @@ class public static Loader
 		else
 			var bind as Managed.Reflection.Binder = Managed.Reflection.Type::get_DefaultBinder()
 			var bf as Managed.Reflection.BindingFlags = Managed.Reflection.BindingFlags::Instance or Managed.Reflection.BindingFlags::Static or Managed.Reflection.BindingFlags::Public
-			mtdinfo =  $Managed.Reflection.MethodInfo$bind::SelectMethod(bf,matches,paramst,new Managed.Reflection.ParameterModifier[0])
+			mtdinfo =  $Managed.Reflection.MethodInfo$bind::SelectMethod(bf,matches,paramst, Array::Empty<of Managed.Reflection.ParameterModifier>())
 		end if
 
 		if mtdinfo isnot null then
@@ -521,7 +521,7 @@ class public static Loader
 		else
 			var bind as Managed.Reflection.Binder = Managed.Reflection.Type::get_DefaultBinder()
 			var bf as Managed.Reflection.BindingFlags = Managed.Reflection.BindingFlags::Instance or Managed.Reflection.BindingFlags::Static or Managed.Reflection.BindingFlags::Public
-			return $Managed.Reflection.MethodInfo$bind::SelectMethod(bf,matches,new Managed.Reflection.Type[] {src},new Managed.Reflection.ParameterModifier[0])
+			return $Managed.Reflection.MethodInfo$bind::SelectMethod(bf,matches,new Managed.Reflection.Type[] {src}, Array::Empty<of Managed.Reflection.ParameterModifier>())
 		end if
 
 	end method

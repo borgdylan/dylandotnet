@@ -8,29 +8,29 @@
 
 class public EventItem
 
-	field public string Name
-	field public Managed.Reflection.Type EventTyp
-	field public EventBuilder EventBldr
-	field public string ExplImplType
-	field public TypeTok ExplType
-	field public IEnumerable<of Attributes.Attribute> Attrs
+    field public string Name
+    field public Managed.Reflection.Type EventTyp
+    field public EventBuilder EventBldr
+    field public string ExplImplType
+    field public TypeTok ExplType
+    field public IEnumerable<of Attributes.Attribute> Attrs
 
-	method public void EventItem()
-		mybase::ctor()
-		Name = string::Empty
-		ExplImplType = string::Empty
-	end method
+    method public void EventItem()
+        mybase::ctor()
+        Name = string::Empty
+        ExplImplType = string::Empty
+    end method
 
-	method public void EventItem(var nme as string, var typ as Managed.Reflection.Type, var bld as EventBuilder, var attr as IEnumerable<of Attributes.Attribute>, var expl as string)
-		mybase::ctor()
-		Name = nme
-		EventTyp = typ
-		EventBldr = bld
-		ExplImplType = string::Empty
-		Attrs = attr
-		ExplImplType = expl
-	end method
+    method public void EventItem(var nme as string, var typ as Managed.Reflection.Type, var bld as EventBuilder, var attr as IEnumerable<of Attributes.Attribute>, var expl as string)
+        mybase::ctor()
+        Name = nme
+        EventTyp = typ
+        EventBldr = bld
+        ExplImplType = string::Empty
+        Attrs = attr
+        ExplImplType = expl
+    end method
 
-	method public override string ToString() => i"{Name} : {EventTyp::ToString()}"
+    method public override string ToString() => i"{Name} : {EventTyp::ToString()}"
 
 end class

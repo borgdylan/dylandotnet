@@ -8,23 +8,23 @@
 
 class public FieldItem
 
-	field public string Name
-	field public Managed.Reflection.Type FieldTyp
-	field public FieldBuilder FieldBldr
-	field public object LitVal
+    field public string Name
+    field public Managed.Reflection.Type FieldTyp
+    field public FieldBuilder FieldBldr
+    field public object LitVal
 
-	method public void FieldItem(var nme as string, var typ as Managed.Reflection.Type, var bld as FieldBuilder, var litval as object)
-		mybase::ctor()
-		Name = nme
-		FieldTyp = typ
-		FieldBldr = bld
-		LitVal = litval
-	end method
+    method public void FieldItem(var nme as string, var typ as Managed.Reflection.Type, var bld as FieldBuilder, var litval as object)
+        mybase::ctor()
+        Name = nme
+        FieldTyp = typ
+        FieldBldr = bld
+        LitVal = litval
+    end method
 
-	method public void FieldItem()
-		ctor(string::Empty, $Managed.Reflection.Type$null, $FieldBuilder$null, null)
-	end method
+    method public void FieldItem()
+        ctor(string::Empty, $Managed.Reflection.Type$null, $FieldBuilder$null, null)
+    end method
 
-	method public override string ToString() => i"{Name} : {FieldTyp::ToString()}"
+    method public override string ToString() => i"{Name} : {FieldTyp::ToString()}"
 
 end class
