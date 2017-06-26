@@ -21,8 +21,8 @@
         </Reference>
 
         <PackageReference Include="System.Interactive" Version="3.1.1" />
-        <PackageReference Include="C5" Version="2.4.5947" />
-        <PackageReference Include="System.ValueTuple" Version="4.3.0" />
+        <PackageReference Include="C5" Version="2.4.5947.17249" />
+        <PackageReference Include="System.ValueTuple" Version="4.3.1" />
 
         <ProjectReference Include="$(MSBuildThisFileDirectory)..\tokenizer.AST\tokenizer.AST.dylproj" />
         <ProjectReference Include="$(MSBuildThisFileDirectory)..\tokenizer.Lexer\tokenizer.Lexer.dylproj" />

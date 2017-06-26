@@ -25,9 +25,9 @@ class public static Program
     end method
 
     method private static void OutputHelp()
-        StreamUtils::WriteLine("Usage: dylandotnet [options] <file-name>")
+        StreamUtils::WriteLine("Usage: dnc [options] <file-name>")
         StreamUtils::WriteLine("Options:")
-        StreamUtils::WriteLine("   -V : View Version Nrs. for all dylan.NET assemblies (aliases are -v and --version)")
+        StreamUtils::WriteLine("   -v : View Version Nrs. for all dylan.NET assemblies (aliases are -V and --version)")
         StreamUtils::WriteLine("   -h : View this help message")
         StreamUtils::WriteLine("   -sdk : Set sdk version (2.0/4.0/4.5)")
         StreamUtils::WriteLine("   -pcl : Set retargatable bit")
@@ -37,7 +37,7 @@ class public static Program
     [method: ComVisible(false)]
     method private static void main(var args as string[])
 
-        StreamUtils::WriteLine("dylan.NET Compiler v. 11.8.3.5 RC for Microsoft (R) .NET Framework (R) v. 4.6+")
+        StreamUtils::WriteLine("dylan.NET Compiler v. 11.8.3.8 RC for Microsoft (R) .NET Framework (R) v. 4.6+")
         StreamUtils::WriteLine("                                  and Xamarin Mono")
         StreamUtils::WriteLine("This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.")
         StreamUtils::WriteLine("Copyright (C) 2017 Dylan Borg")
@@ -47,9 +47,9 @@ class public static Program
         var pcl = false
 
         if args is null then
-            StreamUtils::WriteLine("Usage: dylandotnet [options] <file-name>")
+            StreamUtils::WriteLine("Usage: dnc [options] <file-name>")
         elseif args[l] < 1 then
-            StreamUtils::WriteLine("Usage: dylandotnet [options] <file-name>")
+            StreamUtils::WriteLine("Usage: dnc [options] <file-name>")
         else
             try
                 StreamUtils::WriteLine(string::Empty)

@@ -2,18 +2,18 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>dylan.NET</id>
-    <version>11.8.3.6</version>
+    <version>11.8.3.8</version>
     <authors>borgdylan</authors>
     <owners>borgdylan</owners>
     <licenseUrl>http://www.gnu.org/copyleft/lesser.html</licenseUrl>
     <projectUrl>https://github.com/borgdylan/dylandotnet</projectUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
-    <description>A compiler for dylan.NET, a new language targeting the CLR</description>
-    <releaseNotes>dylan.NET v.11.8.3.6 with MSBuild support files, resource compilation support and in-memory assembly I/O.
-    	dylan.NET 11.8.x.y includes experimental support for formattable strings and exception filters as well as experimental support for the #nullcond operator. dylan.NEt has switched to use portable pdb as its debug databse output format.
+    <description>A compiler for dylan.NET, a language targeting the CLR</description>
+    <releaseNotes>dylan.NET v.11.8.3.8 with MSBuild 15.x support files, resource compilation support.
+    	dylan.NET 11.8.x.y includes experimental support for formattable strings and exception filters as well as experimental support for the #nullcond operator. dylan.NET has switched to use portable pdb as its debug databse output format. Support for MSBuild is only for MSBuild 15.x running on full .NET/Mono.
     </releaseNotes>
-    <copyright>Copyright 2016</copyright>
-    <tags>.NET3.5 .NET4.0 .NET4.5 .NET4.6 NETCOREAPP1.0 Mono PCL MSBuild</tags>
+    <copyright>Copyright 2017</copyright>
+    <tags>.NET3.5 .NET4.0 .NET4.5 .NET4.6 NETCOREAPP Mono MSBuild</tags>
     <!--<dependencies>
       <dependency id="SampleDependency" version="1.0" />
     </dependencies>-->
@@ -26,5 +26,7 @@
   	<!--<file src="lib/net40/*.exe" target="lib/net40/" />-->
   	<!--<file src="lib/net35/*.exe" target="lib/net35/" />-->
   	<file src="tools/*" target="tools/" />
+  	<file src="build/*" target="build/" />
+  	<file src="buildCrossTargeting/*" target="buildCrossTargeting/" />
   </files>
 </package>

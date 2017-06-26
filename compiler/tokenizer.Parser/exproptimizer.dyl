@@ -979,10 +979,12 @@ class public ExprOptimizer
 			var lenx as integer = --ss::Tokens::get_Count()
 
 			var j = -1
-			var pcnt as integer = 0
-			var acnt as integer = 0
-			var scnt as integer = 0
-			var ccnt as integer = 0
+			// var pcnt as integer = 0
+			// var acnt as integer = 0
+			// var scnt as integer = 0
+			// var ccnt as integer = 0
+
+			var parenStack = new C5.LinkedList<of OpenParen>()
 
 			do until j = lenx
 				j++
@@ -994,39 +996,58 @@ class public ExprOptimizer
 				end if
 
 				var tok = ss::Tokens::get_Item(j)
-				if tok is LParen then
-					pcnt++
-				elseif tok is RParen then
-					pcnt--
-				elseif tok is LAParen then
-					acnt++
-				elseif tok is RAParen then
-					acnt--
-				elseif tok is LSParen then
-					scnt++
-				elseif tok is RSParen then
-					scnt--
-				elseif tok is LCParen then
-					ccnt++
-				elseif tok is RCParen then
-					ccnt--
+
+				if tok is OpenParen then
+					parenStack::Push($OpenParen$tok)
+				elseif tok is CloseParen then
+					if parenStack::get_Count() > 0 then
+						var opn = parenStack::Pop()
+						if !opn::IsValidCloseParen($CloseParen$tok) then
+							StreamUtils::WriteError(tok::Line, tok::Column, PFlags::CurPath, i"This parenthesis of type '{tok::Value}' does not match the opening counterpart of type '{opn::Value}' in sub-expression {k}!")
+						end if
+					else
+						StreamUtils::WriteError(tok::Line, tok::Column, PFlags::CurPath, i"This parenthesis has no matching opening counterpart in sub-expression {k}!")
+					end if
 				end if
+
+				// if tok is LParen then
+				// 	pcnt++
+				// elseif tok is RParen then
+				// 	pcnt--
+				// elseif tok is LAParen then
+				// 	acnt++
+				// elseif tok is RAParen then
+				// 	acnt--
+				// elseif tok is LSParen then
+				// 	scnt++
+				// elseif tok is RSParen then
+				// 	scnt--
+				// elseif tok is LCParen then
+				// 	ccnt++
+				// elseif tok is RCParen then
+				// 	ccnt--
+				// end if
 			end do
 
 			//assert that bracket counts are ok
-			if pcnt != 0 then
-				StreamUtils::WriteLine(string::Empty)
-				StreamUtils::WriteError(stm::Line, 0, PFlags::CurPath, string::Format("The amount of opening and closing parentheses do not match in sub-expression {0}!", $object$k))
-			elseif acnt != 0 then
-				StreamUtils::WriteLine(string::Empty)
-				StreamUtils::WriteError(stm::Line, 0, PFlags::CurPath, string::Format("The amount of opening and closing angle parentheses do not match in sub-expression {0}!", $object$k))
-			elseif scnt != 0 then
-				StreamUtils::WriteLine(string::Empty)
-				StreamUtils::WriteError(stm::Line, 0, PFlags::CurPath, string::Format("The amount of opening and closing square parentheses do not match in sub-expression {0}!", $object$k))
-			elseif ccnt != 0 then
-				StreamUtils::WriteLine(string::Empty)
-				StreamUtils::WriteError(stm::Line, 0, PFlags::CurPath, string::Format("The amount of opening and closing curly parentheses do not match in sub-expression {0}!", $object$k))
+			if parenStack::get_Count() > 0 then
+				var opn = parenStack::Pop()
+				StreamUtils::WriteError(opn::Line, opn::Column, PFlags::CurPath, i"This parenthesis has no closing counterpart in sub-expression {k}!")
 			end if
+
+			// if pcnt != 0 then
+			// 	StreamUtils::WriteLine(string::Empty)
+			// 	StreamUtils::WriteError(stm::Line, 0, PFlags::CurPath, string::Format("The amount of opening and closing parentheses do not match in sub-expression {0}!", $object$k))
+			// elseif acnt != 0 then
+			// 	StreamUtils::WriteLine(string::Empty)
+			// 	StreamUtils::WriteError(stm::Line, 0, PFlags::CurPath, string::Format("The amount of opening and closing angle parentheses do not match in sub-expression {0}!", $object$k))
+			// elseif scnt != 0 then
+			// 	StreamUtils::WriteLine(string::Empty)
+			// 	StreamUtils::WriteError(stm::Line, 0, PFlags::CurPath, string::Format("The amount of opening and closing square parentheses do not match in sub-expression {0}!", $object$k))
+			// elseif ccnt != 0 then
+			// 	StreamUtils::WriteLine(string::Empty)
+			// 	StreamUtils::WriteError(stm::Line, 0, PFlags::CurPath, string::Format("The amount of opening and closing curly parentheses do not match in sub-expression {0}!", $object$k))
+			// end if
 
 			exps::Add(eo::Optimize(new Expr() {Line = stm::Line, Tokens = ss::Tokens}))
 		end for
@@ -1035,7 +1056,17 @@ class public ExprOptimizer
 		var res as MethodCallTok = new MethodCallTok() {PosFromToken(stm::Tokens::get_Item(i)), Name = new MethodNameTok(#ternary { formattable ? "System.Runtime.CompilerServices.FormattableStringFactory::Create" , "System.String::Format"})}
 		res::AddParam(new Expr() {AddToken(new StringLiteral(ir::get_Format()) {PosFromToken(stm::Tokens::get_Item(i))})})
 
-		if formattable orelse (exps::get_Count() > 3) then
+		var hasOvers = false
+		if (AsmFactory::TargetFramework isnot null)
+			var ident = AsmFactory::TargetFramework::get_Identifier()
+			if ident == ".NETStandard" then
+				hasOvers = AsmFactory::TargetFramework::get_Version() >= new Version(1, 3)
+			elseif ident == ".NETFramework" orelse ident == ".NETCoreApp" then
+				hasOvers = true
+			end if
+		end if
+
+		if formattable orelse !hasOvers orelse (exps::get_Count() > 3) then
 			var aic = new ArrInitCallTok() {PosFromToken(stm::Tokens::get_Item(i)), ArrayType = new ObjectTok()}
 			res::AddParam(new Expr() {AddToken(aic)})
 			foreach ex in exps

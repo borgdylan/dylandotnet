@@ -19,7 +19,7 @@
         <Reference Include="Microsoft.Build.Utilities.v4.0" />
         <Reference Include="Microsoft.Build.Tasks.v4.0" />-->
 
-        <PackageReference Include="Microsoft.Build.Tasks.Core" Version="15.1.548" />
+        <PackageReference Include="Microsoft.Build.Tasks.Core" Version="15.1.1012" />
 
         <ProjectReference Include="$(MSBuildThisFileDirectory)..\resproc\resproc.dylproj" />
         <ProjectReference Include="$(MSBuildThisFileDirectory)..\dnc\dnc.dylproj" />

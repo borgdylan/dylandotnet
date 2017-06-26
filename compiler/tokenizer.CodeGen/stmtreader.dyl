@@ -31,11 +31,14 @@ class public StmtReader
         end if
 
         var dia = Loader::CachedLoadClass("System.Runtime.InteropServices.DllImportAttribute")
-        if dia isnot null then
-            if typ::Equals(dia) then
-                SymTable::PIInfo = new PInvokeInfo() {LibName = $string$Helpers::LiteralToConst($Literal$stm::Ctor::Params::get_Item(0)::Tokens::get_Item(0))}
-                return null
-            end if
+        if dia isnot null andalso typ::Equals(dia) then
+            SymTable::PIInfo = new PInvokeInfo() {LibName = $string$Helpers::LiteralToConst($Literal$stm::Ctor::Params::get_Item(0)::Tokens::get_Item(0))}
+            return null
+        end if
+
+        var tfma = Loader::CachedLoadClass("System.Runtime.Versioning.TargetFrameworkAttribute")
+        if tfma isnot null andalso typ::Equals(tfma) then
+            AsmFactory::TargetFramework = new FrameworkName($string$Helpers::LiteralToConst($Literal$stm::Ctor::Params::get_Item(0)::Tokens::get_Item(0)))
         end if
 
         //if typ::get_Name() == "AssemblyNeutralAttribute" then

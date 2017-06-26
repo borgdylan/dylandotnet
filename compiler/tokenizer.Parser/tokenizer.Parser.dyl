@@ -35,6 +35,7 @@ import dylan.NET.Tokenizer.AST.Tokens.Chars
 import dylan.NET.Tokenizer.Lexer
 //import IKVM.Reflection
 //import IKVM.Reflection.Emit
+import dylan.NET.Reflection
 
 //import dylan.NET.Tokenizer.Parser
 

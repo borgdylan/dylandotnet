@@ -1,10 +1,10 @@
 //    dnr.dll dylan.NET.Reflection Copyright (C) 2013 Dylan Borg <borgdylan@hotmail.com>
 //    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software
 // Foundation; either version 3 of the License, or (at your option) any later version.
-//    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+//    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
 //PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
-//    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
-//Place, Suite 330, Boston, MA 02111-1307 USA 
+//    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple
+//Place, Suite 330, Boston, MA 02111-1307 USA
 
 class public static AsmFactory
 
@@ -55,6 +55,7 @@ class public static AsmFactory
 	//field public static Managed.Reflection.Emit.GenericTypeParameterBuilder[] GenParamTyps
 	field public static boolean PCLSet
 	field public static boolean InMemorySet
+	field public static FrameworkName TargetFramework
 
 	[method: ComVisible(false)]
 	method public static void Init()
@@ -80,6 +81,7 @@ class public static AsmFactory
 		PCLSet = false
 		InMemorySet = false
 		StrongKey = null
+		TargetFramework = null
 	end method
 
 	method private static void AsmFactory()
@@ -126,7 +128,7 @@ class public static AsmFactory
 		ILEmitter::Met = CurnMetB
 		CurnMetB::SetImplementationFlags(Managed.Reflection.MethodImplAttributes::Runtime or Managed.Reflection.MethodImplAttributes::Managed)
 	end method
-	
+
 	[method: ComVisible(false)]
 	method public static void InitPInvokeMtd()
 		ILEmitter::Met = CurnMetB
@@ -148,24 +150,24 @@ class public static AsmFactory
 //		CurnTypList = destarr
 //
 //	end method
-	
+
 //	[method: ComVisible(false)]
 //	method public static void AddGenParamName(var nam as string)
 //
 //		var len as integer = GenParamNames[l]
 //		var stopel as integer = --len
-//		
+//
 //		var destarr as string[] = new string[++len]
 //
 //		for i = 0 upto stopel
 //			destarr[i] = GenParamNames[i]
 //		end for
-//		
+//
 //		destarr[len] = nam
 //		GenParamNames = destarr
 //
 //	end method
-	
+
 	[method: ComVisible(false)]
 	method public static void PushNS(var ns as string)
 		if NSStack::get_Count() != 0 then
@@ -176,7 +178,7 @@ class public static AsmFactory
 		NSStack::Push(ns)
 		CurnNS = ns
 	end method
-	
+
 	[method: ComVisible(false)]
 	method public static void PopNS()
 		if NSStack::get_Count() == 0 then

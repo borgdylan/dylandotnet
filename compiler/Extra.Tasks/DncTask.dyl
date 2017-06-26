@@ -11,6 +11,7 @@ namespace Extra.Tasks
 	class public beforefieldinit sealed DncTask extends Task
 
 		property public autogen ITaskItem[] InputFile
+		property public autogen boolean ReferenceAssembly
 
 		field private boolean haderrs
 

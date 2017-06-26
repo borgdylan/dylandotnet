@@ -41,6 +41,7 @@ import dylan.NET.Tokenizer.AST.Tokens.Chars
 import dylan.NET.Tokenizer.Parser
 import Managed.Reflection
 import Managed.Reflection.Emit
+import System.Runtime.Versioning
 
 //import dylan.NET.Tokenizer.CodeGen
 

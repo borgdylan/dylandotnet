@@ -2,9 +2,6 @@
 <Project>
     <PropertyGroup>
         <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
-        <Version>11.8.3.8</Version>
-        <EnableRxIface>false</EnableRxIface>
+        <LanguageTargets Condition="'$(MSBuildProjectExtension)' == '.dylproj'">$(MSBuildThisFileDirectory)..\tools\dylan.NET.Cli.targets</LanguageTargets>
     </PropertyGroup>
-    <ItemGroup>
-    </ItemGroup>
 </Project>

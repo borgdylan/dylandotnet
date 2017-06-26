@@ -19,7 +19,7 @@
             <HintPath>$(MSBuildThisFileDirectory)..\lib\Managed.Reflection.dll</HintPath>
         </Reference>
 
-        <PackageReference Include="C5" Version="2.4.5947" />
+        <PackageReference Include="C5" Version="2.4.5947.17249" />
 
         <ProjectReference Include="$(MSBuildThisFileDirectory)..\dnu\dnu.dylproj" />
     </ItemGroup>
