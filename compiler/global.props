@@ -4,6 +4,7 @@
         <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
         <Version>11.8.3.8</Version>
         <EnableRxIface>false</EnableRxIface>
+        <EnableStrictArrayIndices>false</EnableStrictArrayIndices>
     </PropertyGroup>
     <ItemGroup>
     </ItemGroup>

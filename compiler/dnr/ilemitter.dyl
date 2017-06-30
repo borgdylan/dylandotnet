@@ -1,15 +1,15 @@
 //    dnr.dll dylan.NET.Reflection Copyright (C) 2013 Dylan Borg <borgdylan@hotmail.com>
 //    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software
 // Foundation; either version 3 of the License, or (at your option) any later version.
-//    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+//    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
 //PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
-//    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
-//Place, Suite 330, Boston, MA 02111-1307 USA 
+//    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple
+//Place, Suite 330, Boston, MA 02111-1307 USA
 
 class public partial static Loader
 
 	[method: ComVisible(false)]
-	method public static prototype Managed.Reflection.Type LoadClass(var name as string) 
+	method public static prototype Managed.Reflection.Type LoadClass(var name as string)
 
 	[method: ComVisible(false)]
 	method public static prototype Managed.Reflection.Type CachedLoadClass(var name as string)
@@ -280,9 +280,9 @@ class public static ILEmitter
 	method public static void EmitStsfld(var fld as Managed.Reflection.FieldInfo)
 		ILGen::Emit(Managed.Reflection.Emit.OpCodes::Stsfld, fld)
 	end method
-	
+
 	[method: ComVisible(false)]
-	method public static void EmitStelem(var typ as Managed.Reflection.Type)	
+	method public static void EmitStelem(var typ as Managed.Reflection.Type)
 		if Loader::LoadClass("System.IntPtr")::Equals(typ) then
 			ILGen::Emit(Managed.Reflection.Emit.OpCodes::Stelem_I)
 		elseif Loader::LoadClass("System.SByte")::Equals(typ) then
@@ -307,7 +307,7 @@ class public static ILEmitter
 	end method
 
 	[method: ComVisible(false)]
-	method public static void EmitStind(var typ as Managed.Reflection.Type)	
+	method public static void EmitStind(var typ as Managed.Reflection.Type)
 		if Loader::LoadClass("System.IntPtr")::Equals(typ) then
 			ILGen::Emit(Managed.Reflection.Emit.OpCodes::Stind_I)
 		elseif Loader::LoadClass("System.SByte")::Equals(typ) then
@@ -361,7 +361,7 @@ class public static ILEmitter
 			ILGen::Emit(Managed.Reflection.Emit.OpCodes::Ldelem, typ)
 		end if
 	end method
-	
+
 	[method: ComVisible(false)]
 	method public static void EmitLdind(var typ as Managed.Reflection.Type)
 		if Loader::LoadClass("System.IntPtr")::Equals(typ) then
@@ -499,10 +499,10 @@ class public static ILEmitter
 			ILGen::Emit(Managed.Reflection.Emit.OpCodes::Ldc_I4, n)
 		end if
 	end method
-	
+
 	[method: ComVisible(false)]
 	method public static void EmitLdcU4(var n as uinteger)
-		var num as long = $long$n		
+		var num as long = $long$n
 		if num > -1l andalso num < 9l then
 			switch num
 			state
@@ -531,13 +531,13 @@ class public static ILEmitter
 		end if
 		ILGen::Emit(Managed.Reflection.Emit.OpCodes::Conv_U4)
 	end method
-	
+
 	[method: ComVisible(false)]
 	method public static void EmitLdcI2(var n as short)
 		EmitLdcI4($integer$n)
 		ILGen::Emit(Managed.Reflection.Emit.OpCodes::Conv_I2)
 	end method
-	
+
 	[method: ComVisible(false)]
 	method public static void EmitLdcU2(var n as ushort)
 		EmitLdcI4($integer$n)
@@ -549,7 +549,7 @@ class public static ILEmitter
 		EmitLdcI4($integer$n)
 		ILGen::Emit(Managed.Reflection.Emit.OpCodes::Conv_I1)
 	end method
-	
+
 	[method: ComVisible(false)]
 	method public static void EmitLdcU1(var n as byte)
 		EmitLdcI4($integer$n)
@@ -628,27 +628,27 @@ class public static ILEmitter
 	method public static void EmitCallvirt(var met as Managed.Reflection.MethodInfo)
 		ILGen::Emit(Managed.Reflection.Emit.OpCodes::Callvirt, met)
 	end method
-	
+
 	[method: ComVisible(false)]
 	method public static void EmitCallCtor(var met as Managed.Reflection.ConstructorInfo)
 		ILGen::Emit(Managed.Reflection.Emit.OpCodes::Call, met)
 	end method
-	
+
 	[method: ComVisible(false)]
 	method public static void EmitCall(var met as Managed.Reflection.MethodInfo)
 		ILGen::Emit(Managed.Reflection.Emit.OpCodes::Call, met)
 	end method
-	
+
 	[method: ComVisible(false)]
 	method public static void EmitLdftn(var met as Managed.Reflection.MethodInfo)
 		ILGen::Emit(Managed.Reflection.Emit.OpCodes::Ldftn, met)
 	end method
-	
+
 	[method: ComVisible(false)]
 	method public static void EmitLdvirtftn(var met as Managed.Reflection.MethodInfo)
 		ILGen::Emit(Managed.Reflection.Emit.OpCodes::Ldvirtftn, met)
 	end method
-	
+
 	[method: ComVisible(false)]
 	method public static void EmitLdfld(var fld as Managed.Reflection.FieldInfo)
 		ILGen::Emit(Managed.Reflection.Emit.OpCodes::Ldfld, fld)
@@ -658,17 +658,17 @@ class public static ILEmitter
 	method public static void EmitLdsfld(var fld as Managed.Reflection.FieldInfo)
 		ILGen::Emit(Managed.Reflection.Emit.OpCodes::Ldsfld, fld)
 	end method
-	
+
 	[method: ComVisible(false)]
 	method public static void EmitLdflda(var fld as Managed.Reflection.FieldInfo)
 		ILGen::Emit(Managed.Reflection.Emit.OpCodes::Ldflda, fld)
 	end method
-	
+
 	[method: ComVisible(false)]
 	method public static void EmitLdsflda(var fld as Managed.Reflection.FieldInfo)
 		ILGen::Emit(Managed.Reflection.Emit.OpCodes::Ldsflda, fld)
 	end method
-	
+
 	[method: ComVisible(false)]
 	method public static void EmitLdstr(var str as string)
 		ILGen::Emit(Managed.Reflection.Emit.OpCodes::Ldstr, str)
@@ -792,7 +792,7 @@ class public static ILEmitter
 		ILGen::Emit(Managed.Reflection.Emit.OpCodes::Ldc_I4_0)
 		ILGen::Emit(Managed.Reflection.Emit.OpCodes::Ceq)
 	end method
-	
+
 	[method: ComVisible(false)]
 	method public static void EmitNandOther()
 		ILGen::Emit(Managed.Reflection.Emit.OpCodes::And)
@@ -805,7 +805,7 @@ class public static ILEmitter
 		ILGen::Emit(Managed.Reflection.Emit.OpCodes::Ldc_I4_0)
 		ILGen::Emit(Managed.Reflection.Emit.OpCodes::Ceq)
 	end method
-	
+
 	[method: ComVisible(false)]
 	method public static void EmitNorOther()
 		ILGen::Emit(Managed.Reflection.Emit.OpCodes::Or)
@@ -818,7 +818,7 @@ class public static ILEmitter
 		ILGen::Emit(Managed.Reflection.Emit.OpCodes::Ldc_I4_0)
 		ILGen::Emit(Managed.Reflection.Emit.OpCodes::Ceq)
 	end method
-	
+
 	[method: ComVisible(false)]
 	method public static void EmitXnorOther()
 		ILGen::Emit(Managed.Reflection.Emit.OpCodes::Xor)
@@ -1017,7 +1017,7 @@ class public static ILEmitter
 	method public static void EmitBrtrue(var lbl as Managed.Reflection.Emit.Label)
 		ILGen::Emit(Managed.Reflection.Emit.OpCodes::Brtrue, lbl)
 	end method
-	
+
 	[method: ComVisible(false)]
 	method public static void EmitInitobj(var t as Managed.Reflection.Type)
 		ILGen::Emit(Managed.Reflection.Emit.OpCodes::Initobj, t)
@@ -1052,7 +1052,7 @@ class public static ILEmitter
 	method public static void EmitConvOvfI4(var s as boolean)
 		ILGen::Emit(#ternary {s ? Managed.Reflection.Emit.OpCodes::Conv_Ovf_I4, Managed.Reflection.Emit.OpCodes::Conv_Ovf_I4_Un})
 	end method
-	
+
 	[method: ComVisible(false)]
 	method public static void EmitConvI8(var s as boolean)
 		ILGen::Emit(#ternary {s ? Managed.Reflection.Emit.OpCodes::Conv_I8, Managed.Reflection.Emit.OpCodes::Conv_U8})
@@ -1067,7 +1067,7 @@ class public static ILEmitter
 	method public static void EmitConvOvfI8(var s as boolean)
 		ILGen::Emit(#ternary {s ? Managed.Reflection.Emit.OpCodes::Conv_Ovf_I8, Managed.Reflection.Emit.OpCodes::Conv_Ovf_I8_Un})
 	end method
-	
+
 	[method: ComVisible(false)]
 	method public static void EmitConvU2()
 		ILGen::Emit(Managed.Reflection.Emit.OpCodes::Conv_U2)
@@ -1095,6 +1095,11 @@ class public static ILEmitter
 	[method: ComVisible(false)]
 	method public static void EmitConvOvfU4(var s as boolean)
 		ILGen::Emit(#ternary {s ? Managed.Reflection.Emit.OpCodes::Conv_Ovf_U4, Managed.Reflection.Emit.OpCodes::Conv_Ovf_U4_Un})
+	end method
+
+	[method: ComVisible(false)]
+	method public static void EmitConvOvfI(var s as boolean)
+		ILGen::Emit(#ternary {s ? Managed.Reflection.Emit.OpCodes::Conv_Ovf_I, Managed.Reflection.Emit.OpCodes::Conv_Ovf_I_Un})
 	end method
 
 	[method: ComVisible(false)]
@@ -1134,7 +1139,7 @@ class public static ILEmitter
 	method public static void MarkLbl(var lbl as Managed.Reflection.Emit.Label)
 		ILGen::MarkLabel(lbl)
 	end method
-	
+
 	[method: ComVisible(false)]
 	method public static void MarkDbgPt(var line as integer, var col as integer, var eline as integer, var ecol as integer)
 		//ok on mono and coreclr
@@ -1151,12 +1156,12 @@ class public static ILEmitter
 			ILGen::BeginScope()
 		end if
 	end method
-	
+
 	[method: ComVisible(false)]
 	method public static void EndScope()
 		if DebugFlg then
 			ILGen::EndScope()
 		end if
 	end method
-	
+
 end class

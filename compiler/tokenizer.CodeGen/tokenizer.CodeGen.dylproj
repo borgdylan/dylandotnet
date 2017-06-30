@@ -7,6 +7,8 @@
         <RootNamespace>dylan.NET.Tokenizer.CodeGen</RootNamespace>
         <AssemblyName>tokenizer.CodeGen</AssemblyName>
         <TargetFrameworks>net46</TargetFrameworks>
+        
+        <DefineConstants Condition=" '$(EnableStrictArrayIndices)' == 'true' ">$(DefineConstants);STRICT_ARR_INDICES</DefineConstants>
     </PropertyGroup>
     <ItemGroup>
         <Reference Include="System" />

@@ -64,7 +64,14 @@ class public Evaluator
                     AsmFactory::ForcedAddrFlg = true
                 end if
                 if emt then
-                    ILEmitter::EmitConvI()
+                    if Helpers::GetPrimitiveNumericSize(AsmFactory::Type02) > 32 then
+                        ILEmitter::EmitConvOvfI(Helpers::CheckSigned(AsmFactory::Type02))
+                    else
+                        #if STRICT_ARR_INDICES then
+                        ILEmitter::EmitConvI()
+                        end #if
+                    end if
+
                     if idt::MemberAccessFlg then
                         AsmFactory::AddrFlg = true
                         AsmFactory::Type04 = typ
@@ -1159,7 +1166,14 @@ class public Evaluator
                     StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "Array Lengths should be of a Primitive Integer Type.")
                 end if
                 if emt then
-                    ILEmitter::EmitConvI()
+                    if Helpers::GetPrimitiveNumericSize(AsmFactory::Type02) > 32 then
+                        ILEmitter::EmitConvOvfI(Helpers::CheckSigned(AsmFactory::Type02))
+                    else
+                        #if STRICT_ARR_INDICES then
+                        ILEmitter::EmitConvI()
+                        end #if
+                    end if
+
                     ILEmitter::EmitNewarr(typ2)
                 end if
                 AsmFactory::Type02 = typ2::MakeArrayType()
@@ -1176,7 +1190,12 @@ class public Evaluator
                 if ci is null then
                     if emt then
                         ILEmitter::EmitLdcI4(aictok::Elements::get_Count())
+
+                        //we know that the length is int32
+                        #if STRICT_ARR_INDICES then
                         ILEmitter::EmitConvI()
+                        end #if
+
                         ILEmitter::EmitNewarr(typ2)
                     end if
 
@@ -1186,7 +1205,11 @@ class public Evaluator
                         if emt then
                             ILEmitter::EmitDup()
                             ILEmitter::EmitLdcI4(aii)
+
+                            #if STRICT_ARR_INDICES then
+                            //we know that the index is int32
                             ILEmitter::EmitConvI()
+                            end #if
                         end if
                         ASTEmit(ConvToAST(ConvToRPN(elem)), emt)
                         Helpers::CheckAssignability(typ2,AsmFactory::Type02)
@@ -1636,7 +1659,13 @@ class public Evaluator
                 StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "Array Indices should be of a Primitive Integer Type.")
             end if
 
-            ILEmitter::EmitConvI()
+            if Helpers::GetPrimitiveNumericSize(AsmFactory::Type02) > 32 then
+                ILEmitter::EmitConvOvfI(Helpers::CheckSigned(AsmFactory::Type02))
+            else
+                #if STRICT_ARR_INDICES then
+                ILEmitter::EmitConvI()
+                end #if
+            end if
         end if
         //--------------------------------------------
 
