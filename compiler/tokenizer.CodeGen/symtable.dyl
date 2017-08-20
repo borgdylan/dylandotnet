@@ -118,16 +118,17 @@ class public static SymTable
     end method
 
     [method: ComVisible(false)]
-    method public static void AddVar(var nme as string, var la as boolean, var ind as integer, var typ as Managed.Reflection.Type, var lin as integer)
+    method public static void AddVar(var vnme as Ident, var la as boolean, var ind as integer, var typ as Managed.Reflection.Type, var lin as integer)
 
         var flg = false
+        var nme = vnme::Value
         foreach s in VarLst::Backwards()
             if s::Contains(nme) then
                 if flg then
-                    StreamUtils::WriteWarn(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"Variable '{nme }' will hide a variable in an outer scope!")
+                    StreamUtils::WriteWarn(vnme::Line, vnme::Column, ILEmitter::CurSrcFile, i"Variable '{nme}' will hide a variable in an outer scope!")
                     break
                 else
-                    StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"Variable '{nme}' is already declared in the current scope!")
+                    StreamUtils::WriteError(vnme::Line, vnme::Column, ILEmitter::CurSrcFile, i"Variable '{nme}' is already declared in the current scope!")
                     return
                 end if
             end if
@@ -141,8 +142,8 @@ class public static SymTable
     end method
 
     [method: ComVisible(false)]
-    method public static void AddFld(var nme as string, var typ as Managed.Reflection.Type, var fld as FieldBuilder, var litval as object)
-        CurnTypItem::AddField(new FieldItem(nme, typ, fld, litval))
+    method public static void AddFld(var nme as Ident, var typ as Managed.Reflection.Type, var fld as FieldBuilder, var litval as object)
+        CurnTypItem::AddField(new FieldItem(nme::Value, typ, fld, litval), nme)
     end method
 
     [method: ComVisible(false)]
@@ -369,6 +370,7 @@ class public static SymTable
 
     [method: ComVisible(false)]
     method public static VarItem FindVar(var nam as string)
+        //TODO: leaving warn as is for now, this function is called with internal names as well which have no physical mapping in the source
         foreach s in VarLst::Backwards()
             if s::Contains(nam) then
                 var v = s::get_Item(nam)
@@ -386,6 +388,7 @@ class public static SymTable
 
     [method: ComVisible(false)]
     method public static void CheckUnusedVar()
+        //leave warns as is, there is a need to flag the whole statement
         var hm = VarLst::get_Last()
         foreach k in hm::get_Keys()
             var vlec = hm::get_Item(k)
@@ -406,6 +409,7 @@ class public static SymTable
 
     [method: ComVisible(false)]
     method public static void CheckCtrlBlks()
+        //leave warns as is, there is a need to flag the whole statement
         if IfLst::get_Count() != 0 then
             StreamUtils::WriteError(IfLst::get_First()::Line, 0, ILEmitter::CurSrcFile, "This if statement is unterminated.")
         elseif SwitchLst::get_Count() != 0 then

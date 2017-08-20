@@ -203,7 +203,7 @@ class public TypeList
                     i++
                     genparams[i] = Helpers::CommitEvalTTok(gp)
                     if genparams[i] is null then
-                        StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("Generic Argument {0} meant for Generic Method {1} could not be found!!", gp::ToString(), nam))
+                        StreamUtils::WriteError(gp::Line, gp::Column, ILEmitter::CurSrcFile, string::Format("Generic Argument {0} meant for Generic Method {1} could not be found!!", gp::ToString(), nam))
                     end if
                 end for
                 mtdinfo = ti::GetGenericMethod(nam, genparams, paramst, auxt)
@@ -241,7 +241,7 @@ class public TypeList
                             i++
                             genparams[i] = Helpers::CommitEvalTTok(gp)
                             if genparams[i] is null then
-                                StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("Generic Argument {0} meant for Generic Method {1} could not be found!!", gp::ToString(), nam))
+                                StreamUtils::WriteError(gp::Line, gp::Column, ILEmitter::CurSrcFile, string::Format("Generic Argument {0} meant for Generic Method {1} could not be found!!", gp::ToString(), nam))
                             end if
                         end for
                         mtdinfo = Loader::LoadGenericMethod(auxt::get_BaseType(), nam, genparams, paramst)

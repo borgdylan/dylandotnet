@@ -839,7 +839,7 @@ class public StmtReader
             ILEmitter::DeclVar(festm::Iter::Value, ttu2)
             ILEmitter::LocInd++
             SymTable::StoreFlg = true
-            SymTable::AddVar(festm::Iter::Value, true, ILEmitter::LocInd, ttu2, ILEmitter::LineNr)
+            SymTable::AddVar(festm::Iter, true, ILEmitter::LocInd, ttu2, ILEmitter::LineNr)
             SymTable::StoreFlg = false
             ILEmitter::EmitLdloc(ien)
             ILEmitter::EmitCallvirt(mtds[2])
@@ -865,7 +865,7 @@ class public StmtReader
                 ILEmitter::DeclVar(festm::Iter::Value, ttu2)
                 ILEmitter::LocInd++
                 SymTable::StoreFlg = true
-                SymTable::AddVar(festm::Iter::Value, true, ILEmitter::LocInd, ttu2, ILEmitter::LineNr)
+                SymTable::AddVar(festm::Iter, true, ILEmitter::LocInd, ttu2, ILEmitter::LineNr)
                 SymTable::StoreFlg = false
                 ILEmitter::EmitLdloc(ien)
                 ILEmitter::EmitCallvirt(mtds[1])
@@ -1045,7 +1045,7 @@ class public StmtReader
 //        if AsmFactory::isNested then
 //            SymTable::AddNestedFld(flss::FieldName::Value, ftyp, AsmFactory::CurnFldB)
 //        else
-            SymTable::AddFld(flss::FieldName::Value, ftyp, AsmFactory::CurnFldB, #ternary{ litval is null ? null, litval::Value})
+            SymTable::AddFld(flss::FieldName, ftyp, AsmFactory::CurnFldB, #ternary{ litval is null ? null, litval::Value})
 //        end if
 
         #if DEBUG then
@@ -1067,7 +1067,7 @@ class public StmtReader
         ILEmitter::DeclVar(fstm::Iter::Value, ttu2)
         ILEmitter::LocInd++
         SymTable::StoreFlg = true
-        SymTable::AddVar(fstm::Iter::Value, true, ILEmitter::LocInd, ttu2, ILEmitter::LineNr)
+        SymTable::AddVar(fstm::Iter, true, ILEmitter::LocInd, ttu2, ILEmitter::LineNr)
         SymTable::StoreFlg = false
         if ttu isnot null then
             if !ttu::Equals(AsmFactory::Type02) then
@@ -1625,7 +1625,7 @@ class public StmtReader
             end if
             ILEmitter::DeclVar(curv::VarName::Value, vtyp)
             ILEmitter::LocInd++
-            SymTable::AddVar(curv::VarName::Value, true, ILEmitter::LocInd, vtyp, ILEmitter::LineNr)
+            SymTable::AddVar(curv::VarName, true, ILEmitter::LocInd, vtyp, ILEmitter::LineNr)
         elseif stm is VarAsgnStmt then
             var curva as VarAsgnStmt = $VarAsgnStmt$stm
             vtyp = Helpers::CommitEvalTTok(curva::VarTyp)
@@ -1635,7 +1635,7 @@ class public StmtReader
             ILEmitter::DeclVar(curva::VarName::Value, vtyp)
             ILEmitter::LocInd++
 
-            SymTable::AddVar(curva::VarName::Value, true, ILEmitter::LocInd, vtyp, ILEmitter::LineNr)
+            SymTable::AddVar(curva::VarName, true, ILEmitter::LocInd, vtyp, ILEmitter::LineNr)
             new Evaluator()::StoreEmit(curva::VarName, curva::RExpr)
         elseif stm is InfVarAsgnStmt then
             var curva as InfVarAsgnStmt = $InfVarAsgnStmt$stm
@@ -1644,7 +1644,7 @@ class public StmtReader
             ILEmitter::DeclVar(curva::VarName::Value, vtyp)
             ILEmitter::LocInd++
 
-            SymTable::AddVar(curva::VarName::Value, true, ILEmitter::LocInd, vtyp, ILEmitter::LineNr)
+            SymTable::AddVar(curva::VarName, true, ILEmitter::LocInd, vtyp, ILEmitter::LineNr)
             eval::StoreEmit(curva::VarName, curva::RExpr)
         elseif stm is UsingAsgnStmt then
             var curva as UsingAsgnStmt = $UsingAsgnStmt$stm
@@ -1660,7 +1660,7 @@ class public StmtReader
             end if
             SymTable::PushScope()
 
-            SymTable::AddVar(curva::VarName::Value, true, ILEmitter::LocInd, vtyp, ILEmitter::LineNr)
+            SymTable::AddVar(curva::VarName, true, ILEmitter::LocInd, vtyp, ILEmitter::LineNr)
             new Evaluator()::StoreEmit(curva::VarName, curva::RExpr)
 
             SymTable::AddUsing(curva::VarName::Value)
@@ -1678,7 +1678,7 @@ class public StmtReader
             end if
             SymTable::PushScope()
 
-            SymTable::AddVar(curva::VarName::Value, true, ILEmitter::LocInd, vtyp, ILEmitter::LineNr)
+            SymTable::AddVar(curva::VarName, true, ILEmitter::LocInd, vtyp, ILEmitter::LineNr)
             eval::StoreEmit(curva::VarName, curva::RExpr)
 
             SymTable::AddUsing(curva::VarName::Value)
@@ -1697,13 +1697,13 @@ class public StmtReader
             else
                 //enum members
                 var litval as ConstInfo = null
-                var name = asgnstm::LExp::Tokens::get_Item(0)::Value
+                var name = $Ident$asgnstm::LExp::Tokens::get_Item(0)
                 if asgnstm::RExp::Tokens::get_Count() < 1 then
                     StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "Enum members should always be initialized in their declaration!")
                 else
                     litval = Helpers::ProcessConstExpr(asgnstm::RExp)
                     if litval::Typ::Equals(SymTable::CurnTypItem::InhTyp) then
-                        AsmFactory::CurnFldB = AsmFactory::CurnEnumB::DefineLiteral(name, litval::Value)
+                        AsmFactory::CurnFldB = AsmFactory::CurnEnumB::DefineLiteral(name::Value, litval::Value)
                         SymTable::AddFld(name, SymTable::CurnTypItem::EnumBldr, AsmFactory::CurnFldB, litval::Value)
                         Helpers::ApplyFldAttrs()
                     else
@@ -1979,7 +1979,7 @@ class public StmtReader
                     ILEmitter::DeclVar(cats::ExName::Value, vtyp)
                     ILEmitter::LocInd++
                     SymTable::StoreFlg = true
-                    SymTable::AddVar(cats::ExName::Value, true, ILEmitter::LocInd, vtyp, ILEmitter::LineNr)
+                    SymTable::AddVar(cats::ExName, true, ILEmitter::LocInd, vtyp, ILEmitter::LineNr)
                     SymTable::StoreFlg = false
 
                     if cats::FilterExp isnot null then

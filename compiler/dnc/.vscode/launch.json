@@ -6,9 +6,9 @@
             "type": "mono",
             "request": "launch",
             "program": "${workspaceRoot}/bin/Debug/net46/ubuntu.16.04-x64/dnc.exe",
-            "args": ["${workspaceRoot}/../dnu/dnu.dyl"],
+            "args": ["${workspaceRoot}/../tokenizer.CodeGen/tokenizer.CodeGen.dyl"],
             "cwd": "${workspaceRoot}",
-            "preLaunchTask": "build",
+            // "preLaunchTask": "build",
             "runtimeExecutable": null,
             "env": {},
             "externalConsole": true

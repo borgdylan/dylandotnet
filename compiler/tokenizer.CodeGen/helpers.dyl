@@ -21,6 +21,7 @@ class public static Helpers
     //uses NullExprFlag as input
     [method: ComVisible(false)]
     method public static void CheckAssignability(var t1 as Managed.Reflection.Type, var t2 as Managed.Reflection.Type)
+        //leave error as is, it pertains to the whole assignment
         if !t1::IsAssignableFrom(t2) andalso #expr(!NullExprFlg orelse Loader::CachedLoadClass("System.ValueType")::IsAssignableFrom(t1)) then
             //StreamUtils::WriteWarn(ILEmitter::LineNr, ILEmitter::CurSrcFile, string::Format("'{0}','{1}'.", t1::get_AssemblyQualifiedName(), t2::get_AssemblyQualifiedName()))
             StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("Slots of type '{0}' cannot be assigned values of type '{1}'.", t1::ToString(), t2::ToString()))
@@ -119,7 +120,7 @@ class public static Helpers
                 ILEmitter::PartialFlg = true
             else
                 flg = false
-                StreamUtils::WriteWarn(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"'{attr::Value}' is not a valid attribute for a class or delegate.")
+                StreamUtils::WriteWarn(attr::Line, attr::Column, ILEmitter::CurSrcFile, i"'{attr::Value}' is not a valid attribute for a class or delegate.")
             end if
             if flg then
                 if fir then
@@ -164,7 +165,7 @@ class public static Helpers
                 temp = TypeAttributes::Sealed
             else
                 flg = false
-                StreamUtils::WriteWarn(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"'{attr::Value}' is not a valid attribute for an enum.")
+                StreamUtils::WriteWarn(attr::Line, attr::Column, ILEmitter::CurSrcFile, i"'{attr::Value}' is not a valid attribute for an enum.")
             end if
             if flg then
                 if fir then
@@ -211,7 +212,7 @@ class public static Helpers
             elseif attr is Attributes.FamilyAttr then
                 temp = MethodAttributes::Family
                 if assem orelse fam orelse foa orelse faa then
-                    StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, errs)
+                    StreamUtils::WriteError(attr::Line, attr::Column, ILEmitter::CurSrcFile, errs)
                 end if
                 fam = true
             elseif attr is Attributes.FinalAttr then
@@ -219,19 +220,19 @@ class public static Helpers
             elseif attr is Attributes.AssemblyAttr then
                 temp = MethodAttributes::Assembly
                 if assem orelse fam orelse foa orelse faa then
-                    StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, errs)
+                    StreamUtils::WriteError(attr::Line, attr::Column, ILEmitter::CurSrcFile, errs)
                 end if
                 assem = true
             elseif attr is Attributes.FamORAssemAttr then
                 temp = MethodAttributes::FamORAssem
                 if assem orelse fam orelse foa orelse faa then
-                    StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, errs)
+                    StreamUtils::WriteError(attr::Line, attr::Column, ILEmitter::CurSrcFile, errs)
                 end if
                 foa = true
             elseif attr is Attributes.FamANDAssemAttr then
                 temp = MethodAttributes::FamANDAssem
                 if assem orelse fam orelse foa orelse faa then
-                    StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, errs)
+                    StreamUtils::WriteError(attr::Line, attr::Column, ILEmitter::CurSrcFile, errs)
                 end if
                 faa = true
             elseif attr is Attributes.AbstractAttr then
@@ -243,7 +244,7 @@ class public static Helpers
                 ILEmitter::PInvokeFlg = true
             else
                 flg = false
-                StreamUtils::WriteWarn(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"'{attr::Value}' is not a valid attribute for a method.")
+                StreamUtils::WriteWarn(attr::Line, attr::Column, ILEmitter::CurSrcFile, i"'{attr::Value}' is not a valid attribute for a method.")
             end if
             if flg then
                 if fir then
@@ -286,32 +287,32 @@ class public static Helpers
             elseif attr is Attributes.FamilyAttr then
                 temp = FieldAttributes::Family
                 if assem orelse fam orelse foa orelse faa then
-                    StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, errs)
+                    StreamUtils::WriteError(attr::Line, attr::Column, ILEmitter::CurSrcFile, errs)
                 end if
                 fam = true
             elseif attr is Attributes.AssemblyAttr then
                 temp = FieldAttributes::Assembly
                 if assem orelse fam orelse foa orelse faa then
-                    StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, errs)
+                    StreamUtils::WriteError(attr::Line, attr::Column, ILEmitter::CurSrcFile, errs)
                 end if
                 assem = true
             elseif attr is Attributes.FamORAssemAttr then
                 temp = FieldAttributes::FamORAssem
                 if assem orelse fam orelse foa orelse faa then
-                    StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, errs)
+                    StreamUtils::WriteError(attr::Line, attr::Column, ILEmitter::CurSrcFile, errs)
                 end if
                 foa = true
             elseif attr is Attributes.FamANDAssemAttr then
                 temp = FieldAttributes::FamANDAssem
                 if assem orelse fam orelse foa orelse faa then
-                    StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, errs)
+                    StreamUtils::WriteError(attr::Line, attr::Column, ILEmitter::CurSrcFile, errs)
                 end if
                 faa = true
             elseif attr is Attributes.NotSerializedAttr then
                 temp = FieldAttributes::NotSerialized
             else
                 flg = false
-                StreamUtils::WriteWarn(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"'{attr::Value}' is not a valid attribute for a field.")
+                StreamUtils::WriteWarn(attr::Line, attr::Column, ILEmitter::CurSrcFile, i"'{attr::Value}' is not a valid attribute for a field.")
             end if
             if flg then
                 if fir then
@@ -342,7 +343,7 @@ class public static Helpers
                 temp = PropertyAttributes::SpecialName
             else
                 flg = false
-                StreamUtils::WriteWarn(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"'{attr::Value}' is not a valid attribute for a property.")
+                StreamUtils::WriteWarn(attr::Line, attr::Column, ILEmitter::CurSrcFile, i"'{attr::Value}' is not a valid attribute for a property.")
             end if
             if flg then
                 if fir then
@@ -372,7 +373,7 @@ class public static Helpers
                 temp = EventAttributes::SpecialName
             else
                 flg = false
-                StreamUtils::WriteWarn(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"'{attr::Value}' is not a valid attribute for a property.")
+                StreamUtils::WriteWarn(attr::Line, attr::Column, ILEmitter::CurSrcFile, i"'{attr::Value}' is not a valid attribute for an event.")
             end if
             if flg then
                 if fir then
@@ -481,13 +482,13 @@ class public static Helpers
             end if
 
             if typ is null then
-                StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"Generic Type {tstr} could not be found!!")
+                StreamUtils::WriteError(gtt::Line, gtt::Column, ILEmitter::CurSrcFile, i"Generic Type {tstr} could not be found!!")
             end if
 
             foreach pt in pttoks
                 temptyp = CommitEvalTTok(pt)
                 if temptyp is null then
-                    StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"Generic Argument {pt::ToString()} meant for Generic Type {typ::ToString()} could not be found!!")
+                    StreamUtils::WriteError(pt::Line, pt::Column, ILEmitter::CurSrcFile, i"Generic Argument {pt::ToString()} meant for Generic Type {typ::ToString()} could not be found!!")
                 end if
                 lop::Add(temptyp)
             end for
@@ -498,7 +499,7 @@ class public static Helpers
             if gtt::NestedType isnot null then
                 typ = typ::GetNestedType(gtt::NestedType::Value)
                 if typ is null then
-                    StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"Nested Type {gtt::NestedType::Value} could not be found!")
+                    StreamUtils::WriteError(gtt::NestedType::Line, gtt::NestedType::Column, ILEmitter::CurSrcFile, i"Nested Type {gtt::NestedType::Value} could not be found!")
                 else
                     if gtt::NestedType is GenericTypeTok then
                         var pttoks2 = #expr($GenericTypeTok$gtt::NestedType)::Params
@@ -507,7 +508,7 @@ class public static Helpers
                         foreach pt in pttoks2
                             temptyp = CommitEvalTTok(pt)
                             if temptyp is null then
-                                StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"Generic Argument {pt::ToString()} meant for Generic Type {typ::ToString()} could not be found!!")
+                                StreamUtils::WriteError(pt::Line, pt::Column, ILEmitter::CurSrcFile, i"Generic Argument {pt::ToString()} meant for Generic Type {typ::ToString()} could not be found!!")
                             end if
                             lop2::Add(temptyp)
                         end for
@@ -594,7 +595,7 @@ class public static Helpers
             typ = CommitEvalTTok(curp::VarTyp)
 
             if typ is null then
-                StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"Class '{curp::VarTyp::Value}' is not defined or is not accessible.")
+                StreamUtils::WriteError(curp::VarTyp::Line, curp::VarTyp::Column, ILEmitter::CurSrcFile, i"Class '{curp::VarTyp::Value}' is not defined or is not accessible.")
             else
                 lt::Add(typ)
             end if
@@ -634,7 +635,7 @@ class public static Helpers
 
             ILEmitter::ArgInd++
             SymTable::StoreFlg = true
-            SymTable::AddVar(curp::VarName::Value, false, ILEmitter::ArgInd, CommitEvalTTok(curp::VarTyp),ILEmitter::LineNr)
+            SymTable::AddVar(curp::VarName, false, ILEmitter::ArgInd, CommitEvalTTok(curp::VarTyp),ILEmitter::LineNr)
             SymTable::StoreFlg = false
         end for
 
@@ -672,7 +673,7 @@ class public static Helpers
 
             ILEmitter::ArgInd++
             SymTable::StoreFlg = true
-            SymTable::AddVar(curp::VarName::Value, false, ILEmitter::ArgInd, CommitEvalTTok(curp::VarTyp),ILEmitter::LineNr)
+            SymTable::AddVar(curp::VarName, false, ILEmitter::ArgInd, CommitEvalTTok(curp::VarTyp),ILEmitter::LineNr)
             SymTable::StoreFlg = false
         end for
 
@@ -712,7 +713,7 @@ class public static Helpers
         elseif lit is DecimalLiteral then
             ILEmitter::EmitLdcDec(#expr($DecimalLiteral$lit)::NumVal)
         else
-            StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"Loading of literals of type '{CommitEvalTTok(lit::LitTyp)::ToString()}' is not yet supported.")
+            StreamUtils::WriteError(lit::Line, lit::Column, ILEmitter::CurSrcFile, i"Loading of literals of type '{CommitEvalTTok(lit::LitTyp)::ToString()}' is not yet supported.")
         end if
     end method
 
@@ -747,7 +748,7 @@ class public static Helpers
         elseif lit is ULongLiteral then
             return $object$#expr($ULongLiteral$lit)::NumVal
         else
-            StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"Literals of type '{CommitEvalTTok(lit::LitTyp)::ToString()}' are not suitable for constants.")
+            StreamUtils::WriteError(lit::Line, lit::Column, ILEmitter::CurSrcFile, i"Literals of type '{CommitEvalTTok(lit::LitTyp)::ToString()}' are not suitable for constants.")
             return null
         end if
     end method
@@ -782,7 +783,7 @@ class public static Helpers
         elseif Loader::CachedLoadClass("System.UInt64")::Equals(lit::IntTyp) then
             return new ULongLiteral($ulong$lit::ConstVal)
         else
-            StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"Loading of constants of internal type '{lit::IntTyp::ToString()}' is not yet supported.")
+            StreamUtils::WriteError(lit::Line, lit::Column, ILEmitter::CurSrcFile, i"Loading of constants of internal type '{lit::IntTyp::ToString()}' is not yet supported.")
             return null
         end if
     end method
@@ -811,7 +812,7 @@ class public static Helpers
                 elseif OpCodeSuppFlg then
                     ILEmitter::EmitAdd(s)
                 else
-                    StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The '+' operation is undefined for '{LeftOp::ToString()}' and '{RightOp::ToString()}'.")
+                    StreamUtils::WriteError(op::Line, op::Column, ILEmitter::CurSrcFile, i"The '+' operation is undefined for '{LeftOp::ToString()}' and '{RightOp::ToString()}'.")
                 end if
             end if
         elseif op is MulOp then
@@ -828,7 +829,7 @@ class public static Helpers
                 if OpCodeSuppFlg then
                     ILEmitter::EmitMul(s)
                 else
-                    StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The '*' operation is undefined for '{LeftOp::ToString()}' and '{RightOp::ToString()}'.")
+                    StreamUtils::WriteError(op::Line, op::Column, ILEmitter::CurSrcFile, i"The '*' operation is undefined for '{LeftOp::ToString()}' and '{RightOp::ToString()}'.")
                 end if
             end if
         elseif op is SubOp then
@@ -847,7 +848,7 @@ class public static Helpers
                 elseif OpCodeSuppFlg then
                     ILEmitter::EmitSub(s)
                 else
-                    StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The '-' operation is undefined for '{LeftOp::ToString()}' and '{RightOp::ToString()}'.")
+                    StreamUtils::WriteError(op::Line, op::Column, ILEmitter::CurSrcFile, i"The '-' operation is undefined for '{LeftOp::ToString()}' and '{RightOp::ToString()}'.")
                 end if
             end if
         elseif op is DivOp then
@@ -864,7 +865,7 @@ class public static Helpers
                 if OpCodeSuppFlg then
                     ILEmitter::EmitDiv(s)
                 else
-                    StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The '/' operation is undefined for '{LeftOp::ToString()}' and '{RightOp::ToString()}'.")
+                    StreamUtils::WriteError(op::Line, op::Column, ILEmitter::CurSrcFile, i"The '/' operation is undefined for '{LeftOp::ToString()}' and '{RightOp::ToString()}'.")
                 end if
             end if
         elseif op is ModOp then
@@ -881,7 +882,7 @@ class public static Helpers
                 if OpCodeSuppFlg then
                     ILEmitter::EmitRem(s)
                 else
-                    StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The '%' operation is undefined for '{LeftOp::ToString()}' and '{RightOp::ToString()}'.")
+                    StreamUtils::WriteError(op::Line, op::Column, ILEmitter::CurSrcFile, i"The '%' operation is undefined for '{LeftOp::ToString()}' and '{RightOp::ToString()}'.")
                 end if
             end if
         elseif op is OrOp then
@@ -898,7 +899,7 @@ class public static Helpers
                 if EqSuppFlg then
                     ILEmitter::EmitOr()
                 else
-                    StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The 'or' operation is undefined for '{LeftOp::ToString()}' and '{RightOp::ToString()}'.")
+                    StreamUtils::WriteError(op::Line, op::Column, ILEmitter::CurSrcFile, i"The 'or' operation is undefined for '{LeftOp::ToString()}' and '{RightOp::ToString()}'.")
                 end if
             end if
         elseif op is AndOp then
@@ -915,7 +916,7 @@ class public static Helpers
                 if EqSuppFlg then
                     ILEmitter::EmitAnd()
                 else
-                    StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The 'and' operation is undefined for '{LeftOp::ToString()}' and '{RightOp::ToString()}'.")
+                    StreamUtils::WriteError(op::Line, op::Column, ILEmitter::CurSrcFile, i"The 'and' operation is undefined for '{LeftOp::ToString()}' and '{RightOp::ToString()}'.")
                 end if
             end if
         elseif op is XorOp then
@@ -932,7 +933,7 @@ class public static Helpers
                 if EqSuppFlg then
                     ILEmitter::EmitXor()
                 else
-                    StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The 'xor' operation is undefined for '{LeftOp::ToString()}' and '{RightOp::ToString()}'.")
+                    StreamUtils::WriteError(op::Line, op::Column, ILEmitter::CurSrcFile, i"The 'xor' operation is undefined for '{LeftOp::ToString()}' and '{RightOp::ToString()}'.")
                 end if
             end if
         elseif op is NandOp then
@@ -956,7 +957,7 @@ class public static Helpers
                 elseif EqSuppFlg then
                     ILEmitter::EmitNandOther()
                 else
-                    StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The 'nand' operation is undefined for '{LeftOp::ToString()}' and '{RightOp::ToString()}'.")
+                    StreamUtils::WriteError(op::Line, op::Column, ILEmitter::CurSrcFile, i"The 'nand' operation is undefined for '{LeftOp::ToString()}' and '{RightOp::ToString()}'.")
                 end if
             end if
         elseif op is NorOp then
@@ -980,7 +981,7 @@ class public static Helpers
                 elseif EqSuppFlg then
                     ILEmitter::EmitNorOther()
                 else
-                    StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The 'nor' operation is undefined for '{LeftOp::ToString()}' and '{RightOp::ToString()}'.")
+                    StreamUtils::WriteError(op::Line, op::Column, ILEmitter::CurSrcFile, i"The 'nor' operation is undefined for '{LeftOp::ToString()}' and '{RightOp::ToString()}'.")
                 end if
             end if
         elseif op is XnorOp then
@@ -1004,7 +1005,7 @@ class public static Helpers
                 elseif EqSuppFlg then
                     ILEmitter::EmitXnorOther()
                 else
-                    StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The 'xnor' operation is undefined for '{LeftOp::ToString()}' and '{RightOp::ToString()}'.")
+                    StreamUtils::WriteError(op::Line, op::Column, ILEmitter::CurSrcFile, i"The 'xnor' operation is undefined for '{LeftOp::ToString()}' and '{RightOp::ToString()}'.")
                 end if
             end if
         elseif op is GtOp then
@@ -1022,7 +1023,7 @@ class public static Helpers
                     ILEmitter::EmitCgt(s, bo, lab)
                     return bo != BranchOptimisation::None
                 else
-                    StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The '>' operation is undefined for '{LeftOp::ToString()}' and '{RightOp::ToString()}'.")
+                    StreamUtils::WriteError(op::Line, op::Column, ILEmitter::CurSrcFile, i"The '>' operation is undefined for '{LeftOp::ToString()}' and '{RightOp::ToString()}'.")
                 end if
             end if
         elseif op is LtOp then
@@ -1040,7 +1041,7 @@ class public static Helpers
                     ILEmitter::EmitClt(s, bo, lab)
                     return bo != BranchOptimisation::None
                 else
-                    StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The '<' operation is undefined for '{LeftOp::ToString()}' and '{RightOp::ToString()}'.")
+                    StreamUtils::WriteError(op::Line, op::Column, ILEmitter::CurSrcFile, i"The '<' operation is undefined for '{LeftOp::ToString()}' and '{RightOp::ToString()}'.")
                 end if
             end if
         elseif op is GeOp then
@@ -1058,7 +1059,7 @@ class public static Helpers
                     ILEmitter::EmitCge(s, bo, lab)
                     return bo != BranchOptimisation::None
                 else
-                    StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The '>=' operation is undefined for '{LeftOp::ToString()}' and '{RightOp::ToString()}'.")
+                    StreamUtils::WriteError(op::Line, op::Column, ILEmitter::CurSrcFile, i"The '>=' operation is undefined for '{LeftOp::ToString()}' and '{RightOp::ToString()}'.")
                 end if
             end if
         elseif op is LeOp then
@@ -1076,7 +1077,7 @@ class public static Helpers
                     ILEmitter::EmitCle(s, bo, lab)
                     return bo != BranchOptimisation::None
                 else
-                    StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The '<=' operation is undefined for '{LeftOp::ToString()}' and '{RightOp::ToString()}'.")
+                    StreamUtils::WriteError(op::Line, op::Column, ILEmitter::CurSrcFile, i"The '<=' operation is undefined for '{LeftOp::ToString()}' and '{RightOp::ToString()}'.")
                 end if
             end if
         elseif op is EqOp then
@@ -1098,7 +1099,7 @@ class public static Helpers
                     ILEmitter::EmitCeq(bo, lab)
                     return bo != BranchOptimisation::None
                 else
-                    StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The '==' operation is undefined for '{LeftOp::ToString()}' and '{RightOp::ToString()}'.")
+                    StreamUtils::WriteError(op::Line, op::Column, ILEmitter::CurSrcFile, i"The '==' operation is undefined for '{LeftOp::ToString()}' and '{RightOp::ToString()}'.")
                 end if
             end if
         elseif op is StrictEqOp then
@@ -1107,7 +1108,7 @@ class public static Helpers
                     ILEmitter::EmitCeq(bo, lab)
                     return bo != BranchOptimisation::None
                 else
-                    StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The '===' operation is undefined for '{LeftOp::ToString()}' and '{RightOp::ToString()}'.")
+                    StreamUtils::WriteError(op::Line, op::Column, ILEmitter::CurSrcFile, i"The '===' operation is undefined for '{LeftOp::ToString()}' and '{RightOp::ToString()}'.")
                 end if
             end if
         elseif op is NeqOp then
@@ -1129,7 +1130,7 @@ class public static Helpers
                     ILEmitter::EmitCneq(bo, lab)
                     return bo != BranchOptimisation::None
                 else
-                    StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The '!=' operation is undefined for '{LeftOp::ToString()}' and '{RightOp::ToString()}'.")
+                    StreamUtils::WriteError(op::Line, op::Column, ILEmitter::CurSrcFile, i"The '!=' operation is undefined for '{LeftOp::ToString()}' and '{RightOp::ToString()}'.")
                 end if
             end if
         elseif op is StrictNeqOp then
@@ -1138,7 +1139,7 @@ class public static Helpers
                     ILEmitter::EmitCneq(bo, lab)
                     return bo != BranchOptimisation::None
                 else
-                    StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The '!==' operation is undefined for '{LeftOp::ToString()}' and '{RightOp::ToString()}'.")
+                    StreamUtils::WriteError(op::Line, op::Column, ILEmitter::CurSrcFile, i"The '!==' operation is undefined for '{LeftOp::ToString()}' and '{RightOp::ToString()}'.")
                 end if
             end if
         elseif op is LikeOp then
@@ -1146,7 +1147,7 @@ class public static Helpers
                 if StringFlg then
                     ILEmitter::EmitLike()
                 else
-                    StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The 'like' operation is undefined for '{LeftOp::ToString()}' and '{RightOp::ToString()}'.")
+                    StreamUtils::WriteError(op::Line, op::Column, ILEmitter::CurSrcFile, i"The 'like' operation is undefined for '{LeftOp::ToString()}' and '{RightOp::ToString()}'.")
                 end if
             end if
         elseif op is NLikeOp then
@@ -1154,7 +1155,7 @@ class public static Helpers
                 if StringFlg then
                     ILEmitter::EmitNLike()
                 else
-                    StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The 'notlike' operation is undefined for '{LeftOp::ToString()}' and '{RightOp::ToString()}'.")
+                    StreamUtils::WriteError(op::Line, op::Column, ILEmitter::CurSrcFile, i"The 'notlike' operation is undefined for '{LeftOp::ToString()}' and '{RightOp::ToString()}'.")
                 end if
             end if
         elseif op is ShlOp then
@@ -1171,7 +1172,7 @@ class public static Helpers
                 if CheckSHLRLHS(LeftOp) and CheckSHLRRHS(RightOp, false) then
                     ILEmitter::EmitShl()
                 else
-                    StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The '<<' operation is undefined for '{LeftOp::ToString()}' and '{RightOp::ToString()}'.")
+                    StreamUtils::WriteError(op::Line, op::Column, ILEmitter::CurSrcFile, i"The '<<' operation is undefined for '{LeftOp::ToString()}' and '{RightOp::ToString()}'.")
                 end if
             end if
         elseif op is ShrOp then
@@ -1188,11 +1189,11 @@ class public static Helpers
                 if CheckSHLRLHS(LeftOp) and CheckSHLRRHS(RightOp, false) then
                     ILEmitter::EmitShr(s)
                 else
-                    StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The '>>' operation is undefined for '{LeftOp::ToString()}' and '{RightOp::ToString()}'.")
+                    StreamUtils::WriteError(op::Line, op::Column, ILEmitter::CurSrcFile, i"The '>>' operation is undefined for '{LeftOp::ToString()}' and '{RightOp::ToString()}'.")
                 end if
             end if
         else
-            StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The '{op::ToString()}' operation is undefined for '{LeftOp::ToString()}' and '{RightOp::ToString()}'.")
+            StreamUtils::WriteError(op::Line, op::Column, ILEmitter::CurSrcFile, i"The '{op::ToString()}' operation is undefined for '{LeftOp::ToString()}' and '{RightOp::ToString()}'.")
         end if
         return false
     end method
@@ -1625,6 +1626,8 @@ class public static Helpers
             end if
         end do
 
+
+        //TODO: determine whether these warnings should be more accurate location-wise
         if t3 isnot null then
             t3::PopFlg = true
             if t3::Name::MemberAccessFlg then
@@ -1729,7 +1732,7 @@ class public static Helpers
                     i++
                     genparams[i] = CommitEvalTTok(gp)
                     if genparams[i] is null then
-                        StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("Generic Argument {0} meant for Generic Method {1} could not be found!!", gp::ToString(), name))
+                        StreamUtils::WriteError(gp::Line, gp::Column, ILEmitter::CurSrcFile, string::Format("Generic Argument {0} meant for Generic Method {1} could not be found!!", gp::ToString(), name))
                     end if
                 end for
                 return Loader::LoadGenericMethod(t, name, genparams, paramtyps)
@@ -1774,7 +1777,7 @@ class public static Helpers
                 i++
                 genparams[i] = CommitEvalTTok(gp)
                 if genparams[i] is null then
-                    StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("Generic Argument {0} meant for Generic Method {1} could not be found!!", gp::ToString(), nam))
+                    StreamUtils::WriteError(gp::Line, gp::Column, ILEmitter::CurSrcFile, string::Format("Generic Argument {0} meant for Generic Method {1} could not be found!!", gp::ToString(), nam))
                 end if
             end for
             meti = SymTable::FindGenMet(nam, genparams, typs)
@@ -2150,6 +2153,7 @@ class public static Helpers
                 ILEmitter::EmitNeg()
             end if
         else
+            //leave as is since the operator token would have been erased at parse time
             StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The '!' operation is undefined for '{t::ToString()}'.")
         end if
         return false
@@ -2164,6 +2168,7 @@ class public static Helpers
         elseif IsPrimitiveIntegralType(t) then
             ILEmitter::EmitNotOther()
         else
+            //leave as is since the operator token would have been erased at parse time
             StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The '~' operation is undefined for '{t::ToString()}'.")
         end if
     end method
@@ -2208,6 +2213,7 @@ class public static Helpers
             ILEmitter::EmitLdcU1(1ub)
             ILEmitter::EmitAdd(false)
         else
+            //leave as is since the operator token would have been erased at parse time
             StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The '++' operation is undefined for '{t::ToString()}'.")
         end if
     end method
@@ -2252,6 +2258,7 @@ class public static Helpers
             ILEmitter::EmitLdcU1(1ub)
             ILEmitter::EmitSub(false)
         else
+            //leave as is since the operator token would have been erased at parse time
             StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The '--' operation is undefined for '{t::ToString()}'.")
         end if
     end method
@@ -2265,33 +2272,35 @@ class public static Helpers
             var lit as Literal = $Literal$tok
             return new ConstInfo() {Typ = CommitEvalTTok(lit::LitTyp), Value = LiteralToConst(lit)}
         elseif tok is Ident then
-            var idtnamarr as string[] = ParseUtils::StringParser(tok::Value, ':')
-            var typ as Managed.Reflection.Type = CommitEvalTTok(new TypeTok(idtnamarr[0]))
+            var idtnamarr as IdentSegment[] = #expr($Ident$tok)::GetSegments()
+            var typ as Managed.Reflection.Type = CommitEvalTTok(new TypeTok(idtnamarr[0]::Value))
+
             if typ isnot null then
-                if  GetExtFld(typ, idtnamarr[1]) isnot null then
+                if  GetExtFld(typ, idtnamarr[1]::Value) isnot null then
                     if Loader::FldLitFlag then
                         return new ConstInfo() {Typ = Loader::FldLitTyp, Value = Loader::FldLitVal}
                     else
-                        StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("Field '{0}' of the class '{1}' is not a constant.", idtnamarr[1], typ::ToString()))
+                        StreamUtils::WriteError(idtnamarr[1]::Line, idtnamarr[1]::Column, ILEmitter::CurSrcFile, string::Format("Field '{0}' of the class '{1}' is not a constant.", idtnamarr[1]::Value, typ::ToString()))
                     end if
                 else
-                    StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("Field '{0}' is not defined/accessible for the class '{1}'.", idtnamarr[1], typ::ToString()))
+                    StreamUtils::WriteError(idtnamarr[1]::Line, idtnamarr[1]::Column, ILEmitter::CurSrcFile, string::Format("Field '{0}' is not defined/accessible for the class '{1}'.", idtnamarr[1]::Value, typ::ToString()))
                 end if
             else
-                StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("Class '{0}' is not defined.", idtnamarr[0]))
+                StreamUtils::WriteError(idtnamarr[0]::Line, idtnamarr[0]::Column, ILEmitter::CurSrcFile, string::Format("Class '{0}' is not defined.", idtnamarr[0]::Value))
             end if
         elseif tok is GettypeCallTok then
-            var val = Helpers::CommitEvalTTok(#expr($GettypeCallTok$tok)::Name)
+            var nm = #expr($GettypeCallTok$tok)::Name
+            var val = Helpers::CommitEvalTTok(nm)
             if val isnot null then
                 return new ConstInfo() {Typ = Loader::CachedLoadClass("System.Type"), Value = val}
             else
-                StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("Class '{0}' is not defined.", #expr($GettypeCallTok$tok)::Name))
+                StreamUtils::WriteError(nm::Line, nm::Column, ILEmitter::CurSrcFile, i"Class '{nm}' is not defined.")
             end if
         elseif tok is ArrInitCallTok then
             var aictok as ArrInitCallTok = $ArrInitCallTok$tok
             var typ2 = CommitEvalTTok(aictok::ArrayType)
             if typ2 is null then
-                StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("The Class '{0}' is not defined.",aictok::ArrayType::ToString()))
+                StreamUtils::WriteError(aictok::ArrayType::Line, aictok::ArrayType::Column, ILEmitter::CurSrcFile, string::Format("The Class '{0}' is not defined.",aictok::ArrayType::ToString()))
             end if
 
             var val = Array::CreateInstance(gettype object, aictok::Elements::get_Count())
@@ -2333,40 +2342,40 @@ class public static Helpers
                 if opcf orelse sf then
                     return new ConstInfo() {Value = DynamicHelpers::Add<of object>(lci::Value, rci::Value), Typ = lci::Typ}
                 else
-                    StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The '+' operation is undefined for '{lci::Typ::ToString()}' and '{rci::Typ::ToString()}'.")
+                    StreamUtils::WriteError(tok::Line, tok::Column, ILEmitter::CurSrcFile, i"The '+' operation is undefined for '{lci::Typ::ToString()}' and '{rci::Typ::ToString()}'.")
                 end if
             elseif tok is MulOp then
                 if opcf then
                     return new ConstInfo() {Value = DynamicHelpers::Multiply<of object>(lci::Value, rci::Value), Typ = lci::Typ}
                 else
-                    StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The '*' operation is undefined for '{lci::Typ::ToString()}' and '{rci::Typ::ToString()}'.")
+                    StreamUtils::WriteError(tok::Line, tok::Column, ILEmitter::CurSrcFile, i"The '*' operation is undefined for '{lci::Typ::ToString()}' and '{rci::Typ::ToString()}'.")
                 end if
             elseif tok is SubOp then
                 if opcf then
                     return new ConstInfo() {Value = DynamicHelpers::Subtract<of object>(lci::Value, rci::Value), Typ = lci::Typ}
                 else
-                    StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The '-' operation is undefined for '{lci::Typ::ToString()}' and '{rci::Typ::ToString()}'.")
+                    StreamUtils::WriteError(tok::Line, tok::Column, ILEmitter::CurSrcFile, i"The '-' operation is undefined for '{lci::Typ::ToString()}' and '{rci::Typ::ToString()}'.")
                 end if
             elseif tok is DivOp then
                 if opcf then
                     return new ConstInfo() {Value = DynamicHelpers::Divide<of object>(lci::Value, rci::Value), Typ = lci::Typ}
                 else
-                    StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The '/' operation is undefined for '{lci::Typ::ToString()}' and '{rci::Typ::ToString()}'.")
+                    StreamUtils::WriteError(tok::Line, tok::Column, ILEmitter::CurSrcFile, i"The '/' operation is undefined for '{lci::Typ::ToString()}' and '{rci::Typ::ToString()}'.")
                 end if
             elseif tok is OrOp then
                 if eqf then
                     return new ConstInfo() {Value = DynamicHelpers::Or<of object>(lci::Value, rci::Value), Typ = lci::Typ}
                 else
-                    StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The 'or' operation is undefined for '{lci::Typ::ToString()}' and '{rci::Typ::ToString()}'.")
+                    StreamUtils::WriteError(tok::Line, tok::Column, ILEmitter::CurSrcFile, i"The 'or' operation is undefined for '{lci::Typ::ToString()}' and '{rci::Typ::ToString()}'.")
                 end if
             elseif tok is AndOp then
                 if eqf then
                     return new ConstInfo() {Value = DynamicHelpers::And<of object>(lci::Value, rci::Value), Typ = lci::Typ}
                 else
-                    StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The 'and' operation is undefined for '{lci::Typ::ToString()}' and '{rci::Typ::ToString()}'.")
+                    StreamUtils::WriteError(tok::Line, tok::Column, ILEmitter::CurSrcFile, i"The 'and' operation is undefined for '{lci::Typ::ToString()}' and '{rci::Typ::ToString()}'.")
                 end if
             else
-                StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The '{optok::ToString()}' operation is undefined for '{lci::Typ::ToString()}' and '{rci::Typ::ToString()}'.")
+                StreamUtils::WriteError(optok::Line, optok::Column, ILEmitter::CurSrcFile, i"The '{optok::ToString()}' operation is undefined for '{lci::Typ::ToString()}' and '{rci::Typ::ToString()}'.")
             end if
 
         else

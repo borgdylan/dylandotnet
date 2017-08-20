@@ -38,11 +38,14 @@ class public Evaluator
 
     method private void ASTEmitArrayLoad(var idt as Ident, var emt as boolean)
         if idt::IsArr then
+            var segs = idt::GetSegments()
+            var lseg = segs[--segs[l]]
+
             var typ as Managed.Reflection.Type = null
             if Helpers::CheckIfArrLen(idt::ArrLoc) then
                 typ = AsmFactory::Type02
                 if !typ::get_IsArray() then
-                    StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("'{0}' is not an Array Type.", typ::ToString()))
+                    StreamUtils::WriteError(lseg::Line, lseg::Column, ILEmitter::CurSrcFile, string::Format("'{0}' is not an Array Type.", typ::ToString()))
                 end if
                 if emt then
                     ILEmitter::EmitLdlen()
@@ -53,10 +56,11 @@ class public Evaluator
                 typ = AsmFactory::Type02
                 ASTEmit(ConvToAST(ConvToRPN(idt::ArrLoc)), emt)
 
+                //TODO: need to get finer index expr location
                 if !Helpers::IsPrimitiveIntegralType(AsmFactory::Type02) then
                     StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "Array Indices should be of a Primitive Integer Type.")
                 elseif !typ::get_IsArray() then
-                    StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("'{0}' is not an Array Type.", typ::ToString()))
+                    StreamUtils::WriteError(lseg::Line, lseg::Column, ILEmitter::CurSrcFile, string::Format("'{0}' is not an Array Type.", typ::ToString()))
                 end if
 
                 typ = typ::GetElementType()
@@ -98,9 +102,10 @@ class public Evaluator
                 var idt = $IConvable$iuo
                 if idt::get_Conv() then
                     var src1 = AsmFactory::Type02
-                    AsmFactory::Type02 = Helpers::CommitEvalTTok(idt::get_TTok())
+                    var ttok = idt::get_TTok()
+                    AsmFactory::Type02 = Helpers::CommitEvalTTok(ttok)
                     if AsmFactory::Type02 is null then
-                        StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("The Class '{0}' is not defined.", idt::get_TTok()::Value))
+                        StreamUtils::WriteError(ttok::Line, ttok::Column, ILEmitter::CurSrcFile, i"The Class '{ttok::Value}' is not defined.")
                     end if
                     if emt then
                         Helpers::EmitConv(src1, AsmFactory::Type02, idt is NullLiteral)
@@ -148,12 +153,12 @@ class public Evaluator
         var idtfldinf as FieldInfo
         var idtisstatic as boolean = false
         var typ as Managed.Reflection.Type
-        var idtnamarr as string[] = ParseUtils::StringParser(idt::Value, ':')
+        var idtnamarr as IdentSegment[] = idt::GetSegments()
         var pushaddr as boolean = idt::IsRef and idt::MemberAccessFlg
 
         if pushaddr then
             idt::IsRef = false
-        elseif idtnamarr[0] == "me" then
+        elseif idtnamarr[0]::Value == "me" then
             i++
             idtb1 = true
         end if
@@ -173,12 +178,13 @@ class public Evaluator
         end if
 
         if idt::ExplType isnot null then
-            typ = Helpers::CommitEvalTTok(idt::ExplType)
+            var idtex = idt::ExplType
+            typ = Helpers::CommitEvalTTok(idtex)
             idtisstatic = true
             idtb2 = true
 
             if typ is null then
-                StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("The Class '{0}' is not defined.", idt::ExplType))
+                StreamUtils::WriteError(idtex::Line, idtex::Column, ILEmitter::CurSrcFile, i"The Class '{idtex}' is not defined.")
             end if
         end if
 
@@ -189,7 +195,7 @@ class public Evaluator
 
             if !idtb2 then
                 if !idtb1 then
-                    vr = SymTable::FindVar(idtnamarr[i])
+                    vr = SymTable::FindVar(idtnamarr[i]::Value)
                     if vr isnot null then
                         if emt then
                             AsmFactory::Type04 = vr::VarTyp
@@ -208,12 +214,12 @@ class public Evaluator
                 end if
 
                 //local field check
-                idtfldinf = Helpers::GetLocFld(idtnamarr[i])
+                idtfldinf = Helpers::GetLocFld(idtnamarr[i]::Value)
                 if idtfldinf isnot null then
                     idtisstatic = idtfldinf::get_IsStatic()
 
                     if !idtisstatic andalso ILEmitter::StaticFlg then
-                        StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("Field '{0}' is an instance field and cannot be used from a static method without an instance being provided.", idtnamarr[i]))
+                        StreamUtils::WriteError(idtnamarr[i]::Line, idtnamarr[i]::Column, ILEmitter::CurSrcFile, string::Format("Field '{0}' is an instance field and cannot be used from a static method without an instance being provided.", idtnamarr[i]::Value))
                     end if
 
                     if !idtisstatic then
@@ -243,23 +249,23 @@ class public Evaluator
                 end if
                 //----------------------
 
-                typ = Helpers::CommitEvalTTok(new TypeTok(idtnamarr[i]))
+                typ = Helpers::CommitEvalTTok(new TypeTok(idtnamarr[i]::Value))
                 idtisstatic = true
 
-                if typ = null then
-                    StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"Variable or Class '{idtnamarr[i]}' is not defined.")
+                if typ == null then
+                    StreamUtils::WriteError(idtnamarr[i]::Line, idtnamarr[i]::Column, ILEmitter::CurSrcFile, i"Variable or Class '{idtnamarr[i]::Value}' is not defined.")
                 end if
 
             else
                 if !typ::Equals(AsmFactory::CurnTypB) then
-                    idtfldinf = Helpers::GetExtFld(typ, idtnamarr[i])
-                    if idtfldinf = null then
-                        StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"Field '{idtnamarr[i]}' is not defined/accessible for the class '{typ::ToString()}'.")
+                    idtfldinf = Helpers::GetExtFld(typ, idtnamarr[i]::Value)
+                    if idtfldinf == null then
+                        StreamUtils::WriteError(idtnamarr[i]::Line, idtnamarr[i]::Column, ILEmitter::CurSrcFile, i"Field '{idtnamarr[i]::Value}' is not defined/accessible for the class '{typ::ToString()}'.")
                     end if
 
                     if idtisstatic != idtfldinf::get_IsStatic() then
-                        StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("Field '{0}' defined for the class '{1}' " _
-                            ,idtnamarr[i], typ::ToString()) + #ternary {idtisstatic andalso !idtfldinf::get_IsStatic() ? "is an instance field.", "is static."})
+                        StreamUtils::WriteError(idtnamarr[i]::Line, idtnamarr[i]::Column, ILEmitter::CurSrcFile, string::Format("Field '{0}' defined for the class '{1}' " _
+                            ,idtnamarr[i]::Value, typ::ToString()) + #ternary {idtisstatic andalso !idtfldinf::get_IsStatic() ? "is an instance field.", "is static."})
                     end if
 
                     typ = Loader::MemberTyp
@@ -280,14 +286,14 @@ class public Evaluator
                         end if
                     end if
                 else
-                    idtfldinf = Helpers::GetLocFld(idtnamarr[i])
+                    idtfldinf = Helpers::GetLocFld(idtnamarr[i]::Value)
                     if idtfldinf is null then
-                        StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("Field '{0}' is not defined/accessible for the class '{1}'.", idtnamarr[i], AsmFactory::CurnTypB::ToString()))
+                        StreamUtils::WriteError(idtnamarr[i]::Line, idtnamarr[i]::Column, ILEmitter::CurSrcFile, string::Format("Field '{0}' is not defined/accessible for the class '{1}'.", idtnamarr[i]::Value, AsmFactory::CurnTypB::ToString()))
                     end if
 
                     if idtisstatic != idtfldinf::get_IsStatic() then
-                        StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("Field '{0}' defined for the class '{1}' " _
-                            ,idtnamarr[i], AsmFactory::CurnTypB::ToString()) + #ternary {idtisstatic andalso !idtfldinf::get_IsStatic() ? "is an instance field.", "is static."})
+                        StreamUtils::WriteError(idtnamarr[i]::Line, idtnamarr[i]::Column, ILEmitter::CurSrcFile, string::Format("Field '{0}' defined for the class '{1}' " _
+                            ,idtnamarr[i]::Value, AsmFactory::CurnTypB::ToString()) + #ternary {idtisstatic andalso !idtfldinf::get_IsStatic() ? "is an instance field.", "is static."})
                     end if
 
                     if emt then
@@ -348,11 +354,11 @@ class public Evaluator
         var mectorflg as boolean = (mntok::Value == "mybase::ctor") orelse (mntok::Value == "me::ctor")
 
         if emt andalso (mntok::Value == "me::ctor") then
-            StreamUtils::WriteWarn(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "Using mybase::ctor is preferred over the use of me::ctor!")
+            StreamUtils::WriteWarn(mntok::Line, mntok::Column, ILEmitter::CurSrcFile, "Using mybase::ctor is preferred over the use of me::ctor!")
         end if
 
         var ctorflg as boolean = mntok::Value == "ctor"
-        var mnstrarr as string[] = ParseUtils::StringParser(mntok::Value, ':')
+        var mnstrarr as IdentSegment[] = mntok::GetSegments()
         var len as integer = mnstrarr[l] - 2
         var iterflg = false
         var mtt as TypeTok = null
@@ -360,11 +366,11 @@ class public Evaluator
         if pushaddr then
             mntok::IsRef = false
         end if
-        if (mnstrarr[0] == "me") orelse (mnstrarr[0] == "mybase") then
+        if (mnstrarr[0]::Value == "me") orelse (mnstrarr[0]::Value == "mybase") then
             i++
             idtb1 = true
             mcrestrord = 3
-            baseflg = mnstrarr[0] == "mybase"
+            baseflg = mnstrarr[0]::Value == "mybase"
         end if
 
         if mectorflg orelse ctorflg then
@@ -387,12 +393,13 @@ class public Evaluator
             end if
 
             if mntok::ExplType isnot null then
-                mcparenttyp = Helpers::CommitEvalTTok(mntok::ExplType)
+                var mntex = mntok::ExplType
+                mcparenttyp = Helpers::CommitEvalTTok(mntex)
                 mcisstatic = true
                 idtb2 = true
 
                 if mcparenttyp is null then
-                    StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("The Class '{0}' is not defined.", mntok::ExplType))
+                    StreamUtils::WriteError(mntex::Line, mntex::Column, ILEmitter::CurSrcFile, i"The Class '{mntex}' is not defined.")
                 end if
             end if
 
@@ -404,7 +411,7 @@ class public Evaluator
                     iterflg = true
                     if !idtb2 then
                         if !idtb1 then
-                            var mcvr as VarItem = SymTable::FindVar(mnstrarr[i])
+                            var mcvr as VarItem = SymTable::FindVar(mnstrarr[i]::Value)
                             if mcvr isnot null then
                                 if emt then
                                     AsmFactory::Type04 = mcvr::VarTyp
@@ -425,12 +432,12 @@ class public Evaluator
                         end if
 
                         //local field check
-                        mcfldinf = Helpers::GetLocFld(mnstrarr[i])
+                        mcfldinf = Helpers::GetLocFld(mnstrarr[i]::Value)
                         if mcfldinf isnot null then
                             idtisstatic = mcfldinf::get_IsStatic()
 
                             if !idtisstatic andalso ILEmitter::StaticFlg then
-                                StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("Field '{0}' is an instance field and cannot be used from a static method without an instance being provided.", mnstrarr[i]))
+                                StreamUtils::WriteError(mnstrarr[i]::Line, mnstrarr[i]::Column, ILEmitter::CurSrcFile, string::Format("Field '{0}' is an instance field and cannot be used from a static method without an instance being provided.", mnstrarr[i]::Value))
                             end if
 
                             if emt then
@@ -453,23 +460,23 @@ class public Evaluator
                         end if
                         //----------------------------------
 
-                        mtt = new TypeTok(mnstrarr[i])
+                        mtt = new TypeTok(mnstrarr[i]::Value)
                         mcparenttyp = Helpers::CommitEvalTTok(mtt)
                         mcisstatic = true
 
                         if mcparenttyp is null then
-                            StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("Variable or Class '{0}' is not defined.", mnstrarr[i]))
+                            StreamUtils::WriteError(mnstrarr[i]::Line, mnstrarr[i]::Column, ILEmitter::CurSrcFile, string::Format("Variable or Class '{0}' is not defined.", mnstrarr[i]::Value))
                         end if
                     else
-                        mcfldinf = #ternary {mcparenttyp::Equals(AsmFactory::CurnTypB) ? Helpers::GetLocFld(mnstrarr[i]) , Helpers::GetExtFld(mcparenttyp, mnstrarr[i])}
+                        mcfldinf = #ternary {mcparenttyp::Equals(AsmFactory::CurnTypB) ? Helpers::GetLocFld(mnstrarr[i]::Value) , Helpers::GetExtFld(mcparenttyp, mnstrarr[i]::Value)}
                         if mcfldinf is null then
-                            StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("Field '{0}' is not defined/accessible for the class '{1}'.", mnstrarr[i], mcparenttyp::ToString()))
+                            StreamUtils::WriteError(mnstrarr[i]::Line, mnstrarr[i]::Column, ILEmitter::CurSrcFile, string::Format("Field '{0}' is not defined/accessible for the class '{1}'.", mnstrarr[i]::Value, mcparenttyp::ToString()))
                         end if
                         mcparenttyp = Loader::MemberTyp
 
                         if mcisstatic != mcfldinf::get_IsStatic() then
-                            StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("Field '{0}' defined for the class '{1}' {2}.", _
-                                mnstrarr[i], mcfldinf::get_DeclaringType()::ToString(), #ternary {mcisstatic andalso !mcfldinf::get_IsStatic() ? "is an instance field", "is static"}))
+                            StreamUtils::WriteError(mnstrarr[i]::Line, mnstrarr[i]::Column, ILEmitter::CurSrcFile, string::Format("Field '{0}' defined for the class '{1}' {2}.", _
+                                mnstrarr[i]::Value, mcfldinf::get_DeclaringType()::ToString(), #ternary {mcisstatic andalso !mcfldinf::get_IsStatic() ? "is an instance field", "is static"}))
                         end if
 
                         AsmFactory::Type02 = mcparenttyp
@@ -502,7 +509,7 @@ class public Evaluator
                     mcisstatic = mcmetinf::get_IsStatic()
 
                     if !mcisstatic andalso ILEmitter::StaticFlg then
-                        StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("Method '{0}' is an instance method and cannot be called from a static method without an instance being provided.", mnstrarr[i]))
+                        StreamUtils::WriteError(mnstrarr[i]::Line, mnstrarr[i]::Column, ILEmitter::CurSrcFile, string::Format("Method '{0}' is an instance method and cannot be called from a static method without an instance being provided.", mnstrarr[i]::Value))
                     end if
 
                     if !mcisstatic then
@@ -528,6 +535,7 @@ class public Evaluator
         AsmFactory::Type02 = AsmFactory::Type03
         AsmFactory::Type05 = mcparenttyp
 
+        //TODO: fix error column resolutiun for constructor cases
         if mectorflg then
             mcparenttyp = AsmFactory::CurnInhTyp
             Loader::ProtectedFlag = true
@@ -563,14 +571,14 @@ class public Evaluator
                 end if
 
                 if mcmetinf is null then
-                    StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("Method '{0}' with the given parameter types is not defined/accessible for the class '{1}'.", mnstrarr[i], mcparenttyp::ToString()))
+                    StreamUtils::WriteError(mnstrarr[i]::Line, mnstrarr[i]::Column, ILEmitter::CurSrcFile, string::Format("Method '{0}' with the given parameter types is not defined/accessible for the class '{1}'.", mnstrarr[i]::Value, mcparenttyp::ToString()))
                 end if
                 AsmFactory::Type02 = Loader::MemberTyp
                 baseflg = false
 
                 if mcisstatic != mcmetinf::get_IsStatic() then
-                        StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("Method '{0}' defined for the class '{1}' {2}", _
-                            mnstrarr[i], mcparenttyp::ToString(), #ternary {mcisstatic andalso !mcmetinf::get_IsStatic() ? "is an instance method.", "is static."}))
+                        StreamUtils::WriteError(mnstrarr[i]::Line, mnstrarr[i]::Column, ILEmitter::CurSrcFile, string::Format("Method '{0}' defined for the class '{1}' {2}", _
+                            mnstrarr[i]::Value, mcparenttyp::ToString(), #ternary {mcisstatic andalso !mcmetinf::get_IsStatic() ? "is an instance method.", "is static."}))
                 end if
 
             else
@@ -579,7 +587,7 @@ class public Evaluator
                 end if
                 mcmetinf = Helpers::GetLocMet(mntok, typarr1)
                 if mcmetinf == null then
-                    StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("Method '{0}' with the given parameter types is not defined/accessible for the class '{1}'.", mnstrarr[i], AsmFactory::CurnTypB::ToString()))
+                    StreamUtils::WriteError(mnstrarr[i]::Line, mnstrarr[i]::Column, ILEmitter::CurSrcFile, string::Format("Method '{0}' with the given parameter types is not defined/accessible for the class '{1}'.", mnstrarr[i]::Value, AsmFactory::CurnTypB::ToString()))
                 end if
                 AsmFactory::Type02 = mcmetinf::get_ReturnType()
                 mcisstatic = mcmetinf::get_IsStatic()
@@ -655,7 +663,7 @@ class public Evaluator
         var typarr1 as Managed.Reflection.Type[] = Managed.Reflection.Type::EmptyTypes
         var ncctorinf as ConstructorInfo
         var i as integer = -1
-        var mnstrarr as string[]
+        var mnstrarr as IdentSegment[]
         var len as integer
         var mcparenttyp as Managed.Reflection.Type = null
         var idtb1 as boolean = false
@@ -667,7 +675,7 @@ class public Evaluator
         var mcmetinf as MethodInfo = null
 
         if nctyp is null then
-            StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("The Class '{0}' is not defined.", nctok::Name::ToString()))
+            StreamUtils::WriteError(nctok::Name::Line, nctok::Name::Column, ILEmitter::CurSrcFile, string::Format("The Class '{0}' is not defined.", nctok::Name::ToString()))
         end if
 
         if nctyp::IsSubclassOf(Loader::CachedLoadClass("System.MulticastDelegate")) then
@@ -688,24 +696,25 @@ class public Evaluator
 
             //-------------------------------------------------------------------------------------------
             //delegate pointer loading section
-            mnstrarr = ParseUtils::StringParser(delmtdnam::Value, ':')
+            mnstrarr = delmtdnam::GetSegments()
             var mcrestrord as integer = 2
             i = -1
             len = mnstrarr[l] - 2
 
-            if mnstrarr[0] == "me" then
+            if mnstrarr[0]::Value == "me" then
                 i++
                 idtb1 = true
                 mcrestrord = 3
             end if
 
             if delmtdnam::ExplType isnot null then
-                mcparenttyp = Helpers::CommitEvalTTok(delmtdnam::ExplType)
+                var mntex = delmtdnam::ExplType
+                mcparenttyp = Helpers::CommitEvalTTok(mntex)
                 mcisstatic = true
                 idtb2 = true
 
                 if mcparenttyp is null then
-                    StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("The Class '{0}' is not defined.", delmtdnam::ExplType))
+                    StreamUtils::WriteError(mntex::Line, mntex::Column, ILEmitter::CurSrcFile, string::Format("The Class '{0}' is not defined.", mntex))
                 end if
             end if
 
@@ -717,7 +726,7 @@ class public Evaluator
 
                     if !idtb2 then
                         if !idtb1 then
-                            mcvr = SymTable::FindVar(mnstrarr[i])
+                            mcvr = SymTable::FindVar(mnstrarr[i]::Value)
                             if mcvr isnot null then
                                 if emt then
                                     AsmFactory::Type04 = mcvr::VarTyp
@@ -731,12 +740,12 @@ class public Evaluator
                         end if
 
                         //local field check
-                        mcfldinf = Helpers::GetLocFld(mnstrarr[i])
+                        mcfldinf = Helpers::GetLocFld(mnstrarr[i]::Value)
                         if mcfldinf isnot null then
                             idtisstatic = mcfldinf::get_IsStatic()
 
                             if !idtisstatic andalso ILEmitter::StaticFlg then
-                                StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("Field '{0}' is an instance field and cannot be used from a static method without an instance being provided.", mnstrarr[i]))
+                                StreamUtils::WriteError(mnstrarr[i]::Line, mnstrarr[i]::Column, ILEmitter::CurSrcFile, string::Format("Field '{0}' is an instance field and cannot be used from a static method without an instance being provided.", mnstrarr[i]::Value))
                             end if
 
                             if !idtisstatic then
@@ -756,30 +765,30 @@ class public Evaluator
                         end if
                         //----------------------------------
 
-                        mcparenttyp = Helpers::CommitEvalTTok(new TypeTok(mnstrarr[i]))
+                        mcparenttyp = Helpers::CommitEvalTTok(new TypeTok(mnstrarr[i]::Value))
                         mcisstatic = true
 
                         if mcparenttyp is null then
-                            StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("Variable or Class '{0}' is not defined.", mnstrarr[i]))
+                            StreamUtils::WriteError(mnstrarr[i]::Line, mnstrarr[i]::Column, ILEmitter::CurSrcFile, string::Format("Variable or Class '{0}' is not defined.", mnstrarr[i]::Value))
                         end if
                     else
                         if mcparenttyp::Equals(AsmFactory::CurnTypB) then
-                            mcfldinf = Helpers::GetLocFld(mnstrarr[i])
+                            mcfldinf = Helpers::GetLocFld(mnstrarr[i]::Value)
                             if mcfldinf is null then
-                                StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("Field '{0}' is not defined/accessible for the class '{1}'.", mnstrarr[i], AsmFactory::CurnTypB::ToString()))
+                                StreamUtils::WriteError(mnstrarr[i]::Line, mnstrarr[i]::Column, ILEmitter::CurSrcFile, string::Format("Field '{0}' is not defined/accessible for the class '{1}'.", mnstrarr[i]::Value, AsmFactory::CurnTypB::ToString()))
                             end if
                             mcparenttyp = mcfldinf::get_FieldType()
                         else
-                            mcfldinf = Helpers::GetExtFld(mcparenttyp, mnstrarr[i])
+                            mcfldinf = Helpers::GetExtFld(mcparenttyp, mnstrarr[i]::Value)
                             if mcfldinf is null then
-                                StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("Field '{0}' is not defined/accessible for the class '{1}'.", mnstrarr[i], mcparenttyp::ToString()))
+                                StreamUtils::WriteError(mnstrarr[i]::Line, mnstrarr[i]::Column, ILEmitter::CurSrcFile, string::Format("Field '{0}' is not defined/accessible for the class '{1}'.", mnstrarr[i]::Value, mcparenttyp::ToString()))
                             end if
                             mcparenttyp = Loader::MemberTyp
                         end if
 
                         if mcisstatic != mcfldinf::get_IsStatic() then
-                            StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("Field '{0}' defined for the class '{1}' " _
-                                ,mnstrarr[i], mcfldinf::get_DeclaringType()::ToString()) + #ternary {mcisstatic andalso !mcfldinf::get_IsStatic() ? "is an instance field.", "is static."})
+                            StreamUtils::WriteError(mnstrarr[i]::Line, mnstrarr[i]::Column, ILEmitter::CurSrcFile, string::Format("Field '{0}' defined for the class '{1}' " _
+                                ,mnstrarr[i]::Value, mcfldinf::get_DeclaringType()::ToString()) + #ternary {mcisstatic andalso !mcfldinf::get_IsStatic() ? "is an instance field.", "is static."})
                         end if
 
                         AsmFactory::Type02 = mcparenttyp
@@ -806,7 +815,7 @@ class public Evaluator
                     mcisstatic = mcmetinf::get_IsStatic()
 
                     if !mcisstatic andalso ILEmitter::StaticFlg then
-                        StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("Method '{0}' is an instance method and cannot be called from a static method without an instance being provided.", mnstrarr[i]))
+                        StreamUtils::WriteError(mnstrarr[i]::Line, mnstrarr[i]::Column, ILEmitter::CurSrcFile, string::Format("Method '{0}' is an instance method and cannot be called from a static method without an instance being provided.", mnstrarr[i]::Value))
                     end if
 
                     if !mcisstatic then
@@ -820,22 +829,22 @@ class public Evaluator
                 if mcparenttyp::Equals(AsmFactory::CurnTypB) then
                     mcmetinf = Helpers::GetLocMet(delmtdnam, delparamarr)
                     if mcmetinf is null then
-                        StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("Method '{0}' with the given parameter types is not defined/accessible for the class '{1}'.", mnstrarr[i], AsmFactory::CurnTypB::ToString()))
+                        StreamUtils::WriteError(mnstrarr[i]::Line, mnstrarr[i]::Column, ILEmitter::CurSrcFile, string::Format("Method '{0}' with the given parameter types is not defined/accessible for the class '{1}'.", mnstrarr[i]::Value, AsmFactory::CurnTypB::ToString()))
                     end if
                 else
                     mcmetinf = Helpers::GetExtMet(mcparenttyp, delmtdnam, delparamarr)
                     if mcmetinf is null then
-                        StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("Method '{0}' with the given parameter types is not defined/accessible for the class '{1}'.", mnstrarr[i], mcparenttyp::ToString()))
+                        StreamUtils::WriteError(mnstrarr[i]::Line, mnstrarr[i]::Column, ILEmitter::CurSrcFile, string::Format("Method '{0}' with the given parameter types is not defined/accessible for the class '{1}'.", mnstrarr[i]::Value, mcparenttyp::ToString()))
                     end if
                 end if
                 if mcisstatic != mcmetinf::get_IsStatic() then
-                        StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("Method '{0}' defined for the class '{1}' " _
-                            ,mnstrarr[i], mcparenttyp::ToString()) + #ternary {mcisstatic andalso !mcmetinf::get_IsStatic() ? "is an instance method.", "is static."})
+                        StreamUtils::WriteError(mnstrarr[i]::Line, mnstrarr[i]::Column, ILEmitter::CurSrcFile, string::Format("Method '{0}' defined for the class '{1}' " _
+                            ,mnstrarr[i]::Value, mcparenttyp::ToString()) + #ternary {mcisstatic andalso !mcmetinf::get_IsStatic() ? "is an instance method.", "is static."})
                 end if
             else
                 mcmetinf = Helpers::GetLocMet(delmtdnam, delparamarr)
                 if mcmetinf is null then
-                    StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("Method '{0}' with the given parameter types is not defined/accessible for the class '{1}'.", mnstrarr[i], AsmFactory::CurnTypB::ToString() ))
+                    StreamUtils::WriteError(mnstrarr[i]::Line, mnstrarr[i]::Column, ILEmitter::CurSrcFile, string::Format("Method '{0}' with the given parameter types is not defined/accessible for the class '{1}'.", mnstrarr[i]::Value, AsmFactory::CurnTypB::ToString() ))
                 end if
                 mcisstatic = mcmetinf::get_IsStatic()
             end if
@@ -864,12 +873,12 @@ class public Evaluator
                     end if
                 end if
             else
-                StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("The Constructor with the given parameter types is not defined/accessible for the class '{0}'.", nctyp::ToString()))
+                StreamUtils::WriteError(nctok::Name::Line, nctok::Name::Column, ILEmitter::CurSrcFile, string::Format("The Constructor with the given parameter types is not defined/accessible for the class '{0}'.", nctyp::ToString()))
             end if
         else
             ncctorinf = Helpers::GetLocCtor(nctyp, typarr1)
             if ncctorinf is null then
-                StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("The Constructor with the given parameter types is not defined/accessible for the class '{0}'.", nctyp::ToString()))
+                StreamUtils::WriteError(nctok::Name::Line, nctok::Name::Column, ILEmitter::CurSrcFile, string::Format("The Constructor with the given parameter types is not defined/accessible for the class '{0}'.", nctyp::ToString()))
             end if
 
             if emt then
@@ -902,22 +911,19 @@ class public Evaluator
 
         if tok is Op then
             optok = $Op$tok
-            var isflg as boolean = optok is IsOp
-            var asflg as boolean = optok is AsOp
+            var icflg as boolean = optok is IInstanceCheckOp
             var coalflg as boolean = optok is CoalesceOp
-            var sandflg as boolean = optok is AndAlsoOp
-            var sorflg as boolean = optok is OrElseOp
-            var isnflg as boolean = optok is IsNotOp
+            var scondflg as boolean = optok is ShortCircuitLogicalOp
 
             rc = optok::RChild
             lc = optok::LChild
 
-            if !#expr(sandflg orelse sorflg) then
+            if !scondflg then
                 ASTEmit(lc, emt)
                 lctyp = AsmFactory::Type02
             end if
 
-            if !#expr(isflg orelse isnflg orelse asflg orelse sandflg orelse sorflg orelse coalflg) then
+            if !#expr(icflg orelse scondflg orelse coalflg) then
                 ASTEmit(rc, emt)
                 rctyp = AsmFactory::Type02
 
@@ -937,8 +943,8 @@ class public Evaluator
 
             AsmFactory::Type02 = #ternary {optok is ConditionalOp ? Loader::CachedLoadClass("System.Boolean"), lctyp}
 
-            if isflg then
-                if emt then
+            if icflg then
+                if emt andalso (optok is IsOp) then
                     if rc is NullLiteral then
                         ILEmitter::EmitNotRef(bo, lab)
                         ans = bo != BranchOptimisation::None
@@ -951,32 +957,28 @@ class public Evaluator
                             ans = bo != BranchOptimisation::None
                         end if
                     end if
-                end if
-            elseif isnflg then
-                if emt then
+                elseif emt andalso (optok is IsNotOp) then
                     if rc is NullLiteral then
                         ILEmitter::EmitIsNotRef(bo, lab)
                         ans = bo != BranchOptimisation::None
                     else
                         var istyp as Managed.Reflection.Type = Helpers::CommitEvalTTok(rc as TypeTok)
                         if istyp is null then
-                            StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("The Class '{0}' is undefined.", rc::Value))
+                            StreamUtils::WriteError(rc::Line, rc::Column, ILEmitter::CurSrcFile, string::Format("The Class '{0}' is undefined.", rc::Value))
                         else
                             ILEmitter::EmitIsNot(istyp, bo, lab)
                             ans = bo != BranchOptimisation::None
                         end if
                     end if
-                end if
-            elseif asflg then
-                var astyp as Managed.Reflection.Type = Helpers::CommitEvalTTok(rc as TypeTok)
-                if astyp is null then
-                    StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("The Class '{1}' was not found.", rc::Value))
-                else
-                    if emt then
+                elseif optok is AsOp then
+                    var astyp as Managed.Reflection.Type = Helpers::CommitEvalTTok(rc as TypeTok)
+                    if astyp is null then
+                        StreamUtils::WriteError(rc::Line, rc::Column, ILEmitter::CurSrcFile, string::Format("The Class '{0}' was not found.", rc::Value))
+                    elseif emt then
                         ILEmitter::EmitIsinst(astyp)
                     end if
+                    AsmFactory::Type02 = astyp
                 end if
-                AsmFactory::Type02 = astyp
             elseif coalflg then
                 var rt as Managed.Reflection.Type = null
                 ASTEmit(rc, false)
@@ -984,6 +986,7 @@ class public Evaluator
                 var n1 = Helpers::ProcessNullable(lctyp)
                 var n2 = Helpers::ProcessNullable(rctyp)
 
+                //TODO: get column info for coalesce op
                 //validate cases: either two compat ref types, T? and T? (yield T?), T? and T (yields T) where T is a struct
                 if !lctyp::get_IsValueType() andalso !rctyp::get_IsValueType() then
                     rt = Helpers::CheckCompat(lctyp, rctyp)
@@ -1048,12 +1051,14 @@ class public Evaluator
                 end if
 
                 AsmFactory::Type02 = rt
-            elseif sandflg then
-                ASTEmit(new TernaryCallTok() {Condition = new Expr() {AddToken(lc)} _
-                    , TrueExpr = new Expr() {AddToken(rc)}, FalseExpr = new Expr() {AddToken(new BooleanLiteral(false))} } ,emt)
-            elseif sorflg then
-                ASTEmit(new TernaryCallTok() {Condition = new Expr() {AddToken(lc)} _
-                    , FalseExpr = new Expr() {AddToken(rc)}, TrueExpr = new Expr() {AddToken(new BooleanLiteral(true))} } ,emt)
+            elseif scondflg then
+                if optok is AndAlsoOp then
+                    ASTEmit(new TernaryCallTok() {Condition = new Expr() {AddToken(lc)} _
+                        , TrueExpr = new Expr() {AddToken(rc)}, FalseExpr = new Expr() {AddToken(new BooleanLiteral(false))} } ,emt)
+                elseif optok is OrElseOp then
+                    ASTEmit(new TernaryCallTok() {Condition = new Expr() {AddToken(lc)} _
+                        , FalseExpr = new Expr() {AddToken(rc)}, TrueExpr = new Expr() {AddToken(new BooleanLiteral(true))} } ,emt)
+                end if
             else
                 Helpers::LeftOp = lctyp
                 Helpers::RightOp = rctyp
@@ -1075,7 +1080,7 @@ class public Evaluator
 
                 if emt then
                     if slit::Value == string::Empty then
-                        StreamUtils::WriteWarn(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, c"It is more efficient to use 'string::Empty' instead of ' \q\q '.")
+                        StreamUtils::WriteWarn(slit::Line, slit::Column, ILEmitter::CurSrcFile, c"It is more efficient to use 'string::Empty' instead of ' \q\q '.")
                     end if
 
                     Helpers::EmitLiteral(slit)
@@ -1107,18 +1112,18 @@ class public Evaluator
                     //gettype section
                     var gtctok as GettypeCallTok = $GettypeCallTok$tok
                     typ2 = Helpers::CommitEvalTTok(gtctok::Name)
-                    if typ2 = null then
-                        StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("The Class '{0}' is not defined.", gtctok::Name::Value))
+                    if typ2 == null then
+                        StreamUtils::WriteError(gtctok::Name::Line, gtctok::Name::Column, ILEmitter::CurSrcFile, string::Format("The Class '{0}' is not defined.", gtctok::Name::Value))
                     end if
                     ILEmitter::EmitLdtoken(typ2)
-                    ILEmitter::EmitCall(Loader::CachedLoadClass("System.Type")::GetMethod("GetTypeFromHandle", new Managed.Reflection.Type[] {Loader::LoadClass("System.RuntimeTypeHandle")}))
+                    ILEmitter::EmitCall(Loader::CachedLoadClass("System.Type")::GetMethod("GetTypeFromHandle", new Managed.Reflection.Type[] {Loader::CachedLoadClass("System.RuntimeTypeHandle")}))
                 end if
                 AsmFactory::Type02 = Loader::CachedLoadClass("System.Type")
             elseif tok is DefaultCallTok then
                 var dftok as DefaultCallTok = $DefaultCallTok$tok
                 typ2 = Helpers::CommitEvalTTok(dftok::Name)
                 if typ2 is null then
-                    StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("The Class '{0}' is not defined.", dftok::Name::Value))
+                    StreamUtils::WriteError(dftok::Name::Line, dftok::Name::Column, ILEmitter::CurSrcFile, string::Format("The Class '{0}' is not defined.", dftok::Name::Value))
                 end if
 
                 if emt then
@@ -1163,6 +1168,7 @@ class public Evaluator
                 typ2 = Helpers::CommitEvalTTok(newactok::ArrayType)
                 ASTEmit(ConvToAST(ConvToRPN(newactok::ArrayLen)), emt)
                 if !Helpers::IsPrimitiveIntegralType(AsmFactory::Type02) then
+                    //TODO: get column bounds for length exp
                     StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "Array Lengths should be of a Primitive Integer Type.")
                 end if
                 if emt then
@@ -1182,7 +1188,7 @@ class public Evaluator
                 var aictok as ArrInitCallTok = $ArrInitCallTok$tok
                 typ2 = Helpers::CommitEvalTTok(aictok::ArrayType)
                 if typ2 = null then
-                    StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("The Class '{0}' is not defined.",aictok::ArrayType::ToString()))
+                    StreamUtils::WriteError(aictok::ArrayType::Line, aictok::ArrayType::Column, ILEmitter::CurSrcFile, string::Format("The Class '{0}' is not defined.",aictok::ArrayType::ToString()))
                 end if
 
                 var ci as CollectionItem = Helpers::ProcessCollection(typ2,aictok::ForceArray)
@@ -1250,13 +1256,14 @@ class public Evaluator
                                 ILEmitter::EmitDup()
                             end if
                             ASTEmit(ConvToAST(ConvToRPN(el::ValueExpr)), emt)
-                            var fldinf as FieldInfo = Helpers::GetExtFld(ctyp, el::Name::Value)
+                            var eln = el::Name
+                            var fldinf as FieldInfo = Helpers::GetExtFld(ctyp, eln::Value)
                             if fldinf = null then
-                                StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("Field '{0}' is not defined/accessible for the class '{1}'.", el::Name::Value, ctyp::ToString()))
+                                StreamUtils::WriteError(eln::Line, eln::Column, ILEmitter::CurSrcFile, string::Format("Field '{0}' is not defined/accessible for the class '{1}'.", eln::Value, ctyp::ToString()))
                             elseif fldinf::get_IsInitOnly() then
-                                StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("Field '{0}' is declared as readonly and may not be set from this context.", el::Name::Value))
+                                StreamUtils::WriteError(eln::Line, eln::Column, ILEmitter::CurSrcFile, string::Format("Field '{0}' is declared as readonly and may not be set from this context.", eln::Value))
                             elseif fldinf::get_IsStatic() then
-                                StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("Field '{0}' is declared as static and may not be set from object initializers.", el::Name::Value))
+                                StreamUtils::WriteError(eln::Line, eln::Column, ILEmitter::CurSrcFile, string::Format("Field '{0}' is declared as static and may not be set from object initializers.", eln::Value))
                             end if
                             Helpers::CheckAssignability(fldinf::get_FieldType(), AsmFactory::Type02)
                             if emt then
@@ -1301,6 +1308,7 @@ class public Evaluator
                     ASTEmit(ConvToAST(ConvToRPN(tcc::Condition)), false)
                 end if
 
+                //TODO: ternary call tok column resolution
                 if !AsmFactory::Type02::Equals(Loader::CachedLoadClass("System.Boolean")) then
                     StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "Conditions for Ternary Expressions should evaluate to boolean.")
                 end if
@@ -1465,7 +1473,7 @@ class public Evaluator
                 //end if
                 //AsmFactory::Type02 = Loader::CachedLoadClass("System.IntPtr")
             else
-                StreamUtils::WriteWarn(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"Using '{tok::GetType()}' is not supported.")
+                StreamUtils::WriteWarn(tok::Line, tok::Column, ILEmitter::CurSrcFile, i"Using '{tok::GetType()}' is not supported.")
             end if
 
         end if
@@ -1497,7 +1505,7 @@ class public Evaluator
 
         var i as integer = -1
         var idt as Ident = $Ident$tok
-        var idtnamarr as string[] = ParseUtils::StringParser(idt::Value, ':')
+        var idtnamarr as IdentSegment[] = idt::GetSegments()
         var len as integer = idtnamarr[l] - 2
         var vr as VarItem = null
         var idtb1 as boolean = false
@@ -1508,7 +1516,7 @@ class public Evaluator
         var restrord as integer = 2
         var isbyref as boolean = false
 
-        if idtnamarr[0] == "me" then
+        if idtnamarr[0]::Value == "me" then
             i++
             idtb1 = true
             restrord = 3
@@ -1524,7 +1532,7 @@ class public Evaluator
         //determination of byref storage mode or not
         if (idtnamarr[l] == 1) andalso !idt::IsArr then
             SymTable::StoreFlg = true
-            vr = SymTable::FindVar(idtnamarr[0])
+            vr = SymTable::FindVar(idtnamarr[0]::Value)
             SymTable::StoreFlg = false
             if vr isnot null then
                 ASTEmit(ConvToAST(ConvToRPN(exp)),false)
@@ -1546,7 +1554,7 @@ class public Evaluator
 
                 if !idtb2 then
                     if !idtb1 then
-                        vr = SymTable::FindVar(idtnamarr[i])
+                        vr = SymTable::FindVar(idtnamarr[i]::Value)
                         if vr isnot null then
                             AsmFactory::Type04 = vr::VarTyp
                             if isbyref then
@@ -1565,7 +1573,7 @@ class public Evaluator
                         end if
                     end if
 
-                    fldinf = Helpers::GetLocFld(idtnamarr[i])
+                    fldinf = Helpers::GetLocFld(idtnamarr[i]::Value)
                     if fldinf isnot null then
                         idtisstatic = fldinf::get_IsStatic()
                         if !idtisstatic then
@@ -1579,33 +1587,33 @@ class public Evaluator
                         continue
                     end if
 
-                    idttyp = Helpers::CommitEvalTTok(new TypeTok(idtnamarr[i]))
+                    idttyp = Helpers::CommitEvalTTok(new TypeTok(idtnamarr[i]::Value))
                     idtisstatic = true
 
                     if idttyp is null then
-                        StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("Variable or Class '{0}' is not defined.", idtnamarr[i]))
+                        StreamUtils::WriteError(idtnamarr[i]::Line, idtnamarr[i]::Column, ILEmitter::CurSrcFile, string::Format("Variable or Class '{0}' is not defined.", idtnamarr[i]::Value))
                     end if
 
                 else
                     if idttyp::Equals(AsmFactory::CurnTypB) then
-                        fldinf = Helpers::GetLocFld(idtnamarr[i])
+                        fldinf = Helpers::GetLocFld(idtnamarr[i]::Value)
                         if fldinf is null then
-                            StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("Field '{0}' is not defined/accessible for the class '{1}'.", idtnamarr[i], AsmFactory::CurnTypB::ToString()))
+                            StreamUtils::WriteError(idtnamarr[i]::Line, idtnamarr[i]::Column, ILEmitter::CurSrcFile, string::Format("Field '{0}' is not defined/accessible for the class '{1}'.", idtnamarr[i]::Value, AsmFactory::CurnTypB::ToString()))
                         end if
                         idttyp = fldinf::get_FieldType()
                         AsmFactory::Type04 = idttyp
                     else
-                        fldinf = Helpers::GetExtFld(idttyp, idtnamarr[i])
+                        fldinf = Helpers::GetExtFld(idttyp, idtnamarr[i]::Value)
                         if fldinf is null then
-                            StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("Field '{0}' is not defined/accessible for the class '{1}'.", idtnamarr[i], idttyp::ToString()))
+                            StreamUtils::WriteError(idtnamarr[i]::Line, idtnamarr[i]::Column, ILEmitter::CurSrcFile, string::Format("Field '{0}' is not defined/accessible for the class '{1}'.", idtnamarr[i]::Value, idttyp::ToString()))
                         end if
                         idttyp = Loader::MemberTyp
                         AsmFactory::Type04 = idttyp
                     end if
 
                     if idtisstatic != fldinf::get_IsStatic() then
-                        StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("Field '{0}' defined for the class '{1}' " _
-                            ,idtnamarr[i], fldinf::get_DeclaringType()::ToString()) + #ternary {idtisstatic andalso !fldinf::get_IsStatic() ? "is an instance field.", "is static."})
+                        StreamUtils::WriteError(idtnamarr[i]::Line, idtnamarr[i]::Column, ILEmitter::CurSrcFile, string::Format("Field '{0}' defined for the class '{1}' " _
+                            ,idtnamarr[i]::Value, fldinf::get_DeclaringType()::ToString()) + #ternary {idtisstatic andalso !fldinf::get_IsStatic() ? "is an instance field.", "is static."})
                     end if
 
                     Helpers::EmitFldLd(fldinf, idtisstatic)
@@ -1626,7 +1634,7 @@ class public Evaluator
             i++
             if !idtb2 then
                 if idtb1 then
-                    fldinf = Helpers::GetLocFld(idtnamarr[i])
+                    fldinf = Helpers::GetLocFld(idtnamarr[i]::Value)
                     if fldinf isnot null then
                         idtisstatic = fldinf::get_IsStatic()
                         if !idtisstatic then
@@ -1635,10 +1643,10 @@ class public Evaluator
                     end if
                 else
                     SymTable::StoreFlg = true
-                    vr = SymTable::FindVar(idtnamarr[i])
+                    vr = SymTable::FindVar(idtnamarr[i]::Value)
                     SymTable::StoreFlg = false
                     if vr == null then
-                        fldinf = Helpers::GetLocFld(idtnamarr[i])
+                        fldinf = Helpers::GetLocFld(idtnamarr[i]::Value)
                         if fldinf isnot null then
                             idtisstatic = fldinf::get_IsStatic()
                             if !idtisstatic then
@@ -1654,7 +1662,7 @@ class public Evaluator
         //-------------------------------------------
         if idt::IsArr then
             Evaluate(idt::ArrLoc)
-
+            //TODO: column bounds for array expr
             if !Helpers::IsPrimitiveIntegralType(AsmFactory::Type02) then
                 StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "Array Indices should be of a Primitive Integer Type.")
             end if
@@ -1678,7 +1686,7 @@ class public Evaluator
 
         if idt::IsArr then
             if !idttyp::get_IsArray() then
-                StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("'{0}' is not an Array Type.", idttyp::ToString()))
+                StreamUtils::WriteError(idtnamarr[i]::Line, idtnamarr[i]::Column, ILEmitter::CurSrcFile, string::Format("'{0}' is not an Array Type.", idttyp::ToString()))
             end if
             idttyp = idttyp::GetElementType()
             Helpers::CheckAssignability(idttyp, outt)
@@ -1692,7 +1700,7 @@ class public Evaluator
                 vr = null
                 if !idtb1 then
                     SymTable::StoreFlg = true
-                    vr = SymTable::FindVar(idtnamarr[i])
+                    vr = SymTable::FindVar(idtnamarr[i]::Value)
                     SymTable::StoreFlg = false
                     if vr isnot null then
                         Helpers::CheckAssignability(vr::VarTyp, outt)
@@ -1702,19 +1710,19 @@ class public Evaluator
                     end if
                 end if
                 if vr is null then
-                    fldinf = Helpers::GetLocFld(idtnamarr[i])
+                    fldinf = Helpers::GetLocFld(idtnamarr[i]::Value)
                     if fldinf is null then
-                        StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("Variable or Field '{0}' is not defined for the current class/method.", idtnamarr[i]))
+                        StreamUtils::WriteError(idtnamarr[i]::Line, idtnamarr[i]::Column, ILEmitter::CurSrcFile, string::Format("Variable or Field '{0}' is not defined for the current class/method.", idtnamarr[i]::Value))
                     else
                         if fldinf::get_IsInitOnly() andalso !AsmFactory::InCtorFlg then
-                            StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("Field '{0}' is declared as readonly and may only be set from constructors.", idtnamarr[i]))
+                            StreamUtils::WriteError(idtnamarr[i]::Line, idtnamarr[i]::Column, ILEmitter::CurSrcFile, string::Format("Field '{0}' is declared as readonly and may only be set from constructors.", idtnamarr[i]::Value))
                         elseif fldinf::get_IsLiteral() then
-                            StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("Field '{0}' is declared as a constant and may not be set again.", idtnamarr[i]))
+                            StreamUtils::WriteError(idtnamarr[i]::Line, idtnamarr[i]::Column, ILEmitter::CurSrcFile, string::Format("Field '{0}' is declared as a constant and may not be set again.", idtnamarr[i]::Value))
                         end if
                         idtisstatic = fldinf::get_IsStatic()
 
                         if !idtisstatic andalso ILEmitter::StaticFlg then
-                            StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("Field '{0}' is an instance field and cannot be used from a static method without an instance being provided.", idtnamarr[i]))
+                            StreamUtils::WriteError(idtnamarr[i]::Line, idtnamarr[i]::Column, ILEmitter::CurSrcFile, string::Format("Field '{0}' is an instance field and cannot be used from a static method without an instance being provided.", idtnamarr[i]::Value))
                         end if
 
                         Helpers::CheckAssignability(fldinf::get_FieldType(), outt)
@@ -1723,21 +1731,21 @@ class public Evaluator
                 end if
             else
                 if idttyp::Equals(AsmFactory::CurnTypB) then
-                    fldinf = Helpers::GetLocFld(idtnamarr[i])
+                    fldinf = Helpers::GetLocFld(idtnamarr[i]::Value)
                     if fldinf is null then
-                        StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("Field '{0}' is not defined/accessible for the class '{1}'.", idtnamarr[i], AsmFactory::CurnTypB::ToString()))
+                        StreamUtils::WriteError(idtnamarr[i]::Line, idtnamarr[i]::Column, ILEmitter::CurSrcFile, string::Format("Field '{0}' is not defined/accessible for the class '{1}'.", idtnamarr[i]::Value, AsmFactory::CurnTypB::ToString()))
                     end if
                 else
-                    fldinf = Helpers::GetExtFld(idttyp, idtnamarr[i])
+                    fldinf = Helpers::GetExtFld(idttyp, idtnamarr[i]::Value)
                     if fldinf is null then
-                        StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("Field '{0}' is not defined/accessible for the class '{1}'.", idtnamarr[i], idttyp::ToString()))
+                        StreamUtils::WriteError(idtnamarr[i]::Line, idtnamarr[i]::Column, ILEmitter::CurSrcFile, string::Format("Field '{0}' is not defined/accessible for the class '{1}'.", idtnamarr[i]::Value, idttyp::ToString()))
                     end if
                 end if
                 if fldinf::get_IsInitOnly() then
-                    StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("Field '{0}' is declared as readonly and may not be set from this context.", idtnamarr[i]))
+                    StreamUtils::WriteError(idtnamarr[i]::Line, idtnamarr[i]::Column, ILEmitter::CurSrcFile, string::Format("Field '{0}' is declared as readonly and may not be set from this context.", idtnamarr[i]::Value))
                 elseif idtisstatic != fldinf::get_IsStatic() then
-                    StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("Field '{0}' defined for the class '{1}' " _
-                        ,idtnamarr[i], idttyp::ToString()) + #ternary {idtisstatic andalso !fldinf::get_IsStatic() ? "is an instance field.", "is static."})
+                    StreamUtils::WriteError(idtnamarr[i]::Line, idtnamarr[i]::Column, ILEmitter::CurSrcFile, string::Format("Field '{0}' defined for the class '{1}' " _
+                        ,idtnamarr[i]::Value, idttyp::ToString()) + #ternary {idtisstatic andalso !fldinf::get_IsStatic() ? "is an instance field.", "is static."})
                 end if
                 Helpers::CheckAssignability(fldinf::get_FieldType(), outt)
                 Helpers::EmitFldSt(fldinf, idtisstatic)

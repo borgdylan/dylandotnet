@@ -53,9 +53,9 @@ class public partial TypeItem
         ctor(string::Empty, $TypeBuilder$null)
     end method
 
-    method public void AddField(var f as FieldItem)
+    method public void AddField(var f as FieldItem, var idt as Ident)
         if Fields::Contains(f::Name) then
-            StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"Field '{f::Name}' is already declared in the current class!")
+            StreamUtils::WriteError(idt::Line, idt::Column, ILEmitter::CurSrcFile, i"Field '{f::Name}' is already declared in the current class!")
         end if
 
         Fields::Add(f::Name, f)

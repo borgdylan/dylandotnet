@@ -39,7 +39,7 @@ class public ExprOptimizer
 				StreamUtils::WriteErrorLine(gttarg::Line, gttarg::Column, PFlags::CurPath, string::Format("Expected an identifier instead of '{0}'!", gttarg::Value))
 			end if
 
-			var gtt as GenericTypeTok = new GenericTypeTok(gttarg::Value)
+			var gtt as GenericTypeTok = new GenericTypeTok(gttarg::Value) {PosFromToken(gttarg)}
 			stm::RemToken(++i)
 			stm::RemToken(++i)
 
@@ -49,15 +49,17 @@ class public ExprOptimizer
 
 			do until i == len
 				i++
-				if stm::Tokens::get_Item(i) is LAParen then
-					ep2::AddToken(stm::Tokens::get_Item(i))
+				var curtok = stm::Tokens::get_Item(i)
+
+				if curtok is LAParen then
+					ep2::AddToken(curtok)
 					stm::RemToken(i)
 					lvl++
 					i--
 					len--
-				elseif stm::Tokens::get_Item(i) is Comma then
+				elseif curtok is Comma then
 					if lvl > 1 then
-						ep2::AddToken(stm::Tokens::get_Item(i))
+						ep2::AddToken(curtok)
 					end if
 					stm::RemToken(i)
 					len--
@@ -66,20 +68,22 @@ class public ExprOptimizer
 						ep2 = new Expr() {Line = stm::Line}
 					end if
 					i--
-				elseif stm::Tokens::get_Item(i) is RAParen then
+				elseif curtok is RAParen then
 					lvl--
 					if lvl > 0 then
-						ep2::AddToken(stm::Tokens::get_Item(i))
+						ep2::AddToken(curtok)
 					end if
 					stm::RemToken(i)
 					len--
 					if lvl == 0 then
 						gtt::AddParam(procType2(ep2, 0))
+						gtt::EndColumn = curtok::EndColumn
+						gtt::EndLine = curtok::EndLine
 						break
 					end if
 					i--
 				else
-					ep2::AddToken(stm::Tokens::get_Item(i))
+					ep2::AddToken(curtok)
 					stm::RemToken(i)
 					i--
 					len--
@@ -122,15 +126,19 @@ class public ExprOptimizer
 			c++
 			if i < --stm::Tokens::get_Count() then
 				i++
-				if stm::Tokens::get_Item(i) is QuestionMark then
+				var curtok = stm::Tokens::get_Item(i)
+
+				if curtok is QuestionMark then
 					stm::RemToken(i)
 					i--
-					tt = new GenericTypeTok("System.Nullable") { AddParam(tt) }
-				elseif stm::Tokens::get_Item(i) is LRSParen then
+					tt = new GenericTypeTok("System.Nullable") { AddParam(tt), PosFromToken(tt) }
+					tt::EndColumn = curtok::EndColumn
+					tt::EndLine = curtok::EndLine
+				elseif curtok is LRSParen then
 					tt::IsArray = true
 					stm::RemToken(i)
 					i--
-				elseif stm::Tokens::get_Item(i) is Ampersand then
+				elseif curtok is Ampersand then
 					tt::IsByRef = true
 					stm::RemToken(i)
 					i--
@@ -153,15 +161,19 @@ class public ExprOptimizer
 			c++
 			if i < --stm::Tokens::get_Count() then
 				i++
-				if stm::Tokens::get_Item(i) is QuestionMark then
+				var curtok = stm::Tokens::get_Item(i)
+
+				if curtok is QuestionMark then
 					stm::RemToken(i)
 					i--
-					tt = new GenericTypeTok("System.Nullable") { AddParam(tt) }
-				elseif stm::Tokens::get_Item(i) is LRSParen then
+					tt = new GenericTypeTok("System.Nullable") { AddParam(tt), PosFromToken(tt) }
+					tt::EndColumn = curtok::EndColumn
+					tt::EndLine = curtok::EndLine
+				elseif curtok is LRSParen then
 					tt::IsArray = true
 					stm::RemToken(i)
 					i--
-				elseif stm::Tokens::get_Item(i) is Ampersand then
+				elseif curtok is Ampersand then
 					tt::IsByRef = true
 					stm::RemToken(i)
 					i--

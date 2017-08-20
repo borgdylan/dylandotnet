@@ -12,7 +12,7 @@ class public static ParseUtils
 	method public static string[] StringParser(var StringToParse as string, var DelimeterChar as char)
 
 		if string::IsNullOrEmpty(StringToParse) then
-			return new string[0]
+			return Array::Empty<of string>()
 		end if
 
 		var arr as C5.IList<of string> = new C5.LinkedList<of string>()
