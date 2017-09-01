@@ -1,4 +1,4 @@
-//    dylan.NET.Tasks.dll dylan.NET.Tasks Copyright (C) 2014 Dylan Borg <borgdylan@hotmail.com>
+//    dylan.NET.Tasks.dll dylan.NET.Tasks Copyright (C) 2017 Dylan Borg <borgdylan@hotmail.com>
 //    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software
 // Foundation; either version 3 of the License, or (at your option) any later version.
 //    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
@@ -15,17 +15,17 @@ class public TaskAwaiterWrapper<of TResult> implements IAwaiter<of TResult>, INo
 		_awaiter = awaiter
 	end method
 
-	property public virtual boolean IsCompleted
+	property public final virtual boolean IsCompleted
 		get
 			return _awaiter::get_IsCompleted()
 		end get
 	end property
 
-	method public virtual TResult GetResult()
+	method public final virtual TResult GetResult()
 		return _awaiter::GetResult()
 	end method
 
-	method public virtual void OnCompleted(var continuation as Action)
+	method public final virtual void OnCompleted(var continuation as Action)
 		_awaiter::OnCompleted(continuation)
 	end method
 
@@ -40,7 +40,7 @@ class public TaskWrapper<of TResult> implements IAwaitable<of TResult>
 		_awaitable = awaitable
 	end method
 
-	method public virtual IAwaiter<of TResult> GetAwaiter()
+	method public final virtual IAwaiter<of TResult> GetAwaiter()
 		#if NET40 then
 			return new TaskAwaiterWrapper<of TResult>(AwaitExtensions::GetAwaiter<of TResult>(_awaitable))
 		#else

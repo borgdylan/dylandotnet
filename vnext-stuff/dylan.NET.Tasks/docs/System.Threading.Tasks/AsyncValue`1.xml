@@ -4,6 +4,7 @@
   <AssemblyInfo>
     <AssemblyName>dylan.NET.Tasks</AssemblyName>
     <AssemblyVersion>1.3.2.0</AssemblyVersion>
+    <AssemblyVersion>1.4.1.1</AssemblyVersion>
   </AssemblyInfo>
   <TypeParameters>
     <TypeParameter Name="TResult" />
@@ -17,9 +18,9 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <typeparam name="TResult">To be added.</typeparam>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <typeparam name="TResult">The type of the value returned.</typeparam>
+    <summary>A mechanism with which a value can be asynchronously returned from an awaited method.</summary>
+    <remarks>This class may be extended further.</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -28,6 +29,7 @@
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>1.3.2.0</AssemblyVersion>
+        <AssemblyVersion>1.4.1.1</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
@@ -42,6 +44,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>1.3.2.0</AssemblyVersion>
+        <AssemblyVersion>1.4.1.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -58,6 +61,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>1.3.2.0</AssemblyVersion>
+        <AssemblyVersion>1.4.1.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>TResult</ReturnType>

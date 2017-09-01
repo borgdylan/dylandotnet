@@ -1,0 +1,6 @@
+NotBoolean string "L' oggetto dato non è del tipo System.Boolean."
+IsCompletedNotFound string "L' oggetto dato non ha la propietà 'IsCompleted'."
+GetResultNotFound string "L' oggetto dato non ha il metodo 'GetResult'."
+OnCompletedNotFound string "L' oggetto dato non ha il metodo 'OnCompleted(Action)'."
+GetAwaiterNotFound string "L' oggetto dato non ha il metodo 'GetAwaiter'."
+NotTResult string "L' oggetto dato non è del tipo {0}."

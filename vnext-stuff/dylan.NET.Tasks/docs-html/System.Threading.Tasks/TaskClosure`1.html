@@ -225,7 +225,7 @@
       <div class="SectionBox" id="T:System.Threading.Tasks.TaskClosure`1:Docs:Remarks">This class encapsulates a TaskCompletionSource instance and calls methods on it as you do awaits or return a value. It also handles exceptions thrown by awaited methods and sets them on the Task exposed by the TaskCompletionSource.</div>
       <h2 class="Section">Requirements</h2>
       <div class="SectionBox" id="T:System.Threading.Tasks.TaskClosure`1:Docs:Version Information">
-        <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.1.1.1, 1.2.0.0, 1.2.1.0, 1.3.0.0, 1.3.2.0</div>
+        <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.1.1.1, 1.2.0.0, 1.2.1.0, 1.3.0.0, 1.3.2.0, 1.4.1.1</div>
       <h2 class="Section" id="Members">Members</h2>
       <div class="SectionBox" id="_Members">
         <p>
@@ -407,6 +407,16 @@
                 </td>
                 <td colspan="2">
                   <b>
+                    <a href="#M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable{``0},System.Action{``0})">Await&lt;U&gt;</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable`1">System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable&lt;U&gt;</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action`1">Action&lt;U&gt;</a>)<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.Task`1">Task&lt;T&gt;</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
                     <a href="#M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Threading.Tasks.IAwaitable{``0},System.Action{``0})">Await&lt;U&gt;</a>
                   </b>(<a href="../System.Threading.Tasks/IAwaitable`1.html">IAwaitable&lt;U&gt;</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action`1">Action&lt;U&gt;</a>)<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.Task`1">Task&lt;T&gt;</a></nobr><blockquote>Runs the given function if the await completes successfully else propagates the exception.</blockquote></td>
               </tr>
@@ -437,8 +447,28 @@
                 </td>
                 <td colspan="2">
                   <b>
-                    <a href="#M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Runtime.CompilerServices.ConfiguredTaskAwaitable{``0},System.Threading.Tasks.AsyncValue{``0},System.Action)">Await&lt;U&gt;</a>
-                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Runtime.CompilerServices.ConfiguredTaskAwaitable`1">System.Runtime.CompilerServices.ConfiguredTaskAwaitable&lt;U&gt;</a>, <a href="../System.Threading.Tasks/AsyncValue`1.html">AsyncValue&lt;U&gt;</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action">Action</a>)<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.Task`1">Task&lt;T&gt;</a></nobr><blockquote>Runs the given function if the await completes successfully else propagates the exception.</blockquote></td>
+                    <a href="#M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Threading.Tasks.ValueTask{``0},System.Action{``0})">Await&lt;U&gt;</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.ValueTask`1">ValueTask&lt;U&gt;</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action`1">Action&lt;U&gt;</a>)<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.Task`1">Task&lt;T&gt;</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Runtime.CompilerServices.ConfiguredTaskAwaitable{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action)">Await&lt;U&gt;</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Runtime.CompilerServices.ConfiguredTaskAwaitable`1">System.Runtime.CompilerServices.ConfiguredTaskAwaitable&lt;U&gt;</a>, <a href="../System.Threading.Tasks/IAsyncValue`1.html">IAsyncValue&lt;U&gt;</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action">Action</a>)<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.Task`1">Task&lt;T&gt;</a></nobr><blockquote>Runs the given function if the await completes successfully else propagates the exception.</blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action)">Await&lt;U&gt;</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable`1">System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable&lt;U&gt;</a>, <a href="../System.Threading.Tasks/IAsyncValue`1.html">IAsyncValue&lt;U&gt;</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action">Action</a>)<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.Task`1">Task&lt;T&gt;</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
               </tr>
               <tr valign="top">
                 <td>
@@ -457,8 +487,28 @@
                 </td>
                 <td colspan="2">
                   <b>
+                    <a href="#M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Threading.Tasks.IAwaitable{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action)">Await&lt;U&gt;</a>
+                  </b>(<a href="../System.Threading.Tasks/IAwaitable`1.html">IAwaitable&lt;U&gt;</a>, <a href="../System.Threading.Tasks/IAsyncValue`1.html">IAsyncValue&lt;U&gt;</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action">Action</a>)<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.Task`1">Task&lt;T&gt;</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
                     <a href="#M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Threading.Tasks.IAwaiter{``0},System.Threading.Tasks.AsyncValue{``0},System.Action)">Await&lt;U&gt;</a>
                   </b>(<a href="../System.Threading.Tasks/IAwaiter`1.html">IAwaiter&lt;U&gt;</a>, <a href="../System.Threading.Tasks/AsyncValue`1.html">AsyncValue&lt;U&gt;</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action">Action</a>)<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.Task`1">Task&lt;T&gt;</a></nobr><blockquote>Runs the given function if the await completes successfully else propagates the exception.</blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Threading.Tasks.IAwaiter{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action)">Await&lt;U&gt;</a>
+                  </b>(<a href="../System.Threading.Tasks/IAwaiter`1.html">IAwaiter&lt;U&gt;</a>, <a href="../System.Threading.Tasks/IAsyncValue`1.html">IAsyncValue&lt;U&gt;</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action">Action</a>)<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.Task`1">Task&lt;T&gt;</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
               </tr>
               <tr valign="top">
                 <td>
@@ -477,8 +527,38 @@
                 </td>
                 <td colspan="2">
                   <b>
+                    <a href="#M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Threading.Tasks.Task{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action)">Await&lt;U&gt;</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.Task`1">Task&lt;U&gt;</a>, <a href="../System.Threading.Tasks/IAsyncValue`1.html">IAsyncValue&lt;U&gt;</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action">Action</a>)<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.Task`1">Task&lt;T&gt;</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Threading.Tasks.ValueTask{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action)">Await&lt;U&gt;</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.ValueTask`1">ValueTask&lt;U&gt;</a>, <a href="../System.Threading.Tasks/IAsyncValue`1.html">IAsyncValue&lt;U&gt;</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action">Action</a>)<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.Task`1">Task&lt;T&gt;</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
                     <a href="#M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Runtime.CompilerServices.ConfiguredTaskAwaitable{``0},System.Action{``0},System.Action{``1})">Await&lt;U,TException&gt;</a>
                   </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Runtime.CompilerServices.ConfiguredTaskAwaitable`1">System.Runtime.CompilerServices.ConfiguredTaskAwaitable&lt;U&gt;</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action`1">Action&lt;U&gt;</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action`1">Action&lt;TException&gt;</a>)<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.Task`1">Task&lt;T&gt;</a></nobr><blockquote>Runs the given function if the awaited configured task completes successfully else runs the given exception handler.</blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable{``0},System.Action{``0},System.Action{``1})">Await&lt;U,TException&gt;</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable`1">System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable&lt;U&gt;</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action`1">Action&lt;U&gt;</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action`1">Action&lt;TException&gt;</a>)<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.Task`1">Task&lt;T&gt;</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
               </tr>
               <tr valign="top">
                 <td>
@@ -517,8 +597,38 @@
                 </td>
                 <td colspan="2">
                   <b>
+                    <a href="#M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Threading.Tasks.ValueTask{``0},System.Action{``0},System.Action{``1})">Await&lt;U,TException&gt;</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.ValueTask`1">ValueTask&lt;U&gt;</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action`1">Action&lt;U&gt;</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action`1">Action&lt;TException&gt;</a>)<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.Task`1">Task&lt;T&gt;</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
                     <a href="#M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Runtime.CompilerServices.ConfiguredTaskAwaitable{``0},System.Threading.Tasks.AsyncValue{``0},System.Action,System.Action{``1})">Await&lt;U,TException&gt;</a>
                   </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Runtime.CompilerServices.ConfiguredTaskAwaitable`1">System.Runtime.CompilerServices.ConfiguredTaskAwaitable&lt;U&gt;</a>, <a href="../System.Threading.Tasks/AsyncValue`1.html">AsyncValue&lt;U&gt;</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action">Action</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action`1">Action&lt;TException&gt;</a>)<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.Task`1">Task&lt;T&gt;</a></nobr><blockquote>Runs the given function if the await completes successfully else runs the given exception handler.</blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Runtime.CompilerServices.ConfiguredTaskAwaitable{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action,System.Action{``1})">Await&lt;U,TException&gt;</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Runtime.CompilerServices.ConfiguredTaskAwaitable`1">System.Runtime.CompilerServices.ConfiguredTaskAwaitable&lt;U&gt;</a>, <a href="../System.Threading.Tasks/IAsyncValue`1.html">IAsyncValue&lt;U&gt;</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action">Action</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action`1">Action&lt;TException&gt;</a>)<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.Task`1">Task&lt;T&gt;</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action,System.Action{``1})">Await&lt;U,TException&gt;</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable`1">System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable&lt;U&gt;</a>, <a href="../System.Threading.Tasks/IAsyncValue`1.html">IAsyncValue&lt;U&gt;</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action">Action</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action`1">Action&lt;TException&gt;</a>)<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.Task`1">Task&lt;T&gt;</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
               </tr>
               <tr valign="top">
                 <td>
@@ -537,6 +647,16 @@
                 </td>
                 <td colspan="2">
                   <b>
+                    <a href="#M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Threading.Tasks.IAwaitable{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action,System.Action{``1})">Await&lt;U,TException&gt;</a>
+                  </b>(<a href="../System.Threading.Tasks/IAwaitable`1.html">IAwaitable&lt;U&gt;</a>, <a href="../System.Threading.Tasks/IAsyncValue`1.html">IAsyncValue&lt;U&gt;</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action">Action</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action`1">Action&lt;TException&gt;</a>)<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.Task`1">Task&lt;T&gt;</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
                     <a href="#M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Threading.Tasks.IAwaiter{``0},System.Threading.Tasks.AsyncValue{``0},System.Action,System.Action{``1})">Await&lt;U,TException&gt;</a>
                   </b>(<a href="../System.Threading.Tasks/IAwaiter`1.html">IAwaiter&lt;U&gt;</a>, <a href="../System.Threading.Tasks/AsyncValue`1.html">AsyncValue&lt;U&gt;</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action">Action</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action`1">Action&lt;TException&gt;</a>)<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.Task`1">Task&lt;T&gt;</a></nobr><blockquote>Runs the given function if the await completes successfully else runs the given exception handler.</blockquote></td>
               </tr>
@@ -547,8 +667,38 @@
                 </td>
                 <td colspan="2">
                   <b>
+                    <a href="#M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Threading.Tasks.IAwaiter{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action,System.Action{``1})">Await&lt;U,TException&gt;</a>
+                  </b>(<a href="../System.Threading.Tasks/IAwaiter`1.html">IAwaiter&lt;U&gt;</a>, <a href="../System.Threading.Tasks/IAsyncValue`1.html">IAsyncValue&lt;U&gt;</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action">Action</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action`1">Action&lt;TException&gt;</a>)<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.Task`1">Task&lt;T&gt;</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
                     <a href="#M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Threading.Tasks.Task{``0},System.Threading.Tasks.AsyncValue{``0},System.Action,System.Action{``1})">Await&lt;U,TException&gt;</a>
                   </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.Task`1">Task&lt;U&gt;</a>, <a href="../System.Threading.Tasks/AsyncValue`1.html">AsyncValue&lt;U&gt;</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action">Action</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action`1">Action&lt;TException&gt;</a>)<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.Task`1">Task&lt;T&gt;</a></nobr><blockquote>Runs the given function if the await completes successfully else runs the given exception handler.</blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Threading.Tasks.Task{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action,System.Action{``1})">Await&lt;U,TException&gt;</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.Task`1">Task&lt;U&gt;</a>, <a href="../System.Threading.Tasks/IAsyncValue`1.html">IAsyncValue&lt;U&gt;</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action">Action</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action`1">Action&lt;TException&gt;</a>)<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.Task`1">Task&lt;T&gt;</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>
+                  </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Threading.Tasks.ValueTask{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action,System.Action{``1})">Await&lt;U,TException&gt;</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.ValueTask`1">ValueTask&lt;U&gt;</a>, <a href="../System.Threading.Tasks/IAsyncValue`1.html">IAsyncValue&lt;U&gt;</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action">Action</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action`1">Action&lt;TException&gt;</a>)<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.Task`1">Task&lt;T&gt;</a></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
               </tr>
               <tr valign="top">
                 <td>
@@ -605,7 +755,7 @@
           </div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="C:System.Threading.Tasks.TaskClosure`1():Version Information">
-            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.1.1.1, 1.2.0.0, 1.2.1.0, 1.3.0.0, 1.3.2.0</div>
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.1.1.1, 1.2.0.0, 1.2.1.0, 1.3.0.0, 1.3.2.0, 1.4.1.1</div>
           <hr size="1" />
         </blockquote>
         <h3 id="M:System.Threading.Tasks.TaskClosure`1.Await(System.Runtime.CompilerServices.ConfiguredTaskAwaitable,System.Action)">Await Method</h3>
@@ -632,7 +782,7 @@
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await(System.Runtime.CompilerServices.ConfiguredTaskAwaitable,System.Action):Remarks">Overriding the Catch method allows the addition of code that should execute when exceptions happen.</div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await(System.Runtime.CompilerServices.ConfiguredTaskAwaitable,System.Action):Version Information">
-            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.2.0.0, 1.2.1.0, 1.3.0.0, 1.3.2.0</div>
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.2.0.0, 1.2.1.0, 1.3.0.0, 1.3.2.0, 1.4.1.1</div>
           <hr size="1" />
         </blockquote>
         <h3 id="M:System.Threading.Tasks.TaskClosure`1.Await(System.Runtime.CompilerServices.YieldAwaitable,System.Action)">Await Method</h3>
@@ -659,7 +809,7 @@
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await(System.Runtime.CompilerServices.YieldAwaitable,System.Action):Remarks">Overriding the Catch method allows the addition of code that should execute when exceptions happen.</div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await(System.Runtime.CompilerServices.YieldAwaitable,System.Action):Version Information">
-            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.2.0.0, 1.2.1.0, 1.3.0.0, 1.3.2.0</div>
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.2.0.0, 1.2.1.0, 1.3.0.0, 1.3.2.0, 1.4.1.1</div>
           <hr size="1" />
         </blockquote>
         <h3 id="M:System.Threading.Tasks.TaskClosure`1.Await(System.Threading.Tasks.IAwaitable,System.Action)">Await Method</h3>
@@ -686,7 +836,7 @@
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await(System.Threading.Tasks.IAwaitable,System.Action):Remarks">Overriding the Catch method allows the addition of code that should execute when exceptions happen.</div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await(System.Threading.Tasks.IAwaitable,System.Action):Version Information">
-            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.2.0.0, 1.2.1.0, 1.3.0.0, 1.3.2.0</div>
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.2.0.0, 1.2.1.0, 1.3.0.0, 1.3.2.0, 1.4.1.1</div>
           <hr size="1" />
         </blockquote>
         <h3 id="M:System.Threading.Tasks.TaskClosure`1.Await(System.Threading.Tasks.IAwaiter,System.Action)">Await Method</h3>
@@ -713,7 +863,7 @@
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await(System.Threading.Tasks.IAwaiter,System.Action):Remarks">Overriding the Catch method allows the addition of code that should execute when exceptions happen.</div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await(System.Threading.Tasks.IAwaiter,System.Action):Version Information">
-            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.2.0.0, 1.2.1.0, 1.3.0.0, 1.3.2.0</div>
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.2.0.0, 1.2.1.0, 1.3.0.0, 1.3.2.0, 1.4.1.1</div>
           <hr size="1" />
         </blockquote>
         <h3 id="M:System.Threading.Tasks.TaskClosure`1.Await(System.Threading.Tasks.Task,System.Action)">Await Method</h3>
@@ -740,7 +890,7 @@
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await(System.Threading.Tasks.Task,System.Action):Remarks">Overriding the Catch method allows the addition of code that should execute when exceptions happen.</div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await(System.Threading.Tasks.Task,System.Action):Version Information">
-            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.1.1.1, 1.2.0.0, 1.2.1.0, 1.3.0.0, 1.3.2.0</div>
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.1.1.1, 1.2.0.0, 1.2.1.0, 1.3.0.0, 1.3.2.0, 1.4.1.1</div>
           <hr size="1" />
         </blockquote>
         <h3 id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Runtime.CompilerServices.ConfiguredTaskAwaitable,System.Action,System.Action{``0})">Await&lt;TException&gt; Generic Method</h3>
@@ -780,7 +930,7 @@
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Runtime.CompilerServices.ConfiguredTaskAwaitable,System.Action,System.Action{``0}):Remarks">Overriding the Catch method allows the addition of code that should execute when exceptions that are not handled by the given handler happen.</div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Runtime.CompilerServices.ConfiguredTaskAwaitable,System.Action,System.Action{``0}):Version Information">
-            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.2.0.0, 1.2.1.0, 1.3.0.0, 1.3.2.0</div>
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.2.0.0, 1.2.1.0, 1.3.0.0, 1.3.2.0, 1.4.1.1</div>
           <hr size="1" />
         </blockquote>
         <h3 id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Runtime.CompilerServices.YieldAwaitable,System.Action,System.Action{``0})">Await&lt;TException&gt; Generic Method</h3>
@@ -820,7 +970,7 @@
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Runtime.CompilerServices.YieldAwaitable,System.Action,System.Action{``0}):Remarks">Overriding the Catch method allows the addition of code that should execute when exceptions that are not handled by the given handler happen.</div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Runtime.CompilerServices.YieldAwaitable,System.Action,System.Action{``0}):Version Information">
-            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.2.0.0, 1.2.1.0, 1.3.0.0, 1.3.2.0</div>
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.2.0.0, 1.2.1.0, 1.3.0.0, 1.3.2.0, 1.4.1.1</div>
           <hr size="1" />
         </blockquote>
         <h3 id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Threading.Tasks.IAwaitable,System.Action,System.Action{``0})">Await&lt;TException&gt; Generic Method</h3>
@@ -860,7 +1010,7 @@
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Threading.Tasks.IAwaitable,System.Action,System.Action{``0}):Remarks">Overriding the Catch method allows the addition of code that should execute when exceptions that are not handled by the given handler happen.</div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Threading.Tasks.IAwaitable,System.Action,System.Action{``0}):Version Information">
-            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.2.0.0, 1.2.1.0, 1.3.0.0, 1.3.2.0</div>
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.2.0.0, 1.2.1.0, 1.3.0.0, 1.3.2.0, 1.4.1.1</div>
           <hr size="1" />
         </blockquote>
         <h3 id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Threading.Tasks.IAwaiter,System.Action,System.Action{``0})">Await&lt;TException&gt; Generic Method</h3>
@@ -900,7 +1050,7 @@
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Threading.Tasks.IAwaiter,System.Action,System.Action{``0}):Remarks">Overriding the Catch method allows the addition of code that should execute when exceptions that are not handled by the given handler happen.</div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Threading.Tasks.IAwaiter,System.Action,System.Action{``0}):Version Information">
-            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.2.0.0, 1.2.1.0, 1.3.0.0, 1.3.2.0</div>
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.2.0.0, 1.2.1.0, 1.3.0.0, 1.3.2.0, 1.4.1.1</div>
           <hr size="1" />
         </blockquote>
         <h3 id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Threading.Tasks.Task,System.Action,System.Action{``0})">Await&lt;TException&gt; Generic Method</h3>
@@ -940,7 +1090,7 @@
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Threading.Tasks.Task,System.Action,System.Action{``0}):Remarks">Overriding the Catch method allows the addition of code that should execute when exceptions that are not handled by the given handler happen.</div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Threading.Tasks.Task,System.Action,System.Action{``0}):Version Information">
-            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.2.0.0, 1.2.1.0, 1.3.0.0, 1.3.2.0</div>
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.2.0.0, 1.2.1.0, 1.3.0.0, 1.3.2.0, 1.4.1.1</div>
           <hr size="1" />
         </blockquote>
         <h3 id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Runtime.CompilerServices.ConfiguredTaskAwaitable{``0},System.Action{``0})">Await&lt;U&gt; Generic Method</h3>
@@ -976,7 +1126,55 @@
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Runtime.CompilerServices.ConfiguredTaskAwaitable{``0},System.Action{``0}):Remarks">Overriding the Catch method allows the addition of code that should execute when exceptions happen.</div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Runtime.CompilerServices.ConfiguredTaskAwaitable{``0},System.Action{``0}):Version Information">
-            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.2.0.0, 1.2.1.0, 1.3.0.0, 1.3.2.0</div>
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.2.0.0, 1.2.1.0, 1.3.0.0, 1.3.2.0, 1.4.1.1</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable{``0},System.Action{``0})">Await&lt;U&gt; Generic Method</h3>
+        <blockquote id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable{``0},System.Action{``0}):member">
+          <div class="msummary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.Task`1">Task&lt;T&gt;</a> <b>Await&lt;U&gt;</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable`1">System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable&lt;U&gt;</a> cta, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action`1">Action&lt;U&gt;</a> f)</div>
+          <h4 class="Subsection">Type Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable{``0},System.Action{``0}):Type Parameters">
+            <dl>
+              <dt>
+                <i>U</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable{``0},System.Action{``0}):Parameters">
+            <dl>
+              <dt>
+                <i>cta</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>f</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable{``0},System.Action{``0}):Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable{``0},System.Action{``0}):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable{``0},System.Action{``0}):Version Information">
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.4.1.1</div>
           <hr size="1" />
         </blockquote>
         <h3 id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Threading.Tasks.IAwaitable{``0},System.Action{``0})">Await&lt;U&gt; Generic Method</h3>
@@ -1012,7 +1210,7 @@
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Threading.Tasks.IAwaitable{``0},System.Action{``0}):Remarks">Overriding the Catch method allows the addition of code that should execute when exceptions happen.</div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Threading.Tasks.IAwaitable{``0},System.Action{``0}):Version Information">
-            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.2.0.0, 1.2.1.0, 1.3.0.0, 1.3.2.0</div>
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.2.0.0, 1.2.1.0, 1.3.0.0, 1.3.2.0, 1.4.1.1</div>
           <hr size="1" />
         </blockquote>
         <h3 id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Threading.Tasks.IAwaiter{``0},System.Action{``0})">Await&lt;U&gt; Generic Method</h3>
@@ -1048,7 +1246,7 @@
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Threading.Tasks.IAwaiter{``0},System.Action{``0}):Remarks">Overriding the Catch method allows the addition of code that should execute when exceptions happen.</div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Threading.Tasks.IAwaiter{``0},System.Action{``0}):Version Information">
-            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.2.0.0, 1.2.1.0, 1.3.0.0, 1.3.2.0</div>
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.2.0.0, 1.2.1.0, 1.3.0.0, 1.3.2.0, 1.4.1.1</div>
           <hr size="1" />
         </blockquote>
         <h3 id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Threading.Tasks.Task{``0},System.Action{``0})">Await&lt;U&gt; Generic Method</h3>
@@ -1084,16 +1282,64 @@
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Threading.Tasks.Task{``0},System.Action{``0}):Remarks">Overriding the Catch method allows the addition of code that should execute when exceptions happen.</div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Threading.Tasks.Task{``0},System.Action{``0}):Version Information">
-            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.1.1.1, 1.2.0.0, 1.2.1.0, 1.3.0.0, 1.3.2.0</div>
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.1.1.1, 1.2.0.0, 1.2.1.0, 1.3.0.0, 1.3.2.0, 1.4.1.1</div>
           <hr size="1" />
         </blockquote>
-        <h3 id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Runtime.CompilerServices.ConfiguredTaskAwaitable{``0},System.Threading.Tasks.AsyncValue{``0},System.Action)">Await&lt;U&gt; Generic Method</h3>
-        <blockquote id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Runtime.CompilerServices.ConfiguredTaskAwaitable{``0},System.Threading.Tasks.AsyncValue{``0},System.Action):member">
+        <h3 id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Threading.Tasks.ValueTask{``0},System.Action{``0})">Await&lt;U&gt; Generic Method</h3>
+        <blockquote id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Threading.Tasks.ValueTask{``0},System.Action{``0}):member">
+          <div class="msummary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.Task`1">Task&lt;T&gt;</a> <b>Await&lt;U&gt;</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.ValueTask`1">ValueTask&lt;U&gt;</a> t, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action`1">Action&lt;U&gt;</a> f)</div>
+          <h4 class="Subsection">Type Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Threading.Tasks.ValueTask{``0},System.Action{``0}):Type Parameters">
+            <dl>
+              <dt>
+                <i>U</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Threading.Tasks.ValueTask{``0},System.Action{``0}):Parameters">
+            <dl>
+              <dt>
+                <i>t</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>f</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Threading.Tasks.ValueTask{``0},System.Action{``0}):Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Threading.Tasks.ValueTask{``0},System.Action{``0}):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Threading.Tasks.ValueTask{``0},System.Action{``0}):Version Information">
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.4.1.1</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Runtime.CompilerServices.ConfiguredTaskAwaitable{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action)">Await&lt;U&gt; Generic Method</h3>
+        <blockquote id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Runtime.CompilerServices.ConfiguredTaskAwaitable{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action):member">
           <div class="msummary">Runs the given function if the await completes successfully else propagates the exception.</div>
           <h2>Syntax</h2>
-          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.Task`1">Task&lt;T&gt;</a> <b>Await&lt;U&gt;</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Runtime.CompilerServices.ConfiguredTaskAwaitable`1">System.Runtime.CompilerServices.ConfiguredTaskAwaitable&lt;U&gt;</a> cta, <a href="../System.Threading.Tasks/AsyncValue`1.html">AsyncValue&lt;U&gt;</a> av, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action">Action</a> f)</div>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.Task`1">Task&lt;T&gt;</a> <b>Await&lt;U&gt;</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Runtime.CompilerServices.ConfiguredTaskAwaitable`1">System.Runtime.CompilerServices.ConfiguredTaskAwaitable&lt;U&gt;</a> cta, <a href="../System.Threading.Tasks/IAsyncValue`1.html">IAsyncValue&lt;U&gt;</a> av, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action">Action</a> f)</div>
           <h4 class="Subsection">Type Parameters</h4>
-          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Runtime.CompilerServices.ConfiguredTaskAwaitable{``0},System.Threading.Tasks.AsyncValue{``0},System.Action):Type Parameters">
+          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Runtime.CompilerServices.ConfiguredTaskAwaitable{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action):Type Parameters">
             <dl>
               <dt>
                 <i>U</i>
@@ -1102,7 +1348,7 @@
             </dl>
           </blockquote>
           <h4 class="Subsection">Parameters</h4>
-          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Runtime.CompilerServices.ConfiguredTaskAwaitable{``0},System.Threading.Tasks.AsyncValue{``0},System.Action):Parameters">
+          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Runtime.CompilerServices.ConfiguredTaskAwaitable{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action):Parameters">
             <dl>
               <dt>
                 <i>cta</i>
@@ -1119,12 +1365,66 @@
             </dl>
           </blockquote>
           <h4 class="Subsection">Returns</h4>
-          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Runtime.CompilerServices.ConfiguredTaskAwaitable{``0},System.Threading.Tasks.AsyncValue{``0},System.Action):Returns">The Task related to the TaskCompletionSource encapsulated by the closure.</blockquote>
+          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Runtime.CompilerServices.ConfiguredTaskAwaitable{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action):Returns">The Task related to the TaskCompletionSource encapsulated by the closure.</blockquote>
           <h2 class="Section">Remarks</h2>
-          <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Runtime.CompilerServices.ConfiguredTaskAwaitable{``0},System.Threading.Tasks.AsyncValue{``0},System.Action):Remarks">Overriding the Catch method allows the addition of code that should execute when exceptions happen.</div>
+          <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Runtime.CompilerServices.ConfiguredTaskAwaitable{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action):Remarks">Overriding the Catch method allows the addition of code that should execute when exceptions happen.</div>
           <h2 class="Section">Requirements</h2>
-          <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Runtime.CompilerServices.ConfiguredTaskAwaitable{``0},System.Threading.Tasks.AsyncValue{``0},System.Action):Version Information">
-            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.3.2.0</div>
+          <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Runtime.CompilerServices.ConfiguredTaskAwaitable{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action):Version Information">
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.3.2.0, 1.4.1.1</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action)">Await&lt;U&gt; Generic Method</h3>
+        <blockquote id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action):member">
+          <div class="msummary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.Task`1">Task&lt;T&gt;</a> <b>Await&lt;U&gt;</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable`1">System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable&lt;U&gt;</a> cta, <a href="../System.Threading.Tasks/IAsyncValue`1.html">IAsyncValue&lt;U&gt;</a> av, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action">Action</a> f)</div>
+          <h4 class="Subsection">Type Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action):Type Parameters">
+            <dl>
+              <dt>
+                <i>U</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action):Parameters">
+            <dl>
+              <dt>
+                <i>cta</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>av</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>f</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action):Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action):Version Information">
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.4.1.1</div>
           <hr size="1" />
         </blockquote>
         <h3 id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Threading.Tasks.IAwaitable{``0},System.Threading.Tasks.AsyncValue{``0},System.Action)">Await&lt;U&gt; Generic Method</h3>
@@ -1167,6 +1467,60 @@
             <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.3.2.0</div>
           <hr size="1" />
         </blockquote>
+        <h3 id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Threading.Tasks.IAwaitable{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action)">Await&lt;U&gt; Generic Method</h3>
+        <blockquote id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Threading.Tasks.IAwaitable{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action):member">
+          <div class="msummary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.Task`1">Task&lt;T&gt;</a> <b>Await&lt;U&gt;</b> (<a href="../System.Threading.Tasks/IAwaitable`1.html">IAwaitable&lt;U&gt;</a> a, <a href="../System.Threading.Tasks/IAsyncValue`1.html">IAsyncValue&lt;U&gt;</a> av, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action">Action</a> f)</div>
+          <h4 class="Subsection">Type Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Threading.Tasks.IAwaitable{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action):Type Parameters">
+            <dl>
+              <dt>
+                <i>U</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Threading.Tasks.IAwaitable{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action):Parameters">
+            <dl>
+              <dt>
+                <i>a</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>av</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>f</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Threading.Tasks.IAwaitable{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action):Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Threading.Tasks.IAwaitable{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Threading.Tasks.IAwaitable{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action):Version Information">
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.4.1.1</div>
+          <hr size="1" />
+        </blockquote>
         <h3 id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Threading.Tasks.IAwaiter{``0},System.Threading.Tasks.AsyncValue{``0},System.Action)">Await&lt;U&gt; Generic Method</h3>
         <blockquote id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Threading.Tasks.IAwaiter{``0},System.Threading.Tasks.AsyncValue{``0},System.Action):member">
           <div class="msummary">Runs the given function if the await completes successfully else propagates the exception.</div>
@@ -1207,6 +1561,60 @@
             <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.3.2.0</div>
           <hr size="1" />
         </blockquote>
+        <h3 id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Threading.Tasks.IAwaiter{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action)">Await&lt;U&gt; Generic Method</h3>
+        <blockquote id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Threading.Tasks.IAwaiter{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action):member">
+          <div class="msummary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.Task`1">Task&lt;T&gt;</a> <b>Await&lt;U&gt;</b> (<a href="../System.Threading.Tasks/IAwaiter`1.html">IAwaiter&lt;U&gt;</a> a, <a href="../System.Threading.Tasks/IAsyncValue`1.html">IAsyncValue&lt;U&gt;</a> av, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action">Action</a> f)</div>
+          <h4 class="Subsection">Type Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Threading.Tasks.IAwaiter{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action):Type Parameters">
+            <dl>
+              <dt>
+                <i>U</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Threading.Tasks.IAwaiter{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action):Parameters">
+            <dl>
+              <dt>
+                <i>a</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>av</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>f</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Threading.Tasks.IAwaiter{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action):Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Threading.Tasks.IAwaiter{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Threading.Tasks.IAwaiter{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action):Version Information">
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.4.1.1</div>
+          <hr size="1" />
+        </blockquote>
         <h3 id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Threading.Tasks.Task{``0},System.Threading.Tasks.AsyncValue{``0},System.Action)">Await&lt;U&gt; Generic Method</h3>
         <blockquote id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Threading.Tasks.Task{``0},System.Threading.Tasks.AsyncValue{``0},System.Action):member">
           <div class="msummary">Runs the given function if the await completes successfully else propagates the exception.</div>
@@ -1245,6 +1653,114 @@
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Threading.Tasks.Task{``0},System.Threading.Tasks.AsyncValue{``0},System.Action):Version Information">
             <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.3.2.0</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Threading.Tasks.Task{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action)">Await&lt;U&gt; Generic Method</h3>
+        <blockquote id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Threading.Tasks.Task{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action):member">
+          <div class="msummary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.Task`1">Task&lt;T&gt;</a> <b>Await&lt;U&gt;</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.Task`1">Task&lt;U&gt;</a> t, <a href="../System.Threading.Tasks/IAsyncValue`1.html">IAsyncValue&lt;U&gt;</a> av, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action">Action</a> f)</div>
+          <h4 class="Subsection">Type Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Threading.Tasks.Task{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action):Type Parameters">
+            <dl>
+              <dt>
+                <i>U</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Threading.Tasks.Task{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action):Parameters">
+            <dl>
+              <dt>
+                <i>t</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>av</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>f</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Threading.Tasks.Task{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action):Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Threading.Tasks.Task{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Threading.Tasks.Task{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action):Version Information">
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.4.1.1</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Threading.Tasks.ValueTask{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action)">Await&lt;U&gt; Generic Method</h3>
+        <blockquote id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Threading.Tasks.ValueTask{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action):member">
+          <div class="msummary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.Task`1">Task&lt;T&gt;</a> <b>Await&lt;U&gt;</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.ValueTask`1">ValueTask&lt;U&gt;</a> t, <a href="../System.Threading.Tasks/IAsyncValue`1.html">IAsyncValue&lt;U&gt;</a> av, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action">Action</a> f)</div>
+          <h4 class="Subsection">Type Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Threading.Tasks.ValueTask{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action):Type Parameters">
+            <dl>
+              <dt>
+                <i>U</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Threading.Tasks.ValueTask{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action):Parameters">
+            <dl>
+              <dt>
+                <i>t</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>av</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>f</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Threading.Tasks.ValueTask{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action):Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Threading.Tasks.ValueTask{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``1(System.Threading.Tasks.ValueTask{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action):Version Information">
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.4.1.1</div>
           <hr size="1" />
         </blockquote>
         <h3 id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Runtime.CompilerServices.ConfiguredTaskAwaitable{``0},System.Action{``0},System.Action{``1})">Await&lt;U,TException&gt; Generic Method</h3>
@@ -1288,7 +1804,67 @@
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Runtime.CompilerServices.ConfiguredTaskAwaitable{``0},System.Action{``0},System.Action{``1}):Remarks">Overriding the Catch method allows the addition of code that should execute when exceptions that are not handled by the given handler happen.</div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Runtime.CompilerServices.ConfiguredTaskAwaitable{``0},System.Action{``0},System.Action{``1}):Version Information">
-            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.2.0.0, 1.2.1.0, 1.3.0.0, 1.3.2.0</div>
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.2.0.0, 1.2.1.0, 1.3.0.0, 1.3.2.0, 1.4.1.1</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable{``0},System.Action{``0},System.Action{``1})">Await&lt;U,TException&gt; Generic Method</h3>
+        <blockquote id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable{``0},System.Action{``0},System.Action{``1}):member">
+          <div class="msummary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.Task`1">Task&lt;T&gt;</a> <b>Await&lt;U, TException&gt;</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable`1">System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable&lt;U&gt;</a> cta, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action`1">Action&lt;U&gt;</a> f, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action`1">Action&lt;TException&gt;</a> c)<br /> where TException : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Exception">Exception</a></div>
+          <h4 class="Subsection">Type Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable{``0},System.Action{``0},System.Action{``1}):Type Parameters">
+            <dl>
+              <dt>
+                <i>U</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>TException</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable{``0},System.Action{``0},System.Action{``1}):Parameters">
+            <dl>
+              <dt>
+                <i>cta</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>f</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>c</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable{``0},System.Action{``0},System.Action{``1}):Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable{``0},System.Action{``0},System.Action{``1}):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable{``0},System.Action{``0},System.Action{``1}):Version Information">
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.4.1.1</div>
           <hr size="1" />
         </blockquote>
         <h3 id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Threading.Tasks.IAwaitable{``0},System.Action{``0},System.Action{``1})">Await&lt;U,TException&gt; Generic Method</h3>
@@ -1332,7 +1908,7 @@
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Threading.Tasks.IAwaitable{``0},System.Action{``0},System.Action{``1}):Remarks">Overriding the Catch method allows the addition of code that should execute when exceptions that are not handled by the given handler happen.</div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Threading.Tasks.IAwaitable{``0},System.Action{``0},System.Action{``1}):Version Information">
-            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.2.0.0, 1.2.1.0, 1.3.0.0, 1.3.2.0</div>
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.2.0.0, 1.2.1.0, 1.3.0.0, 1.3.2.0, 1.4.1.1</div>
           <hr size="1" />
         </blockquote>
         <h3 id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Threading.Tasks.IAwaiter{``0},System.Action{``0},System.Action{``1})">Await&lt;U,TException&gt; Generic Method</h3>
@@ -1376,7 +1952,7 @@
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Threading.Tasks.IAwaiter{``0},System.Action{``0},System.Action{``1}):Remarks">Overriding the Catch method allows the addition of code that should execute when exceptions that are not handled by the given handler happen.</div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Threading.Tasks.IAwaiter{``0},System.Action{``0},System.Action{``1}):Version Information">
-            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.2.0.0, 1.2.1.0, 1.3.0.0, 1.3.2.0</div>
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.2.0.0, 1.2.1.0, 1.3.0.0, 1.3.2.0, 1.4.1.1</div>
           <hr size="1" />
         </blockquote>
         <h3 id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Threading.Tasks.Task{``0},System.Action{``0},System.Action{``1})">Await&lt;U,TException&gt; Generic Method</h3>
@@ -1420,7 +1996,67 @@
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Threading.Tasks.Task{``0},System.Action{``0},System.Action{``1}):Remarks">Overriding the Catch method allows the addition of code that should execute when exceptions that are not handled by the given handler happen.</div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Threading.Tasks.Task{``0},System.Action{``0},System.Action{``1}):Version Information">
-            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.2.0.0, 1.2.1.0, 1.3.0.0, 1.3.2.0</div>
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.2.0.0, 1.2.1.0, 1.3.0.0, 1.3.2.0, 1.4.1.1</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Threading.Tasks.ValueTask{``0},System.Action{``0},System.Action{``1})">Await&lt;U,TException&gt; Generic Method</h3>
+        <blockquote id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Threading.Tasks.ValueTask{``0},System.Action{``0},System.Action{``1}):member">
+          <div class="msummary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.Task`1">Task&lt;T&gt;</a> <b>Await&lt;U, TException&gt;</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.ValueTask`1">ValueTask&lt;U&gt;</a> t, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action`1">Action&lt;U&gt;</a> f, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action`1">Action&lt;TException&gt;</a> c)<br /> where TException : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Exception">Exception</a></div>
+          <h4 class="Subsection">Type Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Threading.Tasks.ValueTask{``0},System.Action{``0},System.Action{``1}):Type Parameters">
+            <dl>
+              <dt>
+                <i>U</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>TException</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Threading.Tasks.ValueTask{``0},System.Action{``0},System.Action{``1}):Parameters">
+            <dl>
+              <dt>
+                <i>t</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>f</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>c</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Threading.Tasks.ValueTask{``0},System.Action{``0},System.Action{``1}):Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Threading.Tasks.ValueTask{``0},System.Action{``0},System.Action{``1}):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Threading.Tasks.ValueTask{``0},System.Action{``0},System.Action{``1}):Version Information">
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.4.1.1</div>
           <hr size="1" />
         </blockquote>
         <h3 id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Runtime.CompilerServices.ConfiguredTaskAwaitable{``0},System.Threading.Tasks.AsyncValue{``0},System.Action,System.Action{``1})">Await&lt;U,TException&gt; Generic Method</h3>
@@ -1471,6 +2107,138 @@
             <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.3.2.0</div>
           <hr size="1" />
         </blockquote>
+        <h3 id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Runtime.CompilerServices.ConfiguredTaskAwaitable{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action,System.Action{``1})">Await&lt;U,TException&gt; Generic Method</h3>
+        <blockquote id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Runtime.CompilerServices.ConfiguredTaskAwaitable{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action,System.Action{``1}):member">
+          <div class="msummary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.Task`1">Task&lt;T&gt;</a> <b>Await&lt;U, TException&gt;</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Runtime.CompilerServices.ConfiguredTaskAwaitable`1">System.Runtime.CompilerServices.ConfiguredTaskAwaitable&lt;U&gt;</a> cta, <a href="../System.Threading.Tasks/IAsyncValue`1.html">IAsyncValue&lt;U&gt;</a> av, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action">Action</a> f, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action`1">Action&lt;TException&gt;</a> c)<br /> where TException : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Exception">Exception</a></div>
+          <h4 class="Subsection">Type Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Runtime.CompilerServices.ConfiguredTaskAwaitable{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action,System.Action{``1}):Type Parameters">
+            <dl>
+              <dt>
+                <i>U</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>TException</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Runtime.CompilerServices.ConfiguredTaskAwaitable{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action,System.Action{``1}):Parameters">
+            <dl>
+              <dt>
+                <i>cta</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>av</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>f</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>c</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Runtime.CompilerServices.ConfiguredTaskAwaitable{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action,System.Action{``1}):Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Runtime.CompilerServices.ConfiguredTaskAwaitable{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action,System.Action{``1}):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Runtime.CompilerServices.ConfiguredTaskAwaitable{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action,System.Action{``1}):Version Information">
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.4.1.1</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action,System.Action{``1})">Await&lt;U,TException&gt; Generic Method</h3>
+        <blockquote id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action,System.Action{``1}):member">
+          <div class="msummary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.Task`1">Task&lt;T&gt;</a> <b>Await&lt;U, TException&gt;</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable`1">System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable&lt;U&gt;</a> cta, <a href="../System.Threading.Tasks/IAsyncValue`1.html">IAsyncValue&lt;U&gt;</a> av, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action">Action</a> f, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action`1">Action&lt;TException&gt;</a> c)<br /> where TException : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Exception">Exception</a></div>
+          <h4 class="Subsection">Type Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action,System.Action{``1}):Type Parameters">
+            <dl>
+              <dt>
+                <i>U</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>TException</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action,System.Action{``1}):Parameters">
+            <dl>
+              <dt>
+                <i>cta</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>av</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>f</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>c</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action,System.Action{``1}):Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action,System.Action{``1}):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action,System.Action{``1}):Version Information">
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.4.1.1</div>
+          <hr size="1" />
+        </blockquote>
         <h3 id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Threading.Tasks.IAwaitable{``0},System.Threading.Tasks.AsyncValue{``0},System.Action,System.Action{``1})">Await&lt;U,TException&gt; Generic Method</h3>
         <blockquote id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Threading.Tasks.IAwaitable{``0},System.Threading.Tasks.AsyncValue{``0},System.Action,System.Action{``1}):member">
           <div class="msummary">Runs the given function if the await completes successfully else runs the given exception handler.</div>
@@ -1517,6 +2285,72 @@
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Threading.Tasks.IAwaitable{``0},System.Threading.Tasks.AsyncValue{``0},System.Action,System.Action{``1}):Version Information">
             <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.3.2.0</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Threading.Tasks.IAwaitable{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action,System.Action{``1})">Await&lt;U,TException&gt; Generic Method</h3>
+        <blockquote id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Threading.Tasks.IAwaitable{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action,System.Action{``1}):member">
+          <div class="msummary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.Task`1">Task&lt;T&gt;</a> <b>Await&lt;U, TException&gt;</b> (<a href="../System.Threading.Tasks/IAwaitable`1.html">IAwaitable&lt;U&gt;</a> a, <a href="../System.Threading.Tasks/IAsyncValue`1.html">IAsyncValue&lt;U&gt;</a> av, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action">Action</a> f, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action`1">Action&lt;TException&gt;</a> c)<br /> where TException : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Exception">Exception</a></div>
+          <h4 class="Subsection">Type Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Threading.Tasks.IAwaitable{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action,System.Action{``1}):Type Parameters">
+            <dl>
+              <dt>
+                <i>U</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>TException</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Threading.Tasks.IAwaitable{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action,System.Action{``1}):Parameters">
+            <dl>
+              <dt>
+                <i>a</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>av</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>f</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>c</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Threading.Tasks.IAwaitable{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action,System.Action{``1}):Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Threading.Tasks.IAwaitable{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action,System.Action{``1}):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Threading.Tasks.IAwaitable{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action,System.Action{``1}):Version Information">
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.4.1.1</div>
           <hr size="1" />
         </blockquote>
         <h3 id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Threading.Tasks.IAwaiter{``0},System.Threading.Tasks.AsyncValue{``0},System.Action,System.Action{``1})">Await&lt;U,TException&gt; Generic Method</h3>
@@ -1567,6 +2401,72 @@
             <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.3.2.0</div>
           <hr size="1" />
         </blockquote>
+        <h3 id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Threading.Tasks.IAwaiter{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action,System.Action{``1})">Await&lt;U,TException&gt; Generic Method</h3>
+        <blockquote id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Threading.Tasks.IAwaiter{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action,System.Action{``1}):member">
+          <div class="msummary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.Task`1">Task&lt;T&gt;</a> <b>Await&lt;U, TException&gt;</b> (<a href="../System.Threading.Tasks/IAwaiter`1.html">IAwaiter&lt;U&gt;</a> a, <a href="../System.Threading.Tasks/IAsyncValue`1.html">IAsyncValue&lt;U&gt;</a> av, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action">Action</a> f, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action`1">Action&lt;TException&gt;</a> c)<br /> where TException : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Exception">Exception</a></div>
+          <h4 class="Subsection">Type Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Threading.Tasks.IAwaiter{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action,System.Action{``1}):Type Parameters">
+            <dl>
+              <dt>
+                <i>U</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>TException</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Threading.Tasks.IAwaiter{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action,System.Action{``1}):Parameters">
+            <dl>
+              <dt>
+                <i>a</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>av</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>f</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>c</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Threading.Tasks.IAwaiter{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action,System.Action{``1}):Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Threading.Tasks.IAwaiter{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action,System.Action{``1}):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Threading.Tasks.IAwaiter{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action,System.Action{``1}):Version Information">
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.4.1.1</div>
+          <hr size="1" />
+        </blockquote>
         <h3 id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Threading.Tasks.Task{``0},System.Threading.Tasks.AsyncValue{``0},System.Action,System.Action{``1})">Await&lt;U,TException&gt; Generic Method</h3>
         <blockquote id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Threading.Tasks.Task{``0},System.Threading.Tasks.AsyncValue{``0},System.Action,System.Action{``1}):member">
           <div class="msummary">Runs the given function if the await completes successfully else runs the given exception handler.</div>
@@ -1615,6 +2515,138 @@
             <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.3.2.0</div>
           <hr size="1" />
         </blockquote>
+        <h3 id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Threading.Tasks.Task{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action,System.Action{``1})">Await&lt;U,TException&gt; Generic Method</h3>
+        <blockquote id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Threading.Tasks.Task{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action,System.Action{``1}):member">
+          <div class="msummary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.Task`1">Task&lt;T&gt;</a> <b>Await&lt;U, TException&gt;</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.Task`1">Task&lt;U&gt;</a> t, <a href="../System.Threading.Tasks/IAsyncValue`1.html">IAsyncValue&lt;U&gt;</a> av, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action">Action</a> f, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action`1">Action&lt;TException&gt;</a> c)<br /> where TException : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Exception">Exception</a></div>
+          <h4 class="Subsection">Type Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Threading.Tasks.Task{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action,System.Action{``1}):Type Parameters">
+            <dl>
+              <dt>
+                <i>U</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>TException</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Threading.Tasks.Task{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action,System.Action{``1}):Parameters">
+            <dl>
+              <dt>
+                <i>t</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>av</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>f</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>c</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Threading.Tasks.Task{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action,System.Action{``1}):Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Threading.Tasks.Task{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action,System.Action{``1}):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Threading.Tasks.Task{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action,System.Action{``1}):Version Information">
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.4.1.1</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Threading.Tasks.ValueTask{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action,System.Action{``1})">Await&lt;U,TException&gt; Generic Method</h3>
+        <blockquote id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Threading.Tasks.ValueTask{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action,System.Action{``1}):member">
+          <div class="msummary">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2>Syntax</h2>
+          <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.Task`1">Task&lt;T&gt;</a> <b>Await&lt;U, TException&gt;</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.ValueTask`1">ValueTask&lt;U&gt;</a> t, <a href="../System.Threading.Tasks/IAsyncValue`1.html">IAsyncValue&lt;U&gt;</a> av, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action">Action</a> f, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action`1">Action&lt;TException&gt;</a> c)<br /> where TException : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Exception">Exception</a></div>
+          <h4 class="Subsection">Type Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Threading.Tasks.ValueTask{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action,System.Action{``1}):Type Parameters">
+            <dl>
+              <dt>
+                <i>U</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>TException</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Threading.Tasks.ValueTask{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action,System.Action{``1}):Parameters">
+            <dl>
+              <dt>
+                <i>t</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>av</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>f</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+              <dt>
+                <i>c</i>
+              </dt>
+              <dd>
+                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+              </dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Threading.Tasks.ValueTask{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action,System.Action{``1}):Returns">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Threading.Tasks.ValueTask{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action,System.Action{``1}):Remarks">
+            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
+          </div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Await``2(System.Threading.Tasks.ValueTask{``0},System.Threading.Tasks.IAsyncValue{``0},System.Action,System.Action{``1}):Version Information">
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.4.1.1</div>
+          <hr size="1" />
+        </blockquote>
         <h3 id="P:System.Threading.Tasks.TaskClosure`1.Canceller">Canceller Property</h3>
         <blockquote id="P:System.Threading.Tasks.TaskClosure`1.Canceller:member">
           <div class="msummary">The cancellation token used to cancel an asynchronous method at await points.</div>
@@ -1626,7 +2658,7 @@
           <div class="SectionBox" id="P:System.Threading.Tasks.TaskClosure`1.Canceller:Remarks">The token can be changed in between awaits. This property is read before each await happens.</div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="P:System.Threading.Tasks.TaskClosure`1.Canceller:Version Information">
-            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.2.0.0, 1.2.1.0, 1.3.0.0, 1.3.2.0</div>
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.2.0.0, 1.2.1.0, 1.3.0.0, 1.3.2.0, 1.4.1.1</div>
           <hr size="1" />
         </blockquote>
         <h3 id="M:System.Threading.Tasks.TaskClosure`1.Catch(System.Exception)">Catch Method</h3>
@@ -1647,7 +2679,7 @@
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Catch(System.Exception):Remarks">To add code to what is already executed, override this method and add the new code along with an invocation of the version in this base class.</div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Catch(System.Exception):Version Information">
-            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.1.1.1, 1.2.0.0, 1.2.1.0, 1.3.0.0, 1.3.2.0</div>
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.1.1.1, 1.2.0.0, 1.2.1.0, 1.3.0.0, 1.3.2.0, 1.4.1.1</div>
           <hr size="1" />
         </blockquote>
         <h3 id="M:System.Threading.Tasks.TaskClosure`1.Finally()">Finally Method</h3>
@@ -1659,7 +2691,7 @@
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Finally():Remarks">Override this method to dispose of an resources or to execute code after the asynchronous activity terminates successfully or due to an exception.</div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Finally():Version Information">
-            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.1.1.1, 1.2.0.0, 1.2.1.0, 1.3.0.0, 1.3.2.0</div>
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.1.1.1, 1.2.0.0, 1.2.1.0, 1.3.0.0, 1.3.2.0, 1.4.1.1</div>
           <hr size="1" />
         </blockquote>
         <h3 id="M:System.Threading.Tasks.TaskClosure`1.Return(`0)">Return Method</h3>
@@ -1680,7 +2712,7 @@
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Return(`0):Remarks">This method also handles cleanup of resources.</div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="M:System.Threading.Tasks.TaskClosure`1.Return(`0):Version Information">
-            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.1.1.1, 1.2.0.0, 1.2.1.0, 1.3.0.0, 1.3.2.0</div>
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.1.1.1, 1.2.0.0, 1.2.1.0, 1.3.0.0, 1.3.2.0, 1.4.1.1</div>
           <hr size="1" />
         </blockquote>
         <h3 id="P:System.Threading.Tasks.TaskClosure`1.Task">Task Property</h3>
@@ -1694,7 +2726,7 @@
           <div class="SectionBox" id="P:System.Threading.Tasks.TaskClosure`1.Task:Remarks">The Task instance is also returned by all overloads of the Await method available in this class.</div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="P:System.Threading.Tasks.TaskClosure`1.Task:Version Information">
-            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.1.1.1, 1.2.0.0, 1.2.1.0, 1.3.0.0, 1.3.2.0</div>
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.1.1.1, 1.2.0.0, 1.2.1.0, 1.3.0.0, 1.3.2.0, 1.4.1.1</div>
           <hr size="1" />
         </blockquote>
       </div>

@@ -4,9 +4,9 @@
     </assembly>
     <members>
         <member name="T:System.Threading.Tasks.AsyncValue`1">
-            <typeparam name="TResult">To be added.</typeparam>
-            <summary>To be added.</summary>
-            <remarks>To be added.</remarks>
+            <typeparam name="TResult">The type of the value returned.</typeparam>
+            <summary>A mechanism with which a value can be asynchronously returned from an awaited method.</summary>
+            <remarks>This class may be extended further.</remarks>
         </member>
         <member name="C:System.Threading.Tasks.AsyncValue`1">
             <summary>Creates a new AsyncValue&lt;TResult&gt;.</summary>
@@ -106,6 +106,46 @@
             <param name="continuation">The function to execute as the continuation.</param>
             <summary>Registers the given function to run when the configured task resolves to a value/fails.</summary>
             <remarks>Calls the underlying OnCompleted.</remarks>
+        </member>
+        <member name="T:System.Threading.Tasks.ConfiguredValueTaskAwaitableWrapper`1">
+            <typeparam name="TResult">To be added.</typeparam>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:System.Threading.Tasks.ConfiguredValueTaskAwaitableWrapper`1(`0System`0.`0Runtime`0.`0CompilerServices`0.`0ConfiguredValueTaskAwaitable`0{`0TResult`0})">
+            <param name="awaitable">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:System.Threading.Tasks.ConfiguredValueTaskAwaitableWrapper`1.GetAwaiter">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="T:System.Threading.Tasks.ConfiguredValueTaskAwaiterWrapper`1">
+            <typeparam name="TResult">To be added.</typeparam>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:System.Threading.Tasks.ConfiguredValueTaskAwaiterWrapper`1(`0System`0.`0Runtime`0.`0CompilerServices`0.`0ConfiguredValueTaskAwaitable`0{`0TResult`0}+`0ConfiguredValueTaskAwaiter`0)">
+            <param name="awaiter">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:System.Threading.Tasks.ConfiguredValueTaskAwaiterWrapper`1.GetResult">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:System.Threading.Tasks.ConfiguredValueTaskAwaiterWrapper`1.IsCompleted">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:System.Threading.Tasks.ConfiguredValueTaskAwaiterWrapper`1.OnCompleted(`0System`0.`0Action`0)">
+            <param name="continuation">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
         </member>
         <member name="T:System.Threading.Tasks.DisposerTaskClosure`1">
             <typeparam name="TDisposable">The type of disposable resource that should be managed by the closure.</typeparam>
@@ -449,6 +489,14 @@
             <returns>The Task related to the TaskCompletionSource encapsulated by the closure.</returns>
             <remarks>Overriding the Catch method allows the addition of code that should execute when exceptions happen.</remarks>
         </member>
+        <member name="M:System.Threading.Tasks.TaskClosure`1.Await``1(`0System`0.`0Runtime`0.`0CompilerServices`0.`0ConfiguredValueTaskAwaitable`0{`0U`0},`0System`0.`0Action`0{`0U`0})">
+            <typeparam name="U">To be added.</typeparam>
+            <param name="cta">To be added.</param>
+            <param name="f">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:System.Threading.Tasks.TaskClosure`1.Await``1(`0System`0.`0Threading`0.`0Tasks`0.`0IAwaitable`0{`0U`0},`0System`0.`0Action`0{`0U`0})">
             <typeparam name="U">The return type of the awaitable.</typeparam>
             <param name="a">The awaitable to await.</param>
@@ -473,7 +521,15 @@
             <returns>The Task related to the TaskCompletionSource encapsulated by the closure.</returns>
             <remarks>Overriding the Catch method allows the addition of code that should execute when exceptions happen.</remarks>
         </member>
-        <member name="M:System.Threading.Tasks.TaskClosure`1.Await``1(`0System`0.`0Runtime`0.`0CompilerServices`0.`0ConfiguredTaskAwaitable`0{`0U`0},`0System`0.`0Threading`0.`0Tasks`0.`0AsyncValue`0{`0U`0},`0System`0.`0Action`0)">
+        <member name="M:System.Threading.Tasks.TaskClosure`1.Await``1(`0System`0.`0Threading`0.`0Tasks`0.`0ValueTask`0{`0U`0},`0System`0.`0Action`0{`0U`0})">
+            <typeparam name="U">To be added.</typeparam>
+            <param name="t">To be added.</param>
+            <param name="f">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:System.Threading.Tasks.TaskClosure`1.Await``1(`0System`0.`0Runtime`0.`0CompilerServices`0.`0ConfiguredTaskAwaitable`0{`0U`0},`0System`0.`0Threading`0.`0Tasks`0.`0IAsyncValue`0{`0U`0},`0System`0.`0Action`0)">
             <typeparam name="U">
                 <typeparam name="U">The return type of the awaited configured task.</typeparam>
             </typeparam>
@@ -484,6 +540,15 @@
             <returns>The Task related to the TaskCompletionSource encapsulated by the closure.</returns>
             <remarks>Overriding the Catch method allows the addition of code that should execute when exceptions happen.</remarks>
         </member>
+        <member name="M:System.Threading.Tasks.TaskClosure`1.Await``1(`0System`0.`0Runtime`0.`0CompilerServices`0.`0ConfiguredValueTaskAwaitable`0{`0U`0},`0System`0.`0Threading`0.`0Tasks`0.`0IAsyncValue`0{`0U`0},`0System`0.`0Action`0)">
+            <typeparam name="U">To be added.</typeparam>
+            <param name="cta">To be added.</param>
+            <param name="av">To be added.</param>
+            <param name="f">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:System.Threading.Tasks.TaskClosure`1.Await``1(`0System`0.`0Threading`0.`0Tasks`0.`0IAwaitable`0{`0U`0},`0System`0.`0Threading`0.`0Tasks`0.`0AsyncValue`0{`0U`0},`0System`0.`0Action`0)">
             <typeparam name="U">
                 <typeparam name="U">The return type of the awaitable.</typeparam>.</typeparam>
@@ -493,6 +558,15 @@
             <summary>Runs the given function if the await completes successfully else propagates the exception.</summary>
             <returns>The Task related to the TaskCompletionSource encapsulated by the closure.</returns>
             <remarks>Overriding the Catch method allows the addition of code that should execute when exceptions happen.</remarks>
+        </member>
+        <member name="M:System.Threading.Tasks.TaskClosure`1.Await``1(`0System`0.`0Threading`0.`0Tasks`0.`0IAwaitable`0{`0U`0},`0System`0.`0Threading`0.`0Tasks`0.`0IAsyncValue`0{`0U`0},`0System`0.`0Action`0)">
+            <typeparam name="U">To be added.</typeparam>
+            <param name="a">To be added.</param>
+            <param name="av">To be added.</param>
+            <param name="f">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
         </member>
         <member name="M:System.Threading.Tasks.TaskClosure`1.Await``1(`0System`0.`0Threading`0.`0Tasks`0.`0IAwaiter`0{`0U`0},`0System`0.`0Threading`0.`0Tasks`0.`0AsyncValue`0{`0U`0},`0System`0.`0Action`0)">
             <typeparam name="U">
@@ -505,6 +579,15 @@
             <returns>The Task related to the TaskCompletionSource encapsulated by the closure.</returns>
             <remarks>Overriding the Catch method allows the addition of code that should execute when exceptions happen.</remarks>
         </member>
+        <member name="M:System.Threading.Tasks.TaskClosure`1.Await``1(`0System`0.`0Threading`0.`0Tasks`0.`0IAwaiter`0{`0U`0},`0System`0.`0Threading`0.`0Tasks`0.`0IAsyncValue`0{`0U`0},`0System`0.`0Action`0)">
+            <typeparam name="U">To be added.</typeparam>
+            <param name="a">To be added.</param>
+            <param name="av">To be added.</param>
+            <param name="f">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:System.Threading.Tasks.TaskClosure`1.Await``1(`0System`0.`0Threading`0.`0Tasks`0.`0Task`0{`0U`0},`0System`0.`0Threading`0.`0Tasks`0.`0AsyncValue`0{`0U`0},`0System`0.`0Action`0)">
             <typeparam name="U">
                 <typeparam name="U">The return type of the awaited task.</typeparam>
@@ -516,6 +599,24 @@
             <returns>The Task related to the TaskCompletionSource encapsulated by the closure.</returns>
             <remarks>Overriding the Catch method allows the addition of code that should execute when exceptions happen.</remarks>
         </member>
+        <member name="M:System.Threading.Tasks.TaskClosure`1.Await``1(`0System`0.`0Threading`0.`0Tasks`0.`0Task`0{`0U`0},`0System`0.`0Threading`0.`0Tasks`0.`0IAsyncValue`0{`0U`0},`0System`0.`0Action`0)">
+            <typeparam name="U">To be added.</typeparam>
+            <param name="t">To be added.</param>
+            <param name="av">To be added.</param>
+            <param name="f">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:System.Threading.Tasks.TaskClosure`1.Await``1(`0System`0.`0Threading`0.`0Tasks`0.`0ValueTask`0{`0U`0},`0System`0.`0Threading`0.`0Tasks`0.`0IAsyncValue`0{`0U`0},`0System`0.`0Action`0)">
+            <typeparam name="U">To be added.</typeparam>
+            <param name="t">To be added.</param>
+            <param name="av">To be added.</param>
+            <param name="f">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:System.Threading.Tasks.TaskClosure`1.Await``2(`0System`0.`0Runtime`0.`0CompilerServices`0.`0ConfiguredTaskAwaitable`0{`0U`0},`0System`0.`0Action`0{`0U`0},`0System`0.`0Action`0{`0TException`0})">
             <typeparam name="U">The return type of the awaited configured task.</typeparam>
             <typeparam name="TException">The type of exception that the handler will handle.</typeparam>
@@ -525,6 +626,16 @@
             <summary>Runs the given function if the awaited configured task completes successfully else runs the given exception handler.</summary>
             <returns>The Task related to the TaskCompletionSource encapsulated by the closure.</returns>
             <remarks>Overriding the Catch method allows the addition of code that should execute when exceptions that are not handled by the given handler happen.</remarks>
+        </member>
+        <member name="M:System.Threading.Tasks.TaskClosure`1.Await``2(`0System`0.`0Runtime`0.`0CompilerServices`0.`0ConfiguredValueTaskAwaitable`0{`0U`0},`0System`0.`0Action`0{`0U`0},`0System`0.`0Action`0{`0TException`0})">
+            <typeparam name="U">To be added.</typeparam>
+            <typeparam name="TException">To be added.</typeparam>
+            <param name="cta">To be added.</param>
+            <param name="f">To be added.</param>
+            <param name="c">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
         </member>
         <member name="M:System.Threading.Tasks.TaskClosure`1.Await``2(`0System`0.`0Threading`0.`0Tasks`0.`0IAwaitable`0{`0U`0},`0System`0.`0Action`0{`0U`0},`0System`0.`0Action`0{`0TException`0})">
             <typeparam name="U">The return type of the awaitable.</typeparam>
@@ -556,6 +667,16 @@
             <returns>The Task related to the TaskCompletionSource encapsulated by the closure.</returns>
             <remarks>Overriding the Catch method allows the addition of code that should execute when exceptions that are not handled by the given handler happen.</remarks>
         </member>
+        <member name="M:System.Threading.Tasks.TaskClosure`1.Await``2(`0System`0.`0Threading`0.`0Tasks`0.`0ValueTask`0{`0U`0},`0System`0.`0Action`0{`0U`0},`0System`0.`0Action`0{`0TException`0})">
+            <typeparam name="U">To be added.</typeparam>
+            <typeparam name="TException">To be added.</typeparam>
+            <param name="t">To be added.</param>
+            <param name="f">To be added.</param>
+            <param name="c">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:System.Threading.Tasks.TaskClosure`1.Await``2(`0System`0.`0Runtime`0.`0CompilerServices`0.`0ConfiguredTaskAwaitable`0{`0U`0},`0System`0.`0Threading`0.`0Tasks`0.`0AsyncValue`0{`0U`0},`0System`0.`0Action`0,`0System`0.`0Action`0{`0TException`0})">
             <typeparam name="U">
                 <typeparam name="U">The return type of the awaited configured task.</typeparam>
@@ -568,6 +689,28 @@
             <summary>Runs the given function if the await completes successfully else runs the given exception handler.</summary>
             <returns>The Task related to the TaskCompletionSource encapsulated by the closure.</returns>
             <remarks>Overriding the Catch method allows the addition of code that should execute when exceptions happen.</remarks>
+        </member>
+        <member name="M:System.Threading.Tasks.TaskClosure`1.Await``2(`0System`0.`0Runtime`0.`0CompilerServices`0.`0ConfiguredTaskAwaitable`0{`0U`0},`0System`0.`0Threading`0.`0Tasks`0.`0IAsyncValue`0{`0U`0},`0System`0.`0Action`0,`0System`0.`0Action`0{`0TException`0})">
+            <typeparam name="U">To be added.</typeparam>
+            <typeparam name="TException">To be added.</typeparam>
+            <param name="cta">To be added.</param>
+            <param name="av">To be added.</param>
+            <param name="f">To be added.</param>
+            <param name="c">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:System.Threading.Tasks.TaskClosure`1.Await``2(`0System`0.`0Runtime`0.`0CompilerServices`0.`0ConfiguredValueTaskAwaitable`0{`0U`0},`0System`0.`0Threading`0.`0Tasks`0.`0IAsyncValue`0{`0U`0},`0System`0.`0Action`0,`0System`0.`0Action`0{`0TException`0})">
+            <typeparam name="U">To be added.</typeparam>
+            <typeparam name="TException">To be added.</typeparam>
+            <param name="cta">To be added.</param>
+            <param name="av">To be added.</param>
+            <param name="f">To be added.</param>
+            <param name="c">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
         </member>
         <member name="M:System.Threading.Tasks.TaskClosure`1.Await``2(`0System`0.`0Threading`0.`0Tasks`0.`0IAwaitable`0{`0U`0},`0System`0.`0Threading`0.`0Tasks`0.`0AsyncValue`0{`0U`0},`0System`0.`0Action`0,`0System`0.`0Action`0{`0TException`0})">
             <typeparam name="U">
@@ -582,6 +725,17 @@
             <returns>The Task related to the TaskCompletionSource encapsulated by the closure.</returns>
             <remarks>Overriding the Catch method allows the addition of code that should execute when exceptions happen.</remarks>
         </member>
+        <member name="M:System.Threading.Tasks.TaskClosure`1.Await``2(`0System`0.`0Threading`0.`0Tasks`0.`0IAwaitable`0{`0U`0},`0System`0.`0Threading`0.`0Tasks`0.`0IAsyncValue`0{`0U`0},`0System`0.`0Action`0,`0System`0.`0Action`0{`0TException`0})">
+            <typeparam name="U">To be added.</typeparam>
+            <typeparam name="TException">To be added.</typeparam>
+            <param name="a">To be added.</param>
+            <param name="av">To be added.</param>
+            <param name="f">To be added.</param>
+            <param name="c">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:System.Threading.Tasks.TaskClosure`1.Await``2(`0System`0.`0Threading`0.`0Tasks`0.`0IAwaiter`0{`0U`0},`0System`0.`0Threading`0.`0Tasks`0.`0AsyncValue`0{`0U`0},`0System`0.`0Action`0,`0System`0.`0Action`0{`0TException`0})">
             <typeparam name="U">
                 <typeparam name="U">The return type of the awaiter.</typeparam>
@@ -595,6 +749,17 @@
             <returns>The Task related to the TaskCompletionSource encapsulated by the closure.</returns>
             <remarks>Overriding the Catch method allows the addition of code that should execute when exceptions happen.</remarks>
         </member>
+        <member name="M:System.Threading.Tasks.TaskClosure`1.Await``2(`0System`0.`0Threading`0.`0Tasks`0.`0IAwaiter`0{`0U`0},`0System`0.`0Threading`0.`0Tasks`0.`0IAsyncValue`0{`0U`0},`0System`0.`0Action`0,`0System`0.`0Action`0{`0TException`0})">
+            <typeparam name="U">To be added.</typeparam>
+            <typeparam name="TException">To be added.</typeparam>
+            <param name="a">To be added.</param>
+            <param name="av">To be added.</param>
+            <param name="f">To be added.</param>
+            <param name="c">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:System.Threading.Tasks.TaskClosure`1.Await``2(`0System`0.`0Threading`0.`0Tasks`0.`0Task`0{`0U`0},`0System`0.`0Threading`0.`0Tasks`0.`0AsyncValue`0{`0U`0},`0System`0.`0Action`0,`0System`0.`0Action`0{`0TException`0})">
             <typeparam name="U">
                 <typeparam name="U">The return type of the awaited task.</typeparam>
@@ -607,6 +772,28 @@
             <summary>Runs the given function if the await completes successfully else runs the given exception handler.</summary>
             <returns>The Task related to the TaskCompletionSource encapsulated by the closure.</returns>
             <remarks>Overriding the Catch method allows the addition of code that should execute when exceptions happen.</remarks>
+        </member>
+        <member name="M:System.Threading.Tasks.TaskClosure`1.Await``2(`0System`0.`0Threading`0.`0Tasks`0.`0Task`0{`0U`0},`0System`0.`0Threading`0.`0Tasks`0.`0IAsyncValue`0{`0U`0},`0System`0.`0Action`0,`0System`0.`0Action`0{`0TException`0})">
+            <typeparam name="U">To be added.</typeparam>
+            <typeparam name="TException">To be added.</typeparam>
+            <param name="t">To be added.</param>
+            <param name="av">To be added.</param>
+            <param name="f">To be added.</param>
+            <param name="c">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:System.Threading.Tasks.TaskClosure`1.Await``2(`0System`0.`0Threading`0.`0Tasks`0.`0ValueTask`0{`0U`0},`0System`0.`0Threading`0.`0Tasks`0.`0IAsyncValue`0{`0U`0},`0System`0.`0Action`0,`0System`0.`0Action`0{`0TException`0})">
+            <typeparam name="U">To be added.</typeparam>
+            <typeparam name="TException">To be added.</typeparam>
+            <param name="t">To be added.</param>
+            <param name="av">To be added.</param>
+            <param name="f">To be added.</param>
+            <param name="c">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
         </member>
         <member name="P:System.Threading.Tasks.TaskClosure`1.Canceller">
             <summary>The cancellation token used to cancel an asynchronous method at await points.</summary>
@@ -1302,6 +1489,46 @@
             <summary>Gets the IAwaiter&lt;TResult&gt; used to await this Task&lt;TResult&gt;.</summary>
             <returns>The IAwaiter&lt;TResult&gt; used to await this Task&lt;TResult&gt;.</returns>
             <remarks />
+        </member>
+        <member name="T:System.Threading.Tasks.ValueTaskAwaiterWrapper`1">
+            <typeparam name="TResult">To be added.</typeparam>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:System.Threading.Tasks.ValueTaskAwaiterWrapper`1(`0System`0.`0Runtime`0.`0CompilerServices`0.`0ValueTaskAwaiter`0{`0TResult`0})">
+            <param name="awaiter">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:System.Threading.Tasks.ValueTaskAwaiterWrapper`1.GetResult">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:System.Threading.Tasks.ValueTaskAwaiterWrapper`1.IsCompleted">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:System.Threading.Tasks.ValueTaskAwaiterWrapper`1.OnCompleted(`0System`0.`0Action`0)">
+            <param name="continuation">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="T:System.Threading.Tasks.ValueTaskWrapper`1">
+            <typeparam name="TResult">To be added.</typeparam>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:System.Threading.Tasks.ValueTaskWrapper`1(`0System`0.`0Threading`0.`0Tasks`0.`0ValueTask`0{`0TResult`0})">
+            <param name="awaitable">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:System.Threading.Tasks.ValueTaskWrapper`1.GetAwaiter">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
         </member>
         <member name="T:System.Threading.Tasks.YieldAwaitableWrapper">
             <summary>An IAwaitable implementation that wraps a YieldAwaitable.</summary>

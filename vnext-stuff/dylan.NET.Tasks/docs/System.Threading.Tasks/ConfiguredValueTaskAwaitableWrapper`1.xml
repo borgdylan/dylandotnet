@@ -1,0 +1,59 @@
+<Type Name="ConfiguredValueTaskAwaitableWrapper&lt;TResult&gt;" FullName="System.Threading.Tasks.ConfiguredValueTaskAwaitableWrapper&lt;TResult&gt;">
+  <TypeSignature Language="C#" Value="public class ConfiguredValueTaskAwaitableWrapper&lt;TResult&gt; : System.Threading.Tasks.IAwaitable&lt;TResult&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi ConfiguredValueTaskAwaitableWrapper`1&lt;TResult&gt; extends System.Object implements class System.Threading.Tasks.IAwaitable`1&lt;!TResult&gt;" />
+  <AssemblyInfo>
+    <AssemblyName>dylan.NET.Tasks</AssemblyName>
+    <AssemblyVersion>1.4.1.1</AssemblyVersion>
+  </AssemblyInfo>
+  <TypeParameters>
+    <TypeParameter Name="TResult" />
+  </TypeParameters>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>System.Threading.Tasks.IAwaitable&lt;TResult&gt;</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <typeparam name="TResult">To be added.</typeparam>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public ConfiguredValueTaskAwaitableWrapper (System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable&lt;TResult&gt; awaitable);" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor(valuetype System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable`1&lt;!TResult&gt; awaitable) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.4.1.1</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="awaitable" Type="System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable&lt;TResult&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="awaitable">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetAwaiter">
+      <MemberSignature Language="C#" Value="public System.Threading.Tasks.IAwaiter&lt;TResult&gt; GetAwaiter ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class System.Threading.Tasks.IAwaiter`1&lt;!TResult&gt; GetAwaiter() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.4.1.1</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Threading.Tasks.IAwaiter&lt;TResult&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

@@ -8,6 +8,7 @@
     <AssemblyVersion>1.2.1.0</AssemblyVersion>
     <AssemblyVersion>1.3.0.0</AssemblyVersion>
     <AssemblyVersion>1.3.2.0</AssemblyVersion>
+    <AssemblyVersion>1.4.1.1</AssemblyVersion>
   </AssemblyInfo>
   <TypeParameters>
     <TypeParameter Name="T" />
@@ -32,6 +33,7 @@
         <AssemblyVersion>1.2.1.0</AssemblyVersion>
         <AssemblyVersion>1.3.0.0</AssemblyVersion>
         <AssemblyVersion>1.3.2.0</AssemblyVersion>
+        <AssemblyVersion>1.4.1.1</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
@@ -49,6 +51,7 @@
         <AssemblyVersion>1.2.1.0</AssemblyVersion>
         <AssemblyVersion>1.3.0.0</AssemblyVersion>
         <AssemblyVersion>1.3.2.0</AssemblyVersion>
+        <AssemblyVersion>1.4.1.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task&lt;T&gt;</ReturnType>
@@ -74,6 +77,7 @@
         <AssemblyVersion>1.2.1.0</AssemblyVersion>
         <AssemblyVersion>1.3.0.0</AssemblyVersion>
         <AssemblyVersion>1.3.2.0</AssemblyVersion>
+        <AssemblyVersion>1.4.1.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task&lt;T&gt;</ReturnType>
@@ -99,6 +103,7 @@
         <AssemblyVersion>1.2.1.0</AssemblyVersion>
         <AssemblyVersion>1.3.0.0</AssemblyVersion>
         <AssemblyVersion>1.3.2.0</AssemblyVersion>
+        <AssemblyVersion>1.4.1.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task&lt;T&gt;</ReturnType>
@@ -124,6 +129,7 @@
         <AssemblyVersion>1.2.1.0</AssemblyVersion>
         <AssemblyVersion>1.3.0.0</AssemblyVersion>
         <AssemblyVersion>1.3.2.0</AssemblyVersion>
+        <AssemblyVersion>1.4.1.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task&lt;T&gt;</ReturnType>
@@ -150,6 +156,7 @@
         <AssemblyVersion>1.2.1.0</AssemblyVersion>
         <AssemblyVersion>1.3.0.0</AssemblyVersion>
         <AssemblyVersion>1.3.2.0</AssemblyVersion>
+        <AssemblyVersion>1.4.1.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task&lt;T&gt;</ReturnType>
@@ -175,6 +182,7 @@
         <AssemblyVersion>1.2.1.0</AssemblyVersion>
         <AssemblyVersion>1.3.0.0</AssemblyVersion>
         <AssemblyVersion>1.3.2.0</AssemblyVersion>
+        <AssemblyVersion>1.4.1.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task&lt;T&gt;</ReturnType>
@@ -210,6 +218,7 @@
         <AssemblyVersion>1.2.1.0</AssemblyVersion>
         <AssemblyVersion>1.3.0.0</AssemblyVersion>
         <AssemblyVersion>1.3.2.0</AssemblyVersion>
+        <AssemblyVersion>1.4.1.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task&lt;T&gt;</ReturnType>
@@ -245,6 +254,7 @@
         <AssemblyVersion>1.2.1.0</AssemblyVersion>
         <AssemblyVersion>1.3.0.0</AssemblyVersion>
         <AssemblyVersion>1.3.2.0</AssemblyVersion>
+        <AssemblyVersion>1.4.1.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task&lt;T&gt;</ReturnType>
@@ -280,6 +290,7 @@
         <AssemblyVersion>1.2.1.0</AssemblyVersion>
         <AssemblyVersion>1.3.0.0</AssemblyVersion>
         <AssemblyVersion>1.3.2.0</AssemblyVersion>
+        <AssemblyVersion>1.4.1.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task&lt;T&gt;</ReturnType>
@@ -315,6 +326,7 @@
         <AssemblyVersion>1.2.1.0</AssemblyVersion>
         <AssemblyVersion>1.3.0.0</AssemblyVersion>
         <AssemblyVersion>1.3.2.0</AssemblyVersion>
+        <AssemblyVersion>1.4.1.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task&lt;T&gt;</ReturnType>
@@ -350,6 +362,7 @@
         <AssemblyVersion>1.2.1.0</AssemblyVersion>
         <AssemblyVersion>1.3.0.0</AssemblyVersion>
         <AssemblyVersion>1.3.2.0</AssemblyVersion>
+        <AssemblyVersion>1.4.1.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task&lt;T&gt;</ReturnType>
@@ -371,6 +384,32 @@
       </Docs>
     </Member>
     <Member MemberName="Await&lt;U&gt;">
+      <MemberSignature Language="C#" Value="public System.Threading.Tasks.Task&lt;T&gt; Await&lt;U&gt; (System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable&lt;U&gt; cta, Action&lt;U&gt; f);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance class System.Threading.Tasks.Task`1&lt;!T&gt; Await&lt;U&gt;(valuetype System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable`1&lt;!!U&gt; cta, class System.Action`1&lt;!!U&gt; f) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.4.1.1</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Threading.Tasks.Task&lt;T&gt;</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="U" />
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="cta" Type="System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable&lt;U&gt;" />
+        <Parameter Name="f" Type="System.Action&lt;U&gt;" />
+      </Parameters>
+      <Docs>
+        <typeparam name="U">To be added.</typeparam>
+        <param name="cta">To be added.</param>
+        <param name="f">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Await&lt;U&gt;">
       <MemberSignature Language="C#" Value="public System.Threading.Tasks.Task&lt;T&gt; Await&lt;U&gt; (System.Threading.Tasks.IAwaitable&lt;U&gt; a, Action&lt;U&gt; f);" />
       <MemberSignature Language="ILAsm" Value=".method public instance class System.Threading.Tasks.Task`1&lt;!T&gt; Await&lt;U&gt;(class System.Threading.Tasks.IAwaitable`1&lt;!!U&gt; a, class System.Action`1&lt;!!U&gt; f) cil managed" />
       <MemberType>Method</MemberType>
@@ -379,6 +418,7 @@
         <AssemblyVersion>1.2.1.0</AssemblyVersion>
         <AssemblyVersion>1.3.0.0</AssemblyVersion>
         <AssemblyVersion>1.3.2.0</AssemblyVersion>
+        <AssemblyVersion>1.4.1.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task&lt;T&gt;</ReturnType>
@@ -408,6 +448,7 @@
         <AssemblyVersion>1.2.1.0</AssemblyVersion>
         <AssemblyVersion>1.3.0.0</AssemblyVersion>
         <AssemblyVersion>1.3.2.0</AssemblyVersion>
+        <AssemblyVersion>1.4.1.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task&lt;T&gt;</ReturnType>
@@ -438,6 +479,7 @@
         <AssemblyVersion>1.2.1.0</AssemblyVersion>
         <AssemblyVersion>1.3.0.0</AssemblyVersion>
         <AssemblyVersion>1.3.2.0</AssemblyVersion>
+        <AssemblyVersion>1.4.1.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task&lt;T&gt;</ReturnType>
@@ -459,11 +501,38 @@
       </Docs>
     </Member>
     <Member MemberName="Await&lt;U&gt;">
-      <MemberSignature Language="C#" Value="public System.Threading.Tasks.Task&lt;T&gt; Await&lt;U&gt; (System.Runtime.CompilerServices.ConfiguredTaskAwaitable&lt;U&gt; cta, System.Threading.Tasks.AsyncValue&lt;U&gt; av, Action f);" />
-      <MemberSignature Language="ILAsm" Value=".method public instance class System.Threading.Tasks.Task`1&lt;!T&gt; Await&lt;U&gt;(valuetype System.Runtime.CompilerServices.ConfiguredTaskAwaitable`1&lt;!!U&gt; cta, class System.Threading.Tasks.AsyncValue`1&lt;!!U&gt; av, class System.Action f) cil managed" />
+      <MemberSignature Language="C#" Value="public System.Threading.Tasks.Task&lt;T&gt; Await&lt;U&gt; (System.Threading.Tasks.ValueTask&lt;U&gt; t, Action&lt;U&gt; f);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance class System.Threading.Tasks.Task`1&lt;!T&gt; Await&lt;U&gt;(valuetype System.Threading.Tasks.ValueTask`1&lt;!!U&gt; t, class System.Action`1&lt;!!U&gt; f) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.4.1.1</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Threading.Tasks.Task&lt;T&gt;</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="U" />
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="t" Type="System.Threading.Tasks.ValueTask&lt;U&gt;" />
+        <Parameter Name="f" Type="System.Action&lt;U&gt;" />
+      </Parameters>
+      <Docs>
+        <typeparam name="U">To be added.</typeparam>
+        <param name="t">To be added.</param>
+        <param name="f">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Await&lt;U&gt;">
+      <MemberSignature Language="C#" Value="public System.Threading.Tasks.Task&lt;T&gt; Await&lt;U&gt; (System.Runtime.CompilerServices.ConfiguredTaskAwaitable&lt;U&gt; cta, System.Threading.Tasks.IAsyncValue&lt;U&gt; av, Action f);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance class System.Threading.Tasks.Task`1&lt;!T&gt; Await&lt;U&gt;(valuetype System.Runtime.CompilerServices.ConfiguredTaskAwaitable`1&lt;!!U&gt; cta, class System.Threading.Tasks.IAsyncValue`1&lt;!!U&gt; av, class System.Action f) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>1.3.2.0</AssemblyVersion>
+        <AssemblyVersion>1.4.1.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task&lt;T&gt;</ReturnType>
@@ -473,7 +542,7 @@
       </TypeParameters>
       <Parameters>
         <Parameter Name="cta" Type="System.Runtime.CompilerServices.ConfiguredTaskAwaitable&lt;U&gt;" />
-        <Parameter Name="av" Type="System.Threading.Tasks.AsyncValue&lt;U&gt;" />
+        <Parameter Name="av" Type="System.Threading.Tasks.IAsyncValue&lt;U&gt;" />
         <Parameter Name="f" Type="System.Action" />
       </Parameters>
       <Docs>
@@ -486,6 +555,34 @@
         <summary>Runs the given function if the await completes successfully else propagates the exception.</summary>
         <returns>The Task related to the TaskCompletionSource encapsulated by the closure.</returns>
         <remarks>Overriding the Catch method allows the addition of code that should execute when exceptions happen.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Await&lt;U&gt;">
+      <MemberSignature Language="C#" Value="public System.Threading.Tasks.Task&lt;T&gt; Await&lt;U&gt; (System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable&lt;U&gt; cta, System.Threading.Tasks.IAsyncValue&lt;U&gt; av, Action f);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance class System.Threading.Tasks.Task`1&lt;!T&gt; Await&lt;U&gt;(valuetype System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable`1&lt;!!U&gt; cta, class System.Threading.Tasks.IAsyncValue`1&lt;!!U&gt; av, class System.Action f) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.4.1.1</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Threading.Tasks.Task&lt;T&gt;</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="U" />
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="cta" Type="System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable&lt;U&gt;" />
+        <Parameter Name="av" Type="System.Threading.Tasks.IAsyncValue&lt;U&gt;" />
+        <Parameter Name="f" Type="System.Action" />
+      </Parameters>
+      <Docs>
+        <typeparam name="U">To be added.</typeparam>
+        <param name="cta">To be added.</param>
+        <param name="av">To be added.</param>
+        <param name="f">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Await&lt;U&gt;">
@@ -515,6 +612,34 @@
         <summary>Runs the given function if the await completes successfully else propagates the exception.</summary>
         <returns>The Task related to the TaskCompletionSource encapsulated by the closure.</returns>
         <remarks>Overriding the Catch method allows the addition of code that should execute when exceptions happen.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Await&lt;U&gt;">
+      <MemberSignature Language="C#" Value="public System.Threading.Tasks.Task&lt;T&gt; Await&lt;U&gt; (System.Threading.Tasks.IAwaitable&lt;U&gt; a, System.Threading.Tasks.IAsyncValue&lt;U&gt; av, Action f);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance class System.Threading.Tasks.Task`1&lt;!T&gt; Await&lt;U&gt;(class System.Threading.Tasks.IAwaitable`1&lt;!!U&gt; a, class System.Threading.Tasks.IAsyncValue`1&lt;!!U&gt; av, class System.Action f) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.4.1.1</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Threading.Tasks.Task&lt;T&gt;</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="U" />
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="a" Type="System.Threading.Tasks.IAwaitable&lt;U&gt;" />
+        <Parameter Name="av" Type="System.Threading.Tasks.IAsyncValue&lt;U&gt;" />
+        <Parameter Name="f" Type="System.Action" />
+      </Parameters>
+      <Docs>
+        <typeparam name="U">To be added.</typeparam>
+        <param name="a">To be added.</param>
+        <param name="av">To be added.</param>
+        <param name="f">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Await&lt;U&gt;">
@@ -548,6 +673,34 @@
       </Docs>
     </Member>
     <Member MemberName="Await&lt;U&gt;">
+      <MemberSignature Language="C#" Value="public System.Threading.Tasks.Task&lt;T&gt; Await&lt;U&gt; (System.Threading.Tasks.IAwaiter&lt;U&gt; a, System.Threading.Tasks.IAsyncValue&lt;U&gt; av, Action f);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance class System.Threading.Tasks.Task`1&lt;!T&gt; Await&lt;U&gt;(class System.Threading.Tasks.IAwaiter`1&lt;!!U&gt; a, class System.Threading.Tasks.IAsyncValue`1&lt;!!U&gt; av, class System.Action f) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.4.1.1</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Threading.Tasks.Task&lt;T&gt;</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="U" />
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="a" Type="System.Threading.Tasks.IAwaiter&lt;U&gt;" />
+        <Parameter Name="av" Type="System.Threading.Tasks.IAsyncValue&lt;U&gt;" />
+        <Parameter Name="f" Type="System.Action" />
+      </Parameters>
+      <Docs>
+        <typeparam name="U">To be added.</typeparam>
+        <param name="a">To be added.</param>
+        <param name="av">To be added.</param>
+        <param name="f">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Await&lt;U&gt;">
       <MemberSignature Language="C#" Value="public System.Threading.Tasks.Task&lt;T&gt; Await&lt;U&gt; (System.Threading.Tasks.Task&lt;U&gt; t, System.Threading.Tasks.AsyncValue&lt;U&gt; av, Action f);" />
       <MemberSignature Language="ILAsm" Value=".method public instance class System.Threading.Tasks.Task`1&lt;!T&gt; Await&lt;U&gt;(class System.Threading.Tasks.Task`1&lt;!!U&gt; t, class System.Threading.Tasks.AsyncValue`1&lt;!!U&gt; av, class System.Action f) cil managed" />
       <MemberType>Method</MemberType>
@@ -577,6 +730,62 @@
         <remarks>Overriding the Catch method allows the addition of code that should execute when exceptions happen.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="Await&lt;U&gt;">
+      <MemberSignature Language="C#" Value="public System.Threading.Tasks.Task&lt;T&gt; Await&lt;U&gt; (System.Threading.Tasks.Task&lt;U&gt; t, System.Threading.Tasks.IAsyncValue&lt;U&gt; av, Action f);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance class System.Threading.Tasks.Task`1&lt;!T&gt; Await&lt;U&gt;(class System.Threading.Tasks.Task`1&lt;!!U&gt; t, class System.Threading.Tasks.IAsyncValue`1&lt;!!U&gt; av, class System.Action f) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.4.1.1</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Threading.Tasks.Task&lt;T&gt;</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="U" />
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="t" Type="System.Threading.Tasks.Task&lt;U&gt;" />
+        <Parameter Name="av" Type="System.Threading.Tasks.IAsyncValue&lt;U&gt;" />
+        <Parameter Name="f" Type="System.Action" />
+      </Parameters>
+      <Docs>
+        <typeparam name="U">To be added.</typeparam>
+        <param name="t">To be added.</param>
+        <param name="av">To be added.</param>
+        <param name="f">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Await&lt;U&gt;">
+      <MemberSignature Language="C#" Value="public System.Threading.Tasks.Task&lt;T&gt; Await&lt;U&gt; (System.Threading.Tasks.ValueTask&lt;U&gt; t, System.Threading.Tasks.IAsyncValue&lt;U&gt; av, Action f);" />
+      <MemberSignature Language="ILAsm" Value=".method public instance class System.Threading.Tasks.Task`1&lt;!T&gt; Await&lt;U&gt;(valuetype System.Threading.Tasks.ValueTask`1&lt;!!U&gt; t, class System.Threading.Tasks.IAsyncValue`1&lt;!!U&gt; av, class System.Action f) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.4.1.1</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Threading.Tasks.Task&lt;T&gt;</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="U" />
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="t" Type="System.Threading.Tasks.ValueTask&lt;U&gt;" />
+        <Parameter Name="av" Type="System.Threading.Tasks.IAsyncValue&lt;U&gt;" />
+        <Parameter Name="f" Type="System.Action" />
+      </Parameters>
+      <Docs>
+        <typeparam name="U">To be added.</typeparam>
+        <param name="t">To be added.</param>
+        <param name="av">To be added.</param>
+        <param name="f">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Await&lt;U,TException&gt;">
       <MemberSignature Language="C#" Value="public System.Threading.Tasks.Task&lt;T&gt; Await&lt;U,TException&gt; (System.Runtime.CompilerServices.ConfiguredTaskAwaitable&lt;U&gt; cta, Action&lt;U&gt; f, Action&lt;TException&gt; c) where TException : Exception;" />
       <MemberSignature Language="ILAsm" Value=".method public instance class System.Threading.Tasks.Task`1&lt;!T&gt; Await&lt;U, (class System.Exception) TException&gt;(valuetype System.Runtime.CompilerServices.ConfiguredTaskAwaitable`1&lt;!!U&gt; cta, class System.Action`1&lt;!!U&gt; f, class System.Action`1&lt;!!TException&gt; c) cil managed" />
@@ -586,6 +795,7 @@
         <AssemblyVersion>1.2.1.0</AssemblyVersion>
         <AssemblyVersion>1.3.0.0</AssemblyVersion>
         <AssemblyVersion>1.3.2.0</AssemblyVersion>
+        <AssemblyVersion>1.4.1.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task&lt;T&gt;</ReturnType>
@@ -615,6 +825,40 @@
       </Docs>
     </Member>
     <Member MemberName="Await&lt;U,TException&gt;">
+      <MemberSignature Language="C#" Value="public System.Threading.Tasks.Task&lt;T&gt; Await&lt;U,TException&gt; (System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable&lt;U&gt; cta, Action&lt;U&gt; f, Action&lt;TException&gt; c) where TException : Exception;" />
+      <MemberSignature Language="ILAsm" Value=".method public instance class System.Threading.Tasks.Task`1&lt;!T&gt; Await&lt;U, (class System.Exception) TException&gt;(valuetype System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable`1&lt;!!U&gt; cta, class System.Action`1&lt;!!U&gt; f, class System.Action`1&lt;!!TException&gt; c) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.4.1.1</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Threading.Tasks.Task&lt;T&gt;</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="U" />
+        <TypeParameter Name="TException">
+          <Constraints>
+            <BaseTypeName>System.Exception</BaseTypeName>
+          </Constraints>
+        </TypeParameter>
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="cta" Type="System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable&lt;U&gt;" />
+        <Parameter Name="f" Type="System.Action&lt;U&gt;" />
+        <Parameter Name="c" Type="System.Action&lt;TException&gt;" />
+      </Parameters>
+      <Docs>
+        <typeparam name="U">To be added.</typeparam>
+        <typeparam name="TException">To be added.</typeparam>
+        <param name="cta">To be added.</param>
+        <param name="f">To be added.</param>
+        <param name="c">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Await&lt;U,TException&gt;">
       <MemberSignature Language="C#" Value="public System.Threading.Tasks.Task&lt;T&gt; Await&lt;U,TException&gt; (System.Threading.Tasks.IAwaitable&lt;U&gt; a, Action&lt;U&gt; f, Action&lt;TException&gt; c) where TException : Exception;" />
       <MemberSignature Language="ILAsm" Value=".method public instance class System.Threading.Tasks.Task`1&lt;!T&gt; Await&lt;U, (class System.Exception) TException&gt;(class System.Threading.Tasks.IAwaitable`1&lt;!!U&gt; a, class System.Action`1&lt;!!U&gt; f, class System.Action`1&lt;!!TException&gt; c) cil managed" />
       <MemberType>Method</MemberType>
@@ -623,6 +867,7 @@
         <AssemblyVersion>1.2.1.0</AssemblyVersion>
         <AssemblyVersion>1.3.0.0</AssemblyVersion>
         <AssemblyVersion>1.3.2.0</AssemblyVersion>
+        <AssemblyVersion>1.4.1.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task&lt;T&gt;</ReturnType>
@@ -660,6 +905,7 @@
         <AssemblyVersion>1.2.1.0</AssemblyVersion>
         <AssemblyVersion>1.3.0.0</AssemblyVersion>
         <AssemblyVersion>1.3.2.0</AssemblyVersion>
+        <AssemblyVersion>1.4.1.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task&lt;T&gt;</ReturnType>
@@ -697,6 +943,7 @@
         <AssemblyVersion>1.2.1.0</AssemblyVersion>
         <AssemblyVersion>1.3.0.0</AssemblyVersion>
         <AssemblyVersion>1.3.2.0</AssemblyVersion>
+        <AssemblyVersion>1.4.1.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task&lt;T&gt;</ReturnType>
@@ -723,6 +970,40 @@
         <summary>Runs the given function if the awaited task completes successfully else runs the given exception handler.</summary>
         <returns>The Task related to the TaskCompletionSource encapsulated by the closure.</returns>
         <remarks>Overriding the Catch method allows the addition of code that should execute when exceptions that are not handled by the given handler happen.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Await&lt;U,TException&gt;">
+      <MemberSignature Language="C#" Value="public System.Threading.Tasks.Task&lt;T&gt; Await&lt;U,TException&gt; (System.Threading.Tasks.ValueTask&lt;U&gt; t, Action&lt;U&gt; f, Action&lt;TException&gt; c) where TException : Exception;" />
+      <MemberSignature Language="ILAsm" Value=".method public instance class System.Threading.Tasks.Task`1&lt;!T&gt; Await&lt;U, (class System.Exception) TException&gt;(valuetype System.Threading.Tasks.ValueTask`1&lt;!!U&gt; t, class System.Action`1&lt;!!U&gt; f, class System.Action`1&lt;!!TException&gt; c) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.4.1.1</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Threading.Tasks.Task&lt;T&gt;</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="U" />
+        <TypeParameter Name="TException">
+          <Constraints>
+            <BaseTypeName>System.Exception</BaseTypeName>
+          </Constraints>
+        </TypeParameter>
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="t" Type="System.Threading.Tasks.ValueTask&lt;U&gt;" />
+        <Parameter Name="f" Type="System.Action&lt;U&gt;" />
+        <Parameter Name="c" Type="System.Action&lt;TException&gt;" />
+      </Parameters>
+      <Docs>
+        <typeparam name="U">To be added.</typeparam>
+        <typeparam name="TException">To be added.</typeparam>
+        <param name="t">To be added.</param>
+        <param name="f">To be added.</param>
+        <param name="c">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Await&lt;U,TException&gt;">
@@ -764,6 +1045,78 @@
       </Docs>
     </Member>
     <Member MemberName="Await&lt;U,TException&gt;">
+      <MemberSignature Language="C#" Value="public System.Threading.Tasks.Task&lt;T&gt; Await&lt;U,TException&gt; (System.Runtime.CompilerServices.ConfiguredTaskAwaitable&lt;U&gt; cta, System.Threading.Tasks.IAsyncValue&lt;U&gt; av, Action f, Action&lt;TException&gt; c) where TException : Exception;" />
+      <MemberSignature Language="ILAsm" Value=".method public instance class System.Threading.Tasks.Task`1&lt;!T&gt; Await&lt;U, (class System.Exception) TException&gt;(valuetype System.Runtime.CompilerServices.ConfiguredTaskAwaitable`1&lt;!!U&gt; cta, class System.Threading.Tasks.IAsyncValue`1&lt;!!U&gt; av, class System.Action f, class System.Action`1&lt;!!TException&gt; c) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.4.1.1</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Threading.Tasks.Task&lt;T&gt;</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="U" />
+        <TypeParameter Name="TException">
+          <Constraints>
+            <BaseTypeName>System.Exception</BaseTypeName>
+          </Constraints>
+        </TypeParameter>
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="cta" Type="System.Runtime.CompilerServices.ConfiguredTaskAwaitable&lt;U&gt;" />
+        <Parameter Name="av" Type="System.Threading.Tasks.IAsyncValue&lt;U&gt;" />
+        <Parameter Name="f" Type="System.Action" />
+        <Parameter Name="c" Type="System.Action&lt;TException&gt;" />
+      </Parameters>
+      <Docs>
+        <typeparam name="U">To be added.</typeparam>
+        <typeparam name="TException">To be added.</typeparam>
+        <param name="cta">To be added.</param>
+        <param name="av">To be added.</param>
+        <param name="f">To be added.</param>
+        <param name="c">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Await&lt;U,TException&gt;">
+      <MemberSignature Language="C#" Value="public System.Threading.Tasks.Task&lt;T&gt; Await&lt;U,TException&gt; (System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable&lt;U&gt; cta, System.Threading.Tasks.IAsyncValue&lt;U&gt; av, Action f, Action&lt;TException&gt; c) where TException : Exception;" />
+      <MemberSignature Language="ILAsm" Value=".method public instance class System.Threading.Tasks.Task`1&lt;!T&gt; Await&lt;U, (class System.Exception) TException&gt;(valuetype System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable`1&lt;!!U&gt; cta, class System.Threading.Tasks.IAsyncValue`1&lt;!!U&gt; av, class System.Action f, class System.Action`1&lt;!!TException&gt; c) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.4.1.1</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Threading.Tasks.Task&lt;T&gt;</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="U" />
+        <TypeParameter Name="TException">
+          <Constraints>
+            <BaseTypeName>System.Exception</BaseTypeName>
+          </Constraints>
+        </TypeParameter>
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="cta" Type="System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable&lt;U&gt;" />
+        <Parameter Name="av" Type="System.Threading.Tasks.IAsyncValue&lt;U&gt;" />
+        <Parameter Name="f" Type="System.Action" />
+        <Parameter Name="c" Type="System.Action&lt;TException&gt;" />
+      </Parameters>
+      <Docs>
+        <typeparam name="U">To be added.</typeparam>
+        <typeparam name="TException">To be added.</typeparam>
+        <param name="cta">To be added.</param>
+        <param name="av">To be added.</param>
+        <param name="f">To be added.</param>
+        <param name="c">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Await&lt;U,TException&gt;">
       <MemberSignature Language="C#" Value="public System.Threading.Tasks.Task&lt;T&gt; Await&lt;U,TException&gt; (System.Threading.Tasks.IAwaitable&lt;U&gt; a, System.Threading.Tasks.AsyncValue&lt;U&gt; av, Action f, Action&lt;TException&gt; c) where TException : Exception;" />
       <MemberSignature Language="ILAsm" Value=".method public instance class System.Threading.Tasks.Task`1&lt;!T&gt; Await&lt;U, (class System.Exception) TException&gt;(class System.Threading.Tasks.IAwaitable`1&lt;!!U&gt; a, class System.Threading.Tasks.AsyncValue`1&lt;!!U&gt; av, class System.Action f, class System.Action`1&lt;!!TException&gt; c) cil managed" />
       <MemberType>Method</MemberType>
@@ -799,6 +1152,42 @@
         <summary>Runs the given function if the await completes successfully else runs the given exception handler.</summary>
         <returns>The Task related to the TaskCompletionSource encapsulated by the closure.</returns>
         <remarks>Overriding the Catch method allows the addition of code that should execute when exceptions happen.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Await&lt;U,TException&gt;">
+      <MemberSignature Language="C#" Value="public System.Threading.Tasks.Task&lt;T&gt; Await&lt;U,TException&gt; (System.Threading.Tasks.IAwaitable&lt;U&gt; a, System.Threading.Tasks.IAsyncValue&lt;U&gt; av, Action f, Action&lt;TException&gt; c) where TException : Exception;" />
+      <MemberSignature Language="ILAsm" Value=".method public instance class System.Threading.Tasks.Task`1&lt;!T&gt; Await&lt;U, (class System.Exception) TException&gt;(class System.Threading.Tasks.IAwaitable`1&lt;!!U&gt; a, class System.Threading.Tasks.IAsyncValue`1&lt;!!U&gt; av, class System.Action f, class System.Action`1&lt;!!TException&gt; c) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.4.1.1</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Threading.Tasks.Task&lt;T&gt;</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="U" />
+        <TypeParameter Name="TException">
+          <Constraints>
+            <BaseTypeName>System.Exception</BaseTypeName>
+          </Constraints>
+        </TypeParameter>
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="a" Type="System.Threading.Tasks.IAwaitable&lt;U&gt;" />
+        <Parameter Name="av" Type="System.Threading.Tasks.IAsyncValue&lt;U&gt;" />
+        <Parameter Name="f" Type="System.Action" />
+        <Parameter Name="c" Type="System.Action&lt;TException&gt;" />
+      </Parameters>
+      <Docs>
+        <typeparam name="U">To be added.</typeparam>
+        <typeparam name="TException">To be added.</typeparam>
+        <param name="a">To be added.</param>
+        <param name="av">To be added.</param>
+        <param name="f">To be added.</param>
+        <param name="c">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Await&lt;U,TException&gt;">
@@ -840,6 +1229,42 @@
       </Docs>
     </Member>
     <Member MemberName="Await&lt;U,TException&gt;">
+      <MemberSignature Language="C#" Value="public System.Threading.Tasks.Task&lt;T&gt; Await&lt;U,TException&gt; (System.Threading.Tasks.IAwaiter&lt;U&gt; a, System.Threading.Tasks.IAsyncValue&lt;U&gt; av, Action f, Action&lt;TException&gt; c) where TException : Exception;" />
+      <MemberSignature Language="ILAsm" Value=".method public instance class System.Threading.Tasks.Task`1&lt;!T&gt; Await&lt;U, (class System.Exception) TException&gt;(class System.Threading.Tasks.IAwaiter`1&lt;!!U&gt; a, class System.Threading.Tasks.IAsyncValue`1&lt;!!U&gt; av, class System.Action f, class System.Action`1&lt;!!TException&gt; c) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.4.1.1</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Threading.Tasks.Task&lt;T&gt;</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="U" />
+        <TypeParameter Name="TException">
+          <Constraints>
+            <BaseTypeName>System.Exception</BaseTypeName>
+          </Constraints>
+        </TypeParameter>
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="a" Type="System.Threading.Tasks.IAwaiter&lt;U&gt;" />
+        <Parameter Name="av" Type="System.Threading.Tasks.IAsyncValue&lt;U&gt;" />
+        <Parameter Name="f" Type="System.Action" />
+        <Parameter Name="c" Type="System.Action&lt;TException&gt;" />
+      </Parameters>
+      <Docs>
+        <typeparam name="U">To be added.</typeparam>
+        <typeparam name="TException">To be added.</typeparam>
+        <param name="a">To be added.</param>
+        <param name="av">To be added.</param>
+        <param name="f">To be added.</param>
+        <param name="c">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Await&lt;U,TException&gt;">
       <MemberSignature Language="C#" Value="public System.Threading.Tasks.Task&lt;T&gt; Await&lt;U,TException&gt; (System.Threading.Tasks.Task&lt;U&gt; t, System.Threading.Tasks.AsyncValue&lt;U&gt; av, Action f, Action&lt;TException&gt; c) where TException : Exception;" />
       <MemberSignature Language="ILAsm" Value=".method public instance class System.Threading.Tasks.Task`1&lt;!T&gt; Await&lt;U, (class System.Exception) TException&gt;(class System.Threading.Tasks.Task`1&lt;!!U&gt; t, class System.Threading.Tasks.AsyncValue`1&lt;!!U&gt; av, class System.Action f, class System.Action`1&lt;!!TException&gt; c) cil managed" />
       <MemberType>Method</MemberType>
@@ -877,6 +1302,78 @@
         <remarks>Overriding the Catch method allows the addition of code that should execute when exceptions happen.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="Await&lt;U,TException&gt;">
+      <MemberSignature Language="C#" Value="public System.Threading.Tasks.Task&lt;T&gt; Await&lt;U,TException&gt; (System.Threading.Tasks.Task&lt;U&gt; t, System.Threading.Tasks.IAsyncValue&lt;U&gt; av, Action f, Action&lt;TException&gt; c) where TException : Exception;" />
+      <MemberSignature Language="ILAsm" Value=".method public instance class System.Threading.Tasks.Task`1&lt;!T&gt; Await&lt;U, (class System.Exception) TException&gt;(class System.Threading.Tasks.Task`1&lt;!!U&gt; t, class System.Threading.Tasks.IAsyncValue`1&lt;!!U&gt; av, class System.Action f, class System.Action`1&lt;!!TException&gt; c) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.4.1.1</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Threading.Tasks.Task&lt;T&gt;</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="U" />
+        <TypeParameter Name="TException">
+          <Constraints>
+            <BaseTypeName>System.Exception</BaseTypeName>
+          </Constraints>
+        </TypeParameter>
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="t" Type="System.Threading.Tasks.Task&lt;U&gt;" />
+        <Parameter Name="av" Type="System.Threading.Tasks.IAsyncValue&lt;U&gt;" />
+        <Parameter Name="f" Type="System.Action" />
+        <Parameter Name="c" Type="System.Action&lt;TException&gt;" />
+      </Parameters>
+      <Docs>
+        <typeparam name="U">To be added.</typeparam>
+        <typeparam name="TException">To be added.</typeparam>
+        <param name="t">To be added.</param>
+        <param name="av">To be added.</param>
+        <param name="f">To be added.</param>
+        <param name="c">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Await&lt;U,TException&gt;">
+      <MemberSignature Language="C#" Value="public System.Threading.Tasks.Task&lt;T&gt; Await&lt;U,TException&gt; (System.Threading.Tasks.ValueTask&lt;U&gt; t, System.Threading.Tasks.IAsyncValue&lt;U&gt; av, Action f, Action&lt;TException&gt; c) where TException : Exception;" />
+      <MemberSignature Language="ILAsm" Value=".method public instance class System.Threading.Tasks.Task`1&lt;!T&gt; Await&lt;U, (class System.Exception) TException&gt;(valuetype System.Threading.Tasks.ValueTask`1&lt;!!U&gt; t, class System.Threading.Tasks.IAsyncValue`1&lt;!!U&gt; av, class System.Action f, class System.Action`1&lt;!!TException&gt; c) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.4.1.1</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Threading.Tasks.Task&lt;T&gt;</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="U" />
+        <TypeParameter Name="TException">
+          <Constraints>
+            <BaseTypeName>System.Exception</BaseTypeName>
+          </Constraints>
+        </TypeParameter>
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="t" Type="System.Threading.Tasks.ValueTask&lt;U&gt;" />
+        <Parameter Name="av" Type="System.Threading.Tasks.IAsyncValue&lt;U&gt;" />
+        <Parameter Name="f" Type="System.Action" />
+        <Parameter Name="c" Type="System.Action&lt;TException&gt;" />
+      </Parameters>
+      <Docs>
+        <typeparam name="U">To be added.</typeparam>
+        <typeparam name="TException">To be added.</typeparam>
+        <param name="t">To be added.</param>
+        <param name="av">To be added.</param>
+        <param name="f">To be added.</param>
+        <param name="c">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Canceller">
       <MemberSignature Language="C#" Value="public System.Threading.CancellationToken Canceller { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Threading.CancellationToken Canceller" />
@@ -886,6 +1383,7 @@
         <AssemblyVersion>1.2.1.0</AssemblyVersion>
         <AssemblyVersion>1.3.0.0</AssemblyVersion>
         <AssemblyVersion>1.3.2.0</AssemblyVersion>
+        <AssemblyVersion>1.4.1.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.CancellationToken</ReturnType>
@@ -906,6 +1404,7 @@
         <AssemblyVersion>1.2.1.0</AssemblyVersion>
         <AssemblyVersion>1.3.0.0</AssemblyVersion>
         <AssemblyVersion>1.3.2.0</AssemblyVersion>
+        <AssemblyVersion>1.4.1.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -929,6 +1428,7 @@
         <AssemblyVersion>1.2.1.0</AssemblyVersion>
         <AssemblyVersion>1.3.0.0</AssemblyVersion>
         <AssemblyVersion>1.3.2.0</AssemblyVersion>
+        <AssemblyVersion>1.4.1.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -949,6 +1449,7 @@
         <AssemblyVersion>1.2.1.0</AssemblyVersion>
         <AssemblyVersion>1.3.0.0</AssemblyVersion>
         <AssemblyVersion>1.3.2.0</AssemblyVersion>
+        <AssemblyVersion>1.4.1.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -972,6 +1473,7 @@
         <AssemblyVersion>1.2.1.0</AssemblyVersion>
         <AssemblyVersion>1.3.0.0</AssemblyVersion>
         <AssemblyVersion>1.3.2.0</AssemblyVersion>
+        <AssemblyVersion>1.4.1.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.Task&lt;T&gt;</ReturnType>

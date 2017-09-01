@@ -1,0 +1,125 @@
+{
+    "version": "1.3.2.1",
+    "authors": [
+        "borgdylan"
+    ],
+    "description": "Task helper library for dylan.NET (await support for Task, Task<T>, YieldAwaitable, ConfiguredTaskAwaitable, ConfiguredTaskAwaitable<T> + new IAwaiter(<T>)/IAwaitable(<T>) abstractions)",
+    "packOptions": {
+        "licenseUrl": "http://www.gnu.org/copyleft/lesser.html",
+        "projectUrl": "https://github.com/borgdylan/dylandotnet",
+        "tags": [
+            ".NET4.0",
+            ".NET4.5",
+            "DNX4.5.1",
+            "NETCORE5.0",
+            "Mono",
+            "PCL"
+        ]
+    },
+    "dependencies": {},
+    "buildOptions": {
+        "define": [],
+        "compilerName": "dnc",
+        "compile": [
+            "dylan.NET.Tasks.dyl"
+        ],
+        "embed": [
+            "*.resx"
+        ]
+    },
+    "frameworks": {
+        "net46": {
+            "dependencies": {}
+        },
+        "net45": {
+            "dependencies": {}
+        },
+        "net40": {
+            "dependencies": {
+                "Microsoft.Bcl.Async": "1.0.168"
+            }
+        },
+        "netstandard1.3": {
+            "dependencies": {
+                "System.Runtime": "4.1.0",
+                "System.Text.RegularExpressions": "4.0.11",
+                "System.Threading.Tasks": "4.0.11",
+                "System.Reflection": "4.1.0",
+                "System.IO": "4.1.0",
+                "System.Reflection.TypeExtensions": "4.1.0",
+                "System.Resources.ResourceManager": "4.0.1"
+            },
+            "imports": "dotnet5.4"
+        },
+        "netcore50": {
+            "dependencies": {
+                "System.Runtime": "4.0.20",
+                "System.Text.RegularExpressions": "4.0.10",
+                "System.Threading.Tasks": "4.0.10",
+                "System.Reflection": "4.0.10",
+                "System.IO": "4.0.10",
+                "System.Reflection.TypeExtensions": "4.0.0"
+            }
+        },
+        ".NETPortable,Version=v4.5,Profile=Profile78": {
+            "frameworkAssemblies": {
+                "System.Runtime": "",
+                "System.Text.RegularExpressions": "",
+                "System.Threading.Tasks": ""
+            },
+            "buildOptions": {
+                "define": [
+                    "PORTABLE"
+                ]
+            }
+        },
+        ".NETPortable,Version=v4.5,Profile=Profile259": {
+            "frameworkAssemblies": {
+                "System.Runtime": "",
+                "System.Text.RegularExpressions": "",
+                "System.Threading.Tasks": ""
+            },
+            "buildOptions": {
+                "define": [
+                    "PORTABLE"
+                ]
+            }
+        },
+        "netstandard1.0": {
+            "dependencies": {
+                "System.Runtime": "4.0.0.0",
+                "System.Text.RegularExpressions": "4.0.0.0",
+                "System.Threading.Tasks": "4.0.0.0",
+                "System.Resources.ResourceManager": "4.0.1"
+            },
+            "buildOptions": {
+                "define": [
+                    "PORTABLE"
+                ]
+            },
+            "imports": "dotnet5.1"
+        },
+        ".NETPortable,Version=v4.0,Profile=Profile344": {
+            "frameworkAssemblies": {
+                "mscorlib": ""
+            },
+            "buildOptions": {
+                "define": [
+                    "PORTABLE",
+                    "PORTABLESHIM"
+                ]
+            }
+        },
+        ".NETPortable,Version=v4.0,Profile=Profile328": {
+            "frameworkAssemblies": {
+                "mscorlib": ""
+            },
+            "buildOptions": {
+                "define": [
+                    "PORTABLE",
+                    "PORTABLESHIM"
+                ]
+            }
+        }
+    }
+}

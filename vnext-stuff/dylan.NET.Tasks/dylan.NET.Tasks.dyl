@@ -1,7 +1,7 @@
 //The dylan.NET task and awaitables library
-//Compile with dylan.NET 11.5.2.1 or higher hosted by the ASP.NET vNext tooling
+//Compile with dylan.NET 11.7.1.1 or higher hosted by the dotnet CLI
 
-//    dylan.NET.Tasks.dll dylan.NET.Tasks Copyright (C) 2014 Dylan Borg <borgdylan@hotmail.com>
+//    dylan.NET.Tasks.dll dylan.NET.Tasks Copyright (C) 2017 Dylan Borg <borgdylan@hotmail.com>
 //    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software
 // Foundation; either version 3 of the License, or (at your option) any later version.
 //    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
@@ -11,12 +11,11 @@
 
 #include "msbuild.dyl"
 
-#if DNXCORE50 orelse NETCORE50 then
+#if NETSTANDARD1_3 orelse NETSTANDARD2_0 orelse NETCORE50 then
 	#define CORE50
 end #if
 
 import System
-import System.Threading
 //import System.Threading.Tasks
 
 #if NET40 then
@@ -27,8 +26,9 @@ end #if
 	import System.Runtime.CompilerServices
 end #if
 
-#if CORE50 then
-	import System.Reflection
+#if !PORTABLE andalso !NET40 then
+	[assembly: System.Resources.NeutralResourcesLanguage("en")]
+	#include "ExceptionMessages.designer.dyl"
 end #if
 
 namespace System.Threading.Tasks
@@ -44,6 +44,11 @@ namespace System.Threading.Tasks
 		#include "TaskWrapper1.dyl"
 		#include "ConfiguredTaskAwaitableWrapper.dyl"
 		#include "ConfiguredTaskAwaitableWrapper1.dyl"
+
+		#if !NET40 then
+			#include "ValueTaskWrapper1.dyl"
+			#include "ConfiguredValueTaskAwaitableWrapper1.dyl"
+		end #if
 	end #if
 
 	#if !PORTABLE andalso !NET40 then

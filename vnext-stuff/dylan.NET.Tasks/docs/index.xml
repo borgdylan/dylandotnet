@@ -1,21 +1,24 @@
 <Overview>
   <Assemblies>
-    <Assembly Name="dylan.NET.Tasks" Version="1.3.2.0">
+    <Assembly Name="dylan.NET.Tasks" Version="1.4.1.1">
       <Attributes>
         <Attribute>
           <AttributeName>System.Diagnostics.Debuggable(System.Diagnostics.DebuggableAttribute+DebuggingModes.Default | System.Diagnostics.DebuggableAttribute+DebuggingModes.DisableOptimizations)</AttributeName>
         </Attribute>
         <Attribute>
-          <AttributeName>System.Reflection.AssemblyInformationalVersion("1.3.2")</AttributeName>
+          <AttributeName>System.Reflection.AssemblyConfiguration("Debug")</AttributeName>
         </Attribute>
         <Attribute>
           <AttributeName>System.Reflection.AssemblyTitle("dylan.NET.Tasks")</AttributeName>
         </Attribute>
         <Attribute>
+          <AttributeName>System.Resources.NeutralResourcesLanguage("en")</AttributeName>
+        </Attribute>
+        <Attribute>
           <AttributeName>System.Runtime.CompilerServices.RuntimeCompatibility(WrapNonExceptionThrows=true)</AttributeName>
         </Attribute>
         <Attribute>
-          <AttributeName>System.Runtime.Versioning.TargetFramework("DNX,Version=v4.5.1")</AttributeName>
+          <AttributeName>System.Runtime.Versioning.TargetFramework(".NETFramework,Version=v4.5", FrameworkDisplayName=".NET Framework 4.5")</AttributeName>
         </Attribute>
       </Attributes>
     </Assembly>
@@ -30,6 +33,8 @@
       <Type Name="ConfiguredTaskAwaitableWrapper`1" DisplayName="ConfiguredTaskAwaitableWrapper&lt;TResult&gt;" Kind="Class" />
       <Type Name="ConfiguredTaskAwaiterWrapper" Kind="Class" />
       <Type Name="ConfiguredTaskAwaiterWrapper`1" DisplayName="ConfiguredTaskAwaiterWrapper&lt;TResult&gt;" Kind="Class" />
+      <Type Name="ConfiguredValueTaskAwaitableWrapper`1" DisplayName="ConfiguredValueTaskAwaitableWrapper&lt;TResult&gt;" Kind="Class" />
+      <Type Name="ConfiguredValueTaskAwaiterWrapper`1" DisplayName="ConfiguredValueTaskAwaiterWrapper&lt;TResult&gt;" Kind="Class" />
       <Type Name="DisposerTaskClosure`1" DisplayName="DisposerTaskClosure&lt;TDisposable&gt;" Kind="Class" />
       <Type Name="DisposerTaskClosure`2" DisplayName="DisposerTaskClosure&lt;T,TDisposable&gt;" Kind="Class" />
       <Type Name="IAsyncValue`1" DisplayName="IAsyncValue&lt;TResult&gt;" Kind="Interface" />
@@ -48,6 +53,8 @@
       <Type Name="TaskHelpers" Kind="Class" />
       <Type Name="TaskWrapper" Kind="Class" />
       <Type Name="TaskWrapper`1" DisplayName="TaskWrapper&lt;TResult&gt;" Kind="Class" />
+      <Type Name="ValueTaskAwaiterWrapper`1" DisplayName="ValueTaskAwaiterWrapper&lt;TResult&gt;" Kind="Class" />
+      <Type Name="ValueTaskWrapper`1" DisplayName="ValueTaskWrapper&lt;TResult&gt;" Kind="Class" />
       <Type Name="YieldAwaitableWrapper" Kind="Class" />
       <Type Name="YieldAwaiterWrapper" Kind="Class" />
     </Namespace>

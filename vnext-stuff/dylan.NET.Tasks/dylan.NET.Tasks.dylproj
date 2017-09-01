@@ -1,0 +1,81 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFrameworks>net46;net45;net40;netstandard1.3;netstandard1.0;netstandard2.0</TargetFrameworks>
+        <!--<RuntimeIdentifiers>win7-x64;win7-x86;osx.10.10-x64;osx.10.11-x64;ubuntu.14.04-x64;ubuntu.16.04-x64;centos.7-x64;rhel.7.2-x64;debian.8-x64;fedora.23-x64;opensuse.13.2-x64;ubuntu.16.04-x64</RuntimeIdentifiers>-->
+        <!--<RuntimeIdentifier Condition=" '$(TargetFramework)' == 'net46' or '$(TargetFramework)' == 'net45' or '$(TargetFramework)' == 'net40' ">ubuntu.16.04-x64</RuntimeIdentifier>-->
+        <AssemblyName>dylan.NET.Tasks</AssemblyName>
+        <OutputType>Library</OutputType>
+        <InputFile>dylan.NET.Tasks.dyl</InputFile>
+        <Version>1.4.1.1</Version>
+
+        <PackageId>dylan.NET.Tasks</PackageId>
+        <Authors>borgdylan</Authors>
+        <Description>Task helper library for dylan.NET (await support for Task, Task&lt;T&gt;, ValueTask&lt;T&gt;, YieldAwaitable, ConfiguredTaskAwaitable, ConfiguredTaskAwaitable&lt;T&gt;, ConfiguredValueTaskAwaitable&lt;T&gt; + new IAwaiter(&lt;T&gt;)/IAwaitable(&lt;T&gt;) abstractions)</Description>
+        <PackageLicenseUrl>http://www.gnu.org/copyleft/lesser.html</PackageLicenseUrl>
+        <PackageProjectUrl>https://github.com/borgdylan/dylandotnet</PackageProjectUrl>
+        <PackageTags>.NET4.0;.NET4.5;.NET4.6;NETStandard;Mono;Tasks;Async/Await</PackageTags>
+
+        <PackageTargetFallback Condition=" '$(TargetFramework)' == 'netstandard1.3' ">$(PackageTargetFallback);dotnet5.4</PackageTargetFallback>
+        <PackageTargetFallback Condition=" '$(TargetFramework)' == 'netstandard1.0' ">$(PackageTargetFallback);dotnet5.1</PackageTargetFallback>
+        <NetStandardImplicitPackageVersion Condition=" '$(TargetFramework)' == 'netstandard2.0' ">2.0.0</NetStandardImplicitPackageVersion>
+        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+        <DocumentationFile>dylan.NET.Tasks.xml</DocumentationFile>
+    </PropertyGroup>
+
+    <ItemGroup Condition=" '$(TargetFramework)' == 'net46' ">
+        <Reference Include="System.Xml.Linq" />
+        <Reference Include="System" />
+        <Reference Include="Microsoft.CSharp" />
+        <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.4.0" />
+    </ItemGroup>
+
+    <ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
+        <Reference Include="System.Xml.Linq" />
+        <Reference Include="System" />
+        <Reference Include="Microsoft.CSharp" />
+        <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.4.0" />
+    </ItemGroup>
+
+    <ItemGroup Condition=" '$(TargetFramework)' == 'net40' ">
+        <Reference Include="System.Xml.Linq" />
+        <Reference Include="System" />
+        <Reference Include="Microsoft.CSharp" />
+
+        <PackageReference Include="Microsoft.Bcl.Async" Version="1.0.168" />
+    </ItemGroup>
+
+    <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard1.3' ">
+        <PackageReference Include="System.Reflection.TypeExtensions" Version="4.4.0" />
+        <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.4.0" />
+    </ItemGroup>
+
+    <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard1.0' ">
+        <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.4.0" />
+    </ItemGroup>
+
+    <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' ">
+        <PackageReference Include="System.Reflection.TypeExtensions" Version="4.4.0" />
+        <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.4.0" />
+    </ItemGroup>
+
+    <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard1.0' ">
+        <DefineConstants>$(DefineConstants);PORTABLE</DefineConstants>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <!-- <PackageReference Include="NuGet4698Workaround" Version="1.0.3" PrivateAssets="All" /> -->
+        <PackageReference Include="dylan.NET" Version="11.8.3.8" ExcludeAssets="Compile" PrivateAssets="All" />
+    </ItemGroup>
+
+     <ItemGroup>
+        <ResScript Include="ExceptionMessages.dylres" EmitDesigner="True" />
+        <ResScript Include="ExceptionMessages.it.dylres" />
+        <ResScript Include="ExceptionMessages.mt.dylres" />
+    </ItemGroup>
+
+    <Target Name="MoveDocs" Condition=" '$(TargetFramework)' != '' " AfterTargets="CoreCompile" BeforeTargets="Pack" Inputs="dylan.NET.Tasks.xml" Outputs="bin\$(Configuration)\$(TargetFramework)\dylan.NET.Tasks.xml">
+        <Copy SourceFiles="dylan.NET.Tasks.xml" DestinationFiles="bin\$(Configuration)\$(TargetFramework)\dylan.NET.Tasks.xml" />
+    </Target>
+
+</Project>

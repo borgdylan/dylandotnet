@@ -7,6 +7,7 @@
     <AssemblyVersion>1.2.1.0</AssemblyVersion>
     <AssemblyVersion>1.3.0.0</AssemblyVersion>
     <AssemblyVersion>1.3.2.0</AssemblyVersion>
+    <AssemblyVersion>1.4.1.1</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -34,6 +35,7 @@
         <AssemblyVersion>1.2.1.0</AssemblyVersion>
         <AssemblyVersion>1.3.0.0</AssemblyVersion>
         <AssemblyVersion>1.3.2.0</AssemblyVersion>
+        <AssemblyVersion>1.4.1.1</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="awaiter" Type="System.Runtime.CompilerServices.YieldAwaitable+YieldAwaiter" />
@@ -46,7 +48,7 @@
       </Docs>
     </Member>
     <Member MemberName="GetResult">
-      <MemberSignature Language="C#" Value="public virtual void GetResult ();" />
+      <MemberSignature Language="C#" Value="public void GetResult ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void GetResult() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
@@ -54,6 +56,7 @@
         <AssemblyVersion>1.2.1.0</AssemblyVersion>
         <AssemblyVersion>1.3.0.0</AssemblyVersion>
         <AssemblyVersion>1.3.2.0</AssemblyVersion>
+        <AssemblyVersion>1.4.1.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -65,7 +68,7 @@
       </Docs>
     </Member>
     <Member MemberName="IsCompleted">
-      <MemberSignature Language="C#" Value="public virtual bool IsCompleted { get; }" />
+      <MemberSignature Language="C#" Value="public bool IsCompleted { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool IsCompleted" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -73,6 +76,7 @@
         <AssemblyVersion>1.2.1.0</AssemblyVersion>
         <AssemblyVersion>1.3.0.0</AssemblyVersion>
         <AssemblyVersion>1.3.2.0</AssemblyVersion>
+        <AssemblyVersion>1.4.1.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -84,7 +88,7 @@
       </Docs>
     </Member>
     <Member MemberName="OnCompleted">
-      <MemberSignature Language="C#" Value="public virtual void OnCompleted (Action continuation);" />
+      <MemberSignature Language="C#" Value="public void OnCompleted (Action continuation);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void OnCompleted(class System.Action continuation) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
@@ -92,6 +96,7 @@
         <AssemblyVersion>1.2.1.0</AssemblyVersion>
         <AssemblyVersion>1.3.0.0</AssemblyVersion>
         <AssemblyVersion>1.3.2.0</AssemblyVersion>
+        <AssemblyVersion>1.4.1.1</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>

@@ -1,0 +1,97 @@
+<Type Name="ConfiguredValueTaskAwaiterWrapper&lt;TResult&gt;" FullName="System.Threading.Tasks.ConfiguredValueTaskAwaiterWrapper&lt;TResult&gt;">
+  <TypeSignature Language="C#" Value="public class ConfiguredValueTaskAwaiterWrapper&lt;TResult&gt; : System.Runtime.CompilerServices.INotifyCompletion, System.Threading.Tasks.IAwaiter&lt;TResult&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi ConfiguredValueTaskAwaiterWrapper`1&lt;TResult&gt; extends System.Object implements class System.Runtime.CompilerServices.INotifyCompletion, class System.Threading.Tasks.IAwaiter`1&lt;!TResult&gt;" />
+  <AssemblyInfo>
+    <AssemblyName>dylan.NET.Tasks</AssemblyName>
+    <AssemblyVersion>1.4.1.1</AssemblyVersion>
+  </AssemblyInfo>
+  <TypeParameters>
+    <TypeParameter Name="TResult" />
+  </TypeParameters>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>System.Runtime.CompilerServices.INotifyCompletion</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>System.Threading.Tasks.IAwaiter&lt;TResult&gt;</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <typeparam name="TResult">To be added.</typeparam>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public ConfiguredValueTaskAwaiterWrapper (System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable&lt;TResult&gt;.ConfiguredValueTaskAwaiter awaiter);" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor(valuetype System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable`1/ConfiguredValueTaskAwaiter&lt;!TResult&gt; awaiter) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.4.1.1</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="awaiter" Type="System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable&lt;TResult&gt;+ConfiguredValueTaskAwaiter" />
+      </Parameters>
+      <Docs>
+        <param name="awaiter">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetResult">
+      <MemberSignature Language="C#" Value="public TResult GetResult ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance !TResult GetResult() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.4.1.1</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>TResult</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsCompleted">
+      <MemberSignature Language="C#" Value="public bool IsCompleted { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsCompleted" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.4.1.1</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnCompleted">
+      <MemberSignature Language="C#" Value="public void OnCompleted (Action continuation);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void OnCompleted(class System.Action continuation) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.4.1.1</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="continuation" Type="System.Action" />
+      </Parameters>
+      <Docs>
+        <param name="continuation">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

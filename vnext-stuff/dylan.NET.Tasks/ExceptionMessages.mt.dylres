@@ -1,0 +1,6 @@
+NotBoolean string "L-oġġett mgħoti mhux tat-tip System.Boolean."
+IsCompletedNotFound string "L-oġġett mgħoti m'għandux il-propjeta 'IsCompleted'."
+GetResultNotFound string "L-oġġett mgħoti m'għandux il-metodu 'GetResult'."
+OnCompletedNotFound string "L-oġġett mgħoti m'għandux il-metodu 'OnCompleted(Action)'."
+GetAwaiterNotFound string "L-oġġett mgħoti m'għandux il-metodu 'GetAwaiter'."
+NotTResult string "L-oġġett mgħoti mhux tat-tip {0}."

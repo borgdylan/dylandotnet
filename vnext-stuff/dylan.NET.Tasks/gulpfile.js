@@ -5,7 +5,7 @@ var util = require('util'),
 var stripAnsi = require('strip-ansi');
 
 gulp.task('restore', function(cb) {
-	var ls = spawn('sh', ['-c', '~/.dnx/runtimes/`cat ~/.dnx/alias/default.alias`/bin/dnu restore']);
+	var ls = spawn('sh', ['-c', 'dotnet restore']);
 	ls.stdout.on('data', function (data) {
 		process.stdout.write(data);
 	});
@@ -20,7 +20,7 @@ gulp.task('restore', function(cb) {
 });
 
 gulp.task('build', function(cb) {
-	var ls = spawn('sh', ['-c', '~/.dnx/runtimes/`cat ~/.dnx/alias/default.alias`/bin/dnu build']);
+	var ls = spawn('sh', ['-c', 'dotnet build -c Debug']);
 	ls.stdout.on('data', function (data) {
 		process.stdout.write(stripAnsi(String(data)));
 	});
