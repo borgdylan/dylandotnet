@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFrameworks>net46</TargetFrameworks>
+        <!--<RuntimeIdentifiers>win7-x64;win7-x86;osx.10.10-x64;osx.10.11-x64;ubuntu.14.04-x64;ubuntu.16.04-x64;centos.7-x64;rhel.7.2-x64;debian.8-x64;fedora.23-x64;opensuse.13.2-x64;ubuntu.16.04-x64</RuntimeIdentifiers>-->
+        <!--<RuntimeIdentifier Condition=" '$(TargetFramework)' == 'net46' or '$(TargetFramework)' == 'net45' or '$(TargetFramework)' == 'net40' ">ubuntu.16.04-x64</RuntimeIdentifier>-->
+        <AssemblyName>dylan.NET.Tasks.Tests</AssemblyName>
+        <OutputType>Library</OutputType>
+        <Version>1.2.0.0</Version>
+
+        <NetStandardImplicitPackageVersion Condition=" '$(TargetFramework)' == 'netstandard2.0' ">2.0.0</NetStandardImplicitPackageVersion>
+        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    </PropertyGroup>
+
+    <ItemGroup Condition=" '$(TargetFramework)' == 'net46' ">
+        <Reference Include="System.Xml.Linq" />
+        <Reference Include="System" />
+        <Reference Include="Microsoft.CSharp" />
+
+        <PackageReference Include="xunit" Version="2.3.0" />
+        <PackageReference Include="xunit.runner.msbuild" Version="2.3.0" />
+        <PackageReference Include="xunit.runner.visualstudio" Version="2.3.0" />
+
+        <ProjectReference Include="..\dylan.NET.Tasks\dylan.NET.Tasks.dylproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <XUnitTest_Xml Include="test_output.xml" />
+        <PackageReference Include="dylan.NET" Version="11.8.3.8" ExcludeAssets="Compile" PrivateAssets="All" />
+    </ItemGroup>
+
+</Project>

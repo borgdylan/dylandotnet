@@ -188,6 +188,7 @@ class public TaskClosure<of T>
 			return _tcs::get_Task()
 		end method
 
+
 		method public Task<of T> Await<of U>(var cta as ConfiguredValueTaskAwaitable<of U>, var f as Action<of U>)
 			TaskHelpers::Await<of U>(new ConfiguredValueTaskAwaiterWrapper<of U>(cta::GetAwaiter()), f, new Action<of Exception>(CatchOuter), get_Canceller())
 			return _tcs::get_Task()

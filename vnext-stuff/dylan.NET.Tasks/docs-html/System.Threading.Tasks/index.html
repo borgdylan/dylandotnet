@@ -196,7 +196,7 @@
     </div>
     <div class="Remarks">
       <h2 class="Section"> Namespace</h2>
-      <p>Helpers for awaiting stuff and implementing asynchronous routines mostly targeted for dylan.NET projects on .NET 4, .NET 4.5, ASP.NET vNext and PCLs.</p>
+      <p>Helpers for awaiting tasks etc. and implementing asynchronous routines mostly targeted for dylan.NET projects on .NET 4+, .NET Core, and .NET Standard.</p>
       <table class="TypesListing" style="margin-top: 1em">
         <tr>
           <th>Type</th>
@@ -242,17 +242,13 @@
           <td>
             <a href="./ConfiguredValueTaskAwaitableWrapper`1.html">ConfiguredValueTaskAwaitableWrapper&lt;TResult&gt;</a>
           </td>
-          <td>
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </td>
+          <td>An IAwaitable&lt;TResult&gt; implementation that wraps a ConfiguredValueTaskAwaitable&lt;TResult&gt;.</td>
         </tr>
         <tr valign="top">
           <td>
             <a href="./ConfiguredValueTaskAwaiterWrapper`1.html">ConfiguredValueTaskAwaiterWrapper&lt;TResult&gt;</a>
           </td>
-          <td>
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </td>
+          <td>An IAwaiter&lt;TResult&gt; implementation that wraps a ConfiguredValueTaskAwaiter&lt;TResult&gt;.</td>
         </tr>
         <tr valign="top">
           <td>
@@ -366,17 +362,13 @@
           <td>
             <a href="./ValueTaskAwaiterWrapper`1.html">ValueTaskAwaiterWrapper&lt;TResult&gt;</a>
           </td>
-          <td>
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </td>
+          <td>An IAwaiter&lt;TResult&gt; implementation that wraps a ValueTaskAwaiter&lt;TResult&gt;.</td>
         </tr>
         <tr valign="top">
           <td>
             <a href="./ValueTaskWrapper`1.html">ValueTaskWrapper&lt;TResult&gt;</a>
           </td>
-          <td>
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </td>
+          <td>An IAwaitable&lt;TResult&gt; implementation that wraps a ValueTask&lt;TResult&gt;.</td>
         </tr>
         <tr valign="top">
           <td>
@@ -395,6 +387,6 @@
     <div class="Members">
     </div>
     <hr size="1" />
-    <div class="Copyright">Copyright (c) Dylan Borg 2014.</div>
+    <div class="Copyright">Copyright (c) Dylan Borg 2017.</div>
   </body>
 </html>

@@ -1,0 +1,7 @@
+{
+    "vstest.dotnet": {
+        "output": "bin/Debug",
+        "framework": "net46",
+        "outputFileName": "dylan.NET.Tasks.Tests.dll"
+    }
+}

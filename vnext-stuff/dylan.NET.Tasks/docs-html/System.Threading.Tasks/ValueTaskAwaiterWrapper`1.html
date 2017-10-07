@@ -206,9 +206,7 @@
       </p>
     </div>
     <h1 class="PageTitle" id="T:System.Threading.Tasks.ValueTaskAwaiterWrapper`1">ValueTaskAwaiterWrapper&lt;TResult&gt; Generic Class</h1>
-    <p class="Summary" id="T:System.Threading.Tasks.ValueTaskAwaiterWrapper`1:Summary">
-      <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-    </p>
+    <p class="Summary" id="T:System.Threading.Tasks.ValueTaskAwaiterWrapper`1:Summary">An IAwaiter&lt;TResult&gt; implementation that wraps a ValueTaskAwaiter&lt;TResult&gt;.</p>
     <div>
       <h2>Syntax</h2>
       <div class="Signature" id="T:System.Threading.Tasks.ValueTaskAwaiterWrapper`1:Signature">public class  <b>ValueTaskAwaiterWrapper&lt;TResult&gt;</b> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Runtime.CompilerServices.INotifyCompletion">System.Runtime.CompilerServices.INotifyCompletion</a>, <a href="../System.Threading.Tasks/IAwaiter`1.html">IAwaiter&lt;TResult&gt;</a></div>
@@ -220,14 +218,11 @@
           <dt>
             <i>TResult</i>
           </dt>
-          <dd>
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </dd>
+          <dd>The type of result returned by the ValueTask being awaited.</dd>
         </dl>
       </blockquote>
       <h2 class="Section">Remarks</h2>
       <div class="SectionBox" id="T:System.Threading.Tasks.ValueTaskAwaiterWrapper`1:Docs:Remarks">
-        <span class="NotEntered">Documentation for this section has not yet been entered.</span>
       </div>
       <h2 class="Section">Requirements</h2>
       <div class="SectionBox" id="T:System.Threading.Tasks.ValueTaskAwaiterWrapper`1:Docs:Version Information">
@@ -253,9 +248,7 @@
                       <a href="#C:System.Threading.Tasks.ValueTaskAwaiterWrapper`1(System.Runtime.CompilerServices.ValueTaskAwaiter{`0})">ValueTaskAwaiterWrapper</a>
                     </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Runtime.CompilerServices.ValueTaskAwaiter`1">System.Runtime.CompilerServices.ValueTaskAwaiter&lt;TResult&gt;</a>)</div>
                 </td>
-                <td>
-                  <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-                </td>
+                <td>Constructs a new ValueTaskAwaiter&lt;TResult&gt; wrapper.</td>
               </tr>
             </table>
           </div>
@@ -274,7 +267,7 @@
                 <td>
                   <i>
                     <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a>
-                  </i>. <span class="NotEntered">Documentation for this section has not yet been entered.</span></td>
+                  </i>. Gets the completion state of the task being awaited.</td>
               </tr>
             </table>
           </div>
@@ -291,7 +284,7 @@
                 <td colspan="2">
                   <b>
                     <a href="#M:System.Threading.Tasks.ValueTaskAwaiterWrapper`1.GetResult()">GetResult</a>
-                  </b>()<nobr> : <i title="To be added.">TResult</i></nobr><blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+                  </b>()<nobr> : <i title="The type of result returned by the ValueTask being awaited.">TResult</i></nobr><blockquote>Concludes the await, throwing any exceptions thrown by the task in the process.</blockquote></td>
               </tr>
               <tr valign="top">
                 <td>
@@ -301,7 +294,7 @@
                 <td colspan="2">
                   <b>
                     <a href="#M:System.Threading.Tasks.ValueTaskAwaiterWrapper`1.OnCompleted(System.Action)">OnCompleted</a>
-                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action">Action</a>)<blockquote><span class="NotEntered">Documentation for this section has not yet been entered.</span></blockquote></td>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action">Action</a>)<blockquote>Registers the given function to run when the configured task resolves to a value/fails.</blockquote></td>
               </tr>
             </table>
           </div>
@@ -313,9 +306,7 @@
       <div class="SectionBox" id="_MemberDetails">
         <h3 id="C:System.Threading.Tasks.ValueTaskAwaiterWrapper`1(System.Runtime.CompilerServices.ValueTaskAwaiter{`0})">ValueTaskAwaiterWrapper Constructor</h3>
         <blockquote id="C:System.Threading.Tasks.ValueTaskAwaiterWrapper`1(System.Runtime.CompilerServices.ValueTaskAwaiter{`0}):member">
-          <div class="msummary">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </div>
+          <div class="msummary">Constructs a new ValueTaskAwaiter&lt;TResult&gt; wrapper.</div>
           <h2>Syntax</h2>
           <div class="Signature">public  <b>ValueTaskAwaiterWrapper</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Runtime.CompilerServices.ValueTaskAwaiter`1">System.Runtime.CompilerServices.ValueTaskAwaiter&lt;TResult&gt;</a> awaiter)</div>
           <h4 class="Subsection">Parameters</h4>
@@ -324,14 +315,11 @@
               <dt>
                 <i>awaiter</i>
               </dt>
-              <dd>
-                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-              </dd>
+              <dd>The ValueTaskAwaiter&lt;TResult&gt; to wrap.</dd>
             </dl>
           </blockquote>
           <h2 class="Section">Remarks</h2>
           <div class="SectionBox" id="C:System.Threading.Tasks.ValueTaskAwaiterWrapper`1(System.Runtime.CompilerServices.ValueTaskAwaiter{`0}):Remarks">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
           </div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="C:System.Threading.Tasks.ValueTaskAwaiterWrapper`1(System.Runtime.CompilerServices.ValueTaskAwaiter{`0}):Version Information">
@@ -340,19 +328,13 @@
         </blockquote>
         <h3 id="M:System.Threading.Tasks.ValueTaskAwaiterWrapper`1.GetResult()">GetResult Method</h3>
         <blockquote id="M:System.Threading.Tasks.ValueTaskAwaiterWrapper`1.GetResult():member">
-          <div class="msummary">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </div>
+          <div class="msummary">Concludes the await, throwing any exceptions thrown by the task in the process.</div>
           <h2>Syntax</h2>
-          <div class="Signature">public <i title="To be added.">TResult</i> <b>GetResult</b> ()</div>
+          <div class="Signature">public <i title="The type of result returned by the ValueTask being awaited.">TResult</i> <b>GetResult</b> ()</div>
           <h4 class="Subsection">Returns</h4>
-          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.ValueTaskAwaiterWrapper`1.GetResult():Returns">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </blockquote>
+          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.ValueTaskAwaiterWrapper`1.GetResult():Returns">The result returned by the task.</blockquote>
           <h2 class="Section">Remarks</h2>
-          <div class="SectionBox" id="M:System.Threading.Tasks.ValueTaskAwaiterWrapper`1.GetResult():Remarks">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </div>
+          <div class="SectionBox" id="M:System.Threading.Tasks.ValueTaskAwaiterWrapper`1.GetResult():Remarks">Calls the underlying GetResult.</div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="M:System.Threading.Tasks.ValueTaskAwaiterWrapper`1.GetResult():Version Information">
             <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.4.1.1</div>
@@ -360,19 +342,13 @@
         </blockquote>
         <h3 id="P:System.Threading.Tasks.ValueTaskAwaiterWrapper`1.IsCompleted">IsCompleted Property</h3>
         <blockquote id="P:System.Threading.Tasks.ValueTaskAwaiterWrapper`1.IsCompleted:member">
-          <div class="msummary">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </div>
+          <div class="msummary">Gets the completion state of the task being awaited.</div>
           <h2>Syntax</h2>
           <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Boolean">bool</a> <b>IsCompleted</b>  { get; }</div>
           <h4 class="Subsection">Value</h4>
-          <blockquote class="SubsectionBox" id="P:System.Threading.Tasks.ValueTaskAwaiterWrapper`1.IsCompleted:Value">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </blockquote>
+          <blockquote class="SubsectionBox" id="P:System.Threading.Tasks.ValueTaskAwaiterWrapper`1.IsCompleted:Value">True if the completion handler can be run immediately, else false.</blockquote>
           <h2 class="Section">Remarks</h2>
-          <div class="SectionBox" id="P:System.Threading.Tasks.ValueTaskAwaiterWrapper`1.IsCompleted:Remarks">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </div>
+          <div class="SectionBox" id="P:System.Threading.Tasks.ValueTaskAwaiterWrapper`1.IsCompleted:Remarks">Gets the underlying IsCompleted value.</div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="P:System.Threading.Tasks.ValueTaskAwaiterWrapper`1.IsCompleted:Version Information">
             <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.4.1.1</div>
@@ -380,9 +356,7 @@
         </blockquote>
         <h3 id="M:System.Threading.Tasks.ValueTaskAwaiterWrapper`1.OnCompleted(System.Action)">OnCompleted Method</h3>
         <blockquote id="M:System.Threading.Tasks.ValueTaskAwaiterWrapper`1.OnCompleted(System.Action):member">
-          <div class="msummary">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </div>
+          <div class="msummary">Registers the given function to run when the configured task resolves to a value/fails.</div>
           <h2>Syntax</h2>
           <div class="Signature">public <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Void">void</a> <b>OnCompleted</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Action">Action</a> continuation)</div>
           <h4 class="Subsection">Parameters</h4>
@@ -391,15 +365,11 @@
               <dt>
                 <i>continuation</i>
               </dt>
-              <dd>
-                <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-              </dd>
+              <dd>The function to execute as the continuation.</dd>
             </dl>
           </blockquote>
           <h2 class="Section">Remarks</h2>
-          <div class="SectionBox" id="M:System.Threading.Tasks.ValueTaskAwaiterWrapper`1.OnCompleted(System.Action):Remarks">
-            <span class="NotEntered">Documentation for this section has not yet been entered.</span>
-          </div>
+          <div class="SectionBox" id="M:System.Threading.Tasks.ValueTaskAwaiterWrapper`1.OnCompleted(System.Action):Remarks">Calls the underlying OnCompleted.</div>
           <h2 class="Section">Requirements</h2>
           <div class="SectionBox" id="M:System.Threading.Tasks.ValueTaskAwaiterWrapper`1.OnCompleted(System.Action):Version Information">
             <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.4.1.1</div>

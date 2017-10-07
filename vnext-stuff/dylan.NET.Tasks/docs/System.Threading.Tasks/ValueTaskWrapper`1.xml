@@ -17,9 +17,10 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <typeparam name="TResult">To be added.</typeparam>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <typeparam name="TResult">The type of result returned by this ValueTask.</typeparam>
+    <summary>An IAwaitable&lt;TResult&gt; implementation that wraps a ValueTask&lt;TResult&gt;.</summary>
+    <remarks>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -33,9 +34,10 @@
         <Parameter Name="awaitable" Type="System.Threading.Tasks.ValueTask&lt;TResult&gt;" />
       </Parameters>
       <Docs>
-        <param name="awaitable">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="awaitable">The ValueTask&lt;TResult&gt; that should be wrapped.</param>
+        <summary>Constructs a new ValueTask&lt;TResult&gt; wrapper.</summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="GetAwaiter">
@@ -50,9 +52,10 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <summary>Gets the IAwaiter&lt;TResult&gt; used to await this ValueTask&lt;TResult&gt;.</summary>
+        <returns>The IAwaiter&lt;TResult&gt; used to await this ValueTask&lt;TResult&gt;.</returns>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
   </Members>

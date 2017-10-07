@@ -20,9 +20,10 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <typeparam name="TResult">To be added.</typeparam>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <typeparam name="TResult">The type of result returned by the ConfiguredValueTaskAwaitable being awaited.</typeparam>
+    <summary>An IAwaiter&lt;TResult&gt; implementation that wraps a ConfiguredValueTaskAwaiter&lt;TResult&gt;.</summary>
+    <remarks>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -36,9 +37,10 @@
         <Parameter Name="awaiter" Type="System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable&lt;TResult&gt;+ConfiguredValueTaskAwaiter" />
       </Parameters>
       <Docs>
-        <param name="awaiter">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="awaiter">The ConfiguredValueTaskAwaiter&lt;TResult&gt; to wrap.</param>
+        <summary>Constructs a new ConfiguredValueTaskAwaiter&lt;TResult&gt; wrapper.</summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="GetResult">
@@ -53,9 +55,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <summary>Concludes the await, throwing any exceptions thrown by the configured task in the process.</summary>
+        <returns>The result returned by the configured task.</returns>
+        <remarks>Calls the underlying GetResult.</remarks>
       </Docs>
     </Member>
     <Member MemberName="IsCompleted">
@@ -69,9 +71,9 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets the completion state of the configured task being awaited.</summary>
+        <value>True if the completion handler can be run immediately, else false.</value>
+        <remarks>Gets the underlying IsCompleted value.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnCompleted">
@@ -88,9 +90,9 @@
         <Parameter Name="continuation" Type="System.Action" />
       </Parameters>
       <Docs>
-        <param name="continuation">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="continuation">The function to execute as the continuation.</param>
+        <summary>Registers the given function to run when the configured task resolves to a value/fails.</summary>
+        <remarks>Calls the underlying OnCompleted.</remarks>
       </Docs>
     </Member>
   </Members>

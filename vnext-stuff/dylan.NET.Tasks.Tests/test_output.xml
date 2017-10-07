@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<assemblies timestamp="10/07/2017 09:12:38">
+  <assembly name="/mnt/ssd/vnext/dylan.NET.Tasks.Tests/bin/Debug/net46/dylan.NET.Tasks.Tests.dll" environment="64-bit .NET 4.0.30319.42000 [collection-per-class, parallel (16 threads)]" test-framework="xUnit.net 2.3.0.3820" run-date="2017-10-07" run-time="09:12:21" config-file="/mnt/ssd/vnext/dylan.NET.Tasks.Tests/bin/Debug/net46/dylan.NET.Tasks.Tests.dll.config" total="21" passed="21" failed="0" skipped="0" time="16.066" errors="0">
+    <errors />
+    <collection total="5" passed="5" failed="0" skipped="0" name="Test collection for dylan.NET.Tasks.Tests.TaskHelperTests" time="0.011">
+      <test name="dylan.NET.Tasks.Tests.TaskHelperTests.FromError_Equals" type="dylan.NET.Tasks.Tests.TaskHelperTests" method="FromError_Equals" time="0.0069039" result="Pass" />
+      <test name="dylan.NET.Tasks.Tests.TaskHelperTests.NullResult_RanToCompletion" type="dylan.NET.Tasks.Tests.TaskHelperTests" method="NullResult_RanToCompletion" time="0.0025412" result="Pass" />
+      <test name="dylan.NET.Tasks.Tests.TaskHelperTests.FromError_Faulted" type="dylan.NET.Tasks.Tests.TaskHelperTests" method="FromError_Faulted" time="0.0001078" result="Pass" />
+      <test name="dylan.NET.Tasks.Tests.TaskHelperTests.Completed_RanToCompletion" type="dylan.NET.Tasks.Tests.TaskHelperTests" method="Completed_RanToCompletion" time="0.0000946" result="Pass" />
+      <test name="dylan.NET.Tasks.Tests.TaskHelperTests.NullResult_NullResult" type="dylan.NET.Tasks.Tests.TaskHelperTests" method="NullResult_NullResult" time="0.0009429" result="Pass" />
+    </collection>
+    <collection total="16" passed="16" failed="0" skipped="0" name="Test collection for dylan.NET.Tasks.Tests.AwaitTests" time="16.012">
+      <test name="dylan.NET.Tasks.Tests.AwaitTests.Await_Faulted_Delay_Catch_RTC" type="dylan.NET.Tasks.Tests.AwaitTests" method="Await_Faulted_Delay_Catch_RTC" time="2.0049429" result="Pass" />
+      <test name="dylan.NET.Tasks.Tests.AwaitTests.Await_Faulted_Delay_Rethrow_Faulted" type="dylan.NET.Tasks.Tests.AwaitTests" method="Await_Faulted_Delay_Rethrow_Faulted" time="2.0006775" result="Pass" />
+      <test name="dylan.NET.Tasks.Tests.AwaitTests.Await_Faulted_Delay" type="dylan.NET.Tasks.Tests.AwaitTests" method="Await_Faulted_Delay" time="2.000636" result="Pass" />
+      <test name="dylan.NET.Tasks.Tests.AwaitTests.Await_Faulted2_Delay_Rethrow_Faulted" type="dylan.NET.Tasks.Tests.AwaitTests" method="Await_Faulted2_Delay_Rethrow_Faulted" time="2.0025776" result="Pass" />
+      <test name="dylan.NET.Tasks.Tests.AwaitTests.Await_RanToCompletion_Imm" type="dylan.NET.Tasks.Tests.AwaitTests" method="Await_RanToCompletion_Imm" time="0.0001841" result="Pass" />
+      <test name="dylan.NET.Tasks.Tests.AwaitTests.Await_RanToCompletion_Delay2" type="dylan.NET.Tasks.Tests.AwaitTests" method="Await_RanToCompletion_Delay2" time="2.0005796" result="Pass" />
+      <test name="dylan.NET.Tasks.Tests.AwaitTests.Await_Faulted2_Delay_Catch_RTC" type="dylan.NET.Tasks.Tests.AwaitTests" method="Await_Faulted2_Delay_Catch_RTC" time="2.0003583" result="Pass" />
+      <test name="dylan.NET.Tasks.Tests.AwaitTests.Await_Faulted2_Imm_Rethrow_Faulted" type="dylan.NET.Tasks.Tests.AwaitTests" method="Await_Faulted2_Imm_Rethrow_Faulted" time="0.0002456" result="Pass" />
+      <test name="dylan.NET.Tasks.Tests.AwaitTests.Await_RanToCompletion_Delay" type="dylan.NET.Tasks.Tests.AwaitTests" method="Await_RanToCompletion_Delay" time="2.0003996" result="Pass" />
+      <test name="dylan.NET.Tasks.Tests.AwaitTests.Await_Faulted_Imm" type="dylan.NET.Tasks.Tests.AwaitTests" method="Await_Faulted_Imm" time="0.0002774" result="Pass" />
+      <test name="dylan.NET.Tasks.Tests.AwaitTests.Await_Faulted2_Imm_Catch_RTC" type="dylan.NET.Tasks.Tests.AwaitTests" method="Await_Faulted2_Imm_Catch_RTC" time="0.0002673" result="Pass" />
+      <test name="dylan.NET.Tasks.Tests.AwaitTests.Await_Faulted2_Imm" type="dylan.NET.Tasks.Tests.AwaitTests" method="Await_Faulted2_Imm" time="0.0001494" result="Pass" />
+      <test name="dylan.NET.Tasks.Tests.AwaitTests.Await_Faulted_Imm_Rethrow_Faulted" type="dylan.NET.Tasks.Tests.AwaitTests" method="Await_Faulted_Imm_Rethrow_Faulted" time="0.0001665" result="Pass" />
+      <test name="dylan.NET.Tasks.Tests.AwaitTests.Await_Faulted2_Delay" type="dylan.NET.Tasks.Tests.AwaitTests" method="Await_Faulted2_Delay" time="2.0002963" result="Pass" />
+      <test name="dylan.NET.Tasks.Tests.AwaitTests.Await_RanToCompletion_Imm2" type="dylan.NET.Tasks.Tests.AwaitTests" method="Await_RanToCompletion_Imm2" time="0.0002833" result="Pass" />
+      <test name="dylan.NET.Tasks.Tests.AwaitTests.Await_Faulted_Imm_Catch_RTC" type="dylan.NET.Tasks.Tests.AwaitTests" method="Await_Faulted_Imm_Catch_RTC" time="0.0001668" result="Pass" />
+    </collection>
+  </assembly>
+</assemblies>pletion_Delay" type="dylan.NET.Tasks.Tests.AwaitTests" method="Await_RanToCompletion_Delay" time="2.0002864" result="Pass" />
+      <test name="dylan.NET.Tasks.Tests.AwaitTests.Await_Faulted_Imm" type="dylan.NET.Tasks.Tests.AwaitTests" method="Await_Faulted_Imm" time="0.0002553" result="Pass" />
+      <test name="dylan.NET.Tasks.Tests.AwaitTests.Await_Faulted2_Imm_Catch_RTC" type="dylan.NET.Tasks.Tests.AwaitTests" method="Await_Faulted2_Imm_Catch_RTC" time="0.0001426" result="Pass" />
+      <test name="dylan.NET.Tasks.Tests.AwaitTests.Await_Faulted2_Imm" type="dylan.NET.Tasks.Tests.AwaitTests" method="Await_Faulted2_Imm" time="0.0001366" result="Pass" />
+      <test name="dylan.NET.Tasks.Tests.AwaitTests.Await_Faulted_Imm_Rethrow_Faulted" type="dylan.NET.Tasks.Tests.AwaitTests" method="Await_Faulted_Imm_Rethrow_Faulted" time="0.0001568" result="Pass" />
+      <test name="dylan.NET.Tasks.Tests.AwaitTests.Await_Faulted2_Delay" type="dylan.NET.Tasks.Tests.AwaitTests" method="Await_Faulted2_Delay" time="2.0002976" result="Pass" />
+      <test name="dylan.NET.Tasks.Tests.AwaitTests.Await_RanToCompletion_Imm2" type="dylan.NET.Tasks.Tests.AwaitTests" method="Await_RanToCompletion_Imm2" time="0.0005905" result="Fail">
+        <failure exception-type="Xunit.Sdk.TrueException">
+          <message><![CDATA[Assert.True() Failure\nExpected: True\nActual:   False]]></message>
+          <stack-trace><![CDATA[  at dylan.NET.Tasks.Tests.TaskClosure.Fail (System.Exception e) [0x00000] in <bfe57648dbcb4abf90eda0aee8e2ceee>:0 
+  at System.Threading.Tasks.AwaitClosure2.DoLogic () [0x000e6] in <8fb80fac35114621b20b2620625db9f2>:0 
+--- End of stack trace from previous location where exception was thrown ---
+  at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw () [0x0000c] in <029362731ed34c508fea17f5b4ced099>:0 
+  at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess (System.Threading.Tasks.Task task) [0x0003e] in <029362731ed34c508fea17f5b4ced099>:0 
+  at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification (System.Threading.Tasks.Task task) [0x00028] in <029362731ed34c508fea17f5b4ced099>:0 
+  at System.Runtime.CompilerServices.TaskAwaiter.ValidateEnd (System.Threading.Tasks.Task task) [0x00008] in <029362731ed34c508fea17f5b4ced099>:0 
+  at System.Runtime.CompilerServices.TaskAwaiter.GetResult () [0x00000] in <029362731ed34c508fea17f5b4ced099>:0 
+--- End of stack trace from previous location where exception was thrown ---
+  at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw () [0x0000c] in <029362731ed34c508fea17f5b4ced099>:0 
+  at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess (System.Threading.Tasks.Task task) [0x0003e] in <029362731ed34c508fea17f5b4ced099>:0 
+  at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification (System.Threading.Tasks.Task task) [0x00028] in <029362731ed34c508fea17f5b4ced099>:0 
+  at System.Runtime.CompilerServices.TaskAwaiter.ValidateEnd (System.Threading.Tasks.Task task) [0x00008] in <029362731ed34c508fea17f5b4ced099>:0 
+  at System.Runtime.CompilerServices.TaskAwaiter.GetResult () [0x00000] in <029362731ed34c508fea17f5b4ced099>:0 
+--- End of stack trace from previous location where exception was thrown ---
+  at System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw () [0x0000c] in <029362731ed34c508fea17f5b4ced099>:0 
+  at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess (System.Threading.Tasks.Task task) [0x0003e] in <029362731ed34c508fea17f5b4ced099>:0 
+  at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification (System.Threading.Tasks.Task task) [0x00028] in <029362731ed34c508fea17f5b4ced099>:0 
+  at System.Runtime.CompilerServices.TaskAwaiter.ValidateEnd (System.Threading.Tasks.Task task) [0x00008] in <029362731ed34c508fea17f5b4ced099>:0 
+  at System.Runtime.CompilerServices.TaskAwaiter.GetResult () [0x00000] in <029362731ed34c508fea17f5b4ced099>:0 ]]></stack-trace>
+        </failure>
+      </test>
+      <test name="dylan.NET.Tasks.Tests.AwaitTests.Await_Faulted_Imm_Catch_RTC" type="dylan.NET.Tasks.Tests.AwaitTests" method="Await_Faulted_Imm_Catch_RTC" time="0.0001728" result="Pass" />
+    </collection>
+  </assembly>
+</assemblies>

@@ -1,0 +1,70 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "0.1.0",
+    "command": "msbuild",
+    "args": [
+        // Ask msbuild to generate full paths for file names.
+        "/property:GenerateFullPaths=true"
+    ],
+    "taskSelector": "/t:",
+    "showOutput": "silent",
+    "tasks": [
+        {
+            "taskName": "build",
+            "isBuildCommand": true,
+            // Show the output window only if unrecognized errors occur.
+            "showOutput": "silent",
+            // Use the standard MS compiler pattern to detect errors, warnings and infos
+            "problemMatcher": [
+                {
+                    "owner": "dylandotnet",
+                    "fileLocation": ["absolute"],
+                    "pattern": {
+                        "regexp": "^(.*)\\((\\d+)(,(\\d+))?\\):\\s*(error|warning) :\\s*(.*)$",
+                        "file": 1,
+                        "line": 2,
+                        "column": 4,
+                        "severity": 5,
+                        "message": 6
+                    }
+                },
+                "$msCompile"
+            ]
+        },
+        {
+            "taskName": "XunitTest",
+            "args": [
+                "/p:TargetFramework=net46"
+            ],
+            "isTestCommand": true,
+            // Show the output window only if unrecognized errors occur.
+            "showOutput": "silent",
+            // Use the standard MS compiler pattern to detect errors, warnings and infos
+            "problemMatcher": [
+                {
+                    "owner": "dylandotnet",
+                    "fileLocation": ["absolute"],
+                    "pattern": {
+                        "regexp": "^(.*)\\((\\d+)(,(\\d+))?\\):\\s*(error|warning) :\\s*(.*)$",
+                        "file": 1,
+                        "line": 2,
+                        "column": 4,
+                        "severity": 5,
+                        "message": 6
+                    }
+                },
+                "$msCompile"
+            ]
+        },
+        {
+            "taskName": "restore",
+            "args": [ ],
+            "isBuildCommand": false,
+            "showOutput": "silent",
+            "problemMatcher": [
+                "$msCompile"
+            ]
+        }
+    ]
+}

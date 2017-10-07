@@ -23,8 +23,8 @@
       </Attributes>
     </Assembly>
   </Assemblies>
-  <Remarks>Task Helpers for dylan.NET</Remarks>
-  <Copyright>Copyright (c) Dylan Borg 2014.</Copyright>
+  <Remarks>Task Helpers and awaiting support for dylan.NET and other languages without support for native async/await.</Remarks>
+  <Copyright>Copyright (c) Dylan Borg 2017.</Copyright>
   <Types>
     <Namespace Name="System.Threading.Tasks">
       <Type Name="AsyncValue`1" DisplayName="AsyncValue&lt;TResult&gt;" Kind="Class" />
