@@ -56,9 +56,8 @@ class public Evaluator
                 typ = AsmFactory::Type02
                 ASTEmit(ConvToAST(ConvToRPN(idt::ArrLoc)), emt)
 
-                //TODO: need to get finer index expr location
                 if !Helpers::IsPrimitiveIntegralType(AsmFactory::Type02) then
-                    StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "Array Indices should be of a Primitive Integer Type.")
+                    StreamUtils::WriteError(idt::ArrLoc::Line, idt::ArrLoc::Column, ILEmitter::CurSrcFile, "Array Indices should be of a Primitive Integer Type.")
                 elseif !typ::get_IsArray() then
                     StreamUtils::WriteError(lseg::Line, lseg::Column, ILEmitter::CurSrcFile, string::Format("'{0}' is not an Array Type.", typ::ToString()))
                 end if
@@ -986,27 +985,26 @@ class public Evaluator
                 var n1 = Helpers::ProcessNullable(lctyp)
                 var n2 = Helpers::ProcessNullable(rctyp)
 
-                //TODO: get column info for coalesce op
                 //validate cases: either two compat ref types, T? and T? (yield T?), T? and T (yields T) where T is a struct
                 if !lctyp::get_IsValueType() andalso !rctyp::get_IsValueType() then
                     rt = Helpers::CheckCompat(lctyp, rctyp)
                     if rt is null then
-                        StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "Original and Null-handling cases for Null-Coalescing should evaluate to compatible types.")
+                        StreamUtils::WriteError(optok::Line, optok::Column, ILEmitter::CurSrcFile, "Original and Null-handling cases for Null-Coalescing should evaluate to compatible types.")
                     end if
                 elseif n1 isnot null andalso n2 isnot null then
                     if !n1::Equals(n2) then
-                        StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "Original and Null-handling cases for Null-Coalescing should evaluate to compatible types.")
+                        StreamUtils::WriteError(optok::Line, optok::Column, ILEmitter::CurSrcFile, "Original and Null-handling cases for Null-Coalescing should evaluate to compatible types.")
                     else
                         rt = lctyp
                     end if
                 elseif n1 isnot null then
                     if !n1::Equals(rctyp) then
-                        StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "Original and Null-handling cases for Null-Coalescing should evaluate to compatible types.")
+                        StreamUtils::WriteError(optok::Line, optok::Column, ILEmitter::CurSrcFile, "Original and Null-handling cases for Null-Coalescing should evaluate to compatible types.")
                     else
                         rt = rctyp
                     end if
                 else
-                    StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "Original and Null-handling cases for Null-Coalescing should evaluate to a supported case.")
+                    StreamUtils::WriteError(optok::Line, optok::Column, ILEmitter::CurSrcFile, "Original and Null-handling cases for Null-Coalescing should evaluate to a supported case.")
                 end if
 
                 if n1 isnot null then
@@ -1168,8 +1166,7 @@ class public Evaluator
                 typ2 = Helpers::CommitEvalTTok(newactok::ArrayType)
                 ASTEmit(ConvToAST(ConvToRPN(newactok::ArrayLen)), emt)
                 if !Helpers::IsPrimitiveIntegralType(AsmFactory::Type02) then
-                    //TODO: get column bounds for length exp
-                    StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "Array Lengths should be of a Primitive Integer Type.")
+                    StreamUtils::WriteError(newactok::ArrayLen::Line, newactok::ArrayLen::Column, ILEmitter::CurSrcFile, "Array Lengths should be of a Primitive Integer Type.")
                 end if
                 if emt then
                     if Helpers::GetPrimitiveNumericSize(AsmFactory::Type02) > 32 then
@@ -1662,9 +1659,9 @@ class public Evaluator
         //-------------------------------------------
         if idt::IsArr then
             Evaluate(idt::ArrLoc)
-            //TODO: column bounds for array expr
+
             if !Helpers::IsPrimitiveIntegralType(AsmFactory::Type02) then
-                StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "Array Indices should be of a Primitive Integer Type.")
+                StreamUtils::WriteError(idt::ArrLoc::Line, idt::ArrLoc::Column, ILEmitter::CurSrcFile, "Array Indices should be of a Primitive Integer Type.")
             end if
 
             if Helpers::GetPrimitiveNumericSize(AsmFactory::Type02) > 32 then
