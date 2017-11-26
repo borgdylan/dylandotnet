@@ -1,10 +1,15 @@
 //    tokenizer.Parser.dll dylan.NET.Tokenizer.Parser Copyright (C) 2013 Dylan Borg <borgdylan@hotmail.com>
 //    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software
 // Foundation; either version 3 of the License, or (at your option) any later version.
-//    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+//    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
 //PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
-//    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
-//Place, Suite 330, Boston, MA 02111-1307 USA 
+//    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple
+//Place, Suite 330, Boston, MA 02111-1307 USA
+
+import dylan.NET.Tokenizer.AST.Interfaces
+import dylan.NET.Tokenizer.AST.Tokens
+import dylan.NET.Tokenizer.AST.Tokens.TypeToks
+import dylan.NET.Tokenizer.AST.Tokens.Literals
 
 class public Flags
 
@@ -78,7 +83,7 @@ class public Flags
 		isChanged = false
 		//DurConvFlag = false
 	end method
-	
+
 	method public void UpdateToken(var iuo as IUnaryOperatable)
 		iuo::set_OrdOp(OrdOp)
 		if iuo is IConvable then
@@ -100,7 +105,7 @@ class public Flags
 			id::set_DoDec(DecFlag)
 		end if
 	end method
-	
+
 	method public Ident UpdateIdent(var id as Ident)
 		id::IsRef = RefFlag
 		id::IsValInRef = ValinrefFlag
@@ -112,12 +117,12 @@ class public Flags
 		UpdateToken(id)
 		return id
 	end method
-	
+
 	method public MeTok UpdateMeTok(var id as MeTok)
 		UpdateToken(id)
 		return id
 	end method
-	
+
 	method public CharLiteral UpdateCharLit(var id as CharLiteral)
 		UpdateToken(id)
 		return id
@@ -127,7 +132,7 @@ class public Flags
 		UpdateToken(id)
 		return id
 	end method
-	
+
 	method public BooleanLiteral UpdateBoolLit(var id as BooleanLiteral)
 		UpdateToken(id)
 		return id
@@ -137,7 +142,7 @@ class public Flags
 		UpdateToken(id)
 		return id
 	end method
-	
+
 	method public void ResetMCISFlgs()
 		MetCallFlag = false
 		IdentFlag = false

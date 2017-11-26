@@ -6,6 +6,16 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple
 //Place, Suite 330, Boston, MA 02111-1307 USA
 
+import System
+import System.IO
+import System.Threading
+import dylan.NET.Utils
+import dylan.NET.Reflection
+import dylan.NET.Tokenizer.Lexer
+import dylan.NET.Tokenizer.Parser
+import Managed.Reflection
+import dylan.NET.Tokenizer.AST.Stmts
+
 class private LPFileTuple
 
     field public string Path
@@ -39,13 +49,13 @@ class private LPFileClosure
                     StreamUtils::WriteLine(string::Format("Now Lexing: {0}", inclustm::Path::Value))
                     end #if
 
-                    var pstmts as StmtSet = new Lexer()::Analyze(inclustm::Path::Value)
+                    var pstmts as StmtSet = new Lexer()::AnalyzeWithMMap(inclustm::Path::Value)
 
                     #if DEBUG then
                     StreamUtils::WriteLine(string::Format("Now Parsing: {0}", inclustm::Path::Value))
                     end #if
 
-                    inclustm::SSet = new Parser()::Parse(pstmts)
+                    inclustm::SSet = new Parser()::Parse(pstmts, true)
                     inclustm::SSet::Path = inclustm::Path::Value
 
                     #if DEBUG then
@@ -71,8 +81,8 @@ class private LPFileClosure
     method public void LPThreadIteration(var stm as Stmt)
         if stm is IncludeStmt then
             if #expr($IncludeStmt$stm)::SSet is null then
-                //ThreadPool::QueueUserWorkItem(new WaitCallback(LPFile()),new LPFileTuple(sst::Path, $IncludeStmt$stm))
-                LPFile(new LPFileTuple(sst::get_FilePath(), $IncludeStmt$stm))
+                ThreadPool::QueueUserWorkItem(new WaitCallback(LPFile()),new LPFileTuple(sst::get_FilePath(), $IncludeStmt$stm))
+                //LPFile(new LPFileTuple(sst::get_FilePath(), $IncludeStmt$stm))
             end if
         elseif stm is IStmtContainer then
             var clos = new LPFileClosure()

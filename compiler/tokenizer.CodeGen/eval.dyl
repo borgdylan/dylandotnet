@@ -6,6 +6,18 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple
 //Place, Suite 330, Boston, MA 02111-1307 USA
 
+import System
+import dylan.NET.Utils
+import dylan.NET.Reflection
+import dylan.NET.Tokenizer.AST.Interfaces
+import dylan.NET.Tokenizer.AST.Tokens
+import dylan.NET.Tokenizer.AST.Exprs
+import dylan.NET.Tokenizer.AST.Tokens.Ops
+import dylan.NET.Tokenizer.AST.Tokens.TypeToks
+import dylan.NET.Tokenizer.AST.Tokens.Literals
+import Managed.Reflection
+import Managed.Reflection.Emit
+
 //delegate public void ASTEmitDelegate(var t as Token, var emt as boolean)
 
 class public Evaluator

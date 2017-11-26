@@ -6,6 +6,13 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple
 //Place, Suite 330, Boston, MA 02111-1307 USA
 
+import System
+import System.Linq
+import System.Collections.Generic
+import System.Reflection
+import System.Runtime.InteropServices
+import dylan.NET.Utils
+
 class public static Loader
 
 	field public static boolean FldLitFlag

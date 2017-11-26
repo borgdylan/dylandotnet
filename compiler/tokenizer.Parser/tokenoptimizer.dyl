@@ -6,6 +6,16 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple
 //Place, Suite 330, Boston, MA 02111-1307 USA
 
+import System
+import dylan.NET.Utils
+import dylan.NET.Tokenizer.AST.Tokens
+import dylan.NET.Tokenizer.AST.Tokens.Ops
+import dylan.NET.Tokenizer.AST.Tokens.Literals
+
+import dylan.NET.Tokenizer.AST.Tokens.TypeToks
+import dylan.NET.Tokenizer.AST.Tokens.Attributes
+import dylan.NET.Tokenizer.AST.Tokens.Chars
+
 class public TokenOptimizer
 
     field public integer GenLvl

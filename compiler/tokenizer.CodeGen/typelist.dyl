@@ -6,6 +6,16 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple
 //Place, Suite 330, Boston, MA 02111-1307 USA
 
+import System
+import System.Linq
+import System.Collections.Generic
+import dylan.NET.Utils
+import dylan.NET.Reflection
+import dylan.NET.Tokenizer.AST.Tokens
+import dylan.NET.Tokenizer.AST.Tokens.TypeToks
+import Managed.Reflection
+import Managed.Reflection.Emit
+
 class public static partial Helpers
     method public static prototype Managed.Reflection.Type CommitEvalTTok(var tt as TypeTok)
 end class

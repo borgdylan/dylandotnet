@@ -1,10 +1,13 @@
 //    tokenizer.AST.dll dylan.NET.Tokenizer.AST Copyright (C) 2013 Dylan Borg <borgdylan@hotmail.com>
 //    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software
 // Foundation; either version 3 of the License, or (at your option) any later version.
-//    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+//    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
 //PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
-//    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
+//    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple
 //Place, Suite 330, Boston, MA 02111-1307 USA
+
+import dylan.NET.Tokenizer.AST.Interfaces
+import dylan.NET.Tokenizer.AST.Tokens.TypeToks
 
 class public MethodNameTok extends Ident implements IMayHaveConstraints
 
@@ -12,7 +15,7 @@ class public MethodNameTok extends Ident implements IMayHaveConstraints
 		mybase::ctor()
 		_OrdOp = string::Empty
 	end method
-	
+
 	method public void MethodNameTok(var value as string)
 		mybase::ctor(value)
 		_OrdOp = string::Empty
@@ -34,7 +37,7 @@ class public MethodNameTok extends Ident implements IMayHaveConstraints
 		ExplType = idt::ExplType
 		PosFromToken(idt)
 	end method
-	
+
 	method public static specialname MethodNameTok op_Implicit(var idt as Ident) => #ternary{idt is MethodNameTok ? $MethodNameTok$idt, new MethodNameTok(idt)}
 
 	property public virtual boolean MayHaveConstraints => false
@@ -57,7 +60,7 @@ class public GenericMethodNameTok extends MethodNameTok implements IMayHaveConst
 		Params = new C5.LinkedList<of TypeTok>()
 		_Constraints = new C5.HashDictionary<of string, C5.LinkedList<of Token> >(C5.MemoryType::Normal)
 	end method
-	
+
 	method public void GenericMethodNameTok(var idt as Ident)
 		mybase::ctor(idt::Value)
 		Params = new C5.LinkedList<of TypeTok>()
@@ -75,7 +78,7 @@ class public GenericMethodNameTok extends MethodNameTok implements IMayHaveConst
 		_Constraints = new C5.HashDictionary<of string, C5.LinkedList<of Token> >(C5.MemoryType::Normal)
 		PosFromToken(idt)
 	end method
-	
+
 	method public static specialname GenericMethodNameTok op_Implicit(var idt as Ident) => #ternary {idt is GenericMethodNameTok ? $GenericMethodNameTok$idt, new GenericMethodNameTok(idt)}
 
 	method public void AddParam(var param as TypeTok)

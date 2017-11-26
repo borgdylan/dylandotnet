@@ -6,6 +6,21 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple
 //Place, Suite 330, Boston, MA 02111-1307 USA
 
+import System
+import System.Linq
+import System.Diagnostics
+import System.Collections.Generic
+import System.Runtime.InteropServices
+import dylan.NET.Utils
+import dylan.NET.Reflection
+import dylan.NET.Tokenizer.AST.Tokens
+import dylan.NET.Tokenizer.AST.Exprs
+import dylan.NET.Tokenizer.AST.Tokens.Ops
+import dylan.NET.Tokenizer.AST.Tokens.TypeToks
+import dylan.NET.Tokenizer.AST.Tokens.Literals
+import Managed.Reflection
+import Managed.Reflection.Emit
+
 class public static Helpers
 
     field public static boolean StringFlg

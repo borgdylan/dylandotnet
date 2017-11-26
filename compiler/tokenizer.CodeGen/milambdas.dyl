@@ -6,13 +6,16 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple
 //Place, Suite 330, Boston, MA 02111-1307 USA
 
+import System
+import Managed.Reflection
+
 class private MILambdas2
 
 	field assembly string Name
 	field assembly integer ParamLen
 	field assembly Managed.Reflection.Type[] Params
 	field assembly Managed.Reflection.Type Auxt
-	
+
 	method assembly void MILambdas2()
 		mybase::ctor()
 		Name = string::Empty
@@ -24,14 +27,14 @@ class private MILambdas2
 		Params = params
 		Auxt = auxt
 	end method
-	
+
 	method assembly void MILambdas2(var params as Managed.Reflection.Type[], var auxt as Managed.Reflection.Type)
 		mybase::ctor()
 		Name = string::Empty
 		Params = params
 		Auxt = auxt
 	end method
-	
+
 	method assembly void MILambdas2(var name as string, var pl as integer)
 		mybase::ctor()
 		Name = name
@@ -53,7 +56,7 @@ class private MILambdas2
 		else
 			return false
 		end if
-		
+
 //		if !mi::get_IsPublic() then
 //			if !mi::get_IsPrivate() then
 //				if !#expr(mi::get_IsFamilyAndAssembly() and ProtectedFlag and HaveInternal) then
@@ -69,10 +72,10 @@ class private MILambdas2
 //				return false
 //			end if
 //		end if
-//		
+//
 		return true
 	end method
-	
+
 	method assembly Managed.Reflection.MethodInfo InstGenMtd(var mi as MethodItem) => _
 		#expr($MethodInfo$mi::MethodBldr::BindTypeParameters(Auxt))::MakeGenericMethod(Params)
 
@@ -93,7 +96,7 @@ class private MILambdas2
 		end if
 		return true
 	end method
-	
+
 	method assembly boolean CmpTyps2(var arra as Managed.Reflection.Type[], var arrb as Managed.Reflection.Type[])
 		if arra[l] == arrb[l] then
 			if arra[l] = 0 then
@@ -114,11 +117,11 @@ class private MILambdas2
 
 	method assembly boolean DetermineIfCandidate(var mi as MethodInfo) => _
 		#ternary {mi::get_IsGenericMethod() ? false, CmpTyps(mi::GetParameters(),Params)}
-	
+
 	method assembly boolean DetermineIfCandidate2(var mi as MethodInfo) => CmpTyps(mi::GetParameters(),Params)
-	
+
 	method assembly boolean DetermineIfProtoCandidate(var mi as MethodItem)
-		//(mi::Name == Name) not needed since its implicit in store 
+		//(mi::Name == Name) not needed since its implicit in store
 		if mi::NrGenParams == 0 then
 			return CmpTyps2(mi::ParamTyps,Params)
 		else
@@ -145,7 +148,7 @@ class private MILambdas2
 		end do
 		return deriv
 	end method
-	
+
 	method assembly static integer[] ExtractDeriveness2(var mi as MethodInfo)
 		var params = mi::GetParameters()
 		var deriv as integer[] = new integer[params[l]]

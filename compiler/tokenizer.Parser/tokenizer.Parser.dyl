@@ -13,29 +13,29 @@
 #include "msbuild.dyl"
 #include "Properties/AssemblyInfo.dyl"
 
-import System
-import System.Linq
+//import System
+//import System.Linq
 //import System.Collections
 //import System.Collections.Generic
 //import System.Runtime.InteropServices
 //import dylan.NET
-import dylan.NET.Utils
+//import dylan.NET.Utils
 //import dylan.NET.Reflection
 //import dylan.NET.Tokenizer.Lexer
 //import dylan.NET.Tokenizer.AST
-import dylan.NET.Tokenizer.AST.Interfaces
-import dylan.NET.Tokenizer.AST.Tokens
-import dylan.NET.Tokenizer.AST.Exprs
-import dylan.NET.Tokenizer.AST.Stmts
-import dylan.NET.Tokenizer.AST.Tokens.Ops
-import dylan.NET.Tokenizer.AST.Tokens.TypeToks
-import dylan.NET.Tokenizer.AST.Tokens.Literals
-import dylan.NET.Tokenizer.AST.Tokens.Attributes
-import dylan.NET.Tokenizer.AST.Tokens.Chars
-import dylan.NET.Tokenizer.Lexer
+//import dylan.NET.Tokenizer.AST.Interfaces
+//import dylan.NET.Tokenizer.AST.Tokens
+//import dylan.NET.Tokenizer.AST.Exprs
+//import dylan.NET.Tokenizer.AST.Stmts
+//import dylan.NET.Tokenizer.AST.Tokens.Ops
+//import dylan.NET.Tokenizer.AST.Tokens.Literals
+//import dylan.NET.Tokenizer.AST.Tokens.TypeToks
+//import dylan.NET.Tokenizer.AST.Tokens.Attributes
+//import dylan.NET.Tokenizer.AST.Tokens.Chars
+//import dylan.NET.Tokenizer.Lexer
 //import IKVM.Reflection
 //import IKVM.Reflection.Emit
-import dylan.NET.Reflection
+//import dylan.NET.Reflection
 
 //import dylan.NET.Tokenizer.Parser
 

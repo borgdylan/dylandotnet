@@ -1,10 +1,12 @@
 //    tokenizer.AST.dll dylan.NET.Tokenizer.AST Copyright (C) 2012 Dylan Borg <borgdylan@hotmail.com>
 //    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software
 // Foundation; either version 3 of the License, or (at your option) any later version.
-//    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A 
+//    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
 //PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
-//    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple 
-//Place, Suite 330, Boston, MA 02111-1307 USA 
+//    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple
+//Place, Suite 330, Boston, MA 02111-1307 USA
+
+import dylan.NET.Tokenizer.AST.Tokens
 
 enum public integer ContextType
 	None = 0
@@ -44,7 +46,7 @@ class public Stmt
 		EndLine = toktoadd::EndLine
 		EndColumn = toktoadd::EndColumn
 	end method
-	
+
 	method public void RemToken(var ind as integer)
 		Tokens::RemoveAt(ind)
 	end method
@@ -62,7 +64,7 @@ interface public IStmtContainer
 	property public autogen ContextType Context
 	property public autogen IStmtContainer Parent
 	property public autogen initonly Stmt[] Children
-	property public autogen string FilePath	
+	property public autogen string FilePath
 	method public boolean IsOneLiner(var ctx as IStmtContainer)
 	method public boolean ValidateEnding(var stm as Stmt)
 
@@ -90,7 +92,7 @@ class public abstract BlockStmt extends Stmt implements IStmtContainer
 	method public virtual boolean AddStmt(var stmttoadd as Stmt)
 		Stmts::Add(stmttoadd)
 
-		var sc = stmttoadd as IStmtContainer 
+		var sc = stmttoadd as IStmtContainer
 		if sc isnot null then
 			sc::set_Parent(me)
 		end if
@@ -140,7 +142,7 @@ class public StmtSet implements IStmtContainer
 	method public virtual boolean AddStmt(var stmttoadd as Stmt)
 		Stmts::Add(stmttoadd)
 
-		var sc = stmttoadd as IStmtContainer 
+		var sc = stmttoadd as IStmtContainer
 		if sc isnot null then
 			sc::set_Parent(me)
 		end if
@@ -165,7 +167,7 @@ class public StmtSet implements IStmtContainer
 	end property
 
 	property public virtual Stmt[] Children => Stmts::ToArray()
-	
+
 	method public virtual boolean IsOneLiner(var ctx as IStmtContainer) => false
 	method public virtual boolean ValidateEnding(var stm as Stmt) => false
 

@@ -13,23 +13,23 @@
 #include "msbuild.dyl"
 #include "Properties/AssemblyInfo.dyl"
 
-import System
+//import System
 //import System.IO
-import System.Linq
+//import System.Linq
 //import System.Collections
-import System.Collections.Generic
+//import System.Collections.Generic
 //import System.Diagnostics
 //import System.Diagnostics.SymbolStore
-import System.Reflection
+//import System.Reflection
 //import System.Reflection.Emit
 //import System.Text.RegularExpressions
-import System.Runtime.InteropServices
+//import System.Runtime.InteropServices
 //import dylan.NET
-import dylan.NET.Utils
+//import dylan.NET.Utils
 //import dylan.NET.Reflection
-import Managed.Reflection
+//import Managed.Reflection
 //import Managed.Reflection.Emit
-import System.Runtime.Versioning
+//import System.Runtime.Versioning
 
 #include "AssemblyRecord.dyl"
 #include "ImportRecord.dyl"

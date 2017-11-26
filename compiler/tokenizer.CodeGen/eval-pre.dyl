@@ -6,6 +6,11 @@
 // //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple
 // //Place, Suite 330, Boston, MA 02111-1307 USA
 
+import dylan.NET.Tokenizer.AST.Tokens
+import dylan.NET.Tokenizer.AST.Exprs
+import dylan.NET.Tokenizer.AST.Tokens.Ops
+import dylan.NET.Tokenizer.AST.Tokens.Chars
+
 class public partial Evaluator
 
 	method public static integer RetPrec(var tok as Token)
@@ -16,7 +21,7 @@ class public partial Evaluator
 		elseif tok is RParen then
 			return 0
 		else
-			return 0		
+			return 0
 		end if
 	end method
 
@@ -24,7 +29,7 @@ class public partial Evaluator
 		if (exp::Tokens::get_Count() == 0) orelse (exp::Tokens::get_Count() == 1) then
 			return exp
 		end if
-		
+
 		var stack = new OpStack()
 		var exp2 as Expr = new Expr() {Line = exp::Line}
 		var i as integer = -1
