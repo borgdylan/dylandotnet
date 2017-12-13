@@ -88,7 +88,11 @@ class private LPFileClosure
             var clos = new LPFileClosure()
             clos::sst = $IStmtContainer$stm
             if !clos::sst::IsOneLiner(sst) then
-                System.Threading.Tasks.Parallel::ForEach<of Stmt>(clos::sst::get_Children(), new Action<of Stmt>(clos::LPThreadIteration))
+                //System.Threading.Tasks.Parallel::ForEach<of Stmt>(clos::sst::get_Children(), new Action<of Stmt>(clos::LPThreadIteration))
+
+                foreach s in clos::sst::get_Children()
+                    clos::LPThreadIteration(s)
+                end for
             end if
         end if
     end method
@@ -117,7 +121,11 @@ class public CodeGenerator
     method private static void LPThread(var sset as object)
         var clos = new LPFileClosure()
         clos::sst = $StmtSet$sset
-        System.Threading.Tasks.Parallel::ForEach<of Stmt>(clos::sst::get_Children(), new Action<of Stmt>(clos::LPThreadIteration))
+
+        //System.Threading.Tasks.Parallel::ForEach<of Stmt>(clos::sst::get_Children(), new Action<of Stmt>(clos::LPThreadIteration))
+        foreach s in clos::sst::get_Children()
+            clos::LPThreadIteration(s)
+        end for
     end method
 
 //     hash set is used to keep track of visited assemblies to avoid cycles in the dep graph
@@ -244,7 +252,7 @@ class public CodeGenerator
 
     method public void EmitMSIL(var stmts as StmtSet, var fpath as string)
         stmts::Path = fpath
-        //ThreadPool::QueueUserWorkItem(new WaitCallback(LPThread()),stmts)
+        ThreadPool::QueueUserWorkItem(new WaitCallback(LPThread()),stmts)
 
         //var i as integer = -1
 
