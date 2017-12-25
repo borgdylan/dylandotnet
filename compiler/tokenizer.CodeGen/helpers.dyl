@@ -66,6 +66,38 @@ class public static Helpers
     end method
 
     [method: ComVisible(false)]
+    method public static boolean IsByRefLike(var t as Managed.Reflection.Type)
+        if t::get_IsByRef() then
+            return true
+        end if
+
+        try
+            if t::get_IsGenericType() then
+                var gtd = t::GetGenericTypeDefinition()
+
+                var sysspan = Loader::CachedLoadClass("System.Span`1")
+                if sysspan isnot null andalso gtd::Equals(sysspan) then
+                    return true
+                end if
+
+                var rsysspan = Loader::CachedLoadClass("System.ReadOnlySpan`1")
+                if rsysspan isnot null andalso gtd::Equals(rsysspan) then
+                    return true
+                end if
+            end if
+
+            var isbyreflike = Loader::CachedLoadClass("System.Runtime.CompilerServices.IsByRefLikeAttribute")
+
+            if isbyreflike isnot null then
+                var lcad = t::__GetCustomAttributes(isbyreflike, false)
+                return lcad::get_Count() > 0
+            end if
+        catch ex as Exception
+        end try
+        return false
+    end method
+
+    [method: ComVisible(false)]
     method public static IEnumerable<of ConditionalAttribute> GetConditional(var m as MemberInfo)
         try
             var lcad = m::__GetCustomAttributes(Loader::CachedLoadClass("System.Diagnostics.ConditionalAttribute"), false)

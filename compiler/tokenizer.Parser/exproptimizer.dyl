@@ -148,6 +148,10 @@ class public ExprOptimizer
 					tt::EndColumn = curtok::EndColumn
 					tt::EndLine = curtok::EndLine
 				elseif curtok is LRSParen then
+					if tt::IsByRef then
+						StreamUtils::WriteErrorLine(curtok::Line, curtok::Column, PFlags::CurPath, "Arrays of pointers are not supported!")
+					end if
+
 					tt::IsArray = true
 					stm::RemToken(i)
 					i--

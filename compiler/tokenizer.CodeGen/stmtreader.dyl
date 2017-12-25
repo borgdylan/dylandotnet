@@ -1037,6 +1037,10 @@ class public StmtReader
             StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("Class '{0}' is not defined.", flss::FieldTyp::Value))
         end if
 
+        if Helpers::IsByRefLike(ftyp) then
+            StreamUtils::WriteError(flss::FieldTyp::Line, flss::FieldTyp::Column, ILEmitter::CurSrcFile, string::Format("Type '{0}' is only allowed to reside on the execution stack!", ftyp::ToString()))
+        end if
+
         AsmFactory::CurnFldB = AsmFactory::CurnTypB::DefineField(flss::FieldName::Value, ftyp, Helpers::ProcessFieldAttrs(flss::Attrs))
 
         if ILEmitter::InterfaceFlg then

@@ -1180,6 +1180,11 @@ class public Evaluator
                 if !Helpers::IsPrimitiveIntegralType(AsmFactory::Type02) then
                     StreamUtils::WriteError(newactok::ArrayLen::Line, newactok::ArrayLen::Column, ILEmitter::CurSrcFile, "Array Lengths should be of a Primitive Integer Type.")
                 end if
+
+                if Helpers::IsByRefLike(typ2) then
+                    StreamUtils::WriteError(newactok::ArrayType::Line, newactok::ArrayType::Column, ILEmitter::CurSrcFile, string::Format("Type '{0}' may not be the element type of arrays!", typ2::ToString()))
+                end if
+
                 if emt then
                     if Helpers::GetPrimitiveNumericSize(AsmFactory::Type02) > 32 then
                         ILEmitter::EmitConvOvfI(Helpers::CheckSigned(AsmFactory::Type02))
@@ -1203,6 +1208,10 @@ class public Evaluator
                 var ci as CollectionItem = Helpers::ProcessCollection(typ2,aictok::ForceArray)
 
                 if ci is null then
+                    if Helpers::IsByRefLike(typ2) then
+                        StreamUtils::WriteError(aictok::ArrayType::Line, aictok::ArrayType::Column, ILEmitter::CurSrcFile, string::Format("Type '{0}' may not be the element type of arrays!", typ2::ToString()))
+                    end if
+
                     if emt then
                         ILEmitter::EmitLdcI4(aictok::Elements::get_Count())
 
