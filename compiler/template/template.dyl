@@ -945,7 +945,7 @@ class public static Program
 //			end switch
 //		end for
 
-		var fable = f"This is a formattable date: {DateTime::get_Now()}"
+		var fable = f"This is a formattable date: {DateTime::get_Now(),-22} formatted with a specific culture."
 		Console::WriteLine(fable::ToString(new System.Globalization.CultureInfo("en-US")))
 		Console::WriteLine(fable::ToString(new System.Globalization.CultureInfo("en-GB")))
 		Console::WriteLine(fable::ToString(new System.Globalization.CultureInfo("it-IT")))

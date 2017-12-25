@@ -272,6 +272,7 @@ class public static ParseUtils
 		//false means copy to format, true means copy to current expression
 		var mode as boolean = false
 		var exprStart as integer = -1
+		var lvl as integer = 0
 
 		for i = 0 upto len
 			cc = input::get_Chars(i)
@@ -288,6 +289,7 @@ class public static ParseUtils
 					continue
 				else
 					mode = true
+					lvl = 0
 					j++
 					buf::Append('{')::Append(j)
 					cbuf = new StringBuilder(10)
@@ -340,6 +342,13 @@ class public static ParseUtils
 					buf::Append(c'\\')
 				end if
 				continue
+			elseif mode andalso cc == '(' then
+				lvl++
+			elseif mode andalso cc == ')' then
+				lvl--
+			elseif mode andalso cc == ',' andalso lvl == 0 then
+				mode = false
+				es::Add(ValueTuple::Create<of integer, string>(exprStart, cbuf::ToString()))
 			elseif mode andalso cc == ':' then
 				if lc == ':' then
 					i++
