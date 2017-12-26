@@ -92,7 +92,7 @@ class public static Helpers
                 var lcad = t::__GetCustomAttributes(isbyreflike, false)
                 return lcad::get_Count() > 0
             end if
-        catch ex as Exception
+        catch
         end try
         return false
     end method

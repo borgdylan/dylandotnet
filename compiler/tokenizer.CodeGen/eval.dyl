@@ -48,6 +48,17 @@ class public Evaluator
         end if
     end method
 
+    method private void ASTEmitMethodRef(var emt as boolean)
+        if emt then
+            ILEmitter::LocInd++
+            ILEmitter::DeclVar(i"__methodref_{ILEmitter::LocInd}", AsmFactory::Type02)
+            var loc = ILEmitter::LocInd
+
+            ILEmitter::EmitStloc(loc)
+            ILEmitter::EmitLdloca(loc)
+        end if
+    end method
+
     method private void ASTEmitArrayLoad(var idt as Ident, var emt as boolean)
         if idt::IsArr then
             var segs = idt::GetSegments()
@@ -165,7 +176,7 @@ class public Evaluator
         var idtisstatic as boolean = false
         var typ as Managed.Reflection.Type
         var idtnamarr as IdentSegment[] = idt::GetSegments()
-        var pushaddr as boolean = idt::IsRef and idt::MemberAccessFlg
+        var pushaddr as boolean = idt::IsRef andalso idt::MemberAccessFlg
 
         if pushaddr then
             idt::IsRef = false
@@ -647,6 +658,26 @@ class public Evaluator
                 ASTEmitArrayLoad(mntok, emt)
                 if !mntok::IsArr and mntok::MemberAccessFlg then
                     ASTEmitValueFilter(emt)
+                elseif !mntok::IsArr then
+                    //Console::WriteLine(AsmFactory::Type02::ToString())
+                    #warning "please remove"
+                    if AsmFactory::Type02::get_IsByRef() then
+                        if !mntok::IsRef then
+                            //de ref
+                            AsmFactory::Type02 = AsmFactory::Type02::GetElementType()
+                            if emt then
+                                ILEmitter::EmitLdind(AsmFactory::Type02)
+                            end if
+                        end if
+                        //by ref passthru in other case
+                    else
+                        if mntok::IsRef then
+                            //make ref
+                             ASTEmitMethodRef(emt)
+                             AsmFactory::Type02 = AsmFactory::Type02::MakeByRefType()
+                        end if
+                        //normal passthru in other case
+                    end if
                 end if
             end if
 

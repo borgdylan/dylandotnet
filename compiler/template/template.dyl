@@ -756,6 +756,15 @@ class public static Program
 		method public pinvokeimpl static void incrpt(var p as point&)
 	end #region
 
+	method public static integer& RefRet(var b as boolean)
+		var x = 12
+		if b then
+			return ref X
+		else
+			return ref x
+		end if
+	end method
+
 	[method: STAThread()]
 	method public static void main()
 //		gentest()
@@ -971,6 +980,11 @@ class public static Program
 		Console::WriteLine(#nullcond(new integer?(1))::get_Value() ?? 11)
 		Console::WriteLine(#nullcond($integer?$null)::ToString() ?? "null")
 		Console::WriteLine(#nullcond($integer?$null)::get_Value() ?? 11)
+
+		X = 69
+		var sdtx = ref DateTime::get_Now()
+		var xix as integer = RefRet(true)
+		Console::WriteLine(xix)
 	end method
 
 	[method: My(new integer[] {1, 2})]
