@@ -48,6 +48,7 @@ class public Evaluator
         end if
     end method
 
+    //TODO: Move to helpers, with emt check on the caller side?
     method private void ASTEmitMethodRef(var emt as boolean)
         if emt then
             ILEmitter::LocInd++
@@ -219,12 +220,23 @@ class public Evaluator
                 if !idtb1 then
                     vr = SymTable::FindVar(idtnamarr[i]::Value)
                     if vr isnot null then
+
+                        if Helpers::RefRetFlg andalso idt::IsRef andalso idt::IsArr
+                            //error for ref return
+                            StreamUtils::WriteError(idt::Line, idt::Column, ILEmitter::CurSrcFile, "It is unsafe to return a managed pointer to something residing on the stack!")
+                        end if
+
                         if emt then
                             AsmFactory::Type04 = vr::VarTyp
                             Helpers::EmitLocLd(vr::Index, vr::LocArg)
                         end if
                         typ = vr::VarTyp
                         if AsmFactory::ForcedAddrFlg andalso !typ::get_IsByRef() then
+                            if Helpers::RefRetFlg then
+                                //error for ref return
+                                StreamUtils::WriteError(idt::Line, idt::Column, ILEmitter::CurSrcFile, "It is unsafe to return a managed pointer to something residing on the stack!")
+                            end if
+
                             typ = typ::MakeByRefType()
                         elseif !AsmFactory::ForcedAddrFlg andalso typ::get_IsByRef() then
                             typ = typ::GetElementType()
@@ -660,7 +672,7 @@ class public Evaluator
                     ASTEmitValueFilter(emt)
                 elseif !mntok::IsArr then
                     //Console::WriteLine(AsmFactory::Type02::ToString())
-                    #warning "please remove"
+                    //by ref for methods
                     if AsmFactory::Type02::get_IsByRef() then
                         if !mntok::IsRef then
                             //de ref
@@ -673,8 +685,14 @@ class public Evaluator
                     else
                         if mntok::IsRef then
                             //make ref
-                             ASTEmitMethodRef(emt)
-                             AsmFactory::Type02 = AsmFactory::Type02::MakeByRefType()
+
+                            if Helpers::RefRetFlg then
+                                //error for ref return
+                                StreamUtils::WriteError(mntok::Line, mntok::Column, ILEmitter::CurSrcFile, "It is unsafe to return a managed pointer to something residing on the stack!")
+                            end if
+
+                            ASTEmitMethodRef(emt)
+                            AsmFactory::Type02 = AsmFactory::Type02::MakeByRefType()
                         end if
                         //normal passthru in other case
                     end if
@@ -1535,6 +1553,11 @@ class public Evaluator
 
     method public void Evaluate(var exp as Expr)
         var asttok as Token = ConvToAST(ConvToRPN(exp))
+
+        if Helpers::RefRetFlg andalso (asttok isnot Ident) andalso (asttok isnot MethodCallTok) then
+            StreamUtils::WriteError(exp::Line, 0, ILEmitter::CurSrcFile, "You must return a managed pointer in a ref-returning method.")
+        end if
+
         ASTEmit(asttok, false)
         ASTEmit(asttok, true)
     end method

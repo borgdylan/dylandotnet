@@ -1118,9 +1118,7 @@ class public StmtReader
         cg::Process(fstm, fpath)
     end method
 
-    method private boolean StripVisibility(var a as Attributes.Attribute)
-        return a isnot VisibilityAttr
-    end method
+    method private boolean StripVisibility(var a as Attributes.Attribute) => a isnot VisibilityAttr
 
     method public void ReadPropertyGet(var prgs as PropertyGetStmt, var fpath as string)
         var cprop = SymTable::CurnProp
@@ -1622,7 +1620,11 @@ class public StmtReader
         elseif stm is ReturnStmt then
             var retstmt as ReturnStmt = $ReturnStmt$stm
             if retstmt::RExp isnot null then
+                if Helpers::IsByRefLike(AsmFactory::CurnMetB::get_ReturnType()) then
+                    Helpers::RefRetFlg = true
+                end if
                 new Evaluator()::Evaluate(retstmt::RExp)
+                Helpers::RefRetFlg = false
                 Helpers::CheckAssignability(AsmFactory::CurnMetB::get_ReturnType(), AsmFactory::Type02)
             elseif !AsmFactory::CurnMetB::get_ReturnType()::Equals(Loader::CachedLoadClass("System.Void")) then
                 StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "Methods with a return type of 'void' should not return anything!!.")
@@ -1631,8 +1633,7 @@ class public StmtReader
             if SymTable::CheckReturnInTry() then
                 var lbl = SymTable::GetRetLbl()
                 if !AsmFactory::CurnMetB::get_ReturnType()::Equals(Loader::CachedLoadClass("System.Void")) then
-                    var vr = SymTable::FindVar("$leave_ret_var$")
-                    ILEmitter::EmitStloc(vr::Index)
+                    ILEmitter::EmitStloc(SymTable::FindVar("$leave_ret_var$")::Index)
                 end if
                 ILEmitter::EmitLeave(lbl)
             else

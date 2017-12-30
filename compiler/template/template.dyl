@@ -758,11 +758,12 @@ class public static Program
 
 	method public static integer& RefRet(var b as boolean)
 		var x = 12
-		if b then
+		// if b then
 			return ref X
-		else
-			return ref x
-		end if
+		// else
+		//	//this is a violation of safety
+		// 	return ref x
+		// end if
 	end method
 
 	[method: STAThread()]

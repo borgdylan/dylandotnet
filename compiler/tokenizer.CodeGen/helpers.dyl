@@ -30,10 +30,11 @@ class public static Helpers
     field public static boolean OpCodeSuppFlg
     field public static boolean EqSuppFlg
     field public static boolean BaseFlg
+    field public static boolean RefRetFlg
     field public static Managed.Reflection.Type LeftOp
     field public static Managed.Reflection.Type RightOp
 
-    //uses NullExprFlag as input
+    //uses NullExprFlg as input
     [method: ComVisible(false)]
     method public static void CheckAssignability(var t1 as Managed.Reflection.Type, var t2 as Managed.Reflection.Type)
         //leave error as is, it pertains to the whole assignment
