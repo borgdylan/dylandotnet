@@ -1248,7 +1248,7 @@ class public static Helpers
 
     [method: ComVisible(false)]
     method public static void EmitLocLd(var ind as integer, var locarg as boolean)
-        if (AsmFactory::AddrFlg and Loader::CachedLoadClass("System.ValueType")::IsAssignableFrom( _
+        if (AsmFactory::AddrFlg andalso Loader::CachedLoadClass("System.ValueType")::IsAssignableFrom( _
             #ternary{AsmFactory::Type04::get_IsByRef() ? AsmFactory::Type04::GetElementType(), AsmFactory::Type04}) andalso (AsmFactory::Type04 isnot GenericTypeParameterBuilder) ) _
              orelse AsmFactory::ForcedAddrFlg then
             if AsmFactory::Type04::get_IsByRef() then
@@ -1523,15 +1523,15 @@ class public static Helpers
     end method
 
     [method: ComVisible(false)]
-    method public static void EmitMetCall(var met as MethodInfo, var stat as boolean)
+    method public static void EmitMetCall(var met as MethodInfo, var stat as boolean, var parentType as Managed.Reflection.Type)
         if stat orelse BaseFlg then
             ILEmitter::EmitCall(met)
         else
-            if AsmFactory::Type05 is GenericTypeParameterBuilder then
-                ILEmitter::EmitConstrained(AsmFactory::Type05)
+            if parentType is GenericTypeParameterBuilder then
+                ILEmitter::EmitConstrained(parentType)
                 ILEmitter::EmitCallvirt(met)
             elseif met::get_IsVirtual() then
-                if Loader::CachedLoadClass("System.ValueType")::IsAssignableFrom(AsmFactory::Type05) then
+                if Loader::CachedLoadClass("System.ValueType")::IsAssignableFrom(parentType) then
                     ILEmitter::EmitCall(met)
                 else
                     ILEmitter::EmitCallvirt(met)

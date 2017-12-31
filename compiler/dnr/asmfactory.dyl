@@ -24,11 +24,22 @@ class public static AsmFactory
 	field public static Managed.Reflection.AssemblyName AsmNameStr
 	field public static Managed.Reflection.StrongNameKeyPair StrongKey
 	field public static Managed.Reflection.Emit.AssemblyBuilder AsmB
+
+	//unused
 	field public static Managed.Reflection.Type Type01
+
+	//type of expression as evaluated so far
 	field public static Managed.Reflection.Type Type02
+
+	//unused
 	field public static Managed.Reflection.Type Type03
+
+	//type used to drive methods that use addr/forced addr flags
 	field public static Managed.Reflection.Type Type04
+
+	//unused
 	field public static Managed.Reflection.Type Type05
+
 	field public static Managed.Reflection.Type CurnEventType
 	field public static Managed.Reflection.Emit.ModuleBuilder MdlB
 	field public static Managed.Reflection.Emit.ISymbolDocumentWriter DocWriter

@@ -553,7 +553,7 @@ class public Evaluator
             end if
         end if
 
-        AsmFactory::Type03 = AsmFactory::Type02
+        var totCache = AsmFactory::Type02
 
         var lt = new C5.LinkedList<of Managed.Reflection.Type>()
         foreach param in mctok::Params
@@ -566,8 +566,7 @@ class public Evaluator
             mctok::TypArr = typarr1
         end if
 
-        AsmFactory::Type02 = AsmFactory::Type03
-        AsmFactory::Type05 = mcparenttyp
+        AsmFactory::Type02 = totCache
 
         //TODO: fix error column resolutiun for constructor cases
         if mectorflg then
@@ -628,14 +627,14 @@ class public Evaluator
             end if
 
             if emt then
-                if !iterflg andalso (AsmFactory::Type05 is GenericTypeParameterBuilder) then
+                if !iterflg andalso (mcparenttyp is GenericTypeParameterBuilder) then
                     ILEmitter::LocInd++
-                    ILEmitter::DeclVar(i"__temp_{ILEmitter::LocInd}", AsmFactory::Type05)
+                    ILEmitter::DeclVar(i"__temp_{ILEmitter::LocInd}", mcparenttyp)
                     ILEmitter::EmitStloc(ILEmitter::LocInd)
                     ILEmitter::EmitLdloca(ILEmitter::LocInd)
                 end if
                 AsmFactory::PopFlg = mctok::PopFlg
-                Helpers::EmitMetCall(mcmetinf, mcisstatic)
+                Helpers::EmitMetCall(mcmetinf, mcisstatic, mcparenttyp)
                 AsmFactory::PopFlg = false
 
                 var oa as ObsoleteAttribute = Helpers::GetObsolete(mcmetinf)
@@ -926,8 +925,9 @@ class public Evaluator
             var tpi = Helpers::GetTPI(nctyp::get_Name())
             if tpi::HasCtor andalso (typarr1[l] == 0) then
                 if emt then
-                    mcmetinf = Loader::LoadGenericMethod(Loader::CachedLoadClass("System.Activator"), "CreateInstance", new Managed.Reflection.Type[] {tpi::Bldr}, typarr1)
-                    Helpers::EmitMetCall(mcmetinf, true)
+                    var sact = Loader::CachedLoadClass("System.Activator")
+                    mcmetinf = Loader::LoadGenericMethod(sact, "CreateInstance", new Managed.Reflection.Type[] {tpi::Bldr}, typarr1)
+                    Helpers::EmitMetCall(mcmetinf, true, sact)
                     if nctok::PopFlg then
                         ILEmitter::EmitPop()
                     end if
