@@ -102,8 +102,8 @@ end class
 class public partial CodeGenerator
 
     method public prototype void EmitMSIL(var stmts as StmtSet, var fpath as string)
-    method assembly prototype ValueTuple<of boolean, boolean> Process(var c as IStmtContainer, var spth as string)
-    method assembly prototype ValueTuple<of boolean, boolean> Process(var c as IStmtContainer, var spth as string, var rtflag as boolean, var awflag as boolean)
+    method assembly prototype (boolean, boolean) Process(var c as IStmtContainer, var spth as string)
+    method assembly prototype (boolean, boolean) Process(var c as IStmtContainer, var spth as string, var rtflag as boolean, var awflag as boolean)
 
 end class
 
@@ -147,7 +147,7 @@ class public CodeGenerator
 //        end for
 //    end method
 
-    method assembly ValueTuple<of boolean, boolean> Process(var c as IStmtContainer, var spth as string, var rtflag as boolean, var awflag as boolean)
+    method assembly (boolean, boolean) Process(var c as IStmtContainer, var spth as string, var rtflag as boolean, var awflag as boolean)
         var eval as Evaluator = new Evaluator()
 
         foreach s in c::get_Children()
@@ -248,7 +248,7 @@ class public CodeGenerator
         return ValueTuple::Create<of boolean, boolean>(rtflag, awflag)
     end method
 
-    method assembly ValueTuple<of boolean, boolean> Process(var c as IStmtContainer, var spth as string) => Process(c, spth, false, false)
+    method assembly (boolean, boolean) Process(var c as IStmtContainer, var spth as string) => Process(c, spth, false, false)
 
     method public void EmitMSIL(var stmts as StmtSet, var fpath as string)
         stmts::Path = fpath

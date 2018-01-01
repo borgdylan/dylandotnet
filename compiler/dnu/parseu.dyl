@@ -268,7 +268,7 @@ class public static ParseUtils
 		var buf as StringBuilder = new StringBuilder(input::get_Length())
 		var cbuf as StringBuilder = null
 		var j as integer = -1
-		var es = new C5.ArrayList<of ValueTuple<of integer, string> >()
+		var es = new C5.ArrayList<of (integer, string) >()
 		//false means copy to format, true means copy to current expression
 		var mode as boolean = false
 		var exprStart as integer = -1

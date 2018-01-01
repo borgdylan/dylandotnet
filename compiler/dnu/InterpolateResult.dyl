@@ -9,7 +9,7 @@
 class public InterpolateResult
 
 	field private string _format
-	field private (integer, string)[] _exprs
+	field private (integer,string)[] _exprs
 
 	method public void InterpolateResult(var format as string, var exprs as IEnumerable<of (integer, string) >)
 		_format = format
