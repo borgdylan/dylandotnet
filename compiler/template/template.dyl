@@ -986,6 +986,8 @@ class public static Program
 		var sdtx = ref DateTime::get_Now()
 		var xix as integer = RefRet(true)
 		Console::WriteLine(xix)
+
+		var myTuple as (integer, string, object, (boolean, DateTime))
 	end method
 
 	[method: My(new integer[] {1, 2})]

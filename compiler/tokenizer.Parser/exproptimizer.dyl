@@ -38,14 +38,19 @@ class public ExprOptimizer
 	method public prototype TypeTok procType2(var stm as Expr, var i as integer)
 
 	method public TypeTok procTypeCore(var stm as Expr, var i as integer)
-		var isgeneric as boolean = false
+		var isGeneric as boolean = false
+		var isTuple as boolean = false
 		var tt as TypeTok
 
 		if i < (stm::Tokens::get_Count() - 2) then
-			isgeneric = (stm::Tokens::get_Item(++i) is LAParen) andalso (stm::Tokens::get_Item(i + 2) is OfTok)
+			if (stm::Tokens::get_Item(++i) is LAParen) andalso (stm::Tokens::get_Item(i + 2) is OfTok) then
+				isGeneric = true
+			elseif stm::Tokens::get_Item(i) is LParen then
+				isTuple = true
+			end if
 		end if
 
-		if isgeneric then
+		if isGeneric then
 
 			var gttarg = stm::Tokens::get_Item(i)
 			if !#expr((gttarg is Ident) orelse (gttarg is TypeTok)) then
@@ -110,6 +115,60 @@ class public ExprOptimizer
 					stm::RemToken(i)
 				end if
 			end if
+
+			tt = gtt
+		elseif isTuple then
+
+			var opnp = stm::Tokens::get_Item(i)
+
+			var gtt as GenericTypeTok = new GenericTypeTok("System.ValueTuple") {PosFromToken(opnp)}
+
+			var ep2 as Expr = new Expr() {Line = stm::Line}
+			var lvl as integer = 1
+			var len as integer = --stm::Tokens::get_Count()
+
+			do until i == len
+				i++
+				var curtok = stm::Tokens::get_Item(i)
+
+				if curtok is LParen then
+					ep2::AddToken(curtok)
+					stm::RemToken(i)
+					lvl++
+					i--
+					len--
+				elseif curtok is Comma then
+					if lvl > 1 then
+						ep2::AddToken(curtok)
+					end if
+					stm::RemToken(i)
+					len--
+					if lvl <= 1 then
+						gtt::AddParam(procType2(ep2, 0))
+						ep2 = new Expr() {Line = stm::Line}
+					end if
+					i--
+				elseif curtok is RParen then
+					lvl--
+					if lvl > 0 then
+						ep2::AddToken(curtok)
+					end if
+					stm::RemToken(i)
+					len--
+					if lvl == 0 then
+						gtt::AddParam(procType2(ep2, 0))
+						gtt::EndColumn = curtok::EndColumn
+						gtt::EndLine = curtok::EndLine
+						break
+					end if
+					i--
+				else
+					ep2::AddToken(curtok)
+					stm::RemToken(i)
+					i--
+					len--
+				end if
+			end do
 
 			tt = gtt
 		else
