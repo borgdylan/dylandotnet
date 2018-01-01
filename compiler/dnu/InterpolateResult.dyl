@@ -9,14 +9,14 @@
 class public InterpolateResult
 
 	field private string _format
-	field private ValueTuple<of integer, string>[] _exprs
+	field private (integer, string)[] _exprs
 
-	method public void InterpolateResult(var format as string, var exprs as IEnumerable<of ValueTuple<of integer, string> >)
+	method public void InterpolateResult(var format as string, var exprs as IEnumerable<of (integer, string) >)
 		_format = format
-		_exprs = Enumerable::ToArray<of ValueTuple<of integer, string> >(exprs)
+		_exprs = Enumerable::ToArray<of (integer, string) >(exprs)
 	end method
 
 	property public string Format => _format
-	property public ValueTuple<of integer, string>[] Expressions => _exprs
+	property public (integer, string)[] Expressions => _exprs
 
 end class

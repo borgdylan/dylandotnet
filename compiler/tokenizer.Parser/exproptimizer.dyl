@@ -69,7 +69,7 @@ class public ExprOptimizer
 				i++
 				var curtok = stm::Tokens::get_Item(i)
 
-				if curtok is LAParen then
+				if (curtok is LAParen) orelse (curtok is LParen) then
 					ep2::AddToken(curtok)
 					stm::RemToken(i)
 					lvl++
@@ -86,7 +86,7 @@ class public ExprOptimizer
 						ep2 = new Expr() {Line = stm::Line}
 					end if
 					i--
-				elseif curtok is RAParen then
+				elseif (curtok is RAParen) orelse (curtok is RParen) then
 					lvl--
 					if lvl > 0 then
 						ep2::AddToken(curtok)
@@ -131,7 +131,7 @@ class public ExprOptimizer
 				i++
 				var curtok = stm::Tokens::get_Item(i)
 
-				if curtok is LParen then
+				if (curtok is LParen) orelse (curtok is LAParen) then
 					ep2::AddToken(curtok)
 					stm::RemToken(i)
 					lvl++
@@ -148,7 +148,7 @@ class public ExprOptimizer
 						ep2 = new Expr() {Line = stm::Line}
 					end if
 					i--
-				elseif curtok is RParen then
+				elseif (curtok is RParen) orelse (curtok is RAParen) then
 					lvl--
 					if lvl > 0 then
 						ep2::AddToken(curtok)
@@ -290,6 +290,12 @@ class public ExprOptimizer
 					lvl++
 					i--
 					len--
+				elseif stm::Tokens::get_Item(i) is LParen then
+					ep2::AddToken(stm::Tokens::get_Item(i))
+					stm::RemToken(i)
+					lvl++
+					i--
+					len--
 				elseif stm::Tokens::get_Item(i) is Comma then
 					if lvl > 1 then
 						ep2::AddToken(stm::Tokens::get_Item(i))
@@ -312,6 +318,12 @@ class public ExprOptimizer
 						gtt::AddParam(procType2(ep2, 0))
 						break
 					end if
+					i--
+				elseif stm::Tokens::get_Item(i) is RParen then
+					lvl--
+					ep2::AddToken(stm::Tokens::get_Item(i))
+					stm::RemToken(i)
+					len--
 					i--
 				else
 					ep2::AddToken(stm::Tokens::get_Item(i))

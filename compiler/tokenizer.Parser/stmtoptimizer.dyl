@@ -1536,16 +1536,21 @@ class public StmtOptimizer
                     var curtok = stm::Tokens::get_Item(i)
 
                     if curtok is RParen then
-                        if d orelse (cc > 0) then
-                            exp = new ExprOptimizer(PFlags)::checkVarAs(exp,ref bl)
-                            if bl then
-                                mtss::AddParam(exp)
-                            else
-                                StreamUtils::WriteErrorLine(curtok::Line, ++curtok::Column, PFlags::CurPath, "Expected a parameter declaration!")
+                        if lvl == 0 then
+                            if d orelse (cc > 0) then
+                                exp = new ExprOptimizer(PFlags)::checkVarAs(exp,ref bl)
+                                if bl then
+                                    mtss::AddParam(exp)
+                                else
+                                    StreamUtils::WriteErrorLine(curtok::Line, ++curtok::Column, PFlags::CurPath, "Expected a parameter declaration!")
+                                end if
                             end if
+                            d = false
+                            break
+                        else
+                            lvl--
+                            d = true
                         end if
-                        d = false
-                        break
                     end if
 
                     if curtok is VarTok then
@@ -1584,6 +1589,11 @@ class public StmtOptimizer
                     if curtok is RAParen then
                         d = true
                         lvl--
+                    end if
+
+                    if curtok is LParen then
+                        d = true
+                        lvl++
                     end if
 
                     if (lvl == 0) andalso (curtok is Comma) then
