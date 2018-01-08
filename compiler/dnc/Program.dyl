@@ -40,7 +40,7 @@ class public static Program
         StreamUtils::WriteLine("dylan.NET Compiler v. 11.9.1.1 RC for Microsoft (R) .NET Framework (R) v. 4.6+")
         StreamUtils::WriteLine("                                  and Xamarin Mono")
         StreamUtils::WriteLine("This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.")
-        StreamUtils::WriteLine("Copyright (C) 2017 Dylan Borg")
+        StreamUtils::WriteLine("Copyright (C) 2018 Dylan Borg")
 
         var lastsdk as string = null
         var inm = false

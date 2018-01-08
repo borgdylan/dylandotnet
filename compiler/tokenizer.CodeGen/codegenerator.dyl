@@ -87,6 +87,9 @@ class private LPFileClosure
         elseif stm is IStmtContainer then
             var clos = new LPFileClosure()
             clos::sst = $IStmtContainer$stm
+            //flow path from closure to sub closure
+            clos::sst::set_FilePath(sst::get_FilePath())
+
             if !clos::sst::IsOneLiner(sst) then
                 //System.Threading.Tasks.Parallel::ForEach<of Stmt>(clos::sst::get_Children(), new Action<of Stmt>(clos::LPThreadIteration))
 

@@ -9,7 +9,8 @@
             "args": ["${workspaceRoot}/../dnu/dnu.dyl"],
             "cwd": "${workspaceRoot}/../dnu/",
             // "preLaunchTask": "build",
-            "env": {}
+            "env": {},
+            "console": "integratedTerminal"
         }
     ]
 }
