@@ -109,8 +109,8 @@ class public ExprOptimizer
 			end do
 
 			if i < stm::Tokens::get_Count() then
-				if stm::Tokens::get_Item(i) is NestedAccessToken then
-					stm::Tokens::set_Item(i, new Ident(#expr($NestedAccessToken$stm::Tokens::get_Item(i))::get_ActualValue()))
+				if stm::Tokens::get_Item(i) is nat as NestedAccessToken then
+					stm::Tokens::set_Item(i, new Ident(nat::get_ActualValue()))
 					gtt::NestedType = procTypeCore(stm, i)
 					stm::RemToken(i)
 				end if
@@ -173,8 +173,8 @@ class public ExprOptimizer
 			tt = gtt
 		else
 			if i < stm::Tokens::get_Count() then
-				if stm::Tokens::get_Item(i) is TypeTok then
-					tt = $TypeTok$stm::Tokens::get_Item(i)
+				if stm::Tokens::get_Item(i) is tt2 as TypeTok then
+					tt = tt2
 				elseif stm::Tokens::get_Item(i) is Ident then
 					tt = new TypeTok(stm::Tokens::get_Item(i)::Value) {PosFromToken(stm::Tokens::get_Item(i))}
 				else
@@ -334,10 +334,10 @@ class public ExprOptimizer
 			end do
 			tt = gtt
 		else
-			if stm::Tokens::get_Item(i) is MethodNameTok then
-				tt = $MethodNameTok$stm::Tokens::get_Item(i)
-			elseif stm::Tokens::get_Item(i) is Ident then
-				tt = new MethodNameTok($Ident$stm::Tokens::get_Item(i))
+			if stm::Tokens::get_Item(i) is mnt as MethodNameTok then
+				tt = mnt
+			elseif stm::Tokens::get_Item(i) is idt as Ident then
+				tt = new MethodNameTok(idt)
 			else
 				var tok = stm::Tokens::get_Item(i)
 				StreamUtils::WriteErrorLine(tok::Line, tok::Column, PFlags::CurPath, string::Format("Expected an identifier instead of '{0}'!", tok::Value))
@@ -353,23 +353,17 @@ class public ExprOptimizer
 		procMtdName(stm, i)
 		var mn1 = $MethodNameTok$stm::Tokens::get_Item(i)
 
-		if (i < --stm::Tokens::get_Count()) andalso (stm::Tokens::get_Item(++i) is ExplImplAccessToken) then
+		if (i < --stm::Tokens::get_Count()) andalso (stm::Tokens::get_Item(++i) is eiat as ExplImplAccessToken) then
 			//in this case mn1 was the explicit interface name
 			//get the actual method name
 			i++
-			stm::Tokens::set_Item(i, new Ident(#expr($ExplImplAccessToken$stm::Tokens::get_Item(i))::get_ActualValue()) {PosFromToken(mn1)} )
+			stm::Tokens::set_Item(i, new Ident(eiat::get_ActualValue()) {PosFromToken(mn1)} )
 			procMtdName(stm, i)
 			var mn2 = $MethodNameTok$stm::Tokens::get_Item(i)
 			stm::RemToken(i)
 			i--
 			//convert mn1 to a type token and put in mn2
-			var tt as TypeTok
-			var gmn = mn1 as GenericMethodNameTok
-			if gmn isnot null then
-				tt = new GenericTypeTok() {Params = gmn::Params}
-			else
-				tt = new TypeTok()
-			end if
+			var tt as TypeTok = #ternary { mn1 is gmn as GenericMethodNameTok ? new GenericTypeTok() {Params = gmn::Params} , new TypeTok() }
 			tt::PosFromToken(mn1)
 			tt::Value = mn1::Value
 			mn2::ExplType = tt
@@ -450,9 +444,7 @@ class public ExprOptimizer
 		var cc as integer = 0
 
 		i--
-		var mn as MethodNameTok = #ternary { stm::Tokens::get_Item(i) is MethodNameTok ? $MethodNameTok$stm::Tokens::get_Item(i), _
-			new MethodNameTok($Ident$stm::Tokens::get_Item(i)) }
-
+		var mn as MethodNameTok = #ternary { stm::Tokens::get_Item(i) is mntok as MethodNameTok ? mntok, new MethodNameTok($Ident$stm::Tokens::get_Item(i)) }
 		var mct as MethodCallTok = new MethodCallTok() {Name = mn, PosFromToken(mn)}
 
 		j = i
@@ -1175,12 +1167,12 @@ class public ExprOptimizer
 
 				var tok = ss::Tokens::get_Item(j)
 
-				if tok is OpenParen then
-					parenStack::Push($OpenParen$tok)
-				elseif tok is CloseParen then
+				if tok is opn as OpenParen then
+					parenStack::Push(opn)
+				elseif tok is cpn as CloseParen then
 					if parenStack::get_Count() > 0 then
 						var opn = parenStack::Pop()
-						if !opn::IsValidCloseParen($CloseParen$tok) then
+						if !opn::IsValidCloseParen(cpn) then
 							StreamUtils::WriteError(tok::Line, tok::Column, PFlags::CurPath, i"This parenthesis of type '{tok::Value}' does not match the opening counterpart of type '{opn::Value}' in sub-expression {k}!")
 						end if
 					else
@@ -1323,9 +1315,7 @@ class public ExprOptimizer
 		var mctok as Token = null
 		//var newavtok as Token = null
 		var mcident as Ident = null
-		var mcmetcall as MethodCallTok = null
 		var mcmetname as MethodNameTok = null
-		var mcstr as StringLiteral = null
 
 		if exp is null then
 			return null
@@ -1414,13 +1404,13 @@ class public ExprOptimizer
 				exp::RemToken(i)
 				i--
 				len = --exp::Tokens::get_Count()
-			elseif tok is Ident then
+			elseif tok is idt as Ident then
 				if PFlags::MetCallFlag orelse PFlags::IdentFlag orelse PFlags::StringFlag orelse PFlags::CtorFlag then
 					mcbool = true
 				end if
 				PFlags::IdentFlag = true
 				if PFlags::isChanged then
-					exp::Tokens::set_Item(i,PFlags::UpdateIdent($Ident$exp::Tokens::get_Item(i)))
+					exp::Tokens::set_Item(i,PFlags::UpdateIdent(idt))
 					PFlags::SetUnaryFalse()
 					j = i
 				end if
@@ -1432,28 +1422,28 @@ class public ExprOptimizer
 						len = --exp::Tokens::get_Count()
 					end if
 				end if
-			elseif tok is CharLiteral then
+			elseif tok is chr as CharLiteral then
 				if PFlags::isChanged then
-					exp::Tokens::set_Item(i,PFlags::UpdateCharLit($CharLiteral$exp::Tokens::get_Item(i)))
+					exp::Tokens::set_Item(i,PFlags::UpdateCharLit(chr))
 					PFlags::SetUnaryFalse()
 					j = i
 				end if
-			elseif tok is NullLiteral then
+			elseif tok is nll as NullLiteral then
 				if PFlags::isChanged then
-					exp::Tokens::set_Item(i,PFlags::UpdateNullLit($NullLiteral$exp::Tokens::get_Item(i)))
+					exp::Tokens::set_Item(i,PFlags::UpdateNullLit(nll))
 					PFlags::SetUnaryFalse()
 					j = i
 				end if
-			elseif tok is MeTok then
+			elseif tok is mtk as MeTok then
 				if PFlags::isChanged then
-					exp::Tokens::set_Item(i,PFlags::UpdateMeTok($MeTok$exp::Tokens::get_Item(i)))
+					exp::Tokens::set_Item(i,PFlags::UpdateMeTok(mtk))
 					PFlags::SetUnaryFalse()
 					j = i
 				end if
-			elseif tok is StringLiteral then
+			elseif tok is slt as StringLiteral then
 				PFlags::StringFlag = true
 				if PFlags::isChanged then
-					exp::Tokens::set_Item(i,PFlags::UpdateStringLit($StringLiteral$exp::Tokens::get_Item(i)))
+					exp::Tokens::set_Item(i,PFlags::UpdateStringLit(slt))
 					PFlags::SetUnaryFalse()
 					j = i
 				end if
@@ -1473,15 +1463,15 @@ class public ExprOptimizer
 					PFlags::SetUnaryFalse()
 					j = i
 				end if
-			elseif tok is BooleanLiteral then
+			elseif tok is bll as BooleanLiteral then
 				if PFlags::isChanged then
-					exp::Tokens::set_Item(i,PFlags::UpdateBoolLit($BooleanLiteral$exp::Tokens::get_Item(i)))
+					exp::Tokens::set_Item(i,PFlags::UpdateBoolLit(bll))
 					PFlags::SetUnaryFalse()
 					j = i
 				end if
-			elseif tok is NumberLiteral then
+			elseif tok is numl as NumberLiteral then
 				if PFlags::isChanged then
-					exp::Tokens::set_Item(i,PFlags::UpdateNumLit($NumberLiteral$exp::Tokens::get_Item(i)))
+					exp::Tokens::set_Item(i,PFlags::UpdateNumLit(numl))
 					PFlags::SetUnaryFalse()
 					j = i
 				end if
@@ -1513,8 +1503,8 @@ class public ExprOptimizer
 				var iop = $IsOp$exp::Tokens::get_Item(i)
 				i++
 				if exp::Tokens::get_Item(i) isnot NullLiteral then
-					if (i < (exp::Tokens::get_Count() - 2)) andalso (exp::Tokens::get_Item(i) is Ident) andalso (exp::Tokens::get_Item(++i) is AsOp) then
-						iop::VarName = $Ident$exp::Tokens::get_Item(i)
+					if (i < (exp::Tokens::get_Count() - 2)) andalso (exp::Tokens::get_Item(i) is idt as Ident) andalso (exp::Tokens::get_Item(++i) is AsOp) then
+						iop::VarName = idt
 						exp:RemToken(i)
 						exp:RemToken(i)
 						len = --exp::Tokens::get_Count()
@@ -1663,8 +1653,7 @@ class public ExprOptimizer
 				i--
 				mctok = exp::Tokens::get_Item(i)
 
-				if mctok is GenericMethodNameTok then
-					var mct = $GenericMethodNameTok$mctok
+				if mctok is mct as GenericMethodNameTok then
 					if PFlags::MetCallFlag orelse PFlags::IdentFlag then
 						PFlags::MetCallFlag = false
 						PFlags::IdentFlag = false
@@ -1711,8 +1700,7 @@ class public ExprOptimizer
 						exp::RemToken(++i)
 						exp::Tokens::set_Item(i,mcnct)
 					end if
-				elseif mctok is ExprCallTok then
-					var mcnct = $ExprCallTok$mctok
+				elseif mctok is mcnct as ExprCallTok then
 					if PFlags::MetCallFlag orelse PFlags::IdentFlag then
 						PFlags::MetCallFlag = false
 						PFlags::IdentFlag = false
@@ -1721,8 +1709,7 @@ class public ExprOptimizer
 						exp::RemToken(++i)
 						exp::Tokens::set_Item(i,mcnct)
 					end if
-				elseif mctok is NullCondCallTok then
-					var mcnct = $NullCondCallTok$mctok
+				elseif mctok is mcnct as NullCondCallTok then
 					if PFlags::MetCallFlag orelse PFlags::IdentFlag then
 						PFlags::MetCallFlag = false
 						PFlags::IdentFlag = false
@@ -1731,8 +1718,7 @@ class public ExprOptimizer
 						exp::RemToken(++i)
 						exp::Tokens::set_Item(i,mcnct)
 					end if
-				elseif mctok is MethodCallTok then
-					mcmetcall = $MethodCallTok$mctok
+				elseif mctok is mcmetcall as MethodCallTok then
 					mcmetname = mcmetcall::Name
 					if PFlags::MetCallFlag orelse PFlags::IdentFlag then
 						PFlags::MetCallFlag = false
@@ -1746,8 +1732,7 @@ class public ExprOptimizer
 					if mcmetname::Value like "^::(.)*$" then
 						PFlags::MetCallFlag = true
 					end if
-				elseif mctok is StringLiteral then
-					mcstr = $StringLiteral$mctok
+				elseif mctok is mcstr as StringLiteral then
 					if PFlags::MetCallFlag orelse PFlags::IdentFlag then
 						PFlags::MetCallFlag = false
 						PFlags::IdentFlag = false

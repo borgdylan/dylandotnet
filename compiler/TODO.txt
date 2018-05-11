@@ -1,4 +1,2 @@
 throw expr: for use in fallbacks of ?? op only
-#nullcond: finish phases 2 and 3 
-pattern match: support "o is varName as T", rework if stmt and friends scope framing to make pattern match declared vars be inside the statement's new scope rather than the one outside
-
+#nullcond: finish phases 2 and 3

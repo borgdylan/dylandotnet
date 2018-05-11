@@ -126,8 +126,7 @@ class public Evaluator
         var ans = false
         foreach s in ops
             i++
-            if (s == "conv") andalso (iuo is IConvable) then
-                var idt = $IConvable$iuo
+            if (s == "conv") andalso (iuo is idt as IConvable) then
                 if idt::get_Conv() then
                     var src1 = AsmFactory::Type02
                     var ttok = idt::get_TTok()
@@ -140,25 +139,25 @@ class public Evaluator
                     end if
                 end if
             end if
-            if (s == "neg") andalso (iuo is INegatable) then
-                if #expr($INegatable$iuo)::get_DoNeg() then
+            if (s == "neg") andalso (iuo is ine as INegatable) then
+                if ine::get_DoNeg() then
                     ans = Helpers::EmitNeg(AsmFactory::Type02, emt, #ternary { i == ops[l] ? bo, BranchOptimisation::None}, lab)
                 end if
             end if
 
             if emt then
-                if (s == "not") andalso (iuo is INotable) then
-                    if #expr($INotable$iuo)::get_DoNot() then
+                if (s == "not") andalso (iuo is ino as INotable) then
+                    if ino::get_DoNot() then
                         Helpers::EmitNot(AsmFactory::Type02)
                     end if
                 end if
-                if (s == "inc") andalso (iuo is IIncDecable) then
-                    if #expr($IIncDecable$iuo)::get_DoInc() then
+                if (s == "inc") andalso (iuo is iid as IIncDecable) then
+                    if iid::get_DoInc() then
                         Helpers::EmitInc(AsmFactory::Type02)
                     end if
                 end if
-                if (s == "dec") andalso (iuo is IIncDecable) then
-                    if #expr($IIncDecable$iuo)::get_DoDec() then
+                if (s == "dec") andalso (iuo is iid as IIncDecable) then
+                    if iid::get_DoDec() then
                         Helpers::EmitDec(AsmFactory::Type02)
                     end if
                 end if
@@ -967,15 +966,13 @@ class public Evaluator
 
     method public boolean ASTEmit(var tok as Token, var emt as boolean, var bo as BranchOptimisation, var lab as Emit.Label)
         Helpers::NullExprFlg = tok is NullLiteral
-        var optok as Op = null
         var rc as Token = null
         var lc as Token = null
         var lctyp as Managed.Reflection.Type = null
         var rctyp as Managed.Reflection.Type = null
         var ans = false
 
-        if tok is Op then
-            optok = $Op$tok
+        if tok is optok as Op then
             var icflg as boolean = optok is IInstanceCheckOp
             var coalflg as boolean = optok is CoalesceOp
             var scondflg as boolean = optok is ShortCircuitLogicalOp
@@ -1009,28 +1006,36 @@ class public Evaluator
             AsmFactory::Type02 = #ternary {optok is ConditionalOp ? Loader::CachedLoadClass("System.Boolean"), lctyp}
 
             if icflg then
-                if emt andalso (optok is IsOp) then
+                if optok is iop as IsOp then
                     if rc is NullLiteral then
-                        ILEmitter::EmitNotRef(bo, lab)
-                        ans = bo != BranchOptimisation::None
+                        if emt then
+                            ILEmitter::EmitNotRef(bo, lab)
+                            ans = bo != BranchOptimisation::None
+                        end if
                     else
                         var istyp as Managed.Reflection.Type = Helpers::CommitEvalTTok(rc as TypeTok)
                         if istyp is null then
                             StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("The Class '{0}' is undefined.", rc::Value))
                         else
-                            var iop = $IsOp$optok
-                            if iop::VarName isnot null then
+                            if (iop::VarName isnot null) andalso !iop::LocInd::get_HasValue() then
                                 ILEmitter::LocInd++
                                 ILEmitter::DeclVar(iop::VarName::Value, istyp)
                                 SymTable::StoreFlg = true
                                 SymTable::AddVar(iop::VarName, true, ILEmitter::LocInd, istyp, iop::VarName::Line)
                                 SymTable::StoreFlg = false
-                                ILEmitter::EmitIsStore(istyp, bo, lab, ILEmitter::LocInd)
-                            else
-                                ILEmitter::EmitIs(istyp, bo, lab)
+
+                                iop::LocInd = new integer?(ILEmitter::LocInd)
                             end if
 
-                            ans = bo != BranchOptimisation::None
+                            if emt then
+                                if iop::VarName isnot null then
+                                    ILEmitter::EmitIsStore(istyp, bo, lab, $integer$iop::LocInd)
+                                else
+                                    ILEmitter::EmitIs(istyp, bo, lab)
+                                end if
+
+                                ans = bo != BranchOptimisation::None
+                            end if
                         end if
                     end if
                 elseif emt andalso (optok is IsNotOp) then
@@ -1149,8 +1154,7 @@ class public Evaluator
         else
             var typ2 as Managed.Reflection.Type
 
-            if tok is StringLiteral then
-                var slit as StringLiteral = $StringLiteral$tok
+            if tok is slit as StringLiteral then
                 AsmFactory::Type02 = Helpers::CommitEvalTTok(slit::LitTyp)
 
                 if emt then
@@ -1167,25 +1171,22 @@ class public Evaluator
                 end if
 
                 ans = ASTEmitUnary(slit, emt, bo, lab)
-            elseif tok is Literal then
-                var lit as Literal = $Literal$tok
-
+            elseif tok is lit as Literal then
                 if emt then
                     Helpers::EmitLiteral(lit)
                 end if
                 AsmFactory::Type02 = Helpers::CommitEvalTTok(lit::LitTyp)
 
                 ans = ASTEmitUnary(lit, emt, bo, lab)
-            elseif tok is Ident then
-                ans = ASTEmitIdent($Ident$tok, emt, bo, lab)
-            elseif tok is MethodCallTok then
-                ans = ASTEmitMethod($MethodCallTok$tok, emt, bo, lab)
-            elseif tok is NewCallTok then
-                ASTEmitNew($NewCallTok$tok,emt)
-            elseif tok is GettypeCallTok then
+            elseif tok is idt as Ident then
+                ans = ASTEmitIdent(idt, emt, bo, lab)
+            elseif tok is mct as MethodCallTok then
+                ans = ASTEmitMethod(mct, emt, bo, lab)
+            elseif tok is nct as NewCallTok then
+                ASTEmitNew(nct,emt)
+            elseif tok is gtctok as GettypeCallTok then
                 if emt then
                     //gettype section
-                    var gtctok as GettypeCallTok = $GettypeCallTok$tok
                     typ2 = Helpers::CommitEvalTTok(gtctok::Name)
                     if typ2 == null then
                         StreamUtils::WriteError(gtctok::Name::Line, gtctok::Name::Column, ILEmitter::CurSrcFile, string::Format("The Class '{0}' is not defined.", gtctok::Name::Value))
@@ -1194,8 +1195,7 @@ class public Evaluator
                     ILEmitter::EmitCall(Loader::CachedLoadClass("System.Type")::GetMethod("GetTypeFromHandle", new Managed.Reflection.Type[] {Loader::CachedLoadClass("System.RuntimeTypeHandle")}))
                 end if
                 AsmFactory::Type02 = Loader::CachedLoadClass("System.Type")
-            elseif tok is DefaultCallTok then
-                var dftok as DefaultCallTok = $DefaultCallTok$tok
+            elseif tok is dftok as DefaultCallTok then
                 typ2 = Helpers::CommitEvalTTok(dftok::Name)
                 if typ2 is null then
                     StreamUtils::WriteError(dftok::Name::Line, dftok::Name::Column, ILEmitter::CurSrcFile, string::Format("The Class '{0}' is not defined.", dftok::Name::Value))
@@ -1219,7 +1219,7 @@ class public Evaluator
                 end if
 
                 AsmFactory::Type02 = typ2
-            elseif tok is MeTok then
+            elseif tok is mt as MeTok then
                 if emt then
                     ILEmitter::EmitLdarg(0)
                 end if
@@ -1236,10 +1236,9 @@ class public Evaluator
                 else
                     AsmFactory::Type02 = AsmFactory::CurnTypB
                 end if
-                ASTEmitUnary($MeTok$tok, emt)
-            elseif tok is NewarrCallTok then
+                ASTEmitUnary(mt, emt)
+            elseif tok is newactok as NewarrCallTok then
                 //array creation section
-                var newactok as NewarrCallTok = $NewarrCallTok$tok
                 typ2 = Helpers::CommitEvalTTok(newactok::ArrayType)
                 ASTEmit(ConvToAST(ConvToRPN(newactok::ArrayLen)), emt)
                 if !Helpers::IsPrimitiveIntegralType(AsmFactory::Type02) then
@@ -1262,9 +1261,8 @@ class public Evaluator
                     ILEmitter::EmitNewarr(typ2)
                 end if
                 AsmFactory::Type02 = typ2::MakeArrayType()
-            elseif tok is ArrInitCallTok then
+            elseif tok is aictok as ArrInitCallTok then
                 //array initializer section
-                var aictok as ArrInitCallTok = $ArrInitCallTok$tok
                 typ2 = Helpers::CommitEvalTTok(aictok::ArrayType)
                 if typ2 = null then
                     StreamUtils::WriteError(aictok::ArrayType::Line, aictok::ArrayType::Column, ILEmitter::CurSrcFile, string::Format("The Class '{0}' is not defined.",aictok::ArrayType::ToString()))
@@ -1326,15 +1324,13 @@ class public Evaluator
                     end for
                     AsmFactory::Type02 = typ2
                 end if
-            elseif tok is ObjInitCallTok then
+            elseif tok is oictok as ObjInitCallTok then
                 //object initializer section
-                var oictok as ObjInitCallTok = $ObjInitCallTok$tok
                 ASTEmitNew(oictok::Ctor,emt)
                 var ctyp = AsmFactory::Type02
                 foreach el2 in oictok::Elements
                     if el2 isnot null then
-                        if el2 is AttrValuePair then
-                            var el as AttrValuePair = $AttrValuePair$el2
+                        if el2 is el as AttrValuePair then
                             if emt then
                                 ILEmitter::EmitDup()
                             end if
@@ -1352,8 +1348,7 @@ class public Evaluator
                             if emt then
                                 Helpers::EmitFldSt(fldinf, fldinf::get_IsStatic())
                             end if
-                        elseif el2 is MethodCallTok then
-                            var el as MethodCallTok = $MethodCallTok$el2
+                        elseif el2 is el as MethodCallTok then
                             if Helpers::SetPopFlg(el) isnot null then
                                 if emt then
                                     ILEmitter::EmitDup()
@@ -1377,8 +1372,7 @@ class public Evaluator
                         ASTEmit(oictok::MemberToAccess, emt)
                     end if
                 end if
-            elseif tok is TernaryCallTok then
-                var tcc as TernaryCallTok = $TernaryCallTok$tok
+            elseif tok is tcc as TernaryCallTok then
                 if emt then
                     SymTable::AddIf()
                 end if
@@ -1415,8 +1409,7 @@ class public Evaluator
                     ILEmitter::MarkLbl(SymTable::ReadIfEndLbl())
                     SymTable::PopIf()
                 end if
-            elseif tok is ExprCallTok then
-                var ecc as ExprCallTok = $ExprCallTok$tok
+            elseif tok is ecc as ExprCallTok then
                 ASTEmit(ConvToAST(ConvToRPN(ecc::Exp)), emt)
                 if ecc::MemberAccessFlg then
                     ASTEmitValueFilter(emt)
@@ -1428,8 +1421,7 @@ class public Evaluator
                 if AsmFactory::AutoChainFlg then
                     ans = ASTEmitUnary(ecc, emt, bo, lab)
                 end if
-            elseif tok is TupleCallTok then
-                var tcc as TupleCallTok = $TupleCallTok$tok
+            elseif tok is tcc as TupleCallTok then
                 //ASTEmit(ConvToAST(ConvToRPN(ecc::Exp)), emt)
                 var types = Enumerable::Select<of Managed.Reflection.Type, TypeTok>( _
                         Enumerable::Select<of Expr, Managed.Reflection.Type>(tcc::Params, new Func<of Expr, Managed.Reflection.Type>(EvaluateType)) _
@@ -1441,8 +1433,7 @@ class public Evaluator
                 end for
 
                 ASTEmitMethod(new MethodCallTok() {PosFromToken(tcc), Name = mn, Params = tcc::Params}, emt, BranchOptimisation::None, default Emit.Label)
-            elseif tok is NullCondCallTok then
-                var ecc as NullCondCallTok = $NullCondCallTok$tok
+            elseif tok is ecc as NullCondCallTok then
                 ASTEmit(ConvToAST(ConvToRPN(ecc::Exp)), emt)
 
                 if ecc::MemberAccessFlg then
@@ -1855,8 +1846,7 @@ class public Evaluator
     end method
 
     method public boolean EvaluateHIf(var rt as Token)
-        if rt is Op then
-            var o as Op = $Op$rt
+        if rt is o as Op then
             if o is EqOp then
                 return EvaluateHIf(o::LChild) == EvaluateHIf(o::RChild)
             elseif o is NeqOp then
@@ -1872,11 +1862,10 @@ class public Evaluator
             else
                 StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("The operator '{0}' is not supported when using #if and #elseif.", o::ToString()))
             end if
-        elseif rt is Ident then
+        elseif rt is rti as Ident then
             var b = SymTable::EvalDef(rt::Value)
-            return #ternary{#expr($Ident$rt)::get_DoNeg() ? !b, b}
-        elseif rt is BooleanLiteral then
-            var bl as BooleanLiteral = $BooleanLiteral$rt
+            return #ternary{rti::get_DoNeg() ? !b, b}
+        elseif rt is bl as BooleanLiteral then
             return #ternary{bl::get_DoNeg() ? !bl::BoolVal, bl::BoolVal}
         else
             StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("Tokens of type '{0}' are not supported when using #if and #elseif.", rt::GetType()::ToString()))

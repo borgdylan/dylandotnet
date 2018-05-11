@@ -144,8 +144,7 @@ class public StmtReader
         var reft as Managed.Reflection.Type = clss::InhClass::RefTyp
         var nrgenparams = 0
 
-        if clss::ClassName is GenericTypeTok then
-            var gmn = $GenericTypeTok$clss::ClassName
+        if clss::ClassName is gmn as GenericTypeTok then
             nrgenparams = gmn::Params::get_Count()
         end if
 
@@ -199,8 +198,7 @@ class public StmtReader
                 StreamUtils::WriteLine(string::Format("Adding Class: {0}.{1}" , AsmFactory::CurnNS, clss::ClassName::Value))
                 end #if
 
-                if clss::ClassName is GenericTypeTok then
-                    var gmn = $GenericTypeTok$clss::ClassName
+                if clss::ClassName is gmn as GenericTypeTok then
                     var paramdefs = gmn::Params
                     var genparams = new string[paramdefs::get_Count()]
                     var i = -1
@@ -226,8 +224,7 @@ class public StmtReader
                 AsmFactory::CurnTypB = AsmFactory::CurnTypB2::DefineNestedType(clss::ClassName::Value +  _
                     #ternary {nrgenparams > 0 ? i"`{nrgenparams}", string::Empty}, clssparams)
 
-                if clss::ClassName is GenericTypeTok then
-                    var gmn = $GenericTypeTok$clss::ClassName
+                if clss::ClassName is gmn as GenericTypeTok then
                     var paramdefs = gmn::Params
                     var genparams = new string[paramdefs::get_Count()]
                     var i = -1
@@ -249,8 +246,7 @@ class public StmtReader
             StreamUtils::WriteLine(string::Format("Continuing Class: {0}.{1}", AsmFactory::CurnNS, clss::ClassName::Value))
             end #if
 
-            if clss::ClassName is GenericTypeTok then
-                var gmn = $GenericTypeTok$clss::ClassName
+            if clss::ClassName is gmn as GenericTypeTok then
                 var paramdefs = gmn::Params
                 var genparams = new string[paramdefs::get_Count()]
                 var i = -1
@@ -436,8 +432,7 @@ class public StmtReader
 
         var nrgenparams = 0
 
-        if dels::DelegateName is GenericMethodNameTok then
-            var gmn = $GenericMethodNameTok$dels::DelegateName
+        if dels::DelegateName is gmn as GenericMethodNameTok then
             nrgenparams = gmn::Params::get_Count()
         end if
 
@@ -472,8 +467,7 @@ class public StmtReader
         Helpers::ApplyClsAttrs()
         SymTable::ResetMethodLsts()
 
-        if dels::DelegateName is GenericMethodNameTok then
-            var gmn = $GenericMethodNameTok$dels::DelegateName
+        if dels::DelegateName is gmn as GenericMethodNameTok then
             var paramdefs = gmn::Params
             var genparams = new string[paramdefs::get_Count()]
             var i = -1
@@ -697,8 +691,7 @@ class public StmtReader
                 else
                     AsmFactory::CurnMetB = AsmFactory::CurnTypB::DefineMethod(mtssnamstr, ma, Loader::CachedLoadClass("System.Void"), Managed.Reflection.Type::EmptyTypes)
 
-                    if mtss::MethodName is GenericMethodNameTok then
-                        var gmn = $GenericMethodNameTok$mtss::MethodName
+                    if mtss::MethodName is gmn as GenericMethodNameTok then
                         var paramdefs = gmn::Params
                         var genparams = new string[paramdefs::get_Count()]
                         var i = -1
@@ -1396,8 +1389,7 @@ class public StmtReader
 
         PreRead(stm, fpath)
 
-        if stm is RefasmStmt then
-            var rastm as RefasmStmt = $RefasmStmt$stm
+        if stm is rastm as RefasmStmt then
             rastm::AsmPath::Value = rastm::AsmPath::get_UnquotedValue()
 
             if rastm::AsmPath::Value like "^memory:(.)*$" then
@@ -1427,8 +1419,7 @@ class public StmtReader
 
                 Importer::AddAsm(rastm::AsmPath::Value, ILEmitter::Univ::LoadFile(rastm::AsmPath::Value))
             end if
-        elseif stm is RefstdasmStmt then
-            var rsastm as RefstdasmStmt = $RefstdasmStmt$stm
+        elseif stm is rsastm as RefstdasmStmt then
             rsastm::AsmPath::Value = Path::Combine(Importer::AsmBasePath, ParseUtils::ProcessMSYSPath(rsastm::AsmPath::get_UnquotedValue()))
 
             if !File::Exists(rsastm::AsmPath::Value) then
@@ -1441,8 +1432,7 @@ class public StmtReader
             end #if
 
             Importer::AddAsm(rsastm::AsmPath::Value, ILEmitter::Univ::LoadFile(rsastm::AsmPath::Value))
-        elseif stm is SignStmt then
-            var sstm as SignStmt = $SignStmt$stm
+        elseif stm is sstm as SignStmt then
             sstm::KeyPath::Value = ParseUtils::ProcessMSYSPath(sstm::KeyPath::get_UnquotedValue())
 
             if File::Exists(sstm::KeyPath::Value) then
@@ -1457,8 +1447,7 @@ class public StmtReader
             else
                 StreamUtils::WriteWarn(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"Key File '{sstm::KeyPath::Value}' does not exist.")
             end if
-        elseif stm is EmbedStmt then
-            var sstm as EmbedStmt = $EmbedStmt$stm
+        elseif stm is sstm as EmbedStmt then
             sstm::Path::Value = sstm::Path::get_UnquotedValue()
 
             if sstm::Path::Value like "^memory:(.)*$" then
@@ -1487,8 +1476,7 @@ class public StmtReader
                     StreamUtils::WriteWarn(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"Resource File '{sstm::Path::Value}' does not exist.")
                 end if
             end if
-        elseif stm is ImportStmt then
-            var istm as ImportStmt = $ImportStmt$stm
+        elseif stm is istm as ImportStmt then
             istm::NS::Value = istm::NS::get_UnquotedValue()
             istm::Alias::Value = istm::Alias::get_UnquotedValue()
 
@@ -1512,8 +1500,7 @@ class public StmtReader
 //            StreamUtils::Write("Importing Namespace: ")
 //            StreamUtils::WriteLine(listm::NS::Value)
 //            Importer::AddImp(listm::NS::Value)
-        elseif stm is AssemblyStmt then
-            var asms as AssemblyStmt = $AssemblyStmt$stm
+        elseif stm is asms as AssemblyStmt then
             AsmFactory::AsmNameStr = new AssemblyName(asms::AsmName::Value)
             if AsmFactory::StrongKey isnot null then
                 AsmFactory::AsmNameStr::set_KeyPair(AsmFactory::StrongKey)
@@ -1528,22 +1515,22 @@ class public StmtReader
             end #if
 
             SymTable::TypeLst = new TypeList()
-        elseif stm is VerStmt then
-            ReadVer($VerStmt$stm, fpath)
+        elseif stm is vstm as VerStmt then
+            ReadVer(vstm, fpath)
         elseif stm is DebugStmt then
             var dbgs as DebugStmt = $DebugStmt$stm
             AsmFactory::DebugFlg = dbgs::Flg
             if dbgs::Flg then
                 SymTable::AddDef("DEBUG")
             end if
-        elseif stm is ClassStmt then
-            ReadClass($ClassStmt$stm, fpath)
-        elseif stm is EnumStmt then
-            ReadEnum($EnumStmt$stm, fpath)
-        elseif stm is DelegateStmt then
-            ReadDelegate($DelegateStmt$stm)
-        elseif stm is FieldStmt then
-            ReadField($FieldStmt$stm)
+        elseif stm is clss as ClassStmt then
+            ReadClass(clss, fpath)
+        elseif stm is ess as EnumStmt then
+            ReadEnum(ess, fpath)
+        elseif stm is dlgs as DelegateStmt then
+            ReadDelegate(dlgs)
+        elseif stm is flss as FieldStmt then
+            ReadField(flss)
         elseif stm is EndClassStmt then
             if AsmFactory::isNested then
                 SymTable::TypeLst::EnsureDefaultCtor(AsmFactory::CurnTypB)
@@ -1587,8 +1574,8 @@ class public StmtReader
             //    SymTable::ResLst::Add(Tuple::Create<of string, string, boolean, boolean>("memory:" + cti::EnumBldr::get_FullName() + ".dll", string::Empty, false, true))
             //end if
 
-        elseif stm is MethodStmt then
-            ReadMethod($MethodStmt$stm, fpath)
+        elseif stm is mtss as MethodStmt then
+            ReadMethod(mtss, fpath)
         elseif stm is EndMethodStmt then
             AsmFactory::InMethodFlg = false
             AsmFactory::InCtorFlg = false
@@ -1617,8 +1604,7 @@ class public StmtReader
                     end if
                 end if
             end if
-        elseif stm is ReturnStmt then
-            var retstmt as ReturnStmt = $ReturnStmt$stm
+        elseif stm is retstmt as ReturnStmt then
             if retstmt::RExp isnot null then
                 if Helpers::IsByRefLike(AsmFactory::CurnMetB::get_ReturnType()) then
                     Helpers::RefRetFlg = true
@@ -1641,8 +1627,7 @@ class public StmtReader
                 ReturnFlg = true
             end if
             return true
-        elseif stm is VarStmt then
-            var curv as VarStmt = $VarStmt$stm
+        elseif stm is curv as VarStmt then
             vtyp = Helpers::CommitEvalTTok(curv::VarTyp)
             if vtyp = null then
                 StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"Class '{curv::VarTyp::ToString()}' is not defined.")
@@ -1650,8 +1635,7 @@ class public StmtReader
             ILEmitter::DeclVar(curv::VarName::Value, vtyp)
             ILEmitter::LocInd++
             SymTable::AddVar(curv::VarName, true, ILEmitter::LocInd, vtyp, ILEmitter::LineNr)
-        elseif stm is VarAsgnStmt then
-            var curva as VarAsgnStmt = $VarAsgnStmt$stm
+        elseif stm is curva as VarAsgnStmt then
             vtyp = Helpers::CommitEvalTTok(curva::VarTyp)
             if vtyp = null then
                 StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"Class '{curva::VarTyp::ToString()}' is not defined.")
@@ -1661,8 +1645,7 @@ class public StmtReader
 
             SymTable::AddVar(curva::VarName, true, ILEmitter::LocInd, vtyp, ILEmitter::LineNr)
             new Evaluator()::StoreEmit(curva::VarName, curva::RExpr)
-        elseif stm is InfVarAsgnStmt then
-            var curva as InfVarAsgnStmt = $InfVarAsgnStmt$stm
+        elseif stm is curva as InfVarAsgnStmt then
             eval = new Evaluator()
             vtyp = eval::EvaluateType(curva::RExpr)
             ILEmitter::DeclVar(curva::VarName::Value, vtyp)
@@ -1670,8 +1653,7 @@ class public StmtReader
 
             SymTable::AddVar(curva::VarName, true, ILEmitter::LocInd, vtyp, ILEmitter::LineNr)
             eval::StoreEmit(curva::VarName, curva::RExpr)
-        elseif stm is UsingAsgnStmt then
-            var curva as UsingAsgnStmt = $UsingAsgnStmt$stm
+        elseif stm is curva as UsingAsgnStmt then
             vtyp = Helpers::CommitEvalTTok(curva::VarTyp)
             if vtyp = null then
                 StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"Class '{curva::VarTyp::ToString()}' is not defined.")
@@ -1690,8 +1672,7 @@ class public StmtReader
             SymTable::AddUsing(curva::VarName::Value)
             ILEmitter::EmitTry()
             return cg::Process(curva, fpath)::Item1
-        elseif stm is InfUsingAsgnStmt then
-            var curva as InfUsingAsgnStmt = $InfUsingAsgnStmt$stm
+        elseif stm is curva as InfUsingAsgnStmt then
             eval = new Evaluator()
             vtyp = eval::EvaluateType(curva::RExpr)
             ILEmitter::DeclVar(curva::VarName::Value, vtyp)
@@ -1708,14 +1689,12 @@ class public StmtReader
             SymTable::AddUsing(curva::VarName::Value)
             ILEmitter::EmitTry()
             return cg::Process(curva, fpath)::Item1
-        elseif stm is NSStmt then
-            var nss as NSStmt = $NSStmt$stm
+        elseif stm is nss as NSStmt then
             AsmFactory::PushNS(nss::NS::get_UnquotedValue())
             cg::Process(nss, fpath)
         elseif stm is EndNSStmt then
             AsmFactory::PopNS()
-        elseif stm is AssignStmt then
-            var asgnstm as AssignStmt = $AssignStmt$stm
+        elseif stm is asgnstm as AssignStmt then
             if !AsmFactory::inEnum then
                 new Evaluator()::StoreEmit(asgnstm::LExp::Tokens::get_Item(0), asgnstm::RExp)
             else
@@ -1735,8 +1714,7 @@ class public StmtReader
                     end if
                 end if
             end if
-        elseif stm is MethodCallStmt then
-            var mcstmt as MethodCallStmt = $MethodCallStmt$stm
+        elseif stm is mcstmt as MethodCallStmt then
             if Helpers::SetPopFlg(mcstmt::MethodToken) isnot null then
                 //an hc == true also means the token is a method call
                 var hc as boolean = Helpers::SetCondFlg(mcstmt::MethodToken)
@@ -1761,8 +1739,7 @@ class public StmtReader
             else
                 StreamUtils::WriteWarn(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "No variable/field loads are allowed without a destination being specified")
             end if
-        elseif stm is IfStmt then
-            var ifstm as IfStmt = $IfStmt$stm
+        elseif stm is ifstm as IfStmt then
             SymTable::AddIf()
             SymTable::PushScope()
 
@@ -1810,8 +1787,7 @@ class public StmtReader
             end for
 
             return rtf andalso he
-        elseif stm is SwitchStmt then
-            var swstm as SwitchStmt = $SwitchStmt$stm
+        elseif stm is swstm as SwitchStmt then
             var brs = swstm::Branches
 
             var cases = #ternary { swstm::HasDefault ? --brs::get_Count(), brs::get_Count() }
@@ -1858,17 +1834,16 @@ class public StmtReader
             end for
 
             return rtf andalso he
-        elseif stm is DoStmt then
+        elseif stm is dstm as DoStmt then
             SymTable::PushScope()
             SymTable::AddLoop()
             ILEmitter::MarkLbl(SymTable::ReadLoopStartLbl())
-            cg::Process($DoStmt$stm, fpath)
+            cg::Process(dstm, fpath)
         elseif stm is BreakStmt then
             //TODO: Fix cases when jumping out of a protected try/catch
             ILEmitter::EmitBr(SymTable::ReadLoopEndLbl())
         elseif stm is ContinueStmt then
-            var fl = SymTable::ReadLoop() as ForLoopItem
-            if fl isnot null then
+            if SymTable::ReadLoop() is fl as ForLoopItem then
                 if !fl::ContinueFlg then
                     fl::ContinueFlg = true
                     fl::StepLabel = ILEmitter::DefineLbl()
@@ -1877,9 +1852,7 @@ class public StmtReader
             else
                 ILEmitter::EmitBr(SymTable::ReadLoopStartLbl())
             end if
-        elseif stm is UntilStmt then
-            var unstm as UntilStmt = $UntilStmt$stm
-
+        elseif stm is unstm as UntilStmt then
             //allow optimise
             if !#expr(new Evaluator()::Evaluate(unstm::Exp, BranchOptimisation::Inverted, SymTable::ReadLoopStartLbl())) then
                 ILEmitter::EmitBrfalse(SymTable::ReadLoopStartLbl())
@@ -1892,9 +1865,7 @@ class public StmtReader
             ILEmitter::MarkLbl(SymTable::ReadLoopEndLbl())
             SymTable::PopLoop()
             SymTable::PopScope()
-        elseif stm is WhileStmt then
-            var whstm as WhileStmt = $WhileStmt$stm
-
+        elseif stm is whstm as WhileStmt then
             //allow optimise
             if !#expr(new Evaluator()::Evaluate(whstm::Exp, BranchOptimisation::Normal, SymTable::ReadLoopStartLbl())) then
                 ILEmitter::EmitBrtrue(SymTable::ReadLoopStartLbl())
@@ -1907,8 +1878,7 @@ class public StmtReader
             ILEmitter::MarkLbl(SymTable::ReadLoopEndLbl())
             SymTable::PopLoop()
             SymTable::PopScope()
-        elseif stm is DoUntilStmt then
-            var dustm as DoUntilStmt = $DoUntilStmt$stm
+        elseif stm is dustm as DoUntilStmt then
             SymTable::PushScope()
             SymTable::AddLoop()
             ILEmitter::MarkLbl(SymTable::ReadLoopStartLbl())
@@ -1923,8 +1893,7 @@ class public StmtReader
             end if
 
             cg::Process(dustm, fpath)
-        elseif stm is DoWhileStmt then
-            var dwstm as DoWhileStmt = $DoWhileStmt$stm
+        elseif stm is dwstm as DoWhileStmt then
             SymTable::PushScope()
             SymTable::AddLoop()
             ILEmitter::MarkLbl(SymTable::ReadLoopStartLbl())
@@ -1939,8 +1908,8 @@ class public StmtReader
             end if
 
             cg::Process(dwstm, fpath)
-        elseif stm is ForStmt then
-            ReadFor($ForStmt$stm, fpath)
+        elseif stm is fstm as ForStmt then
+            ReadFor(fstm, fpath)
         elseif stm is EndIfStmt then
             if !SymTable::ReadIfElsePass() then
                 ILEmitter::MarkLbl(SymTable::ReadIfNxtBlkLbl())
@@ -1959,8 +1928,7 @@ class public StmtReader
 //            ILEmitter::MarkLbl(Helpers::GetLbl(#expr($PlaceStmt$stm)::LabelName::Value))
 //        elseif stm is GotoStmt then
 //            ILEmitter::EmitBr(Helpers::GetLbl(#expr($GotoStmt$stm)::LabelName::Value))
-        elseif stm is ThrowStmt then
-            var trostmt as ThrowStmt = $ThrowStmt$stm
+        elseif stm is trostmt as ThrowStmt then
             if trostmt::RExp isnot null then
                 new Evaluator()::Evaluate(trostmt::RExp)
                 if !Loader::CachedLoadClass("System.Exception")::IsAssignableFrom(AsmFactory::Type02) then
@@ -1989,12 +1957,12 @@ class public StmtReader
                     SymTable::SetInCatch(false)
                     ILEmitter::EmitFinally()
                     cg::Process($FinallyStmt$b, fpath)
-                elseif b is CatchStmt then
+                elseif b is cats as CatchStmt then
                     //exception filters
                     PreRead(b, fpath)
                     SymTable::PopScope()
                     SymTable::PushScope()
-                    var cats as CatchStmt = $CatchStmt$b
+
                     vtyp = Helpers::CommitEvalTTok(cats::ExTyp)
                     if vtyp is null then
                         StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"Class '{cats::ExTyp::Value}' is not defined.")
@@ -2054,61 +2022,57 @@ class public StmtReader
             ILEmitter::EmitEndTry()
             SymTable::PopScope()
             SymTable::PopUsing()
-        elseif stm is MethodAttrStmt then
-            SymTable::AddMtdCA(AttrStmtToCAB($MethodAttrStmt$stm))
-        elseif stm is FieldAttrStmt then
-            SymTable::AddFldCA(AttrStmtToCAB($FieldAttrStmt$stm))
-        elseif stm is ClassAttrStmt then
-            SymTable::AddClsCA(AttrStmtToCAB($ClassAttrStmt$stm))
-        elseif stm is AssemblyAttrStmt then
-            SymTable::AddAsmCA(AttrStmtToCAB($AssemblyAttrStmt$stm))
-        elseif stm is ForeachStmt then
-            ReadForeach($ForeachStmt$stm, fpath)
-        elseif stm is HDefineStmt then
-            SymTable::AddDef(#expr($HDefineStmt$stm)::Symbol::Value)
-        elseif stm is HUndefStmt then
-            SymTable::UnDef(#expr($HUndefStmt$stm)::Symbol::Value)
-        elseif stm is WarningStmt then
-            var wstm as WarningStmt = $WarningStmt$stm
+        elseif stm is ca as MethodAttrStmt then
+            SymTable::AddMtdCA(AttrStmtToCAB(ca))
+        elseif stm is ca as FieldAttrStmt then
+            SymTable::AddFldCA(AttrStmtToCAB(ca))
+        elseif stm is ca as ClassAttrStmt then
+            SymTable::AddClsCA(AttrStmtToCAB(ca))
+        elseif stm is ca as AssemblyAttrStmt then
+            SymTable::AddAsmCA(AttrStmtToCAB(ca))
+        elseif stm is festm as ForeachStmt then
+            ReadForeach(festm, fpath)
+        elseif stm is hdf as HDefineStmt then
+            SymTable::AddDef(hdf::Symbol::Value)
+        elseif stm is huf as HUndefStmt then
+            SymTable::UnDef(huf::Symbol::Value)
+        elseif stm is wstm as WarningStmt then
             StreamUtils::WriteWarn(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, wstm::Msg::get_UnquotedValue())
-        elseif stm is ErrorStmt then
-            var wstm as ErrorStmt = $ErrorStmt$stm
+        elseif stm is wstm as ErrorStmt then
             StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, wstm::Msg::get_UnquotedValue())
-        elseif stm is ParameterAttrStmt then
-            var pas as ParameterAttrStmt = $ParameterAttrStmt$stm
+        elseif stm is pas as ParameterAttrStmt then
             SymTable::AddParamCA(pas::Index,AttrStmtToCAB(pas))
-        elseif stm is PropertyStmt then
-            ReadProperty($PropertyStmt$stm, fpath)
-        elseif stm is PropertyGetStmt then
-            ReadPropertyGet($PropertyGetStmt$stm, fpath)
+        elseif stm is pstm as PropertyStmt then
+            ReadProperty(pstm, fpath)
+        elseif stm is prgs as PropertyGetStmt then
+            ReadPropertyGet(prgs, fpath)
         elseif stm is EndGetStmt then
             Read(new EndMethodStmt() {Line = stm::Line}, fpath)
-        elseif stm is PropertySetStmt then
-            ReadPropertySet($PropertySetStmt$stm, fpath)
+        elseif stm is prss as PropertySetStmt then
+            ReadPropertySet(prss, fpath)
         elseif stm is EndSetStmt then
             Read(new EndMethodStmt() {Line = stm::Line}, fpath)
         elseif stm is EndPropStmt then
             SymTable::CurnProp = null
         elseif stm is EndEventStmt then
             SymTable::CurnEvent = null
-        elseif stm is EventStmt then
-            ReadEvent($EventStmt$stm, fpath)
-        elseif stm is EventAddStmt then
-            ReadEventAdd($EventAddStmt$stm, fpath)
+        elseif stm is evs as EventStmt then
+            ReadEvent(evs, fpath)
+        elseif stm is evas as EventAddStmt then
+            ReadEventAdd(evas, fpath)
         elseif stm is EndAddStmt then
             Read(new EndMethodStmt() {Line = stm::Line}, fpath)
-        elseif stm is EventRemoveStmt then
-            ReadEventRemove($EventRemoveStmt$stm, fpath)
+        elseif stm is evrs as EventRemoveStmt then
+            ReadEventRemove(evrs, fpath)
         elseif stm is EndRemoveStmt then
             Read(new EndMethodStmt() {Line = stm::Line}, fpath)
-        elseif stm is PropertyAttrStmt then
-            SymTable::AddPropCA(AttrStmtToCAB($PropertyAttrStmt$stm))
-        elseif stm is EventAttrStmt then
-            SymTable::AddEventCA(AttrStmtToCAB($EventAttrStmt$stm))
-        elseif stm is EnumAttrStmt then
-            SymTable::AddEnumCA(AttrStmtToCAB($EnumAttrStmt$stm))
-        elseif stm is LockStmt then
-            var lstm as LockStmt = $LockStmt$stm
+        elseif stm is ca as PropertyAttrStmt then
+            SymTable::AddPropCA(AttrStmtToCAB(ca))
+        elseif stm is ca as EventAttrStmt then
+            SymTable::AddEventCA(AttrStmtToCAB(ca))
+        elseif stm is ca as EnumAttrStmt then
+            SymTable::AddEnumCA(AttrStmtToCAB(ca))
+        elseif stm is lstm as LockStmt then
             SymTable::PushScope()
             new Evaluator()::Evaluate(lstm::Lockee)
             if Loader::CachedLoadClass("System.ValueType")::IsAssignableFrom(AsmFactory::Type02) then
@@ -2123,8 +2087,7 @@ class public StmtReader
             ILEmitter::EmitCall(Loader::CachedLoadClass("System.Threading.Monitor")::GetMethod("Enter", new Managed.Reflection.Type[] {Loader::LoadClass("System.Object")}))
             ILEmitter::EmitTry()
             return cg::Process(lstm, fpath)::Item1
-        elseif stm is TryLockStmt then
-            var lstm as TryLockStmt = $TryLockStmt$stm
+        elseif stm is lstm as TryLockStmt then
             SymTable::PushScope()
             new Evaluator()::Evaluate(lstm::Lockee)
             if Loader::CachedLoadClass("System.ValueType")::IsAssignableFrom(AsmFactory::Type02) then
@@ -2152,13 +2115,11 @@ class public StmtReader
             end if
             SymTable::PopLock()
             SymTable::PopScope()
-        elseif stm is IncStmt then
-            var ic as IncStmt = $IncStmt$stm
+        elseif stm is ic as IncStmt then
             ic::NumVar::set_OrdOp("inc")
             ic::NumVar::set_DoInc(true)
             new Evaluator()::StoreEmit(ic::NumVar, new Expr() {AddToken(ic::NumVar)})
-        elseif stm is DecStmt then
-            var dc as DecStmt = $DecStmt$stm
+        elseif stm is dc as DecStmt then
             dc::NumVar::set_OrdOp("dec")
             dc::NumVar::set_DoDec(true)
             new Evaluator()::StoreEmit(dc::NumVar, new Expr() {AddToken(dc::NumVar)})

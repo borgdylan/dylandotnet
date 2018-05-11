@@ -92,7 +92,6 @@ class public partial Evaluator
 		var j as integer = 0
 		var tok as Token = null
 		var tok2 as Token = null
-		var optok as Op
 
 		if exp::Tokens::get_Count() == 1 then
 			return exp::Tokens::get_Item(0)
@@ -103,9 +102,8 @@ class public partial Evaluator
 		do until i == len
 			i++
 			tok = exp::Tokens::get_Item(i)
-			if tok is Op then
+			if tok is optok as Op then
 				if i >= 2 then
-					optok = $Op$tok
 					j = --i
 					tok2 = exp::Tokens::get_Item(j)
 					exp::RemToken(j)

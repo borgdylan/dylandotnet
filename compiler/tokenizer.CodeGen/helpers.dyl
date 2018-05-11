@@ -1622,10 +1622,10 @@ class public static Helpers
 
     [method: ComVisible(false)]
     method public static MethodNameTok StripDelMtdName(var t as Token)
-        if t is Ident then
-            return $MethodNameTok$#expr($Ident$t)
-        elseif t is MethodCallTok then
-            return #expr($MethodCallTok$t)::Name
+        if t is idt as Ident then
+            return $MethodNameTok$idt
+        elseif t is mct as MethodCallTok then
+            return mct::Name
         end if
         return null
     end method
@@ -1705,8 +1705,7 @@ class public static Helpers
 
     [method: ComVisible(false)]
     method public static boolean SetCondFlg(var t as Token)
-        var t3 as MethodCallTok = t as MethodCallTok
-        if t3 isnot null then
+        if t is t3 as MethodCallTok then
             t3::CondFlg = true
             return true
         end if
@@ -1772,8 +1771,7 @@ class public static Helpers
         if m isnot null then
             return m
         else
-            if mn is GenericMethodNameTok then
-                var gmn as GenericMethodNameTok = $GenericMethodNameTok$mn
+            if mn is gmn as GenericMethodNameTok then
                 var genparams as Managed.Reflection.Type[] = new Managed.Reflection.Type[gmn::Params::get_Count()]
                 var i = -1
                 foreach gp in gmn::Params
@@ -1817,8 +1815,7 @@ class public static Helpers
         var metinf as MethodInfo = null
         var meti as MethodInfo = null
 
-        if mn is GenericMethodNameTok then
-            var gmn as GenericMethodNameTok = $GenericMethodNameTok$mn
+        if mn is gmn as GenericMethodNameTok then
             var genparams as Managed.Reflection.Type[] = new Managed.Reflection.Type[gmn::Params::get_Count()]
             var i = -1
             foreach gp in gmn::Params
@@ -2316,8 +2313,7 @@ class public static Helpers
 
     [method: ComVisible(false)]
     method public static ConstInfo ProcessConstValueTok(var tok as Token)
-        if tok is Literal then
-            var lit as Literal = $Literal$tok
+        if tok is lit as Literal then
             return new ConstInfo() {Typ = CommitEvalTTok(lit::LitTyp), Value = LiteralToConst(lit)}
         elseif tok is Ident then
             var idtnamarr as IdentSegment[] = #expr($Ident$tok)::GetSegments()
@@ -2336,16 +2332,15 @@ class public static Helpers
             else
                 StreamUtils::WriteError(idtnamarr[0]::Line, idtnamarr[0]::Column, ILEmitter::CurSrcFile, string::Format("Class '{0}' is not defined.", idtnamarr[0]::Value))
             end if
-        elseif tok is GettypeCallTok then
-            var nm = #expr($GettypeCallTok$tok)::Name
+        elseif tok is gtc as GettypeCallTok then
+            var nm = gtc::Name
             var val = Helpers::CommitEvalTTok(nm)
             if val isnot null then
                 return new ConstInfo() {Typ = Loader::CachedLoadClass("System.Type"), Value = val}
             else
                 StreamUtils::WriteError(nm::Line, nm::Column, ILEmitter::CurSrcFile, i"Class '{nm}' is not defined.")
             end if
-        elseif tok is ArrInitCallTok then
-            var aictok as ArrInitCallTok = $ArrInitCallTok$tok
+        elseif tok is aictok as ArrInitCallTok then
             var typ2 = CommitEvalTTok(aictok::ArrayType)
             if typ2 is null then
                 StreamUtils::WriteError(aictok::ArrayType::Line, aictok::ArrayType::Column, ILEmitter::CurSrcFile, string::Format("The Class '{0}' is not defined.",aictok::ArrayType::ToString()))
@@ -2371,10 +2366,8 @@ class public static Helpers
 
     [method: ComVisible(false)]
     method public static ConstInfo ProcessConstTok(var tok as Token)
-        if tok is Op then
+        if tok is optok as Op then
             //use dlr to compute result
-            var optok = $Op$tok
-
             var lci = ProcessConstTok(optok::LChild)
             var rci = ProcessConstTok(optok::RChild)
 

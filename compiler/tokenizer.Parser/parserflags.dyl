@@ -86,21 +86,17 @@ class public Flags
 
 	method public void UpdateToken(var iuo as IUnaryOperatable)
 		iuo::set_OrdOp(OrdOp)
-		if iuo is IConvable then
-			var id = $IConvable$iuo
+		if iuo is id as IConvable then
 			id::set_Conv(ConvFlag)
 			id::set_TTok(ConvTyp)
 		end if
-		if iuo is INegatable then
-			var id = $INegatable$iuo
+		if iuo is id as INegatable then
 			id::set_DoNeg(NegFlag)
 		end if
-		if iuo is INotable then
-			var id = $INotable$iuo
+		if iuo is id as INotable then
 			id::set_DoNot(NotFlag)
 		end if
-		if iuo is IIncDecable then
-			var id = $IIncDecable$iuo
+		if iuo is id as IIncDecable then
 			id::set_DoInc(IncFlag)
 			id::set_DoDec(DecFlag)
 		end if

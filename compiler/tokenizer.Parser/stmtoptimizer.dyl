@@ -1215,8 +1215,8 @@ class public StmtOptimizer
 
             do until i >= --stm::Tokens::get_Count()
                 i++
-                if stm::Tokens::get_Item(i) is Attributes.Attribute then
-                    clss::AddAttr($Attributes.Attribute$stm::Tokens::get_Item(i))
+                if stm::Tokens::get_Item(i) is attr as Attributes.Attribute then
+                    clss::AddAttr(attr)
                 else
                     if stm::Tokens::get_Item(i) is ExtendsTok then
                         i++
@@ -1260,8 +1260,8 @@ class public StmtOptimizer
 
             do while i <= --stm::Tokens::get_Count()
                 i++
-                if stm::Tokens::get_Item(i) is Attributes.Attribute then
-                    flss::AddAttr($Attributes.Attribute$stm::Tokens::get_Item(i))
+                if stm::Tokens::get_Item(i) is attr as Attributes.Attribute then
+                    flss::AddAttr(attr)
                 else
                     i--
                     break
@@ -1305,8 +1305,8 @@ class public StmtOptimizer
 
             do while i <= --stm::Tokens::get_Count()
                 i++
-                if stm::Tokens::get_Item(i) is Attributes.Attribute then
-                    flss::AddAttr($Attributes.Attribute$stm::Tokens::get_Item(i))
+                if stm::Tokens::get_Item(i) is attr as Attributes.Attribute then
+                    flss::AddAttr(attr)
                 else
                     i--
                     break
@@ -1335,8 +1335,8 @@ class public StmtOptimizer
 
             do until i == len
                 i++
-                if stm::Tokens::get_Item(i) is Attributes.Attribute then
-                    prss::AddAttr($Attributes.Attribute$stm::Tokens::get_Item(i))
+                if stm::Tokens::get_Item(i) is attr as Attributes.Attribute then
+                    prss::AddAttr(attr)
                 else
                     i--
                     break
@@ -1460,8 +1460,8 @@ class public StmtOptimizer
 
             do until i == len
                 i++
-                if stm::Tokens::get_Item(i) is Attributes.Attribute then
-                    evss::AddAttr($Attributes.Attribute$stm::Tokens::get_Item(i))
+                if stm::Tokens::get_Item(i) is attr as Attributes.Attribute then
+                    evss::AddAttr(attr)
                 else
                     i--
                     break
@@ -1501,8 +1501,8 @@ class public StmtOptimizer
             //loop to get attributes
             do until i == len
                 i++
-                if stm::Tokens::get_Item(i) is Attributes.Attribute then
-                    mtss::AddAttr($Attributes.Attribute$stm::Tokens::get_Item(i))
+                if stm::Tokens::get_Item(i) is attr as Attributes.Attribute then
+                    mtss::AddAttr(attr)
                 else
                     i--
                     break
@@ -1634,8 +1634,8 @@ class public StmtOptimizer
             //loop to get attributes
             do until i == len
                 i++
-                if stm::Tokens::get_Item(i) is Attributes.Attribute then
-                    dels::AddAttr($Attributes.Attribute$stm::Tokens::get_Item(i))
+                if stm::Tokens::get_Item(i) is attr as Attributes.Attribute then
+                    dels::AddAttr(attr)
                 else
                     i--
                     break
@@ -1769,16 +1769,16 @@ class public StmtOptimizer
             if b then
                 var prgs as PropertyGetStmt = new PropertyGetStmt() {PosFromStmt(stm)}
                 var exp as Expr = new ExprOptimizer(PFlags)::Optimize(new Expr() {AddTokens(Enumerable::Skip<of Token>(stm::Tokens, 1))})
-                if exp::Tokens::get_Item(0) is MethodCallTok then
-                    prgs::Getter = #expr($MethodCallTok$exp::Tokens::get_Item(0))::Name
-                elseif exp::Tokens::get_Item(0) is Ident then
-                    prgs::Getter = $Ident$exp::Tokens::get_Item(0)
+                if exp::Tokens::get_Item(0) is mct as MethodCallTok then
+                    prgs::Getter = mct::Name
+                elseif exp::Tokens::get_Item(0) is idt as Ident then
+                    prgs::Getter = idt
                 end if
                 return prgs
             else
-                b = (stm::Tokens::get_Item(0) is GetTok) andalso (stm::Tokens::get_Item(1) is VisibilityAttr)
+                b = (stm::Tokens::get_Item(0) is GetTok) andalso (stm::Tokens::get_Item(1) is va as VisibilityAttr)
                 if b then
-                    return new PropertyGetStmt() {PosFromStmt(stm), Visibility = $VisibilityAttr$stm::Tokens::get_Item(1)}
+                    return new PropertyGetStmt() {PosFromStmt(stm), Visibility = va}
                 end if
             end if
         elseif stm::Tokens::get_Count() == 1 then
@@ -1797,16 +1797,16 @@ class public StmtOptimizer
             if b then
                 var prss as PropertySetStmt = new PropertySetStmt() {PosFromStmt(stm)}
                 var exp as Expr = new ExprOptimizer(PFlags)::Optimize(new Expr() {AddTokens(Enumerable::Skip<of Token>(stm::Tokens, 1))})
-                if exp::Tokens::get_Item(0) is MethodCallTok then
-                    prss::Setter = #expr($MethodCallTok$exp::Tokens::get_Item(0))::Name
-                elseif exp::Tokens::get_Item(0) is Ident then
-                    prss::Setter = $Ident$exp::Tokens::get_Item(0)
+                if exp::Tokens::get_Item(0) is mct as MethodCallTok then
+                    prss::Setter = mct::Name
+                elseif exp::Tokens::get_Item(0) is idt as Ident then
+                    prss::Setter = idt
                 end if
                 return prss
             else
-                b = (stm::Tokens::get_Item(0) is SetTok) andalso (stm::Tokens::get_Item(1) is VisibilityAttr)
+                b = (stm::Tokens::get_Item(0) is SetTok) andalso (stm::Tokens::get_Item(1) is va as VisibilityAttr)
                 if b then
-                    return new PropertySetStmt() {PosFromStmt(stm), Visibility = $VisibilityAttr$stm::Tokens::get_Item(1)}
+                    return new PropertySetStmt() {PosFromStmt(stm), Visibility = va}
                 end if
             end if
         elseif stm::Tokens::get_Count() == 1 then
@@ -1825,10 +1825,10 @@ class public StmtOptimizer
             if b then
                 var evrs as EventRemoveStmt = new EventRemoveStmt() {PosFromStmt(stm)}
                 var exp as Expr = new ExprOptimizer(PFlags)::Optimize(new Expr() {AddTokens(Enumerable::Skip<of Token>(stm::Tokens, 1))})
-                if exp::Tokens::get_Item(0) is MethodCallTok then
-                    evrs::Remover = #expr($MethodCallTok$exp::Tokens::get_Item(0))::Name
-                elseif exp::Tokens::get_Item(0) is Ident then
-                    evrs::Remover = $Ident$exp::Tokens::get_Item(0)
+                if exp::Tokens::get_Item(0) is mct as MethodCallTok then
+                    evrs::Remover = mct::Name
+                elseif exp::Tokens::get_Item(0) is idt as Ident then
+                    evrs::Remover = idt
                 end if
                 return evrs
             end if
@@ -1849,10 +1849,10 @@ class public StmtOptimizer
                 var evas as EventAddStmt = new EventAddStmt() {PosFromStmt(stm), Tokens = stm::Tokens}
                 //TODO: use addtoken to let it compute boundaries
                 var exp as Expr = new ExprOptimizer(PFlags)::Optimize(new Expr() {AddTokens(Enumerable::Skip<of Token>(stm::Tokens, 1))})
-                if exp::Tokens::get_Item(0) is MethodCallTok then
-                    evas::Adder = #expr($MethodCallTok$exp::Tokens::get_Item(0))::Name
-                elseif exp::Tokens::get_Item(0) is Ident then
-                    evas::Adder = $Ident$exp::Tokens::get_Item(0)
+                if exp::Tokens::get_Item(0) is mct as MethodCallTok then
+                    evas::Adder = mct::Name
+                elseif exp::Tokens::get_Item(0) is idt as Ident then
+                    evas::Adder = idt
                 end if
                 return evas
             end if
@@ -2078,12 +2078,12 @@ class public StmtOptimizer
 
             tok = stm::Tokens::get_Item(i)
 
-            if tok is OpenParen then
-                parenStack::Push($OpenParen$tok)
-            elseif tok is CloseParen then
+            if tok is opn as OpenParen then
+                parenStack::Push(opn)
+            elseif tok is cpn as CloseParen then
                 if parenStack::get_Count() > 0 then
                     var opn = parenStack::Pop()
-                    if !opn::IsValidCloseParen($CloseParen$tok) then
+                    if !opn::IsValidCloseParen(cpn) then
                         StreamUtils::WriteError(tok::Line, tok::Column, PFlags::CurPath, i"This parenthesis of type '{tok::Value}' does not match the opening counterpart of type '{opn::Value}'!")
                     end if
                 else

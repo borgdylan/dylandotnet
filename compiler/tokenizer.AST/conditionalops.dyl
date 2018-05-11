@@ -40,10 +40,12 @@ end class
 class public IsOp extends ConditionalOp implements IInstanceCheckOp
 
 	field public Ident VarName
+	field public integer? LocInd
 
 	method public void IsOp()
 		mybase::ctor()
 		PrecNo = 8
+		LocInd = $integer?$null
 	end method
 
 	method public override string ToString() => "is"

@@ -84,9 +84,9 @@ class private LPFileClosure
                 ThreadPool::QueueUserWorkItem(new WaitCallback(LPFile()),new LPFileTuple(sst::get_FilePath(), $IncludeStmt$stm))
                 //LPFile(new LPFileTuple(sst::get_FilePath(), $IncludeStmt$stm))
             end if
-        elseif stm is IStmtContainer then
+        elseif stm is isc as IStmtContainer then
             var clos = new LPFileClosure()
-            clos::sst = $IStmtContainer$stm
+            clos::sst = isc
             //flow path from closure to sub closure
             clos::sst::set_FilePath(sst::get_FilePath())
 
@@ -154,32 +154,32 @@ class public CodeGenerator
         var eval as Evaluator = new Evaluator()
 
         foreach s in c::get_Children()
-            if s is HIfStmt then
-                if eval::EvaluateHIf(#expr($HIfStmt$s)::Exp) then
-                    var res = Process($HIfStmt$s, spth)
+            if s is hifs as HIfStmt then
+                if eval::EvaluateHIf(hifs::Exp) then
+                    var res = Process(hifs, spth)
                     rtflag = res::Item1
                     awflag = res::Item2
                     continue
                 end if
 
-                foreach b in #expr($HIfStmt$s)::Branches
-                    if b is HElseIfStmt then
-                        if eval::EvaluateHIf(#expr($HElseIfStmt$b)::Exp) then
-                            var res = Process($HElseIfStmt$b, spth)
+                foreach b in hifs::Branches
+                    if b is hes as HElseIfStmt then
+                        if eval::EvaluateHIf(hes::Exp) then
+                            var res = Process(hes, spth)
                             rtflag = res::Item1
                             awflag = res::Item2
                             break
                         end if
-                    elseif b is HElseStmt then
-                        var res = Process($HElseStmt$b, spth)
+                    elseif b is hes as HElseStmt then
+                        var res = Process(hes, spth)
                         rtflag = res::Item1
                         awflag = res::Item2
                         break
                     end if
                 end for
             elseif s is EndHIfStmt then
-            elseif s is RegionStmt then
-                var res = Process($RegionStmt$s, spth, rtflag, awflag)
+            elseif s is rgs as RegionStmt then
+                var res = Process(rgs, spth, rtflag, awflag)
                 rtflag = res::Item1
                 awflag = res::Item2
             elseif s is EndRegionStmt then
