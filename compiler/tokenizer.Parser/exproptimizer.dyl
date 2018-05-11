@@ -673,6 +673,84 @@ class public ExprOptimizer
 		return stm
 	end method
 
+	method public Expr procTupleCall(var stm as Expr, var i as integer)
+		var ep2 as Expr = new Expr() {Line = stm::Line}
+		var lvl as integer = 1
+		var d as boolean = true
+		var cc as integer = 0
+
+		var mct as TupleCallTok = $TupleCallTok$stm::Tokens::get_Item(i)
+
+		i++
+		var causingTok = stm::Tokens::get_Item(i)
+		stm::RemToken(i)
+		var len as integer = --stm::Tokens::get_Count()
+		i--
+
+		var flgc as boolean[] = new boolean[] {PFlags::MetCallFlag, PFlags::IdentFlag, PFlags::StringFlag, PFlags::CtorFlag}
+
+		do until i == len
+
+			//get parameters
+			i++
+
+			if (stm::Tokens::get_Item(i) is RParen) orelse (stm::Tokens::get_Item(i) is RAParen) orelse (stm::Tokens::get_Item(i) is RCParen) then
+				lvl--
+				if lvl == 0 then
+					d = false
+					if (ep2::Tokens::get_Count() > 0) orelse (cc > 0) then
+						PFlags::ResetMCISFlgs()
+						mct::AddParam(Optimize(ep2, causingTok))
+					end if
+					stm::RemToken(i)
+					len = --stm::Tokens::get_Count()
+					i--
+					break
+				else
+					d = true
+				end if
+			elseif (stm::Tokens::get_Item(i) is LParen) orelse (stm::Tokens::get_Item(i) is LAParen) orelse (stm::Tokens::get_Item(i) is LCParen) then
+				lvl++
+				d = true
+				len = --stm::Tokens::get_Count()
+			elseif (stm::Tokens::get_Item(i) is Comma) then
+				if lvl == 1 then
+					cc++
+					d = false
+					//if ep2::Tokens::get_Count() > 0 then
+						PFlags::ResetMCISFlgs()
+						mct::AddParam(Optimize(ep2, causingTok))
+					//end if
+					ep2 = new Expr() {Line = stm::Line}
+					causingTok = stm::Tokens::get_Item(i)
+					stm::RemToken(i)
+					len = --stm::Tokens::get_Count()
+					i--
+				else
+					d = true
+				end if
+			else
+				d = true
+			end if
+
+			if d then
+				ep2::AddToken(stm::Tokens::get_Item(i))
+				stm::RemToken(i)
+				len = --stm::Tokens::get_Count()
+				i--
+			end if
+		end do
+
+		PFlags::MetCallFlag = flgc[0]
+		PFlags::IdentFlag = flgc[1]
+		PFlags::StringFlag = flgc[2]
+		PFlags::CtorFlag = flgc[3]
+
+		return stm
+
+	end method
+
+
 	method public Expr procExprCall(var stm as Expr, var i as integer)
 		var e as Expr = new Expr()
 		var ecc as ExprCallTok = $ExprCallTok$stm::Tokens::get_Item(i)
@@ -1472,6 +1550,25 @@ class public ExprOptimizer
 					end if
 				else
 					StreamUtils::WriteErrorLine(tok::Line, ++tok::EndColumn, PFlags::CurPath, "Expected a '(' after a '#expr'!")
+				end if
+			elseif tok is TupleTok then
+				if i < len then
+					var tk = exp::Tokens::get_Item(++i)
+					if tk is LParen then
+						exp::Tokens::set_Item(i, new TupleCallTok() {Line = exp::Line})
+						// if PFlags::isChanged then
+						// 	PFlags::UpdateToken($IUnaryOperatable$exp::Tokens::get_Item(i))
+						// 	PFlags::SetUnaryFalse()
+						// 	j = i
+						// end if
+						exp = procTupleCall(exp, i)
+						len = --exp::Tokens::get_Count()
+						// PFlags::CtorFlag = true
+					else
+						StreamUtils::WriteErrorLine(tk::Line, tk::Column, PFlags::CurPath, "Expected a '(' after a '#tuple'!")
+					end if
+				else
+					StreamUtils::WriteErrorLine(tok::Line, ++tok::EndColumn, PFlags::CurPath, "Expected a '(' after a '#tuple'!")
 				end if
 			elseif tok is NullCondTok then
 				if i < len then

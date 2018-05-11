@@ -7,6 +7,7 @@
 //Place, Suite 330, Boston, MA 02111-1307 USA
 
 import System
+import System.Linq
 import dylan.NET.Utils
 import dylan.NET.Reflection
 import dylan.NET.Tokenizer.AST.Interfaces
@@ -25,6 +26,10 @@ class public Evaluator
     method public prototype void ASTEmit(var tok as Token, var emt as boolean)
 
     method public prototype boolean ASTEmit(var tok as Token, var emt as boolean, var bo as BranchOptimisation, var lab as Emit.Label)
+
+    method public prototype Managed.Reflection.Type EvaluateType(var exp as Expr)
+
+    method public TypeTok ToTypeTok(var t as Managed.Reflection.Type) => new TypeTok(t)
 
     method private void ASTEmitValueFilter(var emt as boolean)
         if emt then
@@ -1412,6 +1417,19 @@ class public Evaluator
                 if AsmFactory::AutoChainFlg then
                     ans = ASTEmitUnary(ecc, emt, bo, lab)
                 end if
+            elseif tok is TupleCallTok then
+                var tcc as TupleCallTok = $TupleCallTok$tok
+                //ASTEmit(ConvToAST(ConvToRPN(ecc::Exp)), emt)
+                var types = Enumerable::Select<of Managed.Reflection.Type, TypeTok>( _
+                        Enumerable::Select<of Expr, Managed.Reflection.Type>(tcc::Params, new Func<of Expr, Managed.Reflection.Type>(EvaluateType)) _
+                    , new Func<of Managed.Reflection.Type, TypeTok>(ToTypeTok))
+
+                var mn = new GenericMethodNameTok("System.ValueTuple::Create") {PosFromToken(tcc)}
+                foreach t in types
+                    mn::AddParam(t)
+                end for
+
+                ASTEmitMethod(new MethodCallTok() {PosFromToken(tcc), Name = mn, Params = tcc::Params}, emt, BranchOptimisation::None, default Emit.Label)
             elseif tok is NullCondCallTok then
                 var ecc as NullCondCallTok = $NullCondCallTok$tok
                 ASTEmit(ConvToAST(ConvToRPN(ecc::Exp)), emt)

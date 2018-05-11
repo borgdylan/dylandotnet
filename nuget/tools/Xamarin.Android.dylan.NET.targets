@@ -35,7 +35,8 @@ Copyright (C) 2011-2012 Xamarin. All rights reserved.
         <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
         <_AndroidResourceDesigner>R.dyl</_AndroidResourceDesigner>
     </PropertyGroup>
-    <Import Project="$(MSBuildExtensionsPath)\dylan.NET.targets" />
+    <!--<Import Project="$(MSBuildExtensionsPath)\dylan.NET.targets" />-->
+    <Import Condition=" '$(LanguageTargets)' != '' " Project="$(LanguageTargets)" />
     <Import Project="Xamarin.Android.Common.targets" />
     <!--
     *******************************************
@@ -44,6 +45,7 @@ Copyright (C) 2011-2012 Xamarin. All rights reserved.
       the core targets.
     *******************************************
     -->
+    
     <Import Project="$(MSBuildThisFileDirectory)$(MSBuildThisFileName).After.targets" 
             Condition="Exists('$(MSBuildThisFileDirectory)$(MSBuildThisFileName).After.targets')"/>    
 </Project>

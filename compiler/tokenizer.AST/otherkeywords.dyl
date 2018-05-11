@@ -404,6 +404,10 @@ class public NullCondTok extends Token
 	method public override string ToString() => "#nullcond"
 end class
 
+class public TupleTok extends Token
+	method public override string ToString() => "#tuple"
+end class
+
 class public RegionTok extends NonExprToken
 	method public override string ToString() => "#region"
 end class

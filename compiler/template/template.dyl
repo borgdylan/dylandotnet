@@ -987,7 +987,7 @@ class public static Program
 		var xix as integer = RefRet(true)
 		Console::WriteLine(xix)
 
-		var myTuple as (integer, string, object, (boolean, DateTime))
+		var myTuple as (integer, string, object, (boolean, DateTime)) = #tuple(1, "a", $object$"x", #tuple(false, DateTime::get_Now()))
 	end method
 
 	[method: My(new integer[] {1, 2})]

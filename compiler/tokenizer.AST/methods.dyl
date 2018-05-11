@@ -32,7 +32,7 @@ class public MethodCallTok extends ValueToken
 
 	method public void AddParam(var paramtoadd as Expr)
 		Params::Add(paramtoadd)
-		if Params::get_Count() = 0 then
+		if Params::get_Count() == 0 then
 			//TODO: need Expr to provide richer metadata
 			Line = paramtoadd::Line
 			EndLine = paramtoadd::Line
@@ -69,6 +69,26 @@ class public DefaultCallTok extends ValueToken
 	method public void DefaultCallTok(var value as string)
 		mybase::ctor(value)
 		Name = new TypeTok()
+	end method
+
+end class
+
+class public TupleCallTok extends ValueToken
+
+	field public C5.ArrayList<of Expr> Params
+
+	method public void TupleCallTok()
+		mybase::ctor(string::Empty)
+		Params = new C5.ArrayList<of Expr>()
+	end method
+
+	method public void AddParam(var paramtoadd as Expr)
+		Params::Add(paramtoadd)
+		if Params::get_Count() == 0 then
+			//TODO: need Expr to provide richer metadata
+			Line = paramtoadd::Line
+			EndLine = paramtoadd::Line
+		end if
 	end method
 
 end class

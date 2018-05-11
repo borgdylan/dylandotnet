@@ -277,6 +277,8 @@ class public TokenOptimizer
             return new ExprTok() {PosFromToken(tok), Value = tok::Value}
         elseif tok::Value == "#nullcond" then
             return new NullCondTok() {PosFromToken(tok), Value = tok::Value}
+        elseif tok::Value == "#tuple" then
+            return new TupleTok() {PosFromToken(tok), Value = tok::Value}
         elseif tok::Value == "#region" then
             return new RegionTok() {PosFromToken(tok), Value = tok::Value}
         elseif tok::Value == "import" then
