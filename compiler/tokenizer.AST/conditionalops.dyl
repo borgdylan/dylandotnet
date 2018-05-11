@@ -6,6 +6,8 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple
 //Place, Suite 330, Boston, MA 02111-1307 USA
 
+import dylan.NET.Tokenizer.AST.Tokens
+
 class public abstract ConditionalOp extends Op
 end class
 
@@ -36,6 +38,8 @@ end class
 
 // is
 class public IsOp extends ConditionalOp implements IInstanceCheckOp
+
+	field public Ident VarName
 
 	method public void IsOp()
 		mybase::ctor()

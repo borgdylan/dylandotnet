@@ -336,6 +336,28 @@ class public static ILEmitter
 	end method
 
 	[method: ComVisible(false)]
+	method public static void EmitIsStore(var t as Managed.Reflection.Type, var bo as BranchOptimisation, var lab as Managed.Reflection.Emit.Label, var num as integer)
+		ILGen::Emit(Managed.Reflection.Emit.OpCodes::Isinst, t)
+		ILGen::Emit(Managed.Reflection.Emit.OpCodes::Dup)
+		EmitStloc(num)
+
+		switch $integer$bo
+		state
+			//none
+			ILGen::Emit(Managed.Reflection.Emit.OpCodes::Ldnull)
+			ILGen::Emit(Managed.Reflection.Emit.OpCodes::Ceq)
+			ILGen::Emit(Managed.Reflection.Emit.OpCodes::Ldc_I4_0)
+			ILGen::Emit(Managed.Reflection.Emit.OpCodes::Ceq)
+		state
+			//inverted
+			ILGen::Emit(Managed.Reflection.Emit.OpCodes::Brfalse, lab)
+		state
+			//normal
+			ILGen::Emit(Managed.Reflection.Emit.OpCodes::Brtrue, lab)
+		end switch
+	end method
+
+	[method: ComVisible(false)]
 	method public static void EmitLdelem(var typ as Managed.Reflection.Type)
 		if Loader::LoadClass("System.IntPtr")::Equals(typ) then
 			ILGen::Emit(Managed.Reflection.Emit.OpCodes::Ldelem_I)

@@ -988,6 +988,16 @@ class public static Program
 		Console::WriteLine(xix)
 
 		var myTuple as (integer, string, object, (boolean, DateTime)) = #tuple(1, "a", $object$"x", #tuple(false, DateTime::get_Now()))
+
+		var ii = 1
+		do while "abc" is s as string
+			ii++
+			Console::WriteLine(s)
+
+			if ii > 2 then
+				break
+			end if
+		end do
 	end method
 
 	[method: My(new integer[] {1, 2})]

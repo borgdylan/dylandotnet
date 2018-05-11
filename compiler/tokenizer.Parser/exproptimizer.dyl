@@ -1509,7 +1509,21 @@ class public ExprOptimizer
 				var n = procType2(exp,i)
 				len = --exp::Tokens::get_Count()
 				exp::Tokens::set_Item(i,new DefaultCallTok() {Name = n})
-			elseif (tok is IsOp) orelse (tok is IsNotOp) then
+			elseif tok is IsOp then
+				var iop = $IsOp$exp::Tokens::get_Item(i)
+				i++
+				if exp::Tokens::get_Item(i) isnot NullLiteral then
+					if (i < (exp::Tokens::get_Count() - 2)) andalso (exp::Tokens::get_Item(i) is Ident) andalso (exp::Tokens::get_Item(++i) is AsOp) then
+						iop::VarName = $Ident$exp::Tokens::get_Item(i)
+						exp:RemToken(i)
+						exp:RemToken(i)
+						len = --exp::Tokens::get_Count()
+					end if
+
+					exp = procType(exp,i)
+				end if
+				len = --exp::Tokens::get_Count()
+			elseif tok is IsNotOp then
 				i++
 				if exp::Tokens::get_Item(i) isnot NullLiteral then
 					exp = procType(exp,i)

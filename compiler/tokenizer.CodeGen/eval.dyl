@@ -1018,7 +1018,18 @@ class public Evaluator
                         if istyp is null then
                             StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("The Class '{0}' is undefined.", rc::Value))
                         else
-                            ILEmitter::EmitIs(istyp, bo, lab)
+                            var iop = $IsOp$optok
+                            if iop::VarName isnot null then
+                                ILEmitter::LocInd++
+                                ILEmitter::DeclVar(iop::VarName::Value, istyp)
+                                SymTable::StoreFlg = true
+                                SymTable::AddVar(iop::VarName, true, ILEmitter::LocInd, istyp, iop::VarName::Line)
+                                SymTable::StoreFlg = false
+                                ILEmitter::EmitIsStore(istyp, bo, lab, ILEmitter::LocInd)
+                            else
+                                ILEmitter::EmitIs(istyp, bo, lab)
+                            end if
+
                             ans = bo != BranchOptimisation::None
                         end if
                     end if
