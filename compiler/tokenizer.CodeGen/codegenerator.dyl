@@ -248,7 +248,7 @@ class public CodeGenerator
             end if
         end for
 
-        return ValueTuple::Create<of boolean, boolean>(rtflag, awflag)
+        return #tuple(rtflag, awflag)
     end method
 
     method assembly (boolean, boolean) Process(var c as IStmtContainer, var spth as string) => Process(c, spth, false, false)

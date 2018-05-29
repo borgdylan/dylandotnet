@@ -44,6 +44,12 @@ namespace dylan.NET.Tasks
             end get
         end property
 
+        property assembly static string RethrowingEx
+            get
+                return resman::GetString("RethrowingEx")
+            end get
+        end property
+
     end class
 
 end namespace

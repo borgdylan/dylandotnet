@@ -37,8 +37,8 @@ class public static Program
     [method: ComVisible(false)]
     method private static void main(var args as string[])
 
-        StreamUtils::WriteLine("dylan.NET Compiler v. 11.9.1.1 RC for Microsoft (R) .NET Framework (R) v. 4.6+")
-        StreamUtils::WriteLine("                                  and Xamarin Mono")
+        StreamUtils::WriteLine("dylan.NET Compiler v. 11.9.1.1 RC for Microsoft (R) .NET Framework (R) v. 4.6+,")
+        StreamUtils::WriteLine("                                  Microsoft (R) .NET Core (R) v. 2.0+ and Xamarin Mono")
         StreamUtils::WriteLine("This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.")
         StreamUtils::WriteLine("Copyright (C) 2018 Dylan Borg")
 
@@ -133,7 +133,7 @@ class public static Program
         main(args)
     end method
 
-    #if NET46 orelse NET45 orelse NET40 then
+    #if NET46 orelse NETSTANDARD2_0 orelse NETCOREAPP2_0 then
         method private static void InvokeAsyncWrapper(var args as object)
             Invoke($string[]$args)
         end method

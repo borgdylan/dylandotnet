@@ -33,4 +33,5 @@
   <data name="OnCompletedNotFound"><value>The given object does not have the 'OnCompleted(Action)' method.</value></data>
   <data name="GetAwaiterNotFound"><value>The given object does not have the 'GetAwaiter' method.</value></data>
   <data name="NotTResult"><value>The given object is not a {0}.</value></data>
+  <data name="RethrowingEx"><value>Rethrowing uncaught exception...</value></data>
   </root>

@@ -308,7 +308,7 @@ class public static ParseUtils
 					continue
 				elseif mode then
 					mode = false
-					es::Add(ValueTuple::Create<of integer, string>(exprStart, cbuf::ToString()))
+					es::Add(#tuple(exprStart, cbuf::ToString()))
 				end if
 			elseif cc == c'\\' andalso lc == 'q' then
 				i++
@@ -348,7 +348,7 @@ class public static ParseUtils
 				lvl--
 			elseif mode andalso cc == ',' andalso lvl == 0 then
 				mode = false
-				es::Add(ValueTuple::Create<of integer, string>(exprStart, cbuf::ToString()))
+				es::Add(#tuple(exprStart, cbuf::ToString()))
 			elseif mode andalso cc == ':' then
 				if lc == ':' then
 					i++
@@ -360,7 +360,7 @@ class public static ParseUtils
 					continue
 				else
 					mode = false
-					es::Add(ValueTuple::Create<of integer, string>(exprStart, cbuf::ToString()))
+					es::Add(#tuple(exprStart, cbuf::ToString()))
 				end if
 			end if
 

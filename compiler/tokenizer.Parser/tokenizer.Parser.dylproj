@@ -6,20 +6,29 @@
         <OutputType>Library</OutputType>
         <RootNamespace>dylan.NET.Tokenizer.Parser</RootNamespace>
         <AssemblyName>tokenizer.Parser</AssemblyName>
-        <TargetFrameworks>net46</TargetFrameworks>
+        <TargetFrameworks>net46;netstandard2.0</TargetFrameworks>
     </PropertyGroup>
-    <ItemGroup>
+    <ItemGroup Condition=" '$(TargetFramework)' == 'net46' ">
         <Reference Include="System" />
         <Reference Include="mscorlib" />
         <Reference Include="System.Core" />
         <Reference Include="System.Xml.Linq" />
         <Reference Include="System.Xml" />
-
-        <Reference Include="Managed.Reflection">
-            <HintPath>$(MSBuildThisFileDirectory)..\lib\Managed.Reflection.dll</HintPath>
+    </ItemGroup>
+    <ItemGroup>
+        <Reference Include="Managed.Reflection" Condition=" '$(TargetFramework)' == 'net46' ">
+            <HintPath>$(MSBuildThisFileDirectory)..\lib\net46\Managed.Reflection.dll</HintPath>
+            <CopyLocal>True</CopyLocal>
+            <Private>True</Private>
+        </Reference>
+        
+        <Reference Include="Managed.Reflection" Condition=" '$(TargetFramework)' == 'netstandard1.3' or '$(TargetFramework)' == 'netstandard2.0' ">
+            <HintPath>$(MSBuildThisFileDirectory)..\lib\netstandard1.3\Managed.Reflection.dll</HintPath>
+            <CopyLocal>True</CopyLocal>
+            <Private>True</Private>
         </Reference>
 
-        <PackageReference Include="C5" Version="2.4.5947.17249" />
+        <PackageReference Include="C5" Version="2.5.3" />
 
         <ProjectReference Include="$(MSBuildThisFileDirectory)..\dnu\dnu.dylproj" />
         <ProjectReference Include="$(MSBuildThisFileDirectory)..\tokenizer.AST\tokenizer.AST.dylproj" />

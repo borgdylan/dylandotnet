@@ -9,7 +9,7 @@
 class private static SetHelper
 
 	method assembly static boolean TrySetException<of TResult>(var tcs as TaskCompletionSource<of TResult>, var ex as Exception)
-        return #ternary {ex is OperationCanceledException ? tcs::TrySetCanceled(), tcs::TrySetException(ex)}
+		return #ternary {ex is OperationCanceledException ? tcs::TrySetCanceled(), tcs::TrySetException(ex)}
 	end method
 
 end class

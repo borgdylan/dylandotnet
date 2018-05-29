@@ -37,8 +37,17 @@ class public TaskClosure<of T>
 	method family virtual void Finally()
 	end method
 
+	//throw using EDI.Capture.Throw to preserve the stack trace, falling back to wrapping on net40
+	method public void Throw(var e as Exception)
+		#if NET40 then
+		throw new Exception(dylan.NET.Tasks.ExceptionMessages::get_RethrowingEx(), e)
+		#else
+		System.Runtime.ExceptionServices.ExceptionDispatchInfo::Capture(e)::Throw()
+		end #if
+	end method
+
 	method family virtual void Catch(var e as Exception)
-		throw e
+		Throw(e)
 	end method
 
 	method private void CatchOuter(var e as Exception)

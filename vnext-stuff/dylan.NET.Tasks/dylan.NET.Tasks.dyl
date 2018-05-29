@@ -26,7 +26,7 @@ end #if
 	import System.Runtime.CompilerServices
 end #if
 
-#if !PORTABLE andalso !NET40 then
+#if !PORTABLE then
 	[assembly: System.Resources.NeutralResourcesLanguage("en")]
 	#include "ExceptionMessages.designer.dyl"
 end #if

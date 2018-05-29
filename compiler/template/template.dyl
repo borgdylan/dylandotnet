@@ -766,6 +766,10 @@ class public static Program
 		// end if
 	end method
 
+	method private static void ThrowEx()
+		throw new Exception()
+	end method
+
 	[method: STAThread()]
 	method public static void main()
 //		gentest()
@@ -998,6 +1002,17 @@ class public static Program
 				break
 			end if
 		end do
+
+		try
+			try
+				ThrowEx()
+			catch e as Exception
+				System.Runtime.ExceptionServices.ExceptionDispatchInfo::Capture(e)::Throw()
+				//throw new Exception("wrapped", e)
+			end try
+		catch e2 as Exception
+			Console::WriteLine(e2::ToString())
+		end try
 	end method
 
 	[method: My(new integer[] {1, 2})]

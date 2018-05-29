@@ -33,4 +33,5 @@
   <data name="OnCompletedNotFound"><value>L-oġġett mgħoti m'għandux il-metodu 'OnCompleted(Action)'.</value></data>
   <data name="GetAwaiterNotFound"><value>L-oġġett mgħoti m'għandux il-metodu 'GetAwaiter'.</value></data>
   <data name="NotTResult"><value>L-oġġett mgħoti mhux tat-tip {0}.</value></data>
+  <data name="RethrowingEx"><value>Tfigħ ta' eċċezzjoni mhux maqbuda...</value></data>
   </root>

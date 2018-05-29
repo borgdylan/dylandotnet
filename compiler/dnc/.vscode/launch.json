@@ -2,6 +2,17 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": ".NET Core Launch (console)",
+            "type": "coreclr",
+            "request": "launch",
+            // "preLaunchTask": "build",
+            "program": "${workspaceRoot}/bin/Debug/netcoreapp2.0/dnc.dll",
+            "args": ["${workspaceRoot}/../tokenizer.CodeGen/tokenizer.CodeGen.dyl"],
+            "cwd": "${workspaceRoot}/../tokenizer.CodeGen",
+            "stopAtEntry": false,
+            "console": "internalConsole"
+        },
+        {
             "name": "Mono",
             "type": "mono",
             "request": "launch",

@@ -4,6 +4,7 @@
   <AssemblyInfo>
     <AssemblyName>dylan.NET.Tasks</AssemblyName>
     <AssemblyVersion>1.4.1.1</AssemblyVersion>
+    <AssemblyVersion>1.4.1.2</AssemblyVersion>
   </AssemblyInfo>
   <TypeParameters>
     <TypeParameter Name="TResult" />
@@ -29,6 +30,7 @@
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>1.4.1.1</AssemblyVersion>
+        <AssemblyVersion>1.4.1.2</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="awaitable" Type="System.Threading.Tasks.ValueTask&lt;TResult&gt;" />
@@ -46,6 +48,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>1.4.1.1</AssemblyVersion>
+        <AssemblyVersion>1.4.1.2</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Threading.Tasks.IAwaiter&lt;TResult&gt;</ReturnType>

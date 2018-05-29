@@ -6,16 +6,17 @@
         <OutputType>Library</OutputType>
         <RootNamespace>dylan.NET.Tokenizer.Lexer</RootNamespace>
         <AssemblyName>tokenizer.Lexer</AssemblyName>
-        <TargetFrameworks>net46</TargetFrameworks>
+        <TargetFrameworks>net46;netstandard2.0</TargetFrameworks>
     </PropertyGroup>
-    <ItemGroup>
+    <ItemGroup Condition=" '$(TargetFramework)' == 'net46' ">
         <Reference Include="System" />
         <Reference Include="mscorlib" />
         <Reference Include="System.Core" />
         <Reference Include="System.Xml.Linq" />
         <Reference Include="System.Xml" />
-
-        <PackageReference Include="C5" Version="2.4.5947.17249" />
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="C5" Version="2.5.3" />
 
         <ProjectReference Include="$(MSBuildThisFileDirectory)..\tokenizer.AST\tokenizer.AST.dylproj" />
         <ProjectReference Include="$(MSBuildThisFileDirectory)..\dnu\dnu.dylproj" />

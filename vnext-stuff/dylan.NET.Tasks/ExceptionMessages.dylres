@@ -4,3 +4,4 @@ GetResultNotFound string "The given object does not have the 'GetResult' method.
 OnCompletedNotFound string "The given object does not have the 'OnCompleted(Action)' method."
 GetAwaiterNotFound string "The given object does not have the 'GetAwaiter' method."
 NotTResult string "The given object is not a {0}."
+RethrowingEx string "Rethrowing uncaught exception..."

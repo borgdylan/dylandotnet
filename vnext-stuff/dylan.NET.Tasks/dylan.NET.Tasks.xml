@@ -733,6 +733,11 @@
             <value>The Task&lt;T&gt; associated to the encapsulated TaskCompletionSource&lt;T&gt;.</value>
             <remarks>The Task instance is also returned by all overloads of the Await method available in this class.</remarks>
         </member>
+        <member name="M:System.Threading.Tasks.TaskClosure`1.Throw(`0System`0.`0Exception`0)">
+            <param name="e">The exception to rethrow and pass along to the caller.</param>
+            <summary>Rethrows a given exception preserving the stack trace.</summary>
+            <remarks>This is useful in asynchronous catch handlers and makes use of ExceptionDispatchInfo whenever possible, else wraps the exception.</remarks>
+        </member>
         <member name="T:System.Threading.Tasks.TaskHelpers">
             <summary>Helpers for awaiting Tasks and other things that implement IAwaiter or IAwaiter&lt;T&gt;.</summary>
             <remarks>These helpers may also be useful for other languages that do not support the await keyword. Do note that this API surface is also available on .NET 4 and some PCL profiles.</remarks>
