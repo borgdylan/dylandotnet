@@ -45,8 +45,10 @@ class public static SymTable
     field private static C5.LinkedList<of SwitchItem> SwitchLst
     //tuples have file, logical name, embed only if used (for assemblies), is ani (for assemblies)
     field assembly static C5.LinkedList<of Tuple<of string, string, boolean, boolean> > ResLst
+
     field private static C5.LinkedList<of LoopItem> LoopLst
     field private static C5.LinkedList<of TryItem> TryLst
+    field private static C5.LinkedList<of ITryLoopItem> TryLoopLst
 
     field assembly static C5.TreeSet<of string> DefSyms
 
@@ -64,8 +66,11 @@ class public static SymTable
         VarLst::Push(new C5.HashDictionary<of string, VarItem>(C5.MemoryType::Normal))
         IfLst = new C5.LinkedList<of IfItem>()
         SwitchLst = new C5.LinkedList<of SwitchItem>()
+
         LoopLst = new C5.LinkedList<of LoopItem>()
         TryLst = new C5.LinkedList<of TryItem>()
+        TryLoopLst = new C5.LinkedList<of ITryLoopItem>()
+
         LblLst = new C5.LinkedList<of LabelItem>()
         ResLst = new C5.LinkedList<of Tuple<of string, string, boolean, boolean> >()
         StoreFlg = false
@@ -91,8 +96,11 @@ class public static SymTable
     method public static void ResetMethodLsts()
         IfLst::Clear()
         SwitchLst::Clear()
+
         TryLst::Clear()
         LoopLst::Clear()
+        TryLoopLst::Clear()
+
         LblLst::Clear()
         VarLst::Clear()
         VarLst::Push(new C5.HashDictionary<of string, VarItem>(C5.MemoryType::Normal))
@@ -243,32 +251,44 @@ class public static SymTable
 
     [method: ComVisible(false)]
     method public static void AddLock(var loc as integer)
-        TryLst::Push(new LockItem(loc, ILEmitter::LineNr))
+        var li = new LockItem(loc, ILEmitter::LineNr)
+        TryLst::Push(li)
+        TryLoopLst::Push(li)
     end method
 
     [method: ComVisible(false)]
     method public static void AddTryLock(var loc as integer)
-        TryLst::Push(new LockItem(loc, ILEmitter::DefineLbl(), ILEmitter::LineNr))
+        var li = new LockItem(loc, ILEmitter::DefineLbl(), ILEmitter::LineNr)
+        TryLst::Push(li)
+        TryLoopLst::Push(li)
     end method
 
     [method: ComVisible(false)]
     method public static void AddTry()
-        TryLst::Push(new TryItem(ILEmitter::LineNr))
+        var ti = new TryItem(ILEmitter::LineNr)
+        TryLst::Push(ti)
+        TryLoopLst::Push(ti)
     end method
 
     [method: ComVisible(false)]
     method public static void AddUsing(var loc as string)
-        TryLst::Push(new UsingItem(loc, ILEmitter::LineNr))
+        var ui = new UsingItem(loc, ILEmitter::LineNr)
+        TryLst::Push(ui)
+        TryLoopLst::Push(ui)
     end method
 
     [method: ComVisible(false)]
     method public static void AddLoop()
-        LoopLst::Push(new LoopItem(ILEmitter::DefineLbl(), ILEmitter::DefineLbl(), ILEmitter::LineNr))
+        var li = new LoopItem(ILEmitter::DefineLbl(), ILEmitter::DefineLbl(), ILEmitter::LineNr)
+        LoopLst::Push(li)
+        TryLoopLst::Push(li)
     end method
 
     [method: ComVisible(false)]
     method public static void AddForLoop(var iter as string, var _step as Expr, var dir as boolean, var t as TypeTok)
-        LoopLst::Push(new ForLoopItem(ILEmitter::DefineLbl(), ILEmitter::DefineLbl(), iter, _step, dir, t, ILEmitter::LineNr))
+        var fli = new ForLoopItem(ILEmitter::DefineLbl(), ILEmitter::DefineLbl(), iter, _step, dir, t, ILEmitter::LineNr)
+        LoopLst::Push(fli)
+        TryLoopLst::Push(fli)
     end method
 
     [method: ComVisible(false)]
@@ -284,21 +304,25 @@ class public static SymTable
     [method: ComVisible(false)]
     method public static void PopLock()
         TryLst::Pop()
+        TryLoopLst::Pop()
     end method
 
     [method: ComVisible(false)]
     method public static void PopTry()
         TryLst::Pop()
+        TryLoopLst::Pop()
     end method
 
     [method: ComVisible(false)]
     method public static void PopUsing()
         TryLst::Pop()
+        TryLoopLst::Pop()
     end method
 
     [method: ComVisible(false)]
     method public static void PopLoop()
         LoopLst::Pop()
+        TryLoopLst::Pop()
     end method
 
     [method: ComVisible(false)]
@@ -372,7 +396,16 @@ class public static SymTable
     end method
 
     [method: ComVisible(false)]
+    method public static void SetInFinally(var val as boolean)
+        var tri as TryItem = TryLst::get_Last()
+        tri::InFinally = val
+    end method
+
+    [method: ComVisible(false)]
     method public static boolean GetInCatch() => #ternary {TryLst::get_Count() > 0 ? TryLst::get_Last()::InCatch, false}
+
+    [method: ComVisible(false)]
+    method public static boolean GetInFinally() => #ternary {TryLst::get_Count() > 0 ? TryLst::get_Last()::InFinally, false}
 
     [method: ComVisible(false)]
     method public static void AddLbl(var nam as string)
@@ -434,6 +467,26 @@ class public static SymTable
 
     [method: ComVisible(false)]
     method public static boolean CheckReturnInTry() => TryLst::get_Count() != 0
+
+    //detect a break/continue that would escape protected blocks
+    [method: ComVisible(false)]
+    method public static boolean CheckLoopInTry()
+        var tflg = false
+
+        foreach item in TryLoopLst::Backwards()
+            if item::get_Kind() == TryLoopItemKind::Try then
+                tflg = true
+            elseif item::get_Kind() == TryLoopItemKind::Loop then
+                if tflg then
+                    return true
+                else
+                    return false
+                end if
+            end if
+        end for
+
+        return false
+    end method
 
     [method: ComVisible(false)]
     method public static void PushScope()

@@ -91,8 +91,8 @@ class public static Loader
 
 			foreach curasmrec in Importer::Asms::get_Values()
 				var curasm = curasmrec::Asm
-				var mustBreak = false
-				
+				// var mustBreak = false
+
 				try
 //					if curasm == AsmFactory::AsmB then
 //						//asmb = $Managed.Reflection.Emit.AssemblyBuilder$curasm
@@ -112,16 +112,17 @@ class public static Loader
 							if nest then
 								typ = typ::GetNestedType(na[1])
 							end if
-							mustBreak = true
+							// mustBreak = true
+							break
 						end if
 //					end if
 				catch ex as Exception
 					typ = null
 				end try
-				
-				if mustBreak then
-				    break
-				end if
+
+				// if mustBreak then
+				//     break
+				// end if
 			end for
 
 			if typ isnot null then

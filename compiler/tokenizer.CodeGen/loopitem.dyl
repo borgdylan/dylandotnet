@@ -10,7 +10,7 @@ import dylan.NET.Tokenizer.AST.Exprs
 import Managed.Reflection
 import dylan.NET.Tokenizer.AST.Tokens.TypeToks
 
-class public LoopItem
+class public LoopItem implements ITryLoopItem
 
 	field public Emit.Label EndLabel
 	field public Emit.Label StartLabel
@@ -26,6 +26,8 @@ class public LoopItem
 		StartLabel = startl
 		Line = ln
 	end method
+
+	property public virtual TryLoopItemKind Kind => TryLoopItemKind::Loop
 
 end class
 

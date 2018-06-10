@@ -60,6 +60,7 @@ namespace dylan.NET.Tokenizer.CodeGen
     //tilambdas included in typeitem file
     #include "collectionitem.dyl"
     #include "typelist.dyl"
+    #include "itryloopitem.dyl"
     #include "labelitem.dyl"
     #include "loopitem.dyl"
     #include "ifitem.dyl"

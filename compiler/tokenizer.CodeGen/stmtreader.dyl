@@ -1617,11 +1617,15 @@ class public StmtReader
             end if
 
             if SymTable::CheckReturnInTry() then
-                var lbl = SymTable::GetRetLbl()
-                if !AsmFactory::CurnMetB::get_ReturnType()::Equals(Loader::CachedLoadClass("System.Void")) then
-                    ILEmitter::EmitStloc(SymTable::FindVar("$leave_ret_var$")::Index)
+                if SymTable::GetInFinally() then
+                    StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "No branching out of a finally block is allowed!")
+                else
+                    var lbl = SymTable::GetRetLbl()
+                    if !AsmFactory::CurnMetB::get_ReturnType()::Equals(Loader::CachedLoadClass("System.Void")) then
+                        ILEmitter::EmitStloc(SymTable::FindVar("$leave_ret_var$")::Index)
+                    end if
+                    ILEmitter::EmitLeave(lbl)
                 end if
-                ILEmitter::EmitLeave(lbl)
             else
                 ILEmitter::EmitRet()
                 ReturnFlg = true
@@ -1840,17 +1844,41 @@ class public StmtReader
             ILEmitter::MarkLbl(SymTable::ReadLoopStartLbl())
             cg::Process(dstm, fpath)
         elseif stm is BreakStmt then
-            //TODO: Fix cases when jumping out of a protected try/catch
-            ILEmitter::EmitBr(SymTable::ReadLoopEndLbl())
+            if SymTable::CheckLoopInTry() then
+                if SymTable::GetInFinally() then
+                    StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "No branching out of a finally block is allowed!")
+                else
+                    ILEmitter::EmitLeave(SymTable::ReadLoopEndLbl())
+                end if
+            else
+                ILEmitter::EmitBr(SymTable::ReadLoopEndLbl())
+            end if
         elseif stm is ContinueStmt then
             if SymTable::ReadLoop() is fl as ForLoopItem then
                 if !fl::ContinueFlg then
                     fl::ContinueFlg = true
                     fl::StepLabel = ILEmitter::DefineLbl()
                 end if
-                ILEmitter::EmitBr(fl::StepLabel)
+
+                if SymTable::CheckLoopInTry() then
+                    if SymTable::GetInFinally() then
+                        StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "No branching out of a finally block is allowed!")
+                    else
+                        ILEmitter::EmitLeave(fl::StepLabel)
+                    end if
+                else
+                    ILEmitter::EmitBr(fl::StepLabel)
+                end if
             else
-                ILEmitter::EmitBr(SymTable::ReadLoopStartLbl())
+                if SymTable::CheckLoopInTry() then
+                    if SymTable::GetInFinally() then
+                        StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, "No branching out of a finally block is allowed!")
+                    else
+                        ILEmitter::EmitLeave(SymTable::ReadLoopStartLbl())
+                    end if
+                else
+                    ILEmitter::EmitBr(SymTable::ReadLoopStartLbl())
+                end if
             end if
         elseif stm is unstm as UntilStmt then
             //allow optimise
@@ -1955,6 +1983,7 @@ class public StmtReader
                     SymTable::PopScope()
                     SymTable::PushScope()
                     SymTable::SetInCatch(false)
+                    SymTable::SetInFinally(true)
                     ILEmitter::EmitFinally()
                     cg::Process($FinallyStmt$b, fpath)
                 elseif b is cats as CatchStmt then
