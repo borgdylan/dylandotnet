@@ -103,7 +103,7 @@ class public static Program
                         StreamUtils::Write(string::Format("Now Lexing: {0}", args[i]))
                         end #if
 
-                        var pstmts as StmtSet = new Lexer()::AnalyzeWithMMap(args[i])
+                        var pstmts as StmtSet = new Lexer()::Analyze(args[i])
 
                         #if DEBUG then
                         StreamUtils::Write(string::Format(c"...Done.\nNow Parsing: {0}", args[i]))
