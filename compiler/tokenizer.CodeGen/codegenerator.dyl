@@ -210,7 +210,7 @@ class public CodeGenerator
                         ILEmitter::CurSrcFile = inclustm::Path::Value
                         ILEmitter::AddSrcFile(inclustm::Path::Value)
 
-                        var pstmts as StmtSet = new Lexer()::AnalyzeWithMMap(inclustm::Path::Value)
+                        var pstmts as StmtSet = new Lexer()::Analyze(inclustm::Path::Value)
                         #if DEBUG then
                         StreamUtils::WriteLine(string::Format("Now Parsing: {0}", inclustm::Path::Value))
                         end #if
