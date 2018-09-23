@@ -43,6 +43,7 @@ class public static Program
         StreamUtils::WriteLine("Copyright (C) 2018 Dylan Borg")
 
         var lastsdk as string = null
+        var outputFile as string = null
         var inm = false
         var pcl = false
 
@@ -63,6 +64,10 @@ class public static Program
                         elseif args[i] == "-cd" then
                             i++
                             Environment::set_CurrentDirectory(args[i])
+                        elseif args[i] == "-out" then
+                            i++
+                            outputFile = args[i]
+                            StreamUtils::WriteWarn(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("File '{0}' set as output.", args[i]))
                         elseif args[i] == "-inmemory" then
                             inm = true
                         elseif args[i] == "-pcl" then

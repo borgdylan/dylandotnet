@@ -77,6 +77,9 @@ Modified by Dylan Borg for dylan.NET Support, based on the C# version.
         <PropertyGroup>
             <!-- If we are targeting winmdobj we want to specifically the pdbFile property since we do not want it to collide with the output of winmdexp-->
             <PdbFile Condition="'$(PdbFile)' == '' and '$(OutputType)' == 'winmdobj' and '$(_DebugSymbolsProduced)' == 'true'">$(IntermediateOutputPath)$(TargetName).compile.pdb</PdbFile>
+            <OutputFile>@(IntermediateAssembly)</OutputFile>
+            <OutputFile Condition=" (('$(OutputType)' != 'Exe') and ('$(OutputType)' != 'WinExe')) and ('$(OutputFile)' == '') ">$(AssemblyName).dll</OutputFile>
+            <OutputFile Condition=" (('$(OutputType)' == 'Exe') or ('$(OutputType)' == 'WinExe')) and ('$(OutputFile)' == '') ">$(AssemblyName).exe</OutputFile>
         </PropertyGroup>
 
         <PropertyGroup Condition="'$(UseSharedCompilation)' == ''">
@@ -114,12 +117,11 @@ Modified by Dylan Borg for dylan.NET Support, based on the C# version.
         <Message Text="Compiling for Target: $(TargetFrameworkMoniker)" />
         <!--<Message Text="Make a reference assembly: $(ProduceReferenceAssembly)" />-->
         <!--<Exec Command="mono $(MSBuildThisFileDirectory)dnc.exe $(InputFile)" />-->
-        <DncTask InputFile="$(InputFile)" ReferenceAssembly="$(ProduceReferenceAssembly)" />
+        <DncTask InputFile="$(InputFile)" ReferenceAssembly="$(ProduceReferenceAssembly)"  />
 
         <!-- Hack to correctly handle .NET Core since dylan.NET uses .exe for all executables regardless of TFM -->
-        <Copy Condition=" ('$(OutputType)' != 'Exe') and ('$(OutputType)' != 'WinExe') " SourceFiles="$(AssemblyName).dll" DestinationFiles="@(IntermediateAssembly)" />
-        <Copy Condition=" ('$(OutputType)' == 'Exe') or ('$(OutputType)' == 'WinExe') " SourceFiles="$(AssemblyName).exe" DestinationFiles="@(IntermediateAssembly)" />
-
+        <Copy SourceFiles="$(OutputFile)" DestinationFiles="@(IntermediateAssembly)" />
+        
         <Copy Condition=" '$(DebugSymbols)' == 'true' " SourceFiles="$(AssemblyName).pdb" DestinationFiles="@(_DebugSymbolsIntermediatePath)" />
         <Delete Condition=" ('$(OutputType)' != 'Exe') and ('$(OutputType)' != 'WinExe') " Files="$(AssemblyName).dll" />
         <Delete Condition=" ('$(OutputType)' == 'Exe') or ('$(OutputType)' == 'WinExe') " Files="$(AssemblyName).exe" />

@@ -40,6 +40,7 @@ Modified by Dylan Borg for dylan.NET Support, based on the C# version.
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
         <DefineConstants>$(DefineConstants);TRACE</DefineConstants>
+        <DebugType>None</DebugType>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(DisableImplicitConfigurationDefines)' != 'true'">
