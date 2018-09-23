@@ -77,7 +77,7 @@ Modified by Dylan Borg for dylan.NET Support, based on the C# version.
         <PropertyGroup>
             <!-- If we are targeting winmdobj we want to specifically the pdbFile property since we do not want it to collide with the output of winmdexp-->
             <PdbFile Condition="'$(PdbFile)' == '' and '$(OutputType)' == 'winmdobj' and '$(_DebugSymbolsProduced)' == 'true'">$(IntermediateOutputPath)$(TargetName).compile.pdb</PdbFile>
-            <OutputFile>@(IntermediateAssembly)</OutputFile>
+            <!--<OutputFile>@(IntermediateAssembly)</OutputFile>-->
             <OutputFile Condition=" (('$(OutputType)' != 'Exe') and ('$(OutputType)' != 'WinExe')) and ('$(OutputFile)' == '') ">$(AssemblyName).dll</OutputFile>
             <OutputFile Condition=" (('$(OutputType)' == 'Exe') or ('$(OutputType)' == 'WinExe')) and ('$(OutputFile)' == '') ">$(AssemblyName).exe</OutputFile>
         </PropertyGroup>
