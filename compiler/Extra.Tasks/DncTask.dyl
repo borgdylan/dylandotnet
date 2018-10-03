@@ -11,7 +11,7 @@ namespace Extra.Tasks
 	class public beforefieldinit sealed DncTask extends Task
 
 		property public autogen ITaskItem[] InputFile
-		property public autogen ITaskItem[] OutputAssembly
+		property public autogen ITaskItem[] OutputFile
 		property public autogen boolean ReferenceAssembly
 
 		field private boolean haderrs
@@ -40,15 +40,15 @@ namespace Extra.Tasks
 
 			try
 				_InputFile = _InputFile ?? new ITaskItem[0]
-				_OutputAssembly = _OutputAssembly ?? new ITaskItem[0]
 				if _InputFile[l] > 0 then
 
 					//StreamUtils::Init()
 					StreamUtils::add_WarnH(w)
 					StreamUtils::add_ErrorH(e)
-                    
-                    if _OutputAssembly[l] > 0 then
-                        Program::Invoke(new string[] {"-out", _OutputAssembly[0]::get_ItemSpec(), _InputFile[0]::get_ItemSpec()})
+					
+					_OutputFile = _OutputFile ?? new ITaskItem[0]
+				    if _OutputFile[l] > 0 then
+                        Program::Invoke(new string[] {"-out", _OutputFile[0]::get_ItemSpec(),_InputFile[0]::get_ItemSpec()})
                     else
 					    Program::Invoke(new string[] {_InputFile[0]::get_ItemSpec()})
 					end if

@@ -365,6 +365,21 @@ class public CodeGenerator
                 end #if
                 AsmFactory::AsmB::DefineVersionInfoResource()
                 AsmFactory::AsmB::Save(AsmFactory::AsmFile)
+                
+                if !string::IsNullOrEmpty(AsmFactory::OutputFile) then
+                    if File::Exists(AsmFactory::OutputFile) then
+                        File::Delete(AsmFactory::OutputFile)
+                    end if
+                    File::Move(AsmFactory::AsmFile, AsmFactory::OutputFile)
+                    
+                    if AsmFactory::DebugFlg then
+                        var outPdb = Path::ChangeExtension(AsmFactory::OutputFile, ".pdb")
+                        if File::Exists(outPdb) then
+                            File::Delete(outPdb)
+                        end if
+                        File::Move(Path::ChangeExtension(AsmFactory::AsmFile, ".pdb"), outPdb)
+                    end if
+                end if
                 #if DEBUG then
                 StreamUtils::WriteLine("...Done.")
                 end #if

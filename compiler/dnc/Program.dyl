@@ -67,7 +67,6 @@ class public static Program
                         elseif args[i] == "-out" then
                             i++
                             outputFile = args[i]
-                            StreamUtils::WriteWarn(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("File '{0}' set as output.", args[i]))
                         elseif args[i] == "-inmemory" then
                             inm = true
                         elseif args[i] == "-pcl" then
@@ -90,6 +89,7 @@ class public static Program
 
                         AsmFactory::InMemorySet = inm
                         AsmFactory::PCLSet = pcl
+                        AsmFactory::OutputFile = outputFile
 
                         if lastsdk isnot null then
                             Importer::AsmBasePath = Path::Combine(Path::Combine(RuntimeEnvironment::GetRuntimeDirectory(), ".."), lastsdk)

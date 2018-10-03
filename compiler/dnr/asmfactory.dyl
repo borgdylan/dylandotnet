@@ -70,6 +70,7 @@ class public static AsmFactory
 	//field public static Managed.Reflection.Emit.GenericTypeParameterBuilder[] GenParamTyps
 	field public static boolean PCLSet
 	field public static boolean InMemorySet
+	field public static string OutputFile
 	field public static FrameworkName TargetFramework
 
 	[method: ComVisible(false)]
@@ -86,6 +87,7 @@ class public static AsmFactory
 		CurnNS = string::Empty
 		DfltNS = string::Empty
 		AsmFile = string::Empty
+		OutputFile = string::Empty
 		//CurnTypList = new Managed.Reflection.Emit.TypeBuilder[0]
 		//GenParamNames = new string[0]
 		//GenParamTyps = new Managed.Reflection.Emit.GenericTypeParameterBuilder[0]
