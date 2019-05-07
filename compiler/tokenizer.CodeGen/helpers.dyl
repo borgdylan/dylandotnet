@@ -1351,7 +1351,11 @@ class public static Helpers
 
         if sink::Equals(Loader::CachedLoadClass("System.Object")) then
             if Loader::CachedLoadClass("System.ValueType")::IsAssignableFrom(source) then
-                ILEmitter::EmitBox(source)
+                if IsByRefLike(source) then
+                    StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"Type '{source::ToString()}' cannot be boxed as it is only allowed to reside on the execution stack.")
+                else
+                    ILEmitter::EmitBox(source)
+                end if
             //elseif (sink::get_BaseType() is null) andalso !sink::Equals(Loader::CachedLoadClass("System.Object")) then
             //    StreamUtils::WriteError(ILEmitter::LineNr, ILEmitter::CurSrcFile, "Type '" + source::ToString() + "' 's object/valuetype state could not be determined.")
             elseif source is GenericTypeParameterBuilder then
@@ -1365,6 +1369,7 @@ class public static Helpers
         if sink::get_IsInterface() then
             if Loader::CachedLoadClass("System.ValueType")::IsAssignableFrom(source) andalso sink::IsAssignableFrom(source) then
                 ILEmitter::EmitBox(source)
+                //assuming that any by ref like will not implement any interfaces
             elseif !Loader::CachedLoadClass("System.Object")::IsAssignableFrom(source) then
                 StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"Type '{source::ToString()}' 's object/valuetype state could not be determined.")
             end if
