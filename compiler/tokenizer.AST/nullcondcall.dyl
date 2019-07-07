@@ -8,7 +8,7 @@ import dylan.NET.Tokenizer.AST.Interfaces
 import dylan.NET.Tokenizer.AST.Exprs
 import dylan.NET.Tokenizer.AST.Tokens.TypeToks
 
-class public NullCondCallTok extends ValueToken implements IUnaryOperatable, IConvable, INegatable, INotable, IIncDecable
+class public NullCondCallTok extends ValueToken implements IUnaryOperatable, IConvable, INegatable, INotable, IIncDecable, IPlusMinusable
 
 	field public boolean MemberAccessFlg
 	field public Token MemberToAccess
@@ -21,6 +21,8 @@ class public NullCondCallTok extends ValueToken implements IUnaryOperatable, ICo
 	property public virtual autogen boolean DoNot
 	property public virtual autogen boolean DoInc
 	property public virtual autogen boolean DoDec
+	property public virtual autogen boolean DoPlus
+	property public virtual autogen boolean DoMinus
 
 	field public boolean IsArr
 	field public Expr ArrLoc

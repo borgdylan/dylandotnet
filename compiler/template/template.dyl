@@ -1003,16 +1003,24 @@ class public static Program
 			end if
 		end do
 
-		try
-			try
-				ThrowEx()
-			catch e as Exception
-				System.Runtime.ExceptionServices.ExceptionDispatchInfo::Capture(e)::Throw()
-				//throw new Exception("wrapped", e)
-			end try
-		catch e2 as Exception
-			Console::WriteLine(e2::ToString())
-		end try
+		// try
+		// 	try
+		// 		ThrowEx()
+		// 	catch e as Exception
+		// 		System.Runtime.ExceptionServices.ExceptionDispatchInfo::Capture(e)::Throw()
+		// 		//throw new Exception("wrapped", e)
+		// 	end try
+		// catch e2 as Exception
+		// 	Console::WriteLine(e2::ToString())
+		// end try
+
+		var pm = 'a'
+		var umin = (-)pm
+		Console::WriteLine(umin)
+		Console::WriteLine(#expr($object$umin)::GetType())
+		var uplus = (+)pm
+		Console::WriteLine(uplus)
+		Console::WriteLine(#expr($object$uplus)::GetType())
 	end method
 
 	[method: My(new integer[] {1, 2})]

@@ -29,11 +29,14 @@ class public Line
     //lc - lookahead char
     //sca/sc - still copy signal (enables copy to buffer)
     //scla/scl - still cut last signal (enables a buffer flush in the cycle after a char is put in buffer)
+    //scl2a/scl2 - still cut last signal but for when ob is false
     //ob/[cuttok] - signal to flush buffer before current char is written to it
-    method private boolean isSep(var cc as char, var lc as char, var sca as boolean&, var scla as boolean&)
+    method private boolean isSep(var cc as char, var lc as char, var sca as boolean&, var scla as boolean&, var scl2a as boolean&)
         //scla is true as set by Analyze i.e. set only if setting to false
+        //scl2a is false as set by Analyze i.e. set only if setting to true
         //sca is false as set by Analyze i.e. set only if setting to true
         //scla and sca are considered only if ob is true
+        //scl2a is considered only if ob is false
         var ob as boolean = false
         if lc == c'\0' then
             lc = ' '
@@ -58,7 +61,21 @@ class public Line
                 ob = true
                 scla = false
                 sca = true
-            elseif (cc == ',') orelse (cc == '(') orelse (cc == ')') orelse (cc == '{') orelse (cc == '}') orelse (cc == '&') orelse (cc == '*') orelse (cc == '|') then
+            elseif cc == '(' then
+                ob = true
+                sca = true
+                if (lc == '+') orelse (lc == '-') then
+                    scla = false
+                end if
+            elseif cc == ')' then
+                if (PrevChar == '+') orelse (PrevChar == '-') then
+                    ob = false
+                    scl2a = true
+                else
+                    ob = true
+                    sca = true
+                end if
+            elseif (cc == ',') orelse (cc == '{') orelse (cc == '}') orelse (cc == '&') orelse (cc == '*') orelse (cc == '|') then
                 sca = true
                 ob = true
             elseif cc == '[' then
@@ -74,6 +91,7 @@ class public Line
                 if lc == '/' then
                     if PrevChar == '/' then
                         ob = false
+                        scl2a = false
                     else
                         sca = true
                         scla = false
@@ -102,6 +120,8 @@ class public Line
                 else
                     if (PrevChar == '>') orelse (PrevChar == '<') orelse (PrevChar == '!') orelse (PrevChar == '=') then
                         ob = false
+                        //may want to have this on for < and >
+                        scl2a = false
                     else
                         ob = true
                         if lc == '>' then
@@ -123,6 +143,7 @@ class public Line
                 else
                     if PrevChar == '<' then
                         ob = false
+                        scl2a = false
                     elseif (lc == '<') orelse (lc == '>') then
                         sca = true
                         scla = false
@@ -140,6 +161,7 @@ class public Line
                 else
                     if (PrevChar == '<') orelse (PrevChar == '>') orelse (PrevChar == '=') then
                         ob = false
+                        scl2a = false
                     elseif lc == '>' then
                         sca = true
                         scla = false
@@ -149,34 +171,46 @@ class public Line
                     end if
                 end if
             elseif cc == '-' then
-                sca = true
-                if lc == '-' then
-                    scla = false
-                    ob = true
+                if (PrevChar == '(') andalso (lc == ')')
+                    ob = false
+                    scl2a = false
                 else
-                    ob = PrevChar != '-'
-                    if char::IsDigit(lc) then
+                    sca = true
+                    if lc == '-' then
                         scla = false
+                        ob = true
+                    else
+                        ob = PrevChar != '-'
+                        if char::IsDigit(lc) then
+                            scla = false
+                        end if
                     end if
                 end if
             elseif cc == '+' then
-                sca = true
-                if lc == '+' then
-                    scla = false
-                    ob = true
+                if (PrevChar == '(') andalso (lc == ')')
+                    ob = false
+                    scl2a = false
                 else
-                    ob = PrevChar != '+'
-                    if char::IsDigit(lc) then
+                    sca = true
+                    if lc == '+' then
                         scla = false
+                        ob = true
+                    else
+                        ob = PrevChar != '+'
+                        if char::IsDigit(lc) then
+                            scla = false
+                        end if
                     end if
                 end if
             else
                 sca = false
                 ob = false
+                scl2a = false
             end if
         else
             sca = false
             ob = false
+            scl2a = false
         end if
 
         PrevChar = cc
@@ -193,6 +227,7 @@ class public Line
         var buf as StringBuilder = new StringBuilder()
         var sc as boolean = false
         var scl as boolean = false
+        var scl2 as boolean = false
         var i as integer = -1
         var j as integer = 0
         var startCol as integer = 0
@@ -207,7 +242,7 @@ class public Line
                     sc = false
                 end if
 
-                if sc then
+                if sc orelse scl2 then
                     if buf::get_Length() != 0 then
                         stm::AddToken(new Token() {Value = buf::ToString(), Line = ln, EndLine = ln, EndColumn = i + offset, Column = startCol + offset})
                     end if
@@ -216,10 +251,11 @@ class public Line
 
                 sc = false
                 scl = true
+                scl2 = false
 
                 curchar = str::get_Chars(i)
                 lachar = #ternary{i < len ? str::get_Chars(j), c'\0'}
-                if isSep(curchar, lachar, ref sc, ref scl) then
+                if isSep(curchar, lachar, ref sc, ref scl, ref scl2) then
                     if buf::get_Length() != 0 then
                         stm::AddToken(new Token() {Value = buf::ToString(), Line = ln, EndLine = ln, EndColumn = i + offset, Column = startCol + offset})
                     end if

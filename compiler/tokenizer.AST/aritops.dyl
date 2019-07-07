@@ -117,3 +117,27 @@ class public ShrOp extends AritOp
 	method public override string ToString() => ">>"
 
 end class
+
+// (+)
+class public PlusOp extends AritOp
+
+	method public void PlusOp()
+		mybase::ctor()
+		PrecNo = 13
+	end method
+
+	method public override string ToString() => "(+)"
+
+end class
+
+// (-)
+class public MinusOp extends AritOp
+
+	method public void MinusOp()
+		mybase::ctor()
+		PrecNo = 13
+	end method
+
+	method public override string ToString() => "(-)"
+
+end class

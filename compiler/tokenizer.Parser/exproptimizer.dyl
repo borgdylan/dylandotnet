@@ -1388,6 +1388,20 @@ class public ExprOptimizer
 				exp::RemToken(i)
 				i--
 				len = --exp::Tokens::get_Count()
+			elseif tok is PlusOp then
+				PFlags::isChanged = true
+				PFlags::PlusFlag = true
+				PFlags::OrdOp = #expr(i"plus {PFlags::OrdOp}")::Trim()
+				exp::RemToken(i)
+				i--
+				len = --exp::Tokens::get_Count()
+			elseif tok is MinusOp then
+				PFlags::isChanged = true
+				PFlags::MinusFlag = true
+				PFlags::OrdOp = #expr(i"minus {PFlags::OrdOp}")::Trim()
+				exp::RemToken(i)
+				i--
+				len = --exp::Tokens::get_Count()
 			elseif tok is Pipe then
 				exp::RemToken(i)
 				i--

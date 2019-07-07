@@ -32,6 +32,11 @@ interface public IIncDecable implements IUnaryOperatable
 	property public autogen boolean DoDec
 end interface
 
+interface public IPlusMinusable implements IUnaryOperatable
+	property public autogen boolean DoPlus
+	property public autogen boolean DoMinus
+end interface
+
 interface public IMayHaveConstraints
 	property public boolean MayHaveConstraints
 		get

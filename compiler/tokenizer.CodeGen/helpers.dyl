@@ -435,6 +435,8 @@ class public static Helpers
         return ta
     end method
 
+    [method: ComVisible(false)]
+    method public static boolean CheckNonPointer(var t as Managed.Reflection.Type) => !t::Equals(Loader::CachedLoadClass("System.IntPtr")) andalso !t::Equals(Loader::CachedLoadClass("System.UIntPtr"))
 
     [method: ComVisible(false)]
     method public static boolean CheckUnsigned(var t as Managed.Reflection.Type) => _
@@ -2146,7 +2148,7 @@ class public static Helpers
     end method
 
     [method: ComVisible(false)]
-    method public static Managed.Reflection.Type CheckCompat(var ta as Managed.Reflection.Type,var tb as Managed.Reflection.Type)
+    method public static Managed.Reflection.Type CheckCompat(var ta as Managed.Reflection.Type, var tb as Managed.Reflection.Type)
         if ta::Equals(tb) then
             return ta
         else
@@ -2183,7 +2185,7 @@ class public static Helpers
 
     [method: ComVisible(false)]
     method public static boolean EmitNeg(var t as Managed.Reflection.Type, var emt as boolean, var bo as BranchOptimisation, var lab as Emit.Label)
-        var oo = Loader::LoadUnaOp(t, "op_UnaryNegation", t)
+        var oo = Loader::LoadUnaOp(t, "op_LogicalNot", t)
         if oo isnot null then
             if emt then
                 ILEmitter::EmitCall(oo)
@@ -2194,7 +2196,49 @@ class public static Helpers
                 ILEmitter::EmitNot(bo, lab)
             end if
             return bo != BranchOptimisation::None
-        elseif CheckSigned(t) then
+        else
+            //leave as is since the operator token would have been erased at parse time
+            StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The '!' operation is undefined for '{t::ToString()}'.")
+        end if
+        return false
+    end method
+
+    [method: ComVisible(false)]
+    method public static void EmitMinus(var t as Managed.Reflection.Type, var emt as boolean)
+        var oo = Loader::LoadUnaOp(t, "op_UnaryNegation", t)
+        if oo isnot null then
+            if emt then
+                ILEmitter::EmitCall(oo)
+            end if
+            AsmFactory::Type02 = oo::get_ReturnType()
+        elseif t::Equals(Loader::CachedLoadClass("System.Boolean")) then
+            AsmFactory::Type02 = Loader::CachedLoadClass("System.Int32")
+            if emt then
+                ILEmitter::EmitConvI4()
+                ILEmitter::EmitNeg()
+            end if
+        elseif CheckNonPointer(t) andalso !t::Equals(Loader::CachedLoadClass("System.UInt64")) andalso IsPrimitiveIntegralType(t) then
+            var pns = GetPrimitiveNumericSize(t)
+            if pns < 32 then
+                //promote byte and short incl unsigned versions to int
+                AsmFactory::Type02 = Loader::CachedLoadClass("System.Int32")
+
+                if emt then
+                    ILEmitter::EmitConvI4()
+                end if
+            elseif pns == 32 then
+                if t::Equals(Loader::CachedLoadClass("System.UInt32"))
+                    //promote uint to long, but int stays an int
+                    AsmFactory::Type02 = Loader::CachedLoadClass("System.Int64")
+
+                    if emt then
+                        ILEmitter::EmitConvI8(false)
+                    end if
+                end if
+            elseif pns == 64 then
+                //long stays a long
+            end if
+
             if emt then
                 ILEmitter::EmitNeg()
             end if
@@ -2204,9 +2248,43 @@ class public static Helpers
             end if
         else
             //leave as is since the operator token would have been erased at parse time
-            StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The '!' operation is undefined for '{t::ToString()}'.")
+            StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The '(-)' operation is undefined for '{t::ToString()}'.")
         end if
-        return false
+    end method
+
+    [method: ComVisible(false)]
+    method public static void EmitPlus(var t as Managed.Reflection.Type, var emt as boolean)
+        var oo = Loader::LoadUnaOp(t, "op_UnaryPlus", t)
+        if oo isnot null then
+            if emt then
+                ILEmitter::EmitCall(oo)
+            end if
+            AsmFactory::Type02 = oo::get_ReturnType()
+        elseif t::Equals(Loader::CachedLoadClass("System.Boolean")) then
+            AsmFactory::Type02 = Loader::CachedLoadClass("System.Int32")
+            if emt then
+                ILEmitter::EmitConvI4()
+            end if
+        elseif CheckNonPointer(t) andalso IsPrimitiveIntegralType(t) then
+            var pns = GetPrimitiveNumericSize(t)
+            if pns < 32 then
+                //promote byte and short incl unsigned versions to int
+                AsmFactory::Type02 = Loader::CachedLoadClass("System.Int32")
+
+                if emt then
+                    ILEmitter::EmitConvI4()
+                end if
+            elseif pns >= 32 then
+                //leave as is
+            end if
+
+            //the operation is a no-op
+        elseif IsPrimitiveFPType(t) then
+            //the operation is a no-op
+        else
+            //leave as is since the operator token would have been erased at parse time
+            StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"The '(+)' operation is undefined for '{t::ToString()}'.")
+        end if
     end method
 
     [method: ComVisible(false)]

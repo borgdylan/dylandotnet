@@ -27,6 +27,8 @@ class public MethodNameTok extends Ident implements IMayHaveConstraints
 		_DoNot = idt::get_DoNot()
 		_DoDec = idt::get_DoDec()
 		_DoInc = idt::get_DoInc()
+		_DoMinus = idt::get_DoMinus()
+		_DoPlus = idt::get_DoPlus()
 		_Conv = idt::get_Conv()
 		IsArr = idt::IsArr
 		ArrLoc = idt::ArrLoc
@@ -68,6 +70,8 @@ class public GenericMethodNameTok extends MethodNameTok implements IMayHaveConst
 		_DoNot = idt::get_DoNot()
 		_DoDec = idt::get_DoDec()
 		_DoInc = idt::get_DoInc()
+		_DoMinus = idt::get_DoMinus()
+		_DoPlus = idt::get_DoPlus()
 		_Conv = idt::get_Conv()
 		IsArr = idt::IsArr
 		ArrLoc = idt::ArrLoc

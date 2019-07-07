@@ -68,6 +68,10 @@ class public TokenOptimizer
             return new ShrOp() {PosFromToken(tok), Value = tok::Value}
         elseif tok::Value == "=>" then
             return new GoesToTok() {PosFromToken(tok), Value = tok::Value}
+        elseif tok::Value == "(+)" then
+            return new PlusOp() {PosFromToken(tok), Value = tok::Value}
+        elseif tok::Value == "(-)" then
+            return new MinusOp() {PosFromToken(tok), Value = tok::Value}
         elseif tok::Value == "=" then
             PFlags::AsFlag = false
             if CurlyLvl > 0 then

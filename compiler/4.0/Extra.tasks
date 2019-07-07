@@ -3,9 +3,9 @@
     <PropertyGroup>
         <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
     </PropertyGroup>
-  
-	<UsingTask TaskName="Extra.Tasks.ErrorWarnTask" AssemblyFile="Extra.Tasks.dll" />
-	<UsingTask TaskName="Extra.Tasks.DncTask" AssemblyFile="Extra.Tasks.dll" />
-	<UsingTask TaskName="Extra.Tasks.ResProcTask" AssemblyFile="Extra.Tasks.dll" />
-	<UsingTask TaskName="Extra.Tasks.FindResProcOuts" AssemblyFile="Extra.Tasks.dll" />
+
+    <UsingTask TaskName="Extra.Tasks.ErrorWarnTask" AssemblyFile="Extra.Tasks.dll" />
+    <UsingTask TaskName="Extra.Tasks.DncTask" AssemblyFile="Extra.Tasks.dll" />
+    <UsingTask TaskName="Extra.Tasks.ResProcTask" AssemblyFile="Extra.Tasks.dll" />
+    <UsingTask TaskName="Extra.Tasks.FindResProcOuts" AssemblyFile="Extra.Tasks.dll" />
 </Project>

@@ -23,6 +23,8 @@ class public Flags
 	field public boolean NotFlag
 	field public boolean IncFlag
 	field public boolean DecFlag
+	field public boolean PlusFlag
+	field public boolean MinusFlag
 	field public boolean ConvFlag
 	field public boolean RefFlag
 	field public boolean ValinrefFlag
@@ -54,6 +56,8 @@ class public Flags
 		//NotFlag = false
 		//IncFlag = false
 		//DecFlag = false
+		//PlusFlag = false
+		//MinusFlag = false
 		//ConvFlag = false
 		//RefFlag = false
 		//ValinrefFlag = false
@@ -75,6 +79,8 @@ class public Flags
 		NotFlag = false
 		IncFlag = false
 		DecFlag = false
+		PlusFlag = false
+		MinusFlag = false
 		ConvFlag = false
 		RefFlag = false
 		ValinrefFlag = false
@@ -99,6 +105,10 @@ class public Flags
 		if iuo is id as IIncDecable then
 			id::set_DoInc(IncFlag)
 			id::set_DoDec(DecFlag)
+		end if
+		if iuo is id as IPlusMinusable then
+			id::set_DoPlus(PlusFlag)
+			id::set_DoMinus(MinusFlag)
 		end if
 	end method
 
@@ -141,9 +151,9 @@ class public Flags
 
 	method public void ResetMCISFlgs()
 		MetCallFlag = false
+		CtorFlag = false
 		IdentFlag = false
 		StringFlag = false
-		CtorFlag = false
 		NullCondFlag = false
 	end method
 

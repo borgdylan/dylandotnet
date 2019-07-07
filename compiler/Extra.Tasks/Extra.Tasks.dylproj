@@ -6,7 +6,7 @@
         <OutputType>Library</OutputType>
         <RootNamespace>Extra.Tasks</RootNamespace>
         <AssemblyName>Extra.Tasks</AssemblyName>
-        <TargetFrameworks>net46</TargetFrameworks>
+        <TargetFrameworks>net472</TargetFrameworks>
     </PropertyGroup>
     <ItemGroup>
         <Reference Include="System" />
@@ -19,7 +19,7 @@
         <Reference Include="Microsoft.Build.Utilities.v4.0" />
         <Reference Include="Microsoft.Build.Tasks.v4.0" />-->
 
-        <PackageReference Include="Microsoft.Build.Tasks.Core" Version="15.8.166" />
+        <PackageReference Include="Microsoft.Build.Tasks.Core" Version="16.0.461" />
 
         <ProjectReference Include="$(MSBuildThisFileDirectory)..\resproc\resproc.dylproj" />
         <ProjectReference Include="$(MSBuildThisFileDirectory)..\dnc\dnc.dylproj" />
@@ -27,7 +27,7 @@
     </ItemGroup>
     <Target Name="AfterBuild" AfterTargets="Build">
         <ItemGroup>
-            <Stuff Include="$(OutputPath)\net46\Extra.Tasks.dll" />
+            <Stuff Include="$(OutputPath)\net472\Extra.Tasks.dll" />
             <Stuff Include="Extra.tasks" />
         </ItemGroup>
         <Copy SourceFiles="@(Stuff)" DestinationFolder="..\4.0" />

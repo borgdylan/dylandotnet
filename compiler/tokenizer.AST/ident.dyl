@@ -27,7 +27,7 @@ struct public IdentSegment
 
 end struct
 
-class public Ident extends ValueToken implements IUnaryOperatable, IConvable, INegatable, INotable, IIncDecable
+class public Ident extends ValueToken implements IUnaryOperatable, IConvable, INegatable, INotable, IIncDecable, IPlusMinusable
 
 	field public boolean IsRef
 	field public boolean IsValInRef
@@ -39,6 +39,8 @@ class public Ident extends ValueToken implements IUnaryOperatable, IConvable, IN
 	field family boolean _DoNot
 	field family boolean _DoInc
 	field family boolean _DoDec
+	field family boolean _DoPlus
+	field family boolean _DoMinus
 	field family string _OrdOp
 	field public boolean MemberAccessFlg
 	field public Token MemberToAccess
@@ -51,6 +53,8 @@ class public Ident extends ValueToken implements IUnaryOperatable, IConvable, IN
 	property public virtual autogen boolean DoNot
 	property public virtual autogen boolean DoInc
 	property public virtual autogen boolean DoDec
+	property public virtual autogen boolean DoPlus
+	property public virtual autogen boolean DoMinus
 
 	method public void Ident(var value as string)
 		mybase::ctor(value)
