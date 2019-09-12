@@ -211,10 +211,10 @@ class public abstract NumberLiteral<of T> extends NumberLiteral where T as {stru
 
 end class
 
-class public IntLiteral extends NumberLiteral<of integer> implements INegatable, INotable
+class public IntLiteral extends NumberLiteral<of integer> implements INegatable, INotable, IPlusMinusable
 
-	field private boolean _DoNeg
-	field private boolean _DoNot
+	//field private boolean _DoNeg
+	//field private boolean _DoNot
 
 	method public void IntLiteral()
 		mybase::ctor()
@@ -242,12 +242,14 @@ class public IntLiteral extends NumberLiteral<of integer> implements INegatable,
 
 	property public virtual autogen boolean DoNeg
 	property public virtual autogen boolean DoNot
+	property public virtual autogen boolean DoPlus
+	property public virtual autogen boolean DoMinus
 
 end class
 
-class public DoubleLiteral extends NumberLiteral<of double> implements INegatable
+class public DoubleLiteral extends NumberLiteral<of double> implements INegatable, IPlusMinusable
 
-	field private boolean _DoNeg
+	//field private boolean _DoNeg
 
 	method public void DoubleLiteral()
 		mybase::ctor()
@@ -273,12 +275,14 @@ class public DoubleLiteral extends NumberLiteral<of double> implements INegatabl
 	method public override string ToString() => i"{NumVal}d"
 
 	property public virtual autogen boolean DoNeg
+	property public virtual autogen boolean DoPlus
+	property public virtual autogen boolean DoMinus
 
 end class
 
-class public DecimalLiteral extends NumberLiteral<of decimal> implements INegatable
+class public DecimalLiteral extends NumberLiteral<of decimal> implements INegatable, IPlusMinusable
 
-	field private boolean _DoNeg
+	//field private boolean _DoNeg
 
 	method public void DecimalLiteral()
 		mybase::ctor()
@@ -303,13 +307,15 @@ class public DecimalLiteral extends NumberLiteral<of decimal> implements INegata
 	method public override string ToString() => i"{NumVal}m"
 
 	property public virtual autogen boolean DoNeg
+	property public virtual autogen boolean DoPlus
+	property public virtual autogen boolean DoMinus
 
 end class
 
-class public SByteLiteral extends NumberLiteral<of sbyte> implements INegatable, INotable
+class public SByteLiteral extends NumberLiteral<of sbyte> implements INegatable, INotable, IPlusMinusable
 
-	field private boolean _DoNeg
-	field private boolean _DoNot
+	//field private boolean _DoNeg
+	//field private boolean _DoNot
 
 	method public void SByteLiteral()
 		mybase::ctor()
@@ -335,14 +341,16 @@ class public SByteLiteral extends NumberLiteral<of sbyte> implements INegatable,
 
 	property public virtual autogen boolean DoNeg
 	property public virtual autogen boolean DoNot
+	property public virtual autogen boolean DoPlus
+	property public virtual autogen boolean DoMinus
 
 end class
 
 
-class public ShortLiteral extends NumberLiteral<of short> implements INegatable, INotable
+class public ShortLiteral extends NumberLiteral<of short> implements INegatable, INotable, IPlusMinusable
 
-	field private boolean _DoNeg
-	field private boolean _DoNot
+	//field private boolean _DoNeg
+	//field private boolean _DoNot
 
 	method public void ShortLiteral()
 		mybase::ctor()
@@ -366,24 +374,17 @@ class public ShortLiteral extends NumberLiteral<of short> implements INegatable,
 
 	method public override string ToString() => i"{NumVal}s"
 
-	property public virtual string OrdOp
-		get
-			return _OrdOp
-		end get
-		set
-			_OrdOp = value
-		end set
-	end property
-
 	property public virtual autogen boolean DoNeg
 	property public virtual autogen boolean DoNot
+	property public virtual autogen boolean DoPlus
+	property public virtual autogen boolean DoMinus
 
 end class
 
-class public LongLiteral extends NumberLiteral<of long> implements INegatable, INotable
+class public LongLiteral extends NumberLiteral<of long> implements INegatable, INotable, IPlusMinusable
 
-	field private boolean _DoNeg
-	field private boolean _DoNot
+	//field private boolean _DoNeg
+	//field private boolean _DoNot
 
 	method public void LongLiteral()
 		mybase::ctor()
@@ -409,12 +410,14 @@ class public LongLiteral extends NumberLiteral<of long> implements INegatable, I
 
 	property public virtual autogen boolean DoNeg
 	property public virtual autogen boolean DoNot
+	property public virtual autogen boolean DoPlus
+	property public virtual autogen boolean DoMinus
 
 end class
 
-class public FloatLiteral extends NumberLiteral<of single> implements INegatable
+class public FloatLiteral extends NumberLiteral<of single> implements INegatable, IPlusMinusable
 
-	field private boolean _DoNeg
+	//field private boolean _DoNeg
 
 	method public void FloatLiteral()
 		mybase::ctor()
@@ -439,12 +442,14 @@ class public FloatLiteral extends NumberLiteral<of single> implements INegatable
 	method public override string ToString() => i"{NumVal}f"
 
 	property public virtual autogen boolean DoNeg
+	property public virtual autogen boolean DoPlus
+	property public virtual autogen boolean DoMinus
 
 end class
 
-class public UIntLiteral extends NumberLiteral<of uinteger> implements INotable
+class public UIntLiteral extends NumberLiteral<of uinteger> implements INotable, IPlusMinusable
 
-	field private boolean _DoNot
+	//field private boolean _DoNot
 
 	method public void UIntLiteral()
 		mybase::ctor()
@@ -469,12 +474,14 @@ class public UIntLiteral extends NumberLiteral<of uinteger> implements INotable
 	method public override string ToString() => i"{NumVal}ui"
 
 	property public virtual autogen boolean DoNot
+	property public virtual autogen boolean DoPlus
+	property public virtual autogen boolean DoMinus
 
 end class
 
-class public ByteLiteral extends NumberLiteral<of byte> implements INotable
+class public ByteLiteral extends NumberLiteral<of byte> implements INotable, IPlusMinusable
 
-	field private boolean _DoNot
+	//field private boolean _DoNot
 
 	method public void ByteLiteral()
 		mybase::ctor()
@@ -499,10 +506,12 @@ class public ByteLiteral extends NumberLiteral<of byte> implements INotable
 	method public override string ToString() => i"{NumVal}ub"
 
 	property public virtual autogen boolean DoNot
+	property public virtual autogen boolean DoPlus
+	property public virtual autogen boolean DoMinus
 
 end class
 
-class public UShortLiteral extends NumberLiteral<of ushort> implements INotable
+class public UShortLiteral extends NumberLiteral<of ushort> implements INotable, IPlusMinusable
 
 	field private boolean _DoNot
 
@@ -529,12 +538,14 @@ class public UShortLiteral extends NumberLiteral<of ushort> implements INotable
 	method public override string ToString() => i"{NumVal}us"
 
 	property public virtual autogen boolean DoNot
+	property public virtual autogen boolean DoPlus
+	property public virtual autogen boolean DoMinus
 
 end class
 
-class public ULongLiteral extends NumberLiteral<of ulong> implements INotable
+class public ULongLiteral extends NumberLiteral<of ulong> implements INotable, IPlusMinusable
 
-	field private boolean _DoNot
+	//field private boolean _DoNot
 
 	method public void ULongLiteral()
 		mybase::ctor()
@@ -560,6 +571,8 @@ class public ULongLiteral extends NumberLiteral<of ulong> implements INotable
 	method public override string ToString() => i"{NumVal}ul"
 
 	property public virtual autogen boolean DoNot
+	property public virtual autogen boolean DoPlus
+	property public virtual autogen boolean DoMinus
 
 end class
 

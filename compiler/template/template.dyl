@@ -1021,6 +1021,8 @@ class public static Program
 		var uplus = (+)pm
 		Console::WriteLine(uplus)
 		Console::WriteLine(#expr($object$uplus)::GetType())
+
+		Console::WriteLine((-)$double$12)
 	end method
 
 	[method: My(new integer[] {1, 2})]

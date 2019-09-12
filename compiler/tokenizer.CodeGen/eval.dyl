@@ -144,10 +144,12 @@ class public Evaluator
                     ans = Helpers::EmitNeg(AsmFactory::Type02, emt, #ternary { i == ops[l] ? bo, BranchOptimisation::None}, lab)
                 end if
             end if
-            if iuo is ipm as IPlusMinusable then
+            if (s == "plus") andalso (iuo is ipm as IPlusMinusable) then
                 if ipm::get_DoPlus() then
                     Helpers::EmitPlus(AsmFactory::Type02, emt)
                 end if
+            end if
+            if (s == "minus") andalso (iuo is ipm as IPlusMinusable) then
                 if ipm::get_DoMinus() then
                     Helpers::EmitMinus(AsmFactory::Type02, emt)
                 end if
