@@ -121,6 +121,7 @@ end class
 class public CharLiteral extends Literal
 
 	field public char CharVal
+	field public initonly boolean ParseFailed
 
 	method private void CharLiteral(var values as string, var value as char)
 		mybase::ctor(values)
@@ -137,6 +138,8 @@ class public CharLiteral extends Literal
 		var c as char = c'\0'
 		if char::TryParse(value,ref c) then
 			CharVal = c
+		else
+			ParseFailed = true
 		end if
 	end method
 

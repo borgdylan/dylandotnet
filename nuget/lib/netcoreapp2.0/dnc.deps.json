@@ -1,12 +1,12 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.0",
-    "signature": "1501a5c563576c4b3b6c58451a086b574dc8fbe4"
+    "signature": ""
   },
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v2.0": {
-      "dnc/11.10.1.2": {
+      "dnc/11.10.1.3": {
         "dependencies": {
           "dnr": "11.10.1.2",
           "dnu": "11.10.1.2",
@@ -115,7 +115,7 @@
     }
   },
   "libraries": {
-    "dnc/11.10.1.2": {
+    "dnc/11.10.1.3": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

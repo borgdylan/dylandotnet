@@ -494,7 +494,11 @@ class public TokenOptimizer
             return #ternary {tok::Value == "true" ? new BooleanLiteral(true) {PosFromToken(tok)} , new BooleanLiteral(false) {PosFromToken(tok)}}
         elseif tok::Value like "^(c)?'(.)*'$" then
             tok::Value = #ternary {tok::Value::StartsWith("c") ? ParseUtils::ProcessString(tok::Value::TrimStart(new char[] {'c'})::Trim(new char[] {c'\s'})), tok::Value::Trim(new char[] {c'\s'})}
-            return new CharLiteral($char$tok::Value) {PosFromToken(tok)}
+            var cl = new CharLiteral(tok::Value) {PosFromToken(tok)}
+            if cl::ParseFailed then
+                StreamUtils::WriteErrorLine(tok::Line, ++tok::Column, PFlags::CurPath, string::Format("'{0}' is an invalid character!", tok::Value))
+            end if
+            return cl
         elseif tok::Value like c"^(i)\q(.)*\q$" then
             return new InterpolateLiteral(tok::Value::TrimStart(new char[] {'i'})::Trim(new char[] {c'\q'})) {PosFromToken(tok)}
         elseif tok::Value like c"^(f)\q(.)*\q$" then
