@@ -24,7 +24,7 @@ class public static TaskHelpers
 		//Original code was: Copyright (c) Microsoft Open Technologies, Inc. All rights reserved. See COPYING.TaskHelpers.Sources
 		//Optimization for .NET 4.6 done by the library author.
 
-		#if !NET46 andalso !CORE50 then
+		#if !NET46 andalso !NET471 andalso !CORE50 then
 			field private static initonly Task _defaultCompleted
 		end #if
 
@@ -35,7 +35,7 @@ class public static TaskHelpers
 				_defaultCompleted = FromResult<of AsyncVoid>(default AsyncVoid)
 				_completedTaskReturningNull = FromResult<of object>(null)
 			#else
-				#if !NET46 andalso !CORE50 then
+				#if !NET46 andalso !NET471 andalso !CORE50 then
 				_defaultCompleted = Task::FromResult<of AsyncVoid>(default AsyncVoid)
 				end #if
 				_completedTaskReturningNull = Task::FromResult<of object>(null)
@@ -43,7 +43,7 @@ class public static TaskHelpers
 		end method
 
         method public static Task<of TResult> FromError<of TResult>(var exception as Exception)
-			#if NET46 orelse CORE50 then
+			#if NET46 orelse NET471 orelse CORE50 then
 				return Task::FromException<of TResult>(exception)
 			#else
 				var tcs as TaskCompletionSource<of TResult> = new TaskCompletionSource<of TResult>()
@@ -53,7 +53,7 @@ class public static TaskHelpers
         end method
 
         method public static Task FromError(var exception as Exception)
-            #if NET46 orelse CORE50 then
+            #if NET46 orelse NET471 orelse CORE50 then
 				return Task::FromException<of AsyncVoid>(exception)
 			#else
 				return FromError<of AsyncVoid>(exception)
@@ -61,7 +61,7 @@ class public static TaskHelpers
         end method
 
         method public static Task Completed()
-			#if NET46 orelse CORE50 then
+			#if NET46 orelse NET471 orelse CORE50 then
 				return Task::get_CompletedTask()
 			#else
 				return _defaultCompleted

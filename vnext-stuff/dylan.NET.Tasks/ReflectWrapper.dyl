@@ -58,7 +58,7 @@ class public ReflectAwaiterWrapper implements IAwaiter, INotifyCompletion
 			end #if
 
 			if met isnot null then
-				#if NET46 then
+				#if NET46 or NET471 then
 					met::Invoke(_awaiter, Array::Empty<of object>())
 				#else
 					met::Invoke(_awaiter, new object[0])
@@ -111,7 +111,7 @@ class public ReflectWrapper implements IAwaitable
 			end #if
 
 			if met isnot null then
-				#if NET46 then
+				#if NET46 or NET471 then
 					return new ReflectAwaiterWrapper(met::Invoke(_awaitable, Array::Empty<of object>()))
 				#else
 					return new ReflectAwaiterWrapper(met::Invoke(_awaitable, new object[0]))

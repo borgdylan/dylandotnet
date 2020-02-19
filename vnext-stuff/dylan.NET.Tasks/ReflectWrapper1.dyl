@@ -58,7 +58,7 @@ class public ReflectAwaiterWrapper<of TResult> implements IAwaiter<of TResult>, 
 			end #if
 
 			if met isnot null then
-				#if NET46 then
+				#if NET46 or NET471 then
 					var val = met::Invoke(_awaiter, Array::Empty<of object>())
 				#else
 					var val = met::Invoke(_awaiter, new object[0])
@@ -117,7 +117,7 @@ class public ReflectWrapper<of TResult> implements IAwaitable<of TResult>
 			end #if
 
 			if met isnot null then
-				#if NET46 then
+				#if NET46 or NET471 then
 					return new ReflectAwaiterWrapper<of TResult>(met::Invoke(_awaitable, Array::Empty<of object>()))
 				#else
 					return new ReflectAwaiterWrapper<of TResult>(met::Invoke(_awaitable, new object[0]))
