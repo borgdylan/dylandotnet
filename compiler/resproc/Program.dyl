@@ -201,6 +201,9 @@ namespace dylan.NET.ResProc
                                             WriteWarn(lin, pth, string::Format("File '{0}' does not exist, ignored!!!", line[2]))
                                         end if
                                     elseif line[1] == "stream" then
+                                        #if NETCOREAPP3_1 then
+                                        WriteWarn(lin, pth, "Resource type 'stream' is not supported on .NET Core, ignored!!!")
+                                        #else
                                         if File::Exists(line[2]) then
                                             var fs = new FileStream(line[2], FileMode::Open)
                                             var ms as Stream = new MemoryStream()
@@ -211,13 +214,18 @@ namespace dylan.NET.ResProc
                                         else
                                             WriteWarn(lin, pth, string::Format("File '{0}' does not exist, ignored!!!", line[2]))
                                         end if
+                                        end #if
                                     elseif line[1] == "image" then
+                                        #if NETCOREAPP3_1 then
+                                        WriteWarn(lin, pth, "Resource type 'image' is not supported on .NET Core, ignored!!!")
+                                        #else
                                         if File::Exists(line[2]) then
                                             rr::AddResource(line[0], new System.Drawing.Bitmap(line[2]))
                                             sentinel = true
                                         else
                                             WriteWarn(lin, pth, string::Format("File '{0}' does not exist, ignored!!!", line[2]))
                                         end if
+                                        end #if
                                     else
                                         WriteWarn(lin, pth, string::Format("Resource type '{0}' was not recognized, ignored!!!", line[1]))
                                     end if
@@ -263,11 +271,23 @@ namespace dylan.NET.ResProc
                                         sw::WriteLine(i"                return resman::GetString(\q{line[0]}\q)")
                                         sw::WriteLine("            end get")
                                         sw::WriteLine(c"        end property\n")
+                                        sw::WriteLine()
+                                        sw::WriteLine(i"        property assembly static string {line[0]}(var ci as System.Globalization.CultureInfo)")
+                                        sw::WriteLine("            get")
+                                        sw::WriteLine(i"                return resman::GetString(\q{line[0]}\q, ci)")
+                                        sw::WriteLine("            end get")
+                                        sw::WriteLine(c"        end property\n")
                                     elseif line[1] == "file" then
                                         if File::Exists(line[2]) then
                                             sw::WriteLine(i"        property assembly static byte[] {line[0]}")
                                             sw::WriteLine("            get")
                                             sw::WriteLine(i"                return $byte[]$resman::GetObject(\q{line[0]}\q)")
+                                            sw::WriteLine("            end get")
+                                            sw::WriteLine(c"        end property\n")
+                                            sw::WriteLine()
+                                            sw::WriteLine(i"        property assembly static byte[] {line[0]}(var ci as System.Globalization.CultureInfo)")
+                                            sw::WriteLine("            get")
+                                            sw::WriteLine(i"                return $byte[]$resman::GetObject(\q{line[0]}\q, ci)")
                                             sw::WriteLine("            end get")
                                             sw::WriteLine(c"        end property\n")
                                         else
@@ -280,6 +300,12 @@ namespace dylan.NET.ResProc
                                             sw::WriteLine(i"                return resman::GetStream(\q{line[0]}\q)")
                                             sw::WriteLine("            end get")
                                             sw::WriteLine(c"        end property\n")
+                                            sw::WriteLine()
+                                            sw::WriteLine(i"        property assembly static System.IO.Stream {line[0]}(var ci as System.Globalization.CultureInfo)")
+                                            sw::WriteLine("            get")
+                                            sw::WriteLine(i"                return resman::GetStream(\q{line[0]}\q, ci)")
+                                            sw::WriteLine("            end get")
+                                            sw::WriteLine(c"        end property\n")
                                         else
                                             WriteWarn(lin, pth, string::Format("File '{0}' does not exist, ignored!!!", line[2]))
                                         end if
@@ -288,6 +314,12 @@ namespace dylan.NET.ResProc
                                             sw::WriteLine(i"        property assembly static System.Drawing.Bitmap {line[0]}")
                                             sw::WriteLine("            get")
                                             sw::WriteLine(i"                return $System.Drawing.Bitmap$resman::GetObject(\q{line[0]}\q)")
+                                            sw::WriteLine("            end get")
+                                            sw::WriteLine(c"        end property\n")
+                                            sw::WriteLine()
+                                            sw::WriteLine(i"        property assembly static System.Drawing.Bitmap {line[0]}(var ci as System.Globalization.CultureInfo)")
+                                            sw::WriteLine("            get")
+                                            sw::WriteLine(i"                return $System.Drawing.Bitmap$resman::GetObject(\q{line[0]}\q, ci)")
                                             sw::WriteLine("            end get")
                                             sw::WriteLine(c"        end property\n")
                                         else
@@ -310,6 +342,112 @@ namespace dylan.NET.ResProc
             end if
         end method
 
+        method private static void EmitDesignerCS(var pth as string)
+            if File::Exists(pth) then
+                using sw = new StreamWriter(Path::ChangeExtension(pth, ".designer.cs"))
+                    using sr = new StreamReader(pth,true)
+                        var lin as integer = 0
+                        var cls = pth::Split(new char[] {'.'})[0]
+
+                        sw::WriteLine("namespace " + #ternary {NS == string::Empty ? "Resources" , NS})
+                        sw::WriteLine("{")
+                        sw::WriteLine(i"\n    internal static class {cls}")
+                        sw::WriteLine("    {")
+
+                        sw::WriteLine(c"\n        private static System.Resources.ResourceManager resman;")
+                        sw::WriteLine(i"        static {cls}()")
+                        sw::WriteLine("        {")
+                        sw::WriteLine(i"            resman = new System.Resources.ResourceManager(typeof({cls}));")
+                        sw::WriteLine(c"        }\n")
+
+                        do while !sr::get_EndOfStream()
+                            var line as string[] = StringParser(sr::ReadLine())
+                            lin++
+                            if line[l] >= 3 then
+                                if line[0] notlike "//(.)*" then
+                                    line[2] = #ternary {line[2]::StartsWith("c") ? ProcessString(line[2]::TrimStart(new char[] {'c'})::Trim(new char[] {c'\q'})), line[2]::Trim(new char[] {c'\q'})}
+
+                                    if line[1] == "string" then
+                                        sw::WriteLine(i"        internal static string {line[0]}")
+                                        sw::WriteLine("        {")
+                                        sw::WriteLine("            get")
+                                        sw::WriteLine("            {")
+                                        sw::WriteLine(i"                return resman.GetString(\q{line[0]}\q);")
+                                        sw::WriteLine("            }")
+                                        sw::WriteLine(c"        }\n")
+                                        sw::WriteLine()
+                                        sw::WriteLine(i"        internal static string Get{line[0]}(System.Globalization.CultureInfo ci)")
+                                        sw::WriteLine("        {")
+                                        sw::WriteLine(i"            return resman.GetString(\q{line[0]}\q, ci);")
+                                        sw::WriteLine(c"        }\n")
+                                    elseif line[1] == "file" then
+                                        if File::Exists(line[2]) then
+                                            sw::WriteLine(i"        internal static byte[] {line[0]}")
+                                            sw::WriteLine("        {")
+                                            sw::WriteLine("            get")
+                                            sw::WriteLine("            {")
+                                            sw::WriteLine(i"                return $byte[]$resman.GetObject(\q{line[0]}\q);")
+                                            sw::WriteLine("            }")
+                                            sw::WriteLine(c"        }\n")
+                                            sw::WriteLine()
+                                            sw::WriteLine(i"        internal static byte[] Get{line[0]}(System.Globalization.CultureInfo ci)")
+                                            sw::WriteLine("        {")
+                                            sw::WriteLine(i"            return $byte[]$resman.GetObject(\q{line[0]}\q, ci);")
+                                            sw::WriteLine(c"        }\n")
+                                        else
+                                            WriteWarn(lin, pth, string::Format("File '{0}' does not exist, ignored!!!", line[2]))
+                                        end if
+                                    elseif line[1] == "stream" then
+                                        if File::Exists(line[2]) then
+                                            sw::WriteLine(i"        internal static System.IO.Stream {line[0]}")
+                                            sw::WriteLine("        {")
+                                            sw::WriteLine("            get")
+                                            sw::WriteLine("            {")
+                                            sw::WriteLine(i"                return resman.GetStream(\q{line[0]}\q);")
+                                            sw::WriteLine("            }")
+                                            sw::WriteLine(c"        }\n")
+                                            sw::WriteLine()
+                                            sw::WriteLine(i"        internal static System.IO.Stream Get{line[0]}(System.Globalization.CultureInfo ci)")
+                                            sw::WriteLine("        {")
+                                            sw::WriteLine(i"            return resman.GetStream(\q{line[0]}\q, ci);")
+                                            sw::WriteLine(c"        }\n")
+                                        else
+                                            WriteWarn(lin, pth, string::Format("File '{0}' does not exist, ignored!!!", line[2]))
+                                        end if
+                                    elseif line[1] == "image" then
+                                        if File::Exists(line[2]) then
+                                            sw::WriteLine(i"        internal static System.Drawing.Bitmap {line[0]}")
+                                            sw::WriteLine("        {")
+                                            sw::WriteLine("            get")
+                                            sw::WriteLine("            {")
+                                            sw::WriteLine(i"                return (System.Drawing.Bitmap)resman.GetObject(\q{line[0]}\q);")
+                                            sw::WriteLine("            }")
+                                            sw::WriteLine(c"        }\n")
+                                            sw::WriteLine()
+                                            sw::WriteLine(i"        internal static System.Drawing.Bitmap Get{line[0]}[System.Globalization.CultureInfo ci]")
+                                            sw::WriteLine("        {")
+                                            sw::WriteLine(i"            return (System.Drawing.Bitmap)resman.GetObject(\q{line[0]}\q, ci);")
+                                            sw::WriteLine(c"        }\n")
+                                        else
+                                            WriteWarn(lin, pth, string::Format("File '{0}' does not exist, ignored!!!", line[2]))
+                                        end if
+                                    else
+                                        WriteWarn(lin, pth, string::Format("Resource type '{0}' was not recognized, ignored!!!", line[1]))
+                                    end if
+                                end if
+                            end if
+                        end do
+
+                        sw::WriteLine("    }")
+                        sw::WriteLine("}")
+                    end using
+                    Outs::Add(Path::ChangeExtension(pth, ".designer.cs"))
+                end using
+            else
+                WriteWarn(0, pth, string::Format("File '{0}' does not exist, ignored!!!", pth))
+            end if
+        end method
+
         method public static IEnumerable<of string> Invoke(var args as string[])
 
             Console::WriteLine("dylan.NET Resource Processor v. 11.10.1.2 RC")
@@ -326,6 +464,7 @@ namespace dylan.NET.ResProc
                         Console::WriteLine("Options:")
                         Console::WriteLine("   -resx : Emit resources in .resx format")
                         Console::WriteLine("   -designer : Emit a dylan.NET class for resource access")
+                        Console::WriteLine("   -designer-cs : Emit a C# class for resource access")
                         Console::WriteLine("   -resources : Emit resources in .resources format")
                         Console::WriteLine("   -ns : Set root namespace")
                         Console::WriteLine("   -h : View this help message")
@@ -335,12 +474,16 @@ namespace dylan.NET.ResProc
                         Mode = 1
                     elseif args[i] == "-designer" then
                         Mode = 2
+                    elseif args[i] == "-designer-cs" then
+                        Mode = 3
                     elseif args[i] == "-ns" then
                         i++
                         NS = args[i]
                     else
                         if Mode == 2 then
                             EmitDesigner(args[i])
+                        elseif Mode == 3 then
+                            EmitDesignerCS(args[i])
                         else
                             EmitResource(args[i])
                         end if
