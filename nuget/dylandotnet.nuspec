@@ -2,15 +2,15 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>dylan.NET</id>
-    <version>11.10.1.4</version>
+    <version>11.10.1.5</version>
     <authors>borgdylan</authors>
     <owners>borgdylan</owners>
     <licenseUrl>http://www.gnu.org/copyleft/lesser.html</licenseUrl>
     <projectUrl>https://github.com/borgdylan/dylandotnet</projectUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>A compiler for dylan.NET, a language targeting the CLR</description>
-    <releaseNotes>dylan.NET v.11.10.1.3 with MSBuild 16.x support files, resource compilation support.
-    	dylan.NET 11.10.x.y includes experimental support for formattable strings, and exception filters, the new (+) and (-) operators as well as experimental support for the #nullcond operator. dylan.NET has switched to use portable pdb as its debug database output format. Support for MSBuild is only for MSBuild 16.x running on full .NET/Mono (source compilable for .NET Core 2.0+). This package has the same compiler version as the previous release but supports FX unification for netstandard.dll for projects that mix 2.0 and 2.1 versions of the standard in the same project.
+    <releaseNotes>dylan.NET v.11.10.1.5 with MSBuild 16.x support files, resource compilation support.
+    	dylan.NET 11.10.x.y includes experimental support for formattable strings, and exception filters, the new (+) and (-) operators as well as experimental support for the #nullcond operator. dylan.NET has switched to use portable pdb as its debug database output format. Support for MSBuild is only for MSBuild 16.x running on full .NET/Mono (source compilable for .NET Core 2.0+).
     </releaseNotes>
     <copyright>Copyright 2020</copyright>
     <tags>.NET3.5 .NET4.0 .NET4.5 .NET4.6 NETCOREAPP Mono MSBuild</tags>

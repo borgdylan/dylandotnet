@@ -22,6 +22,7 @@ Modified by Dylan Borg for dylan.NET Support, based on the C# version.
 		<Language>dylan.NET</Language>
 		<DefaultLanguageSourceExtension>.dyl</DefaultLanguageSourceExtension>
 		<InputFile Condition=" '$(InputFile)' == '' ">$(AssemblyName).dyl</InputFile>
+		<DebugType Condition=" '$(DebugSymbols)' != 'true' ">None</DebugType>
 
         <_SdkLanguageName>dylan.NET</_SdkLanguageName>
         <_SdkLangExtention>.dyl</_SdkLangExtention>
@@ -40,6 +41,7 @@ Modified by Dylan Borg for dylan.NET Support, based on the C# version.
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
         <DefineConstants>$(DefineConstants);TRACE</DefineConstants>
+        <DebugType>None</DebugType>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(DisableImplicitConfigurationDefines)' != 'true'">

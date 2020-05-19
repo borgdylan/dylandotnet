@@ -995,7 +995,7 @@ class public StmtReader
             AsmFactory::AsmNameStr::set_CultureInfo(new System.Globalization.CultureInfo(asmv::Locale))
         end if
 
-        var mods as string = #ternary {AsmFactory::AsmMode == "exe" or AsmFactory::AsmMode == "winexe" ? "exe", "dll" }
+        var mods as string = #ternary {AsmFactory::AsmMode == "exe" orelse AsmFactory::AsmMode == "winexe" ? "exe", "dll" }
 
         AsmFactory::AsmB = ILEmitter::Univ::DefineDynamicAssembly(AsmFactory::AsmNameStr, AssemblyBuilderAccess::Save, Directory::GetCurrentDirectory())
         var modName as string = i"{AsmFactory::AsmNameStr::get_Name()}.{mods}"
@@ -1011,7 +1011,7 @@ class public StmtReader
         // --------------------------------------------------------------------------------------------------------
         if AsmFactory::DebugFlg then
             var dtyp as Managed.Reflection.Type = Loader::CachedLoadClass("System.Diagnostics.DebuggableAttribute")
-            var debugattr as DebuggableAttribute\DebuggingModes = DebuggableAttribute\DebuggingModes::Default or DebuggableAttribute\DebuggingModes::DisableOptimizations
+            var debugattr as DebuggableAttribute\DebuggingModes = DebuggableAttribute\DebuggingModes::Default or DebuggableAttribute\DebuggingModes::DisableOptimizations or DebuggableAttribute\DebuggingModes::IgnoreSymbolStoreSequencePoints
             var dattyp as Managed.Reflection.Type = Loader::CachedLoadClass("System.Diagnostics.DebuggableAttribute\DebuggingModes")
             AsmFactory::AsmB::SetCustomAttribute(new CustomAttributeBuilder(dtyp::GetConstructor(new Managed.Reflection.Type[] {dattyp}), new object[] {$object$debugattr}))
         end if

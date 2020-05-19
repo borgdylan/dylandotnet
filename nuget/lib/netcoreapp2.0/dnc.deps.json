@@ -6,14 +6,14 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v2.0": {
-      "dnc/11.10.1.3": {
+      "dnc/11.10.1.5": {
         "dependencies": {
-          "dnr": "11.10.1.2",
-          "dnu": "11.10.1.2",
-          "tokenizer.AST": "11.10.1.2",
-          "tokenizer.CodeGen": "11.10.1.2",
-          "tokenizer.Lexer": "11.10.1.2",
-          "tokenizer.Parser": "11.10.1.2",
+          "dnr": "11.10.1.5",
+          "dnu": "11.10.1.5",
+          "tokenizer.AST": "11.10.1.5",
+          "tokenizer.CodeGen": "11.10.1.5",
+          "tokenizer.Lexer": "11.10.1.5",
+          "tokenizer.Parser": "11.10.1.5",
           "Managed.Reflection": "0.2.1.0"
         },
         "runtime": {
@@ -38,17 +38,17 @@
         }
       },
       "System.ValueTuple/4.4.0": {},
-      "dnr/11.10.1.2": {
+      "dnr/11.10.1.5": {
         "dependencies": {
           "C5": "2.5.3",
           "System.Interactive": "3.1.1",
-          "dnu": "11.10.1.2"
+          "dnu": "11.10.1.5"
         },
         "runtime": {
           "dnr.dll": {}
         }
       },
-      "dnu/11.10.1.2": {
+      "dnu/11.10.1.5": {
         "dependencies": {
           "C5": "2.5.3",
           "System.ValueTuple": "4.4.0"
@@ -57,48 +57,48 @@
           "dnu.dll": {}
         }
       },
-      "tokenizer.AST/11.10.1.2": {
+      "tokenizer.AST/11.10.1.5": {
         "dependencies": {
           "C5": "2.5.3",
-          "dnu": "11.10.1.2"
+          "dnu": "11.10.1.5"
         },
         "runtime": {
           "tokenizer.AST.dll": {}
         }
       },
-      "tokenizer.CodeGen/11.10.1.2": {
+      "tokenizer.CodeGen/11.10.1.5": {
         "dependencies": {
           "C5": "2.5.3",
           "Microsoft.CSharp": "4.4.1",
           "System.Interactive": "3.1.1",
           "System.ValueTuple": "4.4.0",
-          "dnr": "11.10.1.2",
-          "dnu": "11.10.1.2",
-          "tokenizer.AST": "11.10.1.2",
-          "tokenizer.Lexer": "11.10.1.2",
-          "tokenizer.Parser": "11.10.1.2"
+          "dnr": "11.10.1.5",
+          "dnu": "11.10.1.5",
+          "tokenizer.AST": "11.10.1.5",
+          "tokenizer.Lexer": "11.10.1.5",
+          "tokenizer.Parser": "11.10.1.5"
         },
         "runtime": {
           "tokenizer.CodeGen.dll": {}
         }
       },
-      "tokenizer.Lexer/11.10.1.2": {
+      "tokenizer.Lexer/11.10.1.5": {
         "dependencies": {
           "C5": "2.5.3",
-          "dnu": "11.10.1.2",
-          "tokenizer.AST": "11.10.1.2"
+          "dnu": "11.10.1.5",
+          "tokenizer.AST": "11.10.1.5"
         },
         "runtime": {
           "tokenizer.Lexer.dll": {}
         }
       },
-      "tokenizer.Parser/11.10.1.2": {
+      "tokenizer.Parser/11.10.1.5": {
         "dependencies": {
           "C5": "2.5.3",
-          "dnr": "11.10.1.2",
-          "dnu": "11.10.1.2",
-          "tokenizer.AST": "11.10.1.2",
-          "tokenizer.Lexer": "11.10.1.2"
+          "dnr": "11.10.1.5",
+          "dnu": "11.10.1.5",
+          "tokenizer.AST": "11.10.1.5",
+          "tokenizer.Lexer": "11.10.1.5"
         },
         "runtime": {
           "tokenizer.Parser.dll": {}
@@ -115,7 +115,7 @@
     }
   },
   "libraries": {
-    "dnc/11.10.1.3": {
+    "dnc/11.10.1.5": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
@@ -148,32 +148,32 @@
       "path": "system.valuetuple/4.4.0",
       "hashPath": "system.valuetuple.4.4.0.nupkg.sha512"
     },
-    "dnr/11.10.1.2": {
+    "dnr/11.10.1.5": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "dnu/11.10.1.2": {
+    "dnu/11.10.1.5": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "tokenizer.AST/11.10.1.2": {
+    "tokenizer.AST/11.10.1.5": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "tokenizer.CodeGen/11.10.1.2": {
+    "tokenizer.CodeGen/11.10.1.5": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "tokenizer.Lexer/11.10.1.2": {
+    "tokenizer.Lexer/11.10.1.5": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "tokenizer.Parser/11.10.1.2": {
+    "tokenizer.Parser/11.10.1.5": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
