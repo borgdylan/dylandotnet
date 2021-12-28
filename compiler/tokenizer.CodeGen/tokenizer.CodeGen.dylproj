@@ -2,12 +2,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <Import Project="$(MSBuildThisFileDirectory)..\global.props" />
     <PropertyGroup>
-        <LanguageTargets>$(MSBuildThisFileDirectory)..\4.0\dylan.NET.Cli.targets</LanguageTargets>
+        <LanguageTargets>$(MSBuildThisFileDirectory)..\output\dylan.NET.Cli.targets</LanguageTargets>
         <OutputType>Library</OutputType>
         <RootNamespace>dylan.NET.Tokenizer.CodeGen</RootNamespace>
         <AssemblyName>tokenizer.CodeGen</AssemblyName>
         <TargetFrameworks>net46;netstandard2.0</TargetFrameworks>
-        
+
         <DefineConstants Condition=" '$(EnableStrictArrayIndices)' == 'true' ">$(DefineConstants);STRICT_ARR_INDICES</DefineConstants>
     </PropertyGroup>
     <ItemGroup Condition=" '$(TargetFramework)' == 'net46' ">
@@ -19,22 +19,22 @@
         <Reference Include="Microsoft.CSharp" />
     </ItemGroup>
     <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' ">
-        <PackageReference Include="Microsoft.CSharp" Version="4.4.1" />
+        <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
     </ItemGroup>
     <ItemGroup>
         <Reference Include="Managed.Reflection" Condition=" '$(TargetFramework)' == 'net46' ">
             <HintPath>$(MSBuildThisFileDirectory)..\lib\net46\Managed.Reflection.dll</HintPath>
             <CopyLocal>True</CopyLocal>
         </Reference>
-        
+
         <Reference Include="Managed.Reflection" Condition=" '$(TargetFramework)' == 'netstandard1.3' or '$(TargetFramework)' == 'netstandard2.0' ">
             <HintPath>$(MSBuildThisFileDirectory)..\lib\netstandard1.3\Managed.Reflection.dll</HintPath>
             <CopyLocal>True</CopyLocal>
         </Reference>
 
-        <PackageReference Include="System.Interactive" Version="3.1.1" />
+        <PackageReference Include="System.Interactive" Version="5.1.0" />
         <PackageReference Include="C5" Version="2.5.3" />
-        <PackageReference Include="System.ValueTuple" Version="4.4.0" />
+        <PackageReference Include="System.ValueTuple" Version="4.5.0" />
 
         <ProjectReference Include="$(MSBuildThisFileDirectory)..\tokenizer.AST\tokenizer.AST.dylproj" />
         <ProjectReference Include="$(MSBuildThisFileDirectory)..\tokenizer.Lexer\tokenizer.Lexer.dylproj" />

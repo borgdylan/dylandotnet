@@ -20,8 +20,15 @@ class public static Program
 
         StreamUtils::WriteLine(c"\nRuntime & OS Version Info:")
         StreamUtils::WriteLine(Assembly::GetAssembly(gettype string)::ToString())
-        StreamUtils::WriteLine(string::Format("Runtime Version: {0}", Environment::get_Version()::ToString()))
-        StreamUtils::WriteLine(string::Format("OS: {0}", Environment::get_OSVersion()::ToString()))
+
+        #if NET5_0_OR_GREATER then
+        StreamUtils::WriteLine(i"Runtime Version: {RuntimeInformation::get_FrameworkDescription()}")
+        StreamUtils::WriteLine(i"OS: {RuntimeInformation::get_OSDescription()}")
+        StreamUtils::WriteLine(i"RID: {RuntimeInformation::get_RuntimeIdentifier()}")
+        #else
+        StreamUtils::WriteLine(i"Runtime Version: {Environment::get_Version()}")
+        StreamUtils::WriteLine(i"OS: {Environment::get_OSVersion()}")
+        end #if
     end method
 
     method private static void OutputHelp()
@@ -29,7 +36,7 @@ class public static Program
         StreamUtils::WriteLine("Options:")
         StreamUtils::WriteLine("   -v : View Version Nrs. for all dylan.NET assemblies (aliases are -V and --version)")
         StreamUtils::WriteLine("   -h : View this help message")
-        StreamUtils::WriteLine("   -sdk : Set sdk version (2.0/4.0/4.5)")
+        //StreamUtils::WriteLine("   -sdk : Set sdk version (2.0/4.0/4.5)")
         StreamUtils::WriteLine("   -pcl : Set retargatable bit")
     end method
 
@@ -37,12 +44,12 @@ class public static Program
     [method: ComVisible(false)]
     method private static void main(var args as string[])
 
-        StreamUtils::WriteLine("dylan.NET Compiler v. 11.10.1.5 RC for Microsoft (R) .NET Framework (R) v. 4.6+,")
-        StreamUtils::WriteLine("                           Microsoft (R) .NET Core (R) v. 2.0+ and Xamarin Mono")
+        StreamUtils::WriteLine("dylan.NET Compiler v. 11.10.2.1 RC for Microsoft (R) .NET Framework (R) v. 4.6+,")
+        StreamUtils::WriteLine("                           Microsoft (R) .NET (R) v. 5.0+ and Xamarin Mono")
         StreamUtils::WriteLine("This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.")
-        StreamUtils::WriteLine("Copyright (C) 2020 Dylan Borg")
+        StreamUtils::WriteLine("Copyright (C) 2021 Dylan Borg")
 
-        var lastsdk as string = null
+        //var lastsdk as string = null
         var outputFile as string = null
         var inm = false
         var pcl = false
@@ -71,11 +78,11 @@ class public static Program
                             inm = true
                         elseif args[i] == "-pcl" then
                             pcl = true
-                        elseif args[i] == "-sdk" then
-                            i++
-                            if i < args[l] then
-                                lastsdk = args[i]
-                            end if
+                        // elseif args[i] == "-sdk" then
+                        //     i++
+                        //     if i < args[l] then
+                        //         lastsdk = args[i]
+                        //     end if
                         else
                             //TODO: for now ignoring all bad command line switches by outputting help text
                             OutputHelp()
@@ -91,22 +98,22 @@ class public static Program
                         AsmFactory::PCLSet = pcl
                         AsmFactory::OutputFile = outputFile
 
-                        if lastsdk isnot null then
-                            Importer::AsmBasePath = Path::Combine(Path::Combine(RuntimeEnvironment::GetRuntimeDirectory(), ".."), lastsdk)
-                        end if
+                        // if lastsdk isnot null then
+                        //     Importer::AsmBasePath = Path::Combine(Path::Combine(RuntimeEnvironment::GetRuntimeDirectory(), ".."), lastsdk)
+                        // end if
 
                         if !File::Exists(args[i]) then
-                            StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("File '{0}' does not exist.", args[i]))
+                            StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, i"File '{args[i]}' does not exist.")
                         end if
 
                         #if DEBUG then
-                        StreamUtils::Write(string::Format("Now Lexing: {0}", args[i]))
+                        StreamUtils::Write(i"Now Lexing: {args[i]}")
                         end #if
 
                         var pstmts as StmtSet = new Lexer()::Analyze(args[i])
 
                         #if DEBUG then
-                        StreamUtils::Write(string::Format(c"...Done.\nNow Parsing: {0}", args[i]))
+                        StreamUtils::Write(i"...Done.\nNow Parsing: {args[i]}")
                         end #if
 
                         var ppstmts as StmtSet = new Parser()::Parse(pstmts, true)
@@ -138,13 +145,13 @@ class public static Program
         main(args)
     end method
 
-    #if NET46 orelse NETSTANDARD2_0 orelse NETCOREAPP2_0 then
+    #if NET46_OR_GREATER orelse NETSTANDARD2_0 orelse NET5_0_OR_GREATER then
         method private static void InvokeAsyncWrapper(var args as object)
             Invoke($string[]$args)
         end method
 
         [method: ComVisible(false)]
-        method public static Task InvokeAsync(var args as string[]) => Task::get_Factory()::StartNew(new Action<of object>(InvokeAsyncWrapper),args)
+        method public static Task InvokeAsync(var args as string[]) => Task::get_Factory()::StartNew(new Action<of object>(InvokeAsyncWrapper), args)
 
     end #if
 

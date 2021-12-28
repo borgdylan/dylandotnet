@@ -2,7 +2,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <Import Project="$(MSBuildThisFileDirectory)..\global.props" />
     <PropertyGroup>
-        <LanguageTargets>$(MSBuildThisFileDirectory)..\4.0\dylan.NET.Cli.targets</LanguageTargets>
+        <LanguageTargets>$(MSBuildThisFileDirectory)..\output\dylan.NET.Cli.targets</LanguageTargets>
         <OutputType>Library</OutputType>
         <RootNamespace>dylan.NET.Tokenizer.Lexer</RootNamespace>
         <AssemblyName>tokenizer.Lexer</AssemblyName>

@@ -195,7 +195,7 @@ class public static ParseUtils
 
 	[method: ComVisible(false)]
 	method public static string ProcessString(var escstr as string)
-		var sb as StringBuilder = new StringBuilder()
+		var sb as StringBuilder = new StringBuilder(escstr::get_Length())
 		var i as integer = -1
 		var cc as char = 'a'
 		var len as integer = --escstr::get_Length()
@@ -268,7 +268,7 @@ class public static ParseUtils
 		var buf as StringBuilder = new StringBuilder(input::get_Length())
 		var cbuf as StringBuilder = null
 		var j as integer = -1
-		var es = new C5.ArrayList<of (integer, string) >()
+		var es = new C5.ArrayList<of (integer, StringBuilder) >()
 		//false means copy to format, true means copy to current expression
 		var mode as boolean = false
 		var exprStart as integer = -1
@@ -292,7 +292,7 @@ class public static ParseUtils
 					lvl = 0
 					j++
 					buf::Append('{')::Append(j)
-					cbuf = new StringBuilder(10)
+					cbuf = new StringBuilder(16)
 					//expression starts at ++i, Analyze() needs an offset so we pass in i instead
 					exprStart = i
 					continue
@@ -308,7 +308,8 @@ class public static ParseUtils
 					continue
 				elseif mode then
 					mode = false
-					es::Add(#tuple(exprStart, cbuf::ToString()))
+					es::Add(#tuple(exprStart, cbuf))
+					cbuf = null
 				end if
 			elseif cc == c'\\' andalso lc == 'q' then
 				i++
@@ -348,7 +349,8 @@ class public static ParseUtils
 				lvl--
 			elseif mode andalso cc == ',' andalso lvl == 0 then
 				mode = false
-				es::Add(#tuple(exprStart, cbuf::ToString()))
+				es::Add(#tuple(exprStart, cbuf))
+				cbuf = null
 			elseif mode andalso cc == ':' then
 				if lc == ':' then
 					i++
@@ -360,7 +362,8 @@ class public static ParseUtils
 					continue
 				else
 					mode = false
-					es::Add(#tuple(exprStart, cbuf::ToString()))
+					es::Add(#tuple(exprStart, cbuf))
+					cbuf = null
 				end if
 			end if
 

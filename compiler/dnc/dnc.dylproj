@@ -2,14 +2,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <Import Project="$(MSBuildThisFileDirectory)..\global.props" />
     <PropertyGroup>
-        <LanguageTargets>$(MSBuildThisFileDirectory)..\4.0\dylan.NET.Cli.targets</LanguageTargets>
+        <LanguageTargets>$(MSBuildThisFileDirectory)..\output\dylan.NET.Cli.targets</LanguageTargets>
         <OutputType>Exe</OutputType>
         <RootNamespace>dylan.NET.Compiler</RootNamespace>
         <AssemblyName>dnc</AssemblyName>
-        <TargetFrameworks>net46;netcoreapp2.0</TargetFrameworks>
+        <TargetFrameworks>net46;net5.0;net6.0</TargetFrameworks>
 
-        <RuntimeIdentifiers>win7-x64;win7-x86;osx.10.10-x64;osx.10.11-x64;ubuntu.14.04-x64;ubuntu.16.04-x64;centos.7-x64;rhel.7.2-x64;debian.8-x64;fedora.23-x64;opensuse.13.2-x64;ubuntu.16.04-x64</RuntimeIdentifiers>
-        <RuntimeIdentifier Condition=" '$(TargetFramework)' == 'net46' ">ubuntu.16.04-x64</RuntimeIdentifier>
+        <RuntimeIdentifiers>win8-x64;linux-x64</RuntimeIdentifiers>
     </PropertyGroup>
     <ItemGroup Condition=" '$(TargetFramework)' == 'net46' ">
         <Reference Include="System" />
@@ -23,8 +22,8 @@
             <HintPath>$(MSBuildThisFileDirectory)..\lib\net46\Managed.Reflection.dll</HintPath>
             <CopyLocal>True</CopyLocal>
         </Reference>
-    
-        <Reference Include="Managed.Reflection" Condition=" '$(TargetFramework)' == 'netcoreapp2.0' ">
+
+        <Reference Include="Managed.Reflection" Condition=" '$(TargetFramework)' == 'net5.0' or '$(TargetFramework)' == 'net6.0' ">
             <HintPath>$(MSBuildThisFileDirectory)..\lib\netstandard1.3\Managed.Reflection.dll</HintPath>
             <CopyLocal>True</CopyLocal>
         </Reference>
@@ -38,9 +37,12 @@
     </ItemGroup>
     <Target Name="AfterBuild" AfterTargets="Build">
         <ItemGroup>
-            <Stuff Include="$(OutputPath)\net46\ubuntu.16.04-x64\*.exe" />
-            <Stuff Include="$(OutputPath)\net46\ubuntu.16.04-x64\*.dll" />
+            <Stuff Include="$(OutputPath)\net46\*.exe" />
+            <Stuff Include="$(OutputPath)\net46\*.dll" />
+            <StuffCore Include="$(OutputPath)\net6.0\*.dll" />
+            <StuffCore Include="$(OutputPath)\net6.0\*.json" />
         </ItemGroup>
-        <Copy SourceFiles="@(Stuff)" DestinationFolder="..\4.0" />
+        <Copy SourceFiles="@(Stuff)" DestinationFolder="..\output\full" />
+        <Copy SourceFiles="@(StuffCore)" DestinationFolder="..\output\core" />
     </Target>
 </Project>

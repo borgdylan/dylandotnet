@@ -1,26 +1,21 @@
 {
     // See https://go.microsoft.com/fwlink/?LinkId=733558
     // for the documentation about the tasks.json format
-    "version": "0.1.0",
-    "command": "msbuild",
-    "args": [
-        // Ask msbuild to generate full paths for file names.
-        "/property:GenerateFullPaths=true"
-    ],
-    "taskSelector": "/t:",
-    "showOutput": "silent",
+    "version": "2.0.0",
     "tasks": [
         {
-            "taskName": "build",
-            // Show the output window only if unrecognized errors occur.
-            "showOutput": "silent",
-            // Use the standard MS compiler pattern to detect errors, warnings and infos
+            "group": {"kind": "build", "isDefault": true},
+            "dependsOn":[],
+            "label": "build",
+            "type": "shell",
+            "command": "dotnet",
+            "args": ["build", "-p:GenerateFullPaths=true", "-v:n"],
             "problemMatcher": [
                 {
                     "owner": "dylandotnet",
-                   "fileLocation": ["absolute"],
+                    "fileLocation": ["absolute"],
                     "pattern": {
-                        "regexp": "^(.*)\\((\\d+)(,(\\d+))?\\):\\s*(error|warning) :\\s*(.*)$",
+                        "regexp": "^(.*)\\((\\d+)(,(\\d+))?\\):\\s*(error|warning)\\s*:\\s*(.*)$",
                         "file": 1,
                         "line": 2,
                         "column": 4,
@@ -32,10 +27,10 @@
             ]
         },
         {
-            "taskName": "restore",
-            "args": [ ],
-            "isBuildCommand": false,
-            "showOutput": "silent",
+            "label": "restore",
+            "type": "shell",
+            "command": "dotnet",
+            "args": ["restore"],
             "problemMatcher": [
                 "$msCompile"
             ]

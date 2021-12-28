@@ -2,7 +2,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <Import Project="$(MSBuildThisFileDirectory)..\global.props" />
     <PropertyGroup>
-        <LanguageTargets>$(MSBuildThisFileDirectory)..\4.0\dylan.NET.Cli.targets</LanguageTargets>
+        <LanguageTargets>$(MSBuildThisFileDirectory)..\output\dylan.NET.Cli.targets</LanguageTargets>
         <OutputType>Library</OutputType>
         <RootNamespace>dylan.NET.Utils</RootNamespace>
         <AssemblyName>dnu</AssemblyName>
@@ -20,7 +20,7 @@
     <ItemGroup>
         <PackageReference Condition=" '$(EnableRxIface)' == 'true' " Include="System.Reactive" Version="4.0.0" />
         <PackageReference Include="C5" Version="2.5.3" />
-        <PackageReference Include="System.ValueTuple" Version="4.4.0" />
+        <PackageReference Include="System.ValueTuple" Version="4.5.0" />
     </ItemGroup>
     <ItemGroup>
         <ResScript Include="Messages.dylres" EmitDesigner="True" />

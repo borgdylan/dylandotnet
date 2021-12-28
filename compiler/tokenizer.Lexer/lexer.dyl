@@ -18,9 +18,10 @@ class public Lexer
         var curstmt as Stmt = null
         var crflag as boolean = false
         var lfflag as boolean = false
-        var buf as StringBuilder = new StringBuilder()
+        //preallocate 4KB of RAM in the buffer which will be reused for each line
+        var buf as StringBuilder = new StringBuilder(4096)
         var curline as integer = 0
-        var curstmtlen as integer = -1
+        //var curstmtlen as integer = -1
         var chr as char = 'a'
 
         //ignore char with code 0 which is null char as well
@@ -40,10 +41,10 @@ class public Lexer
             else
                 if lfflag then
                     curline++
-                    curstmt = new Line()::Analyze(new Stmt() {Line = curline}, buf::ToString())
-                    curstmtlen = curstmt::Tokens::get_Count()
+                    curstmt = new Line()::Analyze(new Stmt() {Line = curline}, buf)
+                    // curstmtlen = curstmt::Tokens::get_Count()
 
-                    if curstmtlen != 0 then
+                    if curstmt::Tokens::get_Count() != 0 then
                         stmts::AddStmt(curstmt)
                     end if
 
@@ -60,10 +61,10 @@ class public Lexer
             if sr::Peek() < 1 then
                 curline++
                 // curstmt = new Line()::Analyze(new Stmt() {Line = curline}, buf)
-                curstmt = new Line()::Analyze(new Stmt() {Line = curline}, buf::ToString())
-                curstmtlen = curstmt::Tokens::get_Count()
+                curstmt = new Line()::Analyze(new Stmt() {Line = curline}, buf)
+                // curstmtlen = curstmt::Tokens::get_Count()
 
-                if curstmtlen != 0 then
+                if curstmt::Tokens::get_Count() != 0 then
                     stmts::AddStmt(curstmt)
                 end if
             end if

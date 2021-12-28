@@ -1,4 +1,4 @@
-//    dylan.NET.Tasks.dll dylan.NET.Tasks Copyright (C) 2017 Dylan Borg <borgdylan@hotmail.com>
+//    dylan.NET.Tasks.dll dylan.NET.Tasks Copyright (C) 2021 Dylan Borg <borgdylan@hotmail.com>
 //    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software
 // Foundation; either version 3 of the License, or (at your option) any later version.
 //    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
@@ -45,7 +45,7 @@ class private AwaitClosure<of T, U>
 		_token = CancellationToken::get_None()
 	end method
 
-	#if PORTABLESHIM then
+	#if NETSTANDARD1_0 then
 		method assembly U DoLogic(var t as Task<of T>)
 			if t::get_IsCanceled() then
 				if _cat is null then
@@ -197,7 +197,7 @@ class private AwaitClosure<of U>
 		_token = CancellationToken::get_None()
 	end method
 
-	#if PORTABLESHIM then
+	#if NETSTANDARD1_0 then
 		method assembly U DoLogic(var t as Task)
 			if t::get_IsCanceled() then
 				if _cat is null then
@@ -349,7 +349,7 @@ class private AwaitClosure2<of T>
 		_token = CancellationToken::get_None()
 	end method
 
-	#if PORTABLESHIM then
+	#if NETSTANDARD1_0 then
 		method assembly void DoLogic(var t as Task<of T>)
 			if t::get_IsCanceled() then
 				if _cat is null then
@@ -494,7 +494,7 @@ class private AwaitClosure2
 		_token = CancellationToken::get_None()
 	end method
 
-	#if PORTABLESHIM then
+	#if NETSTANDARD1_0 then
 		method assembly void DoLogic(var t as Task)
 			if t::get_IsCanceled() then
 				if _cat is null then

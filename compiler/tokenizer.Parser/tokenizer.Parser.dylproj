@@ -2,7 +2,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <Import Project="$(MSBuildThisFileDirectory)..\global.props" />
     <PropertyGroup>
-        <LanguageTargets>$(MSBuildThisFileDirectory)..\4.0\dylan.NET.Cli.targets</LanguageTargets>
+        <LanguageTargets>$(MSBuildThisFileDirectory)..\output\dylan.NET.Cli.targets</LanguageTargets>
         <OutputType>Library</OutputType>
         <RootNamespace>dylan.NET.Tokenizer.Parser</RootNamespace>
         <AssemblyName>tokenizer.Parser</AssemblyName>
@@ -21,7 +21,7 @@
             <CopyLocal>True</CopyLocal>
             <Private>True</Private>
         </Reference>
-        
+
         <Reference Include="Managed.Reflection" Condition=" '$(TargetFramework)' == 'netstandard1.3' or '$(TargetFramework)' == 'netstandard2.0' ">
             <HintPath>$(MSBuildThisFileDirectory)..\lib\netstandard1.3\Managed.Reflection.dll</HintPath>
             <CopyLocal>True</CopyLocal>

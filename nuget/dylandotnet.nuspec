@@ -2,18 +2,18 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>dylan.NET</id>
-    <version>11.10.1.5</version>
+    <version>11.10.2.1</version>
     <authors>borgdylan</authors>
     <owners>borgdylan</owners>
-    <licenseUrl>http://www.gnu.org/copyleft/lesser.html</licenseUrl>
+    <license type="expression">	LGPL-3.0-or-later</license>
     <projectUrl>https://github.com/borgdylan/dylandotnet</projectUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>A compiler for dylan.NET, a language targeting the CLR</description>
-    <releaseNotes>dylan.NET v.11.10.1.5 with MSBuild 16.x support files, resource compilation support.
-    	dylan.NET 11.10.x.y includes experimental support for formattable strings, and exception filters, the new (+) and (-) operators as well as experimental support for the #nullcond operator. dylan.NET has switched to use portable pdb as its debug database output format. Support for MSBuild is only for MSBuild 16.x running on full .NET/Mono (source compilable for .NET Core 2.0+).
+    <releaseNotes>dylan.NET v.11.10.2.1 with MSBuild 17.x support files, resource compilation support.
+    	dylan.NET 11.10.x.y includes experimental support for formattable strings, and exception filters, the new (+) and (-) operators as well as experimental support for the #nullcond operator. dylan.NET has switched to use portable pdb as its debug database output format. Support for MSBuild is for MSBuild 17.x running on both .NET Framework/Mono and .NET 6.0.
     </releaseNotes>
-    <copyright>Copyright 2020</copyright>
-    <tags>.NET3.5 .NET4.0 .NET4.5 .NET4.6 NETCOREAPP Mono MSBuild</tags>
+    <copyright>Copyright 2021</copyright>
+    <tags>.NET4.6 .NET5.0 .NET6.0 Mono MSBuild</tags>
     <!--<dependencies>
       <dependency id="SampleDependency" version="1.0" />
     </dependencies>-->
@@ -21,12 +21,11 @@
   <files>
   	<!--<file src="lib/net45/*.dll" target="lib/net45/" />-->
   	<file src="lib/net46/*.dll" target="lib/net46/" />
-	<file src="lib/netcoreapp2.0/*.*" target="lib/netcoreapp2.0/" />
-  	<!--<file src="lib/net35/*.dll" target="lib/net35/" />-->
-  	<!--<file src="lib/net45/*.exe" target="lib/net45/" />-->
-  	<!--<file src="lib/net40/*.exe" target="lib/net40/" />-->
-  	<!--<file src="lib/net35/*.exe" target="lib/net35/" />-->
+	<file src="lib/net5.0/*.*" target="lib/net5.0/" />
+	<file src="lib/net6.0/*.*" target="lib/net6.0/" />
   	<file src="tools/*" target="tools/" />
+  	<file src="tools/core/*" target="tools/core" />
+  	<file src="tools/full/*" target="tools/full" />
   	<file src="build/*" target="build/" />
   	<file src="buildCrossTargeting/*" target="buildCrossTargeting/" />
   </files>

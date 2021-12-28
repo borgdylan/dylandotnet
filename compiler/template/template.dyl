@@ -1023,7 +1023,7 @@ class public static Program
 		Console::WriteLine(#expr($object$uplus)::GetType())
 
 		Console::WriteLine((-)$double$12)
-		Console::WriteLine('xy')
+		//Console::WriteLine('xy')
 	end method
 
 	[method: My(new integer[] {1, 2})]

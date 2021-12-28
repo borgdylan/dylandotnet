@@ -3,6 +3,62 @@
         <name>dylan.NET.Tasks</name>
     </assembly>
     <members>
+        <member name="T:System.Threading.Tasks.AsyncHelpers">
+            <summary>A set of helpers for iterating through a list that yields values asynchronously using synchronous or asynchronous handlers.</summary>
+            <remarks>This class provides an implementaion of the "await foreach" pattern for languages that lack a built-in equivalent. Collections to be iterated must implement IAsyncEnumerable&lt;T&gt; or IAsyncEnumerator&lt;T&gt;.</remarks>
+        </member>
+        <member name="M:System.Threading.Tasks.AsyncHelpers.AwaitForeach``1(System.Collections.Generic.IAsyncEnumerable{``0},System.Func{``0,System.Boolean})">
+            <typeparam name="TElement">The type of the elements in the asynchronous enumerable.</typeparam>
+            <param name="alst">The asynchronous enumerable to iterate through.</param>
+            <param name="act">A handler that gets called for each element in the collection. The return value must be true to keep iterating through the rest of the list, false to break the loop.</param>
+            <summary>Iterates through an asynshcronous enumerable collection using the provided synchronous handler.</summary>
+            <returns>A Task that completes when the loop terminates either as the sequence gets exhausted or because the handler signals that it wants an early termination.</returns>
+            <remarks>Do not forget to await the returned task. This makes sure that the loop would be terminated and that any enumerators would have been disposed before continuing.</remarks>
+        </member>
+        <member name="M:System.Threading.Tasks.AsyncHelpers.AwaitForeach``1(System.Collections.Generic.IAsyncEnumerable{``0},System.Func{``0,System.Threading.Tasks.Task{System.Boolean}})">
+            <typeparam name="TElement">The type of the elements in the asynchronous enumerable.</typeparam>
+            <param name="alst">The asynchronous enumerable to iterate through.</param>
+            <param name="act">An asynchronous handler that gets called and awaited for each element in the collection. The return value must be true to keep iterating through the rest of the list, false to break the loop.</param>
+            <summary>Iterates through an asynshcronous enumerable collection using the provided asynchronous handler.</summary>
+            <returns>A Task that completes when the loop terminates either as the sequence gets exhausted or because the handler signals that it wants an early termination.</returns>
+            <remarks>Do not forget to await the returned task. This makes sure that the loop would be terminated and that any enumerators would have been disposed before continuing.</remarks>
+        </member>
+        <member name="M:System.Threading.Tasks.AsyncHelpers.AwaitForeach``1(System.Collections.Generic.IAsyncEnumerable{``0},System.Func{``0,System.Boolean},System.Threading.CancellationToken)">
+            <typeparam name="TElement">The type of the elements in the asynchronous enumerable.</typeparam>
+            <param name="alst">The asynchronous enumerable to iterate through.</param>
+            <param name="act">A handler that gets called for each element in the collection. The return value must be true to keep iterating through the rest of the list, false to break the loop.</param>
+            <param name="ctoken">The cancellation token to use. This can be used to abort any awaits inside the loop and force an early termination.</param>
+            <summary>Iterates through an asynshcronous enumerable collection using the provided synchronous handler and cancellation token.</summary>
+            <returns>A Task that completes when the loop terminates either as the sequence gets exhausted or because the handler signals that it wants an early termination.</returns>
+            <remarks>Do not forget to await the returned task. This makes sure that the loop would be terminated and that any enumerators would have been disposed before continuing.</remarks>
+        </member>
+        <member name="M:System.Threading.Tasks.AsyncHelpers.AwaitForeach``1(System.Collections.Generic.IAsyncEnumerable{``0},System.Func{``0,System.Threading.Tasks.Task{System.Boolean}},System.Threading.CancellationToken)">
+            <typeparam name="TElement">The type of the elements in the asynchronous enumerable.</typeparam>
+            <param name="alst">The asynchronous enumerable to iterate through.</param>
+            <param name="act">An asynchronous  handler that gets called and awaited for each element in the collection. The return value must be true to keep iterating through the rest of the list, false to break the loop.</param>
+            <param name="ctoken">The cancellation token to use. This can be used to abort any awaits inside the loop and force an early termination.</param>
+            <summary>Iterates through an asynshcronous enumerable collection using the provided asynchronous handler and cancellation token.</summary>
+            <returns>A Task that completes when the loop terminates either as the sequence gets exhausted or because the handler signals that it wants an early termination.</returns>
+            <remarks>Do not forget to await the returned task. This makes sure that the loop would be terminated and that any enumerators would have been disposed before continuing.</remarks>
+        </member>
+        <member name="M:System.Threading.Tasks.AsyncHelpers.AwaitForeach``1(System.Collections.Generic.IAsyncEnumerator{``0},System.Func{``0,System.Boolean},System.Threading.CancellationToken)">
+            <typeparam name="TElement">The type of the elements in the asynchronous enumerable.</typeparam>
+            <param name="aen">The asynchronous enumerator to iterate with.</param>
+            <param name="act">A handler that gets called for each element in the collection. The return value must be true to keep iterating through the rest of the list, false to break the loop.</param>
+            <param name="ctoken">The cancellation token to use. This can be used to abort any awaits inside the loop and force an early termination.</param>
+            <summary>Iterates by means of an asynshcronous enumerator using the provided synchronous handler and cancellation token.</summary>
+            <returns>A Task that completes when the loop terminates either as the sequence gets exhausted or because the handler signals that it wants an early termination.</returns>
+            <remarks>Do not forget to await the returned task. This makes sure that the loop would be terminated and that the enumerator would have been disposed before continuing.</remarks>
+        </member>
+        <member name="M:System.Threading.Tasks.AsyncHelpers.AwaitForeach``1(System.Collections.Generic.IAsyncEnumerator{``0},System.Func{``0,System.Threading.Tasks.Task{System.Boolean}},System.Threading.CancellationToken)">
+            <typeparam name="TElement">The type of the elements in the asynchronous enumerable.</typeparam>
+            <param name="aen">The asynchronous enumerator to iterate with.</param>
+            <param name="act">An asynchronous handler that gets called and awaited for each element in the collection. The return value must be true to keep iterating through the rest of the list, false to break the loop.</param>
+            <param name="ctoken">The cancellation token to use. This can be used to abort any awaits inside the loop and force an early termination.</param>
+            <summary>Iterates by means of an asynshcronous enumerator using the provided asynchronous handler and cancellation token.</summary>
+            <returns>A Task that completes when the loop terminates either as the sequence gets exhausted or because the handler signals that it wants an early termination.</returns>
+            <remarks>Do not forget to await the returned task. This makes sure that the loop would be terminated and that the enumerator would have been disposed before continuing.</remarks>
+        </member>
         <member name="T:System.Threading.Tasks.AsyncValue`1">
             <typeparam name="TResult">The type of the value returned.</typeparam>
             <summary>A mechanism with which a value can be asynchronously returned from an awaited method.</summary>
@@ -107,6 +163,20 @@
             <summary>Registers the given function to run when the configured task resolves to a value/fails.</summary>
             <remarks>Calls the underlying OnCompleted.</remarks>
         </member>
+        <member name="T:System.Threading.Tasks.ConfiguredValueTaskAwaitableWrapper">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:System.Threading.Tasks.ConfiguredValueTaskAwaitableWrapper(System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable)">
+            <param name="awaitable">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:System.Threading.Tasks.ConfiguredValueTaskAwaitableWrapper.GetAwaiter">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="T:System.Threading.Tasks.ConfiguredValueTaskAwaitableWrapper`1">
             <typeparam name="TResult">The type of result returned by this ConfiguredValueTaskAwaitable.</typeparam>
             <summary>An IAwaitable&lt;TResult&gt; implementation that wraps a ConfiguredValueTaskAwaitable&lt;TResult&gt;.</summary>
@@ -121,6 +191,29 @@
             <summary>Gets the IAwaiter&lt;TResult&gt; used to await this ConfiguredValueTaskAwaitable&lt;TResult&gt;.</summary>
             <returns>The IAwaiter&lt;TResult&gt; used to await this ConfiguredValueTaskAwaitable&lt;TResult&gt;.</returns>
             <remarks />
+        </member>
+        <member name="T:System.Threading.Tasks.ConfiguredValueTaskAwaiterWrapper">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:System.Threading.Tasks.ConfiguredValueTaskAwaiterWrapper(System.Runtime.CompilerServices.ConfiguredValueTaskAwaitable+ConfiguredValueTaskAwaiter)">
+            <param name="awaiter">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:System.Threading.Tasks.ConfiguredValueTaskAwaiterWrapper.GetResult">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:System.Threading.Tasks.ConfiguredValueTaskAwaiterWrapper.IsCompleted">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:System.Threading.Tasks.ConfiguredValueTaskAwaiterWrapper.OnCompleted(System.Action)">
+            <param name="continuation">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
         </member>
         <member name="T:System.Threading.Tasks.ConfiguredValueTaskAwaiterWrapper`1">
             <typeparam name="TResult">The type of result returned by the ConfiguredValueTaskAwaitable being awaited.</typeparam>
@@ -408,6 +501,13 @@
             <returns>The Task related to the TaskCompletionSource encapsulated by the closure.</returns>
             <remarks>Overriding the Catch method allows the addition of code that should execute when exceptions happen.</remarks>
         </member>
+        <member name="M:System.Threading.Tasks.TaskClosure`1.Await(`0System`0.`0Runtime`0.`0CompilerServices`0.`0ConfiguredValueTaskAwaitable`0,`0System`0.`0Action`0)">
+            <param name="cta">To be added.</param>
+            <param name="f">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:System.Threading.Tasks.TaskClosure`1.Await(`0System`0.`0Runtime`0.`0CompilerServices`0.`0YieldAwaitable`0,`0System`0.`0Action`0)">
             <param name="ya">The yield to await.</param>
             <param name="f">The function to execute if the yield completed successfully.</param>
@@ -436,6 +536,13 @@
             <returns>The Task related to the TaskCompletionSource encapsulated by the closure.</returns>
             <remarks>Overriding the Catch method allows the addition of code that should execute when exceptions happen.</remarks>
         </member>
+        <member name="M:System.Threading.Tasks.TaskClosure`1.Await(`0System`0.`0Threading`0.`0Tasks`0.`0ValueTask`0,`0System`0.`0Action`0)">
+            <param name="t">To be added.</param>
+            <param name="f">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="M:System.Threading.Tasks.TaskClosure`1.Await``1(`0System`0.`0Runtime`0.`0CompilerServices`0.`0ConfiguredTaskAwaitable`0,`0System`0.`0Action`0,`0System`0.`0Action`0{`0TException`0})">
             <typeparam name="TException">The type of exception that the handler will handle.</typeparam>
             <param name="cta">The configured task to await.</param>
@@ -444,6 +551,15 @@
             <summary>Runs the given function if the await completes successfully else runs the given exception handler.</summary>
             <returns>The Task related to the TaskCompletionSource encapsulated by the closure.</returns>
             <remarks>Overriding the Catch method allows the addition of code that should execute when exceptions that are not handled by the given handler happen.</remarks>
+        </member>
+        <member name="M:System.Threading.Tasks.TaskClosure`1.Await``1(`0System`0.`0Runtime`0.`0CompilerServices`0.`0ConfiguredValueTaskAwaitable`0,`0System`0.`0Action`0,`0System`0.`0Action`0{`0TException`0})">
+            <typeparam name="TException">To be added.</typeparam>
+            <param name="cta">To be added.</param>
+            <param name="f">To be added.</param>
+            <param name="c">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
         </member>
         <member name="M:System.Threading.Tasks.TaskClosure`1.Await``1(`0System`0.`0Runtime`0.`0CompilerServices`0.`0YieldAwaitable`0,`0System`0.`0Action`0,`0System`0.`0Action`0{`0TException`0})">
             <typeparam name="TException">The type of exception that the handler will handle.</typeparam>
@@ -480,6 +596,15 @@
             <summary>Runs the given function if the await completes successfully else runs the given exception handler.</summary>
             <returns>The Task related to the TaskCompletionSource encapsulated by the closure.</returns>
             <remarks>Overriding the Catch method allows the addition of code that should execute when exceptions that are not handled by the given handler happen.</remarks>
+        </member>
+        <member name="M:System.Threading.Tasks.TaskClosure`1.Await``1(`0System`0.`0Threading`0.`0Tasks`0.`0ValueTask`0,`0System`0.`0Action`0,`0System`0.`0Action`0{`0TException`0})">
+            <typeparam name="TException">To be added.</typeparam>
+            <param name="t">To be added.</param>
+            <param name="f">To be added.</param>
+            <param name="c">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
         </member>
         <member name="M:System.Threading.Tasks.TaskClosure`1.Await``1(`0System`0.`0Runtime`0.`0CompilerServices`0.`0ConfiguredTaskAwaitable`0{`0U`0},`0System`0.`0Action`0{`0U`0})">
             <typeparam name="U">The return type of the awaited configured task.</typeparam>
@@ -1409,6 +1534,29 @@
             <returns>The IAwaiter&lt;TResult&gt; used to await this Task&lt;TResult&gt;.</returns>
             <remarks />
         </member>
+        <member name="T:System.Threading.Tasks.ValueTaskAwaiterWrapper">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:System.Threading.Tasks.ValueTaskAwaiterWrapper(System.Runtime.CompilerServices.ValueTaskAwaiter)">
+            <param name="awaiter">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:System.Threading.Tasks.ValueTaskAwaiterWrapper.GetResult">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:System.Threading.Tasks.ValueTaskAwaiterWrapper.IsCompleted">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:System.Threading.Tasks.ValueTaskAwaiterWrapper.OnCompleted(System.Action)">
+            <param name="continuation">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
         <member name="T:System.Threading.Tasks.ValueTaskAwaiterWrapper`1">
             <typeparam name="TResult">The type of result returned by the ValueTask being awaited.</typeparam>
             <summary>An IAwaiter&lt;TResult&gt; implementation that wraps a ValueTaskAwaiter&lt;TResult&gt;.</summary>
@@ -1433,6 +1581,20 @@
             <param name="continuation">The function to execute as the continuation.</param>
             <summary>Registers the given function to run when the configured task resolves to a value/fails.</summary>
             <remarks>Calls the underlying OnCompleted.</remarks>
+        </member>
+        <member name="T:System.Threading.Tasks.ValueTaskWrapper">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:System.Threading.Tasks.ValueTaskWrapper(System.Threading.Tasks.ValueTask)">
+            <param name="awaitable">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:System.Threading.Tasks.ValueTaskWrapper.GetAwaiter">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
         </member>
         <member name="T:System.Threading.Tasks.ValueTaskWrapper`1">
             <typeparam name="TResult">The type of result returned by this ValueTask.</typeparam>

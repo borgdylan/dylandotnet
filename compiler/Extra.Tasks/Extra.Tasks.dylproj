@@ -2,24 +2,21 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <Import Project="$(MSBuildThisFileDirectory)..\global.props" />
     <PropertyGroup>
-        <LanguageTargets>$(MSBuildThisFileDirectory)..\4.0\dylan.NET.Cli.targets</LanguageTargets>
+        <LanguageTargets>$(MSBuildThisFileDirectory)..\output\dylan.NET.Cli.targets</LanguageTargets>
         <OutputType>Library</OutputType>
         <RootNamespace>Extra.Tasks</RootNamespace>
         <AssemblyName>Extra.Tasks</AssemblyName>
-        <TargetFrameworks>net472</TargetFrameworks>
+        <TargetFrameworks>net472;net6.0</TargetFrameworks>
     </PropertyGroup>
-    <ItemGroup>
+    <ItemGroup Condition=" '$(TargetFramework)' == 'net472' ">
         <Reference Include="System" />
         <Reference Include="mscorlib" />
         <Reference Include="System.Core" />
         <Reference Include="System.Xml.Linq" />
         <Reference Include="System.Xml" />
-
-        <!--<Reference Include="Microsoft.Build.Framework" />
-        <Reference Include="Microsoft.Build.Utilities.v4.0" />
-        <Reference Include="Microsoft.Build.Tasks.v4.0" />-->
-
-        <PackageReference Include="Microsoft.Build.Tasks.Core" Version="16.0.461" />
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Build.Tasks.Core" Version="17.0.0" />
 
         <ProjectReference Include="$(MSBuildThisFileDirectory)..\resproc\resproc.dylproj" />
         <ProjectReference Include="$(MSBuildThisFileDirectory)..\dnc\dnc.dylproj" />
@@ -29,7 +26,10 @@
         <ItemGroup>
             <Stuff Include="$(OutputPath)\net472\Extra.Tasks.dll" />
             <Stuff Include="Extra.tasks" />
+            <StuffCore Include="$(OutputPath)\net6.0\Extra.Tasks.dll" />
+            <StuffCore Include="Extra.tasks" />
         </ItemGroup>
-        <Copy SourceFiles="@(Stuff)" DestinationFolder="..\4.0" />
+        <Copy SourceFiles="@(Stuff)" DestinationFolder="..\output\full" />
+        <Copy SourceFiles="@(StuffCore)" DestinationFolder="..\output\core" />
     </Target>
 </Project>

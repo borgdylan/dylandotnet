@@ -1,4 +1,4 @@
-//    dylan.NET.Tasks.dll dylan.NET.Tasks Copyright (C) 2017 Dylan Borg <borgdylan@hotmail.com>
+//    dylan.NET.Tasks.dll dylan.NET.Tasks Copyright (C) 2021 Dylan Borg <borgdylan@hotmail.com>
 //    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software
 // Foundation; either version 3 of the License, or (at your option) any later version.
 //    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
@@ -11,7 +11,7 @@ import System.Threading
 //await with continuations
 class public static TaskHelpers
 
-    #if NET40 orelse PORTABLESHIM then
+    #if NETSTANDARD1_3 orelse NETSTANDARD1_0 orelse NET40 then
 	method public static Task<of TResult> FromResult<of TResult>(var result as TResult)
     	var tcs as TaskCompletionSource<of TResult> = new TaskCompletionSource<of TResult>()
 		tcs::SetResult(result)
@@ -24,18 +24,18 @@ class public static TaskHelpers
 		//Original code was: Copyright (c) Microsoft Open Technologies, Inc. All rights reserved. See COPYING.TaskHelpers.Sources
 		//Optimization for .NET 4.6 done by the library author.
 
-		#if !NET46 andalso !NET471 andalso !CORE50 then
+		#if NETSTANDARD1_3 orelse NETSTANDARD1_0 orelse NET45 orelse NET40 then
 			field private static initonly Task _defaultCompleted
 		end #if
 
 		field private static initonly Task<of object> _completedTaskReturningNull
 
 		method private static void TaskHelpers()
-			#if NET40 orelse PORTABLESHIM then
+			#if NETSTANDARD1_3 orelse NETSTANDARD1_0 orelse NET40 then
 				_defaultCompleted = FromResult<of AsyncVoid>(default AsyncVoid)
 				_completedTaskReturningNull = FromResult<of object>(null)
 			#else
-				#if !NET46 andalso !NET471 andalso !CORE50 then
+				#if NET45 then
 				_defaultCompleted = Task::FromResult<of AsyncVoid>(default AsyncVoid)
 				end #if
 				_completedTaskReturningNull = Task::FromResult<of object>(null)
@@ -43,7 +43,7 @@ class public static TaskHelpers
 		end method
 
         method public static Task<of TResult> FromError<of TResult>(var exception as Exception)
-			#if NET46 orelse NET471 orelse CORE50 then
+			#if NETSTANDARD2_0_OR_GREATER orelse NET46_OR_GREATER then
 				return Task::FromException<of TResult>(exception)
 			#else
 				var tcs as TaskCompletionSource<of TResult> = new TaskCompletionSource<of TResult>()
@@ -53,7 +53,7 @@ class public static TaskHelpers
         end method
 
         method public static Task FromError(var exception as Exception)
-            #if NET46 orelse NET471 orelse CORE50 then
+            #if NETSTANDARD2_0_OR_GREATER orelse NET46_OR_GREATER then
 				return Task::FromException<of AsyncVoid>(exception)
 			#else
 				return FromError<of AsyncVoid>(exception)
@@ -61,7 +61,7 @@ class public static TaskHelpers
         end method
 
         method public static Task Completed()
-			#if NET46 orelse NET471 orelse CORE50 then
+			#if NETSTANDARD2_0_OR_GREATER orelse NET46_OR_GREATER then
 				return Task::get_CompletedTask()
 			#else
 				return _defaultCompleted
@@ -128,7 +128,7 @@ class public static TaskHelpers
 		return tcs::get_Task()
 	end method
 
-	#if !NET40 andalso !PORTABLESHIM then
+	#if !NET40 andalso !NETSTANDARD1_0 then
 		method public static Task<of U> Await<of T, U>(var t as Task<of T>, var f as Func<of T, U>, var cat as Func<of Exception, U>, var fin as Action, var token as CancellationToken)
 			return Await<of T, U>(new TaskAwaiterWrapper<of T>(t::GetAwaiter()), f, cat, fin, token)
 		end method

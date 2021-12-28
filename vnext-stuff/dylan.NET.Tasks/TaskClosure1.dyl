@@ -1,4 +1,4 @@
-//    dylan.NET.Tasks.dll dylan.NET.Tasks Copyright (C) 2017 Dylan Borg <borgdylan@hotmail.com>
+//    dylan.NET.Tasks.dll dylan.NET.Tasks Copyright (C) 2021 Dylan Borg <borgdylan@hotmail.com>
 //    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software
 // Foundation; either version 3 of the License, or (at your option) any later version.
 //    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
@@ -171,7 +171,7 @@ class public TaskClosure<of T>
 		return _tcs::get_Task()
 	end method
 
-	#if !NET40 then
+	#if !NET40 andalso !NETSTANDARD1_0 then
 
 		method public Task<of T> Await<of U>(var t as ValueTask<of U>, var f as Action<of U>)
 			TaskHelpers::Await<of U>(new ValueTaskAwaiterWrapper<of U>(t::GetAwaiter()), f, new Action<of Exception>(CatchOuter), get_Canceller())
@@ -194,6 +194,18 @@ class public TaskClosure<of T>
 			var clos = new CatchClosure<of TException>(c, new Action<of Exception>(CatchOuter))
 			var clos2 = new AsyncValueClosure<of U>(f, av)
 			TaskHelpers::Await<of U>(new ValueTaskAwaiterWrapper<of U>(t::GetAwaiter()), new Action<of U>(clos2::Adapt), new Action<of Exception>(clos::Catch), get_Canceller())
+			return _tcs::get_Task()
+		end method
+
+
+		method public Task<of T> Await(var t as ValueTask, var f as Action)
+			TaskHelpers::Await(new ValueTaskAwaiterWrapper(t::GetAwaiter()), f, new Action<of Exception>(CatchOuter), get_Canceller())
+			return _tcs::get_Task()
+		end method
+
+		method public Task<of T> Await<of TException>(var t as ValueTask, var f as Action, var c as Action<of TException>) where TException as {Exception}
+			var clos = new CatchClosure<of TException>(c, new Action<of Exception>(CatchOuter))
+			TaskHelpers::Await(new ValueTaskAwaiterWrapper(t::GetAwaiter()), f, new Action<of Exception>(clos::Catch), get_Canceller())
 			return _tcs::get_Task()
 		end method
 
@@ -222,9 +234,21 @@ class public TaskClosure<of T>
 			return _tcs::get_Task()
 		end method
 
+
+		method public Task<of T> Await(var cta as ConfiguredValueTaskAwaitable, var f as Action)
+			TaskHelpers::Await(new ConfiguredValueTaskAwaiterWrapper(cta::GetAwaiter()), f, new Action<of Exception>(CatchOuter), get_Canceller())
+			return _tcs::get_Task()
+		end method
+
+		method public Task<of T> Await<of TException>(var cta as ConfiguredValueTaskAwaitable, var f as Action, var c as Action<of TException>) where TException as {Exception}
+			var clos = new CatchClosure<of TException>(c, new Action<of Exception>(CatchOuter))
+			TaskHelpers::Await(new ConfiguredValueTaskAwaiterWrapper(cta::GetAwaiter()), f, new Action<of Exception>(clos::Catch), get_Canceller())
+			return _tcs::get_Task()
+		end method
+
 	end #if
 
-	#if !PORTABLESHIM then
+	#if !NETSTANDARD1_0 then
 
 		method public Task<of T> Await(var ya as YieldAwaitable, var f as Action)
 			TaskHelpers::Await(new YieldAwaiterWrapper(ya::GetAwaiter()), f, new Action<of Exception>(CatchOuter), get_Canceller())
@@ -273,4 +297,5 @@ class public TaskClosure<of T>
 		end method
 
 	end #if
+
 end class

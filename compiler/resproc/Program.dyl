@@ -201,7 +201,7 @@ namespace dylan.NET.ResProc
                                             WriteWarn(lin, pth, string::Format("File '{0}' does not exist, ignored!!!", line[2]))
                                         end if
                                     elseif line[1] == "stream" then
-                                        #if NETCOREAPP3_1 then
+                                        #if NET5_0_OR_GREATER then
                                         WriteWarn(lin, pth, "Resource type 'stream' is not supported on .NET Core, ignored!!!")
                                         #else
                                         if File::Exists(line[2]) then
@@ -216,7 +216,7 @@ namespace dylan.NET.ResProc
                                         end if
                                         end #if
                                     elseif line[1] == "image" then
-                                        #if NETCOREAPP3_1 then
+                                        #if NET5_0_OR_GREATER then
                                         WriteWarn(lin, pth, "Resource type 'image' is not supported on .NET Core, ignored!!!")
                                         #else
                                         if File::Exists(line[2]) then
@@ -450,9 +450,9 @@ namespace dylan.NET.ResProc
 
         method public static IEnumerable<of string> Invoke(var args as string[])
 
-            Console::WriteLine("dylan.NET Resource Processor v. 11.10.1.5 RC")
+            Console::WriteLine("dylan.NET Resource Processor v. 11.10.2.1 RC")
             Console::WriteLine("This program is FREE and OPEN SOURCE software under the GNU LGPLv3 license.")
-            Console::WriteLine("Copyright (C) 2020 Dylan Borg")
+            Console::WriteLine("Copyright (C) 2021 Dylan Borg")
             if args[l] < 1 then
                 Console::WriteLine("Usage: resproc ([options] <input-file-name>+)*")
             else

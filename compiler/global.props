@@ -2,7 +2,7 @@
 <Project>
     <PropertyGroup>
         <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
-        <Version>11.10.1.5</Version>
+        <Version>11.10.2.1</Version>
         <EnableRxIface>false</EnableRxIface>
         <EnableStrictArrayIndices>false</EnableStrictArrayIndices>
     </PropertyGroup>

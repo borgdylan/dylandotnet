@@ -3,7 +3,7 @@
     <Import Project="$(MSBuildThisFileDirectory)..\global.props" />
     <PropertyGroup>
      <OutputType>Library</OutputType>
-        <LanguageTargets>$(MSBuildThisFileDirectory)..\4.0\dylan.NET.Cli.targets</LanguageTargets>
+        <LanguageTargets>$(MSBuildThisFileDirectory)..\output\dylan.NET.Cli.targets</LanguageTargets>
         <RootNamespace>dylan.NET.Tokenizer.AST</RootNamespace>
         <AssemblyName>tokenizer.AST</AssemblyName>
         <TargetFrameworks>net46;netstandard2.0</TargetFrameworks>
@@ -20,7 +20,7 @@
             <HintPath>$(MSBuildThisFileDirectory)..\lib\net46\Managed.Reflection.dll</HintPath>
             <CopyLocal>True</CopyLocal>
         </Reference>
-        
+
         <Reference Include="Managed.Reflection" Condition=" '$(TargetFramework)' == 'netstandard1.3' or '$(TargetFramework)' == 'netstandard2.0' ">
             <HintPath>$(MSBuildThisFileDirectory)..\lib\netstandard1.3\Managed.Reflection.dll</HintPath>
             <CopyLocal>True</CopyLocal>

@@ -283,7 +283,7 @@ class public CodeGenerator
 
         foreach rec in Importer::ImpsStack::get_Last()
             if !rec::Used then
-                StreamUtils::WriteWarn(rec::Line, 0, ILEmitter::CurSrcFile, i"Namespace  import for '{rec::Namespace}' was not used.")
+                StreamUtils::WriteWarn(rec::Line, 0, ILEmitter::CurSrcFile, i"Namespace import for '{rec::Namespace}' was not used.")
             end if
         end for
 
@@ -365,13 +365,13 @@ class public CodeGenerator
                 end #if
                 AsmFactory::AsmB::DefineVersionInfoResource()
                 AsmFactory::AsmB::Save(AsmFactory::AsmFile)
-                
+
                 if !string::IsNullOrEmpty(AsmFactory::OutputFile) then
                     if File::Exists(AsmFactory::OutputFile) then
                         File::Delete(AsmFactory::OutputFile)
                     end if
                     File::Move(AsmFactory::AsmFile, AsmFactory::OutputFile)
-                    
+
                     if AsmFactory::DebugFlg then
                         var outPdb = Path::ChangeExtension(AsmFactory::OutputFile, ".pdb")
                         if File::Exists(outPdb) then

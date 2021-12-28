@@ -2,25 +2,24 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <Import Project="$(MSBuildThisFileDirectory)..\global.props" />
     <PropertyGroup>
-        <LanguageTargets>$(MSBuildThisFileDirectory)..\4.0\dylan.NET.Cli.targets</LanguageTargets>
+        <LanguageTargets>$(MSBuildThisFileDirectory)..\output\dylan.NET.Cli.targets</LanguageTargets>
         <OutputType>Exe</OutputType>
         <RootNamespace>template</RootNamespace>
         <AssemblyName>template</AssemblyName>
-        <TargetFrameworks>net46</TargetFrameworks>
+        <TargetFrameworks>net6.0</TargetFrameworks>
 
-        <RuntimeIdentifiers>win7-x64;win7-x86;osx.10.10-x64;osx.10.11-x64;ubuntu.14.04-x64;ubuntu.16.04-x64;centos.7-x64;rhel.7.2-x64;debian.8-x64;fedora.23-x64;opensuse.13.2-x64;ubuntu.16.04-x64</RuntimeIdentifiers>
-        <RuntimeIdentifier Condition=" '$(TargetFramework)' == 'net46' ">ubuntu.16.04-x64</RuntimeIdentifier>
+        <RuntimeIdentifiers>win8-x64;linux-x64</RuntimeIdentifiers>
         <AssemblyOriginatorKeyFile>mysn.snk</AssemblyOriginatorKeyFile>
     </PropertyGroup>
     <ItemGroup>
-        <Reference Include="System" />
+        <!-- <Reference Include="System" />
         <Reference Include="mscorlib" />
         <Reference Include="System.Core" />
         <Reference Include="System.Xml.Linq" />
         <Reference Include="System.Xml" />
-        <Reference Include="System.Numerics" />
+        <Reference Include="System.Numerics" /> -->
 
-        <PackageReference Include="C5" Version="2.3.0.5" />
+        <PackageReference Include="C5" Version="2.5.3" />
         <PackageReference Include="System.ValueTuple" Version="4.3.1" />
     </ItemGroup>
 </Project>

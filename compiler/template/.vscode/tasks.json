@@ -1,24 +1,27 @@
 {
     // See https://go.microsoft.com/fwlink/?LinkId=733558
     // for the documentation about the tasks.json format
-    "version": "0.1.0",
+    "version": "2.0.0",
     "command": "msbuild",
     "args": [
         // Ask msbuild to generate full paths for file names.
         "/property:GenerateFullPaths=true"
     ],
     "taskSelector": "/t:",
-    "showOutput": "silent",
     "tasks": [
         {
-            "taskName": "build",
-            // Show the output window only if unrecognized errors occur.
-            "showOutput": "silent",
-            // Use the standard MS compiler pattern to detect errors, warnings and infos
+            "label": "build",
+            "command": "msbuild",
+            "args": [
+                "/property:GenerateFullPaths=true",
+                "/t:build"
+            ],
             "problemMatcher": [
                 {
                     "owner": "dylandotnet",
-                   "fileLocation": ["absolute"],
+                    "fileLocation": [
+                        "absolute"
+                    ],
                     "pattern": {
                         "regexp": "^(.*)\\((\\d+)(,(\\d+))?\\):\\s*(error|warning)\\s*:\\s*(.*)$",
                         "file": 1,
@@ -29,13 +32,19 @@
                     }
                 },
                 "$msCompile"
-            ]
+            ],
+            "group": {
+                "_id": "build",
+                "isDefault": false
+            }
         },
         {
-            "taskName": "restore",
-            "args": [ ],
-            "isBuildCommand": false,
-            "showOutput": "silent",
+            "label": "restore",
+            "command": "msbuild",
+            "args": [
+                "/property:GenerateFullPaths=true",
+                "/t:restore"
+            ],
             "problemMatcher": [
                 "$msCompile"
             ]

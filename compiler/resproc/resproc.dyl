@@ -21,7 +21,7 @@ import System.Text
 import System.Resources
 import System.Globalization
 
-#if NETCOREAPP3_1 then
+#if NET5_0_OR_GREATER then
 import System.Resources.NetStandard
 end #if
 

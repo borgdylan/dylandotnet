@@ -1,0 +1,187 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "dnc/11.10.2.1": {
+        "dependencies": {
+          "dnr": "11.10.2.1",
+          "dnu": "11.10.2.1",
+          "tokenizer.AST": "11.10.2.1",
+          "tokenizer.CodeGen": "11.10.2.1",
+          "tokenizer.Lexer": "11.10.2.1",
+          "tokenizer.Parser": "11.10.2.1",
+          "Managed.Reflection": "0.2.1.0"
+        },
+        "runtime": {
+          "dnc.dll": {}
+        }
+      },
+      "C5/2.5.3": {
+        "runtime": {
+          "lib/netstandard1.0/C5.dll": {
+            "assemblyVersion": "2.5.0.0",
+            "fileVersion": "2.5.3.17428"
+          }
+        }
+      },
+      "Microsoft.CSharp/4.7.0": {},
+      "System.Interactive/5.1.0": {
+        "runtime": {
+          "lib/netstandard2.0/System.Interactive.dll": {
+            "assemblyVersion": "5.1.0.0",
+            "fileVersion": "5.1.0.2"
+          }
+        }
+      },
+      "System.ValueTuple/4.5.0": {},
+      "dnr/11.10.2.1": {
+        "dependencies": {
+          "C5": "2.5.3",
+          "System.Interactive": "5.1.0",
+          "dnu": "11.10.2.1"
+        },
+        "runtime": {
+          "dnr.dll": {}
+        }
+      },
+      "dnu/11.10.2.1": {
+        "dependencies": {
+          "C5": "2.5.3",
+          "System.ValueTuple": "4.5.0"
+        },
+        "runtime": {
+          "dnu.dll": {}
+        }
+      },
+      "tokenizer.AST/11.10.2.1": {
+        "dependencies": {
+          "C5": "2.5.3",
+          "dnu": "11.10.2.1"
+        },
+        "runtime": {
+          "tokenizer.AST.dll": {}
+        }
+      },
+      "tokenizer.CodeGen/11.10.2.1": {
+        "dependencies": {
+          "C5": "2.5.3",
+          "Microsoft.CSharp": "4.7.0",
+          "System.Interactive": "5.1.0",
+          "System.ValueTuple": "4.5.0",
+          "dnr": "11.10.2.1",
+          "dnu": "11.10.2.1",
+          "tokenizer.AST": "11.10.2.1",
+          "tokenizer.Lexer": "11.10.2.1",
+          "tokenizer.Parser": "11.10.2.1"
+        },
+        "runtime": {
+          "tokenizer.CodeGen.dll": {}
+        }
+      },
+      "tokenizer.Lexer/11.10.2.1": {
+        "dependencies": {
+          "C5": "2.5.3",
+          "dnu": "11.10.2.1",
+          "tokenizer.AST": "11.10.2.1"
+        },
+        "runtime": {
+          "tokenizer.Lexer.dll": {}
+        }
+      },
+      "tokenizer.Parser/11.10.2.1": {
+        "dependencies": {
+          "C5": "2.5.3",
+          "dnr": "11.10.2.1",
+          "dnu": "11.10.2.1",
+          "tokenizer.AST": "11.10.2.1",
+          "tokenizer.Lexer": "11.10.2.1"
+        },
+        "runtime": {
+          "tokenizer.Parser.dll": {}
+        }
+      },
+      "Managed.Reflection/0.2.1.0": {
+        "runtime": {
+          "Managed.Reflection.dll": {
+            "assemblyVersion": "0.2.1.0",
+            "fileVersion": "0.2.1.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "dnc/11.10.2.1": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "C5/2.5.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-0entkPMY08efpo9w95vu8EoTIIs/DdGHxSQo1KxZhXYLWxnNb5UA2OCW4rioSm7L0ZSysQV1tiLIqzyZkscqoQ==",
+      "path": "c5/2.5.3",
+      "hashPath": "c5.2.5.3.nupkg.sha512"
+    },
+    "Microsoft.CSharp/4.7.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-pTj+D3uJWyN3My70i2Hqo+OXixq3Os2D1nJ2x92FFo6sk8fYS1m1WLNTs0Dc1uPaViH0YvEEwvzddQ7y4rhXmA==",
+      "path": "microsoft.csharp/4.7.0",
+      "hashPath": "microsoft.csharp.4.7.0.nupkg.sha512"
+    },
+    "System.Interactive/5.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-V/ClZj5zzS0H8MaKv0qqpIMDz2x/+V0kqTeczW0ATqfVJrg3TeNgO+Z+tw93rbMc8MF+zrS6fU1UTYTEqzK8xg==",
+      "path": "system.interactive/5.1.0",
+      "hashPath": "system.interactive.5.1.0.nupkg.sha512"
+    },
+    "System.ValueTuple/4.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-okurQJO6NRE/apDIP23ajJ0hpiNmJ+f0BwOlB/cSqTLQlw5upkf+5+96+iG2Jw40G1fCVCyPz/FhIABUjMR+RQ==",
+      "path": "system.valuetuple/4.5.0",
+      "hashPath": "system.valuetuple.4.5.0.nupkg.sha512"
+    },
+    "dnr/11.10.2.1": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "dnu/11.10.2.1": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "tokenizer.AST/11.10.2.1": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "tokenizer.CodeGen/11.10.2.1": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "tokenizer.Lexer/11.10.2.1": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "tokenizer.Parser/11.10.2.1": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Managed.Reflection/0.2.1.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

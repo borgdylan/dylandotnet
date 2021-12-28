@@ -1,4 +1,4 @@
-//    dylan.NET.Tasks.dll dylan.NET.Tasks Copyright (C) 2017 Dylan Borg <borgdylan@hotmail.com>
+//    dylan.NET.Tasks.dll dylan.NET.Tasks Copyright (C) 2021 Dylan Borg <borgdylan@hotmail.com>
 //    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software
 // Foundation; either version 3 of the License, or (at your option) any later version.
 //    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
@@ -7,7 +7,7 @@
 //Place, Suite 330, Boston, MA 02111-1307 USA
 
 import dylan.NET.Tasks
-#if CORE50 then
+#if NETSTANDARD1_3 then
 	import System.Reflection
 end #if
 
@@ -26,7 +26,7 @@ class public ReflectAwaiterWrapper<of TResult> implements IAwaiter<of TResult>, 
 			if aw isnot null then
 				return aw::get_IsCompleted()
 			else
-				#if CORE50 then
+				#if NETSTANDARD1_3 then
 					var prop = TypeExtensions::GetProperty(_awaiter::GetType(), "IsCompleted")
 				#else
 					var prop = _awaiter::GetType()::GetProperty("IsCompleted")
@@ -51,7 +51,7 @@ class public ReflectAwaiterWrapper<of TResult> implements IAwaiter<of TResult>, 
 		if aw isnot null then
 			return aw::GetResult()
 		else
-			#if CORE50 then
+			#if NETSTANDARD1_3 then
 				var met = TypeExtensions::GetMethod(_awaiter::GetType(), "GetResult", Type::EmptyTypes)
 			#else
 				var met = _awaiter::GetType()::GetMethod("GetResult", Type::EmptyTypes)
@@ -80,7 +80,7 @@ class public ReflectAwaiterWrapper<of TResult> implements IAwaiter<of TResult>, 
 		if inc isnot null then
 			inc::OnCompleted(continuation)
 		else
-			#if CORE50 then
+			#if NETSTANDARD1_3 then
 				var met = TypeExtensions::GetMethod(_awaiter::GetType(), "OnCompleted", new Type[] {gettype Action})
 			#else
 				var met = _awaiter::GetType()::GetMethod("OnCompleted", new Type[] {gettype Action})
@@ -110,14 +110,14 @@ class public ReflectWrapper<of TResult> implements IAwaitable<of TResult>
 		if aw isnot null then
 			return aw::GetAwaiter()
 		else
-			#if CORE50 then
+			#if NETSTANDARD1_3 then
 				var met = TypeExtensions::GetMethod(_awaitable::GetType(), "GetAwaiter", Type::EmptyTypes)
 			#else
 				var met = _awaitable::GetType()::GetMethod("GetAwaiter", Type::EmptyTypes)
 			end #if
 
 			if met isnot null then
-				#if NET46 or NET471 then
+				#if NETSTANDARD2_0_OR_GREATER orelse NET46_OR_GREATER then
 					return new ReflectAwaiterWrapper<of TResult>(met::Invoke(_awaitable, Array::Empty<of object>()))
 				#else
 					return new ReflectAwaiterWrapper<of TResult>(met::Invoke(_awaitable, new object[0]))

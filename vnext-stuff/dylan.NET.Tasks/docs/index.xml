@@ -1,6 +1,6 @@
 <Overview>
   <Assemblies>
-    <Assembly Name="dylan.NET.Tasks" Version="1.4.1.2">
+    <Assembly Name="dylan.NET.Tasks" Version="1.5.1.1">
       <Attributes>
         <Attribute>
           <AttributeName>System.Diagnostics.Debuggable(System.Diagnostics.DebuggableAttribute+DebuggingModes.Default | System.Diagnostics.DebuggableAttribute+DebuggingModes.DisableOptimizations)</AttributeName>
@@ -18,22 +18,25 @@
           <AttributeName>System.Runtime.CompilerServices.RuntimeCompatibility(WrapNonExceptionThrows=true)</AttributeName>
         </Attribute>
         <Attribute>
-          <AttributeName>System.Runtime.Versioning.TargetFramework(".NETFramework,Version=v4.5", FrameworkDisplayName=".NET Framework 4.5")</AttributeName>
+          <AttributeName>System.Runtime.Versioning.TargetFramework(".NETFramework,Version=v4.7.1", FrameworkDisplayName=".NET Framework 4.7.1")</AttributeName>
         </Attribute>
       </Attributes>
     </Assembly>
   </Assemblies>
   <Remarks>Task Helpers and awaiting support for dylan.NET and other languages without support for native async/await.</Remarks>
-  <Copyright>Copyright (c) Dylan Borg 2017.</Copyright>
+  <Copyright>Copyright (c) Dylan Borg 2021.</Copyright>
   <Types>
     <Namespace Name="System.Threading.Tasks">
+      <Type Name="AsyncHelpers" Kind="Class" />
       <Type Name="AsyncValue`1" DisplayName="AsyncValue&lt;TResult&gt;" Kind="Class" />
       <Type Name="AsyncVoid" Kind="Structure" />
       <Type Name="ConfiguredTaskAwaitableWrapper" Kind="Class" />
       <Type Name="ConfiguredTaskAwaitableWrapper`1" DisplayName="ConfiguredTaskAwaitableWrapper&lt;TResult&gt;" Kind="Class" />
       <Type Name="ConfiguredTaskAwaiterWrapper" Kind="Class" />
       <Type Name="ConfiguredTaskAwaiterWrapper`1" DisplayName="ConfiguredTaskAwaiterWrapper&lt;TResult&gt;" Kind="Class" />
+      <Type Name="ConfiguredValueTaskAwaitableWrapper" Kind="Class" />
       <Type Name="ConfiguredValueTaskAwaitableWrapper`1" DisplayName="ConfiguredValueTaskAwaitableWrapper&lt;TResult&gt;" Kind="Class" />
+      <Type Name="ConfiguredValueTaskAwaiterWrapper" Kind="Class" />
       <Type Name="ConfiguredValueTaskAwaiterWrapper`1" DisplayName="ConfiguredValueTaskAwaiterWrapper&lt;TResult&gt;" Kind="Class" />
       <Type Name="DisposerTaskClosure`1" DisplayName="DisposerTaskClosure&lt;TDisposable&gt;" Kind="Class" />
       <Type Name="DisposerTaskClosure`2" DisplayName="DisposerTaskClosure&lt;T,TDisposable&gt;" Kind="Class" />
@@ -53,7 +56,9 @@
       <Type Name="TaskHelpers" Kind="Class" />
       <Type Name="TaskWrapper" Kind="Class" />
       <Type Name="TaskWrapper`1" DisplayName="TaskWrapper&lt;TResult&gt;" Kind="Class" />
+      <Type Name="ValueTaskAwaiterWrapper" Kind="Class" />
       <Type Name="ValueTaskAwaiterWrapper`1" DisplayName="ValueTaskAwaiterWrapper&lt;TResult&gt;" Kind="Class" />
+      <Type Name="ValueTaskWrapper" Kind="Class" />
       <Type Name="ValueTaskWrapper`1" DisplayName="ValueTaskWrapper&lt;TResult&gt;" Kind="Class" />
       <Type Name="YieldAwaitableWrapper" Kind="Class" />
       <Type Name="YieldAwaiterWrapper" Kind="Class" />

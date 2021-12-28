@@ -1,0 +1,182 @@
+<Type Name="AsyncHelpers" FullName="System.Threading.Tasks.AsyncHelpers">
+  <TypeSignature Language="C#" Value="public static class AsyncHelpers" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract sealed beforefieldinit AsyncHelpers extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>dylan.NET.Tasks</AssemblyName>
+    <AssemblyVersion>1.5.1.1</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>A set of helpers for iterating through a list that yields values asynchronously using synchronous or asynchronous handlers.</summary>
+    <remarks>This class provides an implementaion of the &quot;await foreach&quot; pattern for languages that lack a built-in equivalent. Collections to be iterated must implement IAsyncEnumerable&lt;T&gt; or IAsyncEnumerator&lt;T&gt;.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="AwaitForeach&lt;TElement&gt;">
+      <MemberSignature Language="C#" Value="public static System.Threading.Tasks.Task AwaitForeach&lt;TElement&gt; (System.Collections.Generic.IAsyncEnumerable&lt;TElement&gt; alst, Func&lt;TElement,bool&gt; act);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class System.Threading.Tasks.Task AwaitForeach&lt;TElement&gt;(class System.Collections.Generic.IAsyncEnumerable`1&lt;!!TElement&gt; alst, class System.Func`2&lt;!!TElement, bool&gt; act) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.5.1.1</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Threading.Tasks.Task</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="TElement" />
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="alst" Type="System.Collections.Generic.IAsyncEnumerable&lt;TElement&gt;" />
+        <Parameter Name="act" Type="System.Func&lt;TElement,System.Boolean&gt;" />
+      </Parameters>
+      <Docs>
+        <typeparam name="TElement">The type of the elements in the asynchronous enumerable.</typeparam>
+        <param name="alst">The asynchronous enumerable to iterate through.</param>
+        <param name="act">A handler that gets called for each element in the collection. The return value must be true to keep iterating through the rest of the list, false to break the loop.</param>
+        <summary>Iterates through an asynshcronous enumerable collection using the provided synchronous handler.</summary>
+        <returns>A Task that completes when the loop terminates either as the sequence gets exhausted or because the handler signals that it wants an early termination.</returns>
+        <remarks>Do not forget to await the returned task. This makes sure that the loop would be terminated and that any enumerators would have been disposed before continuing.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AwaitForeach&lt;TElement&gt;">
+      <MemberSignature Language="C#" Value="public static System.Threading.Tasks.Task AwaitForeach&lt;TElement&gt; (System.Collections.Generic.IAsyncEnumerable&lt;TElement&gt; alst, Func&lt;TElement,System.Threading.Tasks.Task&lt;bool&gt;&gt; act);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class System.Threading.Tasks.Task AwaitForeach&lt;TElement&gt;(class System.Collections.Generic.IAsyncEnumerable`1&lt;!!TElement&gt; alst, class System.Func`2&lt;!!TElement, class System.Threading.Tasks.Task`1&lt;bool&gt;&gt; act) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.5.1.1</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Threading.Tasks.Task</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="TElement" />
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="alst" Type="System.Collections.Generic.IAsyncEnumerable&lt;TElement&gt;" />
+        <Parameter Name="act" Type="System.Func&lt;TElement,System.Threading.Tasks.Task&lt;System.Boolean&gt;&gt;" />
+      </Parameters>
+      <Docs>
+        <typeparam name="TElement">The type of the elements in the asynchronous enumerable.</typeparam>
+        <param name="alst">The asynchronous enumerable to iterate through.</param>
+        <param name="act">An asynchronous handler that gets called and awaited for each element in the collection. The return value must be true to keep iterating through the rest of the list, false to break the loop.</param>
+        <summary>Iterates through an asynshcronous enumerable collection using the provided asynchronous handler.</summary>
+        <returns>A Task that completes when the loop terminates either as the sequence gets exhausted or because the handler signals that it wants an early termination.</returns>
+        <remarks>Do not forget to await the returned task. This makes sure that the loop would be terminated and that any enumerators would have been disposed before continuing.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AwaitForeach&lt;TElement&gt;">
+      <MemberSignature Language="C#" Value="public static System.Threading.Tasks.Task AwaitForeach&lt;TElement&gt; (System.Collections.Generic.IAsyncEnumerable&lt;TElement&gt; alst, Func&lt;TElement,bool&gt; act, System.Threading.CancellationToken ctoken);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class System.Threading.Tasks.Task AwaitForeach&lt;TElement&gt;(class System.Collections.Generic.IAsyncEnumerable`1&lt;!!TElement&gt; alst, class System.Func`2&lt;!!TElement, bool&gt; act, valuetype System.Threading.CancellationToken ctoken) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.5.1.1</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Threading.Tasks.Task</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="TElement" />
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="alst" Type="System.Collections.Generic.IAsyncEnumerable&lt;TElement&gt;" />
+        <Parameter Name="act" Type="System.Func&lt;TElement,System.Boolean&gt;" />
+        <Parameter Name="ctoken" Type="System.Threading.CancellationToken" />
+      </Parameters>
+      <Docs>
+        <typeparam name="TElement">The type of the elements in the asynchronous enumerable.</typeparam>
+        <param name="alst">The asynchronous enumerable to iterate through.</param>
+        <param name="act">A handler that gets called for each element in the collection. The return value must be true to keep iterating through the rest of the list, false to break the loop.</param>
+        <param name="ctoken">The cancellation token to use. This can be used to abort any awaits inside the loop and force an early termination.</param>
+        <summary>Iterates through an asynshcronous enumerable collection using the provided synchronous handler and cancellation token.</summary>
+        <returns>A Task that completes when the loop terminates either as the sequence gets exhausted or because the handler signals that it wants an early termination.</returns>
+        <remarks>Do not forget to await the returned task. This makes sure that the loop would be terminated and that any enumerators would have been disposed before continuing.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AwaitForeach&lt;TElement&gt;">
+      <MemberSignature Language="C#" Value="public static System.Threading.Tasks.Task AwaitForeach&lt;TElement&gt; (System.Collections.Generic.IAsyncEnumerable&lt;TElement&gt; alst, Func&lt;TElement,System.Threading.Tasks.Task&lt;bool&gt;&gt; act, System.Threading.CancellationToken ctoken);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class System.Threading.Tasks.Task AwaitForeach&lt;TElement&gt;(class System.Collections.Generic.IAsyncEnumerable`1&lt;!!TElement&gt; alst, class System.Func`2&lt;!!TElement, class System.Threading.Tasks.Task`1&lt;bool&gt;&gt; act, valuetype System.Threading.CancellationToken ctoken) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.5.1.1</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Threading.Tasks.Task</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="TElement" />
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="alst" Type="System.Collections.Generic.IAsyncEnumerable&lt;TElement&gt;" />
+        <Parameter Name="act" Type="System.Func&lt;TElement,System.Threading.Tasks.Task&lt;System.Boolean&gt;&gt;" />
+        <Parameter Name="ctoken" Type="System.Threading.CancellationToken" />
+      </Parameters>
+      <Docs>
+        <typeparam name="TElement">The type of the elements in the asynchronous enumerable.</typeparam>
+        <param name="alst">The asynchronous enumerable to iterate through.</param>
+        <param name="act">An asynchronous  handler that gets called and awaited for each element in the collection. The return value must be true to keep iterating through the rest of the list, false to break the loop.</param>
+        <param name="ctoken">The cancellation token to use. This can be used to abort any awaits inside the loop and force an early termination.</param>
+        <summary>Iterates through an asynshcronous enumerable collection using the provided asynchronous handler and cancellation token.</summary>
+        <returns>A Task that completes when the loop terminates either as the sequence gets exhausted or because the handler signals that it wants an early termination.</returns>
+        <remarks>Do not forget to await the returned task. This makes sure that the loop would be terminated and that any enumerators would have been disposed before continuing.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AwaitForeach&lt;TElement&gt;">
+      <MemberSignature Language="C#" Value="public static System.Threading.Tasks.Task AwaitForeach&lt;TElement&gt; (System.Collections.Generic.IAsyncEnumerator&lt;TElement&gt; aen, Func&lt;TElement,bool&gt; act, System.Threading.CancellationToken ctoken);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class System.Threading.Tasks.Task AwaitForeach&lt;TElement&gt;(class System.Collections.Generic.IAsyncEnumerator`1&lt;!!TElement&gt; aen, class System.Func`2&lt;!!TElement, bool&gt; act, valuetype System.Threading.CancellationToken ctoken) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.5.1.1</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Threading.Tasks.Task</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="TElement" />
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="aen" Type="System.Collections.Generic.IAsyncEnumerator&lt;TElement&gt;" />
+        <Parameter Name="act" Type="System.Func&lt;TElement,System.Boolean&gt;" />
+        <Parameter Name="ctoken" Type="System.Threading.CancellationToken" />
+      </Parameters>
+      <Docs>
+        <typeparam name="TElement">The type of the elements in the asynchronous enumerable.</typeparam>
+        <param name="aen">The asynchronous enumerator to iterate with.</param>
+        <param name="act">A handler that gets called for each element in the collection. The return value must be true to keep iterating through the rest of the list, false to break the loop.</param>
+        <param name="ctoken">The cancellation token to use. This can be used to abort any awaits inside the loop and force an early termination.</param>
+        <summary>Iterates by means of an asynshcronous enumerator using the provided synchronous handler and cancellation token.</summary>
+        <returns>A Task that completes when the loop terminates either as the sequence gets exhausted or because the handler signals that it wants an early termination.</returns>
+        <remarks>Do not forget to await the returned task. This makes sure that the loop would be terminated and that the enumerator would have been disposed before continuing.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AwaitForeach&lt;TElement&gt;">
+      <MemberSignature Language="C#" Value="public static System.Threading.Tasks.Task AwaitForeach&lt;TElement&gt; (System.Collections.Generic.IAsyncEnumerator&lt;TElement&gt; aen, Func&lt;TElement,System.Threading.Tasks.Task&lt;bool&gt;&gt; act, System.Threading.CancellationToken ctoken);" />
+      <MemberSignature Language="ILAsm" Value=".method public static class System.Threading.Tasks.Task AwaitForeach&lt;TElement&gt;(class System.Collections.Generic.IAsyncEnumerator`1&lt;!!TElement&gt; aen, class System.Func`2&lt;!!TElement, class System.Threading.Tasks.Task`1&lt;bool&gt;&gt; act, valuetype System.Threading.CancellationToken ctoken) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>1.5.1.1</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Threading.Tasks.Task</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="TElement" />
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="aen" Type="System.Collections.Generic.IAsyncEnumerator&lt;TElement&gt;" />
+        <Parameter Name="act" Type="System.Func&lt;TElement,System.Threading.Tasks.Task&lt;System.Boolean&gt;&gt;" />
+        <Parameter Name="ctoken" Type="System.Threading.CancellationToken" />
+      </Parameters>
+      <Docs>
+        <typeparam name="TElement">The type of the elements in the asynchronous enumerable.</typeparam>
+        <param name="aen">The asynchronous enumerator to iterate with.</param>
+        <param name="act">An asynchronous handler that gets called and awaited for each element in the collection. The return value must be true to keep iterating through the rest of the list, false to break the loop.</param>
+        <param name="ctoken">The cancellation token to use. This can be used to abort any awaits inside the loop and force an early termination.</param>
+        <summary>Iterates by means of an asynshcronous enumerator using the provided asynchronous handler and cancellation token.</summary>
+        <returns>A Task that completes when the loop terminates either as the sequence gets exhausted or because the handler signals that it wants an early termination.</returns>
+        <remarks>Do not forget to await the returned task. This makes sure that the loop would be terminated and that the enumerator would have been disposed before continuing.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

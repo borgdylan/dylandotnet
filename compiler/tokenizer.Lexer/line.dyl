@@ -218,7 +218,7 @@ class public Line
 
     end method
 
-    method public Stmt Analyze(var stm as Stmt, var str as string, var offset as integer)
+    method public Stmt Analyze(var stm as Stmt, var str as StringBuilder, var offset as integer)
 
         var curchar as char = c'\0'
         var lachar as char = c'\0'
@@ -285,6 +285,6 @@ class public Line
 
     end method
 
-    method public Stmt Analyze(var stm as Stmt, var str as string) => Analyze(stm, str, 0)
+    method public Stmt Analyze(var stm as Stmt, var str as StringBuilder) => Analyze(stm, str, 0)
 
 end class

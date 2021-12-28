@@ -1,0 +1,530 @@
+<html>
+  <head>
+    <title>System.Threading.Tasks.AsyncHelpers</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+      a { text-decoration: none }
+
+      div.SideBar {
+        padding-left: 1em;
+        padding-right: 1em;
+        right: 0;
+        float: right;
+        border: thin solid black;
+        background-color: #f2f2f2;
+      }
+    
+      .CollectionTitle { font-weight: bold }
+      .PageTitle { font-size: 150%; font-weight: bold }
+
+      .Summary { }
+      .Signature { }          
+      .Remarks { }
+      .Members { }
+      .Copyright { }
+      
+      .Section { font-size: 125%; font-weight: bold }
+      p.Summary {
+        margin-left: 1em;
+      }
+      .SectionBox { margin-left: 2em }
+      .NamespaceName { font-size: 105%; font-weight: bold }
+      .NamespaceSumary { }
+      .MemberName { font-size: 115%; font-weight: bold; margin-top: 1em }
+      .Subsection { font-size: 105%; font-weight: bold }
+      .SubsectionBox { margin-left: 2em; margin-bottom: 1em }
+
+      .CodeExampleTable { background-color: #f5f5dd; border: thin solid black; padding: .25em; }
+      
+      .TypesListing {
+        border-collapse: collapse;
+      }
+
+      td {
+        vertical-align: top;
+      }
+      th {
+        text-align: left;
+      }
+
+      .TypesListing td { 
+        margin: 0px;  
+        padding: .25em;
+        border: solid gray 1px;
+      }
+
+      .TypesListing th { 
+        margin: 0px;  
+        padding: .25em;
+        background-color: #f2f2f2;
+        border: solid gray 1px;
+      }
+
+      div.Footer {
+        border-top: 1px solid gray;
+        margin-top: 1.5em;
+        padding-top: 0.6em;
+        text-align: center;
+        color: gray;
+      }
+
+      span.NotEntered /* Documentation for this section has not yet been entered */ {
+        font-style: italic;
+        color: red;	
+      }
+
+      div.Header {
+        background: #B0C4DE;
+        border: double;
+        border-color: white;
+        border-width: 7px;
+        padding: 0.5em;
+      }
+
+      div.Header * {
+        font-size: smaller;
+      }
+
+      div.Note {
+      }
+
+      i.ParamRef {
+      }
+
+      i.subtitle {
+      }
+
+      ul.TypeMembersIndex {
+        text-align: left;
+        background: #F8F8F8;
+      }
+
+      ul.TypeMembersIndex li {
+        display: inline;
+        margin:  0.5em;
+      }
+
+      table.HeaderTable {
+      }
+
+      table.SignatureTable {
+      }
+
+      table.Documentation, table.Enumeration, table.TypeDocumentation {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      table.Documentation tr th, table.TypeMembers tr th, table.Enumeration tr th, table.TypeDocumentation tr th {
+        background: whitesmoke;
+        padding: 0.8em;
+        border: 1px solid gray;
+        text-align: left;
+        vertical-align: bottom;
+      }
+
+      table.Documentation tr td, table.TypeMembers tr td, table.Enumeration tr td, table.TypeDocumentation tr td {
+        padding: 0.5em;
+        border: 1px solid gray;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      table.TypeMembers {
+        border: 1px solid #C0C0C0;
+        width: 100%;
+      }
+
+      table.TypeMembers tr td {
+        background: #F8F8F8;
+        border: white;
+      }
+
+      table.Documentation {
+      }
+
+      table.TypeMembers {
+      }
+
+      div.CodeExample {
+        width: 100%;
+        border: 1px solid #DDDDDD;
+        background-color: #F8F8F8;
+      }
+
+      div.CodeExample p {
+        margin: 0.5em;
+        border-bottom: 1px solid #DDDDDD;
+      }
+
+      div.CodeExample div {
+        margin: 0.5em;
+      }
+
+      h4 {
+        margin-bottom: 0;
+      }
+
+      div.Signature {
+        border: 1px solid #C0C0C0;
+        background: #F2F2F2;
+        padding: 1em;
+      }
+    </style>
+    <script type="text/JavaScript">
+      function toggle_display (block) {
+        var w = document.getElementById (block);
+        var t = document.getElementById (block + ":toggle");
+        if (w.style.display == "none") {
+          w.style.display = "block";
+          t.innerHTML = "⊟";
+        } else {
+          w.style.display = "none";
+          t.innerHTML = "⊞";
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="CollectionTitle">
+      <a href="../index.html">dylan.NET.Tasks</a> : <a href="index.html">System.Threading.Tasks Namespace</a></div>
+    <div class="SideBar">
+      <p>
+        <a href="#T:System.Threading.Tasks.AsyncHelpers">Overview</a>
+      </p>
+      <p>
+        <a href="#T:System.Threading.Tasks.AsyncHelpers:Signature">Signature</a>
+      </p>
+      <p>
+        <a href="#T:System.Threading.Tasks.AsyncHelpers:Docs">Remarks</a>
+      </p>
+      <p>
+        <a href="#Members">Members</a>
+      </p>
+      <p>
+        <a href="#T:System.Threading.Tasks.AsyncHelpers:Members">Member Details</a>
+      </p>
+    </div>
+    <h1 class="PageTitle" id="T:System.Threading.Tasks.AsyncHelpers">AsyncHelpers  Class</h1>
+    <p class="Summary" id="T:System.Threading.Tasks.AsyncHelpers:Summary">A set of helpers for iterating through a list that yields values asynchronously using synchronous or asynchronous handlers.</p>
+    <div>
+      <h2>Syntax</h2>
+      <div class="Signature" id="T:System.Threading.Tasks.AsyncHelpers:Signature">public static class  <b>AsyncHelpers</b></div>
+    </div>
+    <div class="Remarks" id="T:System.Threading.Tasks.AsyncHelpers:Docs">
+      <h2 class="Section">Remarks</h2>
+      <div class="SectionBox" id="T:System.Threading.Tasks.AsyncHelpers:Docs:Remarks">This class provides an implementaion of the "await foreach" pattern for languages that lack a built-in equivalent. Collections to be iterated must implement IAsyncEnumerable&lt;T&gt; or IAsyncEnumerator&lt;T&gt;.</div>
+      <h2 class="Section">Requirements</h2>
+      <div class="SectionBox" id="T:System.Threading.Tasks.AsyncHelpers:Docs:Version Information">
+        <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.5.1.1</div>
+      <h2 class="Section" id="Members">Members</h2>
+      <div class="SectionBox" id="_Members">
+        <p>
+								See Also: Inherited members from
+								<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Object">object</a>.
+							</p>
+        <h2 class="Section">Public Methods</h2>
+        <div class="SectionBox" id="Public Methods">
+          <div class="SubsectionBox">
+            <table class="TypeMembers">
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:System.Threading.Tasks.AsyncHelpers.AwaitForeach``1(System.Collections.Generic.IAsyncEnumerable{``0},System.Func{``0,System.Boolean})">AwaitForeach&lt;TElement&gt;</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Collections.Generic.IAsyncEnumerable`1">IAsyncEnumerable&lt;TElement&gt;</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Func`2">Func&lt;TElement, bool&gt;</a>)<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.Task">Task</a></nobr><blockquote>Iterates through an asynshcronous enumerable collection using the provided synchronous handler.</blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:System.Threading.Tasks.AsyncHelpers.AwaitForeach``1(System.Collections.Generic.IAsyncEnumerable{``0},System.Func{``0,System.Threading.Tasks.Task{System.Boolean}})">AwaitForeach&lt;TElement&gt;</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Collections.Generic.IAsyncEnumerable`1">IAsyncEnumerable&lt;TElement&gt;</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Func`2">Func&lt;TElement, Task&lt;bool&gt;&gt;</a>)<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.Task">Task</a></nobr><blockquote>Iterates through an asynshcronous enumerable collection using the provided asynchronous handler.</blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:System.Threading.Tasks.AsyncHelpers.AwaitForeach``1(System.Collections.Generic.IAsyncEnumerable{``0},System.Func{``0,System.Boolean},System.Threading.CancellationToken)">AwaitForeach&lt;TElement&gt;</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Collections.Generic.IAsyncEnumerable`1">IAsyncEnumerable&lt;TElement&gt;</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Func`2">Func&lt;TElement, bool&gt;</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.CancellationToken">System.Threading.CancellationToken</a>)<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.Task">Task</a></nobr><blockquote>Iterates through an asynshcronous enumerable collection using the provided synchronous handler and cancellation token.</blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:System.Threading.Tasks.AsyncHelpers.AwaitForeach``1(System.Collections.Generic.IAsyncEnumerable{``0},System.Func{``0,System.Threading.Tasks.Task{System.Boolean}},System.Threading.CancellationToken)">AwaitForeach&lt;TElement&gt;</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Collections.Generic.IAsyncEnumerable`1">IAsyncEnumerable&lt;TElement&gt;</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Func`2">Func&lt;TElement, Task&lt;bool&gt;&gt;</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.CancellationToken">System.Threading.CancellationToken</a>)<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.Task">Task</a></nobr><blockquote>Iterates through an asynshcronous enumerable collection using the provided asynchronous handler and cancellation token.</blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:System.Threading.Tasks.AsyncHelpers.AwaitForeach``1(System.Collections.Generic.IAsyncEnumerator{``0},System.Func{``0,System.Boolean},System.Threading.CancellationToken)">AwaitForeach&lt;TElement&gt;</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Collections.Generic.IAsyncEnumerator`1">IAsyncEnumerator&lt;TElement&gt;</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Func`2">Func&lt;TElement, bool&gt;</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.CancellationToken">System.Threading.CancellationToken</a>)<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.Task">Task</a></nobr><blockquote>Iterates by means of an asynshcronous enumerator using the provided synchronous handler and cancellation token.</blockquote></td>
+              </tr>
+              <tr valign="top">
+                <td>
+                  <div>static </div>
+                </td>
+                <td colspan="2">
+                  <b>
+                    <a href="#M:System.Threading.Tasks.AsyncHelpers.AwaitForeach``1(System.Collections.Generic.IAsyncEnumerator{``0},System.Func{``0,System.Threading.Tasks.Task{System.Boolean}},System.Threading.CancellationToken)">AwaitForeach&lt;TElement&gt;</a>
+                  </b>(<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Collections.Generic.IAsyncEnumerator`1">IAsyncEnumerator&lt;TElement&gt;</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Func`2">Func&lt;TElement, Task&lt;bool&gt;&gt;</a>, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.CancellationToken">System.Threading.CancellationToken</a>)<nobr> : <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.Task">Task</a></nobr><blockquote>Iterates by means of an asynshcronous enumerator using the provided asynchronous handler and cancellation token.</blockquote></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="Members" id="T:System.Threading.Tasks.AsyncHelpers:Members">
+      <h2 class="Section" id="MemberDetails">Member Details</h2>
+      <div class="SectionBox" id="_MemberDetails">
+        <h3 id="M:System.Threading.Tasks.AsyncHelpers.AwaitForeach``1(System.Collections.Generic.IAsyncEnumerable{``0},System.Func{``0,System.Boolean})">AwaitForeach&lt;TElement&gt; Generic Method</h3>
+        <blockquote id="M:System.Threading.Tasks.AsyncHelpers.AwaitForeach``1(System.Collections.Generic.IAsyncEnumerable{``0},System.Func{``0,System.Boolean}):member">
+          <div class="msummary">Iterates through an asynshcronous enumerable collection using the provided synchronous handler.</div>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.Task">Task</a> <b>AwaitForeach&lt;TElement&gt;</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Collections.Generic.IAsyncEnumerable`1">IAsyncEnumerable&lt;TElement&gt;</a> alst, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Func`2">Func&lt;TElement, bool&gt;</a> act)</div>
+          <h4 class="Subsection">Type Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.AsyncHelpers.AwaitForeach``1(System.Collections.Generic.IAsyncEnumerable{``0},System.Func{``0,System.Boolean}):Type Parameters">
+            <dl>
+              <dt>
+                <i>TElement</i>
+              </dt>
+              <dd>The type of the elements in the asynchronous enumerable.</dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.AsyncHelpers.AwaitForeach``1(System.Collections.Generic.IAsyncEnumerable{``0},System.Func{``0,System.Boolean}):Parameters">
+            <dl>
+              <dt>
+                <i>alst</i>
+              </dt>
+              <dd>The asynchronous enumerable to iterate through.</dd>
+              <dt>
+                <i>act</i>
+              </dt>
+              <dd>A handler that gets called for each element in the collection. The return value must be true to keep iterating through the rest of the list, false to break the loop.</dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.AsyncHelpers.AwaitForeach``1(System.Collections.Generic.IAsyncEnumerable{``0},System.Func{``0,System.Boolean}):Returns">A Task that completes when the loop terminates either as the sequence gets exhausted or because the handler signals that it wants an early termination.</blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:System.Threading.Tasks.AsyncHelpers.AwaitForeach``1(System.Collections.Generic.IAsyncEnumerable{``0},System.Func{``0,System.Boolean}):Remarks">Do not forget to await the returned task. This makes sure that the loop would be terminated and that any enumerators would have been disposed before continuing.</div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:System.Threading.Tasks.AsyncHelpers.AwaitForeach``1(System.Collections.Generic.IAsyncEnumerable{``0},System.Func{``0,System.Boolean}):Version Information">
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.5.1.1</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:System.Threading.Tasks.AsyncHelpers.AwaitForeach``1(System.Collections.Generic.IAsyncEnumerable{``0},System.Func{``0,System.Threading.Tasks.Task{System.Boolean}})">AwaitForeach&lt;TElement&gt; Generic Method</h3>
+        <blockquote id="M:System.Threading.Tasks.AsyncHelpers.AwaitForeach``1(System.Collections.Generic.IAsyncEnumerable{``0},System.Func{``0,System.Threading.Tasks.Task{System.Boolean}}):member">
+          <div class="msummary">Iterates through an asynshcronous enumerable collection using the provided asynchronous handler.</div>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.Task">Task</a> <b>AwaitForeach&lt;TElement&gt;</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Collections.Generic.IAsyncEnumerable`1">IAsyncEnumerable&lt;TElement&gt;</a> alst, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Func`2">Func&lt;TElement, Task&lt;bool&gt;&gt;</a> act)</div>
+          <h4 class="Subsection">Type Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.AsyncHelpers.AwaitForeach``1(System.Collections.Generic.IAsyncEnumerable{``0},System.Func{``0,System.Threading.Tasks.Task{System.Boolean}}):Type Parameters">
+            <dl>
+              <dt>
+                <i>TElement</i>
+              </dt>
+              <dd>The type of the elements in the asynchronous enumerable.</dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.AsyncHelpers.AwaitForeach``1(System.Collections.Generic.IAsyncEnumerable{``0},System.Func{``0,System.Threading.Tasks.Task{System.Boolean}}):Parameters">
+            <dl>
+              <dt>
+                <i>alst</i>
+              </dt>
+              <dd>The asynchronous enumerable to iterate through.</dd>
+              <dt>
+                <i>act</i>
+              </dt>
+              <dd>An asynchronous handler that gets called and awaited for each element in the collection. The return value must be true to keep iterating through the rest of the list, false to break the loop.</dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.AsyncHelpers.AwaitForeach``1(System.Collections.Generic.IAsyncEnumerable{``0},System.Func{``0,System.Threading.Tasks.Task{System.Boolean}}):Returns">A Task that completes when the loop terminates either as the sequence gets exhausted or because the handler signals that it wants an early termination.</blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:System.Threading.Tasks.AsyncHelpers.AwaitForeach``1(System.Collections.Generic.IAsyncEnumerable{``0},System.Func{``0,System.Threading.Tasks.Task{System.Boolean}}):Remarks">Do not forget to await the returned task. This makes sure that the loop would be terminated and that any enumerators would have been disposed before continuing.</div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:System.Threading.Tasks.AsyncHelpers.AwaitForeach``1(System.Collections.Generic.IAsyncEnumerable{``0},System.Func{``0,System.Threading.Tasks.Task{System.Boolean}}):Version Information">
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.5.1.1</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:System.Threading.Tasks.AsyncHelpers.AwaitForeach``1(System.Collections.Generic.IAsyncEnumerable{``0},System.Func{``0,System.Boolean},System.Threading.CancellationToken)">AwaitForeach&lt;TElement&gt; Generic Method</h3>
+        <blockquote id="M:System.Threading.Tasks.AsyncHelpers.AwaitForeach``1(System.Collections.Generic.IAsyncEnumerable{``0},System.Func{``0,System.Boolean},System.Threading.CancellationToken):member">
+          <div class="msummary">Iterates through an asynshcronous enumerable collection using the provided synchronous handler and cancellation token.</div>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.Task">Task</a> <b>AwaitForeach&lt;TElement&gt;</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Collections.Generic.IAsyncEnumerable`1">IAsyncEnumerable&lt;TElement&gt;</a> alst, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Func`2">Func&lt;TElement, bool&gt;</a> act, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.CancellationToken">System.Threading.CancellationToken</a> ctoken)</div>
+          <h4 class="Subsection">Type Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.AsyncHelpers.AwaitForeach``1(System.Collections.Generic.IAsyncEnumerable{``0},System.Func{``0,System.Boolean},System.Threading.CancellationToken):Type Parameters">
+            <dl>
+              <dt>
+                <i>TElement</i>
+              </dt>
+              <dd>The type of the elements in the asynchronous enumerable.</dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.AsyncHelpers.AwaitForeach``1(System.Collections.Generic.IAsyncEnumerable{``0},System.Func{``0,System.Boolean},System.Threading.CancellationToken):Parameters">
+            <dl>
+              <dt>
+                <i>alst</i>
+              </dt>
+              <dd>The asynchronous enumerable to iterate through.</dd>
+              <dt>
+                <i>act</i>
+              </dt>
+              <dd>A handler that gets called for each element in the collection. The return value must be true to keep iterating through the rest of the list, false to break the loop.</dd>
+              <dt>
+                <i>ctoken</i>
+              </dt>
+              <dd>The cancellation token to use. This can be used to abort any awaits inside the loop and force an early termination.</dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.AsyncHelpers.AwaitForeach``1(System.Collections.Generic.IAsyncEnumerable{``0},System.Func{``0,System.Boolean},System.Threading.CancellationToken):Returns">A Task that completes when the loop terminates either as the sequence gets exhausted or because the handler signals that it wants an early termination.</blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:System.Threading.Tasks.AsyncHelpers.AwaitForeach``1(System.Collections.Generic.IAsyncEnumerable{``0},System.Func{``0,System.Boolean},System.Threading.CancellationToken):Remarks">Do not forget to await the returned task. This makes sure that the loop would be terminated and that any enumerators would have been disposed before continuing.</div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:System.Threading.Tasks.AsyncHelpers.AwaitForeach``1(System.Collections.Generic.IAsyncEnumerable{``0},System.Func{``0,System.Boolean},System.Threading.CancellationToken):Version Information">
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.5.1.1</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:System.Threading.Tasks.AsyncHelpers.AwaitForeach``1(System.Collections.Generic.IAsyncEnumerable{``0},System.Func{``0,System.Threading.Tasks.Task{System.Boolean}},System.Threading.CancellationToken)">AwaitForeach&lt;TElement&gt; Generic Method</h3>
+        <blockquote id="M:System.Threading.Tasks.AsyncHelpers.AwaitForeach``1(System.Collections.Generic.IAsyncEnumerable{``0},System.Func{``0,System.Threading.Tasks.Task{System.Boolean}},System.Threading.CancellationToken):member">
+          <div class="msummary">Iterates through an asynshcronous enumerable collection using the provided asynchronous handler and cancellation token.</div>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.Task">Task</a> <b>AwaitForeach&lt;TElement&gt;</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Collections.Generic.IAsyncEnumerable`1">IAsyncEnumerable&lt;TElement&gt;</a> alst, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Func`2">Func&lt;TElement, Task&lt;bool&gt;&gt;</a> act, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.CancellationToken">System.Threading.CancellationToken</a> ctoken)</div>
+          <h4 class="Subsection">Type Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.AsyncHelpers.AwaitForeach``1(System.Collections.Generic.IAsyncEnumerable{``0},System.Func{``0,System.Threading.Tasks.Task{System.Boolean}},System.Threading.CancellationToken):Type Parameters">
+            <dl>
+              <dt>
+                <i>TElement</i>
+              </dt>
+              <dd>The type of the elements in the asynchronous enumerable.</dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.AsyncHelpers.AwaitForeach``1(System.Collections.Generic.IAsyncEnumerable{``0},System.Func{``0,System.Threading.Tasks.Task{System.Boolean}},System.Threading.CancellationToken):Parameters">
+            <dl>
+              <dt>
+                <i>alst</i>
+              </dt>
+              <dd>The asynchronous enumerable to iterate through.</dd>
+              <dt>
+                <i>act</i>
+              </dt>
+              <dd>An asynchronous  handler that gets called and awaited for each element in the collection. The return value must be true to keep iterating through the rest of the list, false to break the loop.</dd>
+              <dt>
+                <i>ctoken</i>
+              </dt>
+              <dd>The cancellation token to use. This can be used to abort any awaits inside the loop and force an early termination.</dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.AsyncHelpers.AwaitForeach``1(System.Collections.Generic.IAsyncEnumerable{``0},System.Func{``0,System.Threading.Tasks.Task{System.Boolean}},System.Threading.CancellationToken):Returns">A Task that completes when the loop terminates either as the sequence gets exhausted or because the handler signals that it wants an early termination.</blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:System.Threading.Tasks.AsyncHelpers.AwaitForeach``1(System.Collections.Generic.IAsyncEnumerable{``0},System.Func{``0,System.Threading.Tasks.Task{System.Boolean}},System.Threading.CancellationToken):Remarks">Do not forget to await the returned task. This makes sure that the loop would be terminated and that any enumerators would have been disposed before continuing.</div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:System.Threading.Tasks.AsyncHelpers.AwaitForeach``1(System.Collections.Generic.IAsyncEnumerable{``0},System.Func{``0,System.Threading.Tasks.Task{System.Boolean}},System.Threading.CancellationToken):Version Information">
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.5.1.1</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:System.Threading.Tasks.AsyncHelpers.AwaitForeach``1(System.Collections.Generic.IAsyncEnumerator{``0},System.Func{``0,System.Boolean},System.Threading.CancellationToken)">AwaitForeach&lt;TElement&gt; Generic Method</h3>
+        <blockquote id="M:System.Threading.Tasks.AsyncHelpers.AwaitForeach``1(System.Collections.Generic.IAsyncEnumerator{``0},System.Func{``0,System.Boolean},System.Threading.CancellationToken):member">
+          <div class="msummary">Iterates by means of an asynshcronous enumerator using the provided synchronous handler and cancellation token.</div>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.Task">Task</a> <b>AwaitForeach&lt;TElement&gt;</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Collections.Generic.IAsyncEnumerator`1">IAsyncEnumerator&lt;TElement&gt;</a> aen, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Func`2">Func&lt;TElement, bool&gt;</a> act, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.CancellationToken">System.Threading.CancellationToken</a> ctoken)</div>
+          <h4 class="Subsection">Type Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.AsyncHelpers.AwaitForeach``1(System.Collections.Generic.IAsyncEnumerator{``0},System.Func{``0,System.Boolean},System.Threading.CancellationToken):Type Parameters">
+            <dl>
+              <dt>
+                <i>TElement</i>
+              </dt>
+              <dd>The type of the elements in the asynchronous enumerable.</dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.AsyncHelpers.AwaitForeach``1(System.Collections.Generic.IAsyncEnumerator{``0},System.Func{``0,System.Boolean},System.Threading.CancellationToken):Parameters">
+            <dl>
+              <dt>
+                <i>aen</i>
+              </dt>
+              <dd>The asynchronous enumerator to iterate with.</dd>
+              <dt>
+                <i>act</i>
+              </dt>
+              <dd>A handler that gets called for each element in the collection. The return value must be true to keep iterating through the rest of the list, false to break the loop.</dd>
+              <dt>
+                <i>ctoken</i>
+              </dt>
+              <dd>The cancellation token to use. This can be used to abort any awaits inside the loop and force an early termination.</dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.AsyncHelpers.AwaitForeach``1(System.Collections.Generic.IAsyncEnumerator{``0},System.Func{``0,System.Boolean},System.Threading.CancellationToken):Returns">A Task that completes when the loop terminates either as the sequence gets exhausted or because the handler signals that it wants an early termination.</blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:System.Threading.Tasks.AsyncHelpers.AwaitForeach``1(System.Collections.Generic.IAsyncEnumerator{``0},System.Func{``0,System.Boolean},System.Threading.CancellationToken):Remarks">Do not forget to await the returned task. This makes sure that the loop would be terminated and that the enumerator would have been disposed before continuing.</div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:System.Threading.Tasks.AsyncHelpers.AwaitForeach``1(System.Collections.Generic.IAsyncEnumerator{``0},System.Func{``0,System.Boolean},System.Threading.CancellationToken):Version Information">
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.5.1.1</div>
+          <hr size="1" />
+        </blockquote>
+        <h3 id="M:System.Threading.Tasks.AsyncHelpers.AwaitForeach``1(System.Collections.Generic.IAsyncEnumerator{``0},System.Func{``0,System.Threading.Tasks.Task{System.Boolean}},System.Threading.CancellationToken)">AwaitForeach&lt;TElement&gt; Generic Method</h3>
+        <blockquote id="M:System.Threading.Tasks.AsyncHelpers.AwaitForeach``1(System.Collections.Generic.IAsyncEnumerator{``0},System.Func{``0,System.Threading.Tasks.Task{System.Boolean}},System.Threading.CancellationToken):member">
+          <div class="msummary">Iterates by means of an asynshcronous enumerator using the provided asynchronous handler and cancellation token.</div>
+          <h2>Syntax</h2>
+          <div class="Signature">public static <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.Tasks.Task">Task</a> <b>AwaitForeach&lt;TElement&gt;</b> (<a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Collections.Generic.IAsyncEnumerator`1">IAsyncEnumerator&lt;TElement&gt;</a> aen, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Func`2">Func&lt;TElement, Task&lt;bool&gt;&gt;</a> act, <a href="http://www.go-mono.com/docs/monodoc.ashx?link=T:System.Threading.CancellationToken">System.Threading.CancellationToken</a> ctoken)</div>
+          <h4 class="Subsection">Type Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.AsyncHelpers.AwaitForeach``1(System.Collections.Generic.IAsyncEnumerator{``0},System.Func{``0,System.Threading.Tasks.Task{System.Boolean}},System.Threading.CancellationToken):Type Parameters">
+            <dl>
+              <dt>
+                <i>TElement</i>
+              </dt>
+              <dd>The type of the elements in the asynchronous enumerable.</dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Parameters</h4>
+          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.AsyncHelpers.AwaitForeach``1(System.Collections.Generic.IAsyncEnumerator{``0},System.Func{``0,System.Threading.Tasks.Task{System.Boolean}},System.Threading.CancellationToken):Parameters">
+            <dl>
+              <dt>
+                <i>aen</i>
+              </dt>
+              <dd>The asynchronous enumerator to iterate with.</dd>
+              <dt>
+                <i>act</i>
+              </dt>
+              <dd>An asynchronous handler that gets called and awaited for each element in the collection. The return value must be true to keep iterating through the rest of the list, false to break the loop.</dd>
+              <dt>
+                <i>ctoken</i>
+              </dt>
+              <dd>The cancellation token to use. This can be used to abort any awaits inside the loop and force an early termination.</dd>
+            </dl>
+          </blockquote>
+          <h4 class="Subsection">Returns</h4>
+          <blockquote class="SubsectionBox" id="M:System.Threading.Tasks.AsyncHelpers.AwaitForeach``1(System.Collections.Generic.IAsyncEnumerator{``0},System.Func{``0,System.Threading.Tasks.Task{System.Boolean}},System.Threading.CancellationToken):Returns">A Task that completes when the loop terminates either as the sequence gets exhausted or because the handler signals that it wants an early termination.</blockquote>
+          <h2 class="Section">Remarks</h2>
+          <div class="SectionBox" id="M:System.Threading.Tasks.AsyncHelpers.AwaitForeach``1(System.Collections.Generic.IAsyncEnumerator{``0},System.Func{``0,System.Threading.Tasks.Task{System.Boolean}},System.Threading.CancellationToken):Remarks">Do not forget to await the returned task. This makes sure that the loop would be terminated and that the enumerator would have been disposed before continuing.</div>
+          <h2 class="Section">Requirements</h2>
+          <div class="SectionBox" id="M:System.Threading.Tasks.AsyncHelpers.AwaitForeach``1(System.Collections.Generic.IAsyncEnumerator{``0},System.Func{``0,System.Threading.Tasks.Task{System.Boolean}},System.Threading.CancellationToken):Version Information">
+            <b>Namespace: </b>System.Threading.Tasks<br /><b>Assembly: </b>dylan.NET.Tasks (in dylan.NET.Tasks.dll)<br /><b>Assembly Versions: </b>1.5.1.1</div>
+          <hr size="1" />
+        </blockquote>
+      </div>
+    </div>
+    <hr size="1" />
+    <div class="Copyright">
+    </div>
+  </body>
+</html>

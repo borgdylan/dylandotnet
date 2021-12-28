@@ -1,7 +1,7 @@
 //The dylan.NET task and awaitables library
 //Compile with dylan.NET 11.7.1.1 or higher hosted by the dotnet CLI
 
-//    dylan.NET.Tasks.dll dylan.NET.Tasks Copyright (C) 2017 Dylan Borg <borgdylan@hotmail.com>
+//    dylan.NET.Tasks.dll dylan.NET.Tasks Copyright (C) 2021 Dylan Borg <borgdylan@hotmail.com>
 //    This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software
 // Foundation; either version 3 of the License, or (at your option) any later version.
 //    This library is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
@@ -11,10 +11,6 @@
 
 #include "msbuild.dyl"
 
-#if NETSTANDARD1_3 orelse NETSTANDARD2_0 orelse NETCORE50 then
-	#define CORE50
-end #if
-
 import System
 //import System.Threading.Tasks
 
@@ -22,7 +18,7 @@ import System
 	import Microsoft.Runtime.CompilerServices
 end #if
 
-#if !PORTABLESHIM then
+#if !NETSTANDARD1_0 then
 	import System.Runtime.CompilerServices
 end #if
 
@@ -38,7 +34,7 @@ namespace System.Threading.Tasks
 	#include "IAsyncValue.dyl"
 	#include "AsyncValue.dyl"
 
-	#if !PORTABLESHIM then
+	#if !NETSTANDARD1_0 then
 		#include "YieldAwaitableWrapper.dyl"
 		#include "TaskWrapper.dyl"
 		#include "TaskWrapper1.dyl"
@@ -46,14 +42,13 @@ namespace System.Threading.Tasks
 		#include "ConfiguredTaskAwaitableWrapper1.dyl"
 
 		#if !NET40 then
+			#include "ValueTaskWrapper.dyl"
 			#include "ValueTaskWrapper1.dyl"
+			#include "ConfiguredValueTaskAwaitableWrapper.dyl"
 			#include "ConfiguredValueTaskAwaitableWrapper1.dyl"
+			#include "ReflectWrapper.dyl"
+			#include "ReflectWrapper1.dyl"
 		end #if
-	end #if
-
-	#if !PORTABLE andalso !NET40 then
-		#include "ReflectWrapper.dyl"
-		#include "ReflectWrapper1.dyl"
 	end #if
 
 	#include "SetHelper.dyl"
@@ -65,4 +60,8 @@ namespace System.Threading.Tasks
 	#include "TaskClosure.dyl"
 	#include "DisposerTaskClosure1.dyl"
 	#include "DisposerTaskClosure.dyl"
+
+	#if NETSTANDARD2_0_OR_GREATER orelse NET471_OR_GREATER then
+		#include "AsyncHelpers.dyl"
+	end #if
 end namespace

@@ -1,6 +1,6 @@
 import System.Runtime.CompilerServices
 
-//use only in tests, desitgned to fail when teh await mechanism calls functions out of order
+//use only in tests, designed to fail when the await mechanism calls functions out of order
 class public FSMTaskAwaiterWrapper implements IAwaiter
 
 	field private TaskAwaiter _awaiter
