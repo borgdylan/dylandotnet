@@ -8,7 +8,7 @@
 
 import dylan.NET.Tokenizer.AST.Tokens
 
-class public OpStack extends C5.LinkedList<of Token>
+class public sealed OpStack extends C5.LinkedList<of Token>
 
 	method public void OpStack()
 		mybase::ctor()

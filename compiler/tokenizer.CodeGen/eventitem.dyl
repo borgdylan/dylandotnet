@@ -11,7 +11,7 @@ import dylan.NET.Tokenizer.AST.Tokens
 import dylan.NET.Tokenizer.AST.Tokens.TypeToks
 import Managed.Reflection.Emit
 
-class public EventItem
+class public sealed EventItem
 
     field public string Name
     field public Managed.Reflection.Type EventTyp

@@ -15,7 +15,7 @@ import dylan.NET.Tokenizer.AST.Tokens
 import Managed.Reflection
 import Managed.Reflection.Emit
 
-class public partial TypeItem
+class public sealed partial TypeItem
 
     field public string Name
     field public boolean IsStatic
@@ -220,7 +220,7 @@ end class
 
 #include "tilambdas.dyl"
 
-class public TypeItem
+class public sealed TypeItem
 
     method public TypeItem GetTypeItem(var t as Managed.Reflection.Type)
         var til as TILambdas = new TILambdas(t)

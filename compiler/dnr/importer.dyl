@@ -6,7 +6,10 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple
 //Place, Suite 330, Boston, MA 02111-1307 USA
 
+import System
 import System.Runtime.InteropServices
+import System.Collections.Generic
+import System.Linq
 
 class public static Importer
 
@@ -80,5 +83,17 @@ class public static Importer
 	method public static void RegisterAlias(var alias as string, var ns as string)
 		AliasMap::Add(alias, ns)
 	end method
+
+	method private static IEnumerable<of ImportRecord> Identity(var src as C5.LinkedList<of ImportRecord>) => src
+
+	//Enumerable::ToList<of C5.LinkedList<of ImportRecord> >()
+	method public static IEnumerable<of ImportRecord> GetActiveImports() => _
+		Enumerable::Concat<of ImportRecord>( _
+			new ImportRecord[] {new ImportRecord(string::Empty), new ImportRecord(AsmFactory::CurnNS)}, _
+			Enumerable::SelectMany<of C5.LinkedList<of ImportRecord>, ImportRecord>( _
+				Importer::ImpsStack::Backwards(), _
+				new Func<of C5.LinkedList<of ImportRecord>, IEnumerable<of ImportRecord> >(Identity) _
+			) _
+		)
 
 end class

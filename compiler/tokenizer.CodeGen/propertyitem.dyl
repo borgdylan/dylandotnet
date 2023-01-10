@@ -12,7 +12,7 @@ import Managed.Reflection.Emit
 import dylan.NET.Tokenizer.AST.Tokens
 import dylan.NET.Tokenizer.AST.Exprs
 
-class public PropertyItem
+class public sealed PropertyItem
 
 	field public string Name
 	field public Managed.Reflection.Type PropertyTyp

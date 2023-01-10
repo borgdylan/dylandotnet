@@ -20,38 +20,38 @@ class public abstract AttrStmt extends Stmt
 
 end class
 
-class public MethodAttrStmt extends AttrStmt
+class public sealed MethodAttrStmt extends AttrStmt
 	method public override boolean ValidateContext(var ctx as ContextType) => _
 		ctx == ContextType::Class orelse ctx == ContextType::Interface orelse _
 		ctx == ContextType::Event orelse ctx == ContextType::Property orelse _
 		ctx == ContextType::AbstractEvent orelse ctx == ContextType::AbstractProperty
 end class
 
-class public FieldAttrStmt extends AttrStmt
+class public sealed FieldAttrStmt extends AttrStmt
 	method public override boolean ValidateContext(var ctx as ContextType) => ctx == ContextType::Class
 end class
 
-class public ClassAttrStmt extends AttrStmt
+class public sealed ClassAttrStmt extends AttrStmt
 	method public override boolean ValidateContext(var ctx as ContextType) => ctx == ContextType::Assembly orelse ctx == ContextType::Class
 end class
 
-class public AssemblyAttrStmt extends AttrStmt
+class public sealed AssemblyAttrStmt extends AttrStmt
 	method public override boolean ValidateContext(var ctx as ContextType) => ctx == ContextType::Assembly
 end class
 
-class public PropertyAttrStmt extends AttrStmt
+class public sealed PropertyAttrStmt extends AttrStmt
 	method public override boolean ValidateContext(var ctx as ContextType) => ctx == ContextType::Class orelse ctx == ContextType::Interface
 end class
 
-class public EventAttrStmt extends AttrStmt
+class public sealed EventAttrStmt extends AttrStmt
 	method public override boolean ValidateContext(var ctx as ContextType) => ctx == ContextType::Class orelse ctx == ContextType::Interface
 end class
 
-class public EnumAttrStmt extends AttrStmt
+class public sealed EnumAttrStmt extends AttrStmt
 	method public override boolean ValidateContext(var ctx as ContextType) => ctx == ContextType::Assembly
 end class
 
-class public ParameterAttrStmt extends AttrStmt
+class public sealed ParameterAttrStmt extends AttrStmt
 
 	field public integer Index
 

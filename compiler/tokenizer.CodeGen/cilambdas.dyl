@@ -9,7 +9,7 @@
 import System
 import Managed.Reflection
 
-class private CILambdas
+class private sealed CILambdas
 
 	field assembly Managed.Reflection.Type[] Params
 	field assembly Managed.Reflection.Type Auxt

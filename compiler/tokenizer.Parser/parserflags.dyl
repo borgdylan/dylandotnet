@@ -11,7 +11,7 @@ import dylan.NET.Tokenizer.AST.Tokens
 import dylan.NET.Tokenizer.AST.Tokens.TypeToks
 import dylan.NET.Tokenizer.AST.Tokens.Literals
 
-class public Flags
+class public sealed Flags
 
 	field public boolean IfFlag
 	//field public boolean AssemFlg

@@ -10,7 +10,7 @@ import System.Text
 import dylan.NET.Tokenizer.AST.Tokens
 import dylan.NET.Tokenizer.AST.Stmts
 
-class public Line
+class public sealed Line
 
     field private char PrevChar
     field private boolean InStr

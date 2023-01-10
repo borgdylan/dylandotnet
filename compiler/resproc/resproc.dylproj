@@ -7,11 +7,11 @@
         <RootNamespace>dylan.NET.ResProc</RootNamespace>
         <UsePartialTypes>false</UsePartialTypes>
         <AssemblyName>resproc</AssemblyName>
-        <TargetFrameworks>net46;net5.0;net6.0</TargetFrameworks>
+        <TargetFrameworks>net472;net6.0;net7.0</TargetFrameworks>
 
-        <RuntimeIdentifiers>win8-x64;linux-x64</RuntimeIdentifiers>
+        <RuntimeIdentifiers>win-x64;linux-x64;osx-x64</RuntimeIdentifiers>
     </PropertyGroup>
-    <ItemGroup Condition=" '$(TargetFramework)' == 'net46' ">
+    <ItemGroup Condition=" '$(TargetFramework)' == 'net472' ">
         <Reference Include="System" />
         <Reference Include="mscorlib" />
         <Reference Include="System.Core" />
@@ -20,13 +20,13 @@
         <Reference Include="System.Drawing" />
         <Reference Include="System.Windows.Forms" />
     </ItemGroup>
-    <ItemGroup Condition=" '$(TargetFramework)' == 'net5.0' or '$(TargetFramework)' == 'net6.0' ">
+    <ItemGroup Condition=" '$(TargetFramework)' == 'net6.0' or '$(TargetFramework)' == 'net7.0' ">
         <PackageReference Include="ResXResourceReader.NetStandard" Version="1.1.0" />
     </ItemGroup>
     <Target Name="AfterBuild" AfterTargets="Build">
         <ItemGroup>
-            <Stuff Include="$(OutputPath)\net46\*.exe" />
-            <Stuff Include="$(OutputPath)\net46\*.dll" />
+            <Stuff Include="$(OutputPath)\net472\*.exe" />
+            <Stuff Include="$(OutputPath)\net472\*.dll" />
             <StuffCore Include="$(OutputPath)\net6.0\*.dll" />
             <StuffCore Include="$(OutputPath)\net6.0\*.json" />
         </ItemGroup>

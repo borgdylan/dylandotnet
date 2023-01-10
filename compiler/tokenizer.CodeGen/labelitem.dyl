@@ -8,7 +8,7 @@
 
 import Managed.Reflection
 
-class public LabelItem
+class public sealed LabelItem
 
 	field public Emit.Label Lbl
 	field public string LblName

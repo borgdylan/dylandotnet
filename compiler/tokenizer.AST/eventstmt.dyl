@@ -10,19 +10,19 @@ import dylan.NET.Tokenizer.AST.Tokens
 import dylan.NET.Tokenizer.AST.Tokens.TypeToks
 import dylan.NET.Tokenizer.AST.Tokens.Attributes
 
-class public EndEventStmt extends EndStmt
+class public sealed EndEventStmt extends EndStmt
 	method public override string ToString() => "end event"
 end class
 
-class public EndAddStmt extends EndStmt
+class public sealed EndAddStmt extends EndStmt
 	method public override string ToString() => "end add"
 end class
 
-class public EndRemoveStmt extends EndStmt
+class public sealed EndRemoveStmt extends EndStmt
 	method public override string ToString() => "end remove"
 end class
 
-class public EventStmt extends BlockStmt
+class public sealed EventStmt extends BlockStmt
 
 	field public C5.LinkedList<of Attributes.Attribute> Attrs
 	field public Ident EventName
@@ -47,7 +47,7 @@ class public EventStmt extends BlockStmt
 
 end class
 
-class public EventAddStmt extends BlockStmt
+class public sealed EventAddStmt extends BlockStmt
 
 	field public Ident Adder
 
@@ -64,7 +64,7 @@ class public EventAddStmt extends BlockStmt
 
 end class
 
-class public EventRemoveStmt extends BlockStmt
+class public sealed EventRemoveStmt extends BlockStmt
 
 	field public Ident Remover
 

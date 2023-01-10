@@ -33,7 +33,7 @@ class public abstract Literal extends ValueToken implements IUnaryOperatable, IC
 
 end class
 
-class public NullLiteral extends Literal
+class public sealed NullLiteral extends Literal
 
 	field public object NullVal
 
@@ -51,7 +51,7 @@ class public NullLiteral extends Literal
 
 end class
 
-class public ConstLiteral extends Literal
+class public sealed ConstLiteral extends Literal
 
 	field public object ConstVal
 	field public Managed.Reflection.Type ExtTyp
@@ -69,7 +69,7 @@ class public ConstLiteral extends Literal
 
 end class
 
-class public StringLiteral extends Literal
+class public sealed StringLiteral extends Literal
 
 	field public boolean MemberAccessFlg
 	field public Token MemberToAccess
@@ -88,7 +88,7 @@ class public StringLiteral extends Literal
 
 end class
 
-class public InterpolateLiteral extends Literal
+class public sealed InterpolateLiteral extends Literal
 
 	method public void InterpolateLiteral(var value as string)
 		mybase::ctor(value)
@@ -103,7 +103,7 @@ class public InterpolateLiteral extends Literal
 
 end class
 
-class public FormattableLiteral extends Literal
+class public sealed FormattableLiteral extends Literal
 
 	method public void FormattableLiteral(var value as string)
 		mybase::ctor(value)
@@ -118,7 +118,7 @@ class public FormattableLiteral extends Literal
 
 end class
 
-class public CharLiteral extends Literal
+class public sealed CharLiteral extends Literal
 
 	field public char CharVal
 	field public initonly boolean ParseFailed
@@ -151,7 +151,7 @@ class public CharLiteral extends Literal
 
 end class
 
-class public BooleanLiteral extends Literal implements INegatable
+class public sealed BooleanLiteral extends Literal implements INegatable
 
 	field public boolean BoolVal
 	field private boolean _DoNeg
@@ -214,7 +214,7 @@ class public abstract NumberLiteral<of T> extends NumberLiteral where T as {stru
 
 end class
 
-class public IntLiteral extends NumberLiteral<of integer> implements INegatable, INotable, IPlusMinusable
+class public sealed IntLiteral extends NumberLiteral<of integer> implements INegatable, INotable, IPlusMinusable
 
 	//field private boolean _DoNeg
 	//field private boolean _DoNot
@@ -250,7 +250,7 @@ class public IntLiteral extends NumberLiteral<of integer> implements INegatable,
 
 end class
 
-class public DoubleLiteral extends NumberLiteral<of double> implements INegatable, IPlusMinusable
+class public sealed DoubleLiteral extends NumberLiteral<of double> implements INegatable, IPlusMinusable
 
 	//field private boolean _DoNeg
 
@@ -283,7 +283,7 @@ class public DoubleLiteral extends NumberLiteral<of double> implements INegatabl
 
 end class
 
-class public DecimalLiteral extends NumberLiteral<of decimal> implements INegatable, IPlusMinusable
+class public sealed DecimalLiteral extends NumberLiteral<of decimal> implements INegatable, IPlusMinusable
 
 	//field private boolean _DoNeg
 
@@ -315,7 +315,7 @@ class public DecimalLiteral extends NumberLiteral<of decimal> implements INegata
 
 end class
 
-class public SByteLiteral extends NumberLiteral<of sbyte> implements INegatable, INotable, IPlusMinusable
+class public sealed SByteLiteral extends NumberLiteral<of sbyte> implements INegatable, INotable, IPlusMinusable
 
 	//field private boolean _DoNeg
 	//field private boolean _DoNot
@@ -350,7 +350,7 @@ class public SByteLiteral extends NumberLiteral<of sbyte> implements INegatable,
 end class
 
 
-class public ShortLiteral extends NumberLiteral<of short> implements INegatable, INotable, IPlusMinusable
+class public sealed ShortLiteral extends NumberLiteral<of short> implements INegatable, INotable, IPlusMinusable
 
 	//field private boolean _DoNeg
 	//field private boolean _DoNot
@@ -384,7 +384,7 @@ class public ShortLiteral extends NumberLiteral<of short> implements INegatable,
 
 end class
 
-class public LongLiteral extends NumberLiteral<of long> implements INegatable, INotable, IPlusMinusable
+class public sealed LongLiteral extends NumberLiteral<of long> implements INegatable, INotable, IPlusMinusable
 
 	//field private boolean _DoNeg
 	//field private boolean _DoNot
@@ -418,7 +418,7 @@ class public LongLiteral extends NumberLiteral<of long> implements INegatable, I
 
 end class
 
-class public FloatLiteral extends NumberLiteral<of single> implements INegatable, IPlusMinusable
+class public sealed FloatLiteral extends NumberLiteral<of single> implements INegatable, IPlusMinusable
 
 	//field private boolean _DoNeg
 
@@ -450,7 +450,7 @@ class public FloatLiteral extends NumberLiteral<of single> implements INegatable
 
 end class
 
-class public UIntLiteral extends NumberLiteral<of uinteger> implements INotable, IPlusMinusable
+class public sealed UIntLiteral extends NumberLiteral<of uinteger> implements INotable, IPlusMinusable
 
 	//field private boolean _DoNot
 
@@ -482,7 +482,7 @@ class public UIntLiteral extends NumberLiteral<of uinteger> implements INotable,
 
 end class
 
-class public ByteLiteral extends NumberLiteral<of byte> implements INotable, IPlusMinusable
+class public sealed ByteLiteral extends NumberLiteral<of byte> implements INotable, IPlusMinusable
 
 	//field private boolean _DoNot
 
@@ -514,7 +514,7 @@ class public ByteLiteral extends NumberLiteral<of byte> implements INotable, IPl
 
 end class
 
-class public UShortLiteral extends NumberLiteral<of ushort> implements INotable, IPlusMinusable
+class public sealed UShortLiteral extends NumberLiteral<of ushort> implements INotable, IPlusMinusable
 
 	field private boolean _DoNot
 
@@ -546,7 +546,7 @@ class public UShortLiteral extends NumberLiteral<of ushort> implements INotable,
 
 end class
 
-class public ULongLiteral extends NumberLiteral<of ulong> implements INotable, IPlusMinusable
+class public sealed ULongLiteral extends NumberLiteral<of ulong> implements INotable, IPlusMinusable
 
 	//field private boolean _DoNot
 
@@ -579,7 +579,7 @@ class public ULongLiteral extends NumberLiteral<of ulong> implements INotable, I
 
 end class
 
-class public IntPtrLiteral extends NumberLiteral<of IntPtr> implements INegatable, INotable
+class public sealed IntPtrLiteral extends NumberLiteral<of IntPtr> implements INegatable, INotable
 
 	field private boolean _DoNot
 	field private boolean _DoNeg

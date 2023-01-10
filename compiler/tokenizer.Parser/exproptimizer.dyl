@@ -19,7 +19,7 @@ import dylan.NET.Tokenizer.AST.Tokens.Chars
 import dylan.NET.Tokenizer.Lexer
 import dylan.NET.Reflection
 
-class public ExprOptimizer
+class public sealed ExprOptimizer
 
 	field public Flags PFlags
 
@@ -1128,7 +1128,7 @@ class public ExprOptimizer
 	    var stok = stm::Tokens::get_Item(i)
 		var ir = ParseUtils::Interpolate(stok::Value)
 
-		if ir::get_Expressions()[l] == 0 then
+		if ir::get_Expressions()::get_Count() == 0 then
 			//error out
 			StreamUtils::WriteLine(string::Empty)
 			StreamUtils::WriteError(stok::Line, stok::Column, PFlags::CurPath, "Interpolated strings should have at least one interpolation!")

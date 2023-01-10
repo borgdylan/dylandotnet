@@ -10,7 +10,7 @@ import System.IO
 
 namespace Extra.Tasks
 
-	class public beforefieldinit sealed FindResProcOuts extends Task
+	class public sealed FindResProcOuts extends Task
 
 		property public autogen ITaskItem[] Inputs
 

@@ -9,7 +9,7 @@
 import dylan.NET.Tokenizer.AST.Exprs
 import dylan.NET.Tokenizer.AST.Tokens.TypeToks
 
-class public MethodCallTok extends ValueToken
+class public sealed MethodCallTok extends ValueToken
 
 	field public MethodNameTok Name
 	field public C5.ArrayList<of Expr> Params
@@ -41,7 +41,7 @@ class public MethodCallTok extends ValueToken
 
 end class
 
-class public GettypeCallTok extends ValueToken
+class public sealed GettypeCallTok extends ValueToken
 
 	field public TypeTok Name
 
@@ -57,7 +57,7 @@ class public GettypeCallTok extends ValueToken
 
 end class
 
-class public DefaultCallTok extends ValueToken
+class public sealed DefaultCallTok extends ValueToken
 
 	field public TypeTok Name
 
@@ -73,7 +73,7 @@ class public DefaultCallTok extends ValueToken
 
 end class
 
-class public TupleCallTok extends ValueToken
+class public sealed TupleCallTok extends ValueToken
 
 	field public C5.ArrayList<of Expr> Params
 

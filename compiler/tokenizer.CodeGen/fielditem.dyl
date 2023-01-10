@@ -8,7 +8,7 @@
 
 import Managed.Reflection.Emit
 
-class public FieldItem
+class public sealed FieldItem
 
     field public string Name
     field public Managed.Reflection.Type FieldTyp

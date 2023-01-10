@@ -8,7 +8,7 @@
 
 import dylan.NET.Tokenizer.AST.Exprs
 
-class public AttrValuePair extends Token
+class public sealed AttrValuePair extends Token
 
 	field public Ident Name
 	field public Expr ValueExpr

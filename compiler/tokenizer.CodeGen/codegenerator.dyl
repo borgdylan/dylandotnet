@@ -102,7 +102,7 @@ class private LPFileClosure
 
 end class
 
-class public partial CodeGenerator
+class public sealed partial CodeGenerator
 
     method public prototype void EmitMSIL(var stmts as StmtSet, var fpath as string)
     method assembly prototype (boolean, boolean) Process(var c as IStmtContainer, var spth as string)
@@ -112,7 +112,7 @@ end class
 
 #include "stmtreader.dyl"
 
-class public CodeGenerator
+class public sealed CodeGenerator
 
     field private StmtReader sr
 

@@ -8,7 +8,7 @@
 
 //delegate public void ErrorWarnHandler(var line as integer, var file as string, var msg as string)
 
-class public ErrorException extends Exception
+class public sealed ErrorException extends Exception
 
     method public void ErrorException(var errtext as string)
         mybase::ctor(errtext)
@@ -131,7 +131,7 @@ class public static StreamUtils
 
     event public static Action<of CompilerMsg> ErrorH
         add
-            _ErrorH = #ternary {_ErrorH is null? value, _ErrorH + value}
+            _ErrorH = #ternary {_ErrorH is null ? value, _ErrorH + value}
         end add
         remove
             if _ErrorH isnot null then
@@ -142,7 +142,7 @@ class public static StreamUtils
 
     event public static Action<of CompilerMsg> WarnH
         add
-            _WarnH = #ternary {_WarnH is null? value, _WarnH + value}
+            _WarnH = #ternary {_WarnH is null ? value, _WarnH + value}
         end add
         remove
             if _WarnH isnot null then

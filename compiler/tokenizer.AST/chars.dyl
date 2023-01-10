@@ -59,100 +59,100 @@ class public OpenParen extends Paren
 end class
 
 // ]
-class public RSParen extends CloseParen
+class public sealed RSParen extends CloseParen
 	method public override string ToString() => "]"
 end class
 
 // [
-class public LSParen extends OpenParen
+class public sealed LSParen extends OpenParen
 	method public override string ToString() => "["
 	method public override boolean IsValidCloseParen(var cp as CloseParen) => cp is RSParen
 end class
 
 // }
-class public RCParen extends CloseParen
+class public sealed RCParen extends CloseParen
 	method public override string ToString() => "}"
 end class
 
 // {
-class public LCParen extends OpenParen
+class public sealed LCParen extends OpenParen
 	method public override string ToString() => "{"
 	method public override boolean IsValidCloseParen(var cp as CloseParen) => cp is RCParen
 end class
 
 // []
-class public LRSParen extends Character
+class public sealed LRSParen extends Character
 	method public override string ToString() => "[]"
 end class
 
 // >
-class public RAParen extends CloseParen
+class public sealed RAParen extends CloseParen
 	method public override string ToString() => ">"
 end class
 
 // <
-class public LAParen extends OpenParen
+class public sealed LAParen extends OpenParen
 	method public override string ToString() => "<"
 	method public override boolean IsValidCloseParen(var cp as CloseParen) => cp is RAParen
 end class
 
 // )
-class public RParen extends CloseParen
+class public sealed RParen extends CloseParen
 	method public override string ToString() => ")"
 end class
 
 // (
-class public LParen extends OpenParen
+class public sealed LParen extends OpenParen
 	method public override string ToString() => "("
 	method public override boolean IsValidCloseParen(var cp as CloseParen) => cp is RParen
 end class
 
 // ,
-class public Comma extends Character
+class public sealed Comma extends Character
 	method public override string ToString() => ","
 end class
 
 // \r\n
-class public CrLf extends Character
+class public sealed CrLf extends Character
 	method public override string ToString() => c"\r\n"
 end class
 
 // \r
-class public Cr extends Character
+class public sealed Cr extends Character
 	method public override string ToString() => c"\r"
 end class
 
 // \n
-class public Lf extends Character
+class public sealed Lf extends Character
 	method public override string ToString() => c"\n"
 end class
 
 // |
-class public Pipe extends Character
+class public sealed Pipe extends Character
 	method public override string ToString() => "|"
 end class
 
 // &
-class public Ampersand extends Character
+class public sealed Ampersand extends Character
 	method public override string ToString() => "&"
 end class
 
 // $
-class public DollarSign extends Character
+class public sealed DollarSign extends Character
 	method public override string ToString() => "$"
 end class
 
 // ?
-class public QuestionMark extends Character
+class public sealed QuestionMark extends Character
 	method public override string ToString() => "?"
 end class
 
 // :
-class public Colon extends Character
+class public sealed Colon extends Character
 	method public override string ToString() => ":"
 end class
 
 // =>
-class public GoesToTok extends Character
+class public sealed GoesToTok extends Character
 	method public override string ToString() => "=>"
 end class

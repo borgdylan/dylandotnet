@@ -12,13 +12,13 @@ import dylan.NET.Tokenizer.AST.Exprs
 import dylan.NET.Tokenizer.AST.Tokens.TypeToks
 import dylan.NET.Tokenizer.AST.Tokens.Attributes
 
-class public EndMethodStmt extends EndStmt
+class public sealed EndMethodStmt extends EndStmt
 	method public override string ToString()
 		return "end method"
 	end method
 end class
 
-class public MethodStmt extends BlockStmt implements IExprBodyable
+class public sealed MethodStmt extends BlockStmt implements IExprBodyable
 
 	field public C5.LinkedList<of Attributes.Attribute> Attrs
 	field public MethodNameTok MethodName

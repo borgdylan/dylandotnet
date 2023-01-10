@@ -9,7 +9,7 @@
 import dylan.NET.Reflection
 import Managed.Reflection.Emit
 
-class public TypeParamItem
+class public sealed TypeParamItem
 
 	field public GenericTypeParameterBuilder Bldr
 	field public string Name

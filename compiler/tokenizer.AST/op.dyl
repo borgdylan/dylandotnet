@@ -24,7 +24,7 @@ interface public IInstanceCheckOp
 end interface
 
 //=
-class public AssignOp extends Op
+class public sealed AssignOp extends Op
 
 	method public void AssignOp()
 		mybase::ctor()
@@ -36,7 +36,7 @@ class public AssignOp extends Op
 end class
 
 //=
-class public AssignOp2 extends Op
+class public sealed AssignOp2 extends Op
 
 	method public void AssignOp2()
 		mybase::ctor()
@@ -48,7 +48,7 @@ class public AssignOp2 extends Op
 end class
 
 //as
-class public AsOp extends Op implements IInstanceCheckOp
+class public sealed AsOp extends Op implements IInstanceCheckOp
 
 	method public void AsOp()
 		mybase::ctor()
@@ -60,7 +60,7 @@ class public AsOp extends Op implements IInstanceCheckOp
 end class
 
 //??
-class public CoalesceOp extends Op
+class public sealed CoalesceOp extends Op
 
 	method public void CoalesceOp()
 		mybase::ctor()

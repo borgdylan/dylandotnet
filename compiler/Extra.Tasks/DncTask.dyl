@@ -8,7 +8,7 @@
 
 namespace Extra.Tasks
 
-	class public beforefieldinit sealed DncTask extends Task
+	class public sealed DncTask extends Task
 
 		property public autogen ITaskItem[] InputFile
 		property public autogen ITaskItem[] OutputFile
@@ -45,7 +45,7 @@ namespace Extra.Tasks
 					//StreamUtils::Init()
 					StreamUtils::add_WarnH(w)
 					StreamUtils::add_ErrorH(e)
-					
+
 					_OutputFile = _OutputFile ?? new ITaskItem[0]
 				    if _OutputFile[l] > 0 then
                         Program::Invoke(new string[] {"-out", _OutputFile[0]::get_ItemSpec(),_InputFile[0]::get_ItemSpec()})

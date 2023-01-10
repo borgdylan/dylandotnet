@@ -6,7 +6,7 @@
 //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple
 //Place, Suite 330, Boston, MA 02111-1307 USA
 
-class public beforefieldinit Token
+class public Token
 
 	field public string Value
 	field public integer Line
@@ -48,25 +48,25 @@ class public beforefieldinit Token
 
 end class
 
-class public NonExprToken extends Token
+class public abstract NonExprToken extends Token
 
-	method public void NonExprToken(var value as string)
+	method family void NonExprToken(var value as string)
 		mybase::ctor(value)
 	end method
 
-	method public void NonExprToken()
+	method family void NonExprToken()
 		ctor(string::Empty)
 	end method
 
 end class
 
-class public ValueToken extends Token
+class public abstract ValueToken extends Token
 
-	method public void ValueToken(var value as string)
+	method family void ValueToken(var value as string)
 		mybase::ctor(value)
 	end method
 
-	method public void ValueToken()
+	method family void ValueToken()
 		ctor(string::Empty)
 	end method
 

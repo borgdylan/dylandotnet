@@ -8,7 +8,7 @@
 
 import dylan.NET.Tokenizer.AST.Tokens
 
-class public IncludeStmt extends Stmt
+class public sealed IncludeStmt extends Stmt
 
 	field public Token Path
 	field public StmtSet SSet

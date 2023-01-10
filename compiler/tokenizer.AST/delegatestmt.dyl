@@ -10,7 +10,7 @@ import dylan.NET.Tokenizer.AST.Tokens
 import dylan.NET.Tokenizer.AST.Exprs
 import dylan.NET.Tokenizer.AST.Tokens.TypeToks
 
-class public DelegateStmt extends Stmt
+class public sealed DelegateStmt extends Stmt
 
 	field public C5.LinkedList<of Attributes.Attribute> Attrs
 	field public MethodNameTok DelegateName

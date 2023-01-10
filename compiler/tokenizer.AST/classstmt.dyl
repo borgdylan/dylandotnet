@@ -11,7 +11,7 @@ import dylan.NET.Tokenizer.AST.Tokens
 import dylan.NET.Tokenizer.AST.Tokens.TypeToks
 import dylan.NET.Tokenizer.AST.Tokens.Attributes
 
-class public EndClassStmt extends EndStmt
+class public sealed EndClassStmt extends EndStmt
 
 	field public Token EndToken
 
@@ -28,7 +28,7 @@ class public EndClassStmt extends EndStmt
 end class
 
 // class Attrs ClassName extends InhClass implements ImplInterafaces
-class public ClassStmt extends BlockStmt implements IMayHaveConstraints, IConstrainable
+class public sealed ClassStmt extends BlockStmt implements IMayHaveConstraints, IConstrainable
 
 	field public C5.LinkedList<of Attributes.Attribute> Attrs
 	field public TypeTok ClassName

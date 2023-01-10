@@ -21,7 +21,7 @@ import Managed.Reflection.Emit
 
 //delegate public void ASTEmitDelegate(var t as Token, var emt as boolean)
 
-class public Evaluator
+class public sealed Evaluator
 
     method public prototype void ASTEmit(var tok as Token, var emt as boolean)
 
@@ -57,8 +57,9 @@ class public Evaluator
     method private void ASTEmitMethodRef(var emt as boolean)
         if emt then
             ILEmitter::LocInd++
-            ILEmitter::DeclVar(i"__methodref_{ILEmitter::LocInd}", AsmFactory::Type02)
             var loc = ILEmitter::LocInd
+
+            ILEmitter::DeclVar(i"__methodref_{loc}", AsmFactory::Type02)
 
             ILEmitter::EmitStloc(loc)
             ILEmitter::EmitLdloca(loc)

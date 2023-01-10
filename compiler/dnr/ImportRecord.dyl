@@ -8,7 +8,7 @@
 
 namespace dylan.NET.Reflection
 
-	class public auto ansi ImportRecord
+	class public sealed ImportRecord
 
 		field public string Namespace
 		field public integer Line

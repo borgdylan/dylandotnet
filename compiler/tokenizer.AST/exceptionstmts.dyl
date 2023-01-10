@@ -10,7 +10,7 @@ import dylan.NET.Tokenizer.AST.Tokens
 import dylan.NET.Tokenizer.AST.Exprs
 import dylan.NET.Tokenizer.AST.Tokens.TypeToks
 
-class public CatchStmt extends BranchStmt
+class public sealed CatchStmt extends BranchStmt
 
 	field public Ident ExName
 	field public TypeTok ExTyp
@@ -26,15 +26,15 @@ class public CatchStmt extends BranchStmt
 
 end class
 
-class public FinallyStmt extends BranchStmt
+class public sealed FinallyStmt extends BranchStmt
 	method public override string ToString() => "finally"
 end class
 
-class public EndTryStmt extends EndStmt
+class public sealed EndTryStmt extends EndStmt
 	method public override string ToString() => "end try"
 end class
 
-class public TryStmt extends BlockStmt implements IBranchContainer
+class public sealed TryStmt extends BlockStmt implements IBranchContainer
 
 	field public C5.ArrayList<of BranchStmt> Branches
 
@@ -72,7 +72,7 @@ class public TryStmt extends BlockStmt implements IBranchContainer
 
 end class
 
-class public ThrowStmt extends Stmt
+class public sealed ThrowStmt extends Stmt
 
 	field public Expr RExp
 

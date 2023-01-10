@@ -8,7 +8,7 @@
 
 import Managed.Reflection.Emit
 
-class public MethodItem
+class public sealed MethodItem
 
 	field public string Name
 	field public Managed.Reflection.Type MethodTyp

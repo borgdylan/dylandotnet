@@ -10,7 +10,7 @@ import dylan.NET.Tokenizer.AST.Tokens
 
 // assembly AsmName Mode
 
-class public AssemblyStmt extends Stmt
+class public sealed AssemblyStmt extends Stmt
 
 	field public Token Mode
 	field public Ident AsmName

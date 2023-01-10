@@ -9,7 +9,7 @@
 import dylan.NET.Utils
 import dylan.NET.Tokenizer.AST.Stmts
 
-class public Parser
+class public sealed Parser
 
 	field public Flags PFlags
 

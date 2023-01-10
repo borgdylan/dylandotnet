@@ -9,13 +9,13 @@
 import dylan.NET.Tokenizer.AST.Tokens
 import dylan.NET.Tokenizer.AST.Tokens.TypeToks
 
-class public EndEnumStmt extends EndStmt
+class public sealed EndEnumStmt extends EndStmt
 	method public override string ToString()
 		return "end enum"
 	end method
 end class
 
-class public EnumStmt extends BlockStmt
+class public sealed EnumStmt extends BlockStmt
 
 	field public C5.LinkedList<of Attributes.Attribute> Attrs
 	field public Ident EnumName

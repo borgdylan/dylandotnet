@@ -8,13 +8,13 @@
 
 import dylan.NET.Tokenizer.AST.Tokens
 
-class public EndNSStmt extends EndStmt
+class public sealed EndNSStmt extends EndStmt
 	method public override string ToString()
 		return "end namespace"
 	end method
 end class
 
-class public NSStmt extends BlockStmt
+class public sealed NSStmt extends BlockStmt
 
 	field public Token NS
 

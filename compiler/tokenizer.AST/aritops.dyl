@@ -10,7 +10,7 @@ class public abstract AritOp extends Op
 end class
 
 // +
-class public AddOp extends AritOp
+class public sealed AddOp extends AritOp
 
 	method public void AddOp()
 		mybase::ctor()
@@ -22,7 +22,7 @@ class public AddOp extends AritOp
 end class
 
 // *
-class public MulOp extends AritOp
+class public sealed MulOp extends AritOp
 
 	method public void MulOp()
 		mybase::ctor()
@@ -34,7 +34,7 @@ class public MulOp extends AritOp
 end class
 
 // -
-class public SubOp extends AritOp
+class public sealed SubOp extends AritOp
 
 	method public void SubOp()
 		mybase::ctor()
@@ -47,7 +47,7 @@ end class
 
 
 // /
-class public DivOp extends AritOp
+class public sealed DivOp extends AritOp
 
 	method public void DivOp()
 		mybase::ctor()
@@ -59,7 +59,7 @@ class public DivOp extends AritOp
 end class
 
 // %
-class public ModOp extends AritOp
+class public sealed ModOp extends AritOp
 
 	method public void ModOp()
 		mybase::ctor()
@@ -71,7 +71,7 @@ class public ModOp extends AritOp
 end class
 
 // ++
-class public IncOp extends AritOp
+class public sealed IncOp extends AritOp
 
 	method public void IncOp()
 		mybase::ctor()
@@ -83,7 +83,7 @@ class public IncOp extends AritOp
 end class
 
 // --
-class public DecOp extends AritOp
+class public sealed DecOp extends AritOp
 
 	method public void DecOp()
 		mybase::ctor()
@@ -95,7 +95,7 @@ class public DecOp extends AritOp
 end class
 
 // <<
-class public ShlOp extends AritOp
+class public sealed ShlOp extends AritOp
 
 	method public void ShlOp()
 		mybase::ctor()
@@ -107,7 +107,7 @@ class public ShlOp extends AritOp
 end class
 
 // >>
-class public ShrOp extends AritOp
+class public sealed ShrOp extends AritOp
 
 	method public void ShrOp()
 		mybase::ctor()
@@ -119,7 +119,7 @@ class public ShrOp extends AritOp
 end class
 
 // (+)
-class public PlusOp extends AritOp
+class public sealed PlusOp extends AritOp
 
 	method public void PlusOp()
 		mybase::ctor()
@@ -131,7 +131,7 @@ class public PlusOp extends AritOp
 end class
 
 // (-)
-class public MinusOp extends AritOp
+class public sealed MinusOp extends AritOp
 
 	method public void MinusOp()
 		mybase::ctor()

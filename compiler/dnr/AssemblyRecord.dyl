@@ -8,7 +8,7 @@
 
 namespace dylan.NET.Reflection
 
-	class public auto ansi AssemblyRecord
+	class public sealed AssemblyRecord
 
 		field public Managed.Reflection.Assembly Asm
 		field public boolean Used

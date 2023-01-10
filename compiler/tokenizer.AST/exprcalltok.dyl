@@ -10,7 +10,7 @@ import dylan.NET.Tokenizer.AST.Interfaces
 import dylan.NET.Tokenizer.AST.Exprs
 import dylan.NET.Tokenizer.AST.Tokens.TypeToks
 
-class public ExprCallTok extends ValueToken implements IUnaryOperatable, IConvable, INegatable, INotable, IIncDecable, IPlusMinusable
+class public sealed ExprCallTok extends ValueToken implements IUnaryOperatable, IConvable, INegatable, INotable, IIncDecable, IPlusMinusable
 
 	field public boolean MemberAccessFlg
 	field public Token MemberToAccess

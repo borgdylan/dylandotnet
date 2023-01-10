@@ -6,17 +6,17 @@
 // //    You should have received a copy of the GNU Lesser General Public License along with this library; if not, write to the Free Software Foundation, Inc., 59 Temple
 // //Place, Suite 330, Boston, MA 02111-1307 USA
 
-class public InterpolateResult
+class public sealed InterpolateResult
 
 	field private string _format
-	field private (integer, StringBuilder)[] _exprs
+	field private List<of (integer, StringBuilder) > _exprs
 
 	method public void InterpolateResult(var format as string, var exprs as IEnumerable<of (integer, StringBuilder) >)
 		_format = format
-		_exprs = Enumerable::ToArray<of (integer, StringBuilder) >(exprs)
+		_exprs = Enumerable::ToList<of (integer, StringBuilder) >(exprs)
 	end method
 
 	property public string Format => _format
-	property public (integer, StringBuilder)[] Expressions => _exprs
+	property public List<of (integer, StringBuilder) > Expressions => _exprs
 
 end class

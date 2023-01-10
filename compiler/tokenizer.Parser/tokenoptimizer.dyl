@@ -16,7 +16,7 @@ import dylan.NET.Tokenizer.AST.Tokens.TypeToks
 import dylan.NET.Tokenizer.AST.Tokens.Attributes
 import dylan.NET.Tokenizer.AST.Tokens.Chars
 
-class public TokenOptimizer
+class public sealed TokenOptimizer
 
     field public integer GenLvl
     field public integer CurlyLvl
@@ -24,6 +24,80 @@ class public TokenOptimizer
     field public boolean isFirstToken
     field public boolean isFirstRun
     field public boolean SpecialFlg
+
+    field private static C5.HashDictionary<of string, Type> _opLookup
+    field private static C5.HashDictionary<of string, Type> _charLookup
+    field private static C5.HashDictionary<of string, Type> _keywLookup
+    field private static C5.HashDictionary<of string, Type> _attrLookup
+    field private static C5.HashDictionary<of string, Type> _typeLookup
+
+    method private static void TokenOptimizer()
+        _opLookup = new C5.HashDictionary<of string, Type>(C5.MemoryType::Normal) { _
+            Add("+", gettype AddOp), Add("*", gettype MulOp), Add("-", gettype SubOp), Add("/", gettype DivOp), Add("%", gettype ModOp), _
+            Add("++", gettype IncOp), Add("--", gettype DecOp), _
+            Add("<<", gettype ShlOp), Add(">>", gettype ShrOp), _
+            Add("(+)", gettype PlusOp), Add("(-)", gettype MinusOp), _
+            Add("==", gettype EqOp), Add("===", gettype StrictEqOp), Add("!=", gettype NeqOp), Add("<>", gettype NeqOp), Add("!==", gettype StrictNeqOp), _
+            Add(">=", gettype GeOp), Add("<=" , gettype LeOp), _
+            Add("like", gettype LikeOp), Add("notlike", gettype NLikeOp), _
+            Add("!", gettype NegOp), Add("~", gettype NotOp), _
+            Add("is", gettype IsOp), Add("isnot", gettype IsNotOp), _
+            Add("and", gettype AndOp), Add("nand", gettype NandOp), Add("or", gettype OrOp), Add("nor", gettype NorOp), _
+            Add("andalso", gettype AndAlsoOp), Add("orelse", gettype OrElseOp), _
+            Add("xor", gettype XorOp), Add("xnor", gettype XnorOp), _
+            Add("??", gettype CoalesceOp) }
+
+        _charLookup = new C5.HashDictionary<of string, Type>(C5.MemoryType::Normal) { _
+            Add("(", gettype LParen), Add(")", gettype RParen), Add("[]", gettype LRSParen), Add("[", gettype LSParen), Add("]", gettype RSParen), _
+            Add("&", gettype Ampersand), Add("|", gettype Pipe), Add(",", gettype Comma), Add("?", gettype QuestionMark), Add("$", gettype DollarSign), _
+            Add("=>", gettype GoesToTok) }
+
+         _keywLookup = new C5.HashDictionary<of string, Type>(C5.MemoryType::Normal) { _
+            Add("try", gettype TryTok), Add("finally", gettype FinallyTok), _
+            Add("switch", gettype SwitchTok2), Add("state", gettype StateTok), _
+            Add("else", gettype ElseTok), Add("#else", gettype HElseTok), _
+            Add("#ternary", gettype TernaryTok), Add("#expr", gettype ExprTok), Add("#nullcond", gettype NullCondTok), Add("#tuple", gettype TupleTok), _
+            Add("#define", gettype HDefineTok), Add("#undef", gettype HUndefTok), _
+            Add("do", gettype DoTok), _
+            Add("upto", gettype UptoTok), Add("downto", gettype DowntoTok), Add("step", gettype StepTok), _
+            Add("break", gettype BreakTok), Add("continue", gettype ContinueTok), _
+            Add("new", gettype NewTok), Add("me", gettype MeTok), Add("namespace", gettype NamespaceTok), _
+            Add("gettype", gettype GettypeTok), Add("default", gettype DefaultTok), _
+            Add("ref", gettype RefTok), Add("valinref", gettype ValInRefTok), _
+            Add("#debug", gettype DebugTok), Add("#include", gettype IncludeTok), _
+            Add("#error", gettype ErrorTok), Add("#warning", gettype WarningTok), _
+            Add("#sign", gettype SignTok), Add("#embed", gettype EmbedTok), _
+            Add("#region", gettype RegionTok), _
+            Add("assembly:", gettype AssemblyCTok), Add("field:", gettype FieldCTok), Add("property:", gettype PropertyCTok), Add("event:", gettype EventCTok), Add("method:", gettype MethodCTok), _
+            Add("class:", gettype ClassCTok), Add("enum:", gettype EnumCTok), _
+            Add("on", gettype OnTok), Add("off", gettype OffTok), _
+            Add("exe", gettype ExeTok), Add("dll", gettype DllTok), Add("winexe", gettype WinexeTok), _
+            Add("property", gettype PropertyTok), Add("event", gettype EventTok),  Add("method", gettype MethodTok), _
+            Add("class", gettype ClassTok), Add("struct", gettype StructTok), Add("delegate", gettype DelegateTok), Add("enum", gettype EnumTok), _
+            Add("extends", gettype ExtendsTok), Add("implements", gettype ImplementsTok), _
+            Add("return", gettype ReturnTok), _
+            Add("lock", gettype LockTok), Add("trylock", gettype TryLockTok), _
+            Add("throw", gettype ThrowTok), Add("when", gettype WhenTok), Add("of", gettype OfTok), _
+            Add("out", gettype OutTok), Add("inout", gettype InOutTok) }
+
+        _attrLookup = new C5.HashDictionary<of string, Type>(C5.MemoryType::Normal) { _
+            Add("private", gettype PrivateAttr), Add("public", gettype PublicAttr), Add("family", gettype FamilyAttr), Add("famorassem", gettype FamORAssemAttr), Add("famandassem", gettype FamANDAssemAttr), _
+            Add("initonly", gettype InitOnlyAttr), _
+            Add("static", gettype StaticAttr), Add("specialname", gettype SpecialNameAttr), Add("final", gettype FinalAttr), Add("hidebysig", gettype HideBySigAttr), Add("virtual", gettype VirtualAttr), _
+            Add("override", gettype OverrideAttr), Add("prototype", gettype PrototypeAttr), Add("newslot", gettype NewSlotAttr), Add("autogen", gettype AutoGenAttr), Add("pinvokeimpl", gettype PinvokeImplAttr), _
+            Add("none", gettype NoneAttr), Add("literal", gettype LiteralAttr), _
+            Add("sealed", gettype SealedAttr), Add("abstract", gettype AbstractAttr), Add("partial", gettype PartialAttr), Add("auto", gettype AutoLayoutAttr), Add("ansi", gettype AnsiClassAttr), _
+            Add("sequential", gettype SequentialLayoutAttr), Add("beforefieldinit", gettype BeforeFieldInitAttr), Add("serializable", gettype SerializableAttr), Add("notserialized", gettype NotSerializedAttr), _
+            Add("autochar", gettype AutoClassAttr) }
+
+        _typeLookup = new C5.HashDictionary<of string, Type>(C5.MemoryType::Normal) { _
+            Add("string", gettype StringTok), Add("char", gettype CharTok), _
+            Add("void", gettype VoidTok), Add("boolean", gettype BooleanTok), Add("object", gettype ObjectTok), _
+            Add("decimal", gettype DecimalTok), _
+            Add("integer", gettype IntegerTok), Add("intptr", gettype IntPtrTok), Add("uinteger", gettype UIntegerTok), Add("sbyte", gettype SByteTok), Add("byte", gettype ByteTok), Add("short", gettype ShortTok), Add("ushort", gettype UShortTok), Add("long", gettype LongTok), Add("ulong", gettype ULongTok), _
+            Add("double", gettype DoubleTok), Add("single", gettype SingleTok) }
+
+    end method
 
     method public void TokenOptimizer(var pf as Flags)
         mybase::ctor()
@@ -39,6 +113,13 @@ class public TokenOptimizer
         ctor(new Flags())
     end method
 
+    method private static Token NewToken(var src as Token, var toktyp as Type)
+        var tok as Token = $Token$Activator::CreateInstance(toktyp)
+        tok::PosFromToken(src)
+        tok::Value = src::Value
+        return tok
+    end method
+
     method public Token Optimize(var tok as Token, var lkahead as Token)
         if lkahead is null then
             lkahead = new Token()
@@ -50,28 +131,8 @@ class public TokenOptimizer
         end if
         isFirstRun = false
 
-        if tok::Value == "+" then
-            return new AddOp() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "*" then
-            return new MulOp() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "-" then
-            return new SubOp() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "/" then
-            return new DivOp() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "++" then
-            return new IncOp() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "--" then
-            return new DecOp() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "<<" then
-            return new ShlOp() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == ">>" then
-            return new ShrOp() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "=>" then
-            return new GoesToTok() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "(+)" then
-            return new PlusOp() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "(-)" then
-            return new MinusOp() {PosFromToken(tok), Value = tok::Value}
+        if _opLookup::Contains(tok::Value) then
+            return NewToken(tok, _opLookup::get_Item(tok::Value))
         elseif tok::Value == "=" then
             PFlags::AsFlag = false
             if CurlyLvl > 0 then
@@ -83,30 +144,6 @@ class public TokenOptimizer
             else
                 return new AssignOp() {PosFromToken(tok), Value = tok::Value}
             end if
-        elseif tok::Value == "%" then
-            return new ModOp() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "==" then
-            return new EqOp() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "===" then
-            return new StrictEqOp() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "like" then
-            return new LikeOp() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "!" then
-            return new NegOp() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "~" then
-            return new NotOp() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "!=" then
-            return new NeqOp() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "!==" then
-            return new StrictNeqOp() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "notlike" then
-            return new NLikeOp() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "<>" then
-            return new NeqOp() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == ">=" then
-            return new GeOp() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "<="  then
-            return new LeOp() {PosFromToken(tok), Value = tok::Value}
         elseif tok::Value == ">" then
             if GenLvl == 0 then
                 return new GtOp() {PosFromToken(tok), Value = tok::Value}
@@ -121,72 +158,28 @@ class public TokenOptimizer
             else
                 return new LtOp() {PosFromToken(tok), Value = tok::Value}
             end if
-        elseif tok::Value == "is" then
-            return new IsOp() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "isnot" then
-            return new IsNotOp() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "and" then
-            return new AndOp() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "andalso" then
-            return new AndAlsoOp() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "or" then
-            return new OrOp() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "orelse" then
-            return new OrElseOp() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "nand" then
-            return new NandOp() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "nor" then
-            return new NorOp() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "xor" then
-            return new XorOp() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "xnor" then
-            return new XnorOp() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "(" then
-            return new LParen() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == ")" then
-            return new RParen() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "[]" then
-            return new LRSParen() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "&" then
-            return new Ampersand() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "[" then
-            return new LSParen() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "]" then
-            return new RSParen() {PosFromToken(tok), Value = tok::Value}
+        elseif _charLookup::Contains(tok::Value) then
+            return NewToken(tok, _charLookup::get_Item(tok::Value))
         elseif tok::Value == "{" then
             CurlyLvl++
             return new LCParen() {PosFromToken(tok), Value = tok::Value}
         elseif tok::Value == "}" then
             CurlyLvl--
             return new RCParen() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "|" then
-            return new Pipe() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "," then
-            return new Comma() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "?" then
-            return new QuestionMark() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "??" then
-            return new CoalesceOp() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "$" then
-            return new DollarSign() {PosFromToken(tok), Value = tok::Value}
 //        elseif tok::Value == "label" then
 //            return new LabelTok() {PosFromToken(tok), Value = tok::Value}
 //        elseif tok::Value == "place" then
 //            return new PlaceTok() {PosFromToken(tok), Value = tok::Value}
 //        elseif tok::Value == "goto" then
 //            return new GotoTok() {PosFromToken(tok), Value = tok::Value}
+        elseif _keywLookup::Contains(tok::Value) then
+            return NewToken(tok, _keywLookup::get_Item(tok::Value))
         elseif tok::Value == "if" then
             PFlags::IfFlag = true
             return new IfTok() {PosFromToken(tok), Value = tok::Value}
         elseif tok::Value == "#if" then
             PFlags::IfFlag = true
             return new HIfTok() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "try" then
-            return new TryTok() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "switch" then
-            return new SwitchTok2() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "finally" then
-            return new FinallyTok() {PosFromToken(tok), Value = tok::Value}
         elseif tok::Value == "until" then
             PFlags::IfFlag = true
             return new UntilTok() {PosFromToken(tok), Value = tok::Value}
@@ -199,20 +192,6 @@ class public TokenOptimizer
         elseif tok::Value == "#elseif" then
             PFlags::IfFlag = true
             return new HElseIfTok() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "else" then
-            return new ElseTok() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "state" then
-            return new StateTok() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "#else" then
-            return new HElseTok() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "#ternary" then
-            return new TernaryTok() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "#define" then
-            return new HDefineTok() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "#undef" then
-            return new HUndefTok() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "do" then
-            return new DoTok() {PosFromToken(tok), Value = tok::Value}
         elseif tok::Value == "for" then
             PFlags::AsFlag = true
             PFlags::ForFlag = true
@@ -223,37 +202,13 @@ class public TokenOptimizer
         elseif tok::Value == "where" then
             PFlags::AsFlag = true
             return new WhereTok() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "upto" then
-            return new UptoTok() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "downto" then
-            return new DowntoTok() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "step" then
-            return new StepTok() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "break" then
-            return new BreakTok() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "continue" then
-            return new ContinueTok() {PosFromToken(tok), Value = tok::Value}
         elseif tok::Value == "then" then
             PFlags::IfFlag = false
             return new ThenTok() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "new" then
-            return new NewTok() {PosFromToken(tok), Value = tok::Value}
 //        elseif tok::Value == "newarr" then
 //            return new NewarrTok() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "me" then
-            return new MeTok() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "namespace" then
-            return new NamespaceTok() {PosFromToken(tok), Value = tok::Value}
 //        elseif tok::Value == "ptr" then
 //            return new PtrTok() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "gettype" then
-            return new GettypeTok() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "default" then
-            return new DefaultTok() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "ref" then
-            return new RefTok() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "valinref" then
-            return new ValInRefTok() {PosFromToken(tok), Value = tok::Value}
         elseif tok::Value == "#refasm" then
             PFlags::NoOptFlag = true
             return new RefasmTok() {PosFromToken(tok), Value = tok::Value}
@@ -263,86 +218,24 @@ class public TokenOptimizer
         elseif tok::Value == "#refstdasm" then
             PFlags::NoOptFlag = true
             return new RefstdasmTok() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "#debug" then
-            return new DebugTok() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "#include" then
-            return new IncludeTok() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "#error" then
-            return new ErrorTok() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "#warning" then
-            return new WarningTok() {PosFromToken(tok), Value = tok::Value}
         //elseif tok::Value == "#scope" then
         //    return new ScopeTok() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "#sign" then
-            return new SignTok() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "#embed" then
-            return new EmbedTok() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "#expr" then
-            return new ExprTok() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "#nullcond" then
-            return new NullCondTok() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "#tuple" then
-            return new TupleTok() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "#region" then
-            return new RegionTok() {PosFromToken(tok), Value = tok::Value}
         elseif tok::Value == "import" then
             PFlags::NoOptFlag = true
             return new ImportTok() {PosFromToken(tok), Value = tok::Value}
         elseif tok::Value == "locimport" then
             PFlags::NoOptFlag = true
             return new LocimportTok() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "assembly:" then
-            return new AssemblyCTok() {PosFromToken(tok), Value = tok::Value}
         elseif tok::Value == "assembly" then
             return #ternary {isFirstToken ? new AssemblyTok() {PosFromToken(tok), Value = tok::Value}, new AssemblyAttr() {PosFromToken(tok), Value = tok::Value}}
         elseif tok::Value == "ver" then
             PFlags::NoOptFlag = true
             return new VerTok() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "on" then
-            return new OnTok() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "off" then
-            return new OffTok() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "exe" then
-            return new ExeTok() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "dll" then
-            return new DllTok() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "winexe" then
-            return new WinexeTok() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "field:" then
-            return new FieldCTok() {PosFromToken(tok), Value = tok::Value}
         elseif tok::Value == "field" then
             PFlags::ForFlag = true
             return new FieldTok() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "property:" then
-            return new PropertyCTok() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "property" then
-            return new PropertyTok() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "event:" then
-            return new EventCTok() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "event" then
-            return new EventTok() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "class:" then
-            return new ClassCTok() {PosFromToken(tok), Value = tok::Value}
         elseif tok::Value like "^parameter(\d)+:$" then
             return new ParameterCTok() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "class" then
-            return new ClassTok() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "struct" then
-            return new StructTok() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "delegate" then
-            return new DelegateTok() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "extends" then
-            return new ExtendsTok() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "implements" then
-            return new ImplementsTok() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "method" then
-            return new MethodTok() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "method:" then
-            return new MethodCTok() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "enum" then
-            return new EnumTok() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "enum:" then
-            return new EnumCTok() {PosFromToken(tok), Value = tok::Value}
         elseif tok::Value == "end" then
             SpecialFlg = lkahead::Value like "^((((s)|(g))et)|(add)|(remove)|(interface))$"
             return new EndTok() {PosFromToken(tok), Value = tok::Value}
@@ -358,14 +251,6 @@ class public TokenOptimizer
         elseif (tok::Value == "remove")  andalso (isFirstToken orelse SpecialFlg) then
             SpecialFlg = false
             return new RemoveTok() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "return" then
-            return new ReturnTok() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "lock" then
-            return new LockTok() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "trylock" then
-            return new TryLockTok() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "throw" then
-            return new ThrowTok() {PosFromToken(tok), Value = tok::Value}
         elseif tok::Value == "var" then
             PFlags::AsFlag = true
             return new VarTok() {PosFromToken(tok), Value = tok::Value}
@@ -375,116 +260,22 @@ class public TokenOptimizer
         elseif tok::Value == "catch" then
             PFlags::AsFlag = true
             return new CatchTok() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "when" then
-            return new WhenTok() {PosFromToken(tok), Value = tok::Value}
         elseif tok::Value == "as" then
             return #ternary {PFlags::AsFlag ? new AsTok() {PosFromToken(tok), Value = tok::Value}, new AsOp() {PosFromToken(tok), Value = tok::Value}}
-        elseif tok::Value == "of" then
-            return new OfTok() {PosFromToken(tok), Value = tok::Value}
         elseif tok::Value == "in" then
             PFlags::IfFlag = true
             PFlags::AsFlag = false
             return new InTok() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "out" then
-            return new OutTok() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "inout" then
-            return new InOutTok() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "private" then
-            return new PrivateAttr() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "public" then
-            return new PublicAttr() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "initonly" then
-            return new InitOnlyAttr() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "static" then
-            return new StaticAttr() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "none" then
-            return new NoneAttr() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "specialname" then
-            return new SpecialNameAttr() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "sealed" then
-            return new SealedAttr() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "final" then
-            return new FinalAttr() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "hidebysig" then
-            return new HideBySigAttr() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "family" then
-            return new FamilyAttr() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "literal" then
-            return new LiteralAttr() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "famorassem" then
-            return new FamORAssemAttr() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "famandassem" then
-            return new FamANDAssemAttr() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "virtual" then
-            return new VirtualAttr() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "override" then
-            return new OverrideAttr() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "abstract" then
-            return new AbstractAttr() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "prototype" then
-            return new PrototypeAttr() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "partial" then
-            return new PartialAttr() {PosFromToken(tok), Value = tok::Value}
+        elseif _attrLookup::Contains(tok::Value) then
+            return NewToken(tok, _attrLookup::get_Item(tok::Value))
         elseif tok::Value == "interface" then
             if isFirstToken orelse SpecialFlg then
                 return new InterfaceTok() {PosFromToken(tok), Value = tok::Value}
             else
                 return new InterfaceAttr() {PosFromToken(tok), Value = tok::Value}
             end if
-        elseif tok::Value == "newslot" then
-            return new NewSlotAttr() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "auto" then
-            return new AutoLayoutAttr() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "autogen" then
-            return new AutoGenAttr() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "autochar" then
-            return new AutoClassAttr() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "ansi" then
-            return new AnsiClassAttr() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "beforefieldinit" then
-            return new BeforeFieldInitAttr() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "pinvokeimpl" then
-            return new PinvokeImplAttr() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "sequential" then
-            return new SequentialLayoutAttr() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "serializable" then
-            return new SerializableAttr() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "notserialized" then
-            return new NotSerializedAttr() {PosFromToken(tok), Value = tok::Value}
-        elseif tok::Value == "string" then
-            return new StringTok(tok::Value) {PosFromToken(tok)}
-        elseif tok::Value == "void" then
-            return new VoidTok(tok::Value) {PosFromToken(tok)}
-        elseif tok::Value == "decimal" then
-            return new DecimalTok(tok::Value) {PosFromToken(tok)}
-        elseif tok::Value == "integer" then
-            return new IntegerTok(tok::Value) {PosFromToken(tok)}
-        elseif tok::Value == "intptr" then
-            return new IntPtrTok(tok::Value) {PosFromToken(tok)}
-        elseif tok::Value == "uinteger" then
-            return new UIntegerTok(tok::Value) {PosFromToken(tok)}
-        elseif tok::Value == "double" then
-            return new DoubleTok(tok::Value) {PosFromToken(tok)}
-        elseif tok::Value == "boolean" then
-            return new BooleanTok(tok::Value) {PosFromToken(tok)}
-        elseif tok::Value == "char" then
-            return new CharTok(tok::Value) {PosFromToken(tok)}
-        elseif tok::Value == "single" then
-            return new SingleTok(tok::Value) {PosFromToken(tok)}
-        elseif tok::Value == "sbyte" then
-            return new SByteTok(tok::Value) {PosFromToken(tok)}
-        elseif tok::Value == "byte" then
-            return new ByteTok(tok::Value) {PosFromToken(tok)}
-        elseif tok::Value == "short" then
-            return new ShortTok(tok::Value) {PosFromToken(tok)}
-        elseif tok::Value == "ushort" then
-            return new UShortTok(tok::Value) {PosFromToken(tok)}
-        elseif tok::Value == "long" then
-            return new LongTok(tok::Value) {PosFromToken(tok)}
-        elseif tok::Value == "ulong" then
-            return new ULongTok(tok::Value) {PosFromToken(tok)}
-        elseif tok::Value == "object" then
-            return new ObjectTok(tok::Value) {PosFromToken(tok)}
+        elseif _typeLookup::Contains(tok::Value) then
+            return NewToken(tok, _typeLookup::get_Item(tok::Value))
         elseif tok::Value like "^//(.)*$" then
             PFlags::CmtFlag = true
             return new CommentTok() {PosFromToken(tok), Value = tok::Value}
@@ -505,20 +296,14 @@ class public TokenOptimizer
             return new FormattableLiteral(tok::Value::TrimStart(new char[] {'f'})::Trim(new char[] {c'\q'})) {PosFromToken(tok)}
         elseif tok::Value like c"^(c)?\q(.)*\q$" then
             return new StringLiteral(#ternary {tok::Value::StartsWith("c") ? ParseUtils::ProcessString(tok::Value::TrimStart(new char[] {'c'})::Trim(new char[] {c'\q'})), tok::Value::Trim(new char[] {c'\q'})}) {PosFromToken(tok)}
-        elseif tok::Value like "^(\+|-)?(\d)+\.(\d)+d$" then
+        elseif tok::Value like "^(\+|-)?(\d)+(\.(\d)+)?d$" then
             return new DoubleLiteral($double$tok::Value::TrimEnd(new char[] {'d'})) {PosFromToken(tok)}
-        elseif tok::Value like "^(\+|-)?(\d)+\.(\d)+f$" then
+        elseif tok::Value like "^(\+|-)?(\d)+(\.(\d)+)?f$" then
             return new FloatLiteral($single$tok::Value::TrimEnd(new char[] {'f'})) {PosFromToken(tok)}
-        elseif tok::Value like "^(\+|-)?(\d)+\.(\d)+m$" then
+        elseif tok::Value like "^(\+|-)?(\d)+(\.(\d)+)?m$" then
             return new DecimalLiteral($decimal$tok::Value::TrimEnd(new char[] {'m'})) {PosFromToken(tok)}
         elseif tok::Value like "^(\+|-)?(\d)+\.(\d)+$" then
             return new DoubleLiteral($double$tok::Value) {PosFromToken(tok)}
-        elseif tok::Value like "^(\+|-)?(\d)+d$" then
-            return new DoubleLiteral($double$tok::Value::TrimEnd(new char[] {'d'})) {PosFromToken(tok)}
-        elseif tok::Value like "^(\+|-)?(\d)+f$" then
-            return new FloatLiteral($single$tok::Value::TrimEnd(new char[] {'f'})) {PosFromToken(tok)}
-        elseif tok::Value like "^(\+|-)?(\d)+m$" then
-            return new DecimalLiteral($decimal$tok::Value::TrimEnd(new char[] {'m'})) {PosFromToken(tok)}
         elseif tok::Value like "^(\+|-)?(\d)+ui$" then
             return new UIntLiteral($uinteger$tok::Value::TrimEnd(new char[] {'i'})::TrimEnd(new char[] {'u'})) {PosFromToken(tok)}
         elseif tok::Value like "^(\+|-)?(\d)+ip$" then

@@ -6,20 +6,20 @@
         <LanguageTargets>$(MSBuildThisFileDirectory)..\output\dylan.NET.Cli.targets</LanguageTargets>
         <RootNamespace>dylan.NET.Tokenizer.AST</RootNamespace>
         <AssemblyName>tokenizer.AST</AssemblyName>
-        <TargetFrameworks>net46;netstandard2.0</TargetFrameworks>
+        <TargetFrameworks>netstandard2.0</TargetFrameworks>
     </PropertyGroup>
-    <ItemGroup Condition=" '$(TargetFramework)' == 'net46' ">
+    <!-- <ItemGroup Condition=" '$(TargetFramework)' == 'net46' ">
         <Reference Include="System" />
         <Reference Include="mscorlib" />
         <Reference Include="System.Core" />
         <Reference Include="System.Xml.Linq" />
         <Reference Include="System.Xml" />
-    </ItemGroup>
+    </ItemGroup> -->
     <ItemGroup>
-        <Reference Include="Managed.Reflection" Condition=" '$(TargetFramework)' == 'net46' ">
+        <!-- <Reference Include="Managed.Reflection" Condition=" '$(TargetFramework)' == 'net46' ">
             <HintPath>$(MSBuildThisFileDirectory)..\lib\net46\Managed.Reflection.dll</HintPath>
             <CopyLocal>True</CopyLocal>
-        </Reference>
+        </Reference> -->
 
         <Reference Include="Managed.Reflection" Condition=" '$(TargetFramework)' == 'netstandard1.3' or '$(TargetFramework)' == 'netstandard2.0' ">
             <HintPath>$(MSBuildThisFileDirectory)..\lib\netstandard1.3\Managed.Reflection.dll</HintPath>

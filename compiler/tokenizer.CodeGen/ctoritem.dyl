@@ -8,7 +8,7 @@
 
 import Managed.Reflection.Emit
 
-class public CtorItem
+class public sealed CtorItem
 
     field public Managed.Reflection.Type[] ParamTyps
     field public ConstructorBuilder CtorBldr

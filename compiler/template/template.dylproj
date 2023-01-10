@@ -6,9 +6,9 @@
         <OutputType>Exe</OutputType>
         <RootNamespace>template</RootNamespace>
         <AssemblyName>template</AssemblyName>
-        <TargetFrameworks>net6.0</TargetFrameworks>
+        <TargetFrameworks>net7.0</TargetFrameworks>
 
-        <RuntimeIdentifiers>win8-x64;linux-x64</RuntimeIdentifiers>
+        <RuntimeIdentifiers>win-x64;linux-x64;osx-x64</RuntimeIdentifiers>
         <AssemblyOriginatorKeyFile>mysn.snk</AssemblyOriginatorKeyFile>
     </PropertyGroup>
     <ItemGroup>

@@ -25,7 +25,7 @@ import Managed.Reflection
 import Managed.Reflection.Emit
 import System.Runtime.Versioning
 
-class public StmtReader
+class public sealed StmtReader
 
     field private CodeGenerator cg
     field private boolean ReturnFlg
@@ -44,9 +44,10 @@ class public StmtReader
         end if
         if typ is null then
             typ = Helpers::CommitEvalTTok(stm::Ctor::Name)
-        end if
-        if typ is null then
-            StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("The Attribute Class '{0}' was not found.", stm::Ctor::Name::ToString()))
+
+            if typ is null then
+                StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("The Attribute Class '{0}' was not found.", stm::Ctor::Name::ToString()))
+            end if
         end if
 
         var dia = Loader::CachedLoadClass("System.Runtime.InteropServices.DllImportAttribute")
@@ -272,8 +273,7 @@ class public StmtReader
                     Loader::CachedLoadClass("System.Object"), Helpers::CommitEvalTTok(clss::InhClass)}
             if inhtyp is null then
                 StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("Base Class '{0}' is not defined or is not accessible.", clss::InhClass::Value))
-            end if
-            if inhtyp isnot null then
+            else
                 if inhtyp::get_IsSealed() then
                     inhtyp = null
                     StreamUtils::WriteError(ILEmitter::LineNr, 0, ILEmitter::CurSrcFile, string::Format("Class '{0}' is not inheritable.", clss::InhClass::Value))
@@ -341,10 +341,10 @@ class public StmtReader
                 bld::SetInterfaceConstraints(tpi::Interfaces::ToArray())
             end for
 
-            if !AsmFactory::isNested then
-                SymTable::TypeLst::AddType(ti)
-            else
+            if AsmFactory::isNested then
                 SymTable::CurnTypItem2::AddType(ti)
+            else
+                SymTable::TypeLst::AddType(ti)
             end if
 
             foreach interf in clss::ImplInterfaces

@@ -11,7 +11,7 @@ import dylan.NET.Tokenizer.AST.Exprs
 import dylan.NET.Tokenizer.AST.Tokens.Ops
 import dylan.NET.Tokenizer.AST.Tokens.Chars
 
-class public partial Evaluator
+class public sealed partial Evaluator
 
 	method public static integer RetPrec(var tok as Token)
 		if tok is Op then

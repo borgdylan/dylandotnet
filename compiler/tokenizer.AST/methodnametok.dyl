@@ -46,7 +46,7 @@ class public MethodNameTok extends Ident implements IMayHaveConstraints
 
 end class
 
-class public GenericMethodNameTok extends MethodNameTok implements IMayHaveConstraints, IConstrainable
+class public sealed GenericMethodNameTok extends MethodNameTok implements IMayHaveConstraints, IConstrainable
 
 	field public C5.LinkedList<of TypeTok> Params
 	field private C5.HashDictionary<of string, C5.LinkedList<of Token> > _Constraints

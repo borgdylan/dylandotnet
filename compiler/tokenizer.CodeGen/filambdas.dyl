@@ -41,7 +41,7 @@ import dylan.NET.Tokenizer.AST.Exprs
 import dylan.NET.Tokenizer.AST.Stmts
 import dylan.NET.Tokenizer.AST.Tokens.TypeToks
 
-class private FILambdas
+class private sealed FILambdas
 
 	field assembly string Name
 

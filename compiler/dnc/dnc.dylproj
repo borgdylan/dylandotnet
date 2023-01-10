@@ -6,11 +6,11 @@
         <OutputType>Exe</OutputType>
         <RootNamespace>dylan.NET.Compiler</RootNamespace>
         <AssemblyName>dnc</AssemblyName>
-        <TargetFrameworks>net46;net5.0;net6.0</TargetFrameworks>
+        <TargetFrameworks>net472;net6.0;net7.0</TargetFrameworks>
 
-        <RuntimeIdentifiers>win8-x64;linux-x64</RuntimeIdentifiers>
+        <RuntimeIdentifiers>win-x64;linux-x64;osx-x64</RuntimeIdentifiers>
     </PropertyGroup>
-    <ItemGroup Condition=" '$(TargetFramework)' == 'net46' ">
+    <ItemGroup Condition=" '$(TargetFramework)' == 'net472' ">
         <Reference Include="System" />
         <Reference Include="mscorlib" />
         <Reference Include="System.Core" />
@@ -18,12 +18,12 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
-        <Reference Include="Managed.Reflection" Condition=" '$(TargetFramework)' == 'net46' ">
+        <Reference Include="Managed.Reflection" Condition=" '$(TargetFramework)' == 'net472' ">
             <HintPath>$(MSBuildThisFileDirectory)..\lib\net46\Managed.Reflection.dll</HintPath>
             <CopyLocal>True</CopyLocal>
         </Reference>
 
-        <Reference Include="Managed.Reflection" Condition=" '$(TargetFramework)' == 'net5.0' or '$(TargetFramework)' == 'net6.0' ">
+        <Reference Include="Managed.Reflection" Condition=" '$(TargetFramework)' == 'net6.0' or '$(TargetFramework)' == 'net7.0' ">
             <HintPath>$(MSBuildThisFileDirectory)..\lib\netstandard1.3\Managed.Reflection.dll</HintPath>
             <CopyLocal>True</CopyLocal>
         </Reference>
@@ -37,8 +37,8 @@
     </ItemGroup>
     <Target Name="AfterBuild" AfterTargets="Build">
         <ItemGroup>
-            <Stuff Include="$(OutputPath)\net46\*.exe" />
-            <Stuff Include="$(OutputPath)\net46\*.dll" />
+            <Stuff Include="$(OutputPath)\net472\*.exe" />
+            <Stuff Include="$(OutputPath)\net472\*.dll" />
             <StuffCore Include="$(OutputPath)\net6.0\*.dll" />
             <StuffCore Include="$(OutputPath)\net6.0\*.json" />
         </ItemGroup>

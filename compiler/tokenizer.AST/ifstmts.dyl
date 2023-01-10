@@ -11,7 +11,7 @@ import dylan.NET.Tokenizer.AST.Exprs
 
 #region "normal variants"
 
-	class public ElseIfStmt extends BranchStmt
+	class public sealed ElseIfStmt extends BranchStmt
 
 		field public Expr Exp
 
@@ -22,13 +22,13 @@ import dylan.NET.Tokenizer.AST.Exprs
 
 	end class
 
-	class public ElseStmt extends BranchStmt
+	class public sealed ElseStmt extends BranchStmt
 	end class
 
-	class public EndIfStmt extends EndStmt
+	class public sealed EndIfStmt extends EndStmt
 	end class
 
-	class public IfStmt extends BlockStmt implements IBranchContainer
+	class public sealed IfStmt extends BlockStmt implements IBranchContainer
 
 		field public Expr Exp
 		field public C5.ArrayList<of BranchStmt> Branches
@@ -65,7 +65,7 @@ end #region
 	interface public IHCondCompStmt
 	end interface
 
-	class public HElseIfStmt extends BranchStmt implements IHCondCompStmt
+	class public sealed HElseIfStmt extends BranchStmt implements IHCondCompStmt
 
 		field public Expr Exp
 
@@ -76,13 +76,13 @@ end #region
 
 	end class
 
-	class public HElseStmt extends BranchStmt implements IHCondCompStmt
+	class public sealed HElseStmt extends BranchStmt implements IHCondCompStmt
 	end class
 
-	class public EndHIfStmt extends EndStmt implements IHCondCompStmt
+	class public sealed EndHIfStmt extends EndStmt implements IHCondCompStmt
 	end class
 
-	class public HIfStmt extends BlockStmt implements IHCondCompStmt, IBranchContainer
+	class public sealed HIfStmt extends BlockStmt implements IHCondCompStmt, IBranchContainer
 
 		field public Expr Exp
 		field public C5.ArrayList<of BranchStmt> Branches
@@ -113,7 +113,7 @@ end #region
 
 	end class
 
-	class public HDefineStmt extends Stmt
+	class public sealed HDefineStmt extends Stmt
 
 		field public Ident Symbol
 
@@ -126,7 +126,7 @@ end #region
 
 	end class
 
-	class public HUndefStmt extends Stmt
+	class public sealed HUndefStmt extends Stmt
 
 		field public Ident Symbol
 
@@ -140,10 +140,10 @@ end #region
 	end class
 end #region
 
-class public EndRegionStmt extends EndStmt
+class public sealed EndRegionStmt extends EndStmt
 end class
 
-class public RegionStmt extends BlockStmt
+class public sealed RegionStmt extends BlockStmt
 
 	field public Token Name
 
@@ -159,7 +159,7 @@ end class
 
 #region "switch statements"
 
-	class public StateStmt extends BranchStmt
+	class public sealed StateStmt extends BranchStmt
 
 		method public void StateStmt()
 			mybase::ctor()
@@ -167,13 +167,13 @@ end class
 
 	end class
 
-	class public DefaultStmt extends BranchStmt
+	class public sealed DefaultStmt extends BranchStmt
 	end class
 
-	class public EndSwitchStmt extends EndStmt
+	class public sealed EndSwitchStmt extends EndStmt
 	end class
 
-	class public SwitchStmt extends BlockStmt implements IBranchContainer
+	class public sealed SwitchStmt extends BlockStmt implements IBranchContainer
 
 		field public Expr Exp
 		field public C5.ArrayList<of BranchStmt> Branches

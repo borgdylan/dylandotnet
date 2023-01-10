@@ -9,7 +9,7 @@
 import dylan.NET.Tokenizer.AST.Tokens
 import dylan.NET.Tokenizer.AST.Exprs
 
-class public AssignStmt extends Stmt
+class public sealed AssignStmt extends Stmt
 
 	field public Expr LExp
 	field public Expr RExp
@@ -24,7 +24,7 @@ class public AssignStmt extends Stmt
 
 end class
 
-class public IncStmt extends Stmt
+class public sealed IncStmt extends Stmt
 
 	field public Ident NumVar
 
@@ -36,7 +36,7 @@ class public IncStmt extends Stmt
 
 end class
 
-class public DecStmt extends Stmt
+class public sealed DecStmt extends Stmt
 
 	field public Ident NumVar
 
@@ -48,7 +48,7 @@ class public DecStmt extends Stmt
 
 end class
 
-class public ReturnStmt extends Stmt
+class public sealed ReturnStmt extends Stmt
 
 	field public Expr RExp
 
@@ -61,7 +61,7 @@ class public ReturnStmt extends Stmt
 
 end class
 
-class public MethodCallStmt extends Stmt
+class public sealed MethodCallStmt extends Stmt
 
 	field public Token MethodToken
 
@@ -74,17 +74,17 @@ class public MethodCallStmt extends Stmt
 
 end class
 
-class public EndLockStmt extends EndStmt
+class public sealed EndLockStmt extends EndStmt
 	method public override string ToString()
 		return "end lock"
 	end method
 end class
 
-class public CommentStmt extends Stmt
+class public sealed CommentStmt extends Stmt
 	method public override boolean ValidateContext(var ctx as ContextType) => true
 end class
 
-class public ErrorStmt extends Stmt
+class public sealed ErrorStmt extends Stmt
 
 	field public Token Msg
 
@@ -105,7 +105,7 @@ class public ErrorStmt extends Stmt
 
 end class
 
-class public WarningStmt extends Stmt
+class public sealed WarningStmt extends Stmt
 
 	field public Token Msg
 
@@ -126,7 +126,7 @@ class public WarningStmt extends Stmt
 
 end class
 
-class public SignStmt extends Stmt
+class public sealed SignStmt extends Stmt
 
 	field public Token KeyPath
 
@@ -147,7 +147,7 @@ class public SignStmt extends Stmt
 
 end class
 
-class public EmbedStmt extends Stmt
+class public sealed EmbedStmt extends Stmt
 
 	field public Token Path
 	field public Token LogicalName
@@ -176,7 +176,7 @@ class public EmbedStmt extends Stmt
 
 end class
 
-class public LockStmt extends BlockStmt
+class public sealed LockStmt extends BlockStmt
 
 	field public Expr Lockee
 
@@ -190,7 +190,7 @@ class public LockStmt extends BlockStmt
 
 end class
 
-class public TryLockStmt extends BlockStmt
+class public sealed TryLockStmt extends BlockStmt
 
 	field public Expr Lockee
 

@@ -9,7 +9,7 @@
 import dylan.NET.Tokenizer.AST.Exprs
 import dylan.NET.Tokenizer.AST.Tokens.TypeToks
 
-class public NewCallTok extends ValueToken
+class public sealed NewCallTok extends ValueToken
 
 	field public TypeTok Name
 	field public C5.ArrayList<of Expr> Params
@@ -40,7 +40,7 @@ class public NewCallTok extends ValueToken
 
 end class
 
-class public NewarrCallTok extends ValueToken
+class public sealed NewarrCallTok extends ValueToken
 
 	field public TypeTok ArrayType
 	field public Expr ArrayLen
@@ -59,7 +59,7 @@ class public NewarrCallTok extends ValueToken
 
 end class
 
-class public ArrInitCallTok extends ValueToken
+class public sealed ArrInitCallTok extends ValueToken
 
 	field public TypeTok ArrayType
 	field public C5.ArrayList<of Expr> Elements
@@ -86,7 +86,7 @@ class public ArrInitCallTok extends ValueToken
 
 end class
 
-class public ObjInitCallTok extends ValueToken
+class public sealed ObjInitCallTok extends ValueToken
 
 	field public NewCallTok Ctor
 	field public C5.ArrayList<of Token> Elements
@@ -115,7 +115,7 @@ class public ObjInitCallTok extends ValueToken
 
 end class
 
-class public TernaryCallTok extends ValueToken
+class public sealed TernaryCallTok extends ValueToken
 
 	field public Expr Condition
 	field public Expr TrueExpr

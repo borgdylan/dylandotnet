@@ -6,23 +6,23 @@
         <OutputType>Library</OutputType>
         <RootNamespace>dylan.NET.Utils</RootNamespace>
         <AssemblyName>dnu</AssemblyName>
-        <TargetFrameworks>net46;netstandard2.0</TargetFrameworks>
+        <TargetFrameworks>netstandard2.0</TargetFrameworks>
 
         <DefineConstants Condition=" '$(EnableRxIface)' == 'true' ">$(DefineConstants);RX</DefineConstants>
     </PropertyGroup>
-    <ItemGroup Condition=" '$(TargetFramework)' == 'net46' ">
+    <!-- <ItemGroup Condition=" '$(TargetFramework)' == 'net46' ">
         <Reference Include="System" />
         <Reference Include="mscorlib" />
         <Reference Include="System.Core" />
         <Reference Include="System.Xml.Linq" />
         <Reference Include="System.Xml" />
-    </ItemGroup>
+    </ItemGroup> -->
     <ItemGroup>
-        <PackageReference Condition=" '$(EnableRxIface)' == 'true' " Include="System.Reactive" Version="4.0.0" />
+        <PackageReference Condition=" '$(EnableRxIface)' == 'true' " Include="System.Reactive" Version="5.0.0" />
         <PackageReference Include="C5" Version="2.5.3" />
-        <PackageReference Include="System.ValueTuple" Version="4.5.0" />
+        <!-- <PackageReference Include="System.ValueTuple" Version="4.5.0" /> -->
     </ItemGroup>
     <ItemGroup>
-        <ResScript Include="Messages.dylres" EmitDesigner="True" />
+        <ResScript Include="Messages.dylres" EmitDesigner="true" />
     </ItemGroup>
 </Project>

@@ -7,5 +7,5 @@
 //Place, Suite 330, Boston, MA 02111-1307 USA
 
 // //CommentTok
-class public CommentTok extends NonExprToken
+class public sealed CommentTok extends NonExprToken
 end class

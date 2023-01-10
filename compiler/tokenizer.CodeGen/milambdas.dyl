@@ -9,7 +9,7 @@
 import System
 import Managed.Reflection
 
-class private MILambdas2
+class private sealed MILambdas2
 
 	field assembly string Name
 	field assembly integer ParamLen

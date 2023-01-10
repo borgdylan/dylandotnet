@@ -11,7 +11,7 @@ import System.Text
 import dylan.NET.Tokenizer.AST.Stmts
 import System.IO.MemoryMappedFiles
 
-class public Lexer
+class public sealed Lexer
 
     method public StmtSet AnalyzeCore(var sr as TextReader, var path as string)
         var stmts as StmtSet = new StmtSet(path)

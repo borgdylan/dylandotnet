@@ -68,10 +68,7 @@ class public static Loader
 			end if
 		end for
 
-		foreach curnsrec in EnumerableEx::StartWith<of ImportRecord>(EnumerableEx::Concat<of ImportRecord>( _
-			Enumerable::ToArray<of C5.LinkedList<of ImportRecord> >(Importer::ImpsStack::Backwards())), _
-				new ImportRecord[] {new ImportRecord(string::Empty), new ImportRecord(AsmFactory::CurnNS)})
-
+		foreach curnsrec in Importer::GetActiveImports()
 			var curns = curnsrec::Namespace ?? string::Empty
 			var typname = #ternary{curns::get_Length() == 0 ? name , i"{curns}.{name}"}
 
@@ -171,15 +168,12 @@ class public static Loader
 			end if
 		end for
 
-		foreach curnsrec in EnumerableEx::StartWith<of ImportRecord>(EnumerableEx::Concat<of ImportRecord>( _
-			Enumerable::ToArray<of C5.LinkedList<of ImportRecord> >(Importer::ImpsStack::Backwards())), _
-				new ImportRecord[] {new ImportRecord(string::Empty), new ImportRecord(AsmFactory::CurnNS)})
-
+		foreach curnsrec in Importer::GetActiveImports()
 			var curns = curnsrec::Namespace ?? string::Empty
 			foreach curasmrec in Importer::Asms::get_Values()
 				var curasm = curasmrec::Asm
 				try
-					typ = curasm::GetType(#ternary{curns::get_Length() == 0 ? name , curns + "." + name})
+					typ = curasm::GetType(#ternary{ curns::get_Length() == 0 ? name , i"{curns}.{name}" })
 					if typ isnot null then
 						if nest then
 							typ = typ::GetNestedType(na[1])

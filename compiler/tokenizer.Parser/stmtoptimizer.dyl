@@ -18,7 +18,7 @@ import dylan.NET.Tokenizer.AST.Tokens.Literals
 import dylan.NET.Tokenizer.AST.Tokens.Attributes
 import dylan.NET.Tokenizer.AST.Tokens.Chars
 
-class public StmtOptimizer
+class public sealed StmtOptimizer
 
     field public Flags PFlags
 

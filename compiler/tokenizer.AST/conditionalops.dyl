@@ -13,7 +13,7 @@ end class
 
 // =
 // ==
-class public EqOp extends ConditionalOp
+class public sealed EqOp extends ConditionalOp
 
 	method public void EqOp()
 		mybase::ctor()
@@ -25,7 +25,7 @@ class public EqOp extends ConditionalOp
 end class
 
 // ===
-class public StrictEqOp extends ConditionalOp
+class public sealed StrictEqOp extends ConditionalOp
 
 	method public void StrictEqOp()
 		mybase::ctor()
@@ -37,7 +37,7 @@ class public StrictEqOp extends ConditionalOp
 end class
 
 // is
-class public IsOp extends ConditionalOp implements IInstanceCheckOp
+class public sealed IsOp extends ConditionalOp implements IInstanceCheckOp
 
 	field public Ident VarName
 	field public integer? LocInd
@@ -53,7 +53,7 @@ class public IsOp extends ConditionalOp implements IInstanceCheckOp
 end class
 
 // isnot
-class public IsNotOp extends ConditionalOp implements IInstanceCheckOp
+class public sealed IsNotOp extends ConditionalOp implements IInstanceCheckOp
 
 	method public void IsNotOp()
 		mybase::ctor()
@@ -65,7 +65,7 @@ class public IsNotOp extends ConditionalOp implements IInstanceCheckOp
 end class
 
 // like
-class public LikeOp extends ConditionalOp
+class public sealed LikeOp extends ConditionalOp
 
 	method public void LikeOp()
 		mybase::ctor()
@@ -79,7 +79,7 @@ end class
 
 // <>
 // !=
-class public NeqOp extends ConditionalOp
+class public sealed NeqOp extends ConditionalOp
 
 	method public void NeqOp()
 		mybase::ctor()
@@ -91,7 +91,7 @@ class public NeqOp extends ConditionalOp
 end class
 
 // !=
-class public StrictNeqOp extends ConditionalOp
+class public sealed StrictNeqOp extends ConditionalOp
 
 	method public void StrictNeqOp()
 		mybase::ctor()
@@ -103,7 +103,7 @@ class public StrictNeqOp extends ConditionalOp
 end class
 
 // notlike
-class public NLikeOp extends ConditionalOp
+class public sealed NLikeOp extends ConditionalOp
 
 	method public void NLikeOp()
 		mybase::ctor()
@@ -116,7 +116,7 @@ end class
 
 
 // >
-class public GtOp extends ConditionalOp
+class public sealed GtOp extends ConditionalOp
 
 	method public void GtOp()
 		mybase::ctor()
@@ -128,7 +128,7 @@ class public GtOp extends ConditionalOp
 end class
 
 // <
-class public LtOp extends ConditionalOp
+class public sealed LtOp extends ConditionalOp
 
 	method public void LtOp()
 		mybase::ctor()
@@ -140,7 +140,7 @@ class public LtOp extends ConditionalOp
 end class
 
 // >=
-class public GeOp extends ConditionalOp
+class public sealed GeOp extends ConditionalOp
 
 	method public void GeOp()
 		mybase::ctor()
@@ -152,7 +152,7 @@ class public GeOp extends ConditionalOp
 end class
 
 // <=
-class public LeOp extends ConditionalOp
+class public sealed LeOp extends ConditionalOp
 
 	method public void LeOp()
 		mybase::ctor()

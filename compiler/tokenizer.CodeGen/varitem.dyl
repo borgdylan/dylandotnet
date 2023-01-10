@@ -8,7 +8,7 @@
 
 import System
 
-class public VarItem
+class public sealed VarItem
 
 	field public string Name
 	// t for loc f for arg

@@ -8,7 +8,7 @@
 
 namespace Extra.Tasks
 
-	class public beforefieldinit sealed ResProcTask extends Task
+	class public sealed ResProcTask extends Task
 
 		property public autogen ITaskItem[] ResxInputs
 		property public autogen ITaskItem[] ResourcesInputs

@@ -20,7 +20,7 @@ class public static partial Helpers
     method public static prototype Managed.Reflection.Type CommitEvalTTok(var tt as TypeTok)
 end class
 
-class public TypeList
+class public sealed TypeList
 
     field public C5.IList<of TypeItem> Types
 
@@ -51,10 +51,7 @@ class public TypeList
             end if
         end for
 
-        foreach curnsrec in EnumerableEx::StartWith<of ImportRecord>(EnumerableEx::Concat<of ImportRecord>( _
-            Enumerable::ToArray<of C5.LinkedList<of ImportRecord> >(Importer::ImpsStack::Backwards())), _
-                new ImportRecord[] {new ImportRecord(string::Empty), new ImportRecord(AsmFactory::CurnNS)})
-
+        foreach curnsrec in Importer::GetActiveImports()
             var ns = curnsrec::Namespace ?? string::Empty
 
             var til as TILambdas = new TILambdas(#ternary{ns::get_Length() == 0 ? nam , i"{ns}.{nam}"}, gp)

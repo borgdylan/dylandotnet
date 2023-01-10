@@ -8,7 +8,7 @@
 
 import Managed.Reflection
 
-class public IfItem
+class public sealed IfItem
 
 	field public Emit.Label EndLabel
 	field public Emit.Label NextBlkLabel

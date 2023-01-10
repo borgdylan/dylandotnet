@@ -26,7 +26,7 @@ import dylan.NET.Tokenizer.AST.Tokens.Attributes
 //import IKVM.Reflection
 //import IKVM.Reflection.Emit
 
-class public NewresStmt extends Stmt
+class public sealed NewresStmt extends Stmt
 
 	field public Token Path
 	field public Token ResType

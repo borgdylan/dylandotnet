@@ -1024,6 +1024,19 @@ class public static Program
 
 		Console::WriteLine((-)$double$12)
 		//Console::WriteLine('xy')
+
+		var d as double = 12d
+		Console::WriteLine(d)
+		d = 12.34d
+		Console::WriteLine(d)
+		var f as single = 12f
+		Console::WriteLine(f)
+		f = 12.34f
+		Console::WriteLine(f)
+		var m as decimal = 12m
+		Console::WriteLine(m)
+		m = 12.34m
+		Console::WriteLine(m)
 	end method
 
 	[method: My(new integer[] {1, 2})]

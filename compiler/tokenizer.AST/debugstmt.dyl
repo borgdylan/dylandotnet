@@ -9,7 +9,7 @@
 import dylan.NET.Tokenizer.AST.Tokens
 
 // #debug Opt
-class public DebugStmt extends Stmt
+class public sealed DebugStmt extends Stmt
 
 	field public SwitchTok Opt
 	field public boolean Flg

@@ -10,10 +10,10 @@ import dylan.NET.Tokenizer.AST.Tokens
 import dylan.NET.Tokenizer.AST.Exprs
 import dylan.NET.Tokenizer.AST.Tokens.TypeToks
 
-class public EndDoStmt extends EndStmt
+class public sealed EndDoStmt extends EndStmt
 end class
 
-class public DoWhileStmt extends BlockStmt
+class public sealed DoWhileStmt extends BlockStmt
 
 	field public Expr Exp
 
@@ -27,7 +27,7 @@ class public DoWhileStmt extends BlockStmt
 
 end class
 
-class public DoUntilStmt extends BlockStmt
+class public sealed DoUntilStmt extends BlockStmt
 
 	field public Expr Exp
 
@@ -41,7 +41,7 @@ class public DoUntilStmt extends BlockStmt
 
 end class
 
-class public ForeachStmt extends BlockStmt
+class public sealed ForeachStmt extends BlockStmt
 
 	field public Expr Exp
 	field public Ident Iter
@@ -58,7 +58,7 @@ class public ForeachStmt extends BlockStmt
 
 end class
 
-class public ForStmt extends BlockStmt
+class public sealed ForStmt extends BlockStmt
 
 	field public Expr StartExp
 	field public Expr EndExp
@@ -79,7 +79,7 @@ class public ForStmt extends BlockStmt
 
 end class
 
-class public WhileStmt extends EndStmt
+class public sealed WhileStmt extends EndStmt
 
 	field public Expr Exp
 
@@ -90,7 +90,7 @@ class public WhileStmt extends EndStmt
 
 end class
 
-class public UntilStmt extends EndStmt
+class public sealed UntilStmt extends EndStmt
 
 	field public Expr Exp
 
@@ -101,7 +101,7 @@ class public UntilStmt extends EndStmt
 
 end class
 
-class public DoStmt extends BlockStmt
+class public sealed DoStmt extends BlockStmt
 
 	method public void DoStmt()
 		mybase::ctor(ContextType::Loop)
@@ -112,13 +112,13 @@ class public DoStmt extends BlockStmt
 
 end class
 
-class public BreakStmt extends Stmt
+class public sealed BreakStmt extends Stmt
 
 	method public override boolean ValidateContext(var ctx as ContextType) => ctx == ContextType::Loop
 
 end class
 
-class public ContinueStmt extends Stmt
+class public sealed ContinueStmt extends Stmt
 
 	method public override boolean ValidateContext(var ctx as ContextType) => ctx == ContextType::Loop
 

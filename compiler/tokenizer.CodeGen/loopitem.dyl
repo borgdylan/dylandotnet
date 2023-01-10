@@ -31,7 +31,7 @@ class public LoopItem implements ITryLoopItem
 
 end class
 
-class public ForLoopItem extends LoopItem
+class public sealed ForLoopItem extends LoopItem
 
 	field public string Iter
 	field public Expr StepExp

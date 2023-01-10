@@ -2,27 +2,27 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>dylan.NET</id>
-    <version>11.10.2.1</version>
+    <version>11.10.3.1</version>
     <authors>borgdylan</authors>
     <owners>borgdylan</owners>
     <license type="expression">	LGPL-3.0-or-later</license>
     <projectUrl>https://github.com/borgdylan/dylandotnet</projectUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>A compiler for dylan.NET, a language targeting the CLR</description>
-    <releaseNotes>dylan.NET v.11.10.2.1 with MSBuild 17.x support files, resource compilation support.
-    	dylan.NET 11.10.x.y includes experimental support for formattable strings, and exception filters, the new (+) and (-) operators as well as experimental support for the #nullcond operator. dylan.NET has switched to use portable pdb as its debug database output format. Support for MSBuild is for MSBuild 17.x running on both .NET Framework/Mono and .NET 6.0.
+    <releaseNotes>dylan.NET v.11.10.2.1 with MSBuild 17.3+ support files, resource compilation support.
+    	dylan.NET 11.10.x.y includes experimental support for formattable strings, and exception filters, the new (+) and (-) operators as well as experimental support for the #nullcond operator. dylan.NET has switched to use portable pdb as its debug database output format. Support for MSBuild is for MSBuild 17.3+ running on both .NET Framework 4.7.2+/Mono and .NET 6.0+.
     </releaseNotes>
     <copyright>Copyright 2021</copyright>
-    <tags>.NET4.6 .NET5.0 .NET6.0 Mono MSBuild</tags>
+    <tags>.NET4.7.2 .NET6.0 .NET7.0 Mono MSBuild</tags>
     <!--<dependencies>
       <dependency id="SampleDependency" version="1.0" />
     </dependencies>-->
   </metadata>
   <files>
   	<!--<file src="lib/net45/*.dll" target="lib/net45/" />-->
-  	<file src="lib/net46/*.dll" target="lib/net46/" />
-	<file src="lib/net5.0/*.*" target="lib/net5.0/" />
+  	<file src="lib/net472/*.dll" target="lib/net472/" />
 	<file src="lib/net6.0/*.*" target="lib/net6.0/" />
+	<file src="lib/net7.0/*.*" target="lib/net7.0/" />
   	<file src="tools/*" target="tools/" />
   	<file src="tools/core/*" target="tools/core" />
   	<file src="tools/full/*" target="tools/full" />

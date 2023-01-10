@@ -8,7 +8,7 @@
 
 import Managed.Reflection
 
-class public CollectionItem
+class public sealed CollectionItem
 
 	field public Managed.Reflection.Type ElemType
 	field public ConstructorInfo Ctor

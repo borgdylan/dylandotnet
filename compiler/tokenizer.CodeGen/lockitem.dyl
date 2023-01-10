@@ -8,7 +8,7 @@
 
 import Managed.Reflection
 
-class public LockItem extends TryItem
+class public sealed LockItem extends TryItem
 
 	field public integer LockeeLoc
 	field public Emit.Label Lbl

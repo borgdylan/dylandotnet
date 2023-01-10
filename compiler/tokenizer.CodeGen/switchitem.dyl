@@ -8,7 +8,7 @@
 
 import Managed.Reflection
 
-class public SwitchItem
+class public sealed SwitchItem
 
     field public Emit.Label EndLabel
     field public Emit.Label DefaultLabel

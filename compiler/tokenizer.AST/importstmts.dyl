@@ -8,7 +8,7 @@
 
 import dylan.NET.Tokenizer.AST.Tokens
 
-class public ImportStmt extends Stmt
+class public sealed ImportStmt extends Stmt
 
 	field public Token NS
 	field public Token Alias
@@ -37,7 +37,7 @@ class public ImportStmt extends Stmt
 
 end class
 
-//class public LocimportStmt extends Stmt
+//class public sealed LocimportStmt extends Stmt
 //
 //	field public Token NS
 //

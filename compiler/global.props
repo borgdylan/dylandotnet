@@ -2,9 +2,10 @@
 <Project>
     <PropertyGroup>
         <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
-        <Version>11.10.2.1</Version>
+        <Version>11.10.3.1</Version>
         <EnableRxIface>false</EnableRxIface>
         <EnableStrictArrayIndices>false</EnableStrictArrayIndices>
+        <BuildInParallel>false</BuildInParallel>
     </PropertyGroup>
     <ItemGroup>
     </ItemGroup>

@@ -56,15 +56,19 @@ class public TypeTok extends ValueToken implements ICloneable
 
 end class
 
-class public SpecialTypeTok extends TypeTok
+class public abstract SpecialTypeTok extends TypeTok
 
-	method public void SpecialTypeTok(var value as string)
+	method family void SpecialTypeTok(var value as string)
 		mybase::ctor(value)
+	end method
+
+	method family void SpecialTypeTok()
+		mybase::ctor()
 	end method
 
 end class
 
-class public GenericTypeTok extends TypeTok implements ICloneable
+class public sealed GenericTypeTok extends TypeTok implements ICloneable
 
 	field public C5.LinkedList<of TypeTok> Params
 	field public TypeTok NestedType
@@ -123,7 +127,7 @@ class public GenericTypeTok extends TypeTok implements ICloneable
 end class
 
 
-class public beforefieldinit StringTok extends SpecialTypeTok
+class public sealed StringTok extends SpecialTypeTok
 
 	method public void StringTok(var value as string)
 		mybase::ctor(value)
@@ -148,7 +152,7 @@ class public beforefieldinit StringTok extends SpecialTypeTok
 
 end class
 
-class public beforefieldinit IntegerTok extends SpecialTypeTok
+class public sealed IntegerTok extends SpecialTypeTok
 
 	method public void IntegerTok(var value as string)
 		mybase::ctor(value)
@@ -172,7 +176,7 @@ class public beforefieldinit IntegerTok extends SpecialTypeTok
 
 end class
 
-class public beforefieldinit DoubleTok extends SpecialTypeTok
+class public sealed DoubleTok extends SpecialTypeTok
 
 	method public void DoubleTok(var value as string)
 		mybase::ctor(value)
@@ -196,7 +200,7 @@ class public beforefieldinit DoubleTok extends SpecialTypeTok
 
 end class
 
-class public beforefieldinit BooleanTok extends SpecialTypeTok
+class public sealed BooleanTok extends SpecialTypeTok
 
 	method public void BooleanTok(var value as string)
 		mybase::ctor(value)
@@ -220,7 +224,7 @@ class public beforefieldinit BooleanTok extends SpecialTypeTok
 
 end class
 
-class public beforefieldinit CharTok extends SpecialTypeTok
+class public sealed CharTok extends SpecialTypeTok
 
 	method public void CharTok(var value as string)
 		mybase::ctor(value)
@@ -244,7 +248,7 @@ class public beforefieldinit CharTok extends SpecialTypeTok
 
 end class
 
-class public beforefieldinit DecimalTok extends SpecialTypeTok
+class public sealed DecimalTok extends SpecialTypeTok
 
 	method public void DecimalTok(var value as string)
 		mybase::ctor(value)
@@ -268,7 +272,7 @@ class public beforefieldinit DecimalTok extends SpecialTypeTok
 
 end class
 
-class public beforefieldinit LongTok extends SpecialTypeTok
+class public sealed LongTok extends SpecialTypeTok
 
 	method public void LongTok(var value as string)
 		mybase::ctor(value)
@@ -292,7 +296,7 @@ class public beforefieldinit LongTok extends SpecialTypeTok
 
 end class
 
-class public beforefieldinit SByteTok extends SpecialTypeTok
+class public sealed SByteTok extends SpecialTypeTok
 
 	method public void SByteTok(var value as string)
 		mybase::ctor(value)
@@ -317,7 +321,7 @@ class public beforefieldinit SByteTok extends SpecialTypeTok
 
 end class
 
-class public beforefieldinit ShortTok extends SpecialTypeTok
+class public sealed ShortTok extends SpecialTypeTok
 
 	method public void ShortTok(var value as string)
 		mybase::ctor(value)
@@ -341,7 +345,7 @@ class public beforefieldinit ShortTok extends SpecialTypeTok
 
 end class
 
-class public beforefieldinit SingleTok extends SpecialTypeTok
+class public sealed SingleTok extends SpecialTypeTok
 
 	method public void SingleTok()
 		mybase::ctor("single")
@@ -365,7 +369,7 @@ class public beforefieldinit SingleTok extends SpecialTypeTok
 
 end class
 
-class public beforefieldinit ObjectTok extends SpecialTypeTok
+class public sealed ObjectTok extends SpecialTypeTok
 
 	method public void ObjectTok(var value as string)
 		mybase::ctor(value)
@@ -389,7 +393,7 @@ class public beforefieldinit ObjectTok extends SpecialTypeTok
 
 end class
 
-class public beforefieldinit VoidTok extends SpecialTypeTok
+class public sealed VoidTok extends SpecialTypeTok
 
 	method public void VoidTok(var value as string)
 		mybase::ctor(value)
@@ -405,7 +409,7 @@ class public beforefieldinit VoidTok extends SpecialTypeTok
 
 end class
 
-class public beforefieldinit UIntegerTok extends SpecialTypeTok
+class public sealed UIntegerTok extends SpecialTypeTok
 
 	method public void UIntegerTok(var value as string)
 		mybase::ctor(value)
@@ -429,7 +433,7 @@ class public beforefieldinit UIntegerTok extends SpecialTypeTok
 
 end class
 
-class public beforefieldinit ULongTok extends SpecialTypeTok
+class public sealed ULongTok extends SpecialTypeTok
 
 	method public void ULongTok(var value as string)
 		mybase::ctor(value)
@@ -453,7 +457,7 @@ class public beforefieldinit ULongTok extends SpecialTypeTok
 
 end class
 
-class public beforefieldinit ByteTok extends SpecialTypeTok
+class public sealed ByteTok extends SpecialTypeTok
 
 	method public void ByteTok(var value as string)
 		mybase::ctor(value)
@@ -477,7 +481,7 @@ class public beforefieldinit ByteTok extends SpecialTypeTok
 
 end class
 
-class public beforefieldinit UShortTok extends SpecialTypeTok
+class public sealed UShortTok extends SpecialTypeTok
 
 	method public void UShortTok(var value as string)
 		mybase::ctor(value)
@@ -501,7 +505,7 @@ class public beforefieldinit UShortTok extends SpecialTypeTok
 
 end class
 
-class public beforefieldinit IntPtrTok extends SpecialTypeTok
+class public sealed IntPtrTok extends SpecialTypeTok
 
 	method public void IntPtrTok(var value as string)
 		mybase::ctor(value)

@@ -12,7 +12,7 @@ end class
 class public abstract ShortCircuitLogicalOp extends LogicalOp
 end class
 
-class public AndOp extends LogicalOp
+class public sealed AndOp extends LogicalOp
 
 	method public void AndOp()
 		mybase::ctor()
@@ -23,7 +23,7 @@ class public AndOp extends LogicalOp
 
 end class
 
-class public OrOp extends LogicalOp
+class public sealed OrOp extends LogicalOp
 
 	method public void OrOp()
 		mybase::ctor()
@@ -34,7 +34,7 @@ class public OrOp extends LogicalOp
 
 end class
 
-class public AndAlsoOp extends ShortCircuitLogicalOp
+class public sealed AndAlsoOp extends ShortCircuitLogicalOp
 
 	method public void AndAlsoOp()
 		mybase::ctor()
@@ -45,7 +45,7 @@ class public AndAlsoOp extends ShortCircuitLogicalOp
 
 end class
 
-class public OrElseOp extends ShortCircuitLogicalOp
+class public sealed OrElseOp extends ShortCircuitLogicalOp
 
 	method public void OrElseOp()
 		mybase::ctor()
@@ -56,7 +56,7 @@ class public OrElseOp extends ShortCircuitLogicalOp
 
 end class
 
-class public NandOp extends LogicalOp
+class public sealed NandOp extends LogicalOp
 
 	method public void NandOp()
 		mybase::ctor()
@@ -67,7 +67,7 @@ class public NandOp extends LogicalOp
 
 end class
 
-class public NorOp extends LogicalOp
+class public sealed NorOp extends LogicalOp
 
 	method public void NorOp()
 		mybase::ctor()
@@ -78,7 +78,7 @@ class public NorOp extends LogicalOp
 
 end class
 
-class public XorOp extends LogicalOp
+class public sealed XorOp extends LogicalOp
 
 	method public void XorOp()
 		mybase::ctor()
@@ -89,7 +89,7 @@ class public XorOp extends LogicalOp
 
 end class
 
-class public XnorOp extends LogicalOp
+class public sealed XnorOp extends LogicalOp
 
 	method public void XnorOp()
 		mybase::ctor()
@@ -100,7 +100,7 @@ class public XnorOp extends LogicalOp
 
 end class
 
-class public NotOp extends LogicalOp
+class public sealed NotOp extends LogicalOp
 
 	method public void NotOp()
 		mybase::ctor()
@@ -111,7 +111,7 @@ class public NotOp extends LogicalOp
 
 end class
 
-class public NegOp extends LogicalOp
+class public sealed NegOp extends LogicalOp
 
 	method public void NegOp()
 		mybase::ctor()

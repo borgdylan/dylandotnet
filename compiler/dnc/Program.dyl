@@ -44,10 +44,10 @@ class public static Program
     [method: ComVisible(false)]
     method private static void main(var args as string[])
 
-        StreamUtils::WriteLine("dylan.NET Compiler v. 11.10.2.1 RC for Microsoft (R) .NET Framework (R) v. 4.6+,")
-        StreamUtils::WriteLine("                           Microsoft (R) .NET (R) v. 5.0+ and Xamarin Mono")
+        StreamUtils::WriteLine("dylan.NET Compiler v. 11.10.3.1 RC for Microsoft (R) .NET Framework (R) v. 4.7.2+,")
+        StreamUtils::WriteLine("                           Microsoft (R) .NET (R) v. 6.0+ and Xamarin Mono")
         StreamUtils::WriteLine("This compiler is FREE and OPEN SOURCE software under the GNU LGPLv3 license.")
-        StreamUtils::WriteLine("Copyright (C) 2021 Dylan Borg")
+        StreamUtils::WriteLine("Copyright (C) 2023 Dylan Borg")
 
         //var lastsdk as string = null
         var outputFile as string = null
