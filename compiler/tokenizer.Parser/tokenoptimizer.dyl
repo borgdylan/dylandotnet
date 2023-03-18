@@ -7,6 +7,8 @@
 //Place, Suite 330, Boston, MA 02111-1307 USA
 
 import System
+import System.Globalization
+
 import dylan.NET.Utils
 import dylan.NET.Tokenizer.AST.Tokens
 import dylan.NET.Tokenizer.AST.Tokens.Ops
@@ -296,6 +298,7 @@ class public sealed TokenOptimizer
             return new FormattableLiteral(tok::Value::TrimStart(new char[] {'f'})::Trim(new char[] {c'\q'})) {PosFromToken(tok)}
         elseif tok::Value like c"^(c)?\q(.)*\q$" then
             return new StringLiteral(#ternary {tok::Value::StartsWith("c") ? ParseUtils::ProcessString(tok::Value::TrimStart(new char[] {'c'})::Trim(new char[] {c'\q'})), tok::Value::Trim(new char[] {c'\q'})}) {PosFromToken(tok)}
+        //floats
         elseif tok::Value like "^(\+|-)?(\d)+(\.(\d)+)?d$" then
             return new DoubleLiteral($double$tok::Value::TrimEnd(new char[] {'d'})) {PosFromToken(tok)}
         elseif tok::Value like "^(\+|-)?(\d)+(\.(\d)+)?f$" then
@@ -304,6 +307,7 @@ class public sealed TokenOptimizer
             return new DecimalLiteral($decimal$tok::Value::TrimEnd(new char[] {'m'})) {PosFromToken(tok)}
         elseif tok::Value like "^(\+|-)?(\d)+\.(\d)+$" then
             return new DoubleLiteral($double$tok::Value) {PosFromToken(tok)}
+        //decimal
         elseif tok::Value like "^(\+|-)?(\d)+ui$" then
             return new UIntLiteral($uinteger$tok::Value::TrimEnd(new char[] {'i'})::TrimEnd(new char[] {'u'})) {PosFromToken(tok)}
         elseif tok::Value like "^(\+|-)?(\d)+ip$" then
@@ -325,6 +329,28 @@ class public sealed TokenOptimizer
             return new SByteLiteral($sbyte$tok::Value::TrimEnd(new char[] {'b'})) {PosFromToken(tok)}
         elseif tok::Value like "^(\+|-)?(\d)+$" then
             return new IntLiteral($integer$tok::Value) {PosFromToken(tok)}
+        //hex
+        elseif tok::Value like "^0x([0-9A-F])+ui$" then
+            return new UIntLiteral(uinteger::Parse(tok::Value::Substring(2, tok::Value::get_Length() - 4), NumberStyles::HexNumber)) {PosFromToken(tok)}
+        elseif tok::Value like "^0x([0-9A-F])+ip$" then
+            return new IntPtrLiteral() {NumVal = new IntPtr(integer::Parse(tok::Value::Substring(2, tok::Value::get_Length() - 4), NumberStyles::HexNumber)), Value = tok::Value, PosFromToken(tok)}
+        elseif tok::Value like "^0x([0-9A-F])+i$" then
+            return new IntLiteral(integer::Parse(tok::Value::Substring(2, tok::Value::get_Length() - 3), NumberStyles::HexNumber)) {PosFromToken(tok)}
+        elseif tok::Value like "^0x([0-9A-F])+ul$" then
+            return new ULongLiteral(ulong::Parse(tok::Value::Substring(2, tok::Value::get_Length() - 4), NumberStyles::HexNumber)) {PosFromToken(tok)}
+        elseif tok::Value like "^0x([0-9A-F])+l$" then
+            return new LongLiteral(long::Parse(tok::Value::Substring(2, tok::Value::get_Length() - 3), NumberStyles::HexNumber)) {PosFromToken(tok)}
+        elseif tok::Value like "^0x([0-9A-F])+us$" then
+            return new UShortLiteral(ushort::Parse(tok::Value::Substring(2, tok::Value::get_Length() - 4), NumberStyles::HexNumber)) {PosFromToken(tok)}
+        elseif tok::Value like "^0x([0-9A-F])+s$" then
+            return new ShortLiteral(short::Parse(tok::Value::Substring(2, tok::Value::get_Length() - 3), NumberStyles::HexNumber)) {PosFromToken(tok)}
+        elseif tok::Value like "^0x([0-9A-F])+ub$" then
+            return new ByteLiteral(byte::Parse(tok::Value::Substring(2, tok::Value::get_Length() - 4), NumberStyles::HexNumber)) {PosFromToken(tok)}
+        elseif tok::Value like "^0x([0-9A-F])+b$" then
+            return new SByteLiteral(sbyte::Parse(tok::Value::Substring(2, tok::Value::get_Length() - 3), NumberStyles::HexNumber)) {PosFromToken(tok)}
+        elseif tok::Value like "^0x([0-9A-F])+$" then
+            return new IntLiteral(integer::Parse(tok::Value::Substring(2, tok::Value::get_Length() - 2), NumberStyles::HexNumber)) {PosFromToken(tok)}
+        //idents
         elseif tok::Value like "^\\((([a-zA-Z])+(.)*)|(_(.)+))$" then
             return new NestedAccessToken(tok::Value) {PosFromToken(tok)}
         elseif tok::Value like "^\.((([a-zA-Z])+(.)*)|(_(.)+))$" then

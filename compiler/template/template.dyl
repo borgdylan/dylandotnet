@@ -1037,6 +1037,8 @@ class public static Program
 		Console::WriteLine(m)
 		m = 12.34m
 		Console::WriteLine(m)
+
+		Console::WriteLine(12::ToString())
 	end method
 
 	[method: My(new integer[] {1, 2})]
